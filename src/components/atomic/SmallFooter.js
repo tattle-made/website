@@ -18,7 +18,7 @@ const SmallFooter = ({items}) => (
                             primaryItem.type==='internal' ? 
                                 <Link 
                                     key={primaryItem.id}
-                                    to={`/khoj/${primaryItem.target}`}
+                                    to={`/${primaryItem.target}`}
                                 >
                                     <Text> {primaryItem.label} </Text>
                                 </Link>

@@ -5,11 +5,15 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@mdx-js/mdx": "^1.5.7",
+    "@mdx-js/react": "^1.5.7",
     "gatsby": "^2.19.45",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-manifest": "^2.2.48",
+    "gatsby-plugin-mdx": "^1.1.0",
     "gatsby-plugin-offline": "^3.0.41",
     "gatsby-plugin-react-helmet": "^3.1.24",
+    "gatsby-plugin-s3": "^0.3.3",
     "gatsby-plugin-sharp": "^2.4.13",
     "gatsby-source-filesystem": "^2.1.56",
     "gatsby-transformer-sharp": "^2.3.19",
@@ -35,7 +39,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "deploy": "gatsby-plugin-s3 deploy --yes"
   },
   "repository": {
     "type": "git",

@@ -28,6 +28,21 @@ module.exports = {
         icon: `src/images/tattle_logo.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        extensions: [`.mdx`],
+        defaultLayouts: {
+          default: require.resolve(`./src/components/default-layout.js`)
+        }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: 'site.tattle.co.in'
+      },
+  },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
