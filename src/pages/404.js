@@ -1,14 +1,17 @@
 import React from "react"
+import { primaryNav, footerItems } from '../config/options';
+import AppShell from '../components/atomic/AppShell';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
 
 const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+  <AppShell
+    headerLabel={'Tattle Services'}
+    footerItems={footerItems}
+    primaryNav={primaryNav}
+    expandCenter={true}
+  >
+    <h1> home </h1>
+  </AppShell>
 )
 
 export default NotFoundPage
