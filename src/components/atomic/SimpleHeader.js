@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box, Heading, Button} from 'grommet';
 import AppLogo from './AppLogo';
-import {Link} from 'gatsby'
 import styled from 'styled-components';
+import { PlainLink as Link, PlainExternalLink as ExternalLink } from './TattleLinks';
 
 const ThemedLink = styled(Link)`
     text-decoration: none;
@@ -11,6 +11,8 @@ const ThemedLink = styled(Link)`
         color: inherit;
     }
 `
+
+
 
 /**
 * @author
@@ -27,11 +29,18 @@ const SimpleHeader = ({label, target, primaryNav}) => (
         <Box margin={{left: 'large'}} pad={'small'} direction={'row'} align={'center'} gap={'medium'}>
             {   
                 primaryNav.options.map((option) => (
-                    <ThemedLink key={option.id} to={option.target} > 
-                        <Button plain={true}>
-                            <Heading margin={'none'} level={3}> {option.label} </Heading>
-                        </Button>
-                    </ThemedLink>
+                    option.type == 'external' ?
+                        <ExternalLink key={option.id} href={option.target} target={'_blank'} > 
+                            <Button plain={true}>
+                                <Heading margin={'none'} level={3}> {option.label} </Heading>
+                            </Button>
+                        </ExternalLink>
+                    :
+                        <Link key={option.id} to={option.target} > 
+                            <Button plain={true}>
+                                <Heading margin={'none'} level={3}> {option.label} </Heading>
+                            </Button>
+                        </Link>
                 ))
             }
 
