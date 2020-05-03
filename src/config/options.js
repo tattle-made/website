@@ -9,9 +9,10 @@ export const footerItems = {
 
 export const primaryNav = {
     options : [
-        {id: 0, label: 'Archive', target:'http://shell.tattle.co.in', type:'external'},
-        {id: 1, label: 'Khoj', target:'https://services.tattle.co.in/khoj', type:'external'},
-        {id: 1, label: 'FAQ', target:'/faq', type:'internal'},
-        {id: 2, label: 'Join Us', target:'/join-us', type:'internal'},
+        {id: 0, label: 'Khoj', target:'https://services.tattle.co.in/khoj', type:'external'},
+        {id: 1, label: 'Archive', target:'http://shell.tattle.co.in', type:'external'},
+        {id: 2, label: 'Jod Bot', target:'https://t.me/TattleJodBot', type:'external'},
+        {id: 3, label: 'FAQ', target:'/faq', type:'internal'},
+        {id: 4, label: 'Join Us', target:'/join-us', type:'internal'},
     ]
 }
