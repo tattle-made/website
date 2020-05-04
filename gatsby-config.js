@@ -3,10 +3,11 @@ module.exports = {
     title: `Tattle Website`,
     description: `Web Home of Tattle`,
     author: `@tattlemade`,
-    base_url: 'https://tattle.co.in/'
+    base_url: "https://tattle.co.in/",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -29,20 +30,28 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [`.mdx`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/default-layout.js`)
-        }
-      }
+          default: require.resolve(`./src/components/default-layout.js`),
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
     },
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-          bucketName: 'tattle.co.in'
+        bucketName: "tattle.co.in",
       },
-  },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
