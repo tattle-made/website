@@ -10,12 +10,6 @@ import { PlainLink as Link } from "../components/atomic/TattleLinks"
 const DropDownMenu = ({ options }) => {
   const [fetching, setFetching] = useState(false)
   const [showToolTip, setShowToolTip] = useState(false)
-  const [data, setData] = useState([
-    { name: "Alan", value: 20 },
-    { name: "Bryan", value: 30 },
-    { name: "Chris", value: 40 },
-    { name: "Eric", value: 80 },
-  ])
 
   const iconRef = useRef()
 
@@ -24,7 +18,6 @@ const DropDownMenu = ({ options }) => {
   })
 
   const onShowToolTip = () => {
-    console.log("hi")
     setShowToolTip(true)
   }
 
@@ -56,13 +49,9 @@ const DropDownMenu = ({ options }) => {
         >
           <Box pad={"small"} direction={"column"}>
             {options.map(option => (
-              <Link
-                key={option.id}
-                to={option.target}
-                margin={{ bottom: "medium" }}
-              >
+              <Link key={option.id} to={option.target}>
                 <Button plain={true}>
-                  <Heading margin={"none"} level={3}>
+                  <Heading margin={"none"} level={3} pad={"large"}>
                     {" "}
                     {option.label}{" "}
                   </Heading>

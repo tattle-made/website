@@ -13,12 +13,23 @@ export const footerItems = {
       target: "/privacy-policy",
       type: "internal",
     },
+    {
+      id: 4,
+      label: "FAQ",
+      target: "/faq",
+      type: "internal",
+    },
   ],
 }
 
 export const primaryNav = {
   options: [
-    { id: 3, label: "FAQ", target: "/faq", type: "internal" },
+    {
+      id: 3,
+      label: "2019 Report",
+      target: "/report/2019-report",
+      type: "internal",
+    },
     { id: 4, label: "Join Us", target: "/join-us", type: "internal" },
   ],
 }

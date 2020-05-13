@@ -8,9 +8,9 @@ import {
 import DropDownMenu from "../DropDownMenu"
 
 const dropDownOptions = [
-  { id: 1, target: "/kosh", label: "Archive" },
-  { id: 2, target: "/jod-bot", label: "Jod Bot" },
-  { id: 3, target: "/khoj", label: "Khoj" },
+  { id: 1, target: "/products/kosh", label: "Archive" },
+  { id: 2, target: "/products/jod-bot", label: "Jod Bot" },
+  { id: 3, target: "/products/khoj", label: "Khoj" },
 ]
 
 /**
