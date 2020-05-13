@@ -39,12 +39,16 @@ export const ResponsiveImage = ({ data, imageName }) => {
   )
 
   return (
-    <WeirdBox overflow={"auto"} align={"center"}>
+    <Box
+      overflow={"auto"}
+      align={"center"}
+      height={{ max: "40em", min: "18em" }}
+    >
       {size === "small" ? (
-        <Image src={narrow_image.childImageSharp.fluid.src} />
+        <Image fit="contain" src={narrow_image.childImageSharp.fluid.src} />
       ) : (
-        <Image src={wide_image.childImageSharp.fluid.src} />
+        <Image fit="contain" src={wide_image.childImageSharp.fluid.src} />
       )}
-    </WeirdBox>
+    </Box>
   )
 }
