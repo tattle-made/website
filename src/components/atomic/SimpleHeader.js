@@ -1,19 +1,17 @@
 import React from "react"
 import { Box, Heading, Button } from "grommet"
 import AppLogo from "./AppLogo"
-import styled from "styled-components"
 import {
   PlainLink as Link,
   PlainExternalLink as ExternalLink,
 } from "./TattleLinks"
+import DropDownMenu from "../DropDownMenu"
 
-const ThemedLink = styled(Link)`
-  text-decoration: none;
-  color: inherit;
-  :visited {
-    color: inherit;
-  }
-`
+const dropDownOptions = [
+  { id: 1, target: "/kosh", label: "Archive" },
+  { id: 2, target: "/jod-bot", label: "Jod Bot" },
+  { id: 3, target: "/khoj", label: "Khoj" },
+]
 
 /**
  * @author
@@ -31,8 +29,9 @@ const SimpleHeader = ({ label, target, primaryNav }) => (
       align={"center"}
       gap={"medium"}
     >
+      <DropDownMenu options={dropDownOptions} />
       {primaryNav.options.map(option =>
-        option.type == "external" ? (
+        option.type === "external" ? (
           <ExternalLink key={option.id} href={option.target} target={"_blank"}>
             <Button plain={true}>
               <Heading margin={"none"} level={3}>

@@ -26,9 +26,10 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
 
 ## 1. Getting the data
 
+### Importing libraries
 ```python
-# Importing libraries
 import os
+
 import requests
 import time
 from time import sleep
@@ -69,11 +70,9 @@ from googletrans import Translator
 import pyLDAvis
 import pyLDAvis.gensim
 from gensim import similarities
-
 ```
-
+### Get data from factchecking sites MongoDB
 ```python
-# Get data from factchecking sites MongoDB
 def initialize_mongo():
     mongo_url = "mongodb+srv://os.environ.get("FACTCHECK_DB_USERNAME"):os.environ.get("FACTCHECK_DB_PASSWORD")@tattle-data-fkpmg.mongodb.net/test?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE"
     cli = MongoClient(mongo_url)
