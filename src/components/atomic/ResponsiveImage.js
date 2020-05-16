@@ -39,15 +39,16 @@ export const ResponsiveImage = ({ data, imageName }) => {
   )
 
   return (
-    <Box
-      overflow={"auto"}
-      align={"center"}
-      height={{ max: "40em", min: "18em" }}
-    >
+    <Box overflow={"auto"} height={{ max: "32em", min: "12em" }}>
       {size === "small" ? (
         <Image fit="contain" src={narrow_image.childImageSharp.fluid.src} />
       ) : (
-        <Image fit="contain" src={wide_image.childImageSharp.fluid.src} />
+        <Image
+          alignSelf={"start"}
+          fit="contain"
+          fill={true}
+          src={wide_image.childImageSharp.fluid.src}
+        />
       )}
     </Box>
   )
