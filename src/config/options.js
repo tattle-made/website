@@ -14,9 +14,9 @@ export const footerItems = {
       type: "internal",
     },
     {
-      id: 4,
-      label: "FAQ",
-      target: "/faq",
+      id: 5,
+      label: "Annual Report (2019)",
+      target: "/report/2019-report",
       type: "internal",
     },
   ],
@@ -26,8 +26,8 @@ export const primaryNav = {
   options: [
     {
       id: 3,
-      label: "2019 Report",
-      target: "/report/2019-report",
+      label: "About Us",
+      target: "/faq",
       type: "internal",
     },
     { id: 4, label: "Join Us", target: "/join-us", type: "internal" },
