@@ -33,7 +33,7 @@ const DropDownMenu = ({ options }) => {
         onClick={() => onShowToolTip()}
       >
         <Box direction={"row"} gap={"small"} align={"center"}>
-          <Heading margin={"none"} level={3}>
+          <Heading margin={"none"} level={4}>
             Products
           </Heading>
           <ChevronDown size={24} />
