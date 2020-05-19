@@ -28,7 +28,7 @@ const AppLogo = ({ name, target }) => {
           )}
           <PlainLink to={target}>
             {
-              <Heading level={4} margin={"none"}>
+              <Heading color={"brand"} level={4} margin={"none"}>
                 {" "}
                 {name}{" "}
               </Heading>

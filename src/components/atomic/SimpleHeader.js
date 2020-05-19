@@ -76,7 +76,9 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
       {size !== "small" ? (
         <PrimaryNav primaryNav={primaryNav} />
       ) : (
-        <Menu size={28} onClick={onOpen} />
+        <Button plain focusIndicator={false}>
+          <Menu size={28} onClick={onOpen} />
+        </Button>
       )}
       {open && (
         <Layer position="right" onClickOutside={onClose} animate={true}>
