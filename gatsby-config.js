@@ -69,6 +69,21 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Raleway`,
+            variants: [`300`, `400`, `500`, `600`, `700`],
+          },
+          {
+            family: `Bitter`,
+            variants: [`400`, `700`],
+          },
+        ],
+      },
+    },
     // {
     //   resolve: `gatsby-source-ghost`,
     //   options: {

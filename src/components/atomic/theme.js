@@ -148,7 +148,7 @@ const TattleTheme = {
     },
     colors: {
       brand: "#E65447",
-      "brand-1": "#FFDFDD",
+      brand_1: "#FFDFDD",
       text: {
         light: "ffffff",
       },
@@ -156,7 +156,7 @@ const TattleTheme = {
   },
   heading: {
     font: {
-      family: "Montserrat",
+      family: "Bitter",
     },
     level: headingLevelStyle,
     responsive: true,
