@@ -17,11 +17,11 @@ const Index = props => {
       <Fragment>
         <Box wrap={true} direction={"row"}>
           {size !== "small" ? (
-            <Box width={"40%"} pad={"small"} background={"accent-1"}>
+            <Box width={"40%"} pad={"small"}>
               <ResponsiveImage />
             </Box>
           ) : (
-            <Box pad={"large"} width={"100%"} background={"brand"}>
+            <Box pad={"large"} width={"100%"}>
               {size}
               <ResponsiveImage />
             </Box>

@@ -69,6 +69,14 @@ module.exports = {
         ],
       },
     },
+    // {
+    //   resolve: `gatsby-source-ghost`,
+    //   options: {
+    //     apiUrl: `http://blog.tattle.co.in/`,
+    //     contentApiKey: `dea656ea64d6d9aed3427ad4b6`,
+    //     version: `v3`,
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

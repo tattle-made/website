@@ -66,11 +66,7 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
   }
 
   return (
-    <Box
-      direction={"row"}
-      wrap={true}
-      pad={size !== "small" ? "small" : "medium"}
-    >
+    <Box direction={"row"} wrap={true}>
       <AppLogo name={label} target={target} />
       <Box flex={"grow"} />
       {size !== "small" ? (

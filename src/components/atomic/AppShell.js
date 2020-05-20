@@ -17,32 +17,45 @@ const AppShell = ({
   headerTarget,
   primaryNav,
   expandCenter,
-}) => (
-  <Grommet theme={TattleTheme} full>
-    <SEO title={`Tattle - ${headerLabel}`} />
-    <Box fill>
-      <Box flex={false} as={"header"}>
-        <SimpleHeader
-          label={headerLabel}
-          target={headerTarget}
-          primaryNav={primaryNav}
-        />
-      </Box>
+}) => {
+  const size = React.useContext(ResponsiveContext)
+  return (
+    <Grommet theme={TattleTheme} full>
+      <SEO title={`Tattle - ${headerLabel}`} />
+      <Box fill>
+        <Box
+          flex={false}
+          as={"header"}
+          width={size !== "small" ? "960px" : null}
+          alignSelf={"center"}
+          pad={size !== "small" ? "small" : "medium"}
+        >
+          <SimpleHeader
+            label={headerLabel}
+            target={headerTarget}
+            primaryNav={primaryNav}
+          />
+        </Box>
 
-      <Box flex overflow={"auto"}>
-        <ContentPageLayout>{children}</ContentPageLayout>
-      </Box>
+        <Box flex overflow={"auto"}>
+          <ContentPageLayout>{children}</ContentPageLayout>
+        </Box>
 
-      <Box flex={false}>
-        <SmallFooter items={footerItems} />
+        <Box
+          flex={false}
+          as={"footer"}
+          width={size !== "small" ? "960px" : null}
+          alignSelf={"center"}
+        >
+          <SmallFooter items={footerItems} />
+        </Box>
       </Box>
-    </Box>
-  </Grommet>
-)
+    </Grommet>
+  )
+}
 
 const ContentPageLayout = ({ children }) => {
   const size = React.useContext(ResponsiveContext)
-  console.log(size)
   return size === "medium" || size === "large" ? (
     <Box
       width={"960px"}
