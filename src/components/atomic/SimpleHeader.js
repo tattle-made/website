@@ -92,13 +92,25 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
               <Box direction={"column"} pad={"small"}>
                 <Heading level={2}> Products </Heading>
                 <Box direction={"column"} pad={"medium"}>
-                  <Text> Kosh </Text>
-                  <Text> Khoj </Text>
-                  <Text> Archive </Text>
+                  <Link to={"/products/kosh"}>
+                    <Text> Archive </Text>{" "}
+                  </Link>
+                  <Link to={"/products/jod-bot"}>
+                    <Text> Jod Bot </Text>
+                  </Link>
+                  <Link to={"/products/khoj"}>
+                    <Text> Khoj </Text>
+                  </Link>
                 </Box>
-                <Heading level={2}> 2019 Annual Report </Heading>
-                <Heading level={2}> Join Us </Heading>
-                <Heading level={2}> About Us </Heading>
+                <Link to={"/report/2019-report"}>
+                  <Heading level={2}> 2019 Annual Report </Heading>
+                </Link>
+                <Link to={"/faq"}>
+                  <Heading level={2}> About Us </Heading>
+                </Link>
+                <Link to={"/join-us"}>
+                  <Heading level={2}> Join Us </Heading>
+                </Link>
               </Box>
             </Box>
           </Box>

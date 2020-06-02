@@ -18,6 +18,12 @@ export const footerItems = {
 export const primaryNav = {
   options: [
     {
+      id: 1,
+      label: "2019 Report",
+      target: "/report/2019-report",
+      type: "internal",
+    },
+    {
       id: 3,
       label: "About Us",
       target: "/faq",
