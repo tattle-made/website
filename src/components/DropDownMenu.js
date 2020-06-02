@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { Box, Drop, Button, Heading } from "grommet"
+import { Box, Drop, Button, Heading, Text } from "grommet"
 import { ChevronDown } from "react-feather"
 import { PlainLink as Link } from "../components/atomic/TattleLinks"
 /**
@@ -32,11 +32,11 @@ const DropDownMenu = ({ options }) => {
         focusIndicator={false}
         onClick={() => onShowToolTip()}
       >
-        <Box direction={"row"} gap={"small"} align={"center"}>
-          <Heading margin={"none"} level={4}>
+        <Box direction={"row"} gap={"xsmall"} align={"center"}>
+          <Text margin={"none"} size={"small"}>
             Products
-          </Heading>
-          <ChevronDown size={24} />
+          </Text>
+          <ChevronDown size={16} />
         </Box>
       </Button>
       {showToolTip && (

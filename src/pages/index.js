@@ -44,7 +44,9 @@ const Index = props => {
                 You can read more about the project{" "}
                 <Link to={"/faq"}>
                   {" "}
-                  <Text>here</Text>{" "}
+                  <Text color={"brand"} weight={"bold"}>
+                    here
+                  </Text>{" "}
                 </Link>
                 .
               </Text>
@@ -56,11 +58,11 @@ const Index = props => {
                   }
                   target="_blank"
                 >
-                  <Text>
-                    AI and the News Open Challenge which has enabled the project
-                    to scale faster.
+                  <Text color={"brand"} weight={"bold"}>
+                    AI and the News Open Challenge &nbsp;
                   </Text>
                 </ExternalLink>
+                which has enabled the project to scale faster.
               </Text>
             </Box>
           </Box>

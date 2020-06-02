@@ -1,6 +1,6 @@
 const headingLevelStyle = {
   "1": {
-    font: {},
+    font: { family: "Bitter", weight: "400" },
     small: {
       size: "34px",
       height: "40px",
@@ -23,7 +23,7 @@ const headingLevelStyle = {
     },
   },
   "2": {
-    font: {},
+    font: { family: "Bitter", weight: "400" },
     small: {
       size: "26px",
       height: "32px",
@@ -47,6 +47,7 @@ const headingLevelStyle = {
   },
   "3": {
     font: {
+      family: "Bitter",
       weight: "400",
     },
     small: {
@@ -71,7 +72,7 @@ const headingLevelStyle = {
     },
   },
   "4": {
-    font: {},
+    font: { family: "Bitter" },
     small: {
       size: "18px",
       height: "24px",
@@ -94,7 +95,7 @@ const headingLevelStyle = {
     },
   },
   "5": {
-    font: {},
+    font: { family: "Bitter" },
     small: {
       size: "16px",
       height: "22px",
@@ -117,7 +118,7 @@ const headingLevelStyle = {
     },
   },
   "6": {
-    font: {},
+    font: { family: "Bitter" },
     small: {
       size: "14px",
       height: "20px",
@@ -158,7 +159,6 @@ const TattleTheme = {
     font: {
       family: "Bitter",
     },
-    level: headingLevelStyle,
     responsive: true,
   },
   button: {

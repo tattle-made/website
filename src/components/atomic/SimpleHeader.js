@@ -28,19 +28,17 @@ const PrimaryNav = ({ primaryNav }) => {
         option.type === "external" ? (
           <ExternalLink key={option.id} href={option.target} target={"_blank"}>
             <Button plain={true}>
-              <Heading margin={"none"} level={4}>
-                {" "}
-                {option.label}{" "}
-              </Heading>
+              <Text margin={"none"} size={"small"}>
+                {option.label}
+              </Text>
             </Button>
           </ExternalLink>
         ) : (
           <Link key={option.id} to={option.target}>
             <Button plain={true}>
-              <Heading margin={"none"} level={4}>
-                {" "}
-                {option.label}{" "}
-              </Heading>
+              <Text margin={"none"} size={"small"}>
+                {option.label}
+              </Text>
             </Button>
           </Link>
         )

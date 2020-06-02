@@ -1,5 +1,5 @@
 import React from "react"
-import { ResponsiveContext, Box, Heading } from "grommet"
+import { ResponsiveContext, Box, Text } from "grommet"
 import { Link, PlainLink } from "./TattleLinks"
 
 const Logo = () => (
@@ -7,7 +7,7 @@ const Logo = () => (
     height="32px"
     width="32px"
     round="full"
-    background="url(//tattle-media.s3.amazonaws.com/monogram-dark.svg)"
+    background="url(//tattle-media.s3.amazonaws.com/monogram-light.svg)"
   />
 )
 
@@ -28,10 +28,10 @@ const AppLogo = ({ name, target }) => {
           )}
           <PlainLink to={target}>
             {
-              <Heading color={"brand"} level={4} margin={"none"}>
+              <Text size={"large"} color={"brand"} margin={"none"}>
                 {" "}
                 {name}{" "}
-              </Heading>
+              </Text>
             }
           </PlainLink>
         </Box>

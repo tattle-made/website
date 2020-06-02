@@ -2,7 +2,9 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const ThemedLink = styled(Link)`
-  color: inherit;
+  text-decoration: "none";
+  box-shadow: "none";
+  background-color: "red";
   :visited {
     color: inherit;
   }
@@ -23,6 +25,8 @@ const ThemedPlainLink = styled(Link)`
 `
 
 const ThemedExternalLink = styled.a`
+  font-weight: "bold";
+  text-decoration: none;
   :visited {
     color: inherit;
   }
@@ -30,7 +34,7 @@ const ThemedExternalLink = styled.a`
 
 const ThemedPlainExternalLink = styled.a`
   text-decoration: none;
-  color: inherit;
+  color: "brand";
   :visited {
     color: inherit;
   }

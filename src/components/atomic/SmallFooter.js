@@ -14,7 +14,7 @@ const SmallFooter = ({ items }) => (
       {items.primary.map(primaryItem => {
         return primaryItem.type === "internal" ? (
           <Link key={primaryItem.id} to={`/${primaryItem.target}`}>
-            <Text> {primaryItem.label} </Text>
+            <Text size={"small"}> {primaryItem.label} </Text>
           </Link>
         ) : (
           <PlainExternalLink
@@ -22,7 +22,7 @@ const SmallFooter = ({ items }) => (
             href={primaryItem.target}
             target="_blank"
           >
-            <Text> {primaryItem.label} </Text>
+            <Text size={"small"}> {primaryItem.label} </Text>
           </PlainExternalLink>
         )
       })}
@@ -30,19 +30,19 @@ const SmallFooter = ({ items }) => (
         href={"https://tarunima.typeform.com/to/BxZjfv"}
         target={"_blank"}
       >
-        <Slack size={16} />
+        <Slack size={12} />
       </PlainExternalLink>
       <PlainExternalLink
         href={"https://github.com/tattle-made"}
         target={"_blank"}
       >
-        <GitHub size={16} />
+        <GitHub size={12} />
       </PlainExternalLink>
       <PlainExternalLink
         href={"https://twitter.com/tattlemade"}
         target={"_blank"}
       >
-        <Twitter size={16} />
+        <Twitter size={12} />
       </PlainExternalLink>
     </Box>
   </Box>
