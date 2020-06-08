@@ -72,7 +72,7 @@ const ContributorsPage = () => (
         {
           Type: "Advisor",
           Name: "Swair Shah",
-          Role: "AI Engineer",
+          Role: "ML Engineer",
         },
         {
           Type: "Advisor",
