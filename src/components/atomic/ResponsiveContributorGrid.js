@@ -62,7 +62,9 @@ const ResponsiveContributorGrid = props => {
   return (
     <Grommet theme={TattleTheme}>
       <Box>
-        <Heading size={"small"}>{props.title}</Heading>
+        <Heading level={2} margin={"none"}>
+          {props.title}
+        </Heading>
         <Responsive
           rows={props.rows}
           columns={props.columns}
@@ -113,7 +115,7 @@ const ResponsiveContributorGrid = props => {
                   <Text weight="bold" size="medium" color="brand">
                     {contributor.Name}
                   </Text>
-                  <Text weight="bold" size="medium" color="dark-3">
+                  <Text size="medium" color="dark-3">
                     {contributor.Role}
                   </Text>
                 </Box>

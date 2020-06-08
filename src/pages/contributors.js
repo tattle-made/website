@@ -46,31 +46,19 @@ const ContributorsPage = () => (
       title="Full Time Staff"
       data={[
         {
-          Type: "Full Time",
-          Avatar:
-            "//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80",
+          Type: "Advisor",
           Name: "Denny George",
-          Title: "Interaction design and tech lead",
-          Past:
-            "Director of Mobile Products on Micragram, and WorkIt at Quadrant2; New York ITP, Tisch School of Arts, NYU",
+          Role: "Interaction design and Tech Lead",
         },
         {
-          Type: "Full Time",
-          Avatar:
-            "//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80",
+          Type: "Advisor",
           Name: "Tarunima Prabhakar",
-          Title: "Research and Project Lead",
-          Past:
-            "Past: Research Fellow, CLTC, UC, Berkeley; Facebook Policy Research",
+          Role: "Research and Project Lead",
         },
         {
-          Type: "Full Time",
-          Avatar:
-            "//s.gravatar.com/avatar/b7fb138d53ba0f573212ccce38a7c43b?s=80",
+          Type: "Advisor",
           Name: "Kruttika Nadig",
-          Title: "Data Scientist",
-          Past:
-            "Past: Marketing Manager, Amazon; Research Consultant: Lord Cultural Resources; Journalist: Times Group and Indian Express Group",
+          Role: "Data Scientist",
         },
       ]}
     />
@@ -83,18 +71,13 @@ const ContributorsPage = () => (
       data={[
         {
           Type: "Advisor",
-          Name: "Eishita Chhetri",
-          Role: "Illustrator",
+          Name: "Swair Shah",
+          Role: "AI Engineer",
         },
         {
           Type: "Advisor",
           Name: "Sunandan Chakraborty",
           Role: "Assistant Professor, Information School, Indiana University",
-        },
-        {
-          Type: "Advisor",
-          Name: "Vrinda Bhandari",
-          Role: "External Legal Counsel for India",
         },
         {
           Type: "Advisor",
@@ -108,8 +91,13 @@ const ContributorsPage = () => (
         },
         {
           Type: "Advisor",
-          Name: "Swair Shah",
-          Role: "Data Scientist",
+          Name: "Eishita Chhetri",
+          Role: "Illustrator",
+        },
+        {
+          Type: "Advisor",
+          Name: "Vrinda Bhandari",
+          Role: "External Legal Counsel for India",
         },
       ]}
     />

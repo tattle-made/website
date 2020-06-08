@@ -1,6 +1,12 @@
 export const footerItems = {
   primary: [
     {
+      id: 0,
+      label: "Contributors",
+      target: "/contributors",
+      type: "internal",
+    },
+    {
       id: 1,
       label: "Privacy Policy",
       target: "/privacy-policy",
