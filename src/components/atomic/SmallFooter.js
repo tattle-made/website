@@ -27,7 +27,7 @@ const SmallFooter = ({ items }) => (
         )
       })}
       <PlainExternalLink
-        href={"https://tarunima.typeform.com/to/BxZjfv"}
+        href={"https://admin417477.typeform.com/to/nVuNyG"}
         target={"_blank"}
       >
         <Slack size={12} />
