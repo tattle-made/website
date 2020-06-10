@@ -24,6 +24,12 @@ export const footerItems = {
 export const primaryNav = {
   options: [
     {
+      id: 0,
+      label: "Blog",
+      target: "http://blog.tattle.co.in/",
+      type: "external",
+    },
+    {
       id: 1,
       label: "2019 Report",
       target: "/report/2019-report",

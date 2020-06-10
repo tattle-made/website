@@ -28,15 +28,15 @@ const ThemedExternalLink = styled.a`
   font-weight: "bold";
   text-decoration: none;
   :visited {
-    color: inherit;
   }
 `
 
 const ThemedPlainExternalLink = styled.a`
   text-decoration: none;
-  color: "brand";
+  color: #000000;
   :visited {
-    color: inherit;
+    color: #000000;
+    text-decoration: none;
   }
 `
 
