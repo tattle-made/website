@@ -3,6 +3,7 @@ import { Box, Heading, Text, Paragraph, ResponsiveContext } from "grommet"
 import DefaultLayout from "../components/default-layout"
 import { ResponsiveImage } from "../components/atomic/ResponsiveImage"
 import { Link, ExternalLink } from "../components/atomic/TattleLinks"
+import MailchimpSubscribeForm from "../components/atomic/MailchimpSubscribeForm"
 
 /**
  * @author
@@ -73,6 +74,7 @@ const Index = props => {
                     which has enabled the project to scale faster.
                   </Text>
                 </Box>
+                <MailchimpSubscribeForm />
               </Box>
             </Box>
           </Fragment>
