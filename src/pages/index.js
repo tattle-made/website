@@ -64,40 +64,40 @@ const Index = props => {
                   <Text>
                     The backbone of this project is an archive of content
                     circulating on chat apps and social media; and APIs for
-                    multi-lingual and multi-modal search.
+                    multi-lingual and multi-modal search. All the code is open source and licensed under{" "}
+                      <ExternalLink
+                        href={"https://www.gnu.org/licenses/gpl-3.0.en.html"}
+                        target="_blank"
+                      >
+                        <Text color={"brand"} weight={"bold"}>
+                          GPL 3.0;
+                        </Text>
+                      </ExternalLink>
                   </Text>
+        
+
 
                   <Text>
                     We've adapted this core infrastructure for a variety of use
-                    cases such as an app that lets people explore if a content
-                    they received has been fact checked; and dashboards showing
+                    cases such as an app that lets people explore if a post
+                    they receive on a chat app has been fact checked; and dashboards showing
                     misinformation trends. The data itself has been used by
                     other researchers and journalists studying misinformation.
                   </Text>
 
-                  <Text>
-                    All the code is open source and licensed under{" "}
-                    <ExternalLink
-                      href={"https://www.gnu.org/licenses/gpl-3.0.en.html"}
-                      target="_blank"
-                    >
-                      <Text color={"brand"} weight={"bold"}>
-                        GPL 3.0;
-                      </Text>
-                    </ExternalLink>
-                  </Text>
+               
 
-                  <Text>
-                    You can read more about our goal and mission{" "}
-                    <PlainLink to={"/faq"}>
-                      {" "}
-                      <Text color={"brand"} weight={"bold"}>
-                        here
-                      </Text>
-                      {""}
-                    </PlainLink>
-                    .
-                  </Text>
+                //  <Text>
+                //   You can read more about our goal and mission{" "}
+                //    <PlainLink to={"/faq"}>
+                //      {" "}
+                //      <Text color={"brand"} weight={"bold"}>
+                //        here
+                //      </Text>
+                //      {""}
+                //    </PlainLink>
+                //    .
+                //  </Text>
                   <Text>
                     Tattle was one of the winners of the{" "}
                     <ExternalLink
