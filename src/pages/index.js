@@ -39,23 +39,43 @@ const Index = props => {
                 <Heading level={2}>Accurate Information to the People</Heading>
                 <Box direction={"column"} gap={"small"}>
                   <Text>
-                    Tattle is a civic tech project that aims to make accurate
-                    information more accessible to mobile first users, in
-                    languages that they are comfortable with.
+                  Tattle is a group of technologists, researchers, journalists and artists. 
+                  We build tools and datasets to better understand and respond to (mis)information trends on chat apps and regional language social media in India. 
+                  Our work is geared towards:
+                      * Journalists and fact checkers
+                      * Researchers
+                      * Motivated individuals who wish to do local fact-checking/debunking.
                   </Text>
                   <Text>
-                    To this end, Tattle is creating an open archive of content
-                    circulated on chat apps; and building open source data
-                    collection tools and APIs to index and query the multimedia
-                    archive.
+                    The backbone of this project is an archive of content circulating on chat apps and social media; and APIs for multi-lingual and multi-modal search.
                   </Text>
+ 
                   <Text>
-                    You can read more about the project{" "}
+                  We've adapted this core infrastructure for a variety of use cases such as an app that lets people explore if a content they received has been fact checked; and dashboards showing misinformation trends. The data itself has been used by other researchers and journalists studying misinformation.
+                      
+                  </Text>     
+
+                  <Text>
+                  All the code is open source and licensed under{" "}.
+                  <ExternalLink
+                      href={
+                        "https://www.gnu.org/licenses/gpl-3.0.en.html"
+                      }
+                      target="_blank"
+                    >
+                      <Text color={"brand"} weight={"bold"}>
+                        GPL 3.0;
+                      </Text>
+                    </ExternalLink>
+                  </Text>
+                  
+                  <Text>
+                    You can read more about our goal and mission{" "}
                     <Link to={"/faq"}>
                       {" "}
                       <Text color={"brand"} weight={"bold"}>
-                        here
-                      </Text>{" "}
+                        here.
+                      </Text>{""}
                     </Link>
                     .
                   </Text>
