@@ -18,7 +18,7 @@ const Index = props => {
     <DefaultLayout>
       <ResponsiveContext.Consumer>
         {size => (
-          <Fragment>
+          <Box direction={"column"} gap={"large"} flex={false}>
             <Box wrap={true} direction={"row"}>
               {size !== "small" ? (
                 <Box width={"40%"} pad={"small"} alignSelf={"center"}>
@@ -71,7 +71,7 @@ const Index = props => {
                       target="_blank"
                     >
                       <Text color={"brand"} weight={"bold"}>
-                        GPL 3.0;
+                        GPL 3.0
                       </Text>
                     </ExternalLink>
                   </Text>
@@ -111,10 +111,12 @@ const Index = props => {
                     which has enabled the project to scale faster.
                   </Text>
                 </Box>
-                <MailchimpSubscribeForm />
               </Box>
             </Box>
-          </Fragment>
+            <Box margin={{ bottom: "large" }}>
+              <MailchimpSubscribeForm />
+            </Box>
+          </Box>
         )}
       </ResponsiveContext.Consumer>
     </DefaultLayout>
