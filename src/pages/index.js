@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from "react"
 import { Box, Heading, Text, Paragraph, ResponsiveContext } from "grommet"
 import DefaultLayout from "../components/default-layout"
 import { ResponsiveImage } from "../components/atomic/ResponsiveImage"
-import { Link, ExternalLink } from "../components/atomic/TattleLinks"
+import { PlainLink, Link, ExternalLink } from "../components/atomic/TattleLinks"
 import MailchimpSubscribeForm from "../components/atomic/MailchimpSubscribeForm"
 
 /**
@@ -21,7 +21,7 @@ const Index = props => {
           <Fragment>
             <Box wrap={true} direction={"row"}>
               {size !== "small" ? (
-                <Box width={"40%"} pad={"small"}>
+                <Box width={"40%"} pad={"small"} alignSelf={'center'} >
                   <ResponsiveImage />
                 </Box>
               ) : (
@@ -36,31 +36,49 @@ const Index = props => {
               )}
 
               <Box flex={true} pad={"small"}>
-                <Heading level={2}>Accurate Information to the People</Heading>
+                <Heading level={2} margin={{ top: "none" }}>
+                  Accurate Information to the People
+                </Heading>
                 <Box direction={"column"} gap={"small"}>
                   <Text>
-                  Tattle is a group of technologists, researchers, journalists and artists. 
-                  We build tools and datasets to better understand and respond to (mis)information trends on chat apps and regional language social media in India. 
-                  Our work is geared towards:
-                      * Journalists and fact checkers
-                      * Researchers
-                      * Motivated individuals who wish to do local fact-checking/debunking.
+                    Tattle is a group of technologists, researchers, journalists
+                    and artists. We build{" "}
+                    <PlainLink to={"/faq"}>
+                      <Text color={"brand"} weight={"bold"}>
+                        tools and datasets
+                      </Text>
+                    </PlainLink>{" "}
+                    to better understand and respond to (mis)information trends
+                    on chat apps and regional language social media in India.
+                    Our work is geared towards:
+                    <ul>
+                      <li> Journalists and fact checkers </li>
+                      <li> Researchers </li>
+                      <li>
+                        {" "}
+                        Motivated individuals who wish to do local
+                        fact-checking/debunking
+                      </li>
+                    </ul>
                   </Text>
                   <Text>
-                    The backbone of this project is an archive of content circulating on chat apps and social media; and APIs for multi-lingual and multi-modal search.
+                    The backbone of this project is an archive of content
+                    circulating on chat apps and social media; and APIs for
+                    multi-lingual and multi-modal search.
                   </Text>
- 
-                  <Text>
-                  We've adapted this core infrastructure for a variety of use cases such as an app that lets people explore if a content they received has been fact checked; and dashboards showing misinformation trends. The data itself has been used by other researchers and journalists studying misinformation.
-                      
-                  </Text>     
 
                   <Text>
-                  All the code is open source and licensed under{" "}.
-                  <ExternalLink
-                      href={
-                        "https://www.gnu.org/licenses/gpl-3.0.en.html"
-                      }
+                    We've adapted this core infrastructure for a variety of use
+                    cases such as an app that lets people explore if a content
+                    they received has been fact checked; and dashboards showing
+                    misinformation trends. The data itself has been used by
+                    other researchers and journalists studying misinformation.
+                  </Text>
+
+                  <Text>
+                    All the code is open source and licensed under{" "}
+                    <ExternalLink
+                      href={"https://www.gnu.org/licenses/gpl-3.0.en.html"}
                       target="_blank"
                     >
                       <Text color={"brand"} weight={"bold"}>
@@ -68,15 +86,16 @@ const Index = props => {
                       </Text>
                     </ExternalLink>
                   </Text>
-                  
+
                   <Text>
                     You can read more about our goal and mission{" "}
-                    <Link to={"/faq"}>
+                    <PlainLink to={"/faq"}>
                       {" "}
                       <Text color={"brand"} weight={"bold"}>
-                        here.
-                      </Text>{""}
-                    </Link>
+                        here
+                      </Text>
+                      {""}
+                    </PlainLink>
                     .
                   </Text>
                   <Text>
