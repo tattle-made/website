@@ -14,6 +14,12 @@ export const footerItems = {
     },
     {
       id: 2,
+      label: "Contact Us",
+      target: "/contact",
+      type: "internal",
+    },
+    {
+      id: 3,
       label: "FAQ",
       target: "/faq",
       type: "internal",
