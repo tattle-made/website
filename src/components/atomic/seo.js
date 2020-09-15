@@ -14,7 +14,7 @@ function SEO({ description, lang, meta, title }) {
   const { site, allFile } = useStaticQuery(
     graphql`
       query {
-        allFile(filter: {name: {eq: "social-card"}}) {
+        allFile(filter: { name: { eq: "social-card" } }) {
           edges {
             node {
               id
@@ -22,7 +22,7 @@ function SEO({ description, lang, meta, title }) {
               publicURL
             }
           }
-        },
+        }
         site {
           siteMetadata {
             title
@@ -37,9 +37,8 @@ function SEO({ description, lang, meta, title }) {
 
   const metaDescription = description || site.siteMetadata.description
   const author = site.siteMetadata.author
-  const socialImageURL = allFile.edges[0].node.publicURL;
-  const baseURL = site.siteMetadata.base_url;
-
+  const socialImageURL = allFile.edges[0].node.publicURL
+  const baseURL = site.siteMetadata.base_url
 
   return (
     <Helmet
@@ -53,13 +52,19 @@ function SEO({ description, lang, meta, title }) {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={socialImageURL} />
-      <meta property="og:type" content={'website'} />
-      <meta property="twitter:card" content={'summary_large_image'} />
+      <meta property="og:type" content={"website"} />
+      <meta property="twitter:card" content={"summary_large_image"} />
       <meta property="twitter:site" content={author} />
       <meta property="twitter:creator" content={site.siteMetadata.author} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={metaDescription} />
       <meta property="twitter:image" content={`${baseURL}${socialImageURL}`} />
+      <script
+        async
+        defer
+        data-domain="tattle.co.in"
+        src="https://plausible.io/js/plausible.js"
+      />
     </Helmet>
   )
 }
