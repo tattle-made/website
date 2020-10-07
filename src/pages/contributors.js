@@ -94,11 +94,6 @@ const ContributorsPage = () => (
           Name: "Eishita Chhetri",
           Role: "Illustrator",
         },
-        {
-          Type: "Advisor",
-          Name: "Vrinda Bhandari",
-          Role: "External Legal Counsel for India",
-        },
       ]}
     />
     <Text size={"medium"}>
