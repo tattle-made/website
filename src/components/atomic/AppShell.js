@@ -22,13 +22,13 @@ const AppShell = ({
   return (
     <Grommet theme={TattleTheme} full>
       <SEO title={`Tattle - ${headerLabel}`} />
-      <Box fill>
+      <Box>
         <Box
           flex={false}
           as={"header"}
           width={size !== "small" ? "960px" : null}
           alignSelf={"center"}
-          pad={size !== "small" ? "small" : "medium"}
+          margin={{ bottom: "medium" }}
         >
           <SimpleHeader
             label={headerLabel}
@@ -37,12 +37,11 @@ const AppShell = ({
           />
         </Box>
 
-        <Box flex overflow={"auto"}>
+        <Box height={{ min: "85vh" }}>
           <ContentPageLayout>{children}</ContentPageLayout>
         </Box>
 
         <Box
-          flex={false}
           as={"footer"}
           width={size !== "small" ? "960px" : null}
           alignSelf={"center"}
@@ -60,14 +59,14 @@ const ContentPageLayout = ({ children }) => {
     <Box
       width={"960px"}
       pad={"small"}
-      margin={{ top: "large", bottom: "large" }}
+      margin={{ bottom: "large" }}
       alignSelf={"center"}
       flex
     >
       {children}
     </Box>
   ) : (
-    <Box fill pad={"small"} margin={{ top: "large", bottom: "large" }}>
+    <Box fill pad={"small"} margin={{ bottom: "large" }}>
       {children}
     </Box>
   )

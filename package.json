@@ -25,7 +25,7 @@
     "gatsby-source-ghost": "^4.0.4",
     "gatsby-transformer-remark": "^2.8.7",
     "gatsby-transformer-sharp": "^2.5.0",
-    "grommet": "^2.13.0",
+    "grommet": "^2.16.2",
     "prismjs": "^1.20.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
