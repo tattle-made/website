@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from "react"
 import { Box, Drop, Button, Heading, Text } from "grommet"
 import { ChevronDown } from "react-feather"
-import { PlainLink as Link } from "../components/atomic/TattleLinks"
+import {
+  PlainLink as Link,
+  PlainExternalLink as ExternalLink,
+} from "../components/atomic/TattleLinks"
 /**
  * @author
  * @function MoleculeViewMetadataFromOriginalService
  **/
+import { NavigationLabel, Theme } from "./atomic/core-style"
 
-const DropDownMenu = ({ options }) => {
+const DropDownMenu = ({ options, title }) => {
   const [fetching, setFetching] = useState(false)
   const [showToolTip, setShowToolTip] = useState(false)
 
@@ -32,32 +36,49 @@ const DropDownMenu = ({ options }) => {
         focusIndicator={false}
         onClick={() => onShowToolTip()}
       >
-        <Box direction={"row"} gap={"xsmall"} align={"center"}>
-          <Text margin={"none"} size={"small"}>
-            Products
-          </Text>
-          <ChevronDown size={16} />
+        <Box direction={"row"} gap={"xxsmall"} align={"center"}>
+          <NavigationLabel>{title}</NavigationLabel>
+          <ChevronDown size={16} color={Theme.text_color_light} />
         </Box>
       </Button>
       {showToolTip && (
         <Drop
           target={iconRef.current}
-          align={{ top: "bottom" }}
+          align={{ top: "bottom", right: "right" }}
           onClickOutside={onHideToolTip}
           onEsc={onHideToolTip}
           margin={{ top: "small", right: "small" }}
         >
-          <Box pad={"small"} direction={"column"}>
-            {options.map(option => (
-              <Link key={option.id} to={option.target}>
-                <Button plain={true}>
-                  <Heading margin={"none"} level={3} pad={"large"}>
-                    {" "}
-                    {option.label}{" "}
-                  </Heading>
-                </Button>
-              </Link>
-            ))}
+          <Box pad={"small"} direction={"column"} background={"light-3"}>
+            {options.map(option =>
+              option.type === "external" ? (
+                <Box>
+                  <ExternalLink
+                    key={option.id}
+                    href={option.target}
+                    target={"_blank"}
+                  >
+                    <Button plain={true} margin={"xsmall"}>
+                      <Text margin={"none"} size={"small"}>
+                        {option.label}
+                      </Text>
+                    </Button>
+                  </ExternalLink>
+                </Box>
+              ) : (
+                <Link key={option.id} to={option.target}>
+                  <Button plain={true} margin={"xsmall"}>
+                    <Box>
+                      <Text margin={"none"} size={"small"}>
+                        {" "}
+                        {option.label}{" "}
+                      </Text>
+                      <Text size={"xsmall"}>{option.description}</Text>
+                    </Box>
+                  </Button>
+                </Link>
+              )
+            )}
           </Box>
         </Drop>
       )}

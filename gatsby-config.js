@@ -34,7 +34,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`],
         defaultLayouts: {
-          default: require.resolve(`./src/components/default-layout.js`),
+          default: require.resolve(`./src/components/default-layout-narrow.js`),
         },
         gatsbyRemarkPlugins: [
           {
@@ -49,7 +49,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "tattle.co.in",
+        bucketName: "site.tattle.co.in",
       },
     },
     {
@@ -75,11 +75,11 @@ module.exports = {
         fonts: [
           {
             family: "Raleway",
-            weights: ["300...700"],
+            weights: ["100..900"],
           },
           {
             family: "Bitter",
-            weights: ["400", "700"],
+            weights: ["100..900"],
           },
         ],
       },

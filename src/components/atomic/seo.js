@@ -65,6 +65,12 @@ function SEO({ description, lang, meta, title }) {
         data-domain="tattle.co.in"
         src="https://plausible.io/js/plausible.js"
       />
+
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
     </Helmet>
   )
 }

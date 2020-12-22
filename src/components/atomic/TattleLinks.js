@@ -24,6 +24,21 @@ const ThemedPlainLink = styled(Link)`
   }
 `
 
+const ThemedPlainHeavyLink = styled(Link)`
+  font-family: "Bitter";
+  font-weight: "900";
+  color: inherit;
+  :visited {
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &.active {
+    color: red;
+  }
+`
+
 const ThemedExternalLink = styled.a`
   font-weight: "bold";
   text-decoration: none;
@@ -33,9 +48,9 @@ const ThemedExternalLink = styled.a`
 
 const ThemedPlainExternalLink = styled.a`
   text-decoration: none;
-  color: #000000;
+  color: #514e80;
   :visited {
-    color: #000000;
+    color: #514e80;
     text-decoration: none;
   }
 `
@@ -43,6 +58,7 @@ const ThemedPlainExternalLink = styled.a`
 export {
   ThemedLink as Link,
   ThemedPlainLink as PlainLink,
+  ThemedPlainHeavyLink as PlainHeavyLink,
   ThemedExternalLink as ExternalLink,
   ThemedPlainExternalLink as PlainExternalLink,
 }

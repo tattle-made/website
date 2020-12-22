@@ -31,6 +31,12 @@ export const primaryNav = {
   options: [
     {
       id: 0,
+      label: "Datasets",
+      target: "http://blog.tattle.co.in/",
+      type: "external",
+    },
+    {
+      id: 0,
       label: "Blog",
       target: "http://blog.tattle.co.in/",
       type: "external",
@@ -49,4 +55,8 @@ export const primaryNav = {
     },
     { id: 4, label: "Join Us", target: "/join-us", type: "internal" },
   ],
+}
+
+export const FeatureFlags = {
+  showNewLandingPage: true,
 }

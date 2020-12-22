@@ -40,7 +40,12 @@ const Datasets = () => {
       <ResponsiveContext.Consumer>
         {size => {
           return (
-            <Box>
+            <Box
+              width={size !== "small" ? "960px" : "100%"}
+              alignSelf={"center"}
+              margin={{ top: "large" }}
+              pad={{ left: "large", right: "large" }}
+            >
               <Box
                 direction={"row"}
                 overflow={"hidden"}

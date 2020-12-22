@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react"
 
 /**
  * @author
- * @function Index
+ * @function SectionWrapper
  **/
 
-const Index = () => {
+const SectionWrapper = () => {
   const [fetching, setFetching] = useState(false)
 
   useEffect(() => {
@@ -15,4 +15,4 @@ const Index = () => {
   return <div>{fetching && <h3>something</h3>}</div>
 }
 
-export default Index
+export default SectionWrapper

@@ -30,17 +30,25 @@ const MailchimpSubscribeForm = () => {
             <Box direction={"column"}>
               {status !== "success" && (
                 <>
-                  <Heading level={4}>
+                  <Text size={"medium"} weight={600}>
                     {" "}
-                    Join our mailing list for project updates{" "}
-                  </Heading>
-                  <Box direction={"row"} gap={"small"}>
+                    Join an engaged community of people who are building
+                    solutions to tackle misinformation on our mailing list{" "}
+                  </Text>
+                  <Box height={"xxsmall"} />
+                  <Box
+                    direction={"row"}
+                    gap={"small"}
+                    width={"100%"}
+                    alignSelf={"center"}
+                  >
                     <TextInput
                       placeholder="Email address"
                       value={email}
                       onChange={event => setEmail(event.target.value)}
                       background={"#FFFFFF"}
                     />
+
                     <Button
                       primary
                       label={
