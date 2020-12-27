@@ -23,8 +23,12 @@ const pages = {
   "contact": "Contact"
 }
 
-const setPageTitle = (name, pages) => {
-  return name === "" ? name : `- ${pages[name] || name}`
+const setPageTitle = (name) => {
+  return name === "" ? name : `- ${formatTitle(name)}`
+}
+
+const formatTitle = (name) => {
+  return name.replace("-", " ").split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")
 }
 
 const AppShell = ({
