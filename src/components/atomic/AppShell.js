@@ -32,7 +32,7 @@ const AppShell = ({
 
   return (
     <Grommet theme={TattleTheme} full>
-      <SEO title={`${headerLabel} ${setPageTitle(pageName, pages)}`} />
+      <SEO title={`${headerLabel} ${setPageTitle(pageName)}`} />
       <Box fill>
         <Box
           flex={false}
