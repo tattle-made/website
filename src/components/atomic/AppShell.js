@@ -10,6 +10,23 @@ import SEO from "./seo"
  * @function ContentPageLayout
  **/
 
+
+const pages = {
+  "faq" : "FAQ",
+  "jod-bot": "Jod Bot",
+  "khoj": "Khoj",
+  "kosh": "Kosh",
+  "join-us": "Join Us!",
+  "2019-report": "2019 Report",
+  "contributors": "Contributors",
+  "privacy-policy": "Privacy Policy",
+  "contact": "Contact"
+}
+
+const setPageTitle = (name, pages) => {
+  return name === "" ? name : `- ${pages[name] || name}`
+}
+
 const AppShell = ({
   children,
   footerItems,
@@ -19,9 +36,11 @@ const AppShell = ({
   expandCenter,
 }) => {
   const size = React.useContext(ResponsiveContext)
+  const [pageName] = window.location.href.split("/").slice(-1) 
+
   return (
     <Grommet theme={TattleTheme} full>
-      <SEO title={`Tattle - ${headerLabel}`} />
+      <SEO title={`${headerLabel} ${setPageTitle(pageName, pages)}`} />
       <Box fill>
         <Box
           flex={false}
