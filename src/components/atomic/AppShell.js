@@ -11,18 +11,6 @@ import SEO from "./seo"
  **/
 
 
-const pages = {
-  "faq" : "FAQ",
-  "jod-bot": "Jod Bot",
-  "khoj": "Khoj",
-  "kosh": "Kosh",
-  "join-us": "Join Us!",
-  "2019-report": "2019 Report",
-  "contributors": "Contributors",
-  "privacy-policy": "Privacy Policy",
-  "contact": "Contact"
-}
-
 const setPageTitle = (name) => {
   return name === "" ? name : `- ${formatTitle(name)}`
 }
