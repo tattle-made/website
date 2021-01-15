@@ -10,6 +10,18 @@ import SEO from "./seo"
  * @function ContentPageLayout
  **/
 
+const setPageTitle = name => {
+  return name === "" ? name : `- ${formatTitle(name)}`
+}
+
+const formatTitle = name => {
+  return name
+    .replace("-", " ")
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+}
+
 const AppShell = ({
   children,
   footerItems,
@@ -19,10 +31,13 @@ const AppShell = ({
   expandCenter,
 }) => {
   const size = React.useContext(ResponsiveContext)
+  const [pageName] = window.location.href.split("/").slice(-1)
+
   return (
     <Grommet theme={TattleTheme} full>
-      <SEO title={`Tattle - ${headerLabel}`} />
-      <Box>
+      <Box fill>
+        <SEO title={`Tattle - ${headerLabel}`} />
+
         <Box
           flex={false}
           as={"header"}
