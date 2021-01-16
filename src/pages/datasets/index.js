@@ -11,6 +11,8 @@ import {
   Image,
 } from "grommet"
 import { graphql, useStaticQuery } from "gatsby"
+import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
+import NarrowSection from "../../components/atomic/layout/narrow-section"
 /**
  * @author
  * @function Datasets
@@ -37,90 +39,75 @@ const Datasets = () => {
 
   return (
     <DefaultLayout>
-      <ResponsiveContext.Consumer>
-        {size => {
-          return (
-            <Box
-              width={size !== "small" ? "960px" : "100%"}
-              alignSelf={"center"}
-              margin={{ top: "large" }}
-              pad={{ left: "large", right: "large" }}
-            >
-              <Box
-                direction={"row"}
-                overflow={"hidden"}
-                margin={{ bottom: "large" }}
-                round={"xsmall"}
-              >
-                <Box direction={"column"} flex="grow">
-                  <Box
-                    direction={"row"}
-                    background={"#EDC9C4"}
-                    wrap={size !== "small" ? false : true}
-                  >
-                    <Box
-                      overflow={"hidden"}
-                      width={size !== "small" ? "large" : "100%"}
-                    >
-                      <Image
-                        src={cover_image.childImageSharp.fluid.src}
-                        fit="cover"
-                        fill={true}
-                      />
-                    </Box>
-
-                    <Box pad={{ left: "small", right: "small" }}>
-                      <Box>
-                        <Heading level={1} color={"#514E80"}>
-                          Datasets
-                        </Heading>
-                      </Box>
-                      <Paragraph color={"#514E80"} margin={{ top: "none" }}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Duis et aliquam nulla, vitae volutpat lacus. Nullam non
-                        ante a dui feugiat aliquet faucibus vitae justo. Ut nisi
-                        nulla, elementum non felis sed, rutrum vestibulum ante.
-                        Pellentesque pulvinar, sapien et malesuada ultricies,
-                        ante elit pulvinar magna, in pretium neque velit at
-                        tellus.{" "}
-                      </Paragraph>
-                    </Box>
-                  </Box>
+      <NarrowContentWrapper>
+        <NarrowSection>
+          <Box>
+            <Heading level={1} color={"#514E80"}>
+              Datasets
+            </Heading>
+          </Box>
+          <Box
+            direction={"row"}
+            overflow={"hidden"}
+            margin={{ bottom: "large" }}
+          >
+            <Box direction={"column"} flex="grow">
+              <Box direction={"row"} wrap={size !== "small" ? false : true}>
+                <Box pad={{ right: "small" }}>
+                  <Paragraph color={"#514E80"} margin={{ top: "none" }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Duis et aliquam nulla, vitae volutpat lacus. Nullam non ante
+                    a dui feugiat aliquet faucibus vitae justo. Ut nisi nulla,
+                    elementum non felis sed, rutrum vestibulum ante.
+                    Pellentesque pulvinar, sapien et malesuada ultricies, ante
+                    elit pulvinar magna, in pretium neque velit at tellus.{" "}
+                  </Paragraph>
+                </Box>
+                <Box
+                  overflow={"hidden"}
+                  width={size !== "small" ? "large" : "100%"}
+                  round={"xsmall"}
+                >
+                  <Image
+                    src={cover_image.childImageSharp.fluid.src}
+                    fit="cover"
+                    fill={true}
+                  />
                 </Box>
               </Box>
-
-              <ResponsiveLayoutDatasets size={size}>
-                <>
-                  <DatasetPreview
-                    previewImage={
-                      "https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1045&q=80"
-                    }
-                    title={"Covid Dataset"}
-                    description={""}
-                    publicationDate={"28-12-2020"}
-                  ></DatasetPreview>
-                  <DatasetPreview
-                    previewImage={
-                      "https://images.unsplash.com/photo-1548504769-900b70ed122e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-                    }
-                    title={"Fact Checking Articles 2019"}
-                    description={""}
-                    publicationDate={"07-11-2020"}
-                  ></DatasetPreview>
-                  <DatasetPreview
-                    previewImage={
-                      "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                    }
-                    title={"Third Dataset"}
-                    description={""}
-                    publicationDate={"13-11-2020"}
-                  ></DatasetPreview>
-                </>
-              </ResponsiveLayoutDatasets>
             </Box>
-          )
-        }}
-      </ResponsiveContext.Consumer>
+          </Box>
+
+          <ResponsiveLayoutDatasets size={size}>
+            <>
+              <DatasetPreview
+                previewImage={
+                  "https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1045&q=80"
+                }
+                title={"Covid Dataset"}
+                description={""}
+                publicationDate={"28-12-2020"}
+              ></DatasetPreview>
+              <DatasetPreview
+                previewImage={
+                  "https://images.unsplash.com/photo-1548504769-900b70ed122e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
+                }
+                title={"Fact Checking Articles 2019"}
+                description={""}
+                publicationDate={"07-11-2020"}
+              ></DatasetPreview>
+              <DatasetPreview
+                previewImage={
+                  "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+                }
+                title={"Third Dataset"}
+                description={""}
+                publicationDate={"13-11-2020"}
+              ></DatasetPreview>
+            </>
+          </ResponsiveLayoutDatasets>
+        </NarrowSection>
+      </NarrowContentWrapper>
     </DefaultLayout>
   )
 }

@@ -6,11 +6,24 @@ import TattleTheme from "./theme"
 import SEO from "./seo"
 import Footer from "../../pages/v2/footer"
 import NarrowSection from "./layout/narrow-section"
+import NarrowContentWrapper from "./layout/narrow-content-wrapper"
 
 /**
  * @author
  * @function ContentPageLayout
  **/
+
+const setPageTitle = name => {
+  return name === "" ? name : `- ${formatTitle(name)}`
+}
+
+const formatTitle = name => {
+  return name
+    .replace("-", " ")
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+}
 
 const AppShell = ({
   children,
@@ -23,23 +36,26 @@ const AppShell = ({
   isMDXPage,
 }) => {
   const size = React.useContext(ResponsiveContext)
+  const [pageName] = window.location.href.split("/").slice(-1)
+
   return (
     <Grommet theme={TattleTheme} full>
-      <SEO title={`Tattle - ${headerLabel}`} />
-      <Box>
-        <Box flex={true} as={"header"} background={"brand"}>
-          <Box width={size !== "small" ? "960px" : null} alignSelf={"center"}>
-            <SimpleHeader
-              label={headerLabel}
-              target={headerTarget}
-              primaryNav={primaryNav}
-            />
-          </Box>
-        </Box>
+      <Box fill>
+        <SEO title={`Tattle - ${headerLabel}`} />
 
-        <Box height={{ min: "90vh" }}>
+        <NarrowContentWrapper>
+          <SimpleHeader
+            label={headerLabel}
+            target={headerTarget}
+            primaryNav={primaryNav}
+          />
+        </NarrowContentWrapper>
+
+        <Box height={{ min: "90vh" }} flex={"grow"}>
           {isMDXPage ? (
-            <NarrowSection>{children}</NarrowSection>
+            <NarrowContentWrapper>
+              <NarrowSection>{children}</NarrowSection>
+            </NarrowContentWrapper>
           ) : (
             <ContentPageLayout contentWidth={contentWidth}>
               {children}
@@ -47,9 +63,11 @@ const AppShell = ({
           )}
         </Box>
 
-        <NarrowSection>
-          <Footer />
-        </NarrowSection>
+        <NarrowContentWrapper>
+          <NarrowSection>
+            <Footer />
+          </NarrowSection>
+        </NarrowContentWrapper>
       </Box>
     </Grommet>
   )
@@ -58,7 +76,11 @@ const AppShell = ({
 const ContentPageLayout = ({ children, contentWidth }) => {
   const size = React.useContext(ResponsiveContext)
   return size === "medium" || size === "large" ? (
-    <Box width={contentWidth ? contentWidth : "100%"} alignSelf={"center"} flex>
+    <Box
+      width={contentWidth ? contentWidth : "100%"}
+      alignSelf={"center"}
+      flex={"grow"}
+    >
       {children}
     </Box>
   ) : (

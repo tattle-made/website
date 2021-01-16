@@ -5,6 +5,7 @@ import ResponsiveContributorGrid from "../components/atomic/ResponsiveContributo
 import { ResponsiveContext, Grid, Box, Heading, Text } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
+import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 
 const staff = [
   {
@@ -62,37 +63,39 @@ const advisors = [
 
 const Community = () => (
   <DefaultLayout>
-    <NarrowSection>
-      <Heading level={2}> Community </Heading>
-      <Heading level={3}>Full Time Staff</Heading>
-      <ResponsiveGrid>
-        {staff.map((staffMember, index) => (
-          <CommunityMemberCard
-            key={index}
-            name={staffMember.name}
-            role={staffMember.role}
-          />
-        ))}
-      </ResponsiveGrid>
+    <NarrowContentWrapper>
+      <NarrowSection>
+        <Heading level={2}> Community </Heading>
+        <Heading level={3}>Full Time Staff</Heading>
+        <ResponsiveGrid>
+          {staff.map((staffMember, index) => (
+            <CommunityMemberCard
+              key={index}
+              name={staffMember.name}
+              role={staffMember.role}
+            />
+          ))}
+        </ResponsiveGrid>
 
-      <Heading level={3}>Advisors</Heading>
-      <ResponsiveGrid>
-        {advisors.map((advisor, index) => (
-          <CommunityMemberCard
-            key={index}
-            name={advisor.name}
-            role={advisor.role}
-          />
-        ))}
-      </ResponsiveGrid>
+        <Heading level={3}> Contributors and Part time Staff </Heading>
+        <ResponsiveGrid>
+          {advisors.map((advisor, index) => (
+            <CommunityMemberCard
+              key={index}
+              name={advisor.name}
+              role={advisor.role}
+            />
+          ))}
+        </ResponsiveGrid>
 
-      <Text size={"small"}>
-        <i>
-          Several other people have volunteered time and skills such as writing,
-          coding, and designing.{" "}
-        </i>
-      </Text>
-    </NarrowSection>
+        <Text size={"small"}>
+          <i>
+            Several other people have volunteered time and skills such as
+            writing, coding, and designing.{" "}
+          </i>
+        </Text>
+      </NarrowSection>
+    </NarrowContentWrapper>
   </DefaultLayout>
 )
 

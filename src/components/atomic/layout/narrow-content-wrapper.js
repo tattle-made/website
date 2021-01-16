@@ -3,32 +3,25 @@ import { Box, ResponsiveContext } from "grommet"
 /**
  * @author
  * @function NarrowSection
- * type : 'top'
  **/
 
-const NarrowSection = ({ children, topSpace, bottomSpace, type }) => {
+const NarrowContentWrapper = ({ children, topSpace, bottomSpace }) => {
   const size = useContext(ResponsiveContext)
   const Section = () => (
-    <Box width={"100%"} alignSelf={"center"}>
-      <Box height={"xxsmall"} />
+    <Box width={"960px"} alignSelf={"center"} flex={"grow"} justify={"center"}>
       <Box>{children}</Box>
-      <Box height={"xxsmall"} />
     </Box>
   )
 
   const SmallSection = ({ children }) => (
-    <Box width={"100%"} alignSelf={"center"}>
-      <Box height={"xxsmall"} />
-      <Box>{children}</Box>
-      <Box height={"xxsmall"} />
+    <Box width={"100%"} alignSelf={"center"} flex={"grow"} justify={"center"}>
+      <Box pad={{ left: "large", right: "large" }}>{children}</Box>
     </Box>
   )
 
   const MediumSection = ({ children }) => (
-    <Box width={"100%"} alignSelf={"center"}>
-      <Box height={"xxsmall"} />
+    <Box width={"960px"} alignSelf={"center"} flex={"grow"} justify={"center"}>
       <Box>{children}</Box>
-      <Box height={"xxsmall"} />
     </Box>
   )
   return size === "small" ? (
@@ -40,4 +33,4 @@ const NarrowSection = ({ children, topSpace, bottomSpace, type }) => {
   )
 }
 
-export default NarrowSection
+export default NarrowContentWrapper

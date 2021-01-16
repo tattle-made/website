@@ -22,6 +22,7 @@ import {
 } from "../../components/atomic/core-style"
 import NarrowSection from "../../components/atomic/layout/narrow-section"
 import styled from "styled-components"
+import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 
 /**
  * @author
@@ -43,34 +44,36 @@ const Index = props => {
               height={{ min: "90vh" }}
               justify={"center"}
             >
-              <NarrowSection>
-                <Box direction={"row-responsive"} key={"test"}>
-                  <ResponsiveImage />
-                  {size !== "small" && <Box width={"8em"} />}
-                  {size === "small" && <Box height={"3.2em"} />}
-                  <Box flex={true} direction={"column"} overflow={"hidden"}>
-                    <LandingPageHeading>
-                      We build &nbsp;
-                      <PlainHeavyLink to={"/products"}>
-                        tools
-                      </PlainHeavyLink>{" "}
-                      and &nbsp;
-                      <PlainHeavyLink to={"/datasets"}>
-                        datasets
-                      </PlainHeavyLink>{" "}
-                      to understand and respond to (mis)information in India.
-                    </LandingPageHeading>
-                    <Box height={"xxsmall"} />
-                    <Box direction={"column"} gap={"small"}>
-                      <LandingPageSubHeading>
-                        We are Tattle - a community of technologists,
-                        researchers, journalists and artists working towards a
-                        healthier online information ecosystem in India.
-                      </LandingPageSubHeading>
+              <NarrowContentWrapper>
+                <NarrowSection>
+                  <Box direction={"row-responsive"} key={"test"}>
+                    <ResponsiveImage />
+                    {size !== "small" && <Box width={"8em"} />}
+                    {size === "small" && <Box height={"3.2em"} />}
+                    <Box flex={true} direction={"column"} overflow={"hidden"}>
+                      <LandingPageHeading>
+                        We build &nbsp;
+                        <PlainHeavyLink to={"/products"}>
+                          tools
+                        </PlainHeavyLink>{" "}
+                        and &nbsp;
+                        <PlainHeavyLink to={"/datasets"}>
+                          datasets
+                        </PlainHeavyLink>{" "}
+                        to understand and respond to (mis)information in India.
+                      </LandingPageHeading>
+                      <Box height={"xxsmall"} />
+                      <Box direction={"column"} gap={"small"}>
+                        <LandingPageSubHeading>
+                          We are Tattle - a community of technologists,
+                          researchers, journalists and artists working towards a
+                          healthier online information ecosystem in India.
+                        </LandingPageSubHeading>
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
-              </NarrowSection>
+                </NarrowSection>
+              </NarrowContentWrapper>
             </Box>
 
             <Box fill>
@@ -78,15 +81,19 @@ const Index = props => {
                 <WeBuildFor />
               </NarrowSection>*/}
 
-              <NarrowSection>
-                <CaseStudySection size={size} />
-              </NarrowSection>
+              <NarrowContentWrapper>
+                <NarrowSection>
+                  <CaseStudySection size={size} />
+                </NarrowSection>
+              </NarrowContentWrapper>
 
               <Box>
                 <Box background="#514E80" align="center">
-                  <NarrowSection>
-                    <MailchimpSubscribeForm />
-                  </NarrowSection>
+                  <NarrowContentWrapper>
+                    <NarrowSection>
+                      <MailchimpSubscribeForm />
+                    </NarrowSection>
+                  </NarrowContentWrapper>
                 </Box>
               </Box>
             </Box>
