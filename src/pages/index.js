@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Box, Text, ResponsiveContext } from "grommet"
+import { Grid, Box, Text, ResponsiveContext, Paragraph } from "grommet"
 import DefaultLayout from "../components/default-layout"
 import { ResponsiveImage } from "../components/atomic/ResponsiveImage"
 import {
@@ -86,7 +86,7 @@ const Index = props => {
                 </NarrowSection>
               </NarrowContentWrapper>
 
-              <Box>
+              <Box flex={"grow"}>
                 <Box background="#514E80" align="center">
                   <NarrowContentWrapper>
                     <NarrowSection>
@@ -105,74 +105,88 @@ const Index = props => {
 
 const CaseStudySection = ({ size, bgColor, contentWidth }) => {
   return (
-    <Box width={contentWidth ? contentWidth : "960px"} alignContent={"center"}>
-      <LandingPageParagraph>
-        Tattle's core infrastructure consists of
-        <ul>
-          <li>
-            {" "}
-            A growing archive of fact-checks and content circulating on chat
-            apps and social media
-          </li>
-          <li>
-            Flexible and scalable APIs for multi-lingual and multi-modal content
-            search
-          </li>
-        </ul>
-        This platform enables a variety of research, tools and solutions to be
-        built on top of.
-      </LandingPageParagraph>
-      <Box height={"xxsmall"} />
-      <Box>
-        <SectionLabels>Case Studies</SectionLabels>
-      </Box>
-      <Text></Text>
-      <ResponsiveLayoutDatasets size={size}>
-        <CaseStudyPreview
-          previewImage={
-            "https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1045&q=80"
-          }
-          title={"CSCW Paper by Microsoft Research"}
-          description={
-            "A mixed-methods study that highlights affective aspects of Covid-19 misinformation "
-          }
-          url={"https://programs.sigchi.org/cscw/2020/program/content/41594"}
-          publicationDate={"13-11-2020"}
-        />
-        <CaseStudyPreview
-          previewImage={
-            "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-          }
-          title={"BBC Story"}
-          description={
-            "A data story on evolving themes in fact-checks between January-June 2020"
-          }
-          url={"https://www.bbc.com/news/world-asia-india-53165436"}
-          publicationDate={"13-11-2020"}
-        />
-        <CaseStudyPreview
-          previewImage={
-            "https://images.unsplash.com/photo-1548504769-900b70ed122e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-          }
-          title={"Khoj App"}
-          description={
-            "Tattle's flagship app that helps mobile users identify misinformation on chat apps."
-          }
-          url={"http://tattle.co.in/products/khoj"}
-          publicationDate={"13-11-2020"}
-        />
-        <CaseStudyPreview
-          previewImage={
-            "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-          }
-          title={"Dashboards"}
-          description={
-            "Explore weekly trends in misinformation through an interactive visualisation"
-          }
-          url={"https://services.tattle.co.in/khoj/dashboard"}
-          publicationDate={"13-11-2020"}
-        />
-      </ResponsiveLayoutDatasets>
+    <Box>
+      <NarrowSection>
+        <LandingPageParagraph>
+          Tattle's core infrastructure consists of :
+        </LandingPageParagraph>
+        <Box height={"0.391em"}></Box>
+
+        <ResponsiveLayoutTest size={size}>
+          <Box>
+            <Text size={"large"} color={"brand"}>
+              1.
+            </Text>
+            <Paragraph size={"medium"}>
+              {" "}
+              Scrapers for Indian social media
+            </Paragraph>
+          </Box>
+          <Box>
+            <Text size={"large"} color={"brand"}>
+              2.
+            </Text>
+            <Paragraph size={"medium"}>
+              {" "}
+              Archive of fact-checks and content circulating on Indian social
+              media.
+            </Paragraph>
+          </Box>
+          <Box>
+            <Text size={"large"} color={"brand"}>
+              3.
+            </Text>
+            <Paragraph size={"medium"}>
+              {" "}
+              Flexible and scalable APIs for multi-lingual and multi-modal
+              search
+            </Paragraph>
+          </Box>
+        </ResponsiveLayoutTest>
+        <LandingPageParagraph></LandingPageParagraph>
+      </NarrowSection>
+      <NarrowSection>
+        <Box>
+          <SectionLabels>Case Studies</SectionLabels>
+        </Box>
+        <Text></Text>
+        <ResponsiveLayoutDatasets size={size}>
+          <CaseStudyPreview
+            previewImage={
+              "https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1045&q=80"
+            }
+            title={"CSCW Paper by Microsoft Research"}
+            description={
+              "A mixed-methods study that highlights affective aspects of Covid-19 misinformation "
+            }
+            url={"https://programs.sigchi.org/cscw/2020/program/content/41594"}
+            publicationDate={"13-11-2020"}
+          />
+          <CaseStudyPreview
+            previewImage={
+              "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            }
+            title={"BBC Story"}
+            description={
+              "A data story on evolving themes in fact-checks between January-June 2020"
+            }
+            url={"https://www.bbc.com/news/world-asia-india-53165436"}
+            publicationDate={"13-11-2020"}
+          />
+
+          <CaseStudyPreview
+            previewImage={
+              "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            }
+            title={"Dashboards"}
+            description={
+              "Explore weekly trends in misinformation through an interactive visualisation"
+            }
+            url={"https://services.tattle.co.in/khoj/dashboard"}
+            publicationDate={"13-11-2020"}
+          />
+        </ResponsiveLayoutDatasets>
+      </NarrowSection>
     </Box>
   )
 }
@@ -181,7 +195,7 @@ const ResponsiveLayoutDatasets = ({ size, children }) => {
   return size !== "small" ? (
     <Grid
       columns={{
-        count: 4,
+        count: 3,
         size: "auto",
       }}
       gap="medium"
@@ -192,6 +206,30 @@ const ResponsiveLayoutDatasets = ({ size, children }) => {
     <Grid
       columns={{
         count: 2,
+        size: "auto",
+      }}
+      gap="small"
+    >
+      {children}
+    </Grid>
+  )
+}
+
+const ResponsiveLayoutTest = ({ size, children }) => {
+  return size !== "small" ? (
+    <Grid
+      columns={{
+        count: 3,
+        size: "auto",
+      }}
+      gap="medium"
+    >
+      {children}
+    </Grid>
+  ) : (
+    <Grid
+      columns={{
+        count: 1,
         size: "auto",
       }}
       gap="small"
