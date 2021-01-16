@@ -23,14 +23,6 @@ const staff = [
 
 const advisors = [
   {
-    name: "Swair Shah",
-    role: "ML Engineer",
-  },
-  {
-    name: "Mohit Malik",
-    role: "Full Stack Intern",
-  },
-  {
     name: "Anushree Abhyankar",
     role: "Full Stack Contributor",
   },
@@ -39,40 +31,56 @@ const advisors = [
     role: "Researcher",
   },
   {
-    name: "Saumya Gupta",
-    role: "Journalist/Researcher",
-  },
-  {
-    name: "Nilomee Jesrani",
-    role: "UX / Visual Design",
-  },
-  {
-    name: "Saakshita Prabhakar",
-    role: "UX / Visual Design",
-  },
-  {
     name: "Eishita Chhetri",
     role: "Illustrator",
-  },
-  {
-    name: "Yohan Mathew",
-    role: "DevOps and Automation",
   },
   {
     name: "Harman Singh",
     role: "Mobile Engineer",
   },
   {
-    name: "Sudeep Duggal",
-    role: "FOSS Contributor",
+    name: "Keshav Joshi",
+    role: "Data Scientist",
+  },
+  {
+    name: "Mohit Malik",
+    role: "Full Stack Intern",
+  },
+  {
+    name: "Nilomee Jesrani",
+    role: "UX / Visual Design Contributor",
   },
   {
     name: "Rishabh Jain",
     role: "Design Research",
   },
   {
+    name: "Saakshita Prabhakar",
+    role: "UX / Visual Design Contributor",
+  },
+  {
+    name: "Saumya Gupta",
+    role: "Journalist/Researcher",
+  },
+  {
+    name: "Sudeep Duggal",
+    role: "Data Science Contributor",
+  },
+  {
     name: "Sunandan Chakraborty",
-    role: "Past Advisor, Assistant Professor, Information School, Indiana University",
+    role: "Past Advisor, (Assistant Professor, Information School, Indiana University)",
+  },
+  {
+    name: "Suraj Sharma",
+    role: "Full Stack Intern",
+  },
+  {
+    name: "Swair Shah",
+    role: "ML Engineer",
+  },
+  {
+    name: "Yohan Mathew",
+    role: "DevOps and Automation",
   },
 ]
 
