@@ -36,7 +36,6 @@ const AppShell = ({
   isMDXPage,
 }) => {
   const size = React.useContext(ResponsiveContext)
-  const [pageName] = window.location.href.split("/").slice(-1)
 
   return (
     <Grommet theme={TattleTheme} full>

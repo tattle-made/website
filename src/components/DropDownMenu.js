@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import { Box, Drop, Button, Heading, Text } from "grommet"
-import { ChevronDown } from "react-feather"
+import { ChevronDown, ExternalLink as ExternalLinkIcon } from "react-feather"
 import {
   PlainLink as Link,
   PlainExternalLink as ExternalLink,
@@ -59,9 +59,12 @@ const DropDownMenu = ({ options, title }) => {
                     target={"_blank"}
                   >
                     <Button plain={true} margin={"xsmall"}>
-                      <Text margin={"none"} size={"small"}>
-                        {option.label}
-                      </Text>
+                      <Box direction={"row"} gap={"small"} align={"center"}>
+                        <Text margin={"none"} size={"small"}>
+                          {option.label}
+                        </Text>
+                        <ExternalLinkIcon size={16} />
+                      </Box>
                     </Button>
                   </ExternalLink>
                 </Box>
