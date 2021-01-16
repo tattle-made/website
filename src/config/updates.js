@@ -50,7 +50,7 @@ export const updates = [
     tags: ["Community Use"],
   },
   {
-    date: "29, Sep, 2020",
+    date: "29 September, 2020",
     title: "Are private chats secure?",
     event_name: "Deccan Herald",
     url:
@@ -58,28 +58,28 @@ export const updates = [
     tags: ["Media Mentions"],
   },
   {
-    date: "17, Sep, 2020",
-    title: "Factchecking Sites Database Dashboard",
+    date: "17 September, 2020",
+    title: "Factchecking Sites Database Dashboard Release",
     event_name: "",
     url: "https://services.tattle.co.in/khoj/dashboard",
     tags: ["Release"],
   },
   {
-    date: "9, Sep, 2020",
+    date: "9 September, 2020",
     title: "Khoj App Early Release",
     event_name: "Tattle Show and Tell",
     url: "https://twitter.com/tattlemade/status/1301468876077543425",
     tags: ["Release"],
   },
   {
-    date: "30, Jun, 2020",
+    date: "30 June, 2020",
     title: "Coronavirus: The human cost of fake news in India",
     event_name: "Shruti Menon, BBC Reality Check",
     url: "https://www.bbc.com/news/world-asia-india-53165436",
     tags: ["Community Use"],
   },
   {
-    date: "12, Jun, 2020",
+    date: "12 June, 2020",
     title: "Archives and Crises",
     event_name:
       "International Archives Week, Milli Consortium, Archives at NCBS",
@@ -87,7 +87,7 @@ export const updates = [
     tags: ["Panel", "Talk"],
   },
   {
-    date: "18, May, 2020",
+    date: "18 May, 2020",
     title: "Mining information from social media for fake news detection",
     event_name: "HasGeek",
     url:
@@ -95,7 +95,7 @@ export const updates = [
     tags: ["Panel", "Talk"],
   },
   {
-    date: "3, May, 2020",
+    date: "3 May, 2020",
     title: "Manipulative Fake News On The Rise In India Under Lockdown: Study",
     event_name: "Prachi Salve, India Spend",
     url:
@@ -103,7 +103,7 @@ export const updates = [
     tags: ["Community Use"],
   },
   {
-    date: "28, Apr, 2020",
+    date: "28 April, 2020",
     title: "Increase in Communal Tone in COVID-19 Fake News in India: Study",
     event_name:
       "Syeda Zainab Akbar, Divyanshu Kukreti, Somya Sagarika, Joyojeet Pal (University of Michigan)",
@@ -112,7 +112,7 @@ export const updates = [
     tags: ["Community Use"],
   },
   {
-    date: "16, Apr, 2020",
+    date: "16 April, 2020",
     title: "Temporal Patterns in COVID-19 misinformation in India",
     event_name:
       "Syeda Zainab Akbar, Divyanshu Kukreti, Somya Sagarika, Joyojeet Pal (University of Michigan)",
@@ -121,7 +121,7 @@ export const updates = [
     tags: ["Community Use"],
   },
   {
-    date: "21, Mar, 2020",
+    date: "21 March, 2020",
     title: "Telegram Jod Bot Release",
     event_name: "Tattle Mailing List",
     url:
@@ -129,14 +129,14 @@ export const updates = [
     tags: ["Release"],
   },
   {
-    date: "21, Mar, 2020",
+    date: "21 March, 2020",
     title: "Khoj Archive Beta Release with Fact Checking Sites Data",
     event_name: "",
     url: "https://services.tattle.co.in/khoj/",
     tags: ["Release"],
   },
   {
-    date: "22, Feb, 2020",
+    date: "22 February, 2020",
     title: "Troll Watch: Deep Fakes In Indian Elections",
     event_name: "NPR",
     url:
@@ -144,7 +144,7 @@ export const updates = [
     tags: ["Media Mentions"],
   },
   {
-    date: "18, Feb, 2020",
+    date: "18 February, 2020",
     title:
       '"We\'ve Just Seen the First Use of Deepfakes in an Indian Election Campaign"',
     event_name: "Vice",
@@ -153,7 +153,7 @@ export const updates = [
     tags: ["Media Mentions"],
   },
   {
-    date: "22, Jan, 2020",
+    date: "22 January, 2020",
     title: "Panel on 'The Latest in The Fight Against Misinformation'",
     event_name:
       "Trust and Security Roundtable, Microsoft Research and Boomlive",
@@ -161,7 +161,7 @@ export const updates = [
     tags: ["Panel"],
   },
   {
-    date: "23, Nov, 2019",
+    date: "23 November, 2019",
     title:
       "Open Source Tools and Archive for Tackling Misinformation on ChatApps in India",
     event_name: "AntHill Inside, HasGeek",
@@ -170,7 +170,7 @@ export const updates = [
     tags: ["Talk"],
   },
   {
-    date: "4, Oct, 2019",
+    date: "4 October, 2019",
     title: "Considerations in Archiving Content from Encrypted Messaging Apps",
     event_name:
       "Comparative Approaches to Disinformation, Berkman Klein Center, Harvard University",
@@ -179,7 +179,7 @@ export const updates = [
     tags: ["Paper", "Talk"],
   },
   {
-    date: "4, Oct, 2019",
+    date: "4 October, 2019",
     title: "Data Collection and Management at Tattle",
     event_name: "Conference for Truth and Trust Online",
     url: "https://truthandtrustonline.com/2019-proceedings/",
