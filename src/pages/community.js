@@ -27,8 +27,20 @@ const advisors = [
     role: "ML Engineer",
   },
   {
-    name: "Sunandan Chakraborty",
-    role: "Assistant Professor, Information School, Indiana University",
+    name: "Mohit Malik",
+    role: "Full Stack Intern",
+  },
+  {
+    name: "Anushree Abhyankar",
+    role: "Full Stack Contributor",
+  },
+  {
+    name: "Anushree Gupta",
+    role: "Researcher",
+  },
+  {
+    name: "Saumya Gupta",
+    role: "Journalist/Researcher",
   },
   {
     name: "Nilomee Jesrani",
@@ -57,6 +69,10 @@ const advisors = [
   {
     name: "Rishabh Jain",
     role: "Design Research",
+  },
+  {
+    name: "Sunandan Chakraborty",
+    role: "Past Advisor, Assistant Professor, Information School, Indiana University",
   },
 ]
 
