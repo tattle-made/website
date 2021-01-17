@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { primaryNav, footerItems } from "../config/options"
 import AppShell from "../components/atomic/AppShell"
 import ResponsiveContributorGrid from "../components/atomic/ResponsiveContributorGrid"
-import { ResponsiveContext, Grid, Box, Heading, Text } from "grommet"
+import { ResponsiveContext, Grid, Box, Heading, Text, Paragraph } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
@@ -69,7 +69,8 @@ const advisors = [
   },
   {
     name: "Sunandan Chakraborty",
-    role: "Past Advisor, (Assistant Professor, Information School, Indiana University)",
+    role:
+      "Past Advisor, (Assistant Professor, Information School, Indiana University)",
   },
   {
     name: "Suraj Sharma",
@@ -142,10 +143,10 @@ const ResponsiveGrid = ({ children }) => {
 
 const CommunityMemberCard = ({ name, role }) => (
   <Box width={"medium"} direction={"column"} pad={{ right: "small" }}>
-    <Text size={"medium"} weight={500} color={"brand"}>
+    <Heading level={3} margin={"none"} weight={500} color={"brand"}>
       {name}
-    </Text>
-    <Text size={"small"}>{role}</Text>
+    </Heading>
+    <Paragraph size={"small"}>{role}</Paragraph>
     <Box height={"xxsmall"}></Box>
   </Box>
 )
