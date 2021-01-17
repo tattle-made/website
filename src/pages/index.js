@@ -38,14 +38,9 @@ const Index = props => {
         {size => (
           <Box direction={"column"} align={"center"} flex={"grow"}>
             <Box background={"brand"} fill={true} height={{ min: "90vh" }}>
-              <Box
-                width={size !== "small" ? "960px" : "100%"}
-                justify={"center"}
-                alignSelf={"center"}
-                fill={"vertical"}
-              >
+              <NarrowContentWrapper justify={"center"}>
                 <NarrowSection>
-                  <Box direction={"row-responsive"} key={"test"}>
+                  <Box direction={"row-responsive"}>
                     <ResponsiveImage />
                     {size !== "small" && <Box width={"8em"} />}
                     {size === "small" && <Box height={"3.2em"} />}
@@ -72,7 +67,7 @@ const Index = props => {
                     </Box>
                   </Box>
                 </NarrowSection>
-              </Box>
+              </NarrowContentWrapper>
             </Box>
 
             {/*<NarrowSection>

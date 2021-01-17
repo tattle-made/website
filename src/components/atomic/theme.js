@@ -69,7 +69,7 @@ const TattleTheme = {
     },
     primary: {
       background: { color: "brand" },
-      font: { family: "Raleway" },
+      extend: `font-size: 1.6em;`,
     },
     secondary: {
       border: { color: "brand", width: "4px", radius: "small" },

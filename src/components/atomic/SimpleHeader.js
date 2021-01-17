@@ -125,13 +125,7 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
           <PrimaryNav primaryNav={primaryNav} />
         </Box>
       ) : (
-        <Box
-          width={"100%"}
-          direction={"row"}
-          align={"center"}
-          fill={true}
-          pad={{ left: "large", right: "large" }}
-        >
+        <Box width={"100%"} direction={"row"} align={"center"} fill={true}>
           <TattleLogo data={{ fill: Theme.text_color_light }} />
           <Box width={"100%"} />
           <Box>

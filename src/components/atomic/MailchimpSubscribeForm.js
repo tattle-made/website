@@ -37,8 +37,8 @@ const MailchimpSubscribeForm = () => {
                   </Text>
                   <Box height={"xxsmall"} />
                   <Box
-                    direction={"row"}
-                    gap={"small"}
+                    direction={"row-responsive"}
+                    gap={"medium"}
                     width={"100%"}
                     alignSelf={"center"}
                   >
