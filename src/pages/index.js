@@ -36,14 +36,14 @@ const Index = props => {
     <DefaultLayout>
       <ResponsiveContext.Consumer>
         {size => (
-          <Box direction={"column"} align={"center"}>
-            <Box
-              background={"brand"}
-              fill={true}
-              height={{ min: "90vh" }}
-              justify={"center"}
-            >
-              <NarrowContentWrapper>
+          <Box direction={"column"} align={"center"} flex={"grow"}>
+            <Box background={"brand"} fill={true} height={{ min: "90vh" }}>
+              <Box
+                width={size !== "small" ? "960px" : "100%"}
+                justify={"center"}
+                alignSelf={"center"}
+                fill={"vertical"}
+              >
                 <NarrowSection>
                   <Box direction={"row-responsive"} key={"test"}>
                     <ResponsiveImage />
@@ -72,29 +72,30 @@ const Index = props => {
                     </Box>
                   </Box>
                 </NarrowSection>
-              </NarrowContentWrapper>
+              </Box>
             </Box>
 
-            <Box fill>
-              {/*<NarrowSection>
+            {/*<NarrowSection>
                 <WeBuildFor />
               </NarrowSection>*/}
 
+            <NarrowContentWrapper>
+              <NarrowSection>
+                <CaseStudySection size={size} />
+              </NarrowSection>
+            </NarrowContentWrapper>
+
+            <Box
+              background="#514E80"
+              fill={"horizontal"}
+              align="center"
+              flex={"grow"}
+            >
               <NarrowContentWrapper>
                 <NarrowSection>
-                  <CaseStudySection size={size} />
+                  <MailchimpSubscribeForm />
                 </NarrowSection>
               </NarrowContentWrapper>
-
-              <Box flex={"grow"}>
-                <Box background="#514E80" align="center">
-                  <NarrowContentWrapper>
-                    <NarrowSection>
-                      <MailchimpSubscribeForm />
-                    </NarrowSection>
-                  </NarrowContentWrapper>
-                </Box>
-              </Box>
             </Box>
           </Box>
         )}
@@ -147,7 +148,10 @@ const CaseStudySection = ({ size, bgColor, contentWidth }) => {
       </NarrowSection>
       <NarrowSection>
         <Box>
-          <SectionLabels>Case Studies</SectionLabels>
+          <SectionLabels>
+            This infrastructure enables a variety of research, tools and
+            solutions to be developed based on it.
+          </SectionLabels>
         </Box>
         <Text></Text>
         <ResponsiveLayoutDatasets size={size}>

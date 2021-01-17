@@ -39,16 +39,23 @@ const AppShell = ({
 
   return (
     <Grommet theme={TattleTheme} full>
-      <Box fill>
+      <Box fill direction={"column"}>
         <SEO title={`Tattle - ${headerLabel}`} />
 
-        <NarrowContentWrapper>
-          <SimpleHeader
-            label={headerLabel}
-            target={headerTarget}
-            primaryNav={primaryNav}
-          />
-        </NarrowContentWrapper>
+        <Box
+          background="brand"
+          fill={"horizontal"}
+          align="center"
+          flex={"grow"}
+        >
+          <NarrowContentWrapper>
+            <SimpleHeader
+              label={headerLabel}
+              target={headerTarget}
+              primaryNav={primaryNav}
+            />
+          </NarrowContentWrapper>
+        </Box>
 
         <Box height={{ min: "90vh" }} flex={"grow"}>
           {isMDXPage ? (
@@ -56,9 +63,7 @@ const AppShell = ({
               <NarrowSection>{children}</NarrowSection>
             </NarrowContentWrapper>
           ) : (
-            <ContentPageLayout contentWidth={contentWidth}>
-              {children}
-            </ContentPageLayout>
+            <Box fill={"vertical"}>{children}</Box>
           )}
         </Box>
 
@@ -75,11 +80,7 @@ const AppShell = ({
 const ContentPageLayout = ({ children, contentWidth }) => {
   const size = React.useContext(ResponsiveContext)
   return size === "medium" || size === "large" ? (
-    <Box
-      width={contentWidth ? contentWidth : "100%"}
-      alignSelf={"center"}
-      flex={"grow"}
-    >
+    <Box width={contentWidth ? contentWidth : "100%"} flex={"grow"}>
       {children}
     </Box>
   ) : (
