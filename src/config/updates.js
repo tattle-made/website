@@ -9,7 +9,7 @@ export const updates = [
     tags: ["Talk"],
   },
   {
-    date: "11 Decembeer, 2020",
+    date: "11 December, 2020",
     title: "Panel on Backdoors to Encryption",
     event_name: "NIPFP, Data Governance Network",
     url: "https://twitter.com/DataGovNetwork/status/1335833999944470528",

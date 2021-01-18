@@ -7,6 +7,7 @@ const ThemedLink = styled(Link)`
   background-color: "red";
   :visited {
     color: inherit;
+    text-decoration: "none";
   }
 `
 

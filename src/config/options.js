@@ -2,26 +2,26 @@ export const footerItems = {
   primary: [
     {
       id: 0,
+      label: "FAQ",
+      target: "/faq",
+      type: "internal",
+    },
+    {
+      id: 1,
       label: "Contributors",
       target: "/contributors",
       type: "internal",
     },
     {
-      id: 1,
+      id: 2,
       label: "Privacy Policy",
       target: "/privacy-policy",
       type: "internal",
     },
     {
-      id: 2,
+      id: 3,
       label: "Contact Us",
       target: "/contact",
-      type: "internal",
-    },
-    {
-      id: 3,
-      label: "FAQ",
-      target: "/faq",
       type: "internal",
     },
   ],

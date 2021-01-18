@@ -18,7 +18,7 @@ const CaseStudyPreview = ({
           height={"160px"}
           round={"xsmall"}
           overflow={"hidden"}
-          background={"visuals-1"}
+          background={`visuals-${Math.ceil(Math.random() * 7)}`}
         >
           {/* <Image src={previewImage} fit="cover" fill={true} /> */}
         </Box>

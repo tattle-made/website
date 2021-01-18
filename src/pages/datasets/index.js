@@ -70,11 +70,11 @@ const Datasets = () => {
                     Datasets
                   </Heading>
                   <Paragraph color={"#514E80"} margin={{ top: "none" }}>
-                    This page lists Tattle Data that is vetted and safe 
-                    to be opened under open access. These datasets are snapshots of the bigger archive.
-                    In the 'datasets we love' 
-                    section we also list non Tattle datasets that 
-                    could be useful for misinformation/ social media analysis in India.{" "}
+                    This page lists Tattle Data that is vetted and safe to be
+                    opened under open access. These datasets are snapshots of
+                    the bigger archive. In the 'datasets we love' section we
+                    also list non Tattle datasets that could be useful for
+                    misinformation/ social media analysis in India.{" "}
                   </Paragraph>
                 </Box>
                 <Box>
@@ -91,6 +91,7 @@ const Datasets = () => {
                   </Box>
                 </Box>
               </ResponsiveGrid>
+              <Box height={"1.6em"} />
               <Heading level={3} color={"#514E80"}>
                 Released Datasets
               </Heading>
@@ -146,19 +147,20 @@ const DatasetPreview = ({
   return (
     <PlainExternalLink href={url} target={"_blank"}>
       <Box direction="column" gap={"xsmall"} margin={{ top: "medium" }}>
-        {/*<Box
+        <Box
           width={"100%"}
           height={"160px"}
           round={"xsmall"}
           overflow={"hidden"}
+          background={`visuals-${Math.ceil(Math.random() * 7)}`}
         >
-          <Image src={previewImage} fit="cover" fill={true} />
-        </Box>*/}
+          {/*<Image src={previewImage} fit="cover" fill={true} />*/}
+        </Box>
 
         <Box>
-          <Paragraph size={"small"} color={"dark-3"} margin={"none"}>
+          {/*<Paragraph size={"small"} color={"dark-3"} margin={"none"}>
             {publicationDate}
-          </Paragraph>
+      </Paragraph>*/}
 
           <Heading level={4} margin={{ bottom: "4.578px", top: "7.324px" }}>
             {title}
