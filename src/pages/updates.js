@@ -59,9 +59,7 @@ const Updates = () => {
       <NarrowContentWrapper>
         <NarrowSection>
           <Box>
-            <Heading level={2} margin={"none"}>
-              Updates
-            </Heading>
+            <Heading level={2}>Updates</Heading>
             <NarrowSection>
               {updates.map(update => (
                 <UpdateListItem item={update} />

@@ -18,8 +18,9 @@ const CaseStudyPreview = ({
           height={"160px"}
           round={"xsmall"}
           overflow={"hidden"}
+          background={"visuals-1"}
         >
-          <Image src={previewImage} fit="cover" fill={true} />
+          {/* <Image src={previewImage} fit="cover" fill={true} /> */}
         </Box>
         <Box>
           <Heading level={4} margin={{ bottom: "4.578px", top: "7.324px" }}>

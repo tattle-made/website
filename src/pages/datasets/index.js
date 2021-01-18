@@ -147,14 +147,14 @@ const DatasetPreview = ({
   return (
     <PlainExternalLink href={url} target={"_blank"}>
       <Box direction="column" gap={"xsmall"} margin={{ top: "medium" }}>
-        <Box
+        {/*<Box
           width={"100%"}
           height={"160px"}
           round={"xsmall"}
           overflow={"hidden"}
         >
           <Image src={previewImage} fit="cover" fill={true} />
-        </Box>
+        </Box>*/}
 
         <Box>
           <Paragraph size={"small"} color={"dark-3"} margin={"none"}>
