@@ -52,6 +52,10 @@ const advisors = [
     role: "UX / Visual Design Contributor",
   },
   {
+    name: "Onish Garg",
+    role: "Full Stack Developer",
+  },
+  {
     name: "Rishabh Jain",
     role: "Design Research",
   },
@@ -79,6 +83,10 @@ const advisors = [
   {
     name: "Swair Shah",
     role: "ML Engineer",
+  },
+  {
+    name: "Venkatesh Thapan",
+    role: "Backend Developer",
   },
   {
     name: "Yohan Mathew",

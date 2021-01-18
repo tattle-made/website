@@ -70,12 +70,11 @@ const Datasets = () => {
                     Datasets
                   </Heading>
                   <Paragraph color={"#514E80"} margin={{ top: "none" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Duis et aliquam nulla, vitae volutpat lacus. Nullam non ante
-                    a dui feugiat aliquet faucibus vitae justo. Ut nisi nulla,
-                    elementum non felis sed, rutrum vestibulum ante.
-                    Pellentesque pulvinar, sapien et malesuada ultricies, ante
-                    elit pulvinar magna, in pretium neque velit at tellus.{" "}
+                    This page lists Tattle Data that is vetted and safe 
+                    to be opened under open access. These datasets are snapshots of the bigger archive.
+                    In the 'datasets we love' 
+                    section we also list non Tattle datasets that 
+                    could be useful for misinformation/ social media analysis in India.{" "}
                   </Paragraph>
                 </Box>
                 <Box>
