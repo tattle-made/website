@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Tattle Website`,
-    description: `Web Home of Tattle`,
+    description: `We build tools and datasets to understand and respond to misinformation in India.`,
     author: `@tattlemade`,
     base_url: "https://tattle.co.in/",
   },
