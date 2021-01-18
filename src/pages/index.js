@@ -1,4 +1,5 @@
 import React from "react"
+import { useStaticQuery } from "gatsby"
 import { Grid, Box, Text, ResponsiveContext, Paragraph } from "grommet"
 import DefaultLayout from "../components/default-layout"
 import { ResponsiveImage } from "../components/atomic/ResponsiveImage"
@@ -29,9 +30,6 @@ import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wra
  **/
 
 const Index = props => {
-  // const size = useContext(ResponsiveContext)
-  // For some reason, this refuses to play nice with Gatsby, so I had to use ResponsiveContext.Consumer
-
   return (
     <DefaultLayout>
       <ResponsiveContext.Consumer>
@@ -100,6 +98,33 @@ const Index = props => {
 }
 
 const CaseStudySection = ({ size, bgColor, contentWidth }) => {
+  const { cover_paper, cover_article, cover_chart } = useStaticQuery(graphql`
+    query {
+      cover_paper: file(relativePath: { eq: "case-study-paper-cover.png" }) {
+        childImageSharp {
+          fluid {
+            src
+          }
+        }
+      }
+      cover_article: file(
+        relativePath: { eq: "case-study-article-cover.png" }
+      ) {
+        childImageSharp {
+          fluid {
+            src
+          }
+        }
+      }
+      cover_chart: file(relativePath: { eq: "case-study-chart-cover.png" }) {
+        childImageSharp {
+          fluid {
+            src
+          }
+        }
+      }
+    }
+  `)
   return (
     <Box>
       <NarrowSection>
@@ -151,9 +176,7 @@ const CaseStudySection = ({ size, bgColor, contentWidth }) => {
         <Text></Text>
         <ResponsiveLayoutDatasets size={size}>
           <CaseStudyPreview
-            previewImage={
-              "https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1045&q=80"
-            }
+            previewImage={cover_article.childImageSharp.fluid.src}
             title={"CSCW Paper by Microsoft Research"}
             description={
               "A mixed-methods study that highlights affective aspects of Covid-19 misinformation "
@@ -162,9 +185,7 @@ const CaseStudySection = ({ size, bgColor, contentWidth }) => {
             publicationDate={"13-11-2020"}
           />
           <CaseStudyPreview
-            previewImage={
-              "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-            }
+            previewImage={cover_paper.childImageSharp.fluid.src}
             title={"BBC Story"}
             description={
               "A data story on evolving themes in fact-checks between January-June 2020"
@@ -174,9 +195,7 @@ const CaseStudySection = ({ size, bgColor, contentWidth }) => {
           />
 
           <CaseStudyPreview
-            previewImage={
-              "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-            }
+            previewImage={cover_chart.childImageSharp.fluid.src}
             title={"Dashboards"}
             description={
               "Explore weekly trends in misinformation through an interactive visualisation"
