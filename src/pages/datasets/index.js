@@ -13,7 +13,10 @@ import {
 import { graphql, useStaticQuery } from "gatsby"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../../components/atomic/layout/narrow-section"
-import { PlainExternalLink } from "../../components/atomic/TattleLinks"
+import {
+  PlainExternalLink,
+  SmartPlainLink,
+} from "../../components/atomic/TattleLinks"
 
 const ResponsiveGrid = ({ size, children }) => {
   return size !== "small" ? (
@@ -107,6 +110,7 @@ const Datasets = () => {
                     description={""}
                     url={"https://arxiv.org/abs/2010.13387"}
                     publicationDate={"28-12-2020"}
+                    linktype="external"
                   ></DatasetPreview>
                   <DatasetPreview
                     previewImage={
@@ -116,15 +120,24 @@ const Datasets = () => {
                     description={""}
                     url={"https://services.tattle.co.in/khoj/explore"}
                     publicationDate={"07-11-2020"}
+                    linktype="external"
                   ></DatasetPreview>
+                </>
+              </ResponsiveLayoutDatasets>
+              <Heading level={3} color={"#514E80"}>
+                Datasets We love
+              </Heading>
+              <ResponsiveLayoutDatasets size={size}>
+                <>
                   <DatasetPreview
                     previewImage={
                       "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
                     }
-                    title={"Datasets we Love"}
+                    title={"A selected list of datasets we find useful"}
                     description={""}
                     publicationDate={"13-11-2020"}
-                    url={"https://tattle.co.in/datasets/datasets-we-love"}
+                    linktype="internal"
+                    url={"/datasets/datasets-we-love"}
                   ></DatasetPreview>
                 </>
               </ResponsiveLayoutDatasets>
@@ -143,9 +156,10 @@ const DatasetPreview = ({
   publicationDate,
   offset,
   url,
+  linktype,
 }) => {
   return (
-    <PlainExternalLink href={url} target={"_blank"}>
+    <SmartPlainLink linktype={linktype} target={url}>
       <Box direction="column" gap={"xsmall"} margin={{ top: "medium" }}>
         <Box
           width={"100%"}
@@ -170,7 +184,7 @@ const DatasetPreview = ({
           </Paragraph>
         </Box>
       </Box>
-    </PlainExternalLink>
+    </SmartPlainLink>
   )
 }
 

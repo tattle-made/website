@@ -1,4 +1,5 @@
 import { Link } from "gatsby"
+import React from "react"
 import styled from "styled-components"
 
 const ThemedLink = styled(Link)`
@@ -56,10 +57,20 @@ const ThemedPlainExternalLink = styled.a`
   }
 `
 
+const SmartPlainLink = ({ linktype, target, children }) =>
+  linktype === "external" ? (
+    <ThemedPlainExternalLink href={target} target={"_blank"}>
+      {children}
+    </ThemedPlainExternalLink>
+  ) : (
+    <ThemedPlainLink to={target}>{children}</ThemedPlainLink>
+  )
+
 export {
   ThemedLink as Link,
   ThemedPlainLink as PlainLink,
   ThemedPlainHeavyLink as PlainHeavyLink,
   ThemedExternalLink as ExternalLink,
   ThemedPlainExternalLink as PlainExternalLink,
+  SmartPlainLink,
 }
