@@ -16,10 +16,6 @@ const staff = [
     name: "Tarunima Prabhakar",
     role: "Research and Project Lead",
   },
-  {
-    name: "Kruttika Nadig",
-    role: "Data Scientist",
-  },
 ]
 
 const advisors = [
@@ -41,6 +37,10 @@ const advisors = [
   },
   {
     name: "Keshav Joshi",
+    role: "Data Scientist",
+  },
+  {
+    name: "Kruttika Nadig",
     role: "Data Scientist",
   },
   {
