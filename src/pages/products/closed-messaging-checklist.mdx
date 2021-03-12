@@ -9,8 +9,8 @@ This is an evolving check-list of design decisions that must consider **before**
 The design choices in setting up the data collection process from closed messaging apps can be broken down into five main stages. Please see the heading : 
 
 1. [Signing Up on the App](#signing-up-on-the-app) 
+  > *  To which entity is the phone number registered?
   > *  Under what name should researchers sign up on the app?
-  > *  Whom is the phone number registered to?
 
 2. [Discovering Relevant Groups](#discovering-relevant-groups) 
   > *  How are chat groups discovered and selected for research?
@@ -28,24 +28,90 @@ The design choices in setting up the data collection process from closed messagi
   > *  Should the source of code used for data extraction be opened?
   > *  Should links to groups studied be shared widely?
 
+
+In stydying groups on closed messaging apps, researchers define some conditions under which the closed message groups are considered public enough to be studied. As the definition of public is expanded to include more groups or increase the granularity of data collection, the burden to ensure security of the data also increases. Researchers must gauge their ability to securely analyze and share the volume of data they collect in their research. 
+
+By codifying responsible data management practices prior to the study, researchers can anticipate and mitigate risks to their research subjects. In absence of an Institutional Review Board, researchers could have their research protocol reviewed by professional peers, not tied to the research project. Researchers could similarly also have their data collection and storage practices vetted by cybersecurity experts. 
+
+---
 ---
 
 ## Signing Up on the App 
+<details>
+  <summary>Expand</summary>
 
+*  **To which entity is the phone number registered?**
+
+The phone number could be procured by researchers as individuals or by an organization. Phone numbers can be seen by everyone in a group conversation and might be used for digital marketing and other unsolicited communication. Separating phone numbers used for research purposes and for personal communication can add the necessary separation between researchers personal lives and the research work. 
+
+*  **Under what name should researchers sign up on the app?**
+
+At the time of signing up on a messaging platform, a user has to declare a name that identifies them to others on the app. Researcher(s) may choose to use individual names or the name of the research group/study. Declaring the name as a research study or organization might make it easier for group admins and participants to identify the researcher, enabling more informed and meaningful consent in the admission of researchers in the group. 
+
+Researchers might provide additional description of their purpose in the ‘Status’ or ‘About’ field, if the platform allows it. Using language that research subjects understand can result in more meaningful consent. This however may be difficult in multilingual groups. Limit on the length of the text description restricts lengthy or multi-lingual description. 
+
+Regardless of the username declared on the messaging app, note that the owner of a phone number may still be identified through apps such as True Caller. For researchers working in sensitive contexts, identification might be another consideration to have phone numbers procured through an organization. 
+</details>
 ---
 
 ## Discovering Relevant Groups
+<details>
+  <summary>Expand</summary>
 
+On apps such as Telegram, “public channels” can be found through searching for the channel names on the app. WhatsApp, however, does not provide this option. Links to group conversations must be found by proactive searching for group links online. This search could span Facebook groups, Twitter conversations or a broad search on the world wide web. While Telegram aggregates popular channels on the app, several websites (not endorsed by WhatsApp) aggregate WhatsApp group links. Links to new group chats may also be shared within a group that researchers are monitoring. 
+
+The nature of the online forum on which the message group link is found, can provide some indication if the groups were inteded to be public. Message groups shared exclusively on closed Facebook groups, for example, should be assumed to be used by members of a closed community. Group links shared on public Twitter profiles could be created for broader engagement. 
+
+With group links aggregated by independent websites, the intended nature (public vis-a-vis private) of the group is hard to discern. The selection and categorization of groups on a website is decided by website creators and not the message group admins or participants. Thus, researchers must use their discretion in using these websites for research purposes. 
+
+Finally, researchers may consider joining additional groups through links shared on groups that they are monitoring. The public status of these groups is derived from the perceived status ascribed to the message group they were found on. If the assumption is that the public status of all messaging groups is unclear to begin with, the public status of groups found on other messaging groups is doubly weakened. 
+
+</details>
 ---
 
 ## After Joining a Group: 
+<details>
+  <summary>Expand</summary>
 
+* **Disclosure Norms:**
+ On joining a conversation, researchers may choose to disclose their purpose. Doing so allows for more informed by admins and may result in researchers being removed from certain groups.
+
+* **Deciding to Leave a Group:**
+After joining a group, researchers may realize that the group is intended to be private. Group size maybe used as a proxy for private or public nature of the group. The number of people in a message group can only be found after joining it.  Since the size of a group dynamically changes, researchers may choose to keep a time window after joining, before deciding to study the group or leave it. Thoughtful protocols may be followed in this time window to respect privacy and consent of group participants. 
+
+</details>
 ---
 
 ## Collating Data from the app
+<details>
+  <summary>Expand</summary>
+ 
+* **Method of Data Collection:** 
+  * Rooting phones to decrypt local app database: 
+  * Backing up the phone 
+  * Manually copying content to a database 
+  * Exporting Chat 
+  * Extracting content from web client of messaging apps.
+  
+* **De-identification and Anonymization:**
 
---
+Public or not, message groups are a space for consequential discourse. People may express political views or share their health histories. All the message conversations are tied to a phone number that could be used to link these conversations to other databases. Truly anonymous data collection may not be possible. It is imperative that at the very least the data is de-identified. 
+Deidentification does not guarantee anonymization but as more data fields are de-identified, the risk of deanonymization decreases. In addition to phone numbers, researchers may also consider anonymizing the group conversation name. If the focus is only the message content, researchers may choose to use a different anonymization ‘seed’ for new batch of data. This would delink conversations from the same sender across different data snapshots. 
+
+* **Back-up:**
+* Once the data has been anonymized, researchers must decide on how, if at all, to preserve the original non-anonymized data. Depending on the volume of data, it may be possible to save the data on local external drives. With high volumes of data, researchers could spin up their own servers or alternatively rely on cloud service providers. With cloud service, researchers are relying on security features of their service providers. 
+
+</details>
+---
 
 ## Reproducibility
+<details>
+  <summary>Expand</summary>
+  
+Even though groups on closed messaging apps, may under some circumstances be considered public enough to be studied, they, however, are not public in the sense that all data can be shared under open access (as can be reasonably done for Reddit or Twitter conversations). Researchers may consider opening their data through restricted access. 
 
---
+The method adopted for extracting data, anonymizing it as well as analyzing data should be clarified in publications using the data. Researchers may also consider opening the source code used to extract and analyze the data. Documenting ethical practices of data collection in the documentation of the code could remind others who use the code to take adequate measures to protect the subjects they are studying.   
+
+</details>
+
+---
