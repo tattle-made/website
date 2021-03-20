@@ -1,6 +1,44 @@
 # Whatsapp Archiver
 
+## About the Archiver
+
 The WhatsApp archiver consolidates chat files exported from different WhatsApp conversations into one database. The scraper relies on WhatsApp's export chat feature which allows 40,000 messages to be exported without media and 10,000 to be exported with media. If a media item has not been downloaded to your phone, it cannot be exported through the export chat feature.
 The archiver removes overlaps in different files exported from a chat; and anonymizes sender and group names.
 
+
+
+## Data Collection Practices
+These are the design decisions that Tattle has made, along different steps in the checklist for [responsible data collection from closed messaging apps](https://tattle.co.in/products/closed-messaging-checklist/). We urge that users of this code similarly consider, and possibly share, the steps they take for responsible data collection. The following paper that consolidates case studies of previous research studies involving messaging apps, might be helpful background when setting up a study: 
+
+Sehat, C. M., Prabhakar, T., Kaminski, A. (2021, March 15). *Ethical Approaches to Closed Messaging Research: Considerations in Democratic Contexts.* [[LINK]](https://electionstandards.cartercenter.org/verifying-elections-misinfocon2020/ethical-approaches-to-closed-messaging-research-considerations-in-democratic-contexts/)
+
+<details>
+  <summary>Expand</summary>
+  
+### Signing Up on the App:
+* All Phone Numbers used for data collection are registered to Tattle Civic Tech
+* The user name on WhatsApp is Tattle Civic Tech. 
+The About section states: "Tattle is a civic tech project that sims to archive content from Indian chat apps and social media. More details: www.tattle.co.in"
+* The account does not have a profile photograph. 
+
+### Discovering Relevant Groups
+* We only join groups that are shared on Twitter public profiles. 
+
+### After Joining a Group:
+* We do not state a research purpose on joining the group.  
+* So far, we have not exited any group we have joined. We do however stop collecting data from groups that have become inactive. 
+
+### Collating Data from the app
+Tattle is primarily interested in the content itself, and not the people or networks in which it is spreading. Our data collating strategy reflects this goal. 
+* As described in the introduction, Tattle uses the WhatsApp's export chat feature.
+* We de-identify all phone numbers/sender names as well as the chat group name from which the group is discovered.
+* Backup: We use a cloud service to retain the original exported files. We are moving towards a protocol to delete the exported chat files within a month of being exported.
+
+### Reproducability
+* Tattle is an open source project, so the data collection code is transparent. 
+* The data from WhatsApp is stored on a secure database. At present, the data has only been shared with a few researchers and journalists. A subset of this data might be opened under an open database license, after it has been manually vetted to prevent privacy violations and other harms. 
+
+</details>
+
+## WhatsApp Scraper:
 [Go to Service/Code Repository](https://github.com/tattle-made/whatsapp-scraper/tree/master/python_scraper)
