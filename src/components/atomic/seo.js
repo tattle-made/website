@@ -11,29 +11,27 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title }) {
-  const { site, allFile } = useStaticQuery(
-    graphql`
-      query {
-        allFile(filter: { name: { eq: "social-card" } }) {
-          edges {
-            node {
-              id
-              name
-              publicURL
-            }
-          }
-        }
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            base_url
+  const { site, allFile } = useStaticQuery(graphql`
+    query {
+      allFile(filter: { name: { eq: "social-card" } }) {
+        edges {
+          node {
+            id
+            name
+            publicURL
           }
         }
       }
-    `
-  )
+      site {
+        siteMetadata {
+          title
+          description
+          author
+          base_url
+        }
+      }
+    }
+  `)
 
   const metaDescription = description || site.siteMetadata.description
   const author = site.siteMetadata.author
