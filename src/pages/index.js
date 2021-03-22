@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import { Grid, Box, Text, ResponsiveContext, Paragraph } from "grommet"
 import DefaultLayout from "../components/default-layout"
 import { ResponsiveImage } from "../components/atomic/ResponsiveImage"
