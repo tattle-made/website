@@ -1,4 +1,30 @@
 export const updates = [
+  
+   {
+    date: "24 March, 2021",
+    title: "Against Platform Universalism: A Case Study of Platform-Seeded Trends and Non/Algorithmic Paternalism from India",
+    event_name:
+      "Paper presentation in First Annual Conference of The Platform Governance Research Network",
+    url:"https://www.platgov.net/program.pdf",
+    tags: ["Paper", "Panel"],
+  },
+  {
+    date: "15 March, 2021",
+    title: "Ethical Approaches to Closed Messaging Research",
+    event_name:
+      "Paper on Ethical Approaches to Closed Messaging Research: Considerations in Democratic Contexts with Connie Moon Sehat and Aleksei Kaminski",
+    url: "https://electionstandards.cartercenter.org/verifying-elections-misinfocon2020/ethical-approaches-to-closed-messaging-research-considerations-in-democratic-contexts/",
+    tags: ["Paper"],
+  }, 
+  {
+    date: "11 March, 2021",
+    title: "WhatsApp and Misinformation in India",
+    event_name:
+      "The Bachchao Project's: The Glassroom- Misinformation Edition with Tactical Tech",
+    url:"",
+    tags: ["talk"],
+  },
+  
   {
     date: "13 December, 2020",
     title: "Machine Intelligence and Information Disorder",
