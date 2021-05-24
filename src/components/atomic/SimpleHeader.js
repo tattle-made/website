@@ -58,7 +58,7 @@ const dropDownOptionsLearnMore = [
     type: "external",
   },
   { id: 1, target: "/join-us", label: "Work With Us" },
-  { id: 1, target: "/report/2019-report", label: "Annual Reports" },
+  { id: 1, target: "/report/", label: "Annual Reports" },
 ]
 
 const MobileNavItemInternalLink = ({ target, label, description }) => (

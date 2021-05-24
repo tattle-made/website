@@ -36,6 +36,11 @@ const TattleTheme = {
       },
     },
   },
+  carousel: {
+    animation: {
+      duration: 0,
+    },
+  },
   heading: {
     font: {
       family: "Bitter",
