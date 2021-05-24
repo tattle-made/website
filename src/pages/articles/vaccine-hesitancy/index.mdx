@@ -18,26 +18,26 @@ Here's a snapshot from the analysis:
 
 ![graph](../../../images/vaccine-hesitancy-graph.png)
 
-- If we look at the bigger dataset of fact checks that referenced vaccines, we find three by FactChecker.in in 2017:
+- If we look at the bigger dataset of fact checks that referenced vaccines or vaccination, we find three stories by FactChecker.in in 2017:
   - [Jaitley Says TB Elimination By 2025; Target Would Need 95% Reduction In New Cases](https://www.factchecker.in/jaitley-says-tb-elimination-by-2025-target-would-need-95-reduction-in-new-cases/)
+  - [Modi’s Claim Of New Maternity Benefit Scheme Is Misleading](https://www.factchecker.in/modis-claim-of-new-maternity-benefit-scheme-is-misleading/)
   - [Health Minister’s Claim That India Reduced Infant, Maternal Deaths Faster Than Other Countries False](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/)
-  - [Health Minister’s Claim That India Reduced Infant, Maternal Deaths Faster Than Other Countries False](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/)
-- There is some pro-vaccine related misinformation as well. One such claim about lungs of a vaccinated person was [checked by Factly.](https://factly.in/this-ct-scan-report-does-not-represent-the-lungs-of-a-covid-19-vaccinated-person/)
+- There is some pro-vaccine related misinformation as well. One such claim about lungs of a vaccinated person was [checked by Factly in April 2021.](https://factly.in/this-ct-scan-report-does-not-represent-the-lungs-of-a-covid-19-vaccinated-person/)
 
 ## The Dashboard:
 
-We adapted our [fact checking sites themes dashboard ](https://services.tattle.co.in/khoj/dashboard/)to understand themes in vaccine related misinformation. This visualization displays the prominent themes in the 164 vaccine related stories. Articles are grouped into thematic clusters based on their headlines, using an algorithm called GSDMM. You can read more about the methodology on [the Fact Checking Sites Weekly Dashboard Page.](https://services.tattle.co.in/khoj/dashboard/)
+We adapted our [fact checking sites themes dashboard](https://services.tattle.co.in/khoj/dashboard/)to understand themes in vaccine related misinformation. This visualization displays the prominent themes in the 164 vaccine related stories. Articles are grouped into thematic clusters based on their headlines, using an algorithm called GSDMM. You can read more about the methodology on [the Fact Checking Sites Weekly Dashboard Page.](https://services.tattle.co.in/khoj/dashboard/)
 
 The clusters are left unnamed to allow for flexible interpretation. You can use the toggle button to select the level of granularity of analysis. A visualization with 7 clusters (circles) divides the 164 stories into more buckets, resulting in more key words being identified from the same content. A visualization with 5 clusters provides a more zoomed out view.
 
-Clicking on a circle in that week will show the fact checking articles grouped in it and most prominent words in those articles.
+Clicking on a circle will show the fact checking articles grouped in it and most prominent words in those articles.
 
 <VaccineHesitancyClusterVisualization />
 
 ## Data Limitations
 <details>
 <summary>Click to expand</summary>
-This analysis is based on content checked by IFCN certified fact checking sites. While fact checkers consider virality in the content they choose to fact check, it isn't the only consideration. The volume or content of stories fact checked is a signal but not a substitute for social media trends analysis.
+This analysis is based on content checked by IFCN certified fact checking sites. Virality is one of the factors that fact checkers consider when selecting social media posts for fact checking, but it isn't the only consideration. The volume or content of stories fact checked is a signal but not a substitute for social media trends analysis.
 
 We parse the primary topic of misinformation from the headline of a story. Manually combing through over a hundred fact checked stories weekly isn't feasible for a small team like Tattle. While headlines are an efficient way to automate summarization of misinformation trends, they can result in some relevant fact checks being left out. For example, this [fact checking story by Boomlive ](https://www.boomlive.in/fake-news/misleading-anti-mask-video-by-indian-youth-goes-viral-9367)is primarily debunking claims around anti-masking. But the video in question also contained claims promoting vaccine hesitancy. Since the headline did not mention the word vaccine, it was excluded from pool of 164 posts used to generate the dashboards.
 </details>
