@@ -2,7 +2,10 @@ import React, { useState, useEffect, useContext } from "react"
 import { ResponsiveContext, Grid, Box, Heading, Text } from "grommet"
 import TattleLogo from "../../components/atomic/TattleLogo"
 import { Slack, GitHub, Twitter } from "react-feather"
-import { Link, PlainExternalLink } from "../../components/atomic/TattleLinks"
+import {
+  PlainLink as Link,
+  PlainExternalLink,
+} from "../../components/atomic/TattleLinks"
 import { primaryNav, footerItems } from "../../config/options"
 /**
  * @author
@@ -13,6 +16,8 @@ import { FooterNavigationLabel } from "../../components/atomic/core-style"
 const Footer = () => {
   const [fetching, setFetching] = useState(false)
   const size = useContext(ResponsiveContext)
+
+  console.log({ FOOTER: footerItems })
 
   useEffect(() => {
     setFetching(true)
@@ -27,10 +32,10 @@ const Footer = () => {
         <Box direction={"column"}>
           {footerItems.primary.map(primaryItem => {
             return primaryItem.type === "internal" ? (
-              <Link key={primaryItem.id} to={`/${primaryItem.target}`}>
+              <Link key={primaryItem.id} to={`${primaryItem.target}`}>
                 <FooterNavigationLabel>
                   {" "}
-                  {primaryItem.label}{" "}
+                  {primaryItem.label}
                 </FooterNavigationLabel>
               </Link>
             ) : (
