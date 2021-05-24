@@ -1,8 +1,9 @@
 import VaccineHesitancyClusterVisualization from "../../../components/molecule/vaccine-hesitancy-cluster-visualization"
+import {Accordion, AccordionPanel} from 'grommet'
 
 # Vaccine Hesitancy
 
-[Renee DiResta spotted anti-vaccine content in her Californian neighborhood back in 2015](https://epp.ok.ubc.ca/about/misinformation-age/renee-diresta/). It was in fact, how she first entered the space of misinformation- trying to tackle anti-vaccination content that could influence opinions that affected her children. Tracking Russian networks, the work that she is better known for came after.
+Renee DiResta spotted anti-vaccine content in her Californian neighborhood [back in 2015](https://epp.ok.ubc.ca/about/misinformation-age/renee-diresta/). It was in fact, how she first entered the space of misinformation- trying to tackle anti-vaccination content that could influence opinions that affected her children. Tracking Russian networks, the work that she is better known for came after.
 
 The pandemic has forced attention back to health related misinformation. With vaccines being the only effective defense against the pandemic, content promoting skepticism around vaccines is especially dangerous. The content from fact checking sites is one way to track misinformation related to vaccines over time.
 
@@ -17,10 +18,10 @@ Here's a snapshot:
 ![graph](../../../images/vaccine-hesitancy-graph.png)
 
 - If we look at the bigger dataset of fact checks that referenced vaccines, we find three by FactChecker.in in 2017:
-  - [https://www.factchecker.in/jaitley-says-tb-elimination-by-2025-target-would-need-95-reduction-in-new-cases/](https://www.factchecker.in/jaitley-says-tb-elimination-by-2025-target-would-need-95-reduction-in-new-cases/)
-  - [https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/)
-  - [https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/)
-- There is some pro-vaccine related misinformation as well. One such claim about lungs of a vaccinated content was checked by Factly: [This CT Scan report does not represent the lungs of a...](https://factly.in/this-ct-scan-report-does-not-represent-the-lungs-of-a-covid-19-vaccinated-person/)
+  - [Jaitley Says TB Elimination By 2025; Target Would Need 95% Reduction In New Cases](https://www.factchecker.in/jaitley-says-tb-elimination-by-2025-target-would-need-95-reduction-in-new-cases/)
+  - [Health Minister’s Claim That India Reduced Infant, Maternal Deaths Faster Than Other Countries False](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/)
+  - [Health Minister’s Claim That India Reduced Infant, Maternal Deaths Faster Than Other Countries False](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/)
+- There is some pro-vaccine related misinformation as well. One such claim about lungs of a vaccinated person was [checked by Factly.](https://factly.in/this-ct-scan-report-does-not-represent-the-lungs-of-a-covid-19-vaccinated-person/)
 
 ## The Dashboard:
 
@@ -32,18 +33,16 @@ Clicking on a circle in that week will show the fact checking articles grouped i
 
 <VaccineHesitancyClusterVisualization />
 
-## How Not to Interpret this Analysis
-
+## Data Limitations
+<details>
+<summary>Click to expand</summary>
 This analysis is based on content checked by IFCN certified fact checking sites. While fact checkers consider virality in the content they choose to fact check, it isn't the only consideration. The volume or content of stories fact checked is a signal but not a substitute for social media trends analysis.
 
 We parse the primary topic of misinformation from the headline of a story. Manually combing through over a hundred fact checked stories weekly isn't feasible for a small team like Tattle. While headlines are an efficient way to automate summarization of misinformation trends, they can result in some relevant fact checks being left out. For example, this [fact checking story by Boomlive ](https://www.boomlive.in/fake-news/misleading-anti-mask-video-by-indian-youth-goes-viral-9367)is primarily debunking claims around anti-masking. But the video in question also contained claims promoting vaccine hesitancy. Since the headline did not mention the word vaccine, it was excluded from pool of 164 posts used to generate the dashboards.
+</details>
 
-### License
+
+
+## License
 
 Contains information from Tattle Fact Checking Sites Database, which is made available [**here **](https://services.tattle.co.in/khoj/explore)under the[** Open Database License**](https://opendatacommons.org/licenses/odbl/1-0/) (ODbL). All the visualizations here are licensed under [**CC BY-SA 4.0**](https://creativecommons.org/licenses/by-sa/4.0/).
-
-## Extra notes:
-
-The dashboard is built on the headlines of fact checked stories. This is based on our experience that the headlines capture the most important aspects of a claim and are better candidates than text bodies itself. A themes dashboard built on headlines efficiently fulfills the primary aim of understanding broad misinformation trends. This methodology, however can result in some posts being left out of analysis. For example, this post
-
-Another
