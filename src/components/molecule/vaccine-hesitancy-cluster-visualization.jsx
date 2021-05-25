@@ -29,28 +29,31 @@ const VaccineHesitancyClusterVisualization = () => {
   const [clusterNumber, setClusterNumber] = useState("5")
   const [data, setData] = useState(dataCluster5)
   const [selectedTopicId, setSelectedTopicId] = useState(-1)
-  const [show, setShow] = React.useState()
-
-  useEffect(() => {
-    console.log("location 1")
-  }, [])
 
   useEffect(() => {
     console.log("location 6")
+    console.log(ldavis.current.innerHTML)
     ldavis.current.innerHTML = ""
     LDAvis(ldavis.current, data, "#visualization", onClusterSelected)
   }, [data])
 
-  const onClusterSelected = clusterId => {
-    console.log("location 3")
-
-    setSelectedTopicId(clusterId.topics)
+  useEffect(() => {
+    console.log("location 6")
+    console.log(ldavis.current.innerHTML)
     ldavis.current.innerHTML = ""
     LDAvis(ldavis.current, data, "#visualization", onClusterSelected)
-    //  / setShow(true)
+  }, [selectedTopicId])
+
+  useEffect(() => {
+    console.log("location 15")
+  }, [selectedTopicId])
+
+  const onClusterSelected = clusterId => {
+    // setSelectedTopicId(clusterId.topics)
+    setSelectedTopicId(clusterId.topics)
   }
 
-  const onClusterChanged = event => {
+  const onOptionChanged = event => {
     console.log("location 4")
     // (event) => setValue(event.target.value)
     const clusterNum = event.target.value
@@ -77,6 +80,7 @@ const VaccineHesitancyClusterVisualization = () => {
         direction={"row-responsive"}
         gap={"medium"}
         margin={{ top: "medium", bottom: "medium" }}
+        flex={false}
       >
         <Text size={"small"} weight={500}>
           Cluster Number :{" "}
@@ -86,54 +90,47 @@ const VaccineHesitancyClusterVisualization = () => {
           name="cluster-number"
           options={["5", "6", "7"]}
           value={clusterNumber}
-          onChange={onClusterChanged}
+          onChange={onOptionChanged}
         />
       </Box>
-      <Box flex={"grow"}>
-        <Box flex>
-          <D3Div ref={ldavis} id="visualization"></D3Div>
-        </Box>
+      <Box height={"28em"}>
+        <D3Div ref={ldavis} id="visualization"></D3Div>
+      </Box>
 
-        <Box flex={"grow"} background={"light-2"} pad={"small"}>
-          <Heading level={3}>Articles in this Cluster</Heading>
-          {selectedTopicId === -1 && (
-            <Text size={"small"}>
-              {" "}
-              Hovering on a cluster above will show articles linked to this
-            </Text>
-          )}
-          <Box
-            height={selectedTopicId === -1 ? "0px" : "medium"}
-            overflow={"scroll"}
-          >
-            {selectedTopicId !== -1 &&
-              data["per_cluster_headlines"] &&
-              data["per_cluster_headlines"][selectedTopicId].map(
-                (headline, index) => {
-                  return (
-                    <Box
-                      flex={"grow"}
-                      margin={{ bottom: "medium" }}
-                      key={index}
+      <Box background={"light-2"} pad={"small"}>
+        <Heading level={3}>Articles in this Cluster</Heading>
+        {selectedTopicId === -1 && (
+          <Text size={"small"}>
+            {" "}
+            Hovering on a cluster above will show articles linked to this
+          </Text>
+        )}
+        <Box
+          height={selectedTopicId === -1 ? "0px" : "medium"}
+          overflow={"scroll"}
+        >
+          {selectedTopicId !== -1 &&
+            data["per_cluster_headlines"][selectedTopicId].map(
+              (headline, index) => {
+                return (
+                  <Box flex={"grow"} margin={{ bottom: "medium" }} key={index}>
+                    <PlainExternalLink
+                      key={"abc"}
+                      href={headline.url}
+                      target="_blank"
                     >
-                      <PlainExternalLink
-                        key={"abc"}
-                        href={headline.url}
-                        target="_blank"
-                      >
-                        <Box>
-                          <Text size={"small"} weight={500}>
-                            {" "}
-                            {headline.headline}
-                          </Text>
-                          <Text size={"xsmall"}> {headline.url}</Text>
-                        </Box>
-                      </PlainExternalLink>
-                    </Box>
-                  )
-                }
-              )}
-          </Box>
+                      <Box>
+                        <Text size={"small"} weight={500}>
+                          {" "}
+                          {headline.headline}
+                        </Text>
+                        <Text size={"xsmall"}> {headline.url}</Text>
+                      </Box>
+                    </PlainExternalLink>
+                  </Box>
+                )
+              }
+            )}
         </Box>
       </Box>
     </NarrowContentWrapper>

@@ -80,7 +80,7 @@ const Footer = () => {
         </Box>
       </ResponsiveLayoutDatasets>
       <Box margin={{ top: "small" }}>
-        <Text weight={"400"} size={"xsmall"}>
+        <Text weight={400} size={"xsmall"}>
           Text and illustrations on the website is licensed under Creative
           Commons 4.0 License. The code is licensed under GPL. For data, please
           look at respective licenses.
@@ -97,6 +97,7 @@ const ResponsiveLayoutDatasets = ({ children }) => {
       rows={["flex"]}
       columns={["1/4", "1/4", "1/2"]}
       areas={[["tattle", "menu", "license"]]}
+      fill
     >
       <Box gridArea={"tattle"}>{children[0]}</Box>
       <Box gridArea={"menu"}>{children[1]}</Box>
@@ -111,6 +112,7 @@ const ResponsiveLayoutDatasets = ({ children }) => {
         ["tattle", "menu"],
         ["license", "license"],
       ]}
+      fill
     >
       <Box gridArea={"tattle"}>{children[0]}</Box>
       <Box gridArea={"menu"}>{children[1]}</Box>
