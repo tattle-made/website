@@ -7,13 +7,12 @@ Renee DiResta spotted anti-vaccine content in her Californian neighborhood [back
 
 The pandemic has forced attention back to health related misinformation. With vaccines being the only effective defense against the pandemic, content promoting skepticism around vaccines is especially dangerous. Reports put out by IFCN certified fact checking sites is one way to track vaccine related misinformation.
 
-We analyzed the Fact Checking sites database to glean insights about vaccine related content. This database contains 'fact checks' put out by nine IFCN certified organizations. It is important to note that most of the certified fact checking groups started over the last three years, and some are no longer certified by IFCN. Thus, the time window of content covered by different groups might vary. You can read more about the limitations of the data at the end of this analysis.  
+We analyzed the Fact Checking sites database to glean insights about vaccine related content. This database contains 'fact checks' put out by ten IFCN certified organizations. It is important to note that most of the certified fact checking groups started over the last three years, and some are no longer certified by IFCN. Thus, the time window of content covered by different groups might vary. You can read more about the limitations of the data at the end of this analysis.  
 
 Here's a snapshot from the analysis:
 - Vaccine specific content relative to the total number of fact checking stories is low.
-  - Of the over 26K stories, only 164 (<0.7%) are explicitly about vaccines. The [dashboard below](#the-dashboard) summarizes the main themes in these 164 stories.
-  - An additional 338 stories make a reference to vaccines. These might be stories that reference vaccines while fact checking another claim. For example, [this 2017 report from FactChecker.in ](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/) checks a claim made by the Indian health minister at a vaccination drive in Tripura. Some [fact checks on Covid cures such as this one by AltNews](https://www.altnews.in/no-dr-ramesh-guptas-zoology-book-does-not-mention-a-cure-for-novel-coronavirus/), also emphasize the role of vaccines. 
-  - If we include these stories, the proportion of fact checking stories that reference vaccines rises to 1.9%.
+  - Of the over 26K stories, only 226 (<1%) are explicitly about vaccines. These stories span Assamese, Bengali, English, Hindi and Punjabi. The [dashboard below](#the-dashboard) summarizes the main themes in these 226 stories.
+  - An additional 338 fact checking stories in English make a reference to vaccines. These might be stories that reference vaccines while fact checking another claim. For example, [this 2017 report from FactChecker.in ](https://www.factchecker.in/health-ministers-claim-that-india-reduced-infant-maternal-deaths-faster-than-other-countries-false/) checks a claim made by the Indian health minister at a vaccination drive in Tripura. Some [fact checks on Covid cures such as this one by AltNews](https://www.altnews.in/no-dr-ramesh-guptas-zoology-book-does-not-mention-a-cure-for-novel-coronavirus/), also emphasize the role of vaccines. 
 
 - Most of the fact checking stories about vaccines are from after 2020, but the first fact checking reports explicitly about vaccines came in 2018. There were two stories in 2018. One was by AltNews on the [Measles Rubella Vaccine](https://www.altnews.in/the-measles-rubella-mr-vaccine-myths-of-anti-fertility-agents-vaccine-related-deaths/). The other was by Quint Webqoof on [Oral Polio Vaccine.](https://www.thequint.com/news/webqoof/oral-polio-vaccine-contamination-hoax-message)
 
@@ -28,20 +27,34 @@ Here's a snapshot from the analysis:
 
 # The Dashboard
 
-We adapted our [fact checking sites themes dashboard](https://services.tattle.co.in/khoj/dashboard/) to understand themes in vaccine related misinformation. This visualization displays the prominent themes in the 164 vaccine related stories. Articles are grouped into thematic clusters based on their headlines, using an algorithm called GSDMM. You can read more about the methodology on [the Fact Checking Sites Weekly Dashboard Page.](https://services.tattle.co.in/khoj/dashboard/)
+We adapted our [fact checking sites themes dashboard](https://services.tattle.co.in/khoj/dashboard/) to understand themes in vaccine related misinformation. This visualization displays the prominent themes in the 226 vaccine related stories. Articles are grouped into thematic clusters based on their headlines, using an algorithm called GSDMM. You can read more about the methodology on [the Fact Checking Sites Weekly Dashboard Page.](https://services.tattle.co.in/khoj/dashboard/)
 
-The clusters are left unnamed to allow for flexible interpretation. You can use the toggle button to select the level of granularity of analysis. A visualization with 7 clusters (circles) divides the 164 stories into more buckets, resulting in more key words being identified from the same content. A visualization with 5 clusters provides a more zoomed out view.
+The clusters are left unnamed to allow for flexible interpretation. You can use the toggle button to select the level of granularity of analysis. A visualization with 7 clusters (circles) divides the 226 stories into more buckets, resulting in more key words being identified from the same content. A visualization with 5 clusters provides a more zoomed out view.
 
 Clicking on a circle will show the fact checking articles grouped in it and most prominent words in those articles.
 
 <VaccineHesitancyClusterVisualization />
 
+
+## Methodology
+<details>
+<summary>Click to expand</summary>
+### Data Collection
+ - The data was collected using the [fact checking sites scraper.](https://github.com/tattle-made/tattle-research/blob/master/README.md). The scraper extracts the text as well as media items in stories put out by fact checking sites. 
+ - To extract fact checks on vaccines, we filtered stories based on headlines and Post URLs that contained the word vaccine(s) or vaccination. Since the fact checks can be in different Indian languages, filtering only on headlines is not sufficient. The post URLs often contain the same key words as headlines and are used as a proxy for key words in headlines.
+ - Once the 226 posts were identified, we translated the headlines of non-English posts to English using Google Translate API
+ - The translated headlines were used to generate the dashboard as per the methodology described on the [fact checking sites themes dashboard](https://services.tattle.co.in/khoj/dashboard/)
+  
+- To extract fact checking stories that reference vaccines but are not about vaccines, we filtered stories that used the word vaccine(s) or vaccination in the text body, but not in the headline or in the URL. Since the key words used were in English, the stories in this subset were primarily in English. While we could extend this key word search to other languages, we would need support on the terms that we should search for in all the languages covered in the fact checking sites database. Translating the text body of thousands of posts for this analysis isn't feasible for this analysis.
+</details>
+
+  
 ## Data Limitations
 <details>
 <summary>Click to expand</summary>
 This analysis is based on content checked by IFCN certified fact checking sites. Virality is one of the factors that fact checkers consider when selecting social media posts for fact checking, but it isn't the only consideration. The volume or content of stories fact checked is a signal but not a substitute for social media trends analysis.
 
-We parse the primary topic of misinformation from the headline of a story. Manually combing through over a hundred fact checked stories weekly isn't feasible for a small team like Tattle. While headlines are an efficient way to automate summarization of misinformation trends, they can result in some relevant fact checks being left out. For example, this [fact checking story by Boomlive ](https://www.boomlive.in/fake-news/misleading-anti-mask-video-by-indian-youth-goes-viral-9367)is primarily debunking claims around anti-masking. But the video in question also contained claims promoting vaccine hesitancy. Since the headline did not mention the word vaccine, it was excluded from pool of 164 posts used to generate the dashboards.
+We parse the primary topic of misinformation from the headline of a story. Manually combing through over a hundred fact checked stories weekly isn't feasible for a small team like Tattle. While headlines are an efficient way to automate summarization of misinformation trends, they can result in some relevant fact checks being left out. For example, this [fact checking story by Boomlive ](https://www.boomlive.in/fake-news/misleading-anti-mask-video-by-indian-youth-goes-viral-9367)is primarily debunking claims around anti-masking. But the video in question also contained claims promoting vaccine hesitancy. Since the headline did not mention the word vaccine, it was excluded from pool of 226 posts used to generate the dashboards.
 </details>
 
 
