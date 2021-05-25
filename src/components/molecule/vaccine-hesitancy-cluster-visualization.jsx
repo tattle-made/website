@@ -9,6 +9,7 @@ import {
   Layer,
   Button,
 } from "grommet"
+import { Sun } from "react-feather"
 import styled from "styled-components"
 import DefaultLayout from "../../components/default-layout"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
@@ -93,46 +94,57 @@ const VaccineHesitancyClusterVisualization = () => {
           onChange={onOptionChanged}
         />
       </Box>
-      <Box height={"28em"}>
+
+      <Box height={"24em"}>
         <D3Div ref={ldavis} id="visualization"></D3Div>
       </Box>
 
-      <Box background={"light-2"} pad={"small"}>
-        <Heading level={3}>Articles in this Cluster</Heading>
-        {selectedTopicId === -1 && (
-          <Text size={"small"}>
-            {" "}
-            Hovering on a cluster above will show articles linked to this
-          </Text>
-        )}
-        <Box
-          height={selectedTopicId === -1 ? "0px" : "medium"}
-          overflow={"scroll"}
-        >
-          {selectedTopicId !== -1 &&
-            data["per_cluster_headlines"][selectedTopicId].map(
-              (headline, index) => {
-                return (
-                  <Box flex={"grow"} margin={{ bottom: "medium" }} key={index}>
-                    <PlainExternalLink
-                      key={"abc"}
-                      href={headline.url}
-                      target="_blank"
-                    >
-                      <Box>
-                        <Text size={"small"} weight={500}>
-                          {" "}
-                          {headline.headline}
-                        </Text>
-                        <Text size={"xsmall"}> {headline.url}</Text>
-                      </Box>
-                    </PlainExternalLink>
-                  </Box>
-                )
-              }
-            )}
-        </Box>
+      <Box direction={"row-responsive"} gap={"xsmall"} align={"center"}>
+        <Sun color={"red"} size={"12"} />
+        <Text size={"xsmall"}>
+          Clicking on a circle will show the fact checking articles grouped in
+          it along with the most prominent words in those articles.
+        </Text>
       </Box>
+
+      {selectedTopicId !== -1 && (
+        <Box background={"light-2"} pad={"small"} margin={{ top: "medium" }}>
+          <Heading level={3} margin={{ top: "none" }}>
+            Articles in this Cluster
+          </Heading>
+          <Box
+            height={selectedTopicId === -1 ? "0px" : "fit-content"}
+            overflow={"auto"}
+          >
+            {selectedTopicId !== -1 &&
+              data["per_cluster_headlines"][selectedTopicId].map(
+                (headline, index) => {
+                  return (
+                    <Box
+                      flex={"grow"}
+                      margin={{ bottom: "medium" }}
+                      key={index}
+                    >
+                      <PlainExternalLink
+                        key={"abc"}
+                        href={headline.url}
+                        target="_blank"
+                      >
+                        <Box>
+                          <Text size={"small"} weight={500}>
+                            {" "}
+                            {headline.headline}
+                          </Text>
+                          <Text size={"xsmall"}> {headline.url}</Text>
+                        </Box>
+                      </PlainExternalLink>
+                    </Box>
+                  )
+                }
+              )}
+          </Box>
+        </Box>
+      )}
     </NarrowContentWrapper>
   )
 }
