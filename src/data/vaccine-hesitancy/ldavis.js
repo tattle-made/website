@@ -179,6 +179,7 @@ export const LDAvis = function(
     // When the value of lambda changes, update the visualization
     // console.log('lambda_select', lambda_select);
     d3.select(lambda_select).on("mouseup", function() {
+      console.log("viz : 4")
       console.log("lambda_select mouseup")
       // store the previous lambda value
       lambda.old = lambda.current
@@ -196,6 +197,7 @@ export const LDAvis = function(
     })
 
     d3.select("#" + topicUp).on("click", function() {
+      console.log("viz : 3")
       // remove term selection if it exists (from a saved URL)
       var termElem = document.getElementById(termID + vis_state.term)
       if (termElem !== undefined) term_off(termElem)
@@ -212,6 +214,7 @@ export const LDAvis = function(
     })
 
     d3.select("#" + topicDown).on("click", function() {
+      console.log("viz : 2")
       // remove term selection if it exists (from a saved URL)
       var termElem = document.getElementById(termID + vis_state.term)
       if (termElem !== undefined) term_off(termElem)
@@ -227,6 +230,7 @@ export const LDAvis = function(
     })
 
     d3.select("#" + topicID).on("keyup", function() {
+      console.log("viz : 1")
       // remove term selection if it exists (from a saved URL)
       var termElem = document.getElementById(termID + vis_state.term)
       if (termElem !== undefined) term_off(termElem)
@@ -243,6 +247,7 @@ export const LDAvis = function(
     })
 
     d3.select("#" + topicClear).on("click", function() {
+      console.log("viz : 0")
       state_reset()
       // state_save(true)
     })
@@ -1189,6 +1194,7 @@ export const LDAvis = function(
     // function to update bar chart when a topic is selected
     // the circle argument should be the appropriate circle element
     function topic_on(circle) {
+      console.log("viz : 11")
       if (circle == null) return null
 
       // grab data bound to this element
@@ -1407,6 +1413,7 @@ export const LDAvis = function(
 
       var links = linkbox.selectAll(to_select_name + " .link-texts")
       links.remove()
+      onClusterSelected(-1)
     }
 
     // event definition for mousing over a term

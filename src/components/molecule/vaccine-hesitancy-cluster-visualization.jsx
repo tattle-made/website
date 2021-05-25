@@ -51,7 +51,11 @@ const VaccineHesitancyClusterVisualization = () => {
 
   const onClusterSelected = clusterId => {
     // setSelectedTopicId(clusterId.topics)
-    setSelectedTopicId(clusterId.topics)
+    if (clusterId === -1) {
+      setSelectedTopicId(clusterId)
+    } else {
+      setSelectedTopicId(clusterId.topics)
+    }
   }
 
   const onOptionChanged = event => {
