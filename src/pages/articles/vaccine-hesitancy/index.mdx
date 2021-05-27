@@ -37,11 +37,13 @@ The clusters are left unnamed to allow for flexible interpretation. You can use 
 <details>
 <summary>Click to expand</summary>
  
+  
 * The data was collected using the [fact checking sites scraper.](https://github.com/tattle-made/tattle-research/blob/master/README.md) The scraper extracts the text as well as media items in stories put out by fact checking sites. 
 * To extract fact checks on vaccines, we filtered stories based on headlines and URLs that contained the word vaccine(s) or vaccination. Since the fact checks can be in different Indian languages, filtering only on headlines is not sufficient. The post URLs often contain the same key words as headlines but are usually in English. The URLs are used as a proxy for translation of key words in headlines.
 * Once the 226 posts were identified, we translated the headlines of non-English posts to English using Google Translate API.
 * The translated headlines were used to generate the dashboard as per the methodology described on the [fact checking sites themes dashboard](https://services.tattle.co.in/khoj/dashboard/).
 * To extract fact checking stories that reference vaccines but are not about vaccines, we filtered stories that used the word vaccine(s) or vaccination in the text body, but not in the headline or in the URL. Since the key words used were in English, the stories in this subset were primarily in English. While we could extend this key word search to other languages, we would need support on the terms that we should search for in all the languages covered in the fact checking sites database. Translating the text body of thousands of posts isn't feasible for this analysis.
+
 </details>
 
   
