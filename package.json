@@ -7,8 +7,9 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.1",
     "@mdx-js/react": "^1.6.1",
+    "@react-hook/size": "^2.1.1",
     "babel-plugin-styled-components": "^1.10.7",
-    "d3": "^3.5.5",
+    "d3": "^3.5.17",
     "gatsby": "3.1.1",
     "gatsby-image": "3.1.0",
     "gatsby-plugin-google-fonts-v2": "0.0.6",
