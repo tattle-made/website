@@ -1,6 +1,24 @@
 export const updates = [
   
-   {
+  {
+    date: "10 June, 2021",
+    title: "Check Mate: Prioritizing User Generated Multi-Media Content for Fact-Checking",
+    event_name:
+      "ICWSM 2021",
+    url:"https://icwsm.org/2021/#accepted_papers",
+    tags: ["Paper", "Talk"],
+  }, 
+  
+  {
+    date: "7 June, 2021",
+    title: "A Contextual Inquiry of The International Fact-Checking Network and Factuality on Social Media",
+    event_name:
+      "ICWSM 2021 Workshop on Information Credibility & Alternative Realities in Troubled Democracies",
+    url:"https://zivepstein.github.io/info-credibility-workshop/",
+    tags: ["Paper", "Talk"],
+  }, 
+
+  {
     date: "24 March, 2021",
     title: "Against Platform Universalism: A Case Study of Platform-Seeded Trends and Non/Algorithmic Paternalism from India",
     event_name:
