@@ -102,7 +102,7 @@ const Community = () => (
     <NarrowContentWrapper>
       <NarrowSection>
         <Heading level={2}> Community </Heading>
-        <Heading level={3}>Full Time Staff</Heading>
+        <Heading level={3}>Current Contributors and Staff</Heading>
         <ResponsiveGrid>
           {staff.map((staffMember, index) => (
             <CommunityMemberCard
@@ -113,7 +113,7 @@ const Community = () => (
           ))}
         </ResponsiveGrid>
 
-        <Heading level={3}> Contributors and Part time Staff </Heading>
+        <Heading level={3}> Past Contributors and Staff </Heading>
         <ResponsiveGrid>
           {advisors.map((advisor, index) => (
             <CommunityMemberCard
