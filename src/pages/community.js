@@ -13,9 +13,18 @@ const staff = [
     role: "Interaction design and Tech Lead",
   },
   {
+    name: "Swair Shah",
+    role: "ML Engineer",
+  },
+  {
+    name: "Saakshita Prabhakar",
+    role: "UX / Visual Design Contributor",
+  },
+  {
     name: "Tarunima Prabhakar",
     role: "Research and Project Lead",
   },
+  
 ]
 
 const advisors = [
@@ -59,10 +68,7 @@ const advisors = [
     name: "Rishabh Jain",
     role: "Design Research",
   },
-  {
-    name: "Saakshita Prabhakar",
-    role: "UX / Visual Design Contributor",
-  },
+
   {
     name: "Saumya Gupta",
     role: "Journalist/Researcher",
@@ -80,10 +86,7 @@ const advisors = [
     name: "Suraj Sharma",
     role: "Full Stack Intern",
   },
-  {
-    name: "Swair Shah",
-    role: "ML Engineer",
-  },
+ 
   {
     name: "Venkatesh Thapan",
     role: "Backend Developer",
