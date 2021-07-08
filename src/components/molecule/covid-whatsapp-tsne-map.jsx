@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
-import { Box, CheckBoxGroup, CheckBox, Text } from "grommet"
+import React, { useState, useEffect, useRef, useCallback } from "react"
+import { Box, CheckBoxGroup, CheckBox, Text, Image } from "grommet"
 import data from "../../data/covid-whatsapp-public-groups/data.json"
 import dataBase64 from "../../data/covid-whatsapp-public-groups/base64.json"
 import { clusters } from "../../data/covid-whatsapp-public-groups/cluster.json"
+import { active } from "d3"
 
 const VIZ_WIDTH = 800
 const VIZ_HEIGHT = 600
@@ -16,21 +17,20 @@ const points = clusters.map(cluster => {
   return points
 })
 
-const CovidWhatsappTSNEMap = () => {
-  const x = data.x
-  const y = data.y
-  const images = data.images
-  const [activeIndex, setActiveIndex] = useState(undefined)
-  const [activeCategories, setActiveCategories] = useState([])
+const images = data.images
+const x = data.x
+const y = data.y
 
-  const showPreview = (visibility, index, imageId) => {
-    console.log({ visibility, index })
+const CovidWhatsappTSNEMap = () => {
+  const [activeCategories, setActiveCategories] = useState([])
+  const [active, setActive] = useState(undefined)
+  const showPreview = useCallback((visibility, index, x, y) => {
     if (visibility) {
-      setActiveIndex(index)
+      setActive({ index, x, y })
     } else {
-      setActiveIndex(undefined)
+      setActive(undefined)
     }
-  }
+  }, [])
   return (
     <Box gap={"medium"} overflow={"visible"}>
       <Text size={"xsmall"}>
@@ -38,73 +38,84 @@ const CovidWhatsappTSNEMap = () => {
         Images have been blurred for preserving user privacy
       </Text>
       <Box id={"t-sne-map"} flex={true} overflow={"visible"}>
-        <svg
-          viewBox={`0 0 800 600`}
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          transform-origin="center"
-          style={{
-            overflow: "visible",
-            cursor: "crosshair",
-            padding: "20px",
-          }}
-          overflow={"visible"}
-        >
-          {points.map((point, ix) => {
-            return activeCategories.includes(clusters[ix].label) ? (
-              <polygon
-                points={point}
-                fill={clusters[ix].color ? clusters[ix].color : "red"}
-                style={{
-                  filter: "blur(12px) opacity(600%)",
-                }}
-              />
-            ) : null
-          })}
-          {data.images.map((imageId, ix) => (
-            <image
-              key={ix}
-              x={x[ix] * 800}
-              y={y[ix] * 600}
-              height={10}
-              width={10}
-              href={`data:image/jpeg;base64,${dataBase64[imageId].base64}`}
-              onMouseEnter={() => showPreview(true, ix)}
-              // onMouseLeave={() => showPreview(false)}
-              onClick={() =>
-                console.log(
-                  JSON.stringify({
-                    x: x[ix],
-                    y: y[ix],
-                    id: imageId,
-                    ix,
-                  })
-                )
-              }
-              imageRendering={"optimizeSpeed"}
-            />
-          ))}
-          {activeIndex && (
-            <g>
-              <rect
-                x={x[activeIndex] * 800}
-                y={y[activeIndex] * 600}
-                width={180}
-                height={180}
-                rx="4"
-              />
-              <image
-                href={`/covid-whatsapp-public-groups/anonymized_images/${images[activeIndex]}`}
-                height={180}
-                width={180}
-                x={x[activeIndex] * 800}
-                y={y[activeIndex] * 600}
-              />
-            </g>
-          )}
-        </svg>
+        <SVGViz activeCategories={activeCategories} showPreview={showPreview} />
       </Box>
       <ColoredCheckBoxGroup onChange={setActiveCategories} />
+      {active !== undefined ? <ImagePreview active={active} /> : null}
+    </Box>
+  )
+}
+
+const SVGViz = ({ activeCategories, showPreview }) => {
+  return (
+    <svg
+      viewBox={`0 0 800 600`}
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      transform-origin="center"
+      style={{
+        overflow: "visible",
+        cursor: "crosshair",
+      }}
+      overflow={"visible"}
+      onClick={() => showPreview(false)}
+    >
+      {points.map((point, ix) => {
+        return activeCategories.includes(clusters[ix].label) ? (
+          <polygon
+            points={point}
+            fill={clusters[ix].color ? clusters[ix].color : "red"}
+            style={{
+              filter: "blur(12px) opacity(600%)",
+            }}
+          />
+        ) : null
+      })}
+      {data.images.map((imageId, ix) => (
+        <image
+          key={ix}
+          x={x[ix] * 800}
+          y={y[ix] * 600}
+          height={10}
+          width={10}
+          href={`data:image/jpeg;base64,${dataBase64[imageId].base64}`}
+          onMouseEnter={e => showPreview(true, ix, e.clientX, e.clientY)}
+          // onClick={() =>
+          //   console.log(
+          //     JSON.stringify({
+          //       x: x[ix],
+          //       y: y[ix],
+          //       id: imageId,
+          //       ix,
+          //     })
+          //   )
+          // }
+          imageRendering={"optimizeSpeed"}
+        />
+      ))}
+    </svg>
+  )
+}
+
+const ImagePreview = ({ active }) => {
+  return (
+    <Box
+      width={"120px"}
+      height={"120px"}
+      background={"black"}
+      style={{
+        position: "fixed",
+        left: active.x,
+        top: active.y,
+        visibility: active === undefined ? "hidden" : "visible",
+      }}
+    >
+      <Image
+        fit="contain"
+        src={`/covid-whatsapp-public-groups/anonymized_images/${
+          images[active.index]
+        }`}
+      />
     </Box>
   )
 }
@@ -142,7 +153,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
   return (
     <Box direction={"row-responsive"} gap={"small"}>
       <Box
-        background={socialMediaScreenshot ? "#fbb4ae" : null}
+        background={socialMediaScreenshot ? "#fbb4ae" : "#ffffff"}
         border={{ color: "#fbb4ae", size: "small" }}
         onClick={() => setSocialMediaScreenshot(!socialMediaScreenshot)}
         pad={"xsmall"}
@@ -158,7 +169,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         </Text>
       </Box>
       <Box
-        background={otherScreenshot ? "#b3cde3" : null}
+        background={otherScreenshot ? "#b3cde3" : "#ffffff"}
         border={{ color: "#b3cde3", size: "small" }}
         onClick={() => setOtherScreenshot(!otherScreenshot)}
         pad={"xsmall"}
@@ -174,7 +185,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         </Text>
       </Box>
       <Box
-        background={news ? "#ccebc5" : null}
+        background={news ? "#ccebc5" : "#ffffff"}
         border={{ color: "#ccebc5", size: "small" }}
         onClick={() => setNews(!news)}
         pad={"xsmall"}
@@ -190,7 +201,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         </Text>
       </Box>
       <Box
-        background={medSup ? "#decbe4" : null}
+        background={medSup ? "#decbe4" : "#ffffff"}
         border={{ color: "#decbe4", size: "small" }}
         onClick={() => setMedSup(!medSup)}
         pad={"xsmall"}
@@ -206,7 +217,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         </Text>
       </Box>
       <Box
-        background={papDoc ? "#fed9a6" : null}
+        background={papDoc ? "#fed9a6" : "#ffffff"}
         border={{ color: "#fed9a6", size: "small" }}
         onClick={() => setPapDoc(!papDoc)}
         pad={"xsmall"}
@@ -222,7 +233,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         </Text>
       </Box>
       <Box
-        background={tmpMsg ? "#ffffcc" : null}
+        background={tmpMsg ? "#ffffcc" : "#ffffff"}
         border={{ color: "#ffffcc", size: "small" }}
         onClick={() => setTmpMsg(!tmpMsg)}
         pad={"xsmall"}
@@ -238,7 +249,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         </Text>
       </Box>
       <Box
-        background={relImg ? "#e5d8bd" : null}
+        background={relImg ? "#e5d8bd" : "#ffffff"}
         border={{ color: "#e5d8bd", size: "small" }}
         onClick={() => setRelImg(!relImg)}
         pad={"xsmall"}
