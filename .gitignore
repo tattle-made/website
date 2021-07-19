@@ -67,3 +67,6 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# Static Images i store sometimes for the covid report
+static/covid-whatsapp-public-groups/images/
