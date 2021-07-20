@@ -1,10 +1,24 @@
-import React from "react"
+import React, { useState } from "react"
 import DefaultLayout from "../../../components/default-layout"
-import { Box, Layer, Heading, Text, Paragraph, Button, Image } from "grommet"
+import {
+  Box,
+  Layer,
+  Heading,
+  Text,
+  Paragraph,
+  Button,
+  Image,
+  Table,
+  TableRow,
+  TableCell,
+  TableBody,
+  RadioButtonGroup,
+} from "grommet"
 import NarrowContentWrapper from "../../../components/atomic/layout/narrow-content-wrapper"
 import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
 import StickyBox from "react-sticky-box"
+import styled from "styled-components"
 
 const Index = () => {
   return (
@@ -36,35 +50,7 @@ const Index = () => {
         </NarrowContentWrapper>
       </Box>
       <Box className={"report"} direction={"row-responsive"}>
-        <Box width={"grow"}>
-          <StickyBox offsetTop={20} offsetBottom={20}>
-            <Box direction={"column"} pad={"small"} gap={"small"}>
-              <ol>
-                <li>
-                  <a href={"#section_1"}>Executive Summary</a>
-                </li>
-                <li>
-                  <a href={"#section_2"}>Why Study Covid-19?</a>
-                </li>
-                <li>
-                  <a href={"#section_3"}>Analysis</a>
-                </li>
-                <ol>
-                  <li>
-                    <a href={"#section_4"}>Trend One</a>
-                  </li>
-                  <li>
-                    <a href={"#section_5"}>Trend Two</a>
-                  </li>
-                </ol>
-                <li>
-                  <a href={"#section_6"}>Conclusions</a>
-                </li>
-              </ol>
-            </Box>
-          </StickyBox>
-        </Box>
-        <Box width={"720px"}>
+        <NarrowContentWrapper>
           <h2 id="executive-summary">Executive Summary</h2>
           <p>
             From April to June 2021, India was ravaged by the second wave of the
@@ -120,35 +106,42 @@ const Index = () => {
             analysis suggests that:
           </p>
           <ul>
-            <li>Even on WhatsApp, people relied heavily on other social media
-            platforms such as Twitter and Instagram to find verified leads.
-            Screenshots of posts from these platforms were commonly used method
-            to cross-post information. Twitter has fewer than 20 million users
-            in India. People act as ‘go-betweens’ and connect WhatsApp users to
-            information on Twitter and Instagram, giving content on these
-            platforms greater reach. </li> 
-            <li>Volunteering groups asked for patient
-            information in specific templates to make relief work more
-            efficient. People shared doctor prescriptions, medical receipts and
-            sensitive personal information (including the Biometric ID Aadhar)
-            in these groups when requesting for help. Private information was
-            circulated in groups of unknown persons who had come together for
-            public oriented service. Public and private boundaries are more
-            blurred in emergencies which demands greater attention to data
-            deletion protocols by group admins. </li> 
-            <li>The frequency of conversations
-            declined in these groups over time. Some groups were repurposed to
-            share information unrelated to Covid-19 such as chartered
-            accountancy related webinars reflecting the use of WhatsApp in
-            digital marketing.</li> 
-            <li>We compared the phone leads shared in the 21
-            WhatsApp groups with a national level database of verified leads
-            maintained by a fact-checking group and with a crowdsourced database
-            of ‘scam’ numbers. We found that less than 7% of the leads were
-            common between the WhatsApp groups we were tracking and the
-            databases. This indicates at the scale of information that was
-            circulated and challenge of verifying content during the second wave
-            of the pandemic.</li>
+            <li>
+              Even on WhatsApp, people relied heavily on other social media
+              platforms such as Twitter and Instagram to find verified leads.
+              Screenshots of posts from these platforms were commonly used
+              method to cross-post information. Twitter has fewer than 20
+              million users in India. People act as ‘go-betweens’ and connect
+              WhatsApp users to information on Twitter and Instagram, giving
+              content on these platforms greater reach.{" "}
+            </li>
+            <li>
+              Volunteering groups asked for patient information in specific
+              templates to make relief work more efficient. People shared doctor
+              prescriptions, medical receipts and sensitive personal information
+              (including the Biometric ID Aadhar) in these groups when
+              requesting for help. Private information was circulated in groups
+              of unknown persons who had come together for public oriented
+              service. Public and private boundaries are more blurred in
+              emergencies which demands greater attention to data deletion
+              protocols by group admins.{" "}
+            </li>
+            <li>
+              The frequency of conversations declined in these groups over time.
+              Some groups were repurposed to share information unrelated to
+              Covid-19 such as chartered accountancy related webinars reflecting
+              the use of WhatsApp in digital marketing.
+            </li>
+            <li>
+              We compared the phone leads shared in the 21 WhatsApp groups with
+              a national level database of verified leads maintained by a
+              fact-checking group and with a crowdsourced database of ‘scam’
+              numbers. We found that less than 7% of the leads were common
+              between the WhatsApp groups we were tracking and the databases.
+              This indicates at the scale of information that was circulated and
+              challenge of verifying content during the second wave of the
+              pandemic.
+            </li>
           </ul>
           <p>
             Taking note of the citizen and crowdsourced verification that sprung
@@ -192,7 +185,46 @@ const Index = () => {
             the final sample of posts, we also found messages in Tamil, Telugu
             and Gujarati.{" "}
           </p>
-          <p>[Insert Table]</p>
+
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Total Number of Groups</strong>
+                </TableCell>
+                <TableCell>21</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Number of Text Messages</strong>
+                </TableCell>
+                <TableCell>13,524</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Total Number of Images</strong>
+                </TableCell>
+                <TableCell>2,415</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Number of Unique Images</strong>
+                </TableCell>
+                <TableCell>2,296</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>Duration of Analysis</strong>
+                </TableCell>
+                <TableCell>
+                  <ul style={{ listStyleType: "none", padding: "0" }}>
+                    <li>29 April 2021 – 24 June 2021 (for 16 groups)</li>
+                    <li>9 June 2021 – 24 June 2021 (for 5 groups)</li>
+                  </ul>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
           <p>
             We relied primarily on automated techniques for broad insights about
             the content on the platforms. These techniques allowed for at-scale
@@ -208,12 +240,12 @@ const Index = () => {
           <h3 id="trend-1-heavy-use-of-information-from-other-social-media-platforms">
             Trend 1: Heavy Use of Information from Other Social Media Platforms
           </h3>
-          <p>
+          <Box width={"100%"}>
             <img
               src="/covid-whatsapp-public-groups/report_images/T-Sne_2.png"
               alt="Trend2_T-Sne"
             />
-          </p>
+          </Box>
           <p>
             The biggest cluster in the vector embeddings based image grouping is
             of screenshots of posts from Twitter and Instagram. A scan of this
@@ -235,19 +267,19 @@ const Index = () => {
             to other WhatsApp chat groups; and 25 contained links to Telegram
             groups.{" "}
           </p>
-          <p>
+          <Box width={"100%"}>
             <img
               src="/covid-whatsapp-public-groups/report_images/Screen%20Shot%202021-07-14%20at%2010.00.34%20PM.png"
               alt="GraphLinks"
             />
-          </p>
+          </Box>
           <h3 id="trend-2">Trend 2</h3>
-          <p>
+          <Box width={"100%"}>
             <img
               src="/covid-whatsapp-public-groups/report_images/t-sne.png"
               alt="Trend2_T-Sne"
             />
-          </p>
+          </Box>
           <p>
             Another big cluster in the image similarity grouping is of
             medicines, concentrators, medical prescriptions, receipts and other
@@ -263,12 +295,12 @@ const Index = () => {
           <h3 id="trend-3-healing-does-not-imply-only-medical-treatment">
             Trend 3: Healing Does Not Imply Only Medical Treatment
           </h3>
-          <p>
+          <Box width={"100%"}>
             <img
-              src="/covid-whatsapp-public-groups/report_images/t-sne_3.png"
+              src="/covid-whatsapp-public-groups/report_images/T_Sne_3.png"
               alt="Trend3_T-Sne"
             />
-          </p>
+          </Box>
           <p>
             In the image grouping, we also found two unexpected clusters of
             images of gods and of close-up of people’s faces. We tracked the
@@ -332,17 +364,7 @@ const Index = () => {
               words in text messages, are not amongst even the ten most
               frequently used words in images.{" "}
             </p>
-            <p>
-              <img
-                src="/covid-whatsapp-public-groups/report_images/text_wordcloud_13July.png"
-                alt="text_wordcloud"
-              />
-              <img
-                src="/covid-whatsapp-public-groups/report_images/image_wordcloud_26June.png"
-                alt="image_wordcloud"
-              />
-            </p>
-            <p>[INSERT TWO TABLES]</p>
+            <ImageTableToggle />
             <p>
               Absolute numbers of occurrence of terms across images and text
               can’t be directly compared since the volume of text messages is
@@ -351,12 +373,12 @@ const Index = () => {
               term is used divided by total number of words) in both these
               datasets.{" "}
             </p>
-            <p>
+            <Box width={"100%"}>
               <img
-                src="static/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
+                src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
                 alt="comparison"
               />
-            </p>
+            </Box>
             <p>
               This figure shows the percentage frequency of terms in images
               against the percentage frequency of terms in text. The graph is
@@ -387,12 +409,12 @@ const Index = () => {
               first week and carried out temporal analysis over a 7-week period
               starting from 6th May 2021 and ending on 25th June 2021.
             </p>
-            <p>
+            <Box width={"100%"}>
               <img
-                src="static/covid-whatsapp-public-groups/report_images/messages_over_time.png"
+                src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
                 alt="frequency_messages"
               />
-            </p>
+            </Box>
             <p>
               To carry out the temporal analysis, we analyzed the prominent
               words uses in each of the 7 weeks. The aggregate analysis of word
@@ -488,18 +510,17 @@ const Index = () => {
               technically hard-coded in a message within the ambit of personal
               and secure messaging.{" "}
             </p>
-            <p>
+            <Box width={"100%"} gap={"small"}>
               <img
                 src="/covid-whatsapp-public-groups/report_images/credibility_2.png"
                 alt="credibility_2"
               />
-            </p>
-            <p>
+
               <img
                 src="/covid-whatsapp-public-groups/report_images/credibility_3.png"
                 alt="credibility_3"
               />
-            </p>
+            </Box>
             <p>
               The technical design of messaging apps notwithstanding, some
               credibility markers to assess whether a lead shared could be
@@ -731,10 +752,110 @@ const Index = () => {
               https://github.com/tattle-made/data-experiments/blob/master/whatsapp_groups_analysis/
             </a>
           </p>
-        </Box>
-        <Box flex={"shrink"} direction={"column"}></Box>
+        </NarrowContentWrapper>
       </Box>
     </DefaultLayout>
+  )
+}
+
+const ImageTableToggle = () => {
+  const [value, setValue] = React.useState("one")
+  return (
+    <Box width={"100%"}>
+      <RadioButtonGroup
+        direction={"row"}
+        name="selection"
+        options={["one", "two"]}
+        value={value}
+        onChange={event => setValue(event.target.value)}
+      />
+      {value === "one" && (
+        <Box width={"100%"} gap={"small"} direction={'row-responsive'}>
+          <Box width={"small"}>
+            <img
+              src="/covid-whatsapp-public-groups/report_images/text_wordcloud_13July.png"
+              alt="text_wordcloud"
+            />
+          </Box>
+          <Box>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Need</strong>
+                  </TableCell>
+                  <TableCell>890</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Patient</strong>
+                  </TableCell>
+                  <TableCell>748</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Contact</strong>
+                  </TableCell>
+                  <TableCell>659</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Help</strong>
+                  </TableCell>
+                  <TableCell>595</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </Box>
+        </Box>
+      )}
+      {value === "two" && (
+        <Box width={"100%"} gap={"small"} direction={'row-responsive'}>
+          <Box width={"small"}>
+            <img
+              src="/covid-whatsapp-public-groups/report_images/image_wordcloud_26June.png"
+              alt="image_wordcloud"
+            />
+          </Box>
+          <Box>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Patient</strong>
+                  </TableCell>
+                  <TableCell>1,332</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Hospital</strong>
+                  </TableCell>
+                  <TableCell>1,290</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Available</strong>
+                  </TableCell>
+                  <TableCell>1,270</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Day</strong>
+                  </TableCell>
+                  <TableCell>682</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell scope="row">
+                    <strong>Report</strong>
+                  </TableCell>
+                  <TableCell>648</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </Box>
+        </Box>
+      )}
+    </Box>
   )
 }
 
