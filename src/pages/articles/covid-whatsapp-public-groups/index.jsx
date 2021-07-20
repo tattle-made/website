@@ -360,6 +360,12 @@ const Index = () => {
           Trend 3: Healing Does Not Imply Only Medical Treatment
         </Text>
 
+        <Box width={"100%"}>
+          <img
+            src="/covid-whatsapp-public-groups/report_images/T_Sne_3.png"
+            alt="Trend2_T-Sne"
+          />
+        </Box>
         <p>
           In the image grouping, we also found two unexpected clusters of images
           of gods and of close-up of people’s faces. We tracked the images of
