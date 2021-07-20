@@ -35,6 +35,9 @@
     "react-feather": "^2.0.8",
     "react-helmet": "6.1.0",
     "react-mailchimp-subscribe": "^2.1.0",
+    "react-markdown": "^6.0.2",
+    "react-sticky-box": "^0.9.3",
+    "remark-gfm": "^1.0.0",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

@@ -5,7 +5,7 @@ import { Box, ResponsiveContext } from "grommet"
  * @function NarrowSection
  **/
 
-const NarrowContentWrapper = ({ children, justify }) => {
+const NarrowContentWrapper = ({ children, justify, ...props }) => {
   const size = useContext(ResponsiveContext)
   const Section = () => (
     <Box
@@ -40,11 +40,11 @@ const NarrowContentWrapper = ({ children, justify }) => {
     </Box>
   )
   return size === "small" ? (
-    <SmallSection>{children}</SmallSection>
+    <SmallSection props={props}>{children}</SmallSection>
   ) : size === "medium" ? (
-    <MediumSection>{children}</MediumSection>
+    <MediumSection props={props}>{children}</MediumSection>
   ) : (
-    <Section>{children}</Section>
+    <Section props={props}>{children}</Section>
   )
 }
 
