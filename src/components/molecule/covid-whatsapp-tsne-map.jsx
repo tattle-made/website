@@ -80,17 +80,6 @@ const SVGViz = ({ activeCategories, showPreview }) => {
           width={10}
           href={`data:image/jpeg;base64,${dataBase64[imageId].base64}`}
           onMouseEnter={e => showPreview(true, ix, e.clientX, e.clientY)}
-          onClick={()=> console.log({imageId})}
-          // onClick={() =>
-          //   console.log(
-          //     JSON.stringify({
-          //       x: x[ix],
-          //       y: y[ix],
-          //       id: imageId,
-          //       ix,
-          //     })
-          //   )
-          // }
           imageRendering={"optimizeSpeed"}
         />
       ))}
@@ -101,8 +90,8 @@ const SVGViz = ({ activeCategories, showPreview }) => {
 const ImagePreview = ({ active }) => {
   return (
     <Box
-      width={"120px"}
-      height={"120px"}
+      width={"240px"}
+      height={"240px"}
       background={"black"}
       style={{
         position: "fixed",
