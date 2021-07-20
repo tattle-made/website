@@ -452,10 +452,12 @@ const Index = () => {
               first week and carried out temporal analysis over a 7-week period
               starting from 6th May 2021 and ending on 25th June 2021.
             </p>
-            <Box width={"100%"} border={'all'} pad={'small'}>
-              <img
+            <Box height={"small"} >
+              <Image
                 src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
                 alt="frequency_messages"
+                fit={'contain'}
+                alignSelf={'start'}
               />
             </Box>
             <p>
@@ -553,15 +555,17 @@ const Index = () => {
               technically hard-coded in a message within the ambit of personal
               and secure messaging.{" "}
             </p>
-            <Box width={"100%"} gap={"small"} border={'all'} pad={'small'}>
-              <img
+            <Box height={"small"} gap={"small"} border={'all'} pad={'small'}>
+              <Image
                 src="/covid-whatsapp-public-groups/report_images/credibility_2.png"
-                alt="credibility_2"
+                alt={"credibility_2"}
+                fit={'contain'}
               />
 
-              <img
+              <Image
                 src="/covid-whatsapp-public-groups/report_images/credibility_3.png"
                 alt="credibility_3"
+                fit={'contain'}
               />
             </Box>
             <p>
