@@ -32,7 +32,7 @@ const CovidWhatsappTSNEMap = () => {
     }
   }, [])
   return (
-    <Box gap={"medium"} overflow={"visible"} border={'all'} pad={'small'}>
+    <Box gap={"medium"} overflow={"visible"} border={'all'} pad={'small'} onMouseLeave={()=>showPreview(false)}>
       <Text size={"xsmall"}>
         {" "}
         Images have been blurred for preserving user privacy
@@ -143,12 +143,12 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
   return (
     <Box direction={"row"} gap={"small"} wrap={'true'}>
       <Box
-        background={socialMediaScreenshot ? "#fbb4ae" : "#ffffff"}
-        border={{ color: "#fbb4ae", size: "small" }}
+        background={socialMediaScreenshot ? "#ffffcc" : "#ffffff"}
+        border={{ color: "#ffffcc", size: "small" }}
         onClick={() => setSocialMediaScreenshot(!socialMediaScreenshot)}
         pad={"xsmall"}
-        focusIndicator={"false"}
-        hoverIndicator={"false"}
+        focusIndicator={false}
+        hoverIndicator={false}
         width={'fit-content'}
         margin={{bottom:'xsmall'}}
       >
@@ -165,8 +165,8 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         border={{ color: "#b3cde3", size: "small" }}
         onClick={() => setOtherScreenshot(!otherScreenshot)}
         pad={"xsmall"}
-        focusIndicator={"false"}
-        hoverIndicator={"false"}
+        focusIndicator={false}
+        hoverIndicator={false}
         margin={{bottom:'xsmall'}}
       >
         <Text
@@ -182,8 +182,8 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         border={{ color: "#ccebc5", size: "small" }}
         onClick={() => setNews(!news)}
         pad={"xsmall"}
-        focusIndicator={"false"}
-        hoverIndicator={"false"}
+        focusIndicator={false}
+        hoverIndicator={false}
         margin={{bottom:'xsmall'}}
       >
         <Text
@@ -199,8 +199,8 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         border={{ color: "#decbe4", size: "small" }}
         onClick={() => setMedSup(!medSup)}
         pad={"xsmall"}
-        focusIndicator={"false"}
-        hoverIndicator={"false"}
+        focusIndicator={false}
+        hoverIndicator={false}
         margin={{bottom:'xsmall'}}
       >
         <Text
@@ -216,8 +216,8 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         border={{ color: "#fed9a6", size: "small" }}
         onClick={() => setPapDoc(!papDoc)}
         pad={"xsmall"}
-        focusIndicator={"false"}
-        hoverIndicator={"false"}
+        focusIndicator={false}
+        hoverIndicator={false}
         margin={{bottom:'xsmall'}}
       >
         <Text
@@ -229,12 +229,12 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         </Text>
       </Box>
       <Box
-        background={tmpMsg ? "#ffffcc" : "#ffffff"}
-        border={{ color: "#ffffcc", size: "small" }}
+        background={tmpMsg ? "#fbb4ae" : "#ffffff"}
+        border={{ color: "#fbb4ae", size: "small" }}
         onClick={() => setTmpMsg(!tmpMsg)}
         pad={"xsmall"}
-        focusIndicator={"false"}
-        hoverIndicator={"false"}
+        focusIndicator={false}
+        hoverIndicator={false}
         margin={{bottom:'xsmall'}}
       >
         <Text
@@ -250,8 +250,8 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         border={{ color: "#e5d8bd", size: "small" }}
         onClick={() => setRelImg(!relImg)}
         pad={"xsmall"}
-        focusIndicator={"false"}
-        hoverIndicator={"false"}
+        focusIndicator={false}
+        hoverIndicator={false}
         margin={{bottom:'xsmall'}}
       >
         <Text

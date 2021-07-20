@@ -286,7 +286,7 @@
     },
     {
       "label": "Templatized Messages",
-      "color": "#ffffcc",
+      "color": "#fbb4ae",
       "points": [
         {
           "x": 0.875,
@@ -430,7 +430,7 @@
     },
     {
       "label": "Screenshots (Social Media)",
-      "color": "#fbb4ae",
+      "color": "#ffffcc",
       "points": [
         {
           "x": 0.24,
