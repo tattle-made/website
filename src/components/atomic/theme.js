@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 const TattleTheme = {
   global: {
     font: {
@@ -128,6 +130,24 @@ const TattleTheme = {
       family: "Raleway",
     },
   },
+  table:{
+    body:{
+      border:'all',
+      pad:{vertical:'xsmall'}
+    }
+  },
+  radioButton:{
+    font : {
+      weight : 400
+    },
+    size : "1em",
+    container: {
+      extend: css`
+        font-size : 16px;
+        font-family : Raleway
+      `,
+    },
+  }
 }
 
 export default TattleTheme

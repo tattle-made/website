@@ -19,6 +19,18 @@ import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
 import StickyBox from "react-sticky-box"
 import styled from "styled-components"
+import CovidWhatsappTSNEMap from "../../../components/molecule/covid-whatsapp-tsne-map"
+
+const ImageText = styled.div`
+  img {
+    width: 40%;
+    float: left;
+    margin-right: 1.2em;
+  }
+  p {
+    display: inline;
+  }
+`
 
 const Index = () => {
   return (
@@ -237,43 +249,57 @@ const Index = () => {
             of trends that merit further investigation, and not conclusive
             assertions.{" "}
           </p>
-          <h3 id="trend-1-heavy-use-of-information-from-other-social-media-platforms">
+          <Text
+            size={"small"}
+            weight={700}
+            id="section3_1"
+            margin={{ bottom: "small" }}
+          >
             Trend 1: Heavy Use of Information from Other Social Media Platforms
-          </h3>
-          <Box width={"100%"}>
+          </Text>
+
+          <ImageText>
             <img
               src="/covid-whatsapp-public-groups/report_images/T-Sne_2.png"
               alt="Trend2_T-Sne"
             />
-          </Box>
-          <p>
-            The biggest cluster in the vector embeddings based image grouping is
-            of screenshots of posts from Twitter and Instagram. A scan of this
-            cluster shows that majority of these screenshots are leads for
-            medical oxygen suppliers, drugs, hospital and ICU facilities and
-            other medical supplies, indicating heavy reliance on other social
-            media platforms for finding medical aid. The cluster of web and
-            mobile screenshot images is also similarly large. This cluster
-            contains a greater diversity in the content of images—some are
-            screenshots of WhatsApp and Facebook posts and some of apps and
-            websites with resources of Covid-19 related information.{" "}
-          </p>
-          <p>
-            At least 11% of the text messages (1,406 messages) contained links
-            to other websites. Twitter was the most popular social media in
-            these WhatsApp groups. We found that 21% of all external links (299
-            messages) contained links to tweets. There were 36 messages with
-            YouTube links; 39 with Instagram links; 169 messages contained links
-            to other WhatsApp chat groups; and 25 contained links to Telegram
-            groups.{" "}
-          </p>
-          <Box width={"100%"}>
+            <p>
+              The biggest cluster in the vector embeddings based image grouping
+              is of screenshots of posts from Twitter and Instagram. A scan of
+              this cluster shows that majority of these screenshots are leads
+              for medical oxygen suppliers, drugs, hospital and ICU facilities
+              and other medical supplies, indicating heavy reliance on other
+              social media platforms for finding medical aid. The cluster of web
+              and mobile screenshot images is also similarly large. This cluster
+              contains a greater diversity in the content of images—some are
+              screenshots of WhatsApp and Facebook posts and some of apps and
+              websites with resources of Covid-19 related information.
+            </p>
+          </ImageText>
+
+          <ImageText>
             <img
               src="/covid-whatsapp-public-groups/report_images/Screen%20Shot%202021-07-14%20at%2010.00.34%20PM.png"
               alt="GraphLinks"
             />
-          </Box>
-          <h3 id="trend-2">Trend 2</h3>
+            <p>
+              At least 11% of the text messages (1,406 messages) contained links
+              to other websites. Twitter was the most popular social media in
+              these WhatsApp groups. We found that 21% of all external links
+              (299 messages) contained links to tweets. There were 36 messages
+              with YouTube links; 39 with Instagram links; 169 messages
+              contained links to other WhatsApp chat groups; and 25 contained
+              links to Telegram groups.{" "}
+            </p>
+          </ImageText>
+          <Text
+            size={"small"}
+            weight={700}
+            id="section3_2"
+            margin={{ bottom: "small" }}
+          >
+            Trend 2
+          </Text>
           <Box width={"100%"}>
             <img
               src="/covid-whatsapp-public-groups/report_images/t-sne.png"
@@ -292,15 +318,16 @@ const Index = () => {
             availing or correcting information about these specific medical
             resources.{" "}
           </p>
-          <h3 id="trend-3-healing-does-not-imply-only-medical-treatment">
+
+          <Text
+            size={"small"}
+            weight={700}
+            id="section3_3"
+            margin={{ bottom: "small" }}
+          >
             Trend 3: Healing Does Not Imply Only Medical Treatment
-          </h3>
-          <Box width={"100%"}>
-            <img
-              src="/covid-whatsapp-public-groups/report_images/T_Sne_3.png"
-              alt="Trend3_T-Sne"
-            />
-          </Box>
+          </Text>
+          <CovidWhatsappTSNEMap />
           <p>
             In the image grouping, we also found two unexpected clusters of
             images of gods and of close-up of people’s faces. We tracked the
@@ -310,15 +337,21 @@ const Index = () => {
             sharing resources for Covid-19 relief, but was predominantly used
             for sharing images of different Indians gods.{" "}
           </p>
-          <h3 id="trend-4-low-overlap-with-database-s-of-verified-leads-scams">
+          <h3 id="trend-4-low-overlap-with-database-s-of-verified-leads-scams"></h3>
+          <Text
+            size={"small"}
+            weight={700}
+            id="section3_4"
+            margin={{ bottom: "small" }}
+          >
             Trend 4: Low Overlap with Database(s) of Verified Leads/ Scams
-          </h3>
+          </Text>
           <p>
             Through basic manual annotation of the text messages on the 21
             WhatsApp groups, we discovered at least 257 unique phone numbers
             shared as leads. We compared the phone numbers shared in the
             WhatsApp groups to a database of Covid-19 Helpline numbers verified
-            by FactChecker.in, the oldest fact-checking group in India[^3]. The
+            by FactChecker.in, the oldest fact-checking group in India³. The
             fact-checking group has been verifying Covid-19 helpline numbers
             sourced through a tip line as well as through social media
             monitoring since the beginning of the second wave. As of July 4,
@@ -332,25 +365,30 @@ const Index = () => {
             <p>
               We also compared the phone leads in the text messages against a
               crowdsourced database of scam numbers called CoViD Scam Directory.
-              The database is maintained by the volunteering group:
-              Cov.Social[^4]. Any individual could submit an entry for a ‘scam’
-              number. As of July 4, 2021, the database had 812 phone records of
-              which 647 were unique. The entire database of numbers is not open
-              access, but the group shared the database with us on request. 16
-              phone numbers reported as ‘scams’ on the CoViD Scam Directory were
-              found in the text messages. But only 2 of the numbers from the
-              CoViD Scam Directory were shared in the WhatsApp groups as
-              warnings. The remaining 14 were shared as genuine leads in the
-              WhatsApp groups. Since the CoViD Scam Directory is crowdsourced,
-              all numbers listed in the directory can&#39;t be assumed to be
-              scam. It is however notable that even in this database the overlap
-              of numbers is low—less than 6% of the leads shared in the 21
-              WhatsApp groups were captured in the CoViD Scam Directory.
+              The database is maintained by the volunteering group: Cov.Social⁴.
+              Any individual could submit an entry for a ‘scam’ number. As of
+              July 4, 2021, the database had 812 phone records of which 647 were
+              unique. The entire database of numbers is not open access, but the
+              group shared the database with us on request. 16 phone numbers
+              reported as ‘scams’ on the CoViD Scam Directory were found in the
+              text messages. But only 2 of the numbers from the CoViD Scam
+              Directory were shared in the WhatsApp groups as warnings. The
+              remaining 14 were shared as genuine leads in the WhatsApp groups.
+              Since the CoViD Scam Directory is crowdsourced, all numbers listed
+              in the directory can&#39;t be assumed to be scam. It is however
+              notable that even in this database the overlap of numbers is
+              low—less than 6% of the leads shared in the 21 WhatsApp groups
+              were captured in the CoViD Scam Directory.
             </p>
-            <h3 id="trend-5-differences-between-text-contained-in-images-and-text-contained-in-text-messages">
+            <Text
+              size={"small"}
+              weight={700}
+              id="section3_4"
+              margin={{ bottom: "small" }}
+            >
               Trend 5: Differences between Text Contained in Images and Text
               Contained in Text Messages
-            </h3>
+            </Text>
             <p>
               We wanted to understand if the images contained similar
               information as text messages or if the information shared varied
@@ -373,7 +411,7 @@ const Index = () => {
               term is used divided by total number of words) in both these
               datasets.{" "}
             </p>
-            <Box width={"100%"}>
+            <Box width={"100%"} border={'all'} pad={'small'} >
               <img
                 src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
                 alt="comparison"
@@ -398,9 +436,14 @@ const Index = () => {
               prone to error. The claim presented here merits more in-depth
               research, with more manual scanning of individual messages.{" "}
             </p>
-            <h3 id="trend-6-variation-in-conversation-over-time-and-across-groups">
+            <Text
+              size={"small"}
+              weight={700}
+              id="section3_4"
+              margin={{ bottom: "small" }}
+            >
               Trend 6: Variation in Conversation Over Time and Across Groups
-            </h3>
+            </Text>
             <p>
               Since we had tracked only sixteen groups for the entire 8-week
               duration, we limited the temporal analysis to the sixteen groups.
@@ -409,7 +452,7 @@ const Index = () => {
               first week and carried out temporal analysis over a 7-week period
               starting from 6th May 2021 and ending on 25th June 2021.
             </p>
-            <Box width={"100%"}>
+            <Box width={"100%"} border={'all'} pad={'small'}>
               <img
                 src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
                 alt="frequency_messages"
@@ -510,7 +553,7 @@ const Index = () => {
               technically hard-coded in a message within the ambit of personal
               and secure messaging.{" "}
             </p>
-            <Box width={"100%"} gap={"small"}>
+            <Box width={"100%"} gap={"small"} border={'all'} pad={'small'}>
               <img
                 src="/covid-whatsapp-public-groups/report_images/credibility_2.png"
                 alt="credibility_2"
@@ -615,9 +658,9 @@ const Index = () => {
               using this method only for text messages. We used an in-house
               developed tool that handles redundancy in different exports from
               the same chat and accounts for the minor time fluctuations in the
-              exported files.[^1] For media items we used a complementary
-              approach of saving the media items downloaded in the ‘WhatsApp
-              Media Downloads’. Although WhatsApp is supposed to automatically
+              exported files.¹ For media items we used a complementary approach
+              of saving the media items downloaded in the ‘WhatsApp Media
+              Downloads’. Although WhatsApp is supposed to automatically
               download media items it receives if the ‘Auto Download Media’
               setting is enabled, we were not able to reproduce this behavior on
               the Samsung Galaxy M10 we used. We resorted to manually clicking
@@ -674,7 +717,7 @@ const Index = () => {
               representations of the images are indexed in Elasticsearch which
               helps us query for similar images. To visualize these high
               dimensional vectors, we use a technique called t-Distributed
-              Stochastic Neighbor Embedding (t-SNE)[^2]. It is a dimensionality
+              Stochastic Neighbor Embedding (t-SNE)². It is a dimensionality
               reduction technique that represents high dimensional data (such as
               images) on a 2D plane as seen in this report. The labelling of the
               clusters was done manually by observing the data within the
@@ -733,7 +776,7 @@ const Index = () => {
             of occurrence) and plot the percentage of occurrence of a word in
             both these corpus on a scatter plot. Since textual content typically
             follows Zipf’s law, we used a log scale. We generally followed the
-            methodology described by Silge and Robinson (2017)[^4].{" "}
+            methodology described by Silge and Robinson (2017)⁴.{" "}
           </p>
           <p>
             <em>TF-IDF across Weeks</em>
@@ -759,19 +802,19 @@ const Index = () => {
 }
 
 const ImageTableToggle = () => {
-  const [value, setValue] = React.useState("one")
+  const [value, setValue] = React.useState("Text")
   return (
-    <Box width={"100%"}>
+    <Box width={"100%"} gap={"small"}>
       <RadioButtonGroup
         direction={"row"}
         name="selection"
-        options={["one", "two"]}
+        options={["Text", "Image"]}
         value={value}
         onChange={event => setValue(event.target.value)}
       />
-      {value === "one" && (
-        <Box width={"100%"} gap={"small"} direction={'row-responsive'}>
-          <Box width={"small"}>
+      {value === "Text" && (
+        <Box width={"100%"} gap={"large"} direction={"row"} wrap={true}>
+          <Box width={"small"} border={'all'} pad={'xsmall'}>
             <img
               src="/covid-whatsapp-public-groups/report_images/text_wordcloud_13July.png"
               alt="text_wordcloud"
@@ -782,35 +825,51 @@ const ImageTableToggle = () => {
               <TableBody>
                 <TableRow>
                   <TableCell scope="row">
-                    <strong>Need</strong>
+                    <Text size={"xsmall"} weight={600}>
+                      Need
+                    </Text>
                   </TableCell>
-                  <TableCell>890</TableCell>
+                  <TableCell>
+                    <Text size={"xsmall"}>890</Text>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell scope="row">
-                    <strong>Patient</strong>
+                    <Text size={"xsmall"} weight={600}>
+                      Patient
+                    </Text>
                   </TableCell>
-                  <TableCell>748</TableCell>
+                  <TableCell>
+                    <Text size={"xsmall"}>748</Text>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell scope="row">
-                    <strong>Contact</strong>
+                    <Text size={"xsmall"} weight={600}>
+                      Contact
+                    </Text>
                   </TableCell>
-                  <TableCell>659</TableCell>
+                  <TableCell>
+                    <Text size={"xsmall"}>659</Text>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell scope="row">
-                    <strong>Help</strong>
+                    <Text size={"xsmall"} weight={600}>
+                      Help
+                    </Text>
                   </TableCell>
-                  <TableCell>595</TableCell>
+                  <TableCell>
+                    <Text size={"xsmall"}>595</Text>
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </Box>
         </Box>
       )}
-      {value === "two" && (
-        <Box width={"100%"} gap={"small"} direction={'row-responsive'}>
+      {value === "Image" && (
+        <Box width={"100%"} gap={"small"} direction={"row"} wrap={true}>
           <Box width={"small"}>
             <img
               src="/covid-whatsapp-public-groups/report_images/image_wordcloud_26June.png"

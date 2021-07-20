@@ -32,7 +32,7 @@ const CovidWhatsappTSNEMap = () => {
     }
   }, [])
   return (
-    <Box gap={"medium"} overflow={"visible"}>
+    <Box gap={"medium"} overflow={"visible"} border={'all'} pad={'small'}>
       <Text size={"xsmall"}>
         {" "}
         Images have been blurred for preserving user privacy
@@ -141,7 +141,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
   ])
 
   return (
-    <Box direction={"row-responsive"} gap={"small"}>
+    <Box direction={"row"} gap={"small"} wrap={'true'}>
       <Box
         background={socialMediaScreenshot ? "#fbb4ae" : "#ffffff"}
         border={{ color: "#fbb4ae", size: "small" }}
@@ -149,6 +149,8 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         pad={"xsmall"}
         focusIndicator={"false"}
         hoverIndicator={"false"}
+        width={'fit-content'}
+        margin={{bottom:'xsmall'}}
       >
         <Text
           size={"small"}
@@ -165,6 +167,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         pad={"xsmall"}
         focusIndicator={"false"}
         hoverIndicator={"false"}
+        margin={{bottom:'xsmall'}}
       >
         <Text
           size={"small"}
@@ -181,6 +184,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         pad={"xsmall"}
         focusIndicator={"false"}
         hoverIndicator={"false"}
+        margin={{bottom:'xsmall'}}
       >
         <Text
           size={"small"}
@@ -197,6 +201,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         pad={"xsmall"}
         focusIndicator={"false"}
         hoverIndicator={"false"}
+        margin={{bottom:'xsmall'}}
       >
         <Text
           size={"small"}
@@ -213,6 +218,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         pad={"xsmall"}
         focusIndicator={"false"}
         hoverIndicator={"false"}
+        margin={{bottom:'xsmall'}}
       >
         <Text
           size={"small"}
@@ -229,6 +235,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         pad={"xsmall"}
         focusIndicator={"false"}
         hoverIndicator={"false"}
+        margin={{bottom:'xsmall'}}
       >
         <Text
           size={"small"}
@@ -245,6 +252,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
         pad={"xsmall"}
         focusIndicator={"false"}
         hoverIndicator={"false"}
+        margin={{bottom:'xsmall'}}
       >
         <Text
           size={"small"}
