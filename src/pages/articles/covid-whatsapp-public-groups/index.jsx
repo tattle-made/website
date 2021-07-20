@@ -200,42 +200,77 @@ const Index = () => {
           <TableBody>
             <TableRow>
               <TableCell scope="row">
-                <strong>Total Number of Groups</strong>
+                <Text size={"xsmall"} weight={600}>
+                  {" "}
+                  Total Number of Groups{" "}
+                </Text>
               </TableCell>
-              <TableCell>21</TableCell>
+              <TableCell>
+                <Text size={"xsmall"}>21</Text>
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell scope="row">
-                <strong>Number of Text Messages</strong>
+                <Text size={"xsmall"} weight={600}>
+                  {" "}
+                  Number of Text Messages{" "}
+                </Text>
               </TableCell>
-              <TableCell>13,524</TableCell>
+              <TableCell>
+                <Text size={"xsmall"}>13,524</Text>
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell scope="row">
-                <strong>Total Number of Images</strong>
+                <Text size={"xsmall"} weight={600}>
+                  {" "}
+                  Total Number of Images{" "}
+                </Text>
               </TableCell>
-              <TableCell>2,415</TableCell>
+              <TableCell>
+                <Text size={"xsmall"}>2,415</Text>
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell scope="row">
-                <strong>Number of Unique Images</strong>
+                <Text size={"xsmall"} weight={600}>
+                  {" "}
+                  Number of Unique Images{" "}
+                </Text>
               </TableCell>
-              <TableCell>2,296</TableCell>
+              <TableCell>
+                <Text size={"xsmall"}>2,296</Text>
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell scope="row">
-                <strong>Number of Unique Senders</strong>
+                <Text size={"xsmall"} weight={600}>
+                  {" "}
+                  Number of Unique Senders{" "}
+                </Text>
               </TableCell>
-              <TableCell>1,192</TableCell>
+              <TableCell>
+                <Text size={"xsmall"}>1,192</Text>
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell scope="row">
-                <strong>Duration of Analysis</strong>
+                <Text size={"xsmall"} weight={600}>
+                  Duration of Analysis{" "}
+                </Text>
               </TableCell>
               <TableCell>
                 <ul style={{ listStyleType: "none", padding: "0" }}>
-                  <li>29 April 2021 – 24 June 2021 (for 16 groups)</li>
-                  <li>9 June 2021 – 24 June 2021 (for 5 groups)</li>
+                  <li>
+                    <Text size={"xsmall"}>
+                      29 April 2021 – 24 June 2021 (for 16 groups)
+                    </Text>
+                  </li>
+                  <li>
+                    <Text size={"xsmall"}>
+                      9 June 2021 – 24 June 2021 (for 5 groups)
+                    </Text>
+                  </li>
                 </ul>
               </TableCell>
             </TableRow>
@@ -294,7 +329,7 @@ const Index = () => {
           size={"small"}
           weight={700}
           id="section3_2"
-          margin={{ bottom: "small", top: 'medium' }}
+          margin={{ bottom: "small", top: "medium" }}
         >
           Trend 2
         </Text>
@@ -416,7 +451,6 @@ const Index = () => {
               alignSelf={"start"}
             />
           </Box>
-          
           <p>
             This figure shows the percentage frequency of terms in images
             against the percentage frequency of terms in text. The graph is
@@ -557,14 +591,14 @@ const Index = () => {
               src="/covid-whatsapp-public-groups/report_images/credibility_2.png"
               alt={"credibility_2"}
               fit={"contain"}
-              alignSelf={'start'}
+              alignSelf={"start"}
             />
 
             <Image
               src="/covid-whatsapp-public-groups/report_images/credibility_3.png"
               alt="credibility_3"
               fit={"contain"}
-              alignSelf={'start'}
+              alignSelf={"start"}
             />
           </Box>
           <p>

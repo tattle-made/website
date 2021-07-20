@@ -133,7 +133,7 @@ const TattleTheme = {
   table:{
     body:{
       border:'all',
-      pad:{vertical:'xsmall'}
+      pad:{vertical:'none'}
     }
   },
   radioButton:{
