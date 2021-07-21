@@ -32,7 +32,7 @@ const CovidWhatsappTSNEMap = () => {
     }
   }, [])
   return (
-    <Box gap={"medium"} overflow={"visible"} border={'all'} pad={'small'} onMouseLeave={()=>showPreview(false)}>
+    <Box gap={"medium"} overflow={"visible"} pad={'small'} onMouseLeave={()=>showPreview(false)}>
       <Text size={"xsmall"}>
         {" "}
         Images have been blurred for preserving user privacy
@@ -40,7 +40,7 @@ const CovidWhatsappTSNEMap = () => {
       <Box id={"t-sne-map"} flex={true} overflow={"visible"}>
         <SVGViz activeCategories={activeCategories} showPreview={showPreview} />
       </Box>
-      <ColoredCheckBoxGroup onChange={setActiveCategories} />
+      <ColoredCheckBoxGroup onChange={setActiveCategories} showPreview={showPreview} />
       {active !== undefined ? <ImagePreview active={active} /> : null}
     </Box>
   )
@@ -59,6 +59,7 @@ const SVGViz = ({ activeCategories, showPreview }) => {
       }}
       overflow={"visible"}
       onClick={() => showPreview(false)}
+      
     >
       {points.map((point, ix) => {
         return activeCategories.includes(clusters[ix].label) ? (
@@ -110,7 +111,7 @@ const ImagePreview = ({ active }) => {
   )
 }
 
-const ColoredCheckBoxGroup = ({ onChange }) => {
+const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
   const [socialMediaScreenshot, setSocialMediaScreenshot] = useState(false)
   const [otherScreenshot, setOtherScreenshot] = useState(false)
   const [news, setNews] = useState(false)
@@ -141,7 +142,7 @@ const ColoredCheckBoxGroup = ({ onChange }) => {
   ])
 
   return (
-    <Box direction={"row"} gap={"small"} wrap={'true'}>
+    <Box direction={"row"} gap={"small"} wrap={'true'} onMouseEnter={()=>showPreview(false)}>
       <Box
         background={socialMediaScreenshot ? "#ffffcc" : "#ffffff"}
         border={{ color: "#ffffcc", size: "small" }}

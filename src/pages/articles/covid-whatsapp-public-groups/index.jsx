@@ -13,7 +13,9 @@ import {
   TableCell,
   TableBody,
   RadioButtonGroup,
+  Stack,
 } from "grommet"
+import { MousePointer, X } from "react-feather"
 import NarrowContentWrapper from "../../../components/atomic/layout/narrow-content-wrapper"
 import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
@@ -32,7 +34,24 @@ const ImageText = styled.div`
   }
 `
 
+const ClickableTSNE = ({ src, alt, onClick }) => {
+  return (
+    <Stack anchor="top-right">
+      <Box width={"100%"} onClick={() => onClick(true)} border={"all"}>
+        <img src={src} alt={alt} />
+      </Box>
+      <Box direction={"row"} align={"center"} gap={"xsmall"} pad={"small"}>
+        <MousePointer size={12} color={"#e76d67"} />
+        <Text size={"xsmall"} color={"#e76d67"}>
+          Click to Interact
+        </Text>
+      </Box>
+    </Stack>
+  )
+}
+
 const Index = () => {
+  const [showTSNE, setShowTSNE] = useState(false)
   return (
     <DefaultLayout>
       <Box background={"brand"} align={"center"}>
@@ -195,7 +214,6 @@ const Index = () => {
           members. In addition, we also joined one group in Telugu. In the final
           sample of posts, we also found messages in Tamil, Telugu and Gujarati.{" "}
         </p>
-
         <Table>
           <TableBody>
             <TableRow>
@@ -295,8 +313,13 @@ const Index = () => {
         >
           Trend 1: Heavy Use of Information from Other Social Media Platforms
         </Text>
-        <CovidWhatsappTSNEMap />
-
+        <ClickableTSNE
+          src={"/covid-whatsapp-public-groups/report_images/T-Sne_2.png"}
+          alt={
+            "A visualization highlighting cluster of images of screenshots taken from Instagram and Twitter of posts about leads and help."
+          }
+          onClick={setShowTSNE}
+        />
         <p>
           The biggest cluster in the vector embeddings based image grouping is
           of screenshots of posts from Twitter and Instagram. A scan of this
@@ -309,7 +332,6 @@ const Index = () => {
           and Facebook posts and some of apps and websites with resources of
           Covid-19 related information.
         </p>
-
         <ImageText>
           <img
             src="/covid-whatsapp-public-groups/report_images/Screen%20Shot%202021-07-14%20at%2010.00.34%20PM.png"
@@ -333,12 +355,11 @@ const Index = () => {
         >
           Trend 2
         </Text>
-        <Box width={"100%"}>
-          <img
-            src="/covid-whatsapp-public-groups/report_images/t-sne.png"
-            alt="Trend2_T-Sne"
-          />
-        </Box>
+        <ClickableTSNE
+          src="/covid-whatsapp-public-groups/report_images/t-sne.png"
+          alt="A visualization highlighting cluster of images of medical supplies."
+          onClick={setShowTSNE}
+        />
         <p>
           Another big cluster in the image similarity grouping is of medicines,
           concentrators, medical prescriptions, receipts and other paper
@@ -350,7 +371,6 @@ const Index = () => {
           and concentrators indicate an interest in availing or correcting
           information about these specific medical resources.{" "}
         </p>
-
         <Text
           size={"small"}
           weight={700}
@@ -359,13 +379,14 @@ const Index = () => {
         >
           Trend 3: Healing Does Not Imply Only Medical Treatment
         </Text>
-
-        <Box width={"100%"}>
-          <img
-            src="/covid-whatsapp-public-groups/report_images/T_Sne_3.png"
-            alt="Trend2_T-Sne"
-          />
+        <Box width={"100%"} onClick={() => setShowTSNE(true)}>
+          <img />
         </Box>
+        <ClickableTSNE
+          src="/covid-whatsapp-public-groups/report_images/T_Sne_3.png"
+          alt="A vizualization illustrating a cluster of religious images amongst all the other data"
+          onClick={setShowTSNE}
+        />
         <p>
           In the image grouping, we also found two unexpected clusters of images
           of gods and of close-up of people’s faces. We tracked the images of
@@ -886,6 +907,21 @@ const Index = () => {
             </p>
           </li>
         </ul>
+        {showTSNE && (
+          <Layer full animation={false}>
+            <Stack anchor={"top-right"}>
+              <CovidWhatsappTSNEMap />
+              <Box width={"100%"}>
+                <Button
+                  icon={<X size={40} color={"#e76d67"} />}
+                  onClick={() => {
+                    setShowTSNE(false)
+                  }}
+                ></Button>
+              </Box>
+            </Stack>
+          </Layer>
+        )}
       </NarrowContentWrapper>
     </DefaultLayout>
   )
