@@ -5,16 +5,16 @@ import { Box, ResponsiveContext } from "grommet"
  * @function NarrowSection
  **/
 
-const NarrowContentWrapper = ({ children, justify, ...props }) => {
+const NarrowContentWrapper = ({ children, justify, width, ...props }) => {
   const size = useContext(ResponsiveContext)
   const Section = () => (
     <Box
-      width={"960px"}
+      width={width ? width : "960px"}
       alignSelf={"center"}
       flex={"grow"}
       justify={justify ? justify : "start"}
     >
-      <Box>{children}</Box>
+      <Box pad={{ left: "large", right: "large" }}>{children}</Box>
     </Box>
   )
 
@@ -31,12 +31,12 @@ const NarrowContentWrapper = ({ children, justify, ...props }) => {
 
   const MediumSection = ({ children }) => (
     <Box
-      width={"960px"}
+      width={width ? width : "960px"}
       alignSelf={"center"}
       flex={"grow"}
       justify={justify ? justify : "start"}
     >
-      <Box>{children}</Box>
+      <Box pad={{ left: "large", right: "large" }}>{children}</Box>
     </Box>
   )
   return size === "small" ? (
