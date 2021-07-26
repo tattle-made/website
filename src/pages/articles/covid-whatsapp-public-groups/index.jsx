@@ -246,6 +246,19 @@ const Index = () => {
               </li>
               <li>
                 <Paragraph size={"large"}>
+                  A comparison of phone leads shared in the WhatsApp groups
+                  with a national level database of verified leads maintained by
+                  a fact-checking group and with a crowdsourced database of
+                  ‘scam’ numbers revealed a low overlap. 
+                  Less than 15% of the leads were
+                  common between the WhatsApp groups we were tracking and the
+                  databases. This indicates at the scale of information that was
+                  circulated and challenge of verifying content during the
+                  second wave of the pandemic in India.
+                </Paragraph>
+              </li>
+              <li>
+                <Paragraph size={"large"}>
                   Volunteering groups asked for patient information in specific
                   templates to make relief work more efficient. People shared
                   doctor prescriptions, medical receipts and sensitive personal
@@ -265,18 +278,7 @@ const Index = () => {
                   webinars reflecting the use of WhatsApp in digital marketing.
                 </Paragraph>
               </li>
-              <li>
-                <Paragraph size={"large"}>
-                  We compared the phone leads shared in the 21 WhatsApp groups
-                  with a national level database of verified leads maintained by
-                  a fact-checking group and with a crowdsourced database of
-                  ‘scam’ numbers. We found that less than 7% of the leads were
-                  common between the WhatsApp groups we were tracking and the
-                  databases. This indicates at the scale of information that was
-                  circulated and challenge of verifying content during the
-                  second wave of the pandemic.
-                </Paragraph>
-              </li>
+              
             </ul>
             <Paragraph responsive={true} size={"large"} color={"accent-3"}>
               Taking note of the citizen and crowdsourced verification that
@@ -285,11 +287,11 @@ const Index = () => {
               distributed but coordinated verification. While we have seen
               coordinated fact-checking operations around elections, we propose
               the possibility of similar coordination during sudden events such
-              as natural disasters and wars.{" "}
+              as natural disasters, cyber attacks and wars.{" "}
             </Paragraph>
             <Paragraph responsive={true} size={"large"} color={"accent-3"}>
               We note that the information chaos during the second wave in India
-              eluded responses conceived around political and medical
+              eluded emerging response mechanisms conceived around political and medical
               misinformation. ‘Leads for medical aid’ as a typology of
               information was hyperlocal and not created or propagated in
               coordination. This information did not have to be viral to be
@@ -312,7 +314,7 @@ const Index = () => {
             </Paragraph>
             <h2 id="the-analysis">The Analysis</h2>
             <Paragraph responsive={true} size={"large"} color={"accent-3"}>
-              Over the 8-week period we collected 13,524 text messages, 2,415
+              Over the 8-week period we collected 16,6944 text messages, 2,415
               images (2,296 unique). We also collected over 200 videos during
               this time, but we did not undertake any video analysis in this
               study. At the time of joining, we were primarily targeting groups
@@ -343,7 +345,7 @@ const Index = () => {
                       </Text>
                     </TableCell>
                     <TableCell>
-                      <Text size={"xsmall"}>13,524</Text>
+                      <Text size={"xsmall"}>16,694</Text>
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -409,7 +411,7 @@ const Index = () => {
               at-scale analysis of social media content but also come with
               inherent limitations. Machine learning based techniques, be it
               vector-embeddings, language translation or computer vision based
-              text extraction, are error-prone (Please see Methodology section).
+              text extraction, are error-prone (Please see the full report for a discussion on methodology and errors).
               While we attempted some correction of known errors, a lot more can
               be done. The analysis presented here should be treated as
               indication of trends that merit further investigation, and not
@@ -451,12 +453,12 @@ const Index = () => {
             </Box>
 
             <Paragraph responsive={true} size={"large"} color={"accent-3"}>
-              At least 11% of the text messages (1,406 messages) contained links
+              At least 9% of the text messages (1,551 messages) contained links
               to other websites. Twitter was the most popular social media in
               these WhatsApp groups. We found that 21% of all external links
-              (299 messages) contained links to tweets. There were 36 messages
-              with YouTube links; 39 with Instagram links; 169 messages
-              contained links to other WhatsApp chat groups; and 25 contained
+              (330 messages) contained links to tweets. There were 168 messages
+              with YouTube links; 47 with Instagram links; 190 messages
+              contained links to other WhatsApp chat groups; and 30 contained
               links to Telegram groups.{" "}
             </Paragraph>
             <TrendHeading head={"Trend 2"} subhead={""} />
@@ -518,17 +520,17 @@ const Index = () => {
               monitoring since the beginning of the second wave. As of July 4,
               2021 the list had 510 ‘verified’ phone numbers.
               <br />
-              We found that less than 7% of the leads shared in the WhatsApp
-              text messages (17 of 257 leads) were captured by the
+              We found that less than 15% of the leads shared in the WhatsApp
+              text messages (37 of 257 leads) were captured by the
               FactChecker.in database. Accounting for the leads shared in images
-              in these groups takes the tally of overlapping unique leads to 20.
-              There were three leads in the images that were not contained in
+              in these groups takes the tally of overlapping unique leads to 42.
+              There were five leads in the images that were not contained in
               the text messages.{" "}
               <Paragraph responsive={true} size={"large"} color={"accent-3"}>
                 We also compared the phone leads in the text messages against a
                 crowdsourced database of scam numbers called CoViD Scam
-                Directory. The database is maintained by the volunteering group:
-                Cov.Social⁴. Any individual could submit an entry for a ‘scam’
+                Directory. The database is maintained by the volunteering group, 
+                CoViD Action Initiative: Cov.Social⁴. Any individual could submit an entry for a ‘scam’
                 number. As of July 4, 2021, the database had 812 phone records
                 of which 647 were unique. The entire database of numbers is not
                 open access, but the group shared the database with us on
@@ -584,8 +586,8 @@ const Index = () => {
               This figure shows the percentage frequency of terms in images
               against the percentage frequency of terms in text. The graph is
               restricted to the 30 most frequent words in images and text
-              messages (a total of 39 words). Please see the Appendix for more
-              details. This comparison shows that while words such as
+              messages (a total of 38 words). 
+              This comparison shows that while words such as
               ‘available’, ‘blood’, ‘patient’, ‘oxygen’, had nearly equal
               representation in images and text messages (close to the y=x
               line), words such as ‘need’ and ‘help’ were significantly more
@@ -593,7 +595,7 @@ const Index = () => {
               while both text messages and images (which are screenshots of
               information from other platforms) were used to advertise for
               availability of oxygen or blood donors, the request for medical
-              aid was circulated as text messages native to WhatsApp. This
+              aid was more often circulated as text messages native to WhatsApp. This
               analysis relies on text extracted from images using Cloud vision
               techniques and automated language translation, both of which are
               prone to error. The claim presented here merits more in-depth
