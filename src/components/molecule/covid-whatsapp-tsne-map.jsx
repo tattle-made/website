@@ -39,6 +39,7 @@ const CovidWhatsappTSNEMap = () => {
       onMouseLeave={() => showPreview(false)}
       width={"100%"}
       height={"100vh"}
+      border={"all"}
     >
       <Text size={"xsmall"}>
         {" "}
