@@ -568,7 +568,11 @@ const Content = () => {
             datasets.{" "}
           </Paragraph>
 
-          <Box height={"28em"}>
+          <Box
+            width={theme.paragraph.large.maxWidth}
+            overflow={"hidden"}
+            height={"28em"}
+          >
             <Image
               src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
               alt="Comparison across Data sources"
@@ -596,11 +600,7 @@ const Content = () => {
             manual scanning of individual messages.{" "}
           </Paragraph>
 
-          <TrendHeading
-            head={
-              "Trend 6 : Variation in Conversation Over Time and Across Groups"
-            }
-          />
+          <TrendHeading head="Trend 6 : Variation in Conversation Over Time and Across Groups" />
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Since we had tracked only sixteen groups for the entire 8-week
@@ -610,11 +610,15 @@ const Content = () => {
             week and carried out temporal analysis over a 7-week period starting
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
-          <Box height={"12em"}>
+          <Box
+            height={"12em"}
+            width={theme.paragraph.large.maxWidth}
+            overflow={"hidden"}
+          >
             <Image
               src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
               alt="frequency_messages"
-              fit={"contain"}
+              fit={"cover"}
               alignSelf={"start"}
             />
           </Box>
@@ -1110,7 +1114,7 @@ const Index = () => {
         <Box round={"small"} background={"visuals-1"} pad={"medium"}>
           <Text size={"small"} lineHeight={"small"}>
             This page summarizes key observations from the report. Please read
-            the full report for background to work, methodology, and detailed
+            the full report for background to work, methodology and detailed
             discussion of findings.
           </Text>
         </Box>

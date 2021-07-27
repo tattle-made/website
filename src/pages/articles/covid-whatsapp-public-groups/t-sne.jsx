@@ -23,7 +23,6 @@ const TSNE = () => {
             navigate("/articles/covid-whatsapp-public-groups/")
           }}
           margin={{ top: "small" }}
-          border={"all"}
         >
           <ArrowLeft size={24} />
           <Text size={"small"}>Full Report</Text>
