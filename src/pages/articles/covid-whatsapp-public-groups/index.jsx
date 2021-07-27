@@ -25,6 +25,8 @@ import gfm from "remark-gfm"
 import StickyBox from "react-sticky-box"
 import styled, { useTheme } from "styled-components"
 import CovidWhatsappTSNEMap from "../../../components/molecule/covid-whatsapp-tsne-map"
+import fileDownload from "js-file-download"
+import axios from "axios"
 
 const ImageText = styled.div`
   img {
@@ -154,8 +156,6 @@ const Content = () => {
   const [showTSNE, setShowTSNE] = useState(false)
   const size = useContext(ResponsiveContext)
   const theme = useContext(ThemeContext)
-
-  console.log({ theme })
 
   function getWidth(size) {
     switch (size) {
@@ -458,7 +458,9 @@ const Content = () => {
             to other WhatsApp chat groups; and 30 contained links to Telegram
             groups.{" "}
           </Paragraph>
-          <TrendHeading head={"Trend 2"} />
+          <TrendHeading
+            head={"Trend 2 : Images of Prescriptions, Medicines and Receipts"}
+          />
 
           <ClickableTSNE
             src="/covid-whatsapp-public-groups/report_images/t-sne.png"
@@ -1076,7 +1078,20 @@ const Index = () => {
                 round={"small"}
                 width={"fit-content"}
               >
-                <Button>
+                <Button
+                  round
+                  background={"accent-1"}
+                  pad="small"
+                  onClick={() => {
+                    axios
+                      .get("/covid-whatsapp-public-groups/report.pdf", {
+                        responseType: "blob",
+                      })
+                      .then(res => {
+                        fileDownload(res.data, "Tattle_Covid_Report_2021.pdf")
+                      })
+                  }}
+                >
                   <Text size={"small"}>Download Report</Text>
                 </Button>
               </Box>
@@ -1090,6 +1105,16 @@ const Index = () => {
           </Box>
         </NarrowContentWrapper>
       </Box>
+      <Box height={"2em"}></Box>
+      <NarrowContentWrapper>
+        <Box round={"small"} background={"visuals-1"} pad={"medium"}>
+          <Text size={"small"} lineHeight={"small"}>
+            This page summarizes key observations from the report. Please read
+            the full report for background to work, methodology, and detailed
+            discussion of findings.
+          </Text>
+        </Box>
+      </NarrowContentWrapper>
       <Content />
     </DefaultLayout>
   )
