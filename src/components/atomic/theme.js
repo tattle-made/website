@@ -134,6 +134,13 @@ const TattleTheme = {
     body:{
       border:'all',
       pad:{vertical:'none'}
+    },
+    header:{
+      border:'all',
+      background : {
+        color: 'light-2',
+        
+      }
     }
   },
   radioButton:{

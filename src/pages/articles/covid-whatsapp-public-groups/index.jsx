@@ -16,6 +16,7 @@ import {
   Stack,
   ResponsiveContext,
   ThemeContext,
+  TableHeader,
 } from "grommet"
 import { MousePointer, X } from "react-feather"
 import NarrowContentWrapper from "../../../components/atomic/layout/narrow-content-wrapper"
@@ -732,16 +733,6 @@ const Content = () => {
             </Paragraph>
           </Box>
 
-          <Paragraph responsive={true} size={"large"} color={"accent-3"}>
-            The code for textual analysis can be found on{" "}
-            <ExternalLink
-              target={"_blank"}
-              href="https://github.com/tattle-made/data-experiments/blob/master/whatsapp_groups_analysis/temporal_word_frequency_analysis.ipynb"
-            >
-              Github
-            </ExternalLink>
-          </Paragraph>
-
           <h2 id={"footnotes"}>Resources</h2>
           <ul style={{ listStyleType: "none", padding: "0" }}>
             <li>
@@ -881,13 +872,35 @@ const ImageTableToggle = () => {
         <Box width={"100%"} gap={"small"} direction={"row"} wrap={true}>
           <Box width={"small"}>
             <img
-              src="/covid-whatsapp-public-groups/report_images/text_wordcloud_13July.png"
+              src="/covid-whatsapp-public-groups/report_images/text_wordcloud.png"
               alt="text_wordcloud"
             />
           </Box>
           <Box>
             <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableCell scope="row">
+                    <Text size={"xsmall"} weight={600}>
+                      Term
+                    </Text>
+                  </TableCell>
+                  <TableCell>
+                    <Text size={"xsmall"}>Number of Occurences</Text>
+                  </TableCell>
+                </TableRow>
+              </TableHeader>
               <TableBody>
+                <TableRow>
+                  <TableCell scope="row">
+                    <Text size={"xsmall"} weight={600}>
+                      Hospital
+                    </Text>
+                  </TableCell>
+                  <TableCell>
+                    <Text size={"xsmall"}>1,335</Text>
+                  </TableCell>
+                </TableRow>
                 <TableRow>
                   <TableCell scope="row">
                     <Text size={"xsmall"} weight={600}>
@@ -895,7 +908,7 @@ const ImageTableToggle = () => {
                     </Text>
                   </TableCell>
                   <TableCell>
-                    <Text size={"xsmall"}>890</Text>
+                    <Text size={"xsmall"}>957</Text>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -905,7 +918,7 @@ const ImageTableToggle = () => {
                     </Text>
                   </TableCell>
                   <TableCell>
-                    <Text size={"xsmall"}>748</Text>
+                    <Text size={"xsmall"}>835</Text>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -915,17 +928,17 @@ const ImageTableToggle = () => {
                     </Text>
                   </TableCell>
                   <TableCell>
-                    <Text size={"xsmall"}>659</Text>
+                    <Text size={"xsmall"}>783</Text>
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell scope="row">
                     <Text size={"xsmall"} weight={600}>
-                      Help
+                      Lead
                     </Text>
                   </TableCell>
                   <TableCell>
-                    <Text size={"xsmall"}>595</Text>
+                    <Text size={"xsmall"}>763</Text>
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -943,6 +956,18 @@ const ImageTableToggle = () => {
           </Box>
           <Box>
             <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableCell scope="row">
+                    <Text size={"xsmall"} weight={600}>
+                      Term
+                    </Text>
+                  </TableCell>
+                  <TableCell>
+                    <Text size={"xsmall"}>Number of Occurences</Text>
+                  </TableCell>
+                </TableRow>
+              </TableHeader>
               <TableBody>
                 <TableRow>
                   <TableCell scope="row">

@@ -168,8 +168,8 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
       alignSelf={"center"}
     >
       <Box
-        background={socialMediaScreenshot ? "#ffffcc" : "#ffffff"}
-        border={{ color: "#ffffcc", size: "small" }}
+        background={socialMediaScreenshot ? "#ffbbcc" : "#ffffff"}
+        border={{ color: "#ffbbcc", size: "small" }}
         onClick={() => setSocialMediaScreenshot(!socialMediaScreenshot)}
         pad={"xsmall"}
         focusIndicator={false}
