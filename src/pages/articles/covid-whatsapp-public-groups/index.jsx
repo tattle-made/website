@@ -15,6 +15,7 @@ import {
   RadioButtonGroup,
   Stack,
   ResponsiveContext,
+  ThemeContext,
 } from "grommet"
 import { MousePointer, X } from "react-feather"
 import NarrowContentWrapper from "../../../components/atomic/layout/narrow-content-wrapper"
@@ -67,17 +68,20 @@ const SideBar = styled.div`
   }
 `
 
-const ClickableTSNE = ({ src, alt, onClick }) => {
+const ClickableTSNE = ({ src, alt, onClick, caption }) => {
+  const theme = useContext(ThemeContext)
   return (
     <Box>
       <Stack anchor="top-left">
         <Box
-          height={"28em"}
+          width={Number.parseInt(theme.paragraph.large.maxWidth) + 180 + "px"}
+          height={"32em"}
           onClick={() => onClick(true)}
           border={"all"}
           focusIndicator={false}
+          overflow={"hidden"}
         >
-          <Image src={src} alt={alt} fit={"contain"} />
+          <Image src={src} alt={alt} fit={"contain"} fill={true} />
         </Box>
         <Box direction={"row"} align={"center"} gap={"xsmall"} pad={"small"}>
           <MousePointer size={12} color={"#e76d67"} />
@@ -92,35 +96,22 @@ const ClickableTSNE = ({ src, alt, onClick }) => {
         weight={500}
         margin={{ top: "xsmall" }}
       >
-        {" "}
-        A t-SNE visualization of our data. Clusters containing Screenshots are
-        highlighted.
+        {caption}
       </Text>
     </Box>
   )
 }
 
-const TrendHeading = ({ head, subhead }) => (
-  <Box margin={{ bottom: "medium" }}>
-    <span
-      style={{
-        fontWeight: 200,
-        fontSize: "1.6em",
-        fontFamily: "Raleway",
-      }}
-    >
-      {head}{" "}
-      <span
-        style={{
-          fontWeight: 700,
-          fontSize: "0.6em",
-          lineHeight: "0.5em",
-        }}
-      >
-        {subhead}
-      </span>
-    </span>
-  </Box>
+const TrendHeading = ({ head }) => (
+  <ThemeContext.Consumer>
+    {theme => (
+      <Box margin={{ bottom: "medium" }} width={theme.paragraph.large.maxWidth}>
+        <Text size={"small"} weight={600}>
+          {head}
+        </Text>
+      </Box>
+    )}
+  </ThemeContext.Consumer>
 )
 
 const Sidebar = () => {
@@ -148,7 +139,7 @@ const Sidebar = () => {
                 </ExternalLink>{" "}
               </li>
               <li>
-                <ExternalLink href={"#footnotes"}>Footnotes </ExternalLink>{" "}
+                <ExternalLink href={"#footnotes"}>Resources </ExternalLink>{" "}
               </li>
             </ul>
           </SideBar>
@@ -161,15 +152,18 @@ const Sidebar = () => {
 const Content = () => {
   const [showTSNE, setShowTSNE] = useState(false)
   const size = useContext(ResponsiveContext)
+  const theme = useContext(ThemeContext)
+
+  console.log({ theme })
 
   function getWidth(size) {
     switch (size) {
       case "small":
         return "100%"
       case "medium":
-        return "75vw"
+        return "80vw"
       default:
-        return "1020px"
+        return Number.parseInt(theme.paragraph.large.maxWidth) + 280 + "px"
     }
   }
 
@@ -324,7 +318,7 @@ const Content = () => {
             the final sample of posts, we also found messages in Tamil, Telugu
             and Gujarati.{" "}
           </Paragraph>
-          <Box>
+          <Box width={theme.paragraph.large.maxWidth}>
             <Table>
               <TableBody>
                 <TableRow>
@@ -419,17 +413,18 @@ const Content = () => {
             further investigation, and not conclusive assertions.{" "}
           </Paragraph>
           <TrendHeading
-            head={"Trend 1"}
-            subhead={
-              "Heavy Use of Information from Other Social Media Platforms"
+            head={
+              "Trend 1 : Heavy Use of Information from Other Social Media Platforms"
             }
           />
+
           <ClickableTSNE
             src={"/covid-whatsapp-public-groups/report_images/T-Sne_2.png"}
             alt={
               "A visualization highlighting cluster of images of screenshots taken from Instagram and Twitter of posts about leads and help."
             }
             onClick={setShowTSNE}
+            caption={"Image Clustering based on Visual and Semantic Meaning"}
           />
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
@@ -462,11 +457,12 @@ const Content = () => {
             to other WhatsApp chat groups; and 30 contained links to Telegram
             groups.{" "}
           </Paragraph>
-          <TrendHeading head={"Trend 2"} subhead={""} />
+          <TrendHeading head={"Trend 2"} />
 
           <ClickableTSNE
             src="/covid-whatsapp-public-groups/report_images/t-sne.png"
             alt="A visualization highlighting cluster of images of medical supplies."
+            caption={"Group of Images of Medical Supplies and Paper Documents"}
             onClick={setShowTSNE}
           />
 
@@ -483,14 +479,14 @@ const Content = () => {
             resources.{" "}
           </Paragraph>
           <TrendHeading
-            head={"Trend 3"}
-            subhead={"Healing Does Not Imply Only Medical Treatment"}
+            head={"Trend 3 : Healing Does Not Imply Only Medical Treatment"}
           />
 
           <ClickableTSNE
             src="/covid-whatsapp-public-groups/report_images/T_Sne_3.png"
             alt="A vizualization illustrating a cluster of religious images amongst all the other data"
             onClick={setShowTSNE}
+            caption={"Cluster of Images of Indian Gods"}
           />
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
@@ -504,8 +500,9 @@ const Content = () => {
           </Paragraph>
           <h3 id="trend-4-low-overlap-with-database-s-of-verified-leads-scams"></h3>
           <TrendHeading
-            head={"Trend 4"}
-            subhead={"Low Overlap with Database(s) of Verified Leads and Scams"}
+            head={
+              "Trend 4 : Low Overlap with Database(s) of Verified Leads and Scams"
+            }
           />
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Through basic manual annotation of the text messages on the 21
@@ -544,10 +541,7 @@ const Content = () => {
               Directory.
             </Paragraph>
           </Paragraph>
-          <TrendHeading
-            head="Trend 5"
-            subhead="Differences between Text Contained in Images and Text Messages"
-          />
+          <TrendHeading head="Trend 5 : Differences between Text Contained in Images and Text Messages" />
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             We wanted to understand if the images contained similar information
             as text messages or if the information shared varied with the
@@ -600,8 +594,9 @@ const Content = () => {
           </Paragraph>
 
           <TrendHeading
-            head={"Trend 6"}
-            subhead={"Variation in Conversation Over Time and Across Groups"}
+            head={
+              "Trend 6 : Variation in Conversation Over Time and Across Groups"
+            }
           />
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
@@ -747,7 +742,7 @@ const Content = () => {
             </ExternalLink>
           </Paragraph>
 
-          <h2 id={"footnotes"}>Footnotes</h2>
+          <h2 id={"footnotes"}>Resources</h2>
           <ul style={{ listStyleType: "none", padding: "0" }}>
             <li>
               <Paragraph
@@ -826,20 +821,45 @@ const Content = () => {
             </li>
           </ul>
           {showTSNE && (
-            <Layer full animation={false}>
-              <Stack anchor={"top-right"}>
-                <CovidWhatsappTSNEMap />
-                <Box width={"100%"}>
-                  <Button
-                    icon={<X size={40} color={"#e76d67"} />}
-                    onClick={() => {
-                      setShowTSNE(false)
-                    }}
-                  ></Button>
-                </Box>
-              </Stack>
+            <Layer responsive={true} full animation={false}>
+              <Box fill>
+                <Stack anchor={"top-right"}>
+                  <CovidWhatsappTSNEMap />
+                  <Box width={"100%"}>
+                    <Button
+                      icon={<X size={40} color={"#e76d67"} />}
+                      onClick={() => {
+                        setShowTSNE(false)
+                      }}
+                    ></Button>
+                  </Box>
+                </Stack>
+              </Box>
             </Layer>
           )}
+          <Paragraph size={"large"}>
+            For extensive references please see full report. The code used in
+            analysis can be found at{" "}
+            <ExternalLink
+              href={
+                "https://github.com/tattle-made/data-experiments/tree/master/whatsapp_groups_analysis"
+              }
+            >
+              here
+            </ExternalLink>{" "}
+            and{" "}
+            <ExternalLink
+              href={
+                "https://github.com/tattle-made/data-experiments/blob/master/tSNE-clustering.ipynb"
+              }
+            >
+              here
+            </ExternalLink>
+          </Paragraph>
+          <Paragraph size={"large"}>
+            For questions and feedback about this work, please email us at
+            tarunima@tattle.co.in or denny@tattle.co.in
+          </Paragraph>
         </Box>
       </Box>
     </Box>
@@ -989,11 +1009,35 @@ const Index = () => {
       <Box background={"brand"} align={"center"}>
         <NarrowContentWrapper>
           <Box pad={{ top: "large", bottom: "large" }}>
-            <Heading level={1}>WhatsApp: The Covid-19 Relief Helpline</Heading>
-            <Heading level={3}>
-              A Case Study in Information Management on Chat Apps
-            </Heading>
-            <Box direction={"row"}>
+            <Box>
+              <Heading level={1} margin={"none"}>
+                Crowdsourcing Aid :
+              </Heading>
+
+              <span
+                style={{
+                  fontWeight: 600,
+                  fontSize: "2.6em",
+                  margin: "0.2em 0 0 0",
+                  lineHeight: "1.2em",
+                }}
+              >
+                A Case Study of the Information Chaos
+                <span
+                  style={{
+                    fontWeight: 600,
+                    fontSize: "0.6em",
+                    lineHeight: "0.2em",
+                  }}
+                >
+                  {" "}
+                  during India's Second Covid-19 Wave
+                </span>
+              </span>
+              <Text size={"small"}>25 July 2021</Text>
+            </Box>
+            <Box height={"2em"}></Box>
+            <Box direction={"row-responsive"} gap={"medium"}>
               <Box>
                 <Text size={"small"}>Tarunima Prabhakar</Text>
                 <Text size={"small"}>Swair Shah</Text>
@@ -1004,11 +1048,20 @@ const Index = () => {
                 background={"accent-1"}
                 height={"fit-content"}
                 pad={"small"}
-                round={"medium"}
+                round={"small"}
+                width={"fit-content"}
               >
-                <Button>Download Report</Button>
+                <Button>
+                  <Text size={"small"}>Download Report</Text>
+                </Button>
               </Box>
             </Box>
+            <Box height={"2em"}></Box>
+            <Text size={"small"} weight={300} style={{ fontStyle: "italic" }}>
+              We'd like to thank Connie Moon Sehat, CoViD Action Initiative:
+              cov.social, Scott Rogowski, Tanima Saha, Saakshita Prabhakar and
+              all those who have contributed to Tattle's code base.
+            </Text>
           </Box>
         </NarrowContentWrapper>
       </Box>

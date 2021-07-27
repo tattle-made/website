@@ -32,15 +32,31 @@ const CovidWhatsappTSNEMap = () => {
     }
   }, [])
   return (
-    <Box gap={"medium"} overflow={"visible"} pad={'small'} onMouseLeave={()=>showPreview(false)}>
+    <Box
+      gap={"medium"}
+      overflow={"hidden"}
+      pad={"small"}
+      onMouseLeave={() => showPreview(false)}
+      width={"100%"}
+      height={"100vh"}
+    >
       <Text size={"xsmall"}>
         {" "}
         Images have been blurred for preserving user privacy
       </Text>
-      <Box id={"t-sne-map"} flex={true} overflow={"visible"}>
+      <Box
+        id={"t-sne-map"}
+        flex={true}
+        overflow={"hidden"}
+        width={"100%"}
+        height={"80vh"}
+      >
         <SVGViz activeCategories={activeCategories} showPreview={showPreview} />
       </Box>
-      <ColoredCheckBoxGroup onChange={setActiveCategories} showPreview={showPreview} />
+      <ColoredCheckBoxGroup
+        onChange={setActiveCategories}
+        showPreview={showPreview}
+      />
       {active !== undefined ? <ImagePreview active={active} /> : null}
     </Box>
   )
@@ -49,6 +65,8 @@ const CovidWhatsappTSNEMap = () => {
 const SVGViz = ({ activeCategories, showPreview }) => {
   return (
     <svg
+      width={"100%"}
+      height={"100%"}
       viewBox={`0 0 800 600`}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -59,7 +77,6 @@ const SVGViz = ({ activeCategories, showPreview }) => {
       }}
       overflow={"visible"}
       onClick={() => showPreview(false)}
-      
     >
       {points.map((point, ix) => {
         return activeCategories.includes(clusters[ix].label) ? (
@@ -142,7 +159,14 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
   ])
 
   return (
-    <Box direction={"row"} gap={"small"} wrap={'true'} onMouseEnter={()=>showPreview(false)}>
+    <Box
+      direction={"row"}
+      gap={"small"}
+      wrap={"true"}
+      onMouseEnter={() => showPreview(false)}
+      width={"large"}
+      alignSelf={"center"}
+    >
       <Box
         background={socialMediaScreenshot ? "#ffffcc" : "#ffffff"}
         border={{ color: "#ffffcc", size: "small" }}
@@ -150,8 +174,8 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
         pad={"xsmall"}
         focusIndicator={false}
         hoverIndicator={false}
-        width={'fit-content'}
-        margin={{bottom:'xsmall'}}
+        width={"fit-content"}
+        margin={{ bottom: "xsmall" }}
       >
         <Text
           size={"small"}
@@ -168,7 +192,7 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
         pad={"xsmall"}
         focusIndicator={false}
         hoverIndicator={false}
-        margin={{bottom:'xsmall'}}
+        margin={{ bottom: "xsmall" }}
       >
         <Text
           size={"small"}
@@ -185,7 +209,7 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
         pad={"xsmall"}
         focusIndicator={false}
         hoverIndicator={false}
-        margin={{bottom:'xsmall'}}
+        margin={{ bottom: "xsmall" }}
       >
         <Text
           size={"small"}
@@ -202,7 +226,7 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
         pad={"xsmall"}
         focusIndicator={false}
         hoverIndicator={false}
-        margin={{bottom:'xsmall'}}
+        margin={{ bottom: "xsmall" }}
       >
         <Text
           size={"small"}
@@ -219,7 +243,7 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
         pad={"xsmall"}
         focusIndicator={false}
         hoverIndicator={false}
-        margin={{bottom:'xsmall'}}
+        margin={{ bottom: "xsmall" }}
       >
         <Text
           size={"small"}
@@ -236,7 +260,7 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
         pad={"xsmall"}
         focusIndicator={false}
         hoverIndicator={false}
-        margin={{bottom:'xsmall'}}
+        margin={{ bottom: "xsmall" }}
       >
         <Text
           size={"small"}
@@ -253,7 +277,7 @@ const ColoredCheckBoxGroup = ({ onChange, showPreview }) => {
         pad={"xsmall"}
         focusIndicator={false}
         hoverIndicator={false}
-        margin={{bottom:'xsmall'}}
+        margin={{ bottom: "xsmall" }}
       >
         <Text
           size={"small"}
