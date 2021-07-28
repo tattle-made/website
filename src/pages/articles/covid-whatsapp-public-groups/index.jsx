@@ -554,7 +554,7 @@ const Content = () => {
             messages, are not amongst even the ten most frequently used words in
             images.{" "}
           </Paragraph>
-          <ImageTableToggle />
+          
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Absolute numbers of occurrence of terms across images and text can’t
