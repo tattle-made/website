@@ -594,16 +594,12 @@ const Content = () => {
             week and carried out temporal analysis over a 7-week period starting
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
+
           
-           <Box
-            key={"image_2"}
-            height={"12em"}
-            width={"528px"}
-            overflow={"hidden"}
-          >
+            <Box height={"10em"}>
             <Image
               src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
-              alt="a graph of message count over time"
+              alt="Temporal Frequency"
               fit={"contain"}
               alignSelf={"start"}
             />
