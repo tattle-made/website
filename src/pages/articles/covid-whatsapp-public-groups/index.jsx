@@ -554,6 +554,7 @@ const Content = () => {
             images.{" "}
           </Paragraph>
           <ImageTableToggle />
+
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Absolute numbers of occurrence of terms across images and text can’t
             be directly compared since the volume of text messages is
@@ -563,7 +564,12 @@ const Content = () => {
             datasets.{" "}
           </Paragraph>
 
-          <Box height={"528px"} width={"528px"} overflow={"hidden"}>
+          <Box
+            key={"image_1"}
+            height={"528px"}
+            width={"528px"}
+            overflow={"hidden"}
+          >
             <Image
               src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
               alt="Comparison across Data sources"
@@ -602,7 +608,12 @@ const Content = () => {
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
 
-          <Box height={"12em"} width={"528px"} overflow={"hidden"}>
+          <Box
+            key={"image_2"}
+            height={"12em"}
+            width={"528px"}
+            overflow={"hidden"}
+          >
             <Image
               src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
               alt="frequency_messages"
