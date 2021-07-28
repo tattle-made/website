@@ -563,12 +563,7 @@ const Content = () => {
             proportion or percentage of occurrence of terms (number of times a
             term is used divided by total number of words) in both these
             datasets.
-          </Paragraph>
-           
-
-          
-          
-          <Paragraph responsive={true} size={"large"} color={"accent-3"}>
+     
             This figure shows the percentage frequency of terms in images
             against the percentage frequency of terms in text. The graph is
             restricted to the 30 most frequent words in images and text messages
