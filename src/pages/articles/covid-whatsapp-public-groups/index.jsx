@@ -437,7 +437,7 @@ const Content = () => {
           </Paragraph>
           <Box height={"10em"}>
             <Image
-              src="/covid-whatsapp-public-groups/report_images/external-link-distribution.png"
+              src="/covid-whatsapp-public-groups/report_images/graphs-01.png"
               alt="GraphLinks"
               fit={"contain"}
               alignSelf={"start"}
@@ -615,7 +615,7 @@ const Content = () => {
             overflow={"hidden"}
           >
             <Image
-              src="/covid-whatsapp-public-groups/report_images/temporal_analysis.png"
+              src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
               alt="a graph of message count over time"
               fit={"contain"}
               alignSelf={"start"}
