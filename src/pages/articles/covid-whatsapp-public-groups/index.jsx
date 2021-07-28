@@ -565,14 +565,6 @@ const Content = () => {
             datasets.{" "}
           </Paragraph>
            
-          <Box height={"10em"}>
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/graphs-03.png"
-              alt="Temporal Frequency"
-              fit={"contain"}
-              alignSelf={"start"}
-            />
-          </Box>
           
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             This figure shows the percentage frequency of terms in images
