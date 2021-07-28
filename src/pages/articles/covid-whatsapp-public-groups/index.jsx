@@ -106,15 +106,9 @@ const ClickableTSNE = ({ src, alt, onClick, caption }) => {
 }
 
 const TrendHeading = ({ head }) => (
-  <ThemeContext.Consumer>
-    {theme => (
-      <Box margin={{ bottom: "medium" }} width={theme.paragraph.large.maxWidth}>
-        <Text size={"small"} weight={600}>
-          {head}
-        </Text>
-      </Box>
-    )}
-  </ThemeContext.Consumer>
+  <Text size={"small"} weight={600}>
+    {head}
+  </Text>
 )
 
 const Sidebar = () => {
@@ -156,6 +150,7 @@ const Content = () => {
   const [showTSNE, setShowTSNE] = useState(false)
   const size = useContext(ResponsiveContext)
   const theme = useContext(ThemeContext)
+  console.log(theme)
 
   function getWidth(size) {
     switch (size) {
@@ -175,7 +170,7 @@ const Content = () => {
           <Sidebar />
         </Box>
 
-        <Box width={"100%"}>
+        <Box width={theme.paragraph.large.maxWidth}>
           <h2 id="executive-summary">Executive Summary</h2>
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             From April to June 2021, India was ravaged by the second wave of the
@@ -568,12 +563,7 @@ const Content = () => {
             datasets.{" "}
           </Paragraph>
 
-          <Box
-            height={"28em"}
-            width={theme.paragraph.large.maxWidth}
-            overflow={"hidden"}
-            background={"brand"}
-          >
+          <Box height={"528px"} width={"528px"} overflow={"hidden"}>
             <Image
               src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
               alt="Comparison across Data sources"
@@ -611,20 +601,15 @@ const Content = () => {
             week and carried out temporal analysis over a 7-week period starting
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
-          <NarrowContentWrapper>
-            <Box
-              height={"12em"}
-              width={theme.paragraph.large.maxWidth}
-              overflow={"hidden"}
-            >
-              <Image
-                src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
-                alt="frequency_messages"
-                fit={"contain"}
-                alignSelf={"start"}
-              />
-            </Box>
-          </NarrowContentWrapper>
+
+          <Box height={"12em"} width={"528px"} overflow={"hidden"}>
+            <Image
+              src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
+              alt="frequency_messages"
+              fit={"contain"}
+              alignSelf={"start"}
+            />
+          </Box>
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             To carry out the temporal analysis, we analyzed the prominent words
