@@ -570,9 +570,9 @@ const Content = () => {
 
           <NarrowContentWrapper>
             <Box
+              height={"28em"}
               width={theme.paragraph.large.maxWidth}
               overflow={"hidden"}
-              height={"28em"}
             >
               <Image
                 src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
