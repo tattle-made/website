@@ -615,7 +615,7 @@ const Content = () => {
             overflow={"hidden"}
           >
             <Image
-              src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
+              src="/covid-whatsapp-public-groups/report_images/temporal_analysis.png"
               alt="a graph of message count over time"
               fit={"contain"}
               alignSelf={"start"}
