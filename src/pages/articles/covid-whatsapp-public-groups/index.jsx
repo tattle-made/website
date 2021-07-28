@@ -568,18 +568,20 @@ const Content = () => {
             datasets.{" "}
           </Paragraph>
 
-          <Box
-            width={theme.paragraph.large.maxWidth}
-            overflow={"hidden"}
-            height={"28em"}
-          >
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
-              alt="Comparison across Data sources"
-              fit={"contain"}
-              alignSelf={"start"}
-            />
-          </Box>
+          <NarrowContentWrapper>
+            <Box
+              width={theme.paragraph.large.maxWidth}
+              overflow={"hidden"}
+              height={"28em"}
+            >
+              <Image
+                src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
+                alt="Comparison across Data sources"
+                fit={"contain"}
+                alignSelf={"start"}
+              />
+            </Box>
+          </NarrowContentWrapper>
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             This figure shows the percentage frequency of terms in images
@@ -610,18 +612,20 @@ const Content = () => {
             week and carried out temporal analysis over a 7-week period starting
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
-          <Box
-            height={"12em"}
-            width={theme.paragraph.large.maxWidth}
-            overflow={"hidden"}
-          >
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
-              alt="frequency_messages"
-              fit={"contain"}
-              alignSelf={"start"}
-            />
-          </Box>
+          <NarrowContentWrapper>
+            <Box
+              height={"12em"}
+              width={theme.paragraph.large.maxWidth}
+              overflow={"hidden"}
+            >
+              <Image
+                src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
+                alt="frequency_messages"
+                fit={"contain"}
+                alignSelf={"start"}
+              />
+            </Box>
+          </NarrowContentWrapper>
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             To carry out the temporal analysis, we analyzed the prominent words
