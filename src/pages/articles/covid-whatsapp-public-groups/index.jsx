@@ -618,12 +618,11 @@ const Content = () => {
             in a conversation in any week. For that, we used a technique called
             Term Frequency - Inverse Document Frequency (TF-IDF) which gives
             prominence to words in a week that are more salient compared to
-            terms in other 6 weeks (please see Methodology section for more
-            details). Words such as ‘hospital’ and ‘oxygen’ may still feature in
+            terms in other 6 weeks. Words such as ‘hospital’ and ‘oxygen’ may still feature in
             a specific week, which would imply that their usage in that week was
             notably higher than the other weeks.{" "}
           </Paragraph>
-
+       
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Analyzing the most frequent words (adjusted for popularity across
             weeks) we see that the word ‘oxygen’ stops appearing in the frequent
