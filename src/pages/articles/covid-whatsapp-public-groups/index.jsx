@@ -562,9 +562,11 @@ const Content = () => {
             significantly higher than media messages. We thus compare the
             proportion or percentage of occurrence of terms (number of times a
             term is used divided by total number of words) in both these
-            datasets.{" "}
+            datasets.
           </Paragraph>
            
+
+          
           
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             This figure shows the percentage frequency of terms in images
