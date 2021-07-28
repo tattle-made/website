@@ -105,11 +105,16 @@ const ClickableTSNE = ({ src, alt, onClick, caption }) => {
   )
 }
 
-const TrendHeading = ({ head }) => (
-  <Text size={"small"} weight={600}>
-    {head}
-  </Text>
-)
+const TrendHeading = ({ head }) => {
+  const theme = useContext(ThemeContext)
+  return (
+    <Box width={theme.paragraph.large.maxWidth} margin={{ bottom: "small" }}>
+      <Text size={"small"} weight={600}>
+        {head}
+      </Text>
+    </Box>
+  )
+}
 
 const Sidebar = () => {
   const size = useContext(ResponsiveContext)
@@ -170,7 +175,7 @@ const Content = () => {
           <Sidebar />
         </Box>
 
-        <Box width={theme.paragraph.large.maxWidth}>
+        <Box width={"100%"}>
           <h2 id="executive-summary">Executive Summary</h2>
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             From April to June 2021, India was ravaged by the second wave of the
@@ -519,28 +524,26 @@ const Content = () => {
             database. Accounting for the leads shared in images in these groups
             takes the tally of overlapping unique leads to 42. There were five
             leads in the images that were not contained in the text messages.{" "}
-            </Paragraph>
+          </Paragraph>
 
-            <Paragraph responsive={true} size={"large"} color={"accent-3"}>
+          <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             We also compared the phone leads in the text messages against a
             crowdsourced database of scam numbers called CoViD Scam Directory.
             The database is maintained by the volunteering group, CoViD Action
-            Initiative: Cov.Social⁴. Any individual could submit an entry for
-            a ‘scam’ number. As of July 4, 2021, the database had 812 phone
-            records of which 647 were unique. The entire database of numbers
-            is not open access, but the group shared the database with us on
+            Initiative: Cov.Social⁴. Any individual could submit an entry for a
+            ‘scam’ number. As of July 4, 2021, the database had 812 phone
+            records of which 647 were unique. The entire database of numbers is
+            not open access, but the group shared the database with us on
             request. 16 phone numbers reported as ‘scams’ on the CoViD Scam
-            Directory were found in the text messages. But only 2 of the
-            numbers from the CoViD Scam Directory were shared in the WhatsApp
-            groups as warnings. The remaining 14 were shared as genuine leads
-            in the WhatsApp groups. Since the CoViD Scam Directory is
-            crowdsourced, all numbers listed in the directory can&#39;t be
-            assumed to be scam. It is however notable that even in this
-            database the overlap of numbers is low—less than 6% of the leads
-            shared in the 21 WhatsApp groups were captured in the CoViD Scam
-              Directory.
-            </Paragraph>
-        
+            Directory were found in the text messages. But only 2 of the numbers
+            from the CoViD Scam Directory were shared in the WhatsApp groups as
+            warnings. The remaining 14 were shared as genuine leads in the
+            WhatsApp groups. Since the CoViD Scam Directory is crowdsourced, all
+            numbers listed in the directory can&#39;t be assumed to be scam. It
+            is however notable that even in this database the overlap of numbers
+            is low—less than 6% of the leads shared in the 21 WhatsApp groups
+            were captured in the CoViD Scam Directory.
+          </Paragraph>
 
           <TrendHeading head="Trend 5 : Differences between Text Contained in Images and Text Messages" />
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
@@ -556,7 +559,7 @@ const Content = () => {
             messages, are not amongst even the ten most frequently used words in
             images.{" "}
           </Paragraph>
-          
+
           <ImageTableToggle />
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
@@ -565,16 +568,14 @@ const Content = () => {
             significantly higher than media messages. A comparison of the
             proportion or percentage of occurrence of terms (number of times a
             term is used divided by total number of words) in both these
-            datasets also shows that while words such
-            as ‘available’, ‘blood’, ‘patient’, ‘oxygen’, had nearly equal
-            representation in images and text messages
-            words such as ‘need’ and ‘help’ were significantly more common in
-            text messages. (Please see full report for more detailed analysis).
-            
-            This preliminary analysis suggests that while both
-            text messages and images (which are screenshots of information from
-            other platforms) were used to advertise for availability of oxygen
-            or blood donors, the request for medical aid was more often
+            datasets also shows that while words such as ‘available’, ‘blood’,
+            ‘patient’, ‘oxygen’, had nearly equal representation in images and
+            text messages words such as ‘need’ and ‘help’ were significantly
+            more common in text messages. (Please see full report for more
+            detailed analysis). This preliminary analysis suggests that while
+            both text messages and images (which are screenshots of information
+            from other platforms) were used to advertise for availability of
+            oxygen or blood donors, the request for medical aid was more often
             circulated as text messages native to WhatsApp. This analysis relies
             on text extracted from images using Cloud vision techniques and
             automated language translation, both of which are prone to error.
@@ -593,8 +594,7 @@ const Content = () => {
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
 
-          
-            <Box height={"10em"}>
+          <Box height={"10em"}>
             <Image
               src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
               alt="Temporal Frequency"
@@ -603,7 +603,6 @@ const Content = () => {
             />
           </Box>
 
-         
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             To carry out the temporal analysis, we analyzed the prominent words
             uses in each of the 7 weeks. The aggregate analysis of word
