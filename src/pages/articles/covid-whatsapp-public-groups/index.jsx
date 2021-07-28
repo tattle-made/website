@@ -519,6 +519,7 @@ const Content = () => {
             database. Accounting for the leads shared in images in these groups
             takes the tally of overlapping unique leads to 42. There were five
             leads in the images that were not contained in the text messages.{" "}
+            </Paragraph>
 
             <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             We also compared the phone leads in the text messages against a
