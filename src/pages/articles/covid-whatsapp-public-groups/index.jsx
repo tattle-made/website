@@ -539,6 +539,7 @@ const Content = () => {
               Directory.
             </Paragraph>
           </Paragraph>
+
           <TrendHeading head="Trend 5 : Differences between Text Contained in Images and Text Messages" />
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             We wanted to understand if the images contained similar information
@@ -563,7 +564,15 @@ const Content = () => {
             term is used divided by total number of words) in both these
             datasets.{" "}
           </Paragraph>
-
+           
+          <Box height={"10em"}>
+            <Image
+              src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
+              alt="Temporal Frequency"
+              fit={"contain"}
+              alignSelf={"start"}
+            />
+          </Box>
           
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             This figure shows the percentage frequency of terms in images
