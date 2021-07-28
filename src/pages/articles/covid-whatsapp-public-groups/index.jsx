@@ -440,7 +440,7 @@ const Content = () => {
             screenshots of WhatsApp and Facebook posts and some of apps and
             websites with resources of Covid-19 related information.
           </Paragraph>
-          <Box height={"10em"}>
+          <Box height={"14em"}>
             <Image
               src="/covid-whatsapp-public-groups/report_images/graphs-01.png"
               alt="GraphLinks"
@@ -594,7 +594,7 @@ const Content = () => {
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
 
-          <Box height={"10em"}>
+          <Box height={"14em"}>
             <Image
               src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
               alt="Temporal Frequency"
