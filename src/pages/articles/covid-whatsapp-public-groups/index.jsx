@@ -616,7 +616,7 @@ const Content = () => {
           >
             <Image
               src="/covid-whatsapp-public-groups/report_images/messages_over_time.png"
-              alt="frequency_messages"
+              alt="a graph of message count over time"
               fit={"contain"}
               alignSelf={"start"}
             />
