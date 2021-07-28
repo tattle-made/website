@@ -595,10 +595,15 @@ const Content = () => {
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
           
-          <Box height={"10em"}>
+           <Box
+            key={"image_2"}
+            height={"12em"}
+            width={"528px"}
+            overflow={"hidden"}
+          >
             <Image
               src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
-              alt="Temporal Frequency"
+              alt="a graph of message count over time"
               fit={"contain"}
               alignSelf={"start"}
             />
