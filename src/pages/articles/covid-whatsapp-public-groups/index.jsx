@@ -608,17 +608,7 @@ const Content = () => {
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
           
-          <Box height={"10em"}>
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
-              alt="Temporal Frequency"
-              fit={"contain"}
-              alignSelf={"start"}
-            />
-          </Box>
-
          
-
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             To carry out the temporal analysis, we analyzed the prominent words
             uses in each of the 7 weeks. The aggregate analysis of word
