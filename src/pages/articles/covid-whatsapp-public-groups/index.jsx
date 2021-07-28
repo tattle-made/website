@@ -568,20 +568,19 @@ const Content = () => {
             datasets.{" "}
           </Paragraph>
 
-          <NarrowContentWrapper>
-            <Box
-              height={"28em"}
-              width={theme.paragraph.large.maxWidth}
-              overflow={"hidden"}
-            >
-              <Image
-                src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
-                alt="Comparison across Data sources"
-                fit={"contain"}
-                alignSelf={"start"}
-              />
-            </Box>
-          </NarrowContentWrapper>
+          <Box
+            height={"28em"}
+            width={theme.paragraph.large.maxWidth}
+            overflow={"hidden"}
+            background={"brand"}
+          >
+            <Image
+              src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
+              alt="Comparison across Data sources"
+              fit={"contain"}
+              alignSelf={"start"}
+            />
+          </Box>
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             This figure shows the percentage frequency of terms in images
