@@ -519,23 +519,24 @@ const Content = () => {
             database. Accounting for the leads shared in images in these groups
             takes the tally of overlapping unique leads to 42. There were five
             leads in the images that were not contained in the text messages.{" "}
+
             <Paragraph responsive={true} size={"large"} color={"accent-3"}>
-              We also compared the phone leads in the text messages against a
-              crowdsourced database of scam numbers called CoViD Scam Directory.
-              The database is maintained by the volunteering group, CoViD Action
-              Initiative: Cov.Social⁴. Any individual could submit an entry for
-              a ‘scam’ number. As of July 4, 2021, the database had 812 phone
-              records of which 647 were unique. The entire database of numbers
-              is not open access, but the group shared the database with us on
-              request. 16 phone numbers reported as ‘scams’ on the CoViD Scam
-              Directory were found in the text messages. But only 2 of the
-              numbers from the CoViD Scam Directory were shared in the WhatsApp
-              groups as warnings. The remaining 14 were shared as genuine leads
-              in the WhatsApp groups. Since the CoViD Scam Directory is
-              crowdsourced, all numbers listed in the directory can&#39;t be
-              assumed to be scam. It is however notable that even in this
-              database the overlap of numbers is low—less than 6% of the leads
-              shared in the 21 WhatsApp groups were captured in the CoViD Scam
+            We also compared the phone leads in the text messages against a
+            crowdsourced database of scam numbers called CoViD Scam Directory.
+            The database is maintained by the volunteering group, CoViD Action
+            Initiative: Cov.Social⁴. Any individual could submit an entry for
+            a ‘scam’ number. As of July 4, 2021, the database had 812 phone
+            records of which 647 were unique. The entire database of numbers
+            is not open access, but the group shared the database with us on
+            request. 16 phone numbers reported as ‘scams’ on the CoViD Scam
+            Directory were found in the text messages. But only 2 of the
+            numbers from the CoViD Scam Directory were shared in the WhatsApp
+            groups as warnings. The remaining 14 were shared as genuine leads
+            in the WhatsApp groups. Since the CoViD Scam Directory is
+            crowdsourced, all numbers listed in the directory can&#39;t be
+            assumed to be scam. It is however notable that even in this
+            database the overlap of numbers is low—less than 6% of the leads
+            shared in the 21 WhatsApp groups were captured in the CoViD Scam
               Directory.
             </Paragraph>
           </Paragraph>
@@ -555,6 +556,7 @@ const Content = () => {
             images.{" "}
           </Paragraph>
           
+          <ImageTableToggle />
 
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Absolute numbers of occurrence of terms across images and text can’t
@@ -563,6 +565,25 @@ const Content = () => {
             proportion or percentage of occurrence of terms (number of times a
             term is used divided by total number of words) in both these
             datasets.
+           </Paragraph>
+
+            <Box
+            key={"image_2"}
+            height={"12em"}
+            width={"528px"}
+            overflow={"hidden"}
+            >
+            <Image
+              src="/covid-whatsapp-public-groups/report_images/frequency-comparison.png"
+              alt="Term Frequency Comparison"
+              fit={"contain"}
+              alignSelf={"start"}
+            />
+          </Box>
+
+
+        
+            <Paragraph responsive={true} size={"large"} color={"accent-3"}> 
      
             This figure shows the percentage frequency of terms in images
             against the percentage frequency of terms in text. The graph is
