@@ -567,7 +567,7 @@ const Content = () => {
            
           <Box height={"10em"}>
             <Image
-              src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
+              src="/covid-whatsapp-public-groups/report_images/graphs-03.png"
               alt="Temporal Frequency"
               fit={"contain"}
               alignSelf={"start"}
