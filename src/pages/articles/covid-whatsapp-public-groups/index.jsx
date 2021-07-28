@@ -539,7 +539,7 @@ const Content = () => {
             shared in the 21 WhatsApp groups were captured in the CoViD Scam
               Directory.
             </Paragraph>
-          </Paragraph>
+        
 
           <TrendHeading head="Trend 5 : Differences between Text Contained in Images and Text Messages" />
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
@@ -561,10 +561,10 @@ const Content = () => {
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Absolute numbers of occurrence of terms across images and text can’t
             be directly compared since the volume of text messages is
-            significantly higher than media messages. We thus compare the
+            significantly higher than media messages. A comparison of the
             proportion or percentage of occurrence of terms (number of times a
             term is used divided by total number of words) in both these
-            datasets.
+            datasets also confirms
            </Paragraph>
 
             <Box
@@ -580,7 +580,6 @@ const Content = () => {
               alignSelf={"start"}
             />
           </Box>
-
 
         
             <Paragraph responsive={true} size={"large"} color={"accent-3"}> 
