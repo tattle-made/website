@@ -565,34 +565,13 @@ const Content = () => {
             significantly higher than media messages. A comparison of the
             proportion or percentage of occurrence of terms (number of times a
             term is used divided by total number of words) in both these
-            datasets also confirms
-           </Paragraph>
-
-            <Box
-            key={"image_2"}
-            height={"12em"}
-            width={"528px"}
-            overflow={"hidden"}
-            >
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/frequency-comparison.png"
-              alt="Term Frequency Comparison"
-              fit={"contain"}
-              alignSelf={"start"}
-            />
-          </Box>
-
-        
-            <Paragraph responsive={true} size={"large"} color={"accent-3"}> 
-     
-            This figure shows the percentage frequency of terms in images
-            against the percentage frequency of terms in text. The graph is
-            restricted to the 30 most frequent words in images and text messages
-            (a total of 38 words). This comparison shows that while words such
+            datasets also shows that while words such
             as ‘available’, ‘blood’, ‘patient’, ‘oxygen’, had nearly equal
-            representation in images and text messages (close to the y=x line),
+            representation in images and text messages
             words such as ‘need’ and ‘help’ were significantly more common in
-            text messages. This preliminary analysis suggests that while both
+            text messages. (Please see full report for more detailed analysis).
+            
+            This preliminary analysis suggests that while both
             text messages and images (which are screenshots of information from
             other platforms) were used to advertise for availability of oxygen
             or blood donors, the request for medical aid was more often
