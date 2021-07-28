@@ -564,20 +564,7 @@ const Content = () => {
             datasets.{" "}
           </Paragraph>
 
-          <Box
-            key={"image_1"}
-            height={"528px"}
-            width={"528px"}
-            overflow={"hidden"}
-          >
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/2021July13word_frequency_comparison.png"
-              alt="Comparison across Data sources"
-              fit={"contain"}
-              alignSelf={"start"}
-            />
-          </Box>
-
+          
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             This figure shows the percentage frequency of terms in images
             against the percentage frequency of terms in text. The graph is
