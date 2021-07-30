@@ -1039,7 +1039,7 @@ const Index = () => {
                   }}
                 >
                   {" "}
-                  during India's Second Covid-19 Wave
+                  During India's Second Covid-19 Wave
                 </span>
               </span>
               <Text size={"small"}>25 July 2021</Text>
