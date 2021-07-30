@@ -247,9 +247,9 @@ const Content = () => {
                 A comparison of phone leads shared in the WhatsApp groups with a
                 national level database of verified leads maintained by a
                 fact-checking group and with a crowdsourced database of ‘scam’
-                numbers revealed a low overlap. Less than 15% of the leads were
+                numbers revealed a low overlap. Less than 17% of the leads were
                 common between the WhatsApp groups we were tracking and the
-                databases. This indicates at the scale of information that was
+                databases. This indicates the scale of information that was
                 circulated and challenge of verifying content during the second
                 wave of the pandemic in India.
               </Paragraph>
@@ -271,7 +271,7 @@ const Content = () => {
               <Paragraph size={"large"}>
                 The frequency of conversations declined in these groups over
                 time. Some groups were repurposed to share information unrelated
-                to Covid-19 such as chartered accountancy related webinars
+                to Covid-19 such as chartered accountancy related webinars,
                 reflecting the use of WhatsApp in digital marketing.
               </Paragraph>
             </li>
@@ -291,9 +291,7 @@ const Content = () => {
             medical misinformation. ‘Leads for medical aid’ as a typology of
             information was hyperlocal and not created or propagated in
             coordination. This information did not have to be viral to be
-            harmful. Leads about medical resources are concise units of
-            information that don’t rely on or trigger cultural, social or
-            political beliefs. People had strong incentives to seek out accurate
+            harmful. People had strong incentives to seek out accurate
             information. Despite deliberate reasoning, the truth status of such
             information was not easy to discern. How platforms could have best
             intervened to reduce the circulation of such content is also
