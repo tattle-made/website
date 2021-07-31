@@ -694,7 +694,7 @@ const Content = () => {
                 The Need for Distributed but Coordinated Verification.{" "}
               </strong>
               The phone numbers shared in the Covid-19 relief groups, had low
-              (less than 15%) overlap with an external database of verified
+              (less than 17%) overlap with an external database of verified
               leads, as well as with a crowdsourced database of scam phone
               numbers— the majority of numbers shared in this small sample of 21
               groups could not be or had not been verified. The second wave of
