@@ -568,9 +568,13 @@ const Content = () => {
             term is used divided by total number of words) in both these
             datasets also shows that while words such as ‘available’, ‘blood’,
             ‘patient’, ‘oxygen’, had nearly equal representation in images and
-            text messages words such as ‘need’ and ‘help’ were significantly
+            text messages, words such as ‘need’ and ‘help’ were significantly
             more common in text messages. (Please see full report for more
-            detailed analysis). This preliminary analysis suggests that while
+            detailed analysis). 
+            </Paragraph>
+            
+            <Paragraph responsive={true} size={"large"} color={"accent-3"}>
+            This preliminary analysis suggests that while
             both text messages and images (which are screenshots of information
             from other platforms) were used to advertise for availability of
             oxygen or blood donors, the request for medical aid was more often
