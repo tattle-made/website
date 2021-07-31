@@ -495,7 +495,7 @@ const Content = () => {
             images of gods and of close-up of people’s faces. We tracked the
             images of people’s faces to a specific spiritual WhatsApp group
             which had the terms ‘Covid’ and ‘healing’ in the group name. The
-            images of gods to a specific group which was sometimes used for
+            group was sometimes used for
             sharing resources for Covid-19 relief, but was predominantly used
             for sharing images of different Indians gods.{" "}
           </Paragraph>
