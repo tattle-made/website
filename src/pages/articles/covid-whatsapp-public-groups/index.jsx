@@ -247,9 +247,9 @@ const Content = () => {
                 A comparison of phone leads shared in the WhatsApp groups with a
                 national level database of verified leads maintained by a
                 fact-checking group and with a crowdsourced database of ‘scam’
-                numbers revealed a low overlap. Less than 15% of the leads were
+                numbers revealed a low overlap. Less than 17% of the leads were
                 common between the WhatsApp groups we were tracking and the
-                databases. This indicates at the scale of information that was
+                databases. This indicates the scale of information that was
                 circulated and challenge of verifying content during the second
                 wave of the pandemic in India.
               </Paragraph>
@@ -271,7 +271,7 @@ const Content = () => {
               <Paragraph size={"large"}>
                 The frequency of conversations declined in these groups over
                 time. Some groups were repurposed to share information unrelated
-                to Covid-19 such as chartered accountancy related webinars
+                to Covid-19 such as chartered accountancy related webinars,
                 reflecting the use of WhatsApp in digital marketing.
               </Paragraph>
             </li>
@@ -291,9 +291,7 @@ const Content = () => {
             medical misinformation. ‘Leads for medical aid’ as a typology of
             information was hyperlocal and not created or propagated in
             coordination. This information did not have to be viral to be
-            harmful. Leads about medical resources are concise units of
-            information that don’t rely on or trigger cultural, social or
-            political beliefs. People had strong incentives to seek out accurate
+            harmful. People had strong incentives to seek out accurate
             information. Despite deliberate reasoning, the truth status of such
             information was not easy to discern. How platforms could have best
             intervened to reduce the circulation of such content is also
@@ -497,7 +495,7 @@ const Content = () => {
             images of gods and of close-up of people’s faces. We tracked the
             images of people’s faces to a specific spiritual WhatsApp group
             which had the terms ‘Covid’ and ‘healing’ in the group name. The
-            images of gods to a specific group which was sometimes used for
+            group was sometimes used for
             sharing resources for Covid-19 relief, but was predominantly used
             for sharing images of different Indians gods.{" "}
           </Paragraph>
@@ -570,9 +568,13 @@ const Content = () => {
             term is used divided by total number of words) in both these
             datasets also shows that while words such as ‘available’, ‘blood’,
             ‘patient’, ‘oxygen’, had nearly equal representation in images and
-            text messages words such as ‘need’ and ‘help’ were significantly
+            text messages, words such as ‘need’ and ‘help’ were significantly
             more common in text messages. (Please see full report for more
-            detailed analysis). This preliminary analysis suggests that while
+            detailed analysis). 
+            </Paragraph>
+            
+            <Paragraph responsive={true} size={"large"} color={"accent-3"}>
+            This preliminary analysis suggests that while
             both text messages and images (which are screenshots of information
             from other platforms) were used to advertise for availability of
             oxygen or blood donors, the request for medical aid was more often
@@ -682,8 +684,8 @@ const Content = () => {
               credibility markers to assess whether a lead shared could be
               trusted were needed. We saw several messages being ‘signed’ with a
               time stamp and/or information about the originator of the
-              information. Since these credibility markers can be spoofed,
-              Social practices for information quality management in closed
+              information. These credibility markers can be spoofed. But
+              social practices for information quality management in closed
               messaging apps deserve more attention.
             </Paragraph>
 
@@ -692,7 +694,7 @@ const Content = () => {
                 The Need for Distributed but Coordinated Verification.{" "}
               </strong>
               The phone numbers shared in the Covid-19 relief groups, had low
-              (less than 10%) overlap with an external database of verified
+              (less than 17%) overlap with an external database of verified
               leads, as well as with a crowdsourced database of scam phone
               numbers— the majority of numbers shared in this small sample of 21
               groups could not be or had not been verified. The second wave of
@@ -1041,7 +1043,7 @@ const Index = () => {
                   }}
                 >
                   {" "}
-                  during India's Second Covid-19 Wave
+                  During India's Second Covid-19 Wave
                 </span>
               </span>
               <Text size={"small"}>25 July 2021</Text>
