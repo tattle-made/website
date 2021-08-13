@@ -6,11 +6,13 @@ import { ResponsiveContext, Grid, Box, Heading, Text, Paragraph } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
+import { PlainExternalLink } from "../components/atomic/TattleLinks"
 
 const staff = [
   {
     name: "Denny George",
     role: "Interaction design and Tech Lead",
+    url: "https://denntenna.github.io",
   },
   {
     name: "Swair Shah",
@@ -24,7 +26,6 @@ const staff = [
     name: "Tarunima Prabhakar",
     role: "Research and Project Lead",
   },
-  
 ]
 
 const advisors = [
@@ -86,7 +87,7 @@ const advisors = [
     name: "Suraj Sharma",
     role: "Full Stack Intern",
   },
- 
+
   {
     name: "Venkatesh Thapan",
     role: "Backend Developer",
@@ -109,6 +110,7 @@ const Community = () => (
               key={index}
               name={staffMember.name}
               role={staffMember.role}
+              url={staffMember.url}
             />
           ))}
         </ResponsiveGrid>
@@ -152,13 +154,21 @@ const ResponsiveGrid = ({ children }) => {
   )
 }
 
-const CommunityMemberCard = ({ name, role }) => (
-  <Box width={"medium"} direction={"column"} pad={{ right: "small" }}>
-    <Heading level={3} margin={"none"} weight={500} color={"brand"}>
-      {name}
-    </Heading>
-    <Paragraph size={"small"}>{role}</Paragraph>
-    <Box height={"xxsmall"}></Box>
+const CommunityMemberCard = ({ name, role, url }) => (
+  <Box
+    width={"medium"}
+    direction={"column"}
+    pad={"small"}
+    onClick={() => {}}
+    hoverIndicator={true}
+    focusIndicator={false}
+  >
+    <PlainExternalLink href={url} target={"_blank"}>
+      <Heading level={3} margin={"none"} weight={500} color={"brand"}>
+        {name}
+      </Heading>
+      <Paragraph size={"small"}>{role}</Paragraph>
+    </PlainExternalLink>
   </Box>
 )
 

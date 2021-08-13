@@ -22,7 +22,9 @@ const FeaturedListItem = ({ item }) => {
       direction={"column"}
       onClick={() => {}}
       hoverIndicator={true}
+      focusIndicator={false}
       width={size === "small" ? "100%" : "50%"}
+      pad={"xsmall"}
     >
       <PlainExternalLink href={item.url} target={"_blank"}>
         <Paragraph size={"small"} color={"dark-3"} margin={"none"}>
@@ -33,7 +35,7 @@ const FeaturedListItem = ({ item }) => {
             <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>
               {item.title}
             </Heading>
-            <Box direction={"row-responsive"} gap={"xsmall"}>
+            <Box direction={"row"} wrap={true} gap={"xsmall"}>
               {item.tags.map(tag => (
                 <TagBubble data={{ label: tag }} />
               ))}
@@ -47,7 +49,13 @@ const FeaturedListItem = ({ item }) => {
 }
 
 const AllListItem = ({ item }) => (
-  <Box direction={"column"} onClick={() => {}} hoverIndicator={true}>
+  <Box
+    direction={"column"}
+    pad={"xsmall"}
+    onClick={() => {}}
+    hoverIndicator={true}
+    focusIndicator={false}
+  >
     <PlainExternalLink href={item.url} target={"_blank"}>
       <Paragraph size={"small"} color={"dark-3"} margin={"none"}>
         {item.date}
@@ -61,7 +69,7 @@ const AllListItem = ({ item }) => (
           >
             {item.title}
           </Heading>
-          <Box direction={"row-responsive"} gap={"xsmall"}>
+          <Box direction={"row"} wrap={true} gap={"xsmall"}>
             {item.tags.map(tag => (
               <TagBubble data={{ label: tag }} />
             ))}
@@ -72,7 +80,6 @@ const AllListItem = ({ item }) => (
         </Box>
       </Box>
     </PlainExternalLink>
-    <Box height={"xxsmall"} />
   </Box>
 )
 
