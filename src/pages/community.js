@@ -21,10 +21,12 @@ const staff = [
   {
     name: "Saakshita Prabhakar",
     role: "UX / Visual Design Contributor",
+    url: "www.saakshita.com"
   },
   {
     name: "Tarunima Prabhakar",
     role: "Research and Project Lead",
+    url: "www.tarunima.com",
   },
 ]
 
@@ -32,10 +34,12 @@ const advisors = [
   {
     name: "Anushree Abhyankar",
     role: "Full Stack Contributor",
+    url: "www.anushreeabhyankar.com",
   },
   {
     name: "Anushree Gupta",
     role: "Researcher",
+    url: "
   },
   {
     name: "Eishita Chhetri",
@@ -68,6 +72,7 @@ const advisors = [
   {
     name: "Rishabh Jain",
     role: "Design Research",
+    url: "https://www.jaineric.com/"
   },
 
   {
@@ -86,6 +91,7 @@ const advisors = [
   {
     name: "Suraj Sharma",
     role: "Full Stack Intern",
+    url: "http://evenzero.in"
   },
 
   {
@@ -95,6 +101,7 @@ const advisors = [
   {
     name: "Yohan Mathew",
     role: "DevOps and Automation",
+    url: "https://www.linkedin.com/in/ymathew/"
   },
 ]
 
