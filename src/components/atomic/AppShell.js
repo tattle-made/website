@@ -1,5 +1,5 @@
-import React from "react"
-import { Grommet, ResponsiveContext, Box } from "grommet"
+import React, { useState } from "react"
+import { Grommet, ResponsiveContext, Box, Text } from "grommet"
 import SimpleHeader from "./SimpleHeader"
 import SmallFooter from "./SmallFooter"
 import TattleTheme from "./theme"
@@ -7,15 +7,18 @@ import SEO from "./seo"
 import Footer from "../../pages/v2/footer"
 import NarrowSection from "./layout/narrow-section"
 import NarrowContentWrapper from "./layout/narrow-content-wrapper"
+import { X } from "react-feather"
+import { PlainLink } from "./TattleLinks"
+import { useLocation } from "@reach/router"
 
 /**
  * @author
  * @function ContentPageLayout
  **/
 
-const setPageTitle = name => {
-  return name === "" ? name : `- ${formatTitle(name)}`
-}
+const MODAL_TEXT =
+  "Read our New Case Study of the Information Chaos During India's Second Covid-19 Wave"
+const MODAL_PATH = "/articles/covid-whatsapp-public-groups/"
 
 const formatTitle = name => {
   return name
@@ -36,11 +39,33 @@ const AppShell = ({
   isMDXPage,
 }) => {
   const size = React.useContext(ResponsiveContext)
+  const [modal, setModal] = useState({ visibility: false, text: "" })
+  const location = useLocation()
 
   return (
     <Grommet theme={TattleTheme} full>
       <Box fill direction={"column"}>
         <SEO title={`Tattle - ${headerLabel}`} />
+        {location.pathname !== MODAL_PATH && (
+          <Box
+            background={"accent-1"}
+            flex={"grow"}
+            pad={{ top: "xsmall", bottom: "xsmall" }}
+          >
+            <NarrowContentWrapper>
+              <Box direction={"row"}>
+                <Box>
+                  <PlainLink to={"/articles/covid-whatsapp-public-groups/"}>
+                    <Text size={"small"} margin={{ bottom: "none" }}>
+                      {MODAL_TEXT}
+                    </Text>
+                  </PlainLink>
+                </Box>
+                <Box flex={"grow"}></Box>
+              </Box>
+            </NarrowContentWrapper>
+          </Box>
+        )}
 
         <Box
           background="brand"

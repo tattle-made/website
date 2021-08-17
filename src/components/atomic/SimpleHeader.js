@@ -88,15 +88,15 @@ const MobileNavItemExternalLink = ({ target, label }) => (
 const PrimaryNav = ({ primaryNav }) => {
   return (
     <Box direction={"row"} align={"center"} gap={"large"}>
-      <Link to={"/research"}>
-        <Button plain={true}>
-          <NavigationLabel>Research</NavigationLabel>
-        </Button>
-      </Link>
       <DropDownMenu title={"Tools"} options={dropDownOptionsTools} />
       <Link to={"/datasets"}>
         <Button plain={true}>
           <NavigationLabel>Datasets</NavigationLabel>
+        </Button>
+      </Link>
+      <Link to={"/research"}>
+        <Button plain={true}>
+          <NavigationLabel>Research</NavigationLabel>
         </Button>
       </Link>
 
