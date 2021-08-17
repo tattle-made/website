@@ -89,16 +89,25 @@ const Research = () => {
       <NarrowContentWrapper>
         <NarrowSection>
           <Box>
-            <Heading level={2}>Research</Heading>
+            <Heading level={2} margin={{ bottom: "none" }}>
+              Research
+            </Heading>
 
             <NarrowSection>
+              <Text size={"small"} weight={600} margin={{ bottom: "medium" }}>
+                Featured
+              </Text>
               <Box direction={"row-responsive"} gap={"large"}>
                 {research.featured.map(update => (
                   <FeaturedListItem item={update} />
                 ))}
               </Box>
             </NarrowSection>
+
             <NarrowSection>
+              <Text size={"small"} weight={600} margin={{ bottom: "medium" }}>
+                Papers, Reports, Abstracts
+              </Text>
               <Box direction={"column"}>
                 {research.all.map(update => (
                   <AllListItem item={update} />

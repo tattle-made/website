@@ -15,9 +15,7 @@ export const research = {
       title:
         "Check Mate: Prioritizing User Generated Multi-Media Content for Fact-Checking",
       description:
-        "This paper presents a novel dataset that can be used to prioritize check-worthy posts from multi-media content in Hindi. It is unique in its 1) focus on user generated content, 2) language and 3) accommodation of multi-modality in social media posts. This Dataset was accepted at ICWSM 2021 . 
-        [Arxiv Preprint:](https://arxiv.org/abs/2010.13387)
-",
+        "This paper presents a novel dataset that can be used to prioritize check-worthy posts from multi-media content in Hindi. It is unique in its 1) focus on user generated content, 2) language and 3) accommodation of multi-modality in social media posts. This Dataset was accepted at ICWSM 2021.",
       url: "https://icwsm.org/2021/#accepted_papers",
       tags: ["Dataset", "Multi-media", "Claims-detection"],
     },
@@ -43,10 +41,12 @@ export const research = {
     },
     {
       date: "15 March, 2021",
-      title: "Ethical Approaches to Closed Messaging Research: Considerations in Democratic Contexts",
+      title:
+        "Ethical Approaches to Closed Messaging Research: Considerations in Democratic Contexts",
       description:
         "Report on responsible data collection from chat applications.",
-      url: "https://electionstandards.cartercenter.org/verifying-elections-misinfocon2020/ethical-approaches-to-closed-messaging-research-considerations-in-democratic-contexts/",
+      url:
+        "https://electionstandards.cartercenter.org/verifying-elections-misinfocon2020/ethical-approaches-to-closed-messaging-research-considerations-in-democratic-contexts/",
       tags: ["Responsible Data Collection", "Chat Apps", "Paper"],
     },
     {
@@ -55,17 +55,16 @@ export const research = {
         "Considerations in Archiving Content from Encrypted Messaging Apps",
       description:
         "Abstract presentation at Workshop on Comparative Approaches to Disinformation, Berkman Klein Center, Harvard University",
-      url: "https://cyber.harvard.edu/story/2019-10/comparative-approaches-disinformation",
+      url:
+        "https://cyber.harvard.edu/story/2019-10/comparative-approaches-disinformation",
       tags: ["Responsible Data Collection", "Chat Apps", "Paper"],
     },
     {
       date: "4 October, 2019",
-      title:
-        "Data Collection and Management at Tattle",
-      description:
-        "Presentation at Conference for Truth and Trust Online",
+      title: "Data Collection and Management at Tattle",
+      description: "Presentation at Conference for Truth and Trust Online",
       url: "https://truthandtrustonline.com/2019-proceedings/",
-      tags: ["Tattle Process","Paper"],
+      tags: ["Tattle Process", "Paper"],
     },
   ],
 }

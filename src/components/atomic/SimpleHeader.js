@@ -38,11 +38,7 @@ const dropDownOptionsTools = [
   { id: 3, target: "/products/whatsapp-archiver", label: "Whatsapp Scraper" },
 ]
 
-const dropDownOptionsAbout = [
-  { id: 0, target: "/faq", label: "FAQ" },
-  { id: 1, target: "/community", label: "Community" },
-  { id: 2, target: "/updates", label: "Updates" },
-]
+const dropDownOptionsAbout = []
 
 const dropDownOptionsLearnMore = [
   {
@@ -60,6 +56,9 @@ const dropDownOptionsLearnMore = [
   },
   { id: 1, target: "/join-us", label: "Work With Us" },
   { id: 1, target: "/report/", label: "Annual Reports" },
+  { id: 0, target: "/faq", label: "FAQ" },
+  { id: 1, target: "/community", label: "Community" },
+  { id: 2, target: "/updates", label: "Updates" },
 ]
 
 const MobileNavItemInternalLink = ({ target, label, description }) => (
@@ -89,13 +88,18 @@ const MobileNavItemExternalLink = ({ target, label }) => (
 const PrimaryNav = ({ primaryNav }) => {
   return (
     <Box direction={"row"} align={"center"} gap={"large"}>
+      <Link to={"/research"}>
+        <Button plain={true}>
+          <NavigationLabel>Research</NavigationLabel>
+        </Button>
+      </Link>
       <DropDownMenu title={"Tools"} options={dropDownOptionsTools} />
       <Link to={"/datasets"}>
         <Button plain={true}>
           <NavigationLabel>Datasets</NavigationLabel>
         </Button>
       </Link>
-      <DropDownMenu title={"About"} options={dropDownOptionsAbout} />
+
       <DropDownMenu title={"Learn More"} options={dropDownOptionsLearnMore} />
     </Box>
   )
@@ -174,37 +178,16 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
                   target={dropDownOptionsTools[3].target}
                 />
 
-                <Heading level={3}>About</Heading>
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsAbout[0].label}
-                  target={dropDownOptionsAbout[0].target}
-                />
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsAbout[1].label}
-                  target={dropDownOptionsAbout[1].target}
-                />
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsAbout[2].label}
-                  target={dropDownOptionsAbout[2].target}
-                />
-
                 <Heading level={3}>Learn More</Heading>
-                <MobileNavItemExternalLink
-                  label={dropDownOptionsLearnMore[0].label}
-                  target={dropDownOptionsLearnMore[0].target}
-                />
-                <MobileNavItemExternalLink
-                  label={dropDownOptionsLearnMore[1].label}
-                  target={dropDownOptionsLearnMore[1].target}
-                />
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsLearnMore[2].label}
-                  target={dropDownOptionsLearnMore[2].target}
-                />
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsLearnMore[3].label}
-                  target={dropDownOptionsLearnMore[3].target}
-                />
+
+                <Box>
+                  {dropDownOptionsLearnMore.map(item => (
+                    <MobileNavItemExternalLink
+                      label={item.label}
+                      target={item.target}
+                    />
+                  ))}
+                </Box>
               </Box>
             </Box>
           </Box>
