@@ -121,7 +121,7 @@ const ImagePreview = ({ active }) => {
     >
       <Image
         fit="contain"
-        src={`/covid-whatsapp-public-groups/anonymized_images/${
+        src={`/covid-whatsapp-public-groups/images/${
           images[active.index]
         }`}
       />

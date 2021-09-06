@@ -7,6 +7,7 @@ import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import { PlainExternalLink } from "../components/atomic/TattleLinks"
+import { ExternalLink } from "react-feather"
 
 const staff = [
   {
@@ -130,6 +131,7 @@ const Community = () => (
               key={index}
               name={advisor.name}
               role={advisor.role}
+              url={advisor.url}
             />
           ))}
         </ResponsiveGrid>
@@ -172,9 +174,13 @@ const CommunityMemberCard = ({ name, role, url }) => (
     focusIndicator={false}
   >
     <PlainExternalLink href={url} target={"_blank"}>
-      <Heading level={3} margin={"none"} weight={500} color={"brand"}>
-        {name}
-      </Heading>
+      <Box direction={"row"} align={"center"}>
+        <Heading level={3} margin={"none"} weight={500} color={"brand"}>
+          {name}
+        </Heading>
+        <Box flex={"grow"} />
+        {url && url.length != 0 && <ExternalLink size={16} />}
+      </Box>
       <Paragraph size={"small"}>{role}</Paragraph>
     </PlainExternalLink>
   </Box>
