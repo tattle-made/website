@@ -25,17 +25,29 @@ const dropDownOptionsTools = [
   },
   {
     id: 1,
-    target: "/products/khoj",
-    label: "Khoj",
-    description: "Find accurate information",
-  },
-  {
-    id: 2,
     target: "/products/jod-bot",
     label: "Jod Bot",
     description: "Telegram bot for data archivists",
   },
-  { id: 3, target: "/products/whatsapp-archiver", label: "Whatsapp Scraper" },
+  { id: 2, target: "/products/whatsapp-archiver", label: "Whatsapp Scraper" },
+  {
+    id: 3,
+    target: "https://github.com/tattle-made/factchecking-sites-scraper",
+    label: "FactCheck Article Scraper",
+    type: "external",
+  },
+  {
+    id: 4,
+    target: "https://services.tattle.co.in/khoj/dashboard",
+    label: "FactCheck Article Dashboard",
+    type: "external",
+  },
+  {
+    id: 5,
+    target: "/products/khoj",
+    label: "Khoj",
+    description: "Find accurate information",
+  },
 ]
 
 const dropDownOptionsAbout = []
@@ -157,26 +169,25 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
               </Box>
               <Box direction={"column"} pad={"small"}>
                 <Heading level={3}> Tools </Heading>
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsTools[0].label}
-                  description={dropDownOptionsTools[0].description}
-                  target={dropDownOptionsTools[0].target}
-                />
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsTools[1].label}
-                  description={dropDownOptionsTools[1].description}
-                  target={dropDownOptionsTools[1].target}
-                />
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsTools[2].label}
-                  description={dropDownOptionsTools[2].description}
-                  target={dropDownOptionsTools[2].target}
-                />
-                <MobileNavItemInternalLink
-                  label={dropDownOptionsTools[3].label}
-                  description={dropDownOptionsTools[3].description}
-                  target={dropDownOptionsTools[3].target}
-                />
+                <Box>
+                  {[0, 1, 2, 3, 4, 5].map(i => (
+                    <MobileNavItemInternalLink
+                      label={dropDownOptionsTools[i].label}
+                      description={dropDownOptionsTools[i].description}
+                      target={dropDownOptionsTools[i].target}
+                    />
+                  ))}
+                </Box>
+                <Link to={"/datasets"}>
+                  <Box>
+                    <Heading level={3}>Datasets</Heading>
+                  </Box>
+                </Link>
+                <Link to={"/research"}>
+                  <Box>
+                    <Heading level={3}>Research</Heading>
+                  </Box>
+                </Link>
 
                 <Heading level={3}>Learn More</Heading>
 
