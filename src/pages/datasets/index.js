@@ -96,7 +96,7 @@ const Datasets = () => {
               </ResponsiveGrid>
               <Box height={"1.6em"} />
               <Heading level={3} color={"#514E80"}>
-                Released Datasets
+                Our Datasets
               </Heading>
               <ResponsiveLayoutDatasets size={size}>
                 <>
@@ -107,7 +107,9 @@ const Datasets = () => {
                     title={
                       "CheckMate: Prioritizing User Generated Content for Fact Checking"
                     }
-                    description={""}
+                    description={
+                      "A novel dataset that can be used to prioritize check-worthy posts from multi-media content in Hindi. It is unique in its focus on user generated content, language and accommodation of multi-modality in social media posts."
+                    }
                     url={"https://arxiv.org/abs/2010.13387"}
                     publicationDate={"28-12-2020"}
                     linktype="external"
@@ -117,7 +119,9 @@ const Datasets = () => {
                       "https://images.unsplash.com/photo-1548504769-900b70ed122e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
                     }
                     title={"Fact Checking Sites Dataset 2019"}
-                    description={""}
+                    description={
+                      "A dataset of fact check articles scraped from IFCN certified fact check organizations in India. The data contains text and images from the article along with metadata about the organization and author"
+                    }
                     url={"https://services.tattle.co.in/khoj/explore"}
                     publicationDate={"07-11-2020"}
                     linktype="external"
@@ -127,20 +131,12 @@ const Datasets = () => {
               <Heading level={3} color={"#514E80"}>
                 Datasets We love
               </Heading>
-              <ResponsiveLayoutDatasets size={size}>
-                <>
-                  <DatasetPreview
-                    previewImage={
-                      "https://images.unsplash.com/photo-1607049582789-3b2dd51ac95e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                    }
-                    title={"A selected list of datasets we find useful"}
-                    description={""}
-                    publicationDate={"13-11-2020"}
-                    linktype="internal"
-                    url={"/datasets/datasets-we-love"}
-                  ></DatasetPreview>
-                </>
-              </ResponsiveLayoutDatasets>
+              <SmartPlainLink
+                linktype="internal"
+                target="/datasets/datasets-we-love"
+              >
+                Please check out this selected list of datasets we find useful
+              </SmartPlainLink>
             </NarrowSection>
           </NarrowContentWrapper>
         )}
@@ -161,15 +157,15 @@ const DatasetPreview = ({
   return (
     <SmartPlainLink linktype={linktype} target={url}>
       <Box direction="column" gap={"xsmall"} margin={{ top: "medium" }}>
-        <Box
+        {/* <Box
           width={"100%"}
           height={"160px"}
           round={"xsmall"}
           overflow={"hidden"}
           background={`visuals-${Math.ceil(Math.random() * 7)}`}
         >
-          {/*<Image src={previewImage} fit="cover" fill={true} />*/}
-        </Box>
+          <Image src={previewImage} fit="cover" fill={true} />
+        </Box> */}
 
         <Box>
           {/*<Paragraph size={"small"} color={"dark-3"} margin={"none"}>
@@ -179,7 +175,7 @@ const DatasetPreview = ({
           <Heading level={4} margin={{ bottom: "4.578px", top: "7.324px" }}>
             {title}
           </Heading>
-          <Paragraph size={"small"} margin={{ top: "none" }}>
+          <Paragraph fill={true} size={"small"} margin={{ top: "none" }}>
             {description}
           </Paragraph>
         </Box>
@@ -190,7 +186,7 @@ const DatasetPreview = ({
 
 const ResponsiveLayoutDatasets = ({ size, children }) => {
   return size !== "small" ? (
-    <Grid columns={["flex", "flex", "flex"]} gap={"small"}>
+    <Grid columns={["flex", "flex"]} gap={"small"}>
       {children}
     </Grid>
   ) : (
