@@ -7,13 +7,21 @@ export const updates = [
     url:"",
     tags: ["Talk", ""],
   },  
- 
+  
   {
     date: "8 October, 2021",
     title: "Beyond Commerce: Working on Tech that Benefits Society",
     event_name: "Through the Corporate Glass Podcast",
     url:"https://www.throughthecorporateglass.com/tech-benefit-society",
     tags: ["Talk", ""],
+  },  
+   
+  {
+    date: "7 October, 2021",
+    title: "Misinformation about minorities in India is widespread – and it’s getting worse",
+    event_name: "The New Statesman, UK",
+    url:"https://www.newstatesman.com/international-politics/society-international-politics/2021[…]-about-minorities-in-india-is-widespread-and-getting-worse",
+    tags: ["Community Use"],
   },  
   
    {
