@@ -1,5 +1,45 @@
 export const updates = [
   
+    {
+    date: "27 October, 2021",
+    title: "Between Fake and The News: The Long Game Against Information Disorder",
+    event_name: "IIT Jodhpur, Digital Humanities Series",
+    url:"",
+    tags: ["Talk", ""],
+  },  
+ 
+  {
+    date: "8 October, 2021",
+    title: "Beyond Commerce: Working on Tech that Benefits Society",
+    event_name: "Through the Corporate Glass Podcast",
+    url:"https://www.throughthecorporateglass.com/tech-benefit-society",
+    tags: ["Talk", ""],
+  },  
+  
+   {
+    date: "7 October, 2021",
+    title: "A Contextual Inquiry of IFCN",
+    event_name: "The Annual Meeting of the Society of Social Study of Science: Panel on Post Truth Age",
+    url:"https://www.4sonline.org/185-the-post-truth-age-what-is-this-really-about/",
+    tags: ["Talk", ""],
+  },  
+  
+   {
+    date: "29 July, 2021",
+    title: "Tech: Boon or Bane. Exploring the role of Big Tech in fighting Disinformation & Polarisation.",
+    event_name: "Boomlive Truth-Seekers Fest",
+    url:"https://www.youtube.com/watch?v=GP5iygyjG2c",
+    tags: ["Panel", ""],
+  },  
+ 
+  {
+    date: "25 July, 2021",
+    title: "Crowdsourcing Aid :A Case Study of the Information Chaos During India's Second Covid-19 Wave",
+    event_name: "Report Release",
+    url:"https://tattle.co.in/articles/covid-whatsapp-public-groups/",
+    tags: ["Release", "Paper"],
+  },  
+  
   {
     date: "10 June, 2021",
     title: "Check Mate: Prioritizing User Generated Multi-Media Content for Fact-Checking",
