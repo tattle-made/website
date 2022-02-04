@@ -16,8 +16,18 @@ const staff = [
     url: "",
   },
   {
+    name: "Rahul Dev",
+    role: "Software Engineer",
+    url: "https://github.com/mlkorra",
+  },
+  {
     name: "Swair Shah",
     role: "ML Engineer",
+  },
+  {
+    name: "Swastika Mohapatra",
+    role: "Software Engineer",
+    url: "https://www.linkedin.com/in/swastika-mohapatra/",
   },
   {
     name: "Saakshita Prabhakar",
@@ -84,6 +94,7 @@ const advisors = [
   {
     name: "Sudeep Duggal",
     role: "Data Science Contributor",
+    url: "https://github.com/duggalsu"
   },
   {
     name: "Sunandan Chakraborty",
