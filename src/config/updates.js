@@ -1,6 +1,38 @@
 export const updates = [
   
     {
+    date: "4 Feb, 2022",
+    title: "OGBV Plugin Closed Beta",
+    event_name: "Plugin release with archiving, crowdsourcing networks and slur replacement",
+    url:"https://github.com/tattle-made/OGBV/tree/main/chrome-plugin",
+    tags: ["Panel", ""],
+  }, 
+ 
+   {
+    date: "17 Jan, 2022",
+    title: "Countering hate in the digital world",
+    event_name: "The Indian Express",
+    url:"https://indianexpress.com/article/opinion/columns/bulli-bai-sulli-deals-digital-pollution-7726705/",
+    tags: ["Panel", ""],
+  },  
+  
+  {
+    date: "17 Jan, 2022",
+    title: "Tek Fog: Dangerous New World",
+    event_name: "The Wire",
+    url:"https://twitter.com/onosmosis/status/1482980287458193412",
+    tags: ["Panel", ""],
+  },  
+ 
+   {
+    date: "7 Dec, 2021",
+    title: "MemeBox Release",
+    event_name: "FOSS United",
+    url:"https://github.com/tattle-made/memebox",
+    tags: ["Release", ""],
+  }, 
+  
+    {
     date: "27 October, 2021",
     title: "Between Fake and The News: The Long Game Against Information Disorder",
     event_name: "IIT Jodhpur, Digital Humanities Series",
