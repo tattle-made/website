@@ -6,37 +6,13 @@ import { Box, ResponsiveContext } from "grommet"
  * type : 'top'
  **/
 
-const NarrowSection = ({ children, topSpace, bottomSpace, type }) => {
-  const size = useContext(ResponsiveContext)
-  const Section = () => (
+const NarrowSection = ({ children }) => {
+  return (
     <Box width={"100%"} alignSelf={"center"}>
       <Box height={"xxsmall"} />
       <Box>{children}</Box>
       <Box height={"xxsmall"} />
     </Box>
-  )
-
-  const SmallSection = ({ children }) => (
-    <Box width={"100%"} alignSelf={"center"}>
-      <Box height={"xxsmall"} />
-      <Box>{children}</Box>
-      <Box height={"xxsmall"} />
-    </Box>
-  )
-
-  const MediumSection = ({ children }) => (
-    <Box width={"100%"} alignSelf={"center"}>
-      <Box height={"xxsmall"} />
-      <Box>{children}</Box>
-      <Box height={"xxsmall"} />
-    </Box>
-  )
-  return size === "small" ? (
-    <SmallSection>{children}</SmallSection>
-  ) : size === "medium" ? (
-    <MediumSection>{children}</MediumSection>
-  ) : (
-    <Section>{children}</Section>
   )
 }
 
