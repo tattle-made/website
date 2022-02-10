@@ -98,11 +98,11 @@ const Index = props => {
               </NarrowSection>
             </NarrowContentWrapper>
 
-            <NarrowContentWrapper>
-              <NarrowSection>
-                <RecentProjectSection />
-              </NarrowSection>
-            </NarrowContentWrapper>
+//             <NarrowContentWrapper>
+//               <NarrowSection>
+//                 <RecentProjectSection />
+//               </NarrowSection>
+//             </NarrowContentWrapper>
 
             <Box
               background="#514E80"
