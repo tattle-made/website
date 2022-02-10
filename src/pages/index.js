@@ -17,6 +17,7 @@ import {
   Link,
   ExternalLink,
   PlainHeavyLink,
+  SmartPlainLink,
 } from "../components/atomic/TattleLinks"
 import MailchimpSubscribeForm from "../components/atomic/MailchimpSubscribeForm"
 import CaseStudyPreview from "./v2/case-study-preview"
@@ -132,19 +133,21 @@ const Project = ({ project }) => {
       onClick={() => {}}
       pad={{ top: "small", bottom: "small" }}
     >
-      <Heading level={4} margin={{ bottom: "4.578px", top: "7.324px" }}>
-        {project.title}
-      </Heading>
-      <Paragraph size={"small"} margin={{ top: "none" }}>
-        {project.description}
-      </Paragraph>
-      <Box flex={"grow"} />
-      {project.supporter ? (
-        <Box gap={"xsmall"} direction={"row"} align={"center"}>
-          <Text size="xsmall">supported by</Text>
-          <Anchor weight={400} label={project.supporter.name} />
-        </Box>
-      ) : null}
+      <SmartPlainLink>
+        <Heading level={4} margin={{ bottom: "4.578px", top: "7.324px" }}>
+          {project.title}
+        </Heading>
+        <Paragraph size={"small"} margin={{ top: "none" }}>
+          {project.description}
+        </Paragraph>
+        <Box flex={"grow"} />
+        {project.supporter ? (
+          <Box gap={"xsmall"} direction={"row"} align={"center"}>
+            <Text size="xsmall">supported by</Text>
+            <Anchor weight={400} label={project.supporter.name} />
+          </Box>
+        ) : null}
+      </SmartPlainLink>
     </Box>
   )
 }

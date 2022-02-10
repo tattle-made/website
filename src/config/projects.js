@@ -9,6 +9,10 @@ export const projects = {
         name: "Omidyar Network India",
         url: "https://www.omidyarnetwork.in/",
       },
+      link: {
+        type: "internal",
+        url: "/products/ogbv/",
+      },
     },
     {
       title: "Developing Standardized Metrics for Github",
@@ -17,6 +21,10 @@ export const projects = {
       supporter: {
         name: "Github",
         url: "https://www.github.com/",
+      },
+      link: {
+        type: "internal",
+        url: "/products/ogbv/",
       },
     },
     {
@@ -28,6 +36,11 @@ export const projects = {
         name: "Interledger Foundation",
         url: "https://interledger.org/",
       },
+      link: {
+        type: "external",
+        url:
+          "https://www.grantfortheweb.org/blog/announcing-our-newest-cohort-of-awardees",
+      },
     },
     {
       title: "Kosh - Searchable Archive of Social Media posts ",
@@ -36,6 +49,10 @@ export const projects = {
       supporter: {
         name: "AI Ethics Grant",
         url: "https://aiethicsinitiative.org/",
+      },
+      link: {
+        type: "internal",
+        url: "/products/kosh/",
       },
     },
   ],
