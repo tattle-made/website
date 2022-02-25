@@ -5,7 +5,7 @@ export const updates = [
     title: "OGBV Plugin Closed Beta",
     event_name: "Plugin release with archiving, crowdsourcing networks and slur replacement",
     url:"https://github.com/tattle-made/OGBV/tree/main/chrome-plugin",
-    tags: ["Panel", ""],
+    tags: ["Release", ""],
   }, 
  
    {
@@ -13,7 +13,7 @@ export const updates = [
     title: "Countering hate in the digital world",
     event_name: "The Indian Express",
     url:"https://indianexpress.com/article/opinion/columns/bulli-bai-sulli-deals-digital-pollution-7726705/",
-    tags: ["Panel", ""],
+    tags: ["Media Mentions", ""],
   },  
   
   {
@@ -30,6 +30,14 @@ export const updates = [
     event_name: "FOSS United",
     url:"https://github.com/tattle-made/memebox",
     tags: ["Release", ""],
+  }, 
+  
+   {
+    date: "3 Nov, 2021",
+    title: "Facebook’s language problem",
+    event_name: "Rest of World",
+    url:"https://restofworld.org/2021/newsletter-south-asia-facebooks-language-problem/",
+    tags: ["Media Mentions", ""],
   }, 
   
     {
@@ -120,7 +128,7 @@ export const updates = [
     event_name:
       "The Bachchao Project's: The Glassroom- Misinformation Edition with Tactical Tech",
     url:"",
-    tags: ["talk"],
+    tags: ["Talk"],
   },
   
   {
