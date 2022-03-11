@@ -46,7 +46,7 @@ const AppShell = ({
     <Grommet theme={TattleTheme} full>
       <Box fill direction={"column"}>
         <SEO title={`Tattle - ${headerLabel}`} />
-        {location.pathname !== MODAL_PATH && (
+        {/* {location.pathname !== MODAL_PATH && (
           <Box
             background={"accent-1"}
             flex={"grow"}
@@ -65,7 +65,7 @@ const AppShell = ({
               </Box>
             </NarrowContentWrapper>
           </Box>
-        )}
+        )} */}
 
         <Box
           background="brand"
