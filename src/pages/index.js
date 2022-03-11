@@ -99,11 +99,11 @@ const Index = props => {
               </NarrowSection>
             </NarrowContentWrapper>
 
-            {/* <NarrowContentWrapper>
-               <NarrowSection>
-                 <RecentProjectSection />
-               </NarrowSection>
-             </NarrowContentWrapper> */}
+            <NarrowContentWrapper>
+              <NarrowSection>
+                <RecentProjectSection />
+              </NarrowSection>
+            </NarrowContentWrapper>
 
             <Box
               background="#514E80"
@@ -133,21 +133,26 @@ const Project = ({ project }) => {
       onClick={() => {}}
       pad={{ top: "small", bottom: "small" }}
     >
-      <SmartPlainLink>
+      <SmartPlainLink linktype={project.link.type} target={project.link.url}>
         <Heading level={4} margin={{ bottom: "4.578px", top: "7.324px" }}>
           {project.title}
         </Heading>
-        <Paragraph size={"small"} margin={{ top: "none" }}>
-          {project.description}
-        </Paragraph>
-        <Box flex={"grow"} />
-        {project.supporter ? (
-          <Box gap={"xsmall"} direction={"row"} align={"center"}>
-            <Text size="xsmall">supported by</Text>
-            <Anchor weight={400} label={project.supporter.name} />
-          </Box>
-        ) : null}
       </SmartPlainLink>
+      <Paragraph size={"small"} margin={{ top: "none" }}>
+        {project.description}
+      </Paragraph>
+      <Box flex={"grow"} />
+      {project.supporter ? (
+        <Box gap={"xsmall"} direction={"row"} align={"center"}>
+          <Text size="xsmall">supported by</Text>
+          <Anchor
+            weight={400}
+            label={project.supporter.name}
+            href={project.supporter.url}
+            target={"_blank"}
+          />
+        </Box>
+      ) : null}
     </Box>
   )
 }
