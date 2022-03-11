@@ -26,7 +26,7 @@ const staff = [
   },
   {
     name: "Swastika Mohapatra",
-    role: "Software Engineer",
+    role: "Data Science Intern",
     url: "https://www.linkedin.com/in/swastika-mohapatra/",
   },
   {
