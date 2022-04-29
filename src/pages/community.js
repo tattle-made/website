@@ -11,10 +11,17 @@ import { ExternalLink } from "react-feather"
 
 const staff = [
   {
+    name: "Tarunima Prabhakar",
+    role: "Research and Project Lead",
+    url: "https://tarunima.com",
+  },
+  {
     name: "Denny George",
     role: "Interaction design and Tech Lead",
-    url: "",
+    url: "https://denntenna.github.io/",
   },
+  { name: " J Mahalakshmi", role: "Data Scientist" },
+  { name: "Upasana Bhattacharjee", role: "Research Associate" },
   {
     name: "Rahul Dev",
     role: "Software Engineer",
@@ -23,6 +30,11 @@ const staff = [
   {
     name: "Swair Shah",
     role: "ML Engineer",
+  },
+  {
+    name: "Sudeep Duggal",
+    role: "Contributor :  Data Science, Security, Accessibility",
+    url: "https://github.com/duggalsu",
   },
   {
     name: "Swastika Mohapatra",
@@ -35,9 +47,9 @@ const staff = [
     url: "https://saakshita.com",
   },
   {
-    name: "Tarunima Prabhakar",
-    role: "Research and Project Lead",
-    url: "https://tarunima.com",
+    name: "Yohan Mathew",
+    role: "DevOps and Automation",
+    url: "https://www.linkedin.com/in/ymathew/",
   },
 ]
 
@@ -94,7 +106,7 @@ const advisors = [
   {
     name: "Sudeep Duggal",
     role: "Data Science Contributor",
-    url: "https://github.com/duggalsu"
+    url: "https://github.com/duggalsu",
   },
   {
     name: "Sunandan Chakraborty",
@@ -110,11 +122,6 @@ const advisors = [
   {
     name: "Venkatesh Thapan",
     role: "Backend Developer",
-  },
-  {
-    name: "Yohan Mathew",
-    role: "DevOps and Automation",
-    url: "https://www.linkedin.com/in/ymathew/",
   },
 ]
 
