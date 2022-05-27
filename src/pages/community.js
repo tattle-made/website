@@ -21,12 +21,6 @@ const staff = [
     url: "https://denntenna.github.io/",
   },
   { name: " J Mahalakshmi", role: "Data Scientist" },
-  { name: "Upasana Bhattacharjee", role: "Research Associate" },
-  {
-    name: "Rahul Dev",
-    role: "Software Engineer",
-    url: "https://github.com/mlkorra",
-  },
   {
     name: "Swair Shah",
     role: "ML Engineer",
@@ -56,7 +50,6 @@ const staff = [
     role: "Operations and Strategy Associate",
     url: "",
   },
-  
   {
     name: "Yohan Mathew",
     role: "DevOps and Automation",
@@ -103,6 +96,11 @@ const advisors = [
   {
     name: "Onish Garg",
     role: "Full Stack Developer",
+  },
+  {
+    name: "Rahul Dev",
+    role: "Software Engineer",
+    url: "https://github.com/mlkorra",
   },
   {
     name: "Rishabh Jain",
