@@ -47,6 +47,17 @@ const staff = [
     url: "https://saakshita.com",
   },
   {
+    name: "Upasana Bhattacharjee",
+    role: "Qualitative Researcher",
+    url: "",
+  },
+  {
+    name: "Yash Budhwar",
+    role: "Operations and Strategy Associate",
+    url: "",
+  },
+  
+  {
     name: "Yohan Mathew",
     role: "DevOps and Automation",
     url: "https://www.linkedin.com/in/ymathew/",
