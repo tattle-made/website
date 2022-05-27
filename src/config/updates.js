@@ -5,7 +5,7 @@ export const updates = [
     title: "OGBV Plugin Closed Beta",
     event_name: "Plugin release with archiving, crowdsourcing networks and slur replacement",
     url:"https://github.com/tattle-made/OGBV/tree/main/chrome-plugin",
-    tags: ["Release", ""],
+    tags: ["Release"],
   }, 
  
    {
@@ -13,7 +13,7 @@ export const updates = [
     title: "Countering hate in the digital world",
     event_name: "The Indian Express",
     url:"https://indianexpress.com/article/opinion/columns/bulli-bai-sulli-deals-digital-pollution-7726705/",
-    tags: ["Media Mentions", ""],
+    tags: ["Media Mentions"],
   },  
   
   {
@@ -21,7 +21,7 @@ export const updates = [
     title: "Tek Fog: Dangerous New World",
     event_name: "The Wire",
     url:"https://twitter.com/onosmosis/status/1482980287458193412",
-    tags: ["Panel", ""],
+    tags: ["Panel"],
   },  
  
    {
@@ -29,7 +29,7 @@ export const updates = [
     title: "MemeBox Release",
     event_name: "FOSS United",
     url:"https://github.com/tattle-made/memebox",
-    tags: ["Release", ""],
+    tags: ["Release"],
   }, 
   
    {
@@ -37,7 +37,7 @@ export const updates = [
     title: "Facebook’s language problem",
     event_name: "Rest of World",
     url:"https://restofworld.org/2021/newsletter-south-asia-facebooks-language-problem/",
-    tags: ["Media Mentions", ""],
+    tags: ["Media Mentions"],
   }, 
   
     {
@@ -45,7 +45,7 @@ export const updates = [
     title: "Between Fake and The News: The Long Game Against Information Disorder",
     event_name: "IIT Jodhpur, Digital Humanities Series",
     url:"",
-    tags: ["Talk", ""],
+    tags: ["Talk"],
   },  
   
   {
@@ -53,7 +53,7 @@ export const updates = [
     title: "Beyond Commerce: Working on Tech that Benefits Society",
     event_name: "Through the Corporate Glass Podcast",
     url:"https://www.throughthecorporateglass.com/tech-benefit-society",
-    tags: ["Talk", ""],
+    tags: ["Talk"],
   },  
    
   {
@@ -69,7 +69,7 @@ export const updates = [
     title: "A Contextual Inquiry of IFCN",
     event_name: "The Annual Meeting of the Society of Social Study of Science: Panel on Post Truth Age",
     url:"https://www.4sonline.org/185-the-post-truth-age-what-is-this-really-about/",
-    tags: ["Talk", ""],
+    tags: ["Talk"],
   },  
   
    {
@@ -77,7 +77,7 @@ export const updates = [
     title: "Tech: Boon or Bane. Exploring the role of Big Tech in fighting Disinformation & Polarisation.",
     event_name: "Boomlive Truth-Seekers Fest",
     url:"https://www.youtube.com/watch?v=GP5iygyjG2c",
-    tags: ["Panel", ""],
+    tags: ["Panel"],
   },  
  
   {
