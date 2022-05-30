@@ -48,7 +48,7 @@ const staff = [
   {
     name: "Yash Budhwar",
     role: "Operations and Strategy Associate",
-    url: "",
+    url: "http://www.linkedin.com/in/yash-budhwar-495290a5",
   },
   {
     name: "Yohan Mathew",
