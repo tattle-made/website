@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Tattle Website`,
+    title: `Tattle`,
     description: `We build tools and datasets to understand and respond to misinformation in India.`,
     author: `@tattlemade`,
     base_url: "https://tattle.co.in/",
@@ -13,6 +13,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/data`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -69,37 +76,6 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts-v2`,
-      options: {
-        fonts: [
-          {
-            family: "Raleway",
-            weights: ["100..900"],
-          },
-          {
-            family: "Bitter",
-            weights: ["100..900"],
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {
-        // Add any options here
-      },
-    },
-    // {
-    //   resolve: `gatsby-source-ghost`,
-    //   options: {
-    //     apiUrl: `http://blog.tattle.co.in/`,
-    //     contentApiKey: `dea656ea64d6d9aed3427ad4b6`,
-    //     version: `v3`,
-    //   },
-    // },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-styled-components`,
   ],
 }
