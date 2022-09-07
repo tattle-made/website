@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import NarrowSection from "./atomic/layout/narrow-section"
 import DefaultLayout from "./default-layout"
-import { Box, Heading, Paragraph, Text } from "grommet"
+import { Anchor, Box, Heading, Paragraph, Text } from "grommet"
 import { PlainLink, PlainSectionLink } from "./atomic/TattleLinks"
 
 const BlogIndex = ({ data }) => {
@@ -12,8 +12,8 @@ const BlogIndex = ({ data }) => {
     <DefaultLayout>
       <NarrowContentWrapper>
         <NarrowSection>
-          <h1>Blog</h1>
-          <Box direction={"row-responsive"}>
+          <Heading level={2}>Blog</Heading>
+          <Box direction={"row-responsive"} gap={"small"}>
             {blogs.map(blog => {
               return (
                 <Box
@@ -22,6 +22,7 @@ const BlogIndex = ({ data }) => {
                   onClick={() => {}}
                   hoverIndicator={true}
                   focusIndicator={false}
+                  pad={"small"}
                 >
                   <PlainSectionLink to={`/blog/${blog.slug}`}>
                     <Box direction={"row"} align={"center"}>
@@ -36,14 +37,23 @@ const BlogIndex = ({ data }) => {
                     </Box>
                     <Text
                       size={"small"}
-                    >{`${blog.frontmatter.author} (${blog.frontmatter.project})`}</Text>
-                    <Paragraph size={"small"}>
+                    >{`${blog.frontmatter.author} - ${blog.frontmatter.project}`}</Text>
+                    <Paragraph size={"large"}>
                       {blog.frontmatter.excerpt}
                     </Paragraph>
                   </PlainSectionLink>
                 </Box>
               )
             })}
+          </Box>
+          <Box margin={{ top: "medium" }}>
+            <Text>
+              {" "}
+              Our older blog can be found{" "}
+              <Anchor href={"https://blog.tattle.co.in/"} target={"_blank"}>
+                here
+              </Anchor>
+            </Text>
           </Box>
         </NarrowSection>
       </NarrowContentWrapper>
