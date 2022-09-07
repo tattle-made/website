@@ -40,6 +40,7 @@ const BlogIndex = ({ data }) => {
                           margin={"none"}
                           weight={500}
                           color={"brand"}
+                          fill
                         >
                           {blog.frontmatter.name}
                         </Heading>
