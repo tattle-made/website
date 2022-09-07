@@ -13,11 +13,10 @@ const BlogIndex = ({ data }) => {
       <NarrowContentWrapper>
         <NarrowSection>
           <Heading level={2}>Blog</Heading>
-          <Box direction={"row-responsive"} gap={"small"}>
+          <Box direction={"column"} gap={"small"}>
             {blogs.map(blog => {
               return (
                 <Box
-                  width={"50%"}
                   direction={"column"}
                   onClick={() => {}}
                   hoverIndicator={true}
@@ -38,7 +37,7 @@ const BlogIndex = ({ data }) => {
                     <Text
                       size={"small"}
                     >{`${blog.frontmatter.author} - ${blog.frontmatter.project}`}</Text>
-                    <Paragraph size={"large"}>
+                    <Paragraph size={"large"} fill>
                       {blog.frontmatter.excerpt}
                     </Paragraph>
                   </PlainSectionLink>
