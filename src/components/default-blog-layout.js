@@ -7,11 +7,13 @@ import { Link } from "gatsby"
 import { primaryNav, footerItems } from "../config/options"
 import AppShell from "./atomic/AppShell"
 import BlogHeaderCard from "./atomic/BlogHeaderCard"
+import { PlainLink } from "./atomic/TattleLinks"
+import { Heading } from "grommet"
 
 const shortcodes = { Link, BlogHeaderCard }
 
 export default function PageTemplate({ data: { mdx } }) {
-  const { name, author, project } = mdx.frontmatter
+  const { name, author, project, date } = mdx.frontmatter
   return (
     <AppShell
       headerLabel={mdx.frontmatter.name}
@@ -22,7 +24,17 @@ export default function PageTemplate({ data: { mdx } }) {
     >
       <MDXProvider components={shortcodes}>
         <Box>
-          <BlogHeaderCard name={name} author={author} project={project} />
+          <PlainLink to={"/blog"}>
+            <Heading level={4}>back to all blogs</Heading>
+          </PlainLink>
+        </Box>
+        <Box>
+          <BlogHeaderCard
+            name={name}
+            author={author}
+            project={project}
+            date={date}
+          />
           <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
         </Box>
       </MDXProvider>
@@ -39,6 +51,7 @@ export const pageQuery = graphql`
         excerpt
         author
         project
+        date
       }
     }
   }

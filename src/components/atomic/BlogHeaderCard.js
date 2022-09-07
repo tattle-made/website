@@ -1,15 +1,16 @@
 import React from "react"
 import { Box, Heading, Text } from "grommet"
+import { byline } from "../default-blog-index-layout"
 
-const BlogHeaderCard = ({ name, author, project }) => (
+const BlogHeaderCard = ({ name, author, date, project }) => (
   <Box margin={{ bottom: "small" }}>
     <Box direction={"row"} align={"center"}>
       <Heading level={2} margin={"none"} weight={500}>
         {name}
       </Heading>
     </Box>
-
-    <Text size={"small"}>{`${author} (${project})`}</Text>
+    <Text size={"small"}>{`Published on ${date}`}</Text>
+    <Text size={"small"}>{byline(author, project)}</Text>
   </Box>
 )
 
