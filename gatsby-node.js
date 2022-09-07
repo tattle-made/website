@@ -71,5 +71,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: { id: node.id },
       })
     }
+
+    createPage({
+      path: `/blog/`,
+      component: path.resolve(`./src/components/default-blog-index-layout.js`),
+    })
   })
 }

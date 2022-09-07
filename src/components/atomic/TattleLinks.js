@@ -26,6 +26,20 @@ const ThemedPlainLink = styled(Link)`
   }
 `
 
+const ThemedPlainSectionLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  :visited {
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &.active {
+    color: red;
+  }
+`
+
 const ThemedPlainHeavyLink = styled(Link)`
   font-family: "Bitter";
   font-weight: "900";
@@ -69,6 +83,7 @@ const SmartPlainLink = ({ linktype, target, children }) =>
 export {
   ThemedLink as Link,
   ThemedPlainLink as PlainLink,
+  ThemedPlainSectionLink as PlainSectionLink,
   ThemedPlainHeavyLink as PlainHeavyLink,
   ThemedExternalLink as ExternalLink,
   ThemedPlainExternalLink as PlainExternalLink,
