@@ -19,31 +19,43 @@ const dropDownOptions = [
 const dropDownOptionsTools = [
   {
     id: 0,
+    target: "/products/ogbv",
+    label: "Uli",
+    description: "Online Gender Based Violence Mitigation",
+  },
+  {
+    id: 0,
+    target: "/products/viral-spiral",
+    label: "Viral Spiral",
+    description: "Digital Card Game for Media Literacy",
+  },
+  {
+    id: 1,
     target: "/products/kosh",
     label: "Kosh",
     description: "Archive multimedia data",
   },
   {
-    id: 1,
+    id: 2,
     target: "/products/jod-bot",
     label: "Jod Bot",
     description: "Telegram bot for data archivists",
   },
-  { id: 2, target: "/products/whatsapp-archiver", label: "Whatsapp Scraper" },
+  { id: 3, target: "/products/whatsapp-archiver", label: "Whatsapp Scraper" },
   {
-    id: 3,
+    id: 4,
     target: "https://github.com/tattle-made/factchecking-sites-scraper",
     label: "FactCheck Article Scraper",
     type: "external",
   },
   {
-    id: 4,
+    id: 5,
     target: "https://services.tattle.co.in/khoj/dashboard",
     label: "FactCheck Article Dashboard",
     type: "external",
   },
   {
-    id: 5,
+    id: 6,
     target: "/products/khoj",
     label: "Khoj",
     description: "Find accurate information",
