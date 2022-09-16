@@ -23,8 +23,8 @@ export const projects = {
         url: "https://www.github.com/",
       },
       link: {
-        type: "internal",
-        url: "/products/ogbv/",
+        type: "external",
+        url: "https://socialimpact.github.com/insights/standardized-github-metrics-project-launch/",
       },
     },
     {
