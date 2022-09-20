@@ -3,7 +3,7 @@ module.exports = {
     title: `Tattle`,
     description: `We build tools and datasets to understand and respond to misinformation in India.`,
     author: `@tattlemade`,
-    base_url: "https://tattle.co.in/",
+    base_url: "https://tattle.co.in",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
