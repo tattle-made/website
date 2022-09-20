@@ -9,11 +9,21 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { useLocation } from "@reach/router"
 
 function SEO({ description, lang, meta, title }) {
+  const location = useLocation()
+  const pathname = location.pathname
+  // debugger
+  let pageType = "OTHERS"
+  if (pathname.indexOf("/blog/") != -1) {
+    console.log("---")
+    pageType = "BLOG"
+  }
+
   const { site, allFile } = useStaticQuery(graphql`
     query {
-      allFile(filter: { name: { eq: "social-card" } }) {
+      allFile(filter: { name: { regex: "/social-card/" } }) {
         edges {
           node {
             id
@@ -35,8 +45,23 @@ function SEO({ description, lang, meta, title }) {
 
   const metaDescription = description || site.siteMetadata.description
   const author = site.siteMetadata.author
-  const socialImageURL = allFile.edges[0].node.publicURL
   const baseURL = site.siteMetadata.base_url
+
+  let socialImageURLs = {}
+
+  console.log({ edges: allFile.edges, pageType, pathname })
+
+  allFile.edges.map(edge => {
+    if (edge.node.name === "social-card-blog") {
+      socialImageURLs["BLOG"] = edge.node.publicURL
+    } else if (edge.node.name === "social-card") {
+      socialImageURLs["OTHERS"] = edge.node.publicURL
+    } else {
+      socialImageURLs["OTHERS"] = edge.node.publicURL
+    }
+  })
+
+  const socialImageURL = socialImageURLs[pageType]
 
   return (
     <Helmet
