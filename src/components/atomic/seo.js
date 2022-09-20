@@ -51,12 +51,11 @@ function SEO({ description, lang, meta, title }) {
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={`${baseURL}${socialImageURL}`} />
       <meta property="og:type" content={"website"} />
-      <meta property="twitter:card" content={"summary_large_image"} />
-      <meta property="twitter:site" content={author} />
-      <meta property="twitter:creator" content={site.siteMetadata.author} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={metaDescription} />
-      <meta property="twitter:image" content={`${baseURL}${socialImageURL}`} />
+      <meta name="twitter:site" content={"@tattlemade"} />
+      <meta name="twitter:creator" content={"@tattlemade"} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:image" content={`${baseURL}${socialImageURL}`} />
       <script
         async
         defer
