@@ -1,0 +1,64 @@
+---
+name: Content Creation for the Meshi Information Sharing Experiment
+excerpt: This article summarizes the study design and focuses on the behind-the-scenes of how the content for this experiment was developed
+author: Swanaya Gurjar from Monk Prayogshala
+project: Grant for the Web
+date: 05-09-2022
+---
+
+Arguably, the most concerning downside of encrypted messaging applications is an inability to screen, analyze, and trace messages that may 
+proliferate fake news. This is evidenced by WhatsApp becoming a [breeding site](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7850780/) for 
+misinformation in its [biggest](https://www.indiatoday.in/technology/news/story/whatsapp-may-soon-touch-500-million-users-in-india-despite-new-privacy-policy-claims-report-1758344-2021-01-12) 
+user base in India. The inability of such platforms to take down incorrect information and identify or penalize its perpetrators makes it 
+nearly impossible to control and fact-check the information being shared. 
+	
+A point of interest in such a conundrum is the implication that people are highly susceptible to misinformation. This project aims to 
+understand if incentivizing the sharing of factual information and disincentivizing the sharing of misinformation, either through micropayments 
+or through social feedback, reduces the sharing, and potentially the spread, of misinformation. This article will summarize the study design 
+and mainly focus on the behind-the-scenes of how the content for this study was developed.
+
+In association with Tattle, [Monk Prayogshala](https://www.monkprayogshala.in/) built a web service platform named [Meshi](https://meshi.tattle.co.in/sign-up) 
+to host the experimental study. Here, participants were asked to respond to 25 messages over a period of three days with 5 messages on the first day, 
+and 10 messages each on the following two days. The options available for each message were sharing it, and/or reacting to it with emojis that expressed 
+happiness, anger, and disgust. There was also a choice for participants to select a ‘read more’ option to gain more information about 
+the message before they react to it. Last, each participant was assigned to one of two conditions in this information-sharing experiment: one where 
+they received real money if they shared true information (and lost real money if they shared fake news) and the other where they gained or 
+lost followers based on the veracity of information shared.
+
+Similar to other studies of misinformation, content was formed using current or recent news. However, while [other studies](https://sumitrabadrinathan.github.io/Assets/paper-covid.pdf) 
+used real headlines as they were printed in the media, we made sure that we removed most, if not all, identifying elements across 250 headlines. 
+For example, instead of saying TikTok is banned in India, we rephrased it to “the most popular non-gaming app is banned in India.” 
+Identifying information was also removed from the ‘read more’ content. The motivation for doing this was to minimize any potential internet 
+searches by participants during the experiment and maintain data accuracy.
+
+Furthermore, in an effort to provide structure and congruence to the messages (i.e. headlines) being presented, we organized them into different types. 
+Inspired and in sync with seminal [work](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6279465/) in the field, these were divided into the 
+broad categories of plausible, implausible, true, false, and wholesome. The headlines chosen for the plausible category were ones that 
+participants were more likely to be certain about (e.g. “There is a low chance of mobile phone use leading to cancer”). On the other hand, 
+implausible category headlines were those that participants would not certainly know to be false (e.g. “There is an 87% chance that 
+Indian women report a better quality of life than men”).
+
+Headlines in the true and false categories respectively contained the same information as headlines in the plausible and implausible categories 
+but without the probability or likelihood phrasing. As a result, the content for the true and false categories reads more like a traditional 
+news headline. In the aforementioned examples, the true headline was “Using mobile phones is not associated with an increased risk of cancer” and 
+the false headline was “Indian women report a better quality of life than men”. The rationale behind using the same basic source news but 
+phrasing it differently was to assess if changing the certainty phrasing affects the spread of misinformation. The wholesome category was used 
+as a control and it was not incentivized in either condition. Its headlines were mainly employed to test whether participants in the social 
+condition were more likely to share wholesome content compared to those in the financial condition. All the messages were randomized and 
+counterbalanced, with each participant receiving all five types of messages across the three days of the experiment.
+
+Beyond categories, the messages were further organized by themes using Tattle’s [Khoj](https://services.tattle.co.in/khoj/dashboard/) database 
+that displays words in IFCN-certified fact-checking articles in a particular week. After careful consideration of the overall word frequency and 
+the number of clusters a specific word is in, some keywords were chosen to help build an overarching theme (e.g., the words “COVID-19”, “myths”, and 
+“vaccines” led to the creation of the theme “health”). The Khoj database was also supplemented by manually tracking fact-checking websites like 
+[WebQoof](https://www.thequint.com/news/webqoof), [Alt News](https://www.altnews.in/), [The Logical Indian](https://thelogicalindian.com/fact-check), 
+and [Boom](https://www.boomlive.in/about-us), and keeping up-to-date with various online news media outlets for over a month. The final themes 
+generated were health, science, technology, religion, politics, and miscellaneous (with items related to sports, entertainment, wildlife, etc.).
+
+The content for this project was carefully chosen and all messages were related to India and were culturally relevant. To confirm that the 
+chosen messages truly measured misinformation and not mere unawareness, we asked a few research personnel about their perception of the fake 
+messages prior to the main study. After receiving a hit rate of 36-50%, we concluded that the content was effective enough to be perceived as 
+either real or fake and was not lopsided in either direction. We soon started a pilot study on the Meshi platform and the data collection concluded 
+towards the end of July 2022.
+
+If you are interested in knowing more about this study, please refer to our interim report [here](https://community.interledger.org/tct/interim-report-for-using-web-monetization-for-incentivizing-sharing-of-good-content-hfl).
