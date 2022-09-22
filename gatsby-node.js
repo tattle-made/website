@@ -76,5 +76,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: `/blog/`,
       component: path.resolve(`./src/components/default-blog-index-layout.js`),
     })
+
+    // CREATE PROJECTS
+    if (fileAbsolutePath.indexOf("/src/project/") !== -1) {
+      createPage({
+        path: `/project/${node.slug}`,
+        component: path.resolve(`./src/components/default-blog-layout.js`),
+        context: { id: node.id },
+      })
+    }
   })
 }
