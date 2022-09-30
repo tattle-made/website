@@ -73,7 +73,8 @@ const Index = props => {
                         <PlainHeavyLink to={"/datasets"}>
                           datasets
                         </PlainHeavyLink>{" "}
-                        to understand and respond to misinformation in India.
+                        to understand and respond to inaccurate and harmful
+                        content.
                       </LandingPageHeading>
                       <Box height={"xxsmall"} />
                       <Box direction={"column"} gap={"small"}>
