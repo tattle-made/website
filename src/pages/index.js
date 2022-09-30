@@ -90,11 +90,9 @@ const Index = props => {
               </NarrowContentWrapper>
             </Box>
 
-            <NarrowContentWrapper>
-              <NarrowSection>
-                <RecentProjectSection size={size} />
-              </NarrowSection>
-            </NarrowContentWrapper>
+            <Box flex={"grow"}>
+              <RecentProjectSection size={size} />
+            </Box>
 
             <Box
               background="#514E80"
@@ -171,80 +169,95 @@ const RecentProjectSection = ({ size }) => {
   `)
   return (
     <Box>
-      <Box gap={"small"}>
-        <Text
-          size={"small"}
-          weight={"700"}
-          margin={{ bottom: "small", top: "none" }}
-        >
-          Current Projects
-        </Text>
-      </Box>
-      <Box>
-        <ResponsiveLayoutDatasets size={size}>
-          <CaseStudyPreview
-            previewImage={cover_ogbv.childImageSharp.fluid.src}
-            title={"Online Gender Based Violence Mitigation"}
-            description={
-              "Empowering users to respond to OGBV via localized content moderation"
-            }
-            url={"/products/ogbv"}
-            publicationDate={"13-11-2020"}
-          />
-          <CaseStudyPreview
-            previewImage={cover_viral_spiral.childImageSharp.fluid.src}
-            title={"Viral Spiral"}
-            description={
-              "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."
-            }
-            url={"/products/viral-spiral"}
-            publicationDate={"13-11-2020"}
-          />
-        </ResponsiveLayoutDatasets>
-      </Box>
+      <NarrowContentWrapper>
+        <Box width={"100%"} alignSelf={"center"} margin={{ top: "medium" }}>
+          <Box gap={"small"} width={"100%"} align={"center"}>
+            <Text
+              size={"small"}
+              weight={"700"}
+              margin={{ bottom: "small", top: "none" }}
+            >
+              Current Projects
+            </Text>
+          </Box>
+        </Box>
+      </NarrowContentWrapper>
+      <NarrowContentWrapper width={"1280px"}>
+        <Box width={"100%"} alignSelf={"center"}>
+          <Box>
+            <ResponsiveLayoutDatasets size={size}>
+              <CaseStudyPreview
+                previewImage={cover_ogbv.childImageSharp.fluid.src}
+                title={"Online Gender Based Violence Mitigation"}
+                description={
+                  "Empowering users to respond to OGBV via localized content moderation"
+                }
+                url={"/products/ogbv"}
+                publicationDate={"13-11-2020"}
+              />
+              <CaseStudyPreview
+                previewImage={cover_viral_spiral.childImageSharp.fluid.src}
+                title={"Viral Spiral"}
+                description={
+                  "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."
+                }
+                url={"/products/viral-spiral"}
+                publicationDate={"13-11-2020"}
+              />
+            </ResponsiveLayoutDatasets>
+          </Box>
+        </Box>
+      </NarrowContentWrapper>
 
       <Box height="1.8em"></Box>
 
-      <Box gap={"large"}>
-        <PlainLink to={"/products/github-indices"}>
-          <Box>
-            <Heading level={3} margin={"none"} fill>
-              Developing Standardized Metrics for Github
-            </Heading>
-            <Paragraph size={"medium"} fill margin={"none"}>
-              This project tries to understand how data from GitHub platform
-              usage can contribute to research in international development,
-              public policy, and economics.
-            </Paragraph>
-          </Box>
-        </PlainLink>
+      <NarrowContentWrapper>
+        <Box width={"100%"} alignSelf={"center"}>
+          <Box gap={"large"}>
+            <PlainLink to={"/products/github-indices"}>
+              <Box>
+                <Heading level={3} margin={"none"} fill>
+                  Developing Standardized Metrics for Github
+                </Heading>
+                <Paragraph size={"medium"} fill margin={"none"}>
+                  This project tries to understand how data from GitHub platform
+                  usage can contribute to research in international development,
+                  public policy, and economics.
+                </Paragraph>
+              </Box>
+            </PlainLink>
 
-        <PlainLink to={"/products/gftw"}>
-          <Box>
-            <Heading level={3} margin={"none"} fill>
-              Using Web Monetization for Incentivizing Sharing of ‘Good’ Content
-            </Heading>
-            <Paragraph size={"medium"} fill margin={"none"}>
-              This joint project with Monk Prayogshala aims to understand the
-              possibility and effectiveness of web based monetization to promote
-              better content sharing behavior.
-            </Paragraph>
-          </Box>
-        </PlainLink>
+            <PlainLink to={"/products/gftw"}>
+              <Box>
+                <Heading level={3} margin={"none"} fill>
+                  Using Web Monetization for Incentivizing Sharing of ‘Good’
+                  Content
+                </Heading>
+                <Paragraph size={"medium"} fill margin={"none"}>
+                  This joint project with Monk Prayogshala aims to understand
+                  the possibility and effectiveness of web based monetization to
+                  promote better content sharing behavior.
+                </Paragraph>
+              </Box>
+            </PlainLink>
 
-        <PlainLink to={"/products/kosh"}>
-          <Box>
-            <Heading level={3} margin={"none"}>
-              Kosh - Searchable Archive of Social Media posts
-            </Heading>
-            <Paragraph size={"medium"} fill margin={"none"}>
-              Kosh is Tattle's foundational software component that enables
-              archiving and searching of multimodal and multilingual content. It
-              facilitates analysis and discovery of trends and patterns.
-            </Paragraph>
+            <PlainLink to={"/products/kosh"}>
+              <Box>
+                <Heading level={3} margin={"none"}>
+                  Kosh - Searchable Archive of Social Media posts
+                </Heading>
+                <Paragraph size={"medium"} fill margin={"none"}>
+                  Kosh is Tattle's foundational software component that enables
+                  archiving and searching of multimodal and multilingual
+                  content. It facilitates analysis and discovery of trends and
+                  patterns.
+                </Paragraph>
+              </Box>
+            </PlainLink>
           </Box>
-        </PlainLink>
-      </Box>
+        </Box>
+      </NarrowContentWrapper>
+      <Box height="1.8em"></Box>
     </Box>
   )
 }
