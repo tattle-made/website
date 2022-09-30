@@ -89,19 +89,9 @@ const Index = props => {
               </NarrowContentWrapper>
             </Box>
 
-            {/*<NarrowSection>
-                <WeBuildFor />
-              </NarrowSection>*/}
-
             <NarrowContentWrapper>
               <NarrowSection>
-                <CaseStudySection size={size} />
-              </NarrowSection>
-            </NarrowContentWrapper>
-
-            <NarrowContentWrapper>
-              <NarrowSection>
-                <RecentProjectSection />
+                <RecentProjectSection size={size} />
               </NarrowSection>
             </NarrowContentWrapper>
 
@@ -157,45 +147,19 @@ const Project = ({ project }) => {
   )
 }
 
-const RecentProjectSection = () => {
-  return (
-    <Box>
-      <Box direction={"row"} align={"center"} gap={"small"}>
-        <Heading level={3} margin={{ bottom: "small", top: "none" }}>
-          Recent Projects
-        </Heading>
-      </Box>
-      <ScrollContainer>
-        <Box direction={"row"} gap={"xsmall"} height={"fit-content"}>
-          {recent.map((project, ix) => (
-            <Project key={ix} project={project} />
-          ))}
-        </Box>
-      </ScrollContainer>
-    </Box>
-  )
-}
-
-const CaseStudySection = ({ size, bgColor, contentWidth }) => {
-  const { cover_paper, cover_article, cover_chart } = useStaticQuery(graphql`
+const RecentProjectSection = ({ size }) => {
+  const { cover_ogbv, cover_viral_spiral } = useStaticQuery(graphql`
     query {
-      cover_paper: file(relativePath: { eq: "case-study-paper-cover.png" }) {
+      cover_ogbv: file(relativePath: { eq: "cover-project-uli.png" }) {
         childImageSharp {
           fluid {
             src
           }
         }
       }
-      cover_article: file(
-        relativePath: { eq: "case-study-article-cover.png" }
+      cover_viral_spiral: file(
+        relativePath: { eq: "cover-project-viral-spiral.png" }
       ) {
-        childImageSharp {
-          fluid {
-            src
-          }
-        }
-      }
-      cover_chart: file(relativePath: { eq: "case-study-chart-cover.png" }) {
         childImageSharp {
           fluid {
             src
@@ -206,80 +170,80 @@ const CaseStudySection = ({ size, bgColor, contentWidth }) => {
   `)
   return (
     <Box>
-      <LandingPageParagraph>
-        Tattle's core infrastructure consists of :
-      </LandingPageParagraph>
-      <Box height={"0.391em"}></Box>
-
-      <ResponsiveLayoutTest size={size}>
-        <Box>
-          <Text size={"large"} color={"brand"}>
-            1.
-          </Text>
-          <Paragraph size={"medium"}>
-            {" "}
-            Scrapers for Indian social media
-          </Paragraph>
-        </Box>
-        <Box>
-          <Text size={"large"} color={"brand"}>
-            2.
-          </Text>
-          <Paragraph size={"medium"}>
-            {" "}
-            Archive of fact-checks and content circulating on Indian social
-            media.
-          </Paragraph>
-        </Box>
-        <Box>
-          <Text size={"large"} color={"brand"}>
-            3.
-          </Text>
-          <Paragraph size={"medium"}>
-            {" "}
-            Flexible and scalable APIs for multi-lingual and multi-modal search
-          </Paragraph>
-        </Box>
-      </ResponsiveLayoutTest>
-      <LandingPageParagraph></LandingPageParagraph>
-      <Box height={"xxsmall"}></Box>
-      <Box>
-        <SectionLabels>
-          This infrastructure enables a variety of research, tools and solutions
-          to be developed based on it.
-        </SectionLabels>
+      <Box gap={"small"}>
+        <Text
+          size={"small"}
+          weight={"700"}
+          margin={{ bottom: "small", top: "none" }}
+        >
+          Current Projects
+        </Text>
       </Box>
-      <Text></Text>
-      <ResponsiveLayoutDatasets size={size}>
-        <CaseStudyPreview
-          previewImage={cover_article.childImageSharp.fluid.src}
-          title={"CSCW Paper by Microsoft Research"}
-          description={
-            "A mixed-methods study that highlights affective aspects of Covid-19 misinformation "
-          }
-          url={"https://programs.sigchi.org/cscw/2020/program/content/41594"}
-          publicationDate={"13-11-2020"}
-        />
-        <CaseStudyPreview
-          previewImage={cover_paper.childImageSharp.fluid.src}
-          title={"BBC Story"}
-          description={
-            "A data story on evolving themes in fact-checks between January-June 2020"
-          }
-          url={"https://www.bbc.com/news/world-asia-india-53165436"}
-          publicationDate={"13-11-2020"}
-        />
+      <Box>
+        <ResponsiveLayoutDatasets size={size}>
+          <CaseStudyPreview
+            previewImage={cover_ogbv.childImageSharp.fluid.src}
+            title={"Online Gender Based Violence Mitigation"}
+            description={
+              "Empowering users to respond to OGBV via localized content moderation"
+            }
+            url={"/products/ogbv"}
+            publicationDate={"13-11-2020"}
+          />
+          <CaseStudyPreview
+            previewImage={cover_viral_spiral.childImageSharp.fluid.src}
+            title={"Viral Spiral"}
+            description={
+              "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."
+            }
+            url={"/products/viral-spiral"}
+            publicationDate={"13-11-2020"}
+          />
+        </ResponsiveLayoutDatasets>
+      </Box>
 
-        <CaseStudyPreview
-          previewImage={cover_chart.childImageSharp.fluid.src}
-          title={"Dashboards"}
-          description={
-            "Explore weekly trends in misinformation through an interactive visualisation"
-          }
-          url={"https://services.tattle.co.in/khoj/dashboard"}
-          publicationDate={"13-11-2020"}
-        />
-      </ResponsiveLayoutDatasets>
+      <Box height="1.8em"></Box>
+
+      <Box gap={"large"}>
+        <PlainLink to={"/products/github-indices"}>
+          <Box>
+            <Heading level={3} margin={"none"} fill>
+              Developing Standardized Metrics for Github
+            </Heading>
+            <Paragraph size={"medium"} fill margin={"none"}>
+              This project tries to understand how data from GitHub platform
+              usage can contribute to research in international development,
+              public policy, and economics.
+            </Paragraph>
+          </Box>
+        </PlainLink>
+
+        <PlainLink to={"/products/gftw"}>
+          <Box>
+            <Heading level={3} margin={"none"} fill>
+              Using Web Monetization for Incentivizing Sharing of ‘Good’ Content
+            </Heading>
+            <Paragraph size={"medium"} fill margin={"none"}>
+              This joint project with Monk Prayogshala aims to understand the
+              possibility and effectiveness of web based monetization to promote
+              better content sharing behavior.
+            </Paragraph>
+          </Box>
+        </PlainLink>
+
+        <PlainLink to={"/products/kosh"}>
+          <Box>
+            <Heading level={3} margin={"none"}>
+              Kosh - Searchable Archive of Social Media posts
+            </Heading>
+            <Paragraph size={"medium"} fill margin={"none"}>
+              Kosh is Tattle's foundational software component that enables
+              archiving and searching of multimodal and multilingual content. It
+              facilitates analysis and discovery of trends and patterns.
+            </Paragraph>
+          </Box>
+        </PlainLink>
+      </Box>
     </Box>
   )
 }
@@ -288,7 +252,7 @@ const ResponsiveLayoutDatasets = ({ size, children }) => {
   return size !== "small" ? (
     <Grid
       columns={{
-        count: 3,
+        count: 2,
         size: "auto",
       }}
       gap="medium"
@@ -298,7 +262,7 @@ const ResponsiveLayoutDatasets = ({ size, children }) => {
   ) : (
     <Grid
       columns={{
-        count: 2,
+        count: 1,
         size: "auto",
       }}
       gap="small"
