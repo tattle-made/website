@@ -11,9 +11,9 @@ import { ExternalLink } from "react-feather"
 
 const staff = [
   {
-    name: "Tarunima Prabhakar",
-    role: "Research and Project Lead",
-    url: "https://tarunima.com",
+    name: "Bhargav Dave",
+    role: "Data Engineer",
+    url: "https://github.com/Bhargav-Dave",
   },
   {
     name: "Denny George",
@@ -30,20 +30,16 @@ const staff = [
     role: "Contributor :  Data Science, Security, Accessibility",
     url: "https://github.com/duggalsu",
   },
-  {
-    name: "Swastika Mohapatra",
-    role: "Data Science Intern",
-    url: "https://www.linkedin.com/in/swastika-mohapatra/",
-  },
+  
   {
     name: "Saakshita Prabhakar",
     role: "UX / Visual Design Contributor",
     url: "https://saakshita.com",
   },
   {
-    name: "Upasana Bhattacharjee",
-    role: "Qualitative Researcher",
-    url: "",
+    name: "Tarunima Prabhakar",
+    role: "Research and Project Lead",
+    url: "https://tarunima.com",
   },
   {
     name: "Yash Budhwar",
@@ -127,7 +123,16 @@ const advisors = [
     role: "Full Stack Intern",
     url: "http://evenzero.in",
   },
-
+  {
+    name: "Swastika Mohapatra",
+    role: "Data Science Intern",
+    url: "https://www.linkedin.com/in/swastika-mohapatra/",
+  },
+  {
+    name: "Upasana Bhattacharjee",
+    role: "Qualitative Researcher",
+    url: "",
+  },
   {
     name: "Venkatesh Thapan",
     role: "Backend Developer",
