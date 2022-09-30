@@ -20,7 +20,7 @@ const staff = [
     role: "Interaction design and Tech Lead",
     url: "https://denntenna.github.io/",
   },
-  { name: " J Mahalakshmi", role: "Data Scientist" },
+  { name: "J Mahalakshmi", role: "Data Scientist" },
   {
     name: "Swair Shah",
     role: "ML Engineer",
