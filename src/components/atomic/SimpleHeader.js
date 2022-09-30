@@ -66,10 +66,10 @@ const dropDownOptionsAbout = []
 
 const dropDownOptionsLearnMore = [
   {
-    id: 1,
-    target: "https://blog.tattle.co.in",
+    id: 0,
+    target: "/blog",
     label: "Blog",
-    type: "external",
+    type: "internal",
   },
   {
     id: 1,
@@ -78,11 +78,11 @@ const dropDownOptionsLearnMore = [
     label: "Newsletter",
     type: "external",
   },
-  { id: 1, target: "/join-us", label: "Work With Us" },
-  { id: 1, target: "/report/", label: "Annual Reports" },
-  { id: 0, target: "/faq", label: "FAQ" },
-  { id: 1, target: "/community", label: "Community" },
-  { id: 2, target: "/updates", label: "Updates" },
+  { id: 2, target: "/join-us", label: "Work With Us" },
+  { id: 3, target: "/report/", label: "Annual Reports" },
+  { id: 4, target: "/faq", label: "FAQ" },
+  { id: 5, target: "/community", label: "Community" },
+  { id: 6, target: "/updates", label: "Updates" },
 ]
 
 const MobileNavItemInternalLink = ({ target, label, description }) => (

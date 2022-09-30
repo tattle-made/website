@@ -31,15 +31,15 @@ export const primaryNav = {
   options: [
     {
       id: 0,
-      label: "Datasets",
+      label: "asdf",
       target: "http://blog.tattle.co.in/",
       type: "external",
     },
     {
       id: 0,
       label: "Blog",
-      target: "http://blog.tattle.co.in/",
-      type: "external",
+      target: "/blog",
+      type: "internal",
     },
     {
       id: 1,
