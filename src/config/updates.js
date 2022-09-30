@@ -1,6 +1,39 @@
 export const updates = [
   
     {
+    date: "Sep, 2022",
+    title: "Agami Idea Prize Shortlist",
+    event_name: "Agami Idea Prize Shortlist",
+    url:"https://agamiscape.agami.in/dl/shortlist2022/s/e85d05/r/Tp.97QxNSIWbXUZ6GNBkCQ",
+    tags: ["Media Mentions"],
+  },   
+   
+  
+  {
+    date: "29 Aug, 2022",
+    title: "The Truth is Out There",
+    event_name: "Mozilla IRL Podcast/ Internet Health Report",
+    url:"https://2022.internethealthreport.org/episodes/the-truth-is-out-there/",
+    tags: ["Media Mentions", "Talk"],
+  },   
+  
+  {
+    date: "27 July, 2022",
+    title: "Uli (OGBV Plugin) Public Launch",
+    event_name: "Opened the OGBV plugin to broader public",
+    url:"https://uli.tattle.co.in/",
+    tags: ["Release"],
+  },   
+  
+    {
+    date: "15 Feb, 2022",
+    title: "Viral Spiral gets Grant from PCE at the Mercatus Center",
+    event_name: "Grant from Pluralism and Civic Exchange Program at the Mercatus Center",
+    url:"https://twitter.com/mercatus/status/1493599381941112843",
+    tags: ["Media Mentions"],
+    },   
+  
+    {
     date: "4 Feb, 2022",
     title: "OGBV Plugin Closed Beta",
     event_name: "Plugin release with archiving, crowdsourcing networks and slur replacement",
