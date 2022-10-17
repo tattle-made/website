@@ -1,9 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import NarrowSection from "./atomic/layout/narrow-section"
 import DefaultLayout from "./default-layout"
-import { Anchor, Box, Heading, Paragraph, Text } from "grommet"
+import { Anchor, Box, Heading, Paragraph, Text, Image } from "grommet"
 import { PlainLink, PlainSectionLink } from "./atomic/TattleLinks"
 
 export const byline = (name, project) => {
@@ -13,6 +13,8 @@ export const byline = (name, project) => {
 
 const BlogIndex = ({ data }) => {
   const blogs = data.allMdx.nodes
+  const cover_blog_index = data.cover_blog_index
+
   return (
     <DefaultLayout>
       <NarrowContentWrapper>
@@ -26,6 +28,13 @@ const BlogIndex = ({ data }) => {
       </NarrowContentWrapper>
       <Box width="1280px" alignSelf="center" justify={"between"}>
         <Box direction={"row-responsive"} wrap={true} justify={"between"}>
+          <Box width={"medium"} height="medium">
+            <Image
+              src={cover_blog_index.childImageSharp.fluid.src}
+              fit="contain"
+              fill={true}
+            />
+          </Box>
           {blogs.map(blog => {
             return (
               <Box
@@ -106,6 +115,13 @@ export const query = graphql`
           date
         }
         fileAbsolutePath
+      }
+    }
+    cover_blog_index: file(relativePath: { eq: "cover-index-blog.png" }) {
+      childImageSharp {
+        fluid {
+          src
+        }
       }
     }
   }
