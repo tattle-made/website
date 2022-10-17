@@ -1,9 +1,17 @@
-import React from "react"
+import React, { useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import NarrowSection from "./atomic/layout/narrow-section"
 import DefaultLayout from "./default-layout"
-import { Anchor, Box, Heading, Paragraph, Text, Image } from "grommet"
+import {
+  ResponsiveContext,
+  Anchor,
+  Box,
+  Heading,
+  Paragraph,
+  Text,
+  Image,
+} from "grommet"
 import { PlainLink, PlainSectionLink } from "./atomic/TattleLinks"
 
 export const byline = (name, project) => {
@@ -14,6 +22,7 @@ export const byline = (name, project) => {
 const BlogIndex = ({ data }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
+  const size = useContext(ResponsiveContext)
 
   return (
     <DefaultLayout>
@@ -26,9 +35,14 @@ const BlogIndex = ({ data }) => {
           </Box>
         </NarrowSection>
       </NarrowContentWrapper>
-      <Box width="1280px" alignSelf="center" justify={"between"}>
+      <Box width="1280px" alignSelf="center" justify={"between"} pad="medium">
         <Box direction={"row-responsive"} wrap={true} justify={"between"}>
-          <Box width={"medium"} height="medium">
+          <Box
+            width={"medium"}
+            height="medium"
+            margin={{ bottom: "medium" }}
+            alignSelf={"center"}
+          >
             <Image
               src={cover_blog_index.childImageSharp.fluid.src}
               fit="contain"
@@ -48,6 +62,7 @@ const BlogIndex = ({ data }) => {
                 round
                 border={{ color: "visuals-3" }}
                 margin={{ bottom: "medium" }}
+                alignSelf={"center"}
               >
                 <PlainSectionLink to={`/blog/${blog.slug}`}>
                   <Box>
