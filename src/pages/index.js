@@ -80,7 +80,7 @@ const Index = props => {
                       <Box direction={"column"} gap={"small"}>
                         <LandingPageSubHeading>
                           We are Tattle - a community of technologists,
-                          researchers, journalists and artists working towards a
+                          researchers and artists working towards a
                           healthier online information ecosystem in India.
                         </LandingPageSubHeading>
                       </Box>
