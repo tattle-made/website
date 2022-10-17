@@ -22,48 +22,59 @@ const BlogIndex = ({ data }) => {
               <Heading level={2}>Blog</Heading>
             </PlainLink>
           </Box>
-          <Box direction={"column"} gap={"small"}>
-            {blogs.map(blog => {
-              return (
-                <Box
-                  direction={"column"}
-                  onClick={() => {}}
-                  hoverIndicator={true}
-                  focusIndicator={false}
-                  pad={"small"}
-                >
-                  <PlainSectionLink to={`/blog/${blog.slug}`}>
-                    <Box>
-                      <Box direction={"row"} align={"center"}>
-                        <Heading
-                          level={3}
-                          margin={"none"}
-                          weight={500}
-                          color={"brand"}
-                          fill
-                        >
-                          {blog.frontmatter.name}
-                        </Heading>
-                      </Box>
-                      <Text size={"small"}>
-                        {`Published on ${blog.frontmatter.date}`}
-                      </Text>
-                      <Text size={"small"}>
-                        {byline(
-                          blog.frontmatter.author,
-                          blog.frontmatter.project
-                        )}
-                      </Text>
-
-                      <Paragraph size={"large"} fill>
-                        {blog.frontmatter.excerpt}
-                      </Paragraph>
+        </NarrowSection>
+      </NarrowContentWrapper>
+      <Box width="1280px" alignSelf="center" justify={"between"}>
+        <Box direction={"row-responsive"} wrap={true} justify={"between"}>
+          {blogs.map(blog => {
+            return (
+              <Box
+                direction={"column"}
+                onClick={() => {}}
+                hoverIndicator={true}
+                focusIndicator={false}
+                pad={"medium"}
+                width={"medium"}
+                height="fit-content"
+                round
+                border={{ color: "visuals-3" }}
+                margin={{ bottom: "medium" }}
+              >
+                <PlainSectionLink to={`/blog/${blog.slug}`}>
+                  <Box>
+                    <Box direction={"row"} align={"center"}>
+                      <Heading
+                        level={3}
+                        margin={"none"}
+                        weight={500}
+                        color={"brand"}
+                        fill
+                      >
+                        {blog.frontmatter.name}
+                      </Heading>
                     </Box>
-                  </PlainSectionLink>
-                </Box>
-              )
-            })}
-          </Box>
+                    <Text size={"small"}>
+                      {`Published on ${blog.frontmatter.date}`}
+                    </Text>
+                    <Text size={"small"}>
+                      {byline(
+                        blog.frontmatter.author,
+                        blog.frontmatter.project
+                      )}
+                    </Text>
+
+                    <Paragraph size={"large"} fill>
+                      {blog.frontmatter.excerpt}
+                    </Paragraph>
+                  </Box>
+                </PlainSectionLink>
+              </Box>
+            )
+          })}
+        </Box>
+      </Box>
+      <NarrowContentWrapper>
+        <NarrowSection>
           <Box margin={{ top: "medium" }}>
             <Text>
               {" "}
