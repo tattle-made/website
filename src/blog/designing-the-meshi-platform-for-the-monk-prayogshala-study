@@ -1,0 +1,34 @@
+---
+name: Designing the Meshi platform for the Monk Prayogshala Study
+excerpt: "A post on the software we wrote as part of the psychology study conducted with MP"
+author: Denny George
+project: Grant for the Web
+date: 07-11-2022
+---
+
+This year we created a mock social media with [Monk Prayogshala](https://www.monkprayogshala.in/).  It was to conduct a psychology study to understand 
+if people's information sharing behaviour can be influenced via incentives.
+
+On this platform two groups of users were onboarded - one was subjected to monetary incentives (more money for sharing correct information) and the 
+other group was subjected to vanity incentives (more followers for sharing correct information).
+
+We managed to successfully onboard around 1000 participants to this platform and measure their online behaviour. The results are analysed [here](https://psyarxiv.com/nykxz/).
+
+A chunk of our time is dedicated to supporting work done by other groups interested in studying and responding to online misinformation. Often that 
+involves writing bespoke software to meet some unique requirements.
+
+Software exists in this domain that helps you mimic existing social media. For instance, [this](https://docs.studysocial.media/) and [this](https://themisinformationgame.github.io/)
+can be used if you wanted to conduct studies about user behaviour on Facebook-like platforms.
+
+Where Monk Prayogshala's use case digressed from these was that they wanted to simulate and measure behaviour that is not currently part of any 
+social media:
+- Rewarding/punishing certain behaviors via incentives 
+- Showing monetary metrics
+
+This project helped us expand our knowledge about the current literature on psychology studies around online misinformation and we hope we can 
+continue iterating on such tools to facilitate other studies.
+
+The source code for the platform exists [here](https://github.com/tattle-made/Comparative-Study-of-Various-Incentives-and-their-Effect-on-Content-Sharing-Behaviour/).
+
+We also used Github [actions](https://github.com/tattle-made/Comparative-Study-of-Various-Incentives-and-their-Effect-on-Content-Sharing-Behaviour/tree/main/actions/post-status-breakdown) 
+to automate away some email-related workflows. Sending out emails for onboarding, reminders and payments was part of the study.
