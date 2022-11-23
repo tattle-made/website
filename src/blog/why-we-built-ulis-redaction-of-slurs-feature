@@ -1,0 +1,30 @@
+---
+name: Why We Built Uli's Redaction of Slurs Feature
+excerpt: "The feature allows one to see the pervasiveness of such language"
+author: Tarunima Prabhakar
+project: Uli
+date: 14-11-2022
+---
+
+One of the features of Uli is the redaction of slurs. Why did we build this? Not all abuse is explicit but the use of slurs, coded language and 
+dog-whistling to target gender minorities is common on social media. And we have become normalised to it.
+
+First, there are explicit slurs. Most slurs, even if undirected, are sexualized. Many are used to target members of the dominant group by 
+describing their relation to women (mother or sister).
+
+Dog-whistling is the use of phrases/terms, possibly understood only by an ‘inner group’ to target a community. It is a form of coded language. But 
+coded language can also include misspellings or the use of words that sound similar to a slur.
+
+This is especially common in mixed-language communities — one can use English words that sound similar to a Hindi or Tamil slur.
+
+Such language is so pervasive on social media that one doesn’t even register when one encounters them. One is also likely to say things online that 
+one would not say to someone in [person](https://pubmed.ncbi.nlm.nih.gov/15257832/). The slur redaction feature interrupts the unconscious scrolling 
+to call attention to the presence of such language.
+
+The slur list crowdsourced for Uli can be found [here](https://github.com/tattle-made/OGBV/blob/main/browser-extension/plugin/scripts/slur-list.txt).
+A search on Twitter with some of these terms will reveal just how abusive Twitter can be to individuals of marginalised genders.
+
+Coded language evolves rapidly. Someone comes up with a novel way to evade automated moderation everyday. And now we’re looking at a world where 
+the new owner of Twitter wants to pull even further away from detecting and acting on such content.
+
+So it remains a continuous effort to keep these lists updated. If you have slurs you think we need to include, feel free to ping us on [Twitter](https://twitter.com/tattlemade) or [email](uli_support@tattle.co.in).
