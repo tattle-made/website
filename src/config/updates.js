@@ -1,6 +1,69 @@
-export const updates = [
+export const updates = [  
   
-    {
+  {
+    date: "Dec, 2022",
+    title: "Ironing out Creases and Listening to Community Feedback for Viral Spiral",
+    event_name: "Viral Spiral's First Digital Playtest Session",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "Presentation at UNFPA Consultation",
+    event_name: "Tackling Tech-Mediated Online Gender-Based Violence",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "Initiating Community Outreach for Uli",
+    event_name: "Winning Feminist ki Batti Jalao Grant",
+    url:"",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "How Tattle And Hatebase Tackle Online Misinformation And Hate Speech In Non-English Languages",
+    event_name: "Tattle Interviewed by Medianama",
+    url:"https://www.medianama.com/2022/11/223-interview-tattle-hatebase-regional-languages-misinformation/",
+    tags: ["Media Mentions"],
+  }, 
+  
+  
+  {
+    date: "Oct, 2022",
+    title: "Medium and the message: Spread of hate through misinformation & disinformation",
+    event_name: "Challenging Hate Narratives in Asia Conference hosted by APC",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Oct, 2022",
+    title: "Asian Innovators Fight Online Hate, Lies as Tech giants Fall Short",
+    event_name: "Tattle Featured by Reuters",
+    url:"https://www.reuters.com/article/asia-internet-misinformation-idUSL8N30Q0Y7",
+    tags: ["Media Mentions"],
+  }, 
+  
+  
+  {
+    date: "Sep, 2022",
+    title: "Tattle's Book Club Meetings",
+    event_name: "Monthly Feature Among Tattlers Discussing a Collectively Chosen Book",
+    url:"",
+    tags: ["Release"],
+  },
+  
+  
+  {
     date: "Sep, 2022",
     title: "Agami Idea Prize Shortlist",
     event_name: "Agami Idea Prize Shortlist",
@@ -17,6 +80,16 @@ export const updates = [
     tags: ["Media Mentions", "Talk"],
   },   
   
+  
+  {
+    date: "July, 2022",
+    title: "Refurbished Blog Page",
+    event_name: "Started to Maintain a New Site as a Repository of Relevant Project-related Content and Updates",
+    url:"https://tattle.co.in/blog/",
+    tags: ["Release"],
+  },
+  
+  
   {
     date: "27 July, 2022",
     title: "Uli (OGBV Plugin) Public Launch",
@@ -24,6 +97,25 @@ export const updates = [
     url:"https://uli.tattle.co.in/",
     tags: ["Release"],
   },   
+  
+  
+  {
+    date: "June, 2022",
+    title: "RightsCon Presentation",
+    event_name: "Showcasing of Uli",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "March, 2022",
+    title: "Hatred in the blind spot",
+    event_name: "Tattle's take on the skew in platform attention to Indian languages for a German Magazine",
+    url:"https://www.derpragmaticus.com/r/desinformation/",
+    tags: ["Media Mentions"],
+  },
+  
   
     {
     date: "15 Feb, 2022",
