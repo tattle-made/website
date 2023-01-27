@@ -1,5 +1,42 @@
 export const updates = [  
   
+  
+  {
+    date: "Jan, 2022",
+    title: "Tech for Truth: Innovative Solutions",
+    event_name: "Misinformation Regulations Governance at IIT-Madras",
+    url:"https://www.linkedin.com/posts/shaastra-iit-madras_debunk-fakenews-misinformation-activity-7023688631433261056-yOxu?utm_source=share&utm_medium=member_desktop",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Jan, 2022",
+    title: "Safe and Unsafe: How Design Choices Help Women Online",
+    event_name: "IIC Diamond Jubilee Celebrations - Digital Governance",
+    url:"https://iicdelhi.in/programmes/iic-diamond-jubilee-celebrations-digital-governance-0",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Dec, 2022",
+    title: "MP Presented GFTW study's Findings at Academic Conference",
+    event_name: "Behavioural Research in Economics Workshop at IIM-Bangalore",
+    url:"https://sites.google.com/view/brewindia/program?authuser=0&pli=1",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Dec, 2022",
+    title: "Attended Agami Summit Convened for Idea Prize Shortlisted Members",
+    event_name: "Agami Summit 2022: Big Ideas for Justice",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
   {
     date: "Dec, 2022",
     title: "Ironing out Creases and Listening to Community Feedback for Viral Spiral",
@@ -15,6 +52,15 @@ export const updates = [
     event_name: "Tackling Tech-Mediated Online Gender-Based Violence",
     url:"",
     tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "Submitted Comments on the Indian Telecommunications Bill, 2022",
+    event_name: "Open Consultation on Indian Telecommunications Bill, 2022",
+    url:"https://tattle.co.in/blog/tattles-take-on-the-indian-telecom-bill",
+    tags: ["Release"],
   },
   
   
