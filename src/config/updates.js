@@ -1,6 +1,115 @@
-export const updates = [
+export const updates = [  
   
-    {
+  
+  {
+    date: "Jan, 2022",
+    title: "Tech for Truth: Innovative Solutions",
+    event_name: "Misinformation Regulations Governance at IIT-Madras",
+    url:"https://www.linkedin.com/posts/shaastra-iit-madras_debunk-fakenews-misinformation-activity-7023688631433261056-yOxu?utm_source=share&utm_medium=member_desktop",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Jan, 2022",
+    title: "Safe and Unsafe: How Design Choices Help Women Online",
+    event_name: "IIC Diamond Jubilee Celebrations - Digital Governance",
+    url:"https://iicdelhi.in/programmes/iic-diamond-jubilee-celebrations-digital-governance-0",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Dec, 2022",
+    title: "MP Presented GFTW study's Findings at Academic Conference",
+    event_name: "Behavioural Research in Economics Workshop at IIM-Bangalore",
+    url:"https://sites.google.com/view/brewindia/program?authuser=0&pli=1",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Dec, 2022",
+    title: "Attended Agami Summit Convened for Idea Prize Shortlisted Members",
+    event_name: "Agami Summit 2022: Big Ideas for Justice",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Dec, 2022",
+    title: "Ironing out Creases and Listening to Community Feedback for Viral Spiral",
+    event_name: "Viral Spiral's First Digital Playtest Session",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "Presentation at UNFPA Consultation",
+    event_name: "Tackling Tech-Mediated Online Gender-Based Violence",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "Submitted Comments on the Indian Telecommunications Bill, 2022",
+    event_name: "Open Consultation on Indian Telecommunications Bill, 2022",
+    url:"https://tattle.co.in/blog/tattles-take-on-the-indian-telecom-bill",
+    tags: ["Release"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "Initiating Community Outreach for Uli",
+    event_name: "Winning Feminist ki Batti Jalao Grant",
+    url:"",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "Nov, 2022",
+    title: "How Tattle And Hatebase Tackle Online Misinformation And Hate Speech In Non-English Languages",
+    event_name: "Tattle Interviewed by Medianama",
+    url:"https://www.medianama.com/2022/11/223-interview-tattle-hatebase-regional-languages-misinformation/",
+    tags: ["Media Mentions"],
+  }, 
+  
+  
+  {
+    date: "Oct, 2022",
+    title: "Medium and the message: Spread of hate through misinformation & disinformation",
+    event_name: "Challenging Hate Narratives in Asia Conference hosted by APC",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Oct, 2022",
+    title: "Asian Innovators Fight Online Hate, Lies as Tech giants Fall Short",
+    event_name: "Tattle Featured by Reuters",
+    url:"https://www.reuters.com/article/asia-internet-misinformation-idUSL8N30Q0Y7",
+    tags: ["Media Mentions"],
+  }, 
+  
+  
+  {
+    date: "Sep, 2022",
+    title: "Tattle's Book Club Meetings",
+    event_name: "Monthly Feature Among Tattlers Discussing a Collectively Chosen Book",
+    url:"",
+    tags: ["Release"],
+  },
+  
+  
+  {
     date: "Sep, 2022",
     title: "Agami Idea Prize Shortlist",
     event_name: "Agami Idea Prize Shortlist",
@@ -17,6 +126,16 @@ export const updates = [
     tags: ["Media Mentions", "Talk"],
   },   
   
+  
+  {
+    date: "July, 2022",
+    title: "Refurbished Blog Page",
+    event_name: "Started to Maintain a New Site as a Repository of Relevant Project-related Content and Updates",
+    url:"https://tattle.co.in/blog/",
+    tags: ["Release"],
+  },
+  
+  
   {
     date: "27 July, 2022",
     title: "Uli (OGBV Plugin) Public Launch",
@@ -24,6 +143,25 @@ export const updates = [
     url:"https://uli.tattle.co.in/",
     tags: ["Release"],
   },   
+  
+  
+  {
+    date: "June, 2022",
+    title: "RightsCon Presentation",
+    event_name: "Showcasing of Uli",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "March, 2022",
+    title: "Hatred in the blind spot",
+    event_name: "Tattle's take on the skew in platform attention to Indian languages for a German Magazine",
+    url:"https://www.derpragmaticus.com/r/desinformation/",
+    tags: ["Media Mentions"],
+  },
+  
   
     {
     date: "15 Feb, 2022",
