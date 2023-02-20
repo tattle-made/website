@@ -6,54 +6,54 @@ project: Uli
 date: 28-10-2022
 ---
 
-This post came about when we set out testing one of our products, Uli, a browser extension that lets you moderate your Twitter feed. 
-You can learn more about it [here](https://twitter.com/tattlemade/status/1570401058073219073?t=SlMhPup1_jEYPAtLykr-GQ&s=19). 
+This post came about when we set out testing one of our products, Uli, a browser extension that lets you moderate your Twitter feed.
+You can learn more about it [here](https://twitter.com/tattlemade/status/1570401058073219073?t=SlMhPup1_jEYPAtLykr-GQ&s=19).
 In this post, we'll go through some of the challenges we faced and how we tackled them.
 
 ## Challenge #1: Automating browsers -
 
-We set out to do automated testing of these features using Selenium WebDriver on Python. It helps us automate browsers and look for 
+We set out to do automated testing of these features using Selenium WebDriver on Python. It helps us automate browsers and look for
 specific elements on a page loaded inside a browser instance. [Getting started](https://www.selenium.dev/documentation/webdriver/getting_started/)
 
 ## Challenge #2: Loading the extension inside the browser -
 
-Running a Selenium Webdriver using a python script opens a fresh instance of the browser, thus we needed to install a build of the extension 
+Running a Selenium Webdriver using a python script opens a fresh instance of the browser, thus we needed to install a build of the extension
 every time we run the script. A great method that we found for this in order to load up local copies of the extension was over here:
 
 - For Chrome: [Using Google Chrome Extensions with Selenium](https://intoli.com/blog/chrome-extensions-with-selenium/)
 - For Firefox: [Using Firefox WebExtensions with Selenium](https://intoli.com/blog/firefox-extensions-with-selenium/)
 
-Note that the guides need some changes to be fully compatible with the current version of selenium but  the underlying method of using the 
-'--load-extension' command for Chrome and using the 'install_addon()' function for Firefox to load a .xpi file remains functional. The next challenge 
-was creating a .xpi file for Firefox. A lot of guides online give various methods for creating it, however, all of these might be seen as corrupt by 
-Firefox if not signed. Currently, the easiest way to sign an extension is using the [web-ext](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-sign) framework. 
-Using the web-ext sign command, you can use your own API-key to sign your local extension build and use it for testing. This should generate a 
+Note that the guides need some changes to be fully compatible with the current version of selenium but the underlying method of using the
+'--load-extension' command for Chrome and using the 'install_addon()' function for Firefox to load a .xpi file remains functional. The next challenge
+was creating a .xpi file for Firefox. A lot of guides online give various methods for creating it, however, all of these might be seen as corrupt by
+Firefox if not signed. Currently, the easiest way to sign an extension is using the [web-ext](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-sign) framework.
+Using the web-ext sign command, you can use your own API-key to sign your local extension build and use it for testing. This should generate a
 unique file signed using your credentials that you can use in the guides posted above.
 
-## Challenge #3: Testing the features - 
+## Challenge #3: Testing the features -
 
-Now that we had the local builds of the extension ready, the next step was to test the various features of Uli. One of the primary features of Uli 
+Now that we had the local builds of the extension ready, the next step was to test the various features of Uli. One of the primary features of Uli
 is being able to redact known slurs that are in our crowdsourced list of slurs from tweets.
 
-The method to test this was simple: Simply load up a tweet with a known slur in an automated browser, and make the script look for the text of the 
-tweet, and within it, look for the character  '▓' used to blur out the slur. If the extension worked correctly, the script would find the element 
+The method to test this was simple: Simply load up a tweet with a known slur in an automated browser, and make the script look for the text of the
+tweet, and within it, look for the character '▓' used to blur out the slur. If the extension worked correctly, the script would find the element
 exit successfully.
 
-The next feature of Uli that we wanted to test was archiving of tweets. When Uli is active on your browser it shows you a camera icon above every 
-tweet that lets you locally save that tweet for future purposes. In order to test this out, we hardcoded the path to the local downloads folder 
-and used the 'listdir()' function of python's 'os' library to count the number of files present inside the folder. Next, the automated script would 
-load up a tweet and use the archiving functionality and then recount the number of files in the downloads directory, and return successfully if the 
+The next feature of Uli that we wanted to test was archiving of tweets. When Uli is active on your browser it shows you a camera icon above every
+tweet that lets you locally save that tweet for future purposes. In order to test this out, we hardcoded the path to the local downloads folder
+and used the 'listdir()' function of python's 'os' library to count the number of files present inside the folder. Next, the automated script would
+load up a tweet and use the archiving functionality and then recount the number of files in the downloads directory, and return successfully if the
 number increased by 1.
 
-Finally, we needed to interact with the extension in order to enable a feature that lets us filter out tweets that our ML model classifies as oGBV. 
-Selenium currently cannot interact with extensions directly, hence we needed to find an indirect method, which required us to find the extension's ID. 
-Chrome and Firefox have the extension IDs of currently running extensions on the 'chrome://extensions' and the 'about:debugging#/runtime/this-firefox' 
-pages respectively. We made our script crawl through the same in order to find the IDs.  Once the extension ID was with us it was a simple matter of 
-loading the extension's interface and enabling the oGBV filter and finding the oGBV banner as shown in the image. Upon finding it the script would 
+Finally, we needed to interact with the extension in order to enable a feature that lets us filter out tweets that our ML model classifies as oGBV.
+Selenium currently cannot interact with extensions directly, hence we needed to find an indirect method, which required us to find the extension's ID.
+Chrome and Firefox have the extension IDs of currently running extensions on the 'chrome://extensions' and the 'about:debugging#/runtime/this-firefox'
+pages respectively. We made our script crawl through the same in order to find the IDs. Once the extension ID was with us it was a simple matter of
+loading the extension's interface and enabling the oGBV filter and finding the oGBV banner as shown in the image. Upon finding it the script would
 exit successfully.
 
-Note that the absence of a singular, standardized framework for testing extensions makes it slightly difficult to test them, and makes the issues 
-faced to test an extension unique and challenging in their own right. Web-ext is a step in the right direction, however, it only works for Firefox. 
+Note that the absence of a singular, standardized framework for testing extensions makes it slightly difficult to test them, and makes the issues
+faced to test an extension unique and challenging in their own right. Web-ext is a step in the right direction, however, it only works for Firefox.
 
-If this work interests you, head over to our repository! We're tracking open issues related to new features for Uli as well as issues related 
-to testing and automation on Github [Issues · tattle-made/OGBV](https://github.com/tattle-made/OGBV/issues). 
+If this work interests you, head over to our repository! We're tracking open issues related to new features for Uli as well as issues related
+to testing and automation on Github [Issues · tattle-made/OGBV](https://github.com/tattle-made/OGBV/issues).
