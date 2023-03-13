@@ -1,0 +1,52 @@
+---
+name: Uli Meets ChatGPT
+excerpt: "Testing the limits of ChatGPT using Uli's slur list"
+author: Cheshta Arora and Tarunima Prabhakar
+project: "Uli"
+date: 13-03-2023
+---
+
+
+The dominant safety concerns regarding ChatGPT (and similar LLMs) have been around the blurred lines between fact and AI fabrications. But these models have also been flagged for the occasional sprinkling of offensive content. 
+
+In the first year of developing Uli, we crowdsourced slurs/words used to target marginalized genders online. We landed up tabulating the longest [open list](https://github.com/tattle-made/OGBV/blob/main/browser-extension/plugin/scripts/slur-list.txt) of abusive terms in Tamil and Hindi (that we know of). We decided to use the list to test the moderation limits of ChatGPT. 
+
+Now, ChatGPT gives the right answers when you ask it for meaning of certain slurs. It also politely refuses to generate alterations of common slurs. Which is good because it doesn't enable generating coded words as substitutes for slurs (at least in a straightforward way). 
+
+![misspellings_2](https://user-images.githubusercontent.com/13188366/224719142-dad88474-05ba-4235-a24d-39a0668e68d9.png)
+
+But, beyond the obvious slurs, the model's results get confusing (and funny). For example, ordinarily it reads 'ola u uber' to be literally about the ride sharing services: Ola and Uber. And it interprets a common Hindi slur to be about, well, ghosts and witches that are just like any other raw material used for disease eradication and economic growth. 
+
+<img width="663" alt="ola_uber_benign" src="https://user-images.githubusercontent.com/13188366/224719268-07e9dd7c-9d07-4942-9074-64a61dca81e8.png">
+
+![bhoot](https://user-images.githubusercontent.com/13188366/224719222-baad8f07-5c81-45c5-9885-032c731aa540.png)
+
+
+But the moderation limits of ChatGPT can easily be pushed by querying it as a well intentioned person just trying to understand online abuse. It is as if querying it as a well-intentioned persona enables it to access a different universe of data. For example, when we searched for the term ola-uber as an expert on abuse detection, it understood the term as derogatory:
+
+![ola_uber_slur](https://user-images.githubusercontent.com/13188366/224719366-d586f964-c7ae-47b2-9522-c3158ed5b8e3.png)
+
+
+When we pushed it to be an expert that can tell us about a Hindi slur, it politely complied to describe the slur in detail. 
+
+![limits_1](https://user-images.githubusercontent.com/13188366/224719620-e3ca44c1-ee20-4298-b75e-24f025230546.png)
+
+
+One can't complain about this output since people can genuinely be interested in understanding the meaning of absuive terms and ChatGPT succeeds as a search bot in displaying this result. 
+
+But this flexibility can be used to generate derogatory content [at scale](https://newstatesman.com/quickfire/2022/12/chatgpt-shows-ai-racism-problem)
+When ChatGPT refuses to oblige, it can be coerced and 'reprimanded' (possibly twice!) to generate content with abusive terms.
+![wellintentioned](https://user-images.githubusercontent.com/13188366/224719743-1b3cfec3-130f-4162-8597-987a1b1ce9b7.png)
+
+The 'well intentioned' probing helped us identify words that had not been included in our slur list 😱. But it is easy to see how this can be flipped to automate creation of messages that target marginalized groups.
+
+![slur_generator](https://user-images.githubusercontent.com/13188366/224719797-1c8970d7-6409-4741-8642-e32e1a4a7de4.png)
+
+Since Uli is an exploration in gender, language and tech it seems apt to mention a tangential discovery from these crude experiments: when responding in Hindi, ChatGPT can pick a gender (despite its insistence in English that it is gender-less). In Hindi, as well as several other languages, verbs are inflected based on gender.  ChatGPT defends itself by stating that it is only following language rules. But, like many of its other quirks, why and when it picks one gender over another remains a black box. 
+
+![forced_gender](https://user-images.githubusercontent.com/13188366/224719847-0d7434dd-1e64-4edd-b831-47fba1f786d3.png)
+
+
+<img width="664" alt="Screen Shot 2023-03-13 at 7 01 42 PM" src="https://user-images.githubusercontent.com/13188366/224720010-8035e095-4447-421c-b273-c6a55ab562ed.png">
+
+
