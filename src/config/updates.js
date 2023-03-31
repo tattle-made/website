@@ -2,7 +2,61 @@ export const updates = [
   
   
   {
-    date: "Jan, 2022",
+    date: "March, 2023",
+    title: "Tattle's Participation at Mozfest",
+    event_name: "Included three sessions on fair compensation for data annotators, our DFL induction, and designing federated networks around user experiences",
+    url:"https://schedule.mozillafestival.org/schedule",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "March, 2023",
+    title: "Centering Women’s Equity in Digital Technology",
+    event_name: "UN CSW event that focused on digital technology solutions for challenges that people who identify as women and girls disproportionately face globally",
+    url:"https://socialimpact.github.com/insights/github-at-csw2023/",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "March, 2023",
+    title: "Tattle's Induction into the Data Futures Lab Cohort",
+    event_name: "Uli project being supported by Mozilla to develop crowdsourced datasets for the public good",
+    url:"https://foundation.mozilla.org/en/blog/mozilla-welcomes-2023-data-futures-lab-cohort/",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "March, 2023",
+    title: "Post-Truth Communications and the Role of Media and Future Information Technologies",
+    event_name: "Playtesting Viral Spiral with college students at Mathrubhumi Media School as part of a workshop facilitated by Citizen Digital Foundation",
+    url:"",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "Feb, 2023",
+    title: "Induction into Agami's OpenNyAI Labs Cohort",
+    event_name: "Tattle's try at utilising LLMs to build an AI product",
+    url:"https://opennyai.org/opennyai-labs/",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "Feb, 2023",
+    title: "Can digital games like Viral Spiral fight fake news and misinformation?",
+    event_name: "Viral Spiral featured by Mint",
+    url:"https://lifestyle.livemint.com/smart-living/innovation/can-digital-games-like-viral-spiral-fight-fake-news-and-misinformation-111677309289924.html",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "Jan, 2023",
     title: "Tech for Truth: Innovative Solutions",
     event_name: "Misinformation Regulations Governance at IIT-Madras",
     url:"https://www.linkedin.com/posts/shaastra-iit-madras_debunk-fakenews-misinformation-activity-7023688631433261056-yOxu?utm_source=share&utm_medium=member_desktop",
@@ -11,7 +65,7 @@ export const updates = [
   
   
   {
-    date: "Jan, 2022",
+    date: "Jan, 2023",
     title: "Safe and Unsafe: How Design Choices Help Women Online",
     event_name: "IIC Diamond Jubilee Celebrations - Digital Governance",
     url:"https://iicdelhi.in/programmes/iic-diamond-jubilee-celebrations-digital-governance-0",
