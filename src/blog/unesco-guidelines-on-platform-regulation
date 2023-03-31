@@ -1,0 +1,57 @@
+---
+name: Reviewing UNESCO's Guidelines on Platform Regulation
+excerpt: "Tattle's take on UNESCO's attempt at addressing the issues with content moderation"
+author: Yash Budhwar
+project: " "
+date: 06-03-2023
+---
+
+UNESCO is creating [guidelines](https://unesdoc.unesco.org/ark:/48223/pf0000384031.locale=en) for global digital platforms. They primarily aim 
+to address the problems with content moderation that platforms encounter frequently, such as the rapid spread of false information and the 
+inability of platforms to halt it. We present some thoughts on them here.
+
+The final version of the Guidelines is slated to be released in mid-2023, with the intention that these will then ‘support regulators, governments, 
+legislatures, and companies, dealing with content that potentially damages human rights and democracy while protecting freedom of expression and 
+the availability of accurate and reliable information’.
+
+The Guidelines while not legally binding can act as loopholes for governments to use them as justification for partisan actions on online public 
+discourse. In many jurisdictions regulator independence is not a reality and state control of digital platforms is not ideal.
+
+The guidelines contain ambiguous definitions and concepts that may be applied in a subjective, arbitrary, or constrictive way. For example, 
+it states that the regulatory system should have the authority to "summon any digital platform deemed non-compliant with its own policies 
+or failing to protect users."
+
+Despite being open to multiple interpretations, regulatory actions cannot and should not be equated with firms' policies. These policies 
+frequently impose speech restrictions that are much more severe than those allowed by international human rights legislation.
+
+Another illustration is The Grievance Appellate Committee (GAC), which uses government-appointed individuals to decide appeals against 
+social media platform content moderation judgments. The GAC is mentioned in India's IT Regulations 2021.
+
+In addition to giving the government the authority to decide what speech is acceptable, this might "incentivize social media companies to 
+suppress any content that may not be attractive to the government, public authorities, or others who can exert political pressure."
+
+User reporting systems should prioritise "threatening" information, according to UNESCO. The report also suggests setting up automated complaint 
+processing systems that are regularly evaluated by outside parties to handle the volume of complaints.
+
+So, the subjective nature of words like "threatening" makes the immediate response by platforms vulnerable to abuse. Subjective biases and 
+intentions may also inspire users. Automated systems frequently lack sophisticated analytical skills; as a result, they read intentions incorrectly 
+and magnify unfair bias.
+
+Competition and data protection aspects have not been taken into consideration by these Guidelines as well and, as such, any intended 
+legal instrument or regulation will prove ineffective in limiting the harmful effects of the most significant online platforms’ business models.
+
+The scope of the latest iteration of the Guidelines also includes messaging applications. A rule would gravely risk weakening E2EE and, by 
+extension, protecting online freedom of speech and privacy if it applied the broadly worded responsibilities under the Guidelines to both messaging 
+and hosting services.
+
+Finally, the Guidelines make it clear that they are concentrating on the systems and procedures of platforms. Platforms "dealing" with unlawful 
+content and "content that risks significant harm to democracy and the enjoyment of human rights" are given a lot of attention in the paper.
+
+The document's conclusion defines the latter category as including "hate speech," "disinformation and misinformation," and "material that incites 
+or depicts gender-based violence."
+
+Each of these classifications lacks a clear legal meaning and cannot be used as a justification for online speech restrictions. For example, it 
+is unjustifiable from the standpoint of human rights to argue that false information and illegal content should be treated equally.
+
+Focusing on platforms' processes and decision-making capacities also takes away from a more citizen-first perspective and methodology to content 
+moderation and places a lot of (unchecked) power in the hands of platforms.
