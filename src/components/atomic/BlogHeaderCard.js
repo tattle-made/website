@@ -9,7 +9,7 @@ const BlogHeaderCard = ({ name, author, date, project }) => (
         {name}
       </Heading>
     </Box>
-    <Text size={"small"}>{`Published on ${date}`}</Text>
+    <Text size={"small"}>{`Published on ${date.toDateString()}`}</Text>
     <Text size={"small"}>{byline(author, project)}</Text>
   </Box>
 )
