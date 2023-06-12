@@ -78,7 +78,9 @@ const BlogIndex = ({ data }) => {
                       </Heading>
                     </Box>
                     <Text size={"small"}>
-                      {`Published on ${blog.frontmatter.date}`}
+                      {`Published on ${new Date(
+                        blog.frontmatter.date
+                      ).toDateString()}`}
                     </Text>
                     <Text size={"small"}>
                       {byline(
