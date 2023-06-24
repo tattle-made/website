@@ -22,9 +22,18 @@ export default function Values({ data }) {
   return (
     <DefaultLayout>
       <Section>
-        <Heading level={2}>Values</Heading>
+        <NarrowSection>
+          <Heading level={2} margin={{ bottom: "none" }}>
+            Our Values
+          </Heading>
+        </NarrowSection>
       </Section>
+
       <Section>
+        <Heading level={3} margin={{ bottom: "xsmall" }}>
+          Openness
+        </Heading>
+
         <Box direction={"row-responsive"}>
           <Box
             width={"small"}
@@ -38,9 +47,6 @@ export default function Values({ data }) {
             />
           </Box>
           <Box>
-            <Heading level={3} margin={{ bottom: "xsmall" }}>
-              Openness
-            </Heading>
             <Paragraph fill>
               As long term beneficiaries of open source projects, we realize the
               value of tools that are community driven, community built and
@@ -62,6 +68,9 @@ export default function Values({ data }) {
       </Section>
 
       <Section>
+        <Heading level={3} margin={{ bottom: "xsmall" }}>
+          Accessibility
+        </Heading>
         <Box direction={"row-responsive"}>
           <Box
             width={"small"}
@@ -75,9 +84,6 @@ export default function Values({ data }) {
             />
           </Box>
           <Box>
-            <Heading level={3} margin={{ bottom: "xsmall" }}>
-              Accessibility
-            </Heading>
             <Paragraph fill>
               India is a diverse microcosm in an overwhelmingly diverse world.
               Our aim with Tattle is to embrace that diversity- of languages, of
@@ -90,6 +96,9 @@ export default function Values({ data }) {
       </Section>
 
       <Section>
+        <Heading level={3} margin={{ bottom: "xsmall" }}>
+          Sustainability
+        </Heading>
         <Box direction={"row-responsive"}>
           <Box
             width={"small"}
@@ -103,9 +112,6 @@ export default function Values({ data }) {
             />
           </Box>
           <Box>
-            <Heading level={3} margin={{ bottom: "xsmall" }}>
-              Sustainability
-            </Heading>
             <Paragraph fill>
               At any point, we have to choose between multiple product ideas and
               potential future directions. Given the challenge Tattle is aiming
@@ -121,6 +127,9 @@ export default function Values({ data }) {
       </Section>
 
       <Section>
+        <Heading level={3} margin={{ bottom: "xsmall" }}>
+          Humility
+        </Heading>
         <Box direction={"row-responsive"}>
           <Box
             width={"small"}
@@ -134,9 +143,6 @@ export default function Values({ data }) {
             />
           </Box>
           <Box>
-            <Heading level={3} margin={{ bottom: "xsmall" }}>
-              Humility
-            </Heading>
             <Paragraph fill>
               We realize that we are inhabiting a space with experienced
               veterans, who have a lot to teach us. Platform users have a lot to
@@ -149,6 +155,9 @@ export default function Values({ data }) {
       </Section>
 
       <Section>
+        <Heading level={3} margin={{ bottom: "xsmall" }}>
+          Curiosity
+        </Heading>
         <Box direction={"row-responsive"}>
           <Box
             width={"small"}
@@ -162,9 +171,6 @@ export default function Values({ data }) {
             />
           </Box>
           <Box>
-            <Heading level={3} margin={{ bottom: "xsmall" }}>
-              Curiosity
-            </Heading>
             <Paragraph fill>
               As stated earlier in the blog, Tattle was driven by curiosity. We
               started by wanting to learn more about the phenomenon of
@@ -177,6 +183,8 @@ export default function Values({ data }) {
           </Box>
         </Box>
       </Section>
+      <Box height={"0.8em"} />
+      <br />
       <Section>
         <Paragraph fill>
           We know these are lofty principles and that we will fall short of
