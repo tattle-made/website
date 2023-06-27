@@ -26,8 +26,13 @@ const staff = [
     role: "ML Engineer",
   },
   {
+    name: "Kaustubha",
+    role: "Community Manager for Uli",
+    url: "https://github.com/kaustubhavarma",
+  },
+  {
     name: "Sudeep Duggal",
-    role: "Contributor :  Data Science, Security, Accessibility",
+    role: "Contributor:  Data Science, Security, Accessibility",
     url: "https://github.com/duggalsu",
   },
   
