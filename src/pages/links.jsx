@@ -72,7 +72,7 @@ const Links = () => {
                 3. Our in-progress
                 <Anchor
                   href={
-                    "https: //tattle.co.in/blog/factshala-project-reading-list"
+                    "https://tattle.co.in/blog/factshala-project-reading-list"
                   }
                   target={"_blank"}
                 >
@@ -85,13 +85,14 @@ const Links = () => {
               <Text size={"small"}>
                 4. Track what we are working on
                 <Anchor
-                  href={"https://github.com/orgs/tattle-made/projects/37"}
+                  href={
+                    "https://github.com/orgs/tattle-made/projects/37/views/2"
+                  }
                   target={"_blank"}
                 >
                   {" "}
-                  this quarter{" "}
+                  and find ways to contribute
                 </Anchor>
-                and find ways to contribute
               </Text>
             </Box>
           </Box>
