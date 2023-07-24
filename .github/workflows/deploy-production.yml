@@ -31,7 +31,7 @@ jobs:
         run: npm run deploy
 
       - name: Notify on Slack
-        uses: rtCamp/action-slack-notify@v2.0.0
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_MESSAGE: "Deployed website to production environment"
