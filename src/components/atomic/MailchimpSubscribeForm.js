@@ -32,8 +32,8 @@ const MailchimpSubscribeForm = () => {
                 <>
                   <Text size={"medium"} weight={600}>
                     {" "}
-                    Join an engaged community of people who are building
-                    solutions to tackle misinformation on our mailing list{" "}
+                    Join an engaged community working on civic tech approaches
+                    to tackling online harms on our mailing list{" "}
                   </Text>
                   <Box height={"xxsmall"} />
                   <Box
