@@ -36,16 +36,16 @@ const Theme = {
 const LandingPageHeading = styled.span`
   color: ${Theme.text_color_light};
   font-weight: 800;
-  font-size: 30px;
-  line-height: 44px;
+  font-size: 24px;
+  line-height: 28.8px;
   font-family: "Bitter";
 `
 
 const LandingPageSubHeading = styled.span`
   color: ${Theme.text_color_light};
   font-weight: 400;
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 24px;
+  line-height: 28.8px;
   font-family: "Bitter";
 `
 

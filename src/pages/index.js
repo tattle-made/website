@@ -56,7 +56,7 @@ const Index = props => {
       <ResponsiveContext.Consumer>
         {size => (
           <Box direction={"column"} align={"center"} flex={"grow"}>
-            <Box background={"brand"} fill={true} height={{ min: "90vh" }}>
+            <Box background={"brand"} fill={true} height={{ min: "45vh" }}>
               <NarrowContentWrapper justify={"center"}>
                 <NarrowSection>
                   <Box direction={"row-responsive"}>
@@ -80,8 +80,8 @@ const Index = props => {
                       <Box direction={"column"} gap={"small"}>
                         <LandingPageSubHeading>
                           We are Tattle - a community of technologists,
-                          researchers and artists working towards a
-                          healthier online information ecosystem in India.
+                          researchers and artists working towards a healthier
+                          online information ecosystem in India.
                         </LandingPageSubHeading>
                       </Box>
                     </Box>
@@ -147,7 +147,7 @@ const Project = ({ project }) => {
 }
 
 const RecentProjectSection = ({ size }) => {
-  const { cover_ogbv, cover_viral_spiral } = useStaticQuery(graphql`
+  const { cover_ogbv, cover_viral_spiral, cover_kosh } = useStaticQuery(graphql`
     query {
       cover_ogbv: file(relativePath: { eq: "cover-project-uli.png" }) {
         childImageSharp {
@@ -159,6 +159,13 @@ const RecentProjectSection = ({ size }) => {
       cover_viral_spiral: file(
         relativePath: { eq: "cover-project-viral-spiral.png" }
       ) {
+        childImageSharp {
+          fluid {
+            src
+          }
+        }
+      }
+      cover_kosh: file(relativePath: { eq: "cover-project-kosh.png" }) {
         childImageSharp {
           fluid {
             src
@@ -188,7 +195,7 @@ const RecentProjectSection = ({ size }) => {
             <ResponsiveLayoutDatasets size={size}>
               <CaseStudyPreview
                 previewImage={cover_ogbv.childImageSharp.fluid.src}
-                title={"Online Gender Based Violence Mitigation"}
+                title={"Uli"}
                 description={
                   "Empowering users to respond to OGBV via localized content moderation"
                 }
@@ -204,59 +211,37 @@ const RecentProjectSection = ({ size }) => {
                 url={"/products/viral-spiral"}
                 publicationDate={"13-11-2020"}
               />
+              <CaseStudyPreview
+                previewImage={cover_kosh.childImageSharp.fluid.src}
+                title={"Kosh"}
+                description={
+                  "Scrape multimodal and multilingual data from social media. Store and Analyze using our tools Kosh and Feluda"
+                }
+                url={"/products/kosh"}
+                publicationDate={"13-11-2020"}
+              />
             </ResponsiveLayoutDatasets>
+          </Box>
+        </Box>
+      </NarrowContentWrapper>
+      <NarrowContentWrapper>
+        <Box width={"100%"} alignSelf={"center"} margin={{ top: "medium" }}>
+          <Box gap={"small"} width={"100%"} align={"center"}>
+            <Anchor href={"/products"}>
+              <Text
+                size={"small"}
+                weight={"400"}
+                margin={{ bottom: "small", top: "none" }}
+              >
+                See All Projects
+              </Text>
+            </Anchor>
           </Box>
         </Box>
       </NarrowContentWrapper>
 
       <Box height="1.8em"></Box>
 
-      <NarrowContentWrapper>
-        <Box width={"100%"} alignSelf={"center"}>
-          <Box gap={"large"}>
-            <PlainLink to={"/products/github-indices"}>
-              <Box>
-                <Heading level={3} margin={"none"} fill>
-                  Developing Standardized Metrics for Github
-                </Heading>
-                <Paragraph size={"medium"} fill margin={"none"}>
-                  This project tries to understand how data from GitHub platform
-                  usage can contribute to research in international development,
-                  public policy, and economics.
-                </Paragraph>
-              </Box>
-            </PlainLink>
-
-            <PlainLink to={"/products/gftw"}>
-              <Box>
-                <Heading level={3} margin={"none"} fill>
-                  Using Web Monetization for Incentivizing Sharing of ‘Good’
-                  Content
-                </Heading>
-                <Paragraph size={"medium"} fill margin={"none"}>
-                  This joint project with Monk Prayogshala aims to understand
-                  the possibility and effectiveness of web based monetization to
-                  promote better content sharing behavior.
-                </Paragraph>
-              </Box>
-            </PlainLink>
-
-            <PlainLink to={"/products/kosh"}>
-              <Box>
-                <Heading level={3} margin={"none"}>
-                  Kosh - Searchable Archive of Social Media posts
-                </Heading>
-                <Paragraph size={"medium"} fill margin={"none"}>
-                  Kosh is Tattle's foundational software component that enables
-                  archiving and searching of multimodal and multilingual
-                  content. It facilitates analysis and discovery of trends and
-                  patterns.
-                </Paragraph>
-              </Box>
-            </PlainLink>
-          </Box>
-        </Box>
-      </NarrowContentWrapper>
       <Box height="1.8em"></Box>
     </Box>
   )
@@ -266,7 +251,7 @@ const ResponsiveLayoutDatasets = ({ size, children }) => {
   return size !== "small" ? (
     <Grid
       columns={{
-        count: 2,
+        count: 3,
         size: "auto",
       }}
       gap="medium"

@@ -41,12 +41,7 @@ export const ResponsiveImage = ({ data, imageName }) => {
   return (
     <>
       {size === "small" ? (
-        <Box
-          width={"100%"}
-          alignSelf={"start"}
-          margin={{ top: "large" }}
-          height={"small"}
-        >
+        <Box width={"100%"} alignSelf={"start"} height={"small"}>
           <Image fit="contain" src={narrow_image.childImageSharp.fluid.src} />
         </Box>
       ) : (
@@ -56,7 +51,6 @@ export const ResponsiveImage = ({ data, imageName }) => {
             fit="contain"
             fill={true}
             src={wide_image.childImageSharp.fluid.src}
-            margin={{ top: "xlarge" }}
           />
         </Box>
       )}
