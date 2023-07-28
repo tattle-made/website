@@ -215,7 +215,7 @@ const RecentProjectSection = ({ size }) => {
                 previewImage={cover_kosh.childImageSharp.fluid.src}
                 title={"Kosh"}
                 description={
-                  "Scrape multimodal and multilingual data from social media. Store and Analyze using our tools Kosh and Feluda"
+                  "Archive of multimodal and multilingual content combining our scrapers and analytical tool Feluda"
                 }
                 url={"/products/kosh"}
                 publicationDate={"13-11-2020"}
