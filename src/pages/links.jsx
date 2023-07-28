@@ -48,7 +48,18 @@ const Links = () => {
           >
             <Box gap={"small"}>
               <Text size={"small"}>
-                1.{" "}
+                1.
+                <Anchor
+                  href={
+                    "https://tattle.co.in/blog/media-literacy-in-classrooms-insights-from-instructors"
+                  }
+                  target={"_blank"}
+                >
+                  Media Literacy in Classrooms - Insights from Instructors
+                </Anchor>{" "}
+              </Text>
+              <Text size={"small"}>
+                2.{" "}
                 <Anchor
                   href={"https://www.youtube.com/watch?v=hc0tpStpe3o&t=3s"}
                   target={"_blank"}
@@ -58,7 +69,7 @@ const Links = () => {
                 of Viral Spiral
               </Text>
               <Text size={"small"}>
-                2. Add Indian slurs to your Instagram 'hidden words' by using
+                3. Add Indian slurs to your Instagram 'hidden words' by using
                 <Anchor
                   href={"https://uli.tattle.co.in/hidden-words-for-instagram/"}
                   target={"_blank"}
@@ -69,7 +80,7 @@ const Links = () => {
               </Text>
 
               <Text size={"small"}>
-                3. Our in-progress
+                4. Our in-progress
                 <Anchor
                   href={
                     "https://tattle.co.in/blog/factshala-project-reading-list"
@@ -83,7 +94,7 @@ const Links = () => {
               </Text>
 
               <Text size={"small"}>
-                4. Track what we are working on
+                5. Track what we are working on
                 <Anchor
                   href={
                     "https://github.com/orgs/tattle-made/projects/37/views/2"
