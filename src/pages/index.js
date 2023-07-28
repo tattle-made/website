@@ -197,7 +197,7 @@ const RecentProjectSection = ({ size }) => {
                 previewImage={cover_ogbv.childImageSharp.fluid.src}
                 title={"Uli"}
                 description={
-                  "Empowering users to respond to OGBV via localized content moderation"
+                  "Empowering users to respond to Online Gender Based Violence via localized content moderation"
                 }
                 url={"/products/ogbv"}
                 publicationDate={"13-11-2020"}
