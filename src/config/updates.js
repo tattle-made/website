@@ -1,4 +1,112 @@
 export const updates = [  
+
+
+  {
+    date: "July, 2023",
+    title: "Keynote at ADMS Symposium: Alternative Visions for Tech in the Age of AI",
+    event_name: "The talk focused on the importance of civic tech to healthier digital futures",
+    url:"https://twitter.com/AdmsCentre/status/1679277464797995011",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "June, 2023",
+    title: "DPG Open Source Community Manager Programme",
+    event_name: "Uli took part in GitHub's efforts to popularise contributions to tech projects that work for the social good",
+    url:"https://socialimpact.github.com/tech-for-social-good/dpg-open-source-community-manager-program",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "June, 2023",
+    title: "Mobile Communication and Online Falsehoods in Asia",
+    event_name: "The chapter written by Denny, Tarunima and Aditya speaks about the unique technical and social affordances of Mobile Instant Messaging Services (like WhatsApp) which, if accounted for, can result in a more productive agenda for protecting Indian citizens on these platforms",
+    url:"https://link.springer.com/chapter/10.1007/978-94-024-2225-2_14",
+    tags: ["Release"],
+  },
+  
+  
+  {
+    date: "June, 2023",
+    title: "A Community-based Tool to Block Hateful Content on Social Media",
+    event_name: "Uli featured by Mozilla Foundation",
+    url:"https://foundation.mozilla.org/en/blog/a-community-based-tool-to-block-hateful-content-on-social-media/",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "June, 2023",
+    title: "TinkerHub: Future of AI in India",
+    event_name: "Tattle hosted a session on tech interventions against online harms",
+    url:"https://www.tinkerhub.org/spaceday",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "June, 2023",
+    title: "RightsCon Costa Rica 2023",
+    event_name: "Tattle alongside GitHub hosted a session on developing indexes on internet platform data for social sector research",
+    url:"https://twitter.com/tattlemade/status/1665682151675777025?s=20",
+    tags: ["Talk"],
+  },
+  
+  
+  {
+    date: "May, 2023",
+    title: "Nobel Prize Summit",
+    event_name: "Feluda was one of the nine open-source solutions featured by UNDP and DPGA at the Nobel Prize Summit in Washington DC in an effort to highlight how open-source innovation is helping to address mis- and disinformation around the world and provide better access to reliable information",
+    url:"https://digitalpublicgoods.net/information-pollution/",
+    tags: ["Media Mentions"],
+  },
+  
+  
+  {
+    date: "May, 2023",
+    title: "MisinfoCon India 2023",
+    event_name: "Tattle co-organised the first MisinfoCon conference in India in Bangalore with Meedan and Hackshackers at the Thoughtworks' Bangalore office. It was a convening of technology, policy, media, and design professionals to foster understanding and action around misinformation in India and consisted of two days of lightning talks and workshops, followed by a hackathon on the third day, touching on different aspects of trust and safety online, with a specific focus on platform research, AI and media, storytelling and misinformation response, and gendered disinformation",
+    url:"https://www.misinfoconindia.com/",
+    tags: ["Release"],
+  },
+
+  
+  {
+    date: "May, 2023",
+    title: "Digital Rights Asia Pacific 2023 Assembly",
+    event_name: "Tattle hosted two sessions: One was a playtest workshop on Viral Spiral and the second was a roundtable on the impacts and challenges of language models for South Asian Media in the present age of Mis/Disinformation",
+    url:"https://engagemedia.org/projects/drapac23/",
+    tags: ["Talk"],
+  },
+  
+
+  {
+    date: "May, 2023",
+    title: "Tattle's Induction into DATALeads' Factshala Innovation Lab",
+    event_name: "Tattle being supported to develop a game centred around imparting media literacy",
+    url:"https://factshala.com/factshala-innovation-lab/",
+    tags: ["Media Mentions"],
+  },
+  
+
+  {
+    date: "May, 2023",
+    title: "Putting hate speech on mute: An Indian project helps social media users filter out abuse to feel safe online",
+    event_name: "Uli featured by DW Akademie",
+    url:"https://akademie.dw.com/en/putting-hate-speech-on-mute-an-indian-project-helps-social-media-users-filter-out-abuse-to-feel-safe-online/a-65636500",
+    tags: ["Media Mentions"],
+  },
+
+  
+   {
+    date: "April, 2023",
+    title: "Global AI: Reframing the Conversation",
+    event_name: "Event that focused on reframing the conversation around AI and the need to move beyond looking at AI as this all-knowing, pervasive being",
+    url:"https://events.stanford.edu/event/global_ai_reframing_the_conversation",
+    tags: ["Talk"],
+  },
   
   
   {
