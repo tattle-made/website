@@ -138,7 +138,7 @@ export const updates = [
   
   {
     date: "March, 2023",
-    title: "Post-Truth Communications and the Role of Media and Future Information Technologies",
+    title: "Viral Spiral playtest with college students",
     event_name: "Playtesting Viral Spiral with college students at Mathrubhumi Media School as part of a workshop facilitated by Citizen Digital Foundation",
     url:"",
     tags: ["Talk"],
