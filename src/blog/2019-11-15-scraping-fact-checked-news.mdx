@@ -1,0 +1,39 @@
+---
+name: Scraping Fact-Checking Sites
+date: 2019-11-15
+tags: Experiments
+author: Keshav Joshi
+---
+
+Misinformation is diligently tracked by a number of fact-checking sites in India. The content they put on their websites forms a subet of the corpus of misinformation circulated on chat apps. Collecting this dataset helps us improve our search module. Additionally, it allows us to flag newly discovered content that has already been fact-checked.
+
+We set out to create a database of most if not all fact-checked news by major fact-checking sites. To do this, we scraped every article, across various Indian languages, from the following sites:
+
+- [Altnews](https://www.altnews.in/): English + Hindi
+- [Quint](https://www.thequint.com/news/webqoof)
+- [Boomlive](https://www.boomlive.in/): English + Hindi + Bangla
+- [Vishvasnews](https://www.vishvasnews.com/): Hindi + English + Punjabi + Urdu + Assamese
+- [IndiaToday](https://www.indiatoday.in/fact-check)
+- [Factly](https://factly.in/category/fact-check/fake-news/): English + Telugu
+
+**Our approach**
+
+Some sites are easy to scrape, and some are JavaScript. So let us embark and parse some XML. A lot of sites render most of the HTML on the server-side, which can be scraped easily with [lxml](https://lxml.de/index.html), using it as follows:
+
+Note: [lxml](https://lxml.de/index.html) is a simple HTML/XML parser. Sites can also be scraped using popular scraping library [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/), which uses lxml and other parsers. The divs identified here can also be used to build [Scrapy](https://scrapy.org/) spiders.
+
+The HTML that we are initially looking for is found by looking at the page source, i.e, HTML rendered on the server and sent over:
+
+![View page source: HTML rendered on server](https://tattle-media.s3.amazonaws.com/view_page_source_ex.png)![Page Source HTML: Identify the relevant tags to scrape](https://tattle-media.s3.amazonaws.com/html_page_source_ex.png)
+
+For each fact-checking website, we collect a random subset of articles, and identify the divs/tags that contain images/videos/metadata/body text. We then identify the right [Xpath](https://devhints.io/xpath) that does not fail across this set (sometimes it can get complicated):
+
+All data from a site is stored as 'Docs'. A Doc can be an image, video or the entire text body, which is then stored in the following JSON:
+
+The set of all docs found in an article are embedded in the following JSON, along with the metadata for the article:
+
+All the articles are then stored in a database (MongoDB) ready to be consumed by the search module.
+
+Few sites (such as [Quint](https://www.thequint.com/news/webqoof)) render most content dynamically on the client side. These require a more involved approach with [selenium](https://www.seleniumhq.org/) and [geckodriver](https://github.com/mozilla/geckodriver). This combination allows us to emulate the full browser (Firefox), execute JavaScript and interact with the UI. This way we can load some of the images/videos not rendered on the server.
+
+We are currently scraping all aforementioned sites weekly for our archive. The code referenced above can be found [here](https://github.com/tattle-made/tattle-research/tree/master/scraping).

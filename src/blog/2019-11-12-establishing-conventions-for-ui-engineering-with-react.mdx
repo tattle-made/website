@@ -1,0 +1,84 @@
+---
+title: Establishing Conventions for UI engineering with React
+date: 2019-11-11
+project: ""
+author: Denny George
+tags: Experiments
+---
+
+We use React extensively for developing our web products. React's flexibility allows fast iterative development of product. Since React is unopinionated in how it wants you to do certain things, depending on who touches which part of the code, team members can do the same things in many ways, hence leading to multiple patterns within the same codebase.
+
+In order to effectively communicate intent between developers and designers, I felt that there was need to devise some conventions so everyone - Product Manager, Designer, Developer had a consistent vocabulary to describe product features and reason about them.
+
+Please note:
+
+- This is a live document and edits would be made to it as new needs give rise to new conventions.
+- The terminology deviced can seem convoluted at this point so feel free to suggest alternatives.
+
+Let's look at a sample Search screen from our [Shell app](http://shell.tattle.co.in/). This page of Shell lets you search for media that we've scraped from Whatsapp and external websites where it appears in.
+![](/content/images/2019/11/example-screen-1.png)
+In react, everything is a component. Slightly Inspired by the vocabulary of design systems, we've devised a way of grouping components into atoms, molecules, sections and app-shell.
+Lets start from the outermost level and zoom in
+
+## App Shell and Sections
+![](/content/images/2019/11/section-and-app-shell-3.png)App Shell and Sections (with a few example labels)
+### App Shell
+
+Perhaps the least controversial one, this is the outermost react component that wraps all of your app. From the UI perspective this component is largely responsible for laying out different 'pieces' of the UI in their correct position, theme-ing the app etc. There's almost no business logic in this component, purely presentational one.
+
+### Sections
+
+And now the hardest convention to reason about. Section is a semantic unit of grouping. That means only way to get two people to agree on what is a section in your UI is through discussion and establishing consensus.
+
+Some metrics to help discuss if something is a section
+
+- sections can't contain other sections in it
+- sections are usually not used at multiple places. For instance, navigation could be a section because its unlikely your app will have another similar section that is navigation that looks and behaves alike.
+
+Here is a sample of what app-shell and sections could look like in code
+
+## Molecules
+![](/content/images/2019/11/molecules-1.png)
+Molecules are reusable components that probably could be used multiple times in your app. In the picture above you see a molecule for displaying single media. 
+
+It has the following features
+
+1. it can show preview for text, images and video.
+2. it can have an optional title
+3. it has states for loading and error.
+
+![](/content/images/2019/11/single-media-gif.gif)demonstration of molecule-single-post going through a few states - default, loading, data
+## Atoms
+![](/content/images/2019/11/atoms-1.png)
+Atoms are the smallest useful UI primitive when it comes to building an App. They should be stored in a core UI package that exposes atoms to any app that wants to use it. This package is where you will import any third party UI component libraries or individual components. Exporting atoms from this library and adhering to primitives exposed here will ensure that all apps built by tattle will be consistent visually and usability wise.
+Both atoms and molecules belong to a core ui package and not in your app code. Think of it as a third party library of UI components that you don't have access to (except that you do). It is advised to setup [storybook](https://storybook.js.org/) on this package to facilitate fast development, preview and testing of your UI components. This acts as a common place of testing and critique for designers, developers and product managers.
+Tattle's UI package and its storybook page can be found [here](https://www.npmjs.com/package/@tattle-made/ui) and [here](http://shakkal.tattle.co.in.s3-website.ap-south-1.amazonaws.com/?path=/story/welcome--to-storybook)
+
+## Exchanging Data
+
+Exchanging or syncing data between different components is a problem that has many solutions - using state variables, passing data through props, using a state management library like redux etc. This is a place where lack of a convention leads to diverging implementations. Hence we enforce a convention that uses props and redux. 
+
+Here are the rules
+
+1. Molecules and components communicate via props
+2. Sections communicate via redux actions
+
+No matter how big or independent your molecule is, it should not have redux code. Your molecules should elevate data to the level of a section that dispatches action and passes down store variables to the correct molecules.
+
+Consider the following example User Flow. Here you see a user searching for the term "flower" and our app makes two independent API calls to look for matches in two different data sources.
+![](/content/images/2019/11/search-example.gif)screen capture of user searching for 'flower' in our portal
+Here's a illustrative code snippet of what this looks like
+
+The section component uses redux hooks to access state variables which are named in a convention that illustrates their purpose clearly. As recommended by the redux team, our store is very flat and instead we use descriptive names to namespace our data.
+For instance in the example above the Section is called 'search' and the two molecules that  show data are called 'duplicate' and 'fact-checked-stories'.
+
+This is what the redux store for this app would look like (after removing unnecessary fields)
+
+This allows us to write namespaced actions and reducers with names that follow the convetion section-<section-name>-<molecule-name>. For instance, 
+`section-search-duplicate`  and `section-search-fact-checked-stories` are the names of actions and reducers that are responsible for handling setting states of one molecule each. 
+
+Since the redux store is responsible for providing data and the various states to the molecule, it is important for the reducer to set data in a consistent manner. Some basic things to keep in mind would be setting state of the molecule - default, loading, error, data. Correspondingly molecules should implement these states in a consistent manner so that anyone developing using your molecules has a consistent mental model and API while developing their App.
+
+Here's an example demonstrating the independent nature of the two molecules.
+![](/content/images/2019/11/search-example-one-fail.gif)
+Our approach is still evolving. We expect to find loopholes as our app grows. If you find scenarios where this does not apply or know of better precedents that exist, please leave a comment below or reach out to us on [twitter](https://twitter.com/tattlemade)

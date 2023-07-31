@@ -1,0 +1,119 @@
+---
+name: Considerations in Archiving Content from
+Encrypted Messaging Apps
+excerpt: This blog discusses some of the challenges faced, and related design decisions that Tattle has taken in implementing one of it’s goals- the creation of a globally accessible archive of multi-media messages circulated on chat apps.
+date: 2019-07-18
+project: ""
+author: Tarunima
+tags: Vision, Contribute, archive, ethics, open data, Encryption, Challenge, Commentary
+---
+
+---
+
+*(This is an edited version of an abstract submitted to a workshop on [Comparative Approaches to Disinformation](https://cyber.harvard.edu/story/2019-04/comparative-approaches-disinformation-call-extended-abstracts))*
+
+---
+
+A year after Brexit and US election brought the spotlight on social media platforms for their role in amplifying misinformation, WhatsApp came into prominence as a vector for rumours in the global South. While misinformation had long been a feature in groups conversations on the platform, the spate of lynchings in India triggered by WhatsApp rumours brought WhatsApp to global attention.
+
+The surge of messaging apps such as TikTok and ShareChat; and Facebook’s announcement of  plans to merge WhatsApp, Facebook and Instagram chat has come with a recognition that misinformation on encrypted messaging platforms could soon be a global phenomenon.[1]
+
+Tattle is a civic tech project emanating from India that aims to make verified information more easily accessible to mobile first users, in languages that they are comfortable with. Started with the intent of addressing misinformation on WhatsApp, the project has expanded in scope to address misinformation on chat apps and encrypted networks in general.
+
+This blog discusses some of the challenges faced, and related design decisions that Tattle has taken in implementing one of it’s goals- the creation of a globally accessible archive of multi-media messages circulated on chat apps.
+
+## The Curious Case of WhatsApp
+
+In India, WhatsApp’s rising popularity has mirrored a rapid increase in mobile phone and Internet penetration [2]. The ease of creating and sharing audio-visual content has made the platform accessible even to users with minimal traditional and digital literacy.
+
+As an encrypted platform, WhatsApp does not have access to the content circulating on it. Consequently, vis.a.vis. other social media networks, there is lesser information asymmetry between the company and the public. Encryption however, also reduces the agency of the company in removing problematic content- WhatsApp cannot algorithmically detect and remove content, as Facebook does, without weakening encryption standards.
+
+There are other aspects that make misinformation on WhatsApp distinct from other platforms. First, misinformation is often circulated on closed groups where membership is contingent on invitation. Secondly, WhatsApp does not allow discovery of new connections via the app itself. Finally, unlike Facebook or YouTube, there is no algorithmic curation of content on the platform. Sharing by individuals is the *only* contributor to virality of content on the platform.
+
+These aspects make content discovery and tracing the source of origin of a particular message challenging. This not only raises difficulties for fact checkers responding to online misinformation, but also for those trying to understand information networks on the platform. Several questions such as ‘how quickly and how widely does content travel on the platform? Do WhatsApp videos have a shelf life or are they recycled in newer forms?’ remain unanswered.
+
+An archive of content circulated on WhatsApp, and associated metadata such as time of receiving the message, addresses some of these issues. For fact checkers, it provides a database against which they can verify incoming content. For researchers, it is a source of content and temporal analysis.  But an archive is not neutral. It exerts power in what it chooses to include and exclude. It also exerts power through its mode of management and rules of access.
+
+## Data Acquisition: The Greedy Approach
+
+Over the last two years, several researchers and fact checking groups across the world have collected content circulated on WhatsApp for different purposes. While most researchers have focused on scraping public WhatsApp groups[3,4], fact checking groups source content from a number of channels, including emails and fact checking helplines run over WhatsApp[5].
+
+The lynchings in India highlight the urgency of timely detection and response. With the intent of surfacing viral content as quickly as possible, Tattle has adopted a greedy approach to data collection. Besides crowdsourcing data via an android app, Tattle is working on automating group discovery and content extraction from WhatsApp to the extent possible.
+
+## Open Challenges
+
+### Ethics of Data Collection from Public WhatsApp Groups
+
+At present there are no guidelines for ethical data collection on WhatsApp. Every research group has self-defined a configuration of consent framework and data sharing practices. For example, Narayanan et al.[3] chose to declare their presence and intent in every public group they joined and as a result were removed from some of them. Garimella et al.[4] on the other hand did not declare their presence and intent but have not made all of their data public.
+
+At Tattle, we do not declare our intent when we join public WhatsApp groups. Our working assumption is that public WhatsApp groups are an exception to otherwise private communication on the platform and are made public with the explicit intent of being discoverable. This is an assumption that we will revisit as the project evolves.
+
+### 
+Flagging Problematic Content
+
+Not all collected data can be opened to the public. A casual google search for public WhatsApp groups results in lists of ‘Adult’ WhatsApp groups [6]. In greedy scraping of WhatsApp groups, we often encounter pornographic and violent content. For example, groups launched under a popular theme of ‘Jobs’ are often appropriated for pornographic content. Such content cannot be shared on a public archive and must be flagged soon after collection.
+
+Owing to the volume of data scraped, Tattle will use machine learning based approaches to flag problematic content. As all ML systems, this classification system too will have prediction errors and there is unavoidable subjectivity in how the algorithms are optimized for different error rates. A choice to minimize false negatives (violent content not getting flagged) may come at the cost of higher false positives (non-violent content getting flagged as violent content). Furthermore, there can be disagreements on what expression is problematic and therefore not suitable for a public archive. These norms are likely to be culture and context specific.
+
+How best to incorporate the preferences of multiple stakeholders in what should or should not be opened, is a question that Tattle as any open archive must address.
+
+### Unwanted spotlight on previously obscure content [7]
+
+With an online open access archive it is difficult to predict or control the ways in which the data will be used. One concern is that by surfacing content circulating in different geographies, the archive will become a source for ill-intended content creators, confounding the problem the archive is directed to solve.
+
+### Access and Use
+
+Misinformation on WhatsApp is often hyperlocal[8].  While local fact checkers and civil society actors are best placed to act locally, they might not have the institutional support required for academic-industry partnerships through which social media data is shared outside the company. Even in newer research collaborations, access to data remains privileged. An open data archive circumvents gatekeeping costs, minimizes monetary barriers to access and also enables timeliness in access of data. Given that misinformation is often globally sourced but locally contextualized [9], a global archive of viral content on social media can help shave off critical time in local fact checking.
+
+We recognize that while not all data collected can be made public, it may still be useful for research. Preserving some data for restricted access has practical applications, though it raises questions around how these rights are managed. Aronson notes, “…the ethics of providing access to archival materials is a ‘thorny problem.’ It is not a one and done policy decision, instead requires constant deliberation and negotiation.”[10] 
+
+## 
+Something New Under the Sun?
+
+Several of the concerns pertinent to Tattle’s archival activities have been discussed in different forms in disciplines spanning media studies, archival sciences, information studies and anthropology. Yet, it is in the interaction of a multi-lingual, mixed media content; encrypted networks and coordinated disinformation campaigns that the uniqueness of archiving content from chat apps emerges. 
+
+We would love any inputs on navigating the issues raised in this blog. Also do let us know if there are other concerns that we should be mindful about when archiving this content.
+
+---
+
+---
+
+## References
+
+[1] De, Anamitra. "Can We Trust Facebook to Keep Our "Digital Living Rooms" Safe From Liars, Racists, and Haters? | Omidyar Network." Omidyar Network Blog. March 11, 2019. Accessed June 01, 2019. https://www.omidyar.com/blog/can-we-trust-facebook-keep-our-digital-living-rooms-safe-liars-racists-and-haters.
+
+---
+
+[2] Press Trust of India. “Internet Users in India To Reach 627 Million in 2019”. Press Trust of India. Mar 06, 2019. Accessed May 31, 2019. [https://telecom.economictimes.indiatimes.com/news/internet-users-in-india-to-reach-627-million-in-2019-report/68297051](https://telecom.economictimes.indiatimes.com/news/internet-users-in-india-to-reach-627-million-in-2019-report/68297051).
+
+---
+
+[3]Narayanan, Vidya. Kollanyi, Bence. Hajela, Ruchi. Barthwal, Ankita. Marchal, Nahema. Howard, Philip. “News and Information over Facebook and WhatsApp during the Indian Election Campaign.” Data Memo 2019.2. Oxford, UK: Project on Computational Propaganda. [comprop.oii.ox.ac.uk](https://comprop.oii.ox.ac.uk/)
+
+---
+
+[4]Garimella, Kiran, and Gareth Tyson. 2018. “WhatsApp, Doc? A First Look at WhatsApp Public Group Data.” *ArXiv:1804.01473 [Cs]*, April. [http://arxiv.org/abs/1804.01473](http://arxiv.org/abs/1804.01473).
+
+---
+
+[5] Lomas, Natasha. "WhatsApp Adds a Tip-line for Gathering Fakes Ahead of India's Elections – TechCrunch." TechCrunch. April 02, 2019. Accessed May 31, 2019. https://techcrunch.com/2019/04/02/whatsapp-adds-a-tip-line-for-checking-fakes-in-india-ahead-of-elections/
+
+---
+
+[6] [https://www.whatsappgrouplinks.org](https://www.whatsappgrouplinks.org/)
+
+---
+
+[7] Freelon, Deen et al., Beyond the Hashtags: #Ferguson, #Blacklivesmatter, and the Online Struggle for Offline Justice
+
+---
+
+[8]“BJP’s Social Media ‘Yodha’ from Cooch Behar Is an Admin of over 1,000 WhatsApp Groups.” Moneycontrol. Apr12,2019. Accessed May 31, 2019.[https://www.moneycontrol.com/news/trends/bjps-social-media-yodha-from-cooch-behar-is-an-admin-of-over-1000-whatsapp-groups-3814131.html](https://www.moneycontrol.com/news/trends/bjps-social-media-yodha-from-cooch-behar-is-an-admin-of-over-1000-whatsapp-groups-3814131.html). Accessed May 26, 2019.
+
+---
+
+[9] Kumar, Aishwarya. "Death By WhatsApp: How a Video Shot in Pakistan Led to Death of 30 People in India." News18. July 09, 2018. Accessed May 31, 2019. https://www.news18.com/news/india/death-by-whatsapp-how-a-video-shot-in-pakistan-led-to-death-of-30-people-in-india-1805733.html.
+
+---
+
+[10] Aronson, Jay D. (2017) “Preserving Human Rights Media” Genocide Studies and Prevention: An International Journal: Vol. 11: Iss. 1: 82-99. Accessed May 31, 2019. [https://scholarcommons.usf.edu/gsp/vol11/iss1/9/](https://scholarcommons.usf.edu/gsp/vol11/iss1/9/).

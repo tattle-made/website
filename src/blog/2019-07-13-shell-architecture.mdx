@@ -1,0 +1,55 @@
+---
+name: Contributing to Shell Server
+excerpt: Shell Server is the single point of contact for all the different services that tattle builds. This blog post describes the system architecture and lists resources helpful to anyone looking to contribute to the Shell Server. 
+date: 2019-07-13
+project: ""
+author: Denny George
+tags: Contribute, resources, FOSS, Shell Server, system architecutre
+---
+
+At Tattle we are building tools to help manage and automate operations on WhatsApp posts.To that end, we undertake the following 3 operations
+
+1. Collecting Posts
+2. Manual and Automatic Labelling
+3. Distributing Information
+
+[Shell Server](https://github.com/tattle-made/shell-server) acts as a single point of contact for all the different services that tattle builds. Whether we are scraping WhatsApp groups automatically or having people send them to us manually, they all go through shell server. The server also provides an API to access our AI services and perform operations on the posts. Here’s a broad overview of what the Tattle Ecosystem of Products/Services looks like :
+![](/content/images/2019/07/backend-architecture.png)Tattle Eco System Diagram
+Shell Server is a light weight central server that is responsible for providing a single point of access to various entities like, scraper, crowdsourced posts, web apps (built by people we give access to our API), our AI services like duplicate detection, similarity detection etc. These are the components of Shell Server
+
+1. a linux machine hosting it (aws ec2)
+2. a express based server
+3. a REST and GraphQL API
+4. a MySQL server [1]
+
+Shell Server uses a [Shell React app](https://github.com/tattle-made/shell) as its front end. Its safe to assume that we’ll be always offering Shell Server and Shell React app as one product to other teams. But the shell server can exist independently of the React app as a headless app to be used via its APIs.
+
+## Prerequisites
+
+Reading up on the following should be helpful in following along the sourcecode
+
+1. Typescript
+2. Express JS
+3. Sequelize (MySQL ORM)
+4. MVC architecture
+
+## Developing Locally
+
+    cd shell-server
+    npm install
+    npm install -g nodemon
+    npm run start-dev
+
+This will start a nodemon process that watches your typescript files for changes and recompiles the project on change.If you go to localhost:8080/ping, your browser should response with a ‘pong’ message. Congratulations, you have got shell working locally. Now play around and add to it!
+
+## Notes on the Architecture
+
+We are following an MVC pattern for developing this server. Broadly speaking every API endpoint corresponds to an a controller which is responsible for handling requests. Investigating the controllers and model folder would be a great starting point to see how the project is structured and different requests are handled.
+
+## Notes on Credentials
+
+We use the config module to handle different app configuration. This includes sensitive credentials like database parameters. config expects a config directory with default.json file in it. We don't check that into the git repository for security reasons. You will have to contact us via email or our slack channel to get access to it.
+
+# Footnotes
+
+1. Even though currently Shell Server uses amazon’s hosted MySQL service for our Database needs, for all practical purposes, it is ok to consider it part of Shell.
