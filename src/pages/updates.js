@@ -30,17 +30,19 @@ const UpdateListItem = ({ item }) => {
         </Box>
         <Box flex={"grow"}></Box>
 
-        <PlainExternalLink href={item.url} target={"_blank"}>
-          <Box
-            gap={"small"}
-            direction={"row"}
-            align={"center"}
-            margin={{ top: "xsmall" }}
-          >
-            <Text size={"small"}> Read More</Text>
-            <ExternalLink size={16} />
-          </Box>
-        </PlainExternalLink>
+        {item.url && item.url.length != 0 ? (
+          <PlainExternalLink href={item.url} target={"_blank"}>
+            <Box
+              gap={"small"}
+              direction={"row"}
+              align={"center"}
+              margin={{ top: "xsmall" }}
+            >
+              <Text size={"small"}> Read More</Text>
+              <ExternalLink size={16} />
+            </Box>
+          </PlainExternalLink>
+        ) : null}
       </Box>
 
       <Box height={"xxsmall"} />
