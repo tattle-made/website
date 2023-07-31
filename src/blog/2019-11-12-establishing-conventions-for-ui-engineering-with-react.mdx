@@ -74,7 +74,7 @@ For instance in the example above the Section is called 'search' and the two mol
 
 This is what the redux store for this app would look like (after removing unnecessary fields)
 
-This allows us to write namespaced actions and reducers with names that follow the convetion section-<section-name>-<molecule-name>. For instance, 
+This allows us to write namespaced actions and reducers with names that follow the convetion section-[section-name]-[molecule-name]. For instance, 
 `section-search-duplicate`  and `section-search-fact-checked-stories` are the names of actions and reducers that are responsible for handling setting states of one molecule each. 
 
 Since the redux store is responsible for providing data and the various states to the molecule, it is important for the reducer to set data in a consistent manner. Some basic things to keep in mind would be setting state of the molecule - default, loading, error, data. Correspondingly molecules should implement these states in a consistent manner so that anyone developing using your molecules has a consistent mental model and API while developing their App.
