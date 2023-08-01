@@ -83,6 +83,7 @@ const dropDownOptionsLearnMore = [
   { id: 4, target: "/faq", label: "FAQ" },
   { id: 5, target: "/community", label: "Community" },
   { id: 6, target: "/updates", label: "Updates" },
+  { id: 7, target: "/updates_new", label: "Updates_New" },
 ]
 
 const MobileNavItemInternalLink = ({ target, label, description }) => (
