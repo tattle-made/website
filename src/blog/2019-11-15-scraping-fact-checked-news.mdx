@@ -24,7 +24,7 @@ Note: [lxml](https://lxml.de/index.html) is a simple HTML/XML parser. Sites can 
 
 The HTML that we are initially looking for is found by looking at the page source, i.e, HTML rendered on the server and sent over:
 
-![View page source: HTML rendered on server](https://tattle-media.s3.amazonaws.com/view_page_source_ex.png)![Page Source HTML: Identify the relevant tags to scrape](https://tattle-media.s3.amazonaws.com/html_page_source_ex.png)
+![View page source: HTML rendered on server](../images/view_page_source_ex.png)![Page Source HTML: Identify the relevant tags to scrape](https://tattle-media.s3.amazonaws.com/html_page_source_ex.png)
 
 For each fact-checking website, we collect a random subset of articles, and identify the divs/tags that contain images/videos/metadata/body text. We then identify the right [Xpath](https://devhints.io/xpath) that does not fail across this set (sometimes it can get complicated):
 
