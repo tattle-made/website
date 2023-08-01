@@ -9,13 +9,21 @@ Other than reading our tweets, blog and mailing list, reading the commit history
 The website is built using [Gatsby](https://www.gatsbyjs.com/).
 <br><br>
 Install all the relevant dependencies
-```
+
+```sh
 npm install
 ```
-<br>
-To start the development server run `gatsby develop` to start a development server and visit [http://localhost:8000](http://localhost:8000), the GraphQL structure will be deployed at [http://localhost:8000/__graphql](http://localhost:8000/__graphql) 
-<br>
-Run `gatsby build` to build a production ready version of the website.
+
+To start the development server run 
+```sh
+gatsby develop
+``` 
+A development server will be started at [http://localhost:8000](http://localhost:8000), the GraphQL structure will be deployed at [http://localhost:8000/__graphql](http://localhost:8000/__graphql) 
+
+To build a production ready version of the website. Run, 
+```sh
+gatsby build
+```
 
 ## Tech Stack
 
