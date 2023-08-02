@@ -88,21 +88,21 @@ export default updates;
 export const query = graphql`
 query updatesPage {
     allMdx(
-        filter: {fileAbsolutePath: {regex: "/updates/"}}
-        sort: {fields: frontmatter___date, order: DESC}
-      ) {
-        nodes {
-          frontmatter {
-            url
-            excerpt
-            date
-            tags
-            title
-          }
-          id
-          slug
-          fileAbsolutePath
+      filter: {fileAbsolutePath: {regex: "/updates/"}}
+      sort: {fields: frontmatter___date, order: DESC}
+    ) {
+      nodes {
+        frontmatter {
+          url
+          excerpt
+          date
+          tags
+          title
         }
+        id
+        slug
+        fileAbsolutePath
       }
+    }
   }
 `
