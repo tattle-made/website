@@ -70,3 +70,8 @@ yarn-error.log
 
 # Static Images i store sometimes for the covid report
 static/covid-whatsapp-public-groups/images/
+
+# Docker
+.dockerignore
+docker-compose.yml
+Dockerfile

@@ -1,40 +1,48 @@
 import React from 'react'
-import PropTypes from "prop-types"
 import { Box, Button, Heading, Text, Paragraph } from "grommet"
-import { ExternalLink, Layout } from "react-feather"
+import { ExternalLink } from "react-feather"
 import DefaultLayout from "../components/default-layout"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import TagBubble from "../components/atomic/TagBubble"
 import { PlainExternalLink } from "../components/atomic/TattleLinks"
-// import { updates } from "../config/updates"
 import { graphql } from 'gatsby'
 
+const UpdateListItem = ({ node }) => {
 
-const UpdateListItem = ({ item }) => {
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const month = date.toLocaleString('default', { month: 'long' });
+        const year = date.getFullYear();
+        return `${month}, ${year}`;
+    };
+    const formattedDate = formatDate(node.frontmatter.date);
+    console.log(formattedDate)
+
+    // const tags = Array.isArray(node.frontmatter.tags) ? node.frontmatter.tags : [];
+    const tags = node.frontmatter.tags ? node.frontmatter.tags.split(',').map(tag => tag.trim()) : [];
     return (
         <Box direction={"column"} margin={{ top: "xsmall", bottom: "small" }}>
             <Box height={"7.324px"} />
             <Paragraph size={"small"} color={"dark-3"} margin={"none"}>
-                {item.date}
+                {node.frontmatter.date}
             </Paragraph>
             <Box direction={"row-responsive"} justify={"stretch"}>
                 <Box>
                     <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>
-                        {item.title}
+                        {node.frontmatter.title}
                     </Heading>
                     <Box direction={"row-responsive"} gap={"xsmall"}>
-                        {/* {item.tags.map(tag => (
-                            <TagBubble data={{ label: tag }} />
-                        ))} */}
-                        {item.tags}
+                        {tags.map(tag => (
+                            <TagBubble data={{ label: tag }} key={tag} />
+                        ))}
                     </Box>
-                    <Paragraph size={"medium"}>{item.excerpt}</Paragraph>
+                    <Paragraph size={"medium"}>{node.frontmatter.excerpt}</Paragraph>
                 </Box>
                 <Box flex={"grow"}></Box>
 
-                {item.url && item.url.length != 0 ? (
-                    <PlainExternalLink href={item.url} target={"_blank"}>
+                {node.frontmatter.url && node.frontmatter.url.length !== 0 ? (
+                    <PlainExternalLink href={node.frontmatter.url} target={"_blank"}>
                         <Box
                             gap={"small"}
                             direction={"row"}
@@ -50,37 +58,51 @@ const UpdateListItem = ({ item }) => {
 
             <Box height={"xxsmall"} />
         </Box>
-    )
-}
+    );
+};
 
-export default function updates_new({ data }) {
-    const updates = data.allMdx.nodes.frontmatter
+const updates_new = ({ data }) => {
+    const updates = data.allMdx.nodes;
 
     return (
-        <Layout>
-            <div>
-                <h1>{updates.title}</h1>
-            </div>
-        </Layout>
-    )
-}
+        <DefaultLayout>
+            <NarrowContentWrapper>
+                <NarrowSection>
+                    <Box>
+                        <Heading level={2}>Updates</Heading>
+                        <NarrowSection>
+                            {updates.map((node) => (
+                                <UpdateListItem node={node} key={node.id} />
+                            ))}
+                        </NarrowSection>
+                    </Box>
+                </NarrowSection>
+            </NarrowContentWrapper>
+        </DefaultLayout>
+    );
+};
+
+export default updates_new;
 
 //export page query
 export const query = graphql`
-    query updatesPage {
-        allMdx {
+query updatesPage {
+    allMdx(
+        filter: {fileAbsolutePath: {regex: "/updates/"}}
+        sort: {fields: frontmatter___date, order: DESC}
+      ) {
         nodes {
-            frontmatter {
+          frontmatter {
             url
-            title
             excerpt
             date
             tags
-            }
-            id
-            slug
-            fileAbsolutePath
+            title
+          }
+          id
+          slug
+          fileAbsolutePath
         }
-        }
-    }
+      }
+  }
 `
