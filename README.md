@@ -25,6 +25,30 @@ To build a production ready version of the website. Run,
 gatsby build
 ```
 
+### How to Add an Update?
+To make a change/ addition to the [Updates](https://tattle.co.in/updates) section on the website, could be done by adding/ editing a markdown file (.mdx).
+The mark down files can be found in the udpates folder under src.
+```
+src   
+└───updates
+│   │   file1.mdx
+│   │   file2.mdx
+```
+The .mdx files should look like this
+```sh
+---
+date: YYYY-MM-DD
+title: "Example Title"
+excerpt: "A small demo of the .mdx file"
+url: "https://tattle.co.in/updates"
+tags: Demo, Example
+---
+```
+**NOTE** 
+- The format should be followed, else an error might occur
+- It is important to add the _"day"_ in the date. 
+- Currently, tags cannot be written as arrays. 
+
 ## Tech Stack
 
 Gatsby, ReactJS, Github Actions
