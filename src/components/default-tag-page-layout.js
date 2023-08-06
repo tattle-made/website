@@ -1,5 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
+import { ResponsiveContext, Box, Heading, Text } from "grommet"
+import { PlainSectionLink } from "./atomic/TattleLinks"
+import DefaultLayout from "./default-layout"
 import { graphql, Link } from "gatsby"
+
+const byline = (author, project) => {
+	if (author && project) return `${author} - ${project}`
+	if (author) return `${author}`
+}
 
 export default function TagTemplate({ data, pageContext }) {
 	const { allMdx } = data
@@ -40,54 +48,3 @@ query BlogPostsByTag {
     }
   }
 `
-
-
-// query BlogPostsByTag($tag: String) {
-//   allMdx(
-//     filter: {
-//       fileAbsolutePath: { regex: "/.*/src/blog/" }
-//       frontmatter: {
-//         tags: { regex: "/(^|,)\\s*" + $tag.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&') + "\\s*(,|$)/" }
-//       }
-//     }
-//     sort: { fields: frontmatter___date, order: DESC }
-//   ) {
-//     nodes {
-//       id
-//       slug
-//       fileAbsolutePath
-//       frontmatter {
-//         name
-//         excerpt
-//         author
-//         project
-//         date
-//         tags
-//       }
-//     }
-//   }
-// }
-
-// query BlogPostsByTag($tag: String) {
-//   allMdx(
-//     filter: {
-//       frontmatter: { tags: { eq: $tag } }
-//       fileAbsolutePath: { regex: "/.*/src/blog/" }
-//     }
-//     sort: { fields: frontmatter___date, order: DESC }
-//   ) {
-//     nodes {
-//       id
-//       slug
-//       fileAbsolutePath
-//       frontmatter {
-//         name
-//         excerpt
-//         author
-//         project
-//         date
-//         tags
-//       }
-//     }
-//   }
-// }

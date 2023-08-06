@@ -9,7 +9,9 @@ import AppShell from "./atomic/AppShell"
 import BlogHeaderCard from "./atomic/BlogHeaderCard"
 import { PlainLink } from "./atomic/TattleLinks"
 import { Heading } from "grommet"
-import TagBubble from "./atomic/TagBubble"
+// import TagBubble from "./atomic/TagBubble"
+import TagBubbleBlog from "./atomic/TagBubbleBlog"
+
 
 const shortcodes = { Link, BlogHeaderCard }
 
@@ -40,7 +42,7 @@ export default function PageTemplate({ data: { mdx } }) {
           <Box direction={"row-responsive"} gap={"xsmall"}>
             {tags.map(tag => (
               <Link to={`/blog/tags/${tag}`} key={tag}>
-                <TagBubble data={{ label: tag }} />
+                <TagBubbleBlog data={{ label: tag }} />
               </Link>
             ))}
           </Box>
