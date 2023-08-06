@@ -17,7 +17,6 @@ function SEO({ description, lang, meta, title }) {
   // debugger
   let pageType = "OTHERS"
   if (pathname.indexOf("/blog/") != -1) {
-    console.log("---")
     pageType = "BLOG"
   }
 
@@ -48,8 +47,6 @@ function SEO({ description, lang, meta, title }) {
   const baseURL = site.siteMetadata.base_url
 
   let socialImageURLs = {}
-
-  console.log({ edges: allFile.edges, pageType, pathname })
 
   allFile.edges.map(edge => {
     if (edge.node.name === "social-card-blog") {

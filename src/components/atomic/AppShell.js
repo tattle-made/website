@@ -9,7 +9,6 @@ import NarrowSection from "./layout/narrow-section"
 import NarrowContentWrapper from "./layout/narrow-content-wrapper"
 import { X } from "react-feather"
 import { PlainLink } from "./TattleLinks"
-import { useLocation } from "@reach/router"
 
 /**
  * @author
@@ -40,7 +39,6 @@ const AppShell = ({
 }) => {
   const size = React.useContext(ResponsiveContext)
   const [modal, setModal] = useState({ visibility: false, text: "" })
-  const location = useLocation()
 
   return (
     <Grommet theme={TattleTheme} full>
@@ -73,13 +71,11 @@ const AppShell = ({
           align="center"
           flex={"grow"}
         >
-          <NarrowContentWrapper>
-            <SimpleHeader
-              label={headerLabel}
-              target={headerTarget}
-              primaryNav={primaryNav}
-            />
-          </NarrowContentWrapper>
+          <SimpleHeader
+            label={headerLabel}
+            target={headerTarget}
+            primaryNav={primaryNav}
+          />
         </Box>
 
         <Box height={{ min: "90vh" }} flex={"grow"}>

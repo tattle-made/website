@@ -65,15 +65,17 @@ const BlogIndex = ({ data }) => {
                 alignSelf={"center"}
               >
                 <PlainSectionLink to={`/blog/${blog.slug}`}>
+                  {blog.frontmatter.cover ? (
+                    <Box>
+                      <Image
+                        fit={"cover"}
+                        src={`/${blog.frontmatter.cover}`}
+                      ></Image>
+                    </Box>
+                  ) : null}
                   <Box>
                     <Box direction={"row"} align={"center"}>
-                      <Heading
-                        level={3}
-                        margin={"none"}
-                        weight={500}
-                        color={"brand"}
-                        fill
-                      >
+                      <Heading level={3} weight={500} color={"brand"} fill>
                         {blog.frontmatter.name}
                       </Heading>
                     </Box>
@@ -130,6 +132,7 @@ export const query = graphql`
           author
           project
           date
+          cover
         }
         fileAbsolutePath
       }

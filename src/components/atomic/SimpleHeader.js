@@ -148,15 +148,20 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
   return (
     <Box direction={"row"} wrap={true} height={"76.8px"} width={"960px"}>
       {size !== "small" ? (
-        <Box direction={"row"} align={"center"} width={"960px"}>
+        <Box direction={"row"} align={"center"} width={"960px"} gap={"small"}>
           <TattleLogo data={{ fill: Theme.text_color_light }} />
+          {/* {label.length !== 0 ? (
+            <Text weight={900} level={3} margin="none">
+              {" " + [label[0].toUpperCase(), label.slice(1)].join("")}
+            </Text>
+          ) : null} */}
           <Box flex={"grow"}></Box>
           <PrimaryNav primaryNav={primaryNav} />
         </Box>
       ) : (
         <Box width={"100%"} direction={"row"} align={"center"} fill={true}>
           <TattleLogo data={{ fill: Theme.text_color_light }} />
-          <Box width={"100%"} />
+          <Box flex={"grow"}></Box>
           <Box>
             <Button plain focusIndicator={false}>
               <Menu size={28} onClick={onOpen} />
