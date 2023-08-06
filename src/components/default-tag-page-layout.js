@@ -39,8 +39,8 @@ export default function TagTemplate({ data, pageContext }) {
 					</Box>
 				</NarrowSection>
 			</NarrowContentWrapper>
-			<Box width="1280px" alignSelf="center" justify={"between"} pad="medium">
-				<Box direction={"row-responsive"} wrap={true} justify={"between"}>
+			<Box width="1280px" alignSelf="center" justify={"start"} pad="medium">
+				<Box direction={"row-responsive"} wrap={true} justify={"start"}>
 					{filteredNodes.map(node => {
 						return (
 							<Box
@@ -53,7 +53,7 @@ export default function TagTemplate({ data, pageContext }) {
 								height="fit-content"
 								round
 								border={{ color: "visuals-3" }}
-								margin={{ bottom: "medium" }}
+								margin={{ bottom: "medium", right: "medium" }}
 								alignSelf={"center"}
 							>
 								<PlainSectionLink to={`/blog/${node.slug}`}>
