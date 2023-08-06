@@ -1,8 +1,17 @@
 import React, { useContext } from "react"
-import { ResponsiveContext, Box, Heading, Text } from "grommet"
+import {
+	ResponsiveContext,
+	Box,
+	Heading,
+	Paragraph,
+	Text,
+} from "grommet"
 import { PlainSectionLink } from "./atomic/TattleLinks"
 import DefaultLayout from "./default-layout"
 import { graphql, Link } from "gatsby"
+import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
+import NarrowSection from "./atomic/layout/narrow-section"
+import TagBubbleBlog from "./atomic/TagBubbleBlog"
 
 const byline = (author, project) => {
 	if (author && project) return `${author} - ${project}`
@@ -13,8 +22,8 @@ export default function TagTemplate({ data, pageContext }) {
 	const { allMdx } = data
 	const tag = pageContext.tag
 	console.log(tag)
-	// const tagsArray = allMdx.nodes.flatMap(node => node.frontmatter.tags ? node.frontmatter.tags.split(',').map(tag => tag.trim()) : [])
-	// console.log(tagsArray)
+	const size = useContext(ResponsiveContext)
+
 	const filteredNodes = allMdx.nodes.filter(node => {
 		const tagsArray = node.frontmatter.tags?.split(',').map(tag => tag.trim());
 		return tagsArray?.includes(tag);
@@ -22,7 +31,67 @@ export default function TagTemplate({ data, pageContext }) {
 	console.log(filteredNodes)
 
 	return (
-		<div> <h2>Start editing to see some magic happen!</h2> </div>
+		<DefaultLayout>
+			<NarrowContentWrapper>
+				<NarrowSection>
+					<Box>
+						<Heading level={3}>Blogs with Tag: <TagBubbleBlog data={{ label: tag }} /></Heading>
+					</Box>
+				</NarrowSection>
+			</NarrowContentWrapper>
+			<Box width="1280px" alignSelf="center" justify={"between"} pad="medium">
+				<Box direction={"row-responsive"} wrap={true} justify={"between"}>
+					{filteredNodes.map(node => {
+						return (
+							<Box
+								direction={"column"}
+								onClick={() => { }}
+								hoverIndicator={true}
+								focusIndicator={false}
+								pad={"medium"}
+								width={"medium"}
+								height="fit-content"
+								round
+								border={{ color: "visuals-3" }}
+								margin={{ bottom: "medium" }}
+								alignSelf={"center"}
+							>
+								<PlainSectionLink to={`/blog/${node.slug}`}>
+									<Box>
+										<Box direction={"row"} align={"center"}>
+											<Heading
+												level={3}
+												margin={"none"}
+												weight={500}
+												color={"brand"}
+												fill
+											>
+												{node.frontmatter.name}
+											</Heading>
+										</Box>
+										<Text size={"small"}>
+											{`Published on ${new Date(
+												node.frontmatter.date
+											).toDateString()}`}
+										</Text>
+										<Text size={"small"}>
+											{byline(
+												node.frontmatter.author,
+												node.frontmatter.project
+											)}
+										</Text>
+
+										<Paragraph size={"large"} fill>
+											{node.frontmatter.excerpt}
+										</Paragraph>
+									</Box>
+								</PlainSectionLink>
+							</Box>
+						)
+					})}
+				</Box>
+			</Box>
+		</DefaultLayout>
 	)
 }
 
