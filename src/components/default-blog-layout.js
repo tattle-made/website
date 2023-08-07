@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { Box } from "grommet"
 import { MDXProvider } from "@mdx-js/react"
@@ -9,14 +9,24 @@ import AppShell from "./atomic/AppShell"
 import BlogHeaderCard from "./atomic/BlogHeaderCard"
 import { PlainLink } from "./atomic/TattleLinks"
 import { Heading } from "grommet"
+import { useLocation } from "@reach/router"
 
 const shortcodes = { Link, BlogHeaderCard }
 
 export default function PageTemplate({ data: { mdx } }) {
   const { name, author, project, date } = mdx.frontmatter
+
+  const location = useLocation()
+  const [label, setLabel] = useState("")
+
+  useEffect(() => {
+    setLabel(location.pathname.split("/")[1])
+    console.log({ l2: location.pathname })
+  }, [location])
+
   return (
     <AppShell
-      headerLabel={mdx.frontmatter.name}
+      headerLabel={label}
       footerItems={footerItems}
       primaryNav={primaryNav}
       expandCenter={true}

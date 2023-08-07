@@ -19,24 +19,39 @@ export const byline = (name, project) => {
   if (name) return `${name}`
 }
 
+const ResponsiveBlogContainer = ({ children }) => {
+  const size = useContext(ResponsiveContext)
+  const width = {
+    small: "100%",
+    medium: "33%",
+    large: "25%",
+  }
+  return (
+    <Box
+      direction={"column"}
+      onClick={() => {}}
+      hoverIndicator={true}
+      focusIndicator={false}
+      pad={"medium"}
+      width={width[size] ? width[size] : "medium"}
+      height="fit-content"
+      round
+      border={{ color: "visuals-3" }}
+      margin={{ bottom: "medium", left: "small" }}
+    >
+      {children}
+    </Box>
+  )
+}
+
 const BlogIndex = ({ data }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
-  const size = useContext(ResponsiveContext)
 
   return (
     <DefaultLayout>
-      <NarrowContentWrapper>
-        <NarrowSection>
-          <Box>
-            <PlainLink to={"/blog"}>
-              <Heading level={2}>Blog</Heading>
-            </PlainLink>
-          </Box>
-        </NarrowSection>
-      </NarrowContentWrapper>
-      <Box width="1280px" alignSelf="center" justify={"between"} pad="medium">
-        <Box direction={"row-responsive"} wrap={true} justify={"between"}>
+      <Box width="100%" alignSelf="center" justify={"between"} pad="medium">
+        <Box direction={"row-responsive"} wrap={true}>
           <Box
             width={"medium"}
             height="medium"
@@ -51,19 +66,7 @@ const BlogIndex = ({ data }) => {
           </Box>
           {blogs.map(blog => {
             return (
-              <Box
-                direction={"column"}
-                onClick={() => {}}
-                hoverIndicator={true}
-                focusIndicator={false}
-                pad={"medium"}
-                width={"medium"}
-                height="fit-content"
-                round
-                border={{ color: "visuals-3" }}
-                margin={{ bottom: "medium" }}
-                alignSelf={"center"}
-              >
+              <ResponsiveBlogContainer>
                 <PlainSectionLink to={`/blog/${blog.slug}`}>
                   {blog.frontmatter.cover ? (
                     <Box>
@@ -96,7 +99,7 @@ const BlogIndex = ({ data }) => {
                     </Paragraph>
                   </Box>
                 </PlainSectionLink>
-              </Box>
+              </ResponsiveBlogContainer>
             )
           })}
         </Box>
