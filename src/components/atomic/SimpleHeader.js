@@ -148,7 +148,7 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
   return (
     <Box direction={"row"} wrap={true} height={"76.8px"} width={"960px"}>
       {size !== "small" ? (
-        <Box direction={"row"} align={"center"} width={"960px"} gap={"small"}>
+        <Box direction={"row"} align={"center"} width={"960px"} gap={"xsmall"}>
           <TattleLogo data={{ fill: Theme.text_color_light }} />
           {label.length !== 0 ? (
             <Text weight={900} level={3} margin="none">
@@ -159,8 +159,19 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
           <PrimaryNav primaryNav={primaryNav} />
         </Box>
       ) : (
-        <Box width={"100%"} direction={"row"} align={"center"} fill={true}>
+        <Box
+          width={"100%"}
+          direction={"row"}
+          align={"center"}
+          fill={true}
+          gap={"xsmall"}
+        >
           <TattleLogo data={{ fill: Theme.text_color_light }} />
+          {label.length !== 0 ? (
+            <Text weight={900} level={3} margin="none">
+              {" " + [label[0].toUpperCase(), label.slice(1)].join("")}
+            </Text>
+          ) : null}
           <Box flex={"grow"}></Box>
           <Box>
             <Button plain focusIndicator={false}>

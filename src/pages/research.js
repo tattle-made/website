@@ -89,10 +89,6 @@ const Research = () => {
       <NarrowContentWrapper>
         <NarrowSection>
           <Box>
-            <Heading level={2} margin={{ bottom: "none" }}>
-              Research
-            </Heading>
-
             <NarrowSection>
               <Text size={"small"} weight={600} margin={{ bottom: "medium" }}>
                 Featured
