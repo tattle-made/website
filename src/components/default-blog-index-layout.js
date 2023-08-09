@@ -135,6 +135,7 @@ export const query = graphql`
           author
           project
           date
+          tags
           cover
         }
         fileAbsolutePath

@@ -9,12 +9,14 @@ import AppShell from "./atomic/AppShell"
 import BlogHeaderCard from "./atomic/BlogHeaderCard"
 import { PlainLink } from "./atomic/TattleLinks"
 import { Heading } from "grommet"
+import TagBubbleBlog from "./atomic/TagBubbleBlog"
 import { useLocation } from "@reach/router"
 
 const shortcodes = { Link, BlogHeaderCard }
 
 export default function PageTemplate({ data: { mdx } }) {
   const { name, author, project, date } = mdx.frontmatter
+  const tags = mdx.frontmatter.tags ? mdx.frontmatter.tags.split(',').map(tag => tag.trim()) : [];
 
   const location = useLocation()
   const [label, setLabel] = useState("")
@@ -45,6 +47,13 @@ export default function PageTemplate({ data: { mdx } }) {
             project={project}
             date={date}
           />
+          <Box direction={"row-responsive"} gap={"xsmall"}>
+            {tags.map(tag => (
+              <Link to={`/blog/tags/${tag}`} key={tag}>
+                <TagBubbleBlog data={{ label: tag }} />
+              </Link>
+            ))}
+          </Box>
           <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
         </Box>
       </MDXProvider>
@@ -57,11 +66,12 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
-        name
+        name  
         excerpt
         author
         project
         date
+        tags
       }
     }
   }
