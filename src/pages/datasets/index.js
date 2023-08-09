@@ -69,9 +69,6 @@ const Datasets = () => {
             <NarrowSection>
               <ResponsiveGrid size={size}>
                 <Box>
-                  <Heading level={2} color={"#514E80"} margin={{ top: "none" }}>
-                    Datasets
-                  </Heading>
                   <Paragraph color={"#514E80"} margin={{ top: "none" }}>
                     This page lists Tattle Data that is vetted and safe to be
                     opened under open access. These datasets are snapshots of

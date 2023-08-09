@@ -17,8 +17,6 @@ const Footer = () => {
   const [fetching, setFetching] = useState(false)
   const size = useContext(ResponsiveContext)
 
-  console.log({ FOOTER: footerItems })
-
   useEffect(() => {
     setFetching(true)
   })
