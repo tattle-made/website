@@ -21,7 +21,7 @@ const byline = (author, project) => {
 export default function TagTemplate({ data, pageContext }) {
 	const { allMdx } = data
 	const tag = pageContext.tag
-	console.log(tag)
+	// console.log(tag)
 	const size = useContext(ResponsiveContext)
 
 	const filteredNodes = allMdx.nodes.filter(node => {
@@ -32,10 +32,12 @@ export default function TagTemplate({ data, pageContext }) {
 
 	return (
 		<DefaultLayout>
+			<Box>
 			<NarrowContentWrapper>
 				<NarrowSection>
-					<Box>
-						<Heading level={3}>Blogs with Tag: <TagBubbleBlog data={{ label: tag }} /></Heading>
+					<Box direction="row-responsive" gap="small" align="center">
+						<Heading level={3}>Blogs with Tag:</Heading>
+						<TagBubbleBlog data={{ label: tag }} />
 					</Box>
 				</NarrowSection>
 			</NarrowContentWrapper>
@@ -90,6 +92,7 @@ export default function TagTemplate({ data, pageContext }) {
 						)
 					})}
 				</Box>
+			</Box>
 			</Box>
 		</DefaultLayout>
 	)
