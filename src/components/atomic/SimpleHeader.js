@@ -82,6 +82,7 @@ const dropDownOptionsLearnMore = [
   { id: 3, target: "/report/", label: "Annual Reports" },
   { id: 4, target: "/faq", label: "FAQ" },
   { id: 5, target: "/community", label: "Community" },
+  { id: 7, target: "/community_new", label: "Community_New" },
   { id: 6, target: "/updates", label: "Updates" },
 ]
 
