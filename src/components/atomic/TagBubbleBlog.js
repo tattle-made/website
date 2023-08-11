@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react"
-import { Box, Text } from "grommet"
+import React from "react";
+import { Box, Text } from "grommet";
 
 const TagBubbleBlog = ({ data }) => {
   return (
-    <Box>
-      {" "}
+    <Box direction="row" align="center" gap="xsmall">
       <Box
-        round={"small"}
-        background={"visuals-1"}
-        pad={"xsmall"}
-        width={"fit-content"}
+        round="small"
+        background="visuals-1"
+        pad={{ horizontal: "small", vertical: "xsmall" }}
+        width="fit-content"
+        direction="row"
+        align="center"
       >
-        <Text size={"small"}>{data.label}</Text>{" "}
+        <span style={{ textDecoration: 'underline' }}>
+          <Text size="small">{data.label}</Text>
+        </span>
+        <Text size="xsmall" margin={{ left: "xsmall" }}>
+          {data.count}
+        </Text>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default TagBubbleBlog
+export default TagBubbleBlog;
