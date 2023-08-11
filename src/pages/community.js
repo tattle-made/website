@@ -47,7 +47,7 @@ const CommunityMemberCard = ({ name, role, url }) => (
 )
 
 
-const community_new = ({ data }) => {
+const community = ({ data }) => {
     // const contributors = data.allMdx.nodes;
     const currentContributors = data.allMdx.nodes.filter(contributor => contributor.frontmatter.isCurrentContributor);
     const pastContributors = data.allMdx.nodes.filter(contributor => !contributor.frontmatter.isCurrentContributor);
@@ -89,7 +89,7 @@ const community_new = ({ data }) => {
     )
 }
 
-export default community_new
+export default community
 
 export const query = graphql`
 query communityPage {
