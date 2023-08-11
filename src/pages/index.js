@@ -34,9 +34,28 @@ import {
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import styled from "styled-components"
-import { projects } from "../config/projects"
 
-const { recent } = projects
+const FeedIcon = () => (
+  <svg
+    width="8"
+    height="8"
+    viewBox="0 0 8 8"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0.909375 6.18125C0.40625 6.18125 0 6.58906 0 7.09062C0 7.59219 0.40625 8 0.909375 8C1.41094 8 1.81875 7.59375 1.81875 7.09062C1.81875 6.5875 1.41094 6.18125 0.909375 6.18125ZM0 0V1.45469C3.61562 1.45469 6.54531 4.38438 6.54531 8H8C8 3.58125 4.41875 0 0 0ZM0 2.90937V4.36406C2.00781 4.36406 3.63594 5.99219 3.63594 8H5.09062C5.09062 5.1875 2.81094 2.90937 0 2.90937Z"
+      fill="#F4C6D7"
+    >
+      <animate
+        attributeName="fill"
+        values="#F4C6D7;#E76D67;#F4C6D7"
+        dur="1s"
+        repeatCount="indefinite"
+      />
+    </path>
+  </svg>
+)
 
 const ScrollContainer = styled.div`
   overflow: scroll;
@@ -84,6 +103,33 @@ const Index = props => {
                           online information ecosystem in India.
                         </LandingPageSubHeading>
                       </Box>
+                      <Box height={"1.2em"} />
+                      <Text color={"visuals-3"} size={"small"}>
+                        <FeedIcon />{" "}
+                        <PlainLink to="/blog/tags/machine-learning">
+                          <Text size={"small"} color={"visuals-3"}>
+                            Machine Learning
+                          </Text>
+                        </PlainLink>
+                        {", "}
+                        <PlainLink to="/blog/tags/content-moderation">
+                          <Text size={"small"} color={"visuals-3"}>
+                            Content Moderation
+                          </Text>
+                        </PlainLink>
+                        {", "}
+                        <PlainLink to="/blog/tags/media-literacy">
+                          <Text size={"small"} color={"visuals-3"}>
+                            Media Literacy
+                          </Text>
+                        </PlainLink>
+                        {" and "}
+                        <PlainLink to="/blog/tags/web-scraping">
+                          <Text size={"small"} color={"visuals-3"}>
+                            Web Scraping
+                          </Text>
+                        </PlainLink>
+                      </Text>
                     </Box>
                   </Box>
                 </NarrowSection>

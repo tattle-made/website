@@ -52,3 +52,8 @@ tags: Demo, Example
 ## Tech Stack
 
 Gatsby, ReactJS, Github Actions
+
+
+REsume 
+hyphen case all tags
+    limit the number of tags
