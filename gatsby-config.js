@@ -43,6 +43,13 @@ module.exports = {
         path: `${__dirname}/src/updates`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `community`,
+        path: `${__dirname}/src/community`,
+      },
+    },
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
