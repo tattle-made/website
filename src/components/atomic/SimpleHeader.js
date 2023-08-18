@@ -24,41 +24,22 @@ const dropDownOptionsTools = [
     description: "Online Gender Based Violence Mitigation",
   },
   {
-    id: 0,
+    id: 1,
     target: "/products/viral-spiral",
     label: "Viral Spiral",
     description: "Digital Card Game for Media Literacy",
   },
   {
-    id: 1,
+    id: 2,
     target: "/products/kosh",
     label: "Kosh",
     description: "Archive multimedia data",
   },
   {
-    id: 2,
-    target: "/products/jod-bot",
-    label: "Jod Bot",
-    description: "Telegram bot for data archivists",
-  },
-  { id: 3, target: "/products/whatsapp-archiver", label: "Whatsapp Scraper" },
-  {
-    id: 4,
-    target: "https://github.com/tattle-made/factchecking-sites-scraper",
-    label: "FactCheck Article Scraper",
-    type: "external",
-  },
-  {
-    id: 5,
-    target: "https://services.tattle.co.in/khoj/dashboard",
-    label: "FactCheck Article Dashboard",
-    type: "external",
-  },
-  {
-    id: 6,
-    target: "/products/khoj",
-    label: "Khoj",
-    description: "Find accurate information",
+    id: 3,
+    target: "/products/",
+    label: "Other Projects",
+    description: "",
   },
 ]
 
@@ -196,9 +177,12 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
                 </Button>
               </Box>
               <Box direction={"column"} pad={"small"}>
-                <Heading level={3}> Tools </Heading>
-                <Box>
-                  {[0, 1, 2, 3, 4, 5].map(i => (
+                <Heading level={3} margin={"small"}>
+                  {" "}
+                  Products{" "}
+                </Heading>
+                <Box flex={"grow"} margin={{ left: "medium" }}>
+                  {[0, 1, 2, 3].map(i => (
                     <MobileNavItemInternalLink
                       label={dropDownOptionsTools[i].label}
                       description={dropDownOptionsTools[i].description}
@@ -208,18 +192,24 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
                 </Box>
                 <Link to={"/datasets"}>
                   <Box>
-                    <Heading level={3}>Datasets</Heading>
+                    <Heading level={3} margin={"small"}>
+                      Datasets
+                    </Heading>
                   </Box>
                 </Link>
                 <Link to={"/research"}>
                   <Box>
-                    <Heading level={3}>Research</Heading>
+                    <Heading level={3} margin={"small"}>
+                      Research
+                    </Heading>
                   </Box>
                 </Link>
 
-                <Heading level={3}>Learn More</Heading>
+                <Heading level={3} margin={"small"}>
+                  Learn More
+                </Heading>
 
-                <Box>
+                <Box flex={"grow"} margin={{ left: "medium" }}>
                   {dropDownOptionsLearnMore.map(item => (
                     <MobileNavItemExternalLink
                       label={item.label}
