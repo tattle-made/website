@@ -103,19 +103,6 @@ const BlogIndex = ({ data }) => {
           })}
         </Box>
       </Box>
-      <NarrowContentWrapper>
-        <NarrowSection>
-          <Box margin={{ top: "medium" }}>
-            <Text>
-              {" "}
-              Our older blog can be found{" "}
-              <Anchor href={"https://blog.tattle.co.in/"} target={"_blank"}>
-                here
-              </Anchor>
-            </Text>
-          </Box>
-        </NarrowSection>
-      </NarrowContentWrapper>
     </DefaultLayout>
   )
 }
