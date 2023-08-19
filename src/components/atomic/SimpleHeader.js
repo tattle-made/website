@@ -94,9 +94,9 @@ const PrimaryNav = ({ primaryNav }) => {
   return (
     <Box direction={"row"} align={"center"} gap={"large"}>
       <DropDownMenu title={"Tools"} options={dropDownOptionsTools} />
-      <Link to={"/datasets"}>
+      <Link to={"/blog"}>
         <Button plain={true}>
-          <NavigationLabel>Datasets</NavigationLabel>
+          <NavigationLabel>Blog</NavigationLabel>
         </Button>
       </Link>
       <Link to={"/research"}>
