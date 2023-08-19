@@ -61,7 +61,6 @@ const BlogIndex = ({ data }) => {
             <Image
               src={cover_blog_index.childImageSharp.fluid.src}
               fit="contain"
-              fill={true}
             />
           </Box>
           {blogs.map(blog => {
