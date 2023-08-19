@@ -13,6 +13,7 @@
     "d3": "^3.5.17",
     "gatsby": "3.1.1",
     "gatsby-image": "3.1.0",
+    "gatsby-plugin-feed": "^5.11.0",
     "gatsby-plugin-google-fonts-v2": "0.0.6",
     "gatsby-plugin-image": "^2.20.0",
     "gatsby-plugin-manifest": "3.1.0",

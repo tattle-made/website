@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Tattle`,
+    siteUrl: "https://tattle.co.in/", // looks like gatsby-plugin-feed requires this to be the field name
     description: `We build tools and datasets to understand and respond to misinformation in India.`,
     author: `@tattlemade`,
     base_url: "https://tattle.co.in",
@@ -106,5 +107,64 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  title: node.frontmatter.name,
+                  description: node.frontmatter.excerpt,
+                  url: site.siteMetadata.siteUrl + "/" + node.slug,
+                  guid: site.siteMetadata.siteUrl + "/" + node.slug,
+                  date: node.frontmatter.date,
+                  author: node.frontmatter.author,
+                })
+              })
+            },
+            query: `
+            {
+              allMdx(
+                filter: {fileAbsolutePath: {regex: "/.*/src/blog/"}}
+                sort: {fields: frontmatter___date, order: DESC}
+              ) {
+                nodes {
+                  slug
+                  frontmatter {
+                    name
+                    excerpt
+                    author
+                    project
+                    date
+                    tags
+                    cover
+                  }
+                  fileAbsolutePath
+                }
+              }
+            }
+            
+            `,
+            output: "/rss.xml",
+            title:
+              "Tattle - Civic Tech intervention for Misinformation, Content Moderation and Media Literacy",
+          },
+        ],
+      },
+    },
   ],
 }
