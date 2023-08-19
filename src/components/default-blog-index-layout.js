@@ -23,33 +23,35 @@ const BlogIndex = ({ data }) => {
                 border={{ color: "visuals-3" }}
                 round={"xsmall"}
                 overflow={"hidden"}
-                pad={"small"}
               >
                 <PlainSectionLink to={`/blog/${blog.slug}`}>
                   <Box>
                     {blog.frontmatter.cover ? (
-                      <Box width={"small"}>
+                      <Box width={"small"} style={{ minWidth: "100%" }}>
                         <Image
                           fit={"cover"}
                           src={`/${blog.frontmatter.cover}`}
                         ></Image>
                       </Box>
                     ) : null}
-                    <Text size={"xsmall"} weight={600}>
-                      {`${new Date(blog.frontmatter.date).toDateString()}`}
-                    </Text>
-                    <Text size={"small"}>
-                      {byline(blog.frontmatter.author)}
-                    </Text>
+                    <Box pad="small">
+                      <Text size={"xsmall"} weight={600}>
+                        {`${new Date(blog.frontmatter.date).toDateString()}`}
+                      </Text>
+                      <Text size={"small"}>
+                        {byline(blog.frontmatter.author)}
+                      </Text>
+                    </Box>
                   </Box>
-                  <Box>
+                  <Box
+                    pad={{ left: "small", right: "small", bottom: "medium" }}
+                  >
                     <Box direction={"row"} align={"center"}>
                       <Heading
-                        margin={{ top: "xsmall" }}
+                        margin={{ top: "none" }}
                         level={3}
                         weight={500}
                         color={"brand"}
-                        fill
                       >
                         {blog.frontmatter.name}
                       </Heading>
