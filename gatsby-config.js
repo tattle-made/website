@@ -129,8 +129,8 @@ module.exports = {
                 return Object.assign({}, node.frontmatter, {
                   title: node.frontmatter.name,
                   description: node.frontmatter.excerpt,
-                  url: site.siteMetadata.siteUrl + "/" + node.slug,
-                  guid: site.siteMetadata.siteUrl + "/" + node.slug,
+                  url: site.siteMetadata.siteUrl + "/blog/" + node.slug,
+                  guid: site.siteMetadata.siteUrl + "/blog/" + node.slug,
                   date: node.frontmatter.date,
                   author: node.frontmatter.author,
                 })
