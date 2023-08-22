@@ -1,0 +1,152 @@
+---
+name: Notes from a first time Uli Contributor
+excerpt: "A step-by-step guide on how to set up Uli locally for development and programming."
+author: Aatman Vaidya
+project: Uli
+date: 2023-08-18
+tags: Uli, Resources, Commentary, Tutorial
+---
+I recently made my [first contribution](https://github.com/tattle-made/Uli/pull/328) to Uli. To get started, I tried setting it up on my local machine last week and spent some time doing so. Despite following the official README, it proved to be more challenging than I anticipated. I overlooked certain steps, and there were additional requirements for Windows that I had to address as well. 
+
+This is a step-by-step guide on setting up "[Uli](https://uli.tattle.co.in/)" locally for development. In this tutorial, I will walk you through the process of setting up Uli on your own local machine, allowing you to dive into its codebase and contribute to its development.
+
+This is the official GitHub repository for Uli - [https://github.com/tattle-made/Uli](https://github.com/tattle-made/Uli)
+
+## What is Uli?
+Uli is a browser plugin that de-normalizes the everyday violence that people of marginalized genders experience online in India and provides tools for relief and collective response. It is an attempt to invert the top-down logics of platform moderation and center the experiences of those subject to online gender-based violence. 
+
+The plugin installation link and the user guide can be found here: [https://uli.tattle.co.in/](https://uli.tattle.co.in/)
+
+## Setting Up Uli
+Before we begin, let's understand the file structure of the code a bit. All the code for the browser plugin can be found in the `Uli/browser-plugin` folder.
+The code is primarily broken into two folders, `plugin` and `api-server`.
+
+| Directory  | Description                                                    |
+| ---------- | -------------------------------------------------------------- |
+| plugin     | code for browser extension - essentially the frontend        |
+| api-server | a rest server for storing user preferences and archived tweets - essentially the backend |
+
+Uli is currently supported on <u>Chrome/Brave and Mozilla Firefox</u> only. The code will work on only these two browsers. 
+### Pre-requisites
+- npm : v8.3.1^
+- nodejs : 16.14.0^
+- docker desktop
+
+### Step 1 - Cloning the Repository
+Clone the repository and navigate to the `browser-extension` folder.
+```sh
+git clone https://github.com/tattle-made/Uli.git
+cd Uli/browser-extension/
+```
+Next, install all the necessary packages in the `api-server` and `plugin` folders. 
+```sh
+cd api-server && npm install
+cd ..
+cd plugin && npm install
+cd ..
+```
+We've completed step 1 – Uli is cloned, and all the required browser extension libraries are now installed. 
+
+### Step 2 -  Basic Setup
+Before starting the development server, you'll need to do a few things, like adding a file and making some changes to another file.
+1. Navigate to the `api-server` folder and create a new file called `development.env` with the following content.
+Add this content inside the `development.env` file.
+```
+NODE_ENV=development
+AWS_BUCKET_NAME=XXXXXXXXXXX
+SERVICE_AWS_ACCESS_KEY_ID=XXXXXXXXXX
+SERVICE_AWS_SECRET_ACCESS_KEY=XXXXXXX
+DB_HOST: XXXXXXXXXXX
+DB_USERNAME: XXXXXXXXXXX
+DB_PASSWORD: XXXXXXXXXXX
+```
+2. **NOTE** - If you are on **Windows**, you will also have to run a command in the `api-server` folder to change the control characters of a file. You will have to change the `entrypoint.sh` file from CRLF to LF by running the following command. 
+**Please ignore this step if you are not using Windows**
+```sh
+dos2unix entrypoint.sh
+```
+3. Next, navigate to the `plugin` folder and include the following code in the `manifest.json` file. Add this entry to the `connect-src` section within the `content_security_policy` in the `manifest.json` file.
+```
+http://localhost:3000 ws://localhost
+```
+Your `content_security_policy` in the `manifest.json` should now look like this. 
+```json
+    "content_security_policy": {
+        "extension_pages": "default-src 'none'; connect-src https://ogbv-plugin.tattle.co.in/ https://uli-media.tattle.co.in/; font-src https://fonts.gstatic.com; object-src 'none'; script-src 'self'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; img-src https://uli-media.tattle.co.in/; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; report-uri 'none';"
+    },
+```
+This process allows you to develop and test your changes on the Chrome browser locally. To enable the same for Firefox, repeat the process in the `manifest.firefox.json` file located inside the `plugin` folder.
+
+I know that was quite a few steps, but believe me, it's smooth sailing from here on. It's all straightforward and simple now.
+
+### Step 3 - Starting the Development Server
+1. Now to begin the backend development server for coding, run the following command in the terminal within the `browser-extension` folder. 
+```sh
+docker-compose up
+```
+If you get `ERROR: Unknown database 'uli_dev'`, the database was not successfully created and database migration failed. Manually create the `uli_dev` database by logging into `http://localhost:8080/` using the username and password from `Uli/browser-extension/api-server/db/config/config.js` and execute the following.
+```sh
+docker-compose down -v
+docker-compose up
+```
+You should now see database migration in the logs. The `api-server` will be running now.
+
+**NOTE** - For if you are on **Windows**, you might have to start the `api-server`manually. You can do this by running the following command inside the `api-server` docker container. 
+**Please ignore this step if you are not using Windows**
+```sh
+docker exec -it api-server nodemon index.js
+```
+Or you can also manually access the `api-server` container within Docker Desktop. Inside the container's terminal, run the command `nodemon index.js` after navigating to the `api-server` in Docker Desktop. 
+
+Now, you have successfully started the development server. 
+
+2. Now, to run the plugin development server, navigate to the `plugin` folder.
+
+Run the following command to begin local plugin development. 
+```sh
+1. For Chrome : npm run dev:chrome
+2. For Firefox : npm run dev:firefox
+```
+If all services run correctly, you should be able to load the plugin from `plugin/dist` folder into Chrome/Brave/Firefox.
+
+**NOTE** - If you are on **Windows**, you will need to make the following changes before running the commands. You'll need to modify the `plugin/package-json` file as described below.
+**Please ignore this step if you are not using Windows**
+- replace the command `cp` with `copy`
+- replace the front slashes in all the file paths to double back slashes
+
+Secondly, running the commands mentioned in the table above will create a `-p` and a `dist` folder every time, which you will need to delete in order to generate a new distribution to reflect major changes.
+
+### Step 4 - Installing the unreleased extension
+Once you run the `npm run dev:chrome` command or the `npm run dev:firefox`, a `dist` folder will be created. This folder contains the unreleased extension. Load it in your browser to see the extension in action and develop it further. 
+
+To learn how to install the unreleased extension in your browser, follow the instructions [here](https://webkul.com/blog/how-to-install-the-unpacked-extension-in-chrome/)
+
+Or, you can follow the instructions below. 
+1. For **Chrome/Brave**.
+   * Go to `Settings` and then navigate to `Extensions`
+   * Next, Enable the `Developer mode` in the Extensions
+   * Once that is done, you will see a button labelled `Load Unpacked`
+   * Click on the button and load the `plugin/dist` folder. 
+   * Uli is all setup in Chrome/Brave. 
+2. For **Firefox**
+   * Go to `Setup` by executing `about:debugging` in the address bar (where you enter url's and do your web searches)
+   * Next, Click on `This Firefox` in the left-hand sidebar. 
+   * You will now see a `Temporary Extensions` dropdown. Within it, click on the `Load Temporary Add-on..` button and load **any single file from the dist folder**. This will load the extension into the browser. 
+   * To see the extension in action, you will have to open a new tab. 
+   * Uli is all setup on Firefox. 
+
+### Step 5 - Cleaning changes
+To see significant changes, you'll need to reload the `dist` folder in your browser each time. To start fresh with a new distribution, use this command to delete the `dist` folder. 
+```
+cd plugin && npm run dev:clean
+```
+**NOTE** - if you are on **Windows**, you will also have to delete the `-p` folder along with the `dist` folder. 
+
+### Step 6 - We are all done, Uli has been successfully setup locally. 
+If you have made it here, hurrayy!! (a big hi-fi)
+You've successfully set up Uli on your local machine for development. We're looking forward to seeing the new changes and pull requests you'll be making!
+
+### Contributing
+To start contributing, head over to the [contribution guide](https://github.com/tattle-made/Uli/blob/main/browser-extension/CONTRIBUTING.md)
+
+You can create issues and reach out to the maintainers of Uli for more help if you need it. 
