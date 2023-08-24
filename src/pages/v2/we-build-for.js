@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import {
-  Grid,
   Box,
   Heading,
-  Text,
-  Paragraph,
-  ResponsiveContext,
   Image,
   Layer,
   Button,
