@@ -27,7 +27,8 @@ const BlogIndex = ({ data }) => {
       });
     }
   })
-  const uniqueTags = Array.from(uniqueTagsSet);  
+  const uniqueTags = Array.from(uniqueTagsSet)
+  const sortedUniqueTags = uniqueTags.sort((a, b) => tagCounts[b] - tagCounts[a])
 
   return (
     <DefaultLayout>
@@ -83,9 +84,9 @@ const BlogIndex = ({ data }) => {
           })}
         </MasonryLayoutResponsive>
         <Box flex={1} pad="small">
-          <Heading level={3}>Tags</Heading>
+          <Heading level={3} style={{ marginBottom: '0.5rem' }}>Tags</Heading>
           <ul style={{ listStyleType: 'none', padding: 0 }}>
-            {uniqueTags.map(tag => (
+            {sortedUniqueTags.map(tag => (
               <li key={tag} style={{ marginBottom: '0.5rem' }}>
                 <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
                   <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
