@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Box, Heading, Text, Image, Paragraph } from "grommet"
-import {
-  PlainExternalLink,
-  PlainLink,
-} from "../../components/atomic/TattleLinks"
+import { PlainLink } from "../../components/atomic/TattleLinks"
 
 const CaseStudyPreview = ({
   previewImage,

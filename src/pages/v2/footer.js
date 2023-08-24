@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react"
-import { ResponsiveContext, Grid, Box, Heading, Text } from "grommet"
+import { ResponsiveContext, Grid, Box, Text } from "grommet"
 import TattleLogo from "../../components/atomic/TattleLogo"
 import { Slack, GitHub, Twitter } from "react-feather"
 import {
   PlainLink as Link,
   PlainExternalLink,
 } from "../../components/atomic/TattleLinks"
-import { primaryNav, footerItems } from "../../config/options"
+import { footerItems } from "../../config/options"
 /**
  * @author
  * @function Footer
