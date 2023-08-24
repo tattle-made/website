@@ -14,51 +14,25 @@ export const byline = (name, project) => {
 const BlogIndex = ({ data }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
-  const tags = []
-  const uniqueTagsSet = new Set();
-
-  blogs.forEach(blog => {
-    if (blog.frontmatter.tags) {
-      const blogTags = blog.frontmatter.tags.split(',').map(tag => tag.trim());
-      tags.push(...blogTags);
-    }
-  })
-  console.log(tags)
-
-  blogs.forEach(blog => {
-    if (blog.frontmatter.tags) {
-      const blogTags = blog.frontmatter.tags.split(',').map(tag => tag.trim());
-      blogTags.forEach(tag => uniqueTagsSet.add(tag)); // Add tags to the Set
-    }
-  });
-  const uniqueTags = Array.from(uniqueTagsSet);
-
   const tagCounts = {};
-  blogs.forEach(post => {
-    if (post.frontmatter.tags) {
-      const postTags = post.frontmatter.tags.split(',').map(tag => tag.trim());
-      postTags.forEach(tag => {
+  const uniqueTagsSet = new Set();
+  
+  blogs.forEach(blog => {
+    if (blog.frontmatter.tags) {
+      const blogTags = blog.frontmatter.tags.split(',').map(tag => tag.trim())
+      // tags.push(...blogTags);
+      blogTags.forEach(tag => uniqueTagsSet.add(tag))
+      blogTags.forEach(tag => {
         tagCounts[tag] = (tagCounts[tag] || 0) + 1;
       });
     }
-  });
+  })
+  const uniqueTags = Array.from(uniqueTagsSet);  
 
   return (
     <DefaultLayout>
-      <Box width="100%" pad="medium">
-        <Box width="20%" pad="small" border={{ color: "visuals-3" }}>
-          <Heading level={3}>Tags</Heading>
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
-            {uniqueTags.map(tag => (
-              <li key={tag}>
-                <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
-                  <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Box>
-        <MasonryLayoutResponsive>
+      <Box width="100%" pad="medium" direction="row">
+        <MasonryLayoutResponsive flex={3}>
           {blogs.map(blog => {
             return (
               <Box
@@ -108,6 +82,18 @@ const BlogIndex = ({ data }) => {
             )
           })}
         </MasonryLayoutResponsive>
+        <Box flex={1} pad="small">
+          <Heading level={3}>Tags</Heading>
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
+            {uniqueTags.map(tag => (
+              <li key={tag} style={{ marginBottom: '0.5rem' }}>
+                <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
+                  <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Box>
       </Box>
     </DefaultLayout>
   )
