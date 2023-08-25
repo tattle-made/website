@@ -11,8 +11,9 @@ import { PlainLink } from "./atomic/TattleLinks"
 import { Heading } from "grommet"
 import TagBubbleBlog from "./atomic/TagBubbleBlog"
 import { useLocation } from "@reach/router"
+import CustomCodeBlock from "./atomic/customCodeBlock"
 
-const shortcodes = { Link, BlogHeaderCard }
+const shortcodes = { Link, BlogHeaderCard, code: (props) => <CustomCodeBlock {...props}/> }
 
 export default function PageTemplate({ data: { mdx, allMdx } }) {
 	const { name, author, project, date } = mdx.frontmatter
@@ -21,11 +22,8 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
 	const location = useLocation()
 	const [label, setLabel] = useState("")
 
-	// create a dict to store tag counts
 	const tagCounts = {};
 	const allBlogPosts = allMdx.nodes;
-	// console.log(allBlogPosts);
-	// count tags
 	allBlogPosts.forEach(post => {
 		if (post.frontmatter.tags) {
 			const postTags = post.frontmatter.tags.split(',').map(tag => tag.trim());
