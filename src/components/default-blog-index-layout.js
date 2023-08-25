@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link } from "gatsby"
 import DefaultLayout from "./default-layout"
-import { Box, Heading, Paragraph, Text, Image } from "grommet"
+import { Box, Heading, Paragraph, Text, Image, Button } from "grommet"
 import { PlainSectionLink } from "./atomic/TattleLinks"
 import MasonryLayoutResponsive from "./atomic/MasonryLayoutResponsive"
 import TagBubbleBlog from "./atomic/TagBubbleBlog"
@@ -16,6 +16,11 @@ const BlogIndex = ({ data }) => {
   const cover_blog_index = data.cover_blog_index
   const tagCounts = {};
   const uniqueTagsSet = new Set();
+
+  const [showAllTags, setShowAllTags] = useState(false);
+  const toggleTagsDisplay = () => {
+    setShowAllTags(!showAllTags);
+  }
 
   blogs.forEach(blog => {
     if (blog.frontmatter.tags) {
@@ -86,14 +91,26 @@ const BlogIndex = ({ data }) => {
         <Box flex={1} pad="small">
           <Heading level={3} style={{ marginBottom: '0.5rem' }}>Tags</Heading>
           <ul style={{ listStyleType: 'none', padding: 0 }}>
-            {sortedUniqueTags.map(tag => (
-              <li key={tag} style={{ marginBottom: '0.5rem' }}>
-                <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
-                  <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                </Link>
-              </li>
-            ))}
+            {/* Step 3: Conditionally render tags based on showAllTags */}
+            {showAllTags
+              ? sortedUniqueTags.map(tag => (
+                <li key={tag} style={{ marginBottom: '0.5rem' }}>
+                  <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
+                    <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+                  </Link>
+                </li>
+              ))
+              : sortedUniqueTags.slice(0, 10).map(tag => (
+                <li key={tag} style={{ marginBottom: '0.5rem' }}>
+                  <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
+                    <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+                  </Link>
+                </li>
+              ))}
           </ul>
+          <Button onClick={toggleTagsDisplay} gap="medium" style={{ backgroundColor: '#E76D67', textAlign: 'center', borderRadius: '20%'}}>
+          <Text weight='bold' margin={"small"}>{showAllTags ? 'Show Less Tags' : 'Show All Tags'}</Text>
+          </Button>
         </Box>
       </Box>
     </DefaultLayout>
