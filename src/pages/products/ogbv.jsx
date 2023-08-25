@@ -26,7 +26,7 @@ const ogbv = () => (
           <Box justify="center">
             <Paragraph>
               To download Uli, see documentation on how to use it, and read
-              blogs and research findings, please go to Uli's website:
+              blogs and research findings, please go to Uli's website:{" "}
               <Anchor href="https://uli.tattle.co.in/">
                 https://uli.tattle.co.in/
               </Anchor>
