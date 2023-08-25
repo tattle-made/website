@@ -108,8 +108,8 @@ const BlogIndex = ({ data }) => {
                 </li>
               ))}
           </ul>
-          <Button onClick={toggleTagsDisplay} gap="medium" style={{ backgroundColor: '#E76D67', textAlign: 'center', borderRadius: '20%'}}>
-          <Text weight='bold' margin={"small"}>{showAllTags ? 'Show Less Tags' : 'Show All Tags'}</Text>
+          <Button onClick={toggleTagsDisplay} style={{ backgroundColor: '#E76D67', textAlign: 'center' }}>
+            {showAllTags ? 'Show Less Tags' : 'Show All Tags'}
           </Button>
         </Box>
       </Box>
