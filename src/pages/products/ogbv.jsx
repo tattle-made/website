@@ -87,7 +87,11 @@ const ogbv = () => (
               ></iframe>
             </Box>
             <Box gap={"small"}>
-              <Paragraph margin={"none"}>temp tmep</Paragraph>
+              <Paragraph margin={"none"}>
+                We gave a keynote at the 2023 Symposium of the <b>ARC Centre of
+                Excellence for Automated Decision-Making and Society (ADM+S)</b>
+                {" "}where we spoke about developing Uli as a Feminist AI project.
+              </Paragraph>
             </Box>
           </Box>
           <Box
@@ -98,34 +102,16 @@ const ogbv = () => (
             wrap={true}
           >
             <Box width={"medium"} height={"small"}>
-              {/* <Image src={"/covid-tsne.png"} fit="contain" /> */}
-              <Paragraph margin={"small"}>
-                A Case Study of the Information Chaos During India's Second
-                Covid-19 Wave. A unique end to end exercise in collecting data
-                from Whatsapp public groups and finding trends within the images
-                shared.
-              </Paragraph>
-              <Anchor
-                margin={"small"}
-                href={
-                  "https://tattle.co.in/articles/covid-whatsapp-public-groups/"
-                }
-              >
-                <Text size={"small"}>Read Report</Text>
-              </Anchor>
+              <Image src={"/products/speak.png"} fit="contain" />
             </Box>
 
             <Box gap={"small"}>
-              <Paragraph margin={"small"}>
-                A Case Study of the Information Chaos During India's Second
-                Covid-19 Wave. A unique end to end exercise in collecting data
-                from Whatsapp public groups and finding trends within the images
-                shared.
+              <Paragraph margin={"none"}>
+                DW Akademie featured Uli as a case study.
               </Paragraph>
               <Anchor
-                margin={"small"}
                 href={
-                  "https://tattle.co.in/articles/covid-whatsapp-public-groups/"
+                  "https://akademie.dw.com/en/putting-hate-speech-on-mute-an-indian-project-helps-social-media-users-filter-out-abuse-to-feel-safe-online/a-65636500"
                 }
               >
                 <Text size={"small"}>Read Report</Text>
@@ -161,7 +147,33 @@ const ogbv = () => (
       </NarrowSection>
       <NarrowSection>
         <Heading level={3}>Current Team</Heading>
-        
+        <Text size="small">
+          <b>Anju George</b>: Qualitative Researcher
+        </Text>
+        <Text size="small">
+          <b>Denny George</b>: Engineering Lead
+        </Text>
+        <Text size="small">
+          <b>Siddharth Manohar</b>: Data Governance Researcher
+        </Text>
+        <Text size="small">
+          <b>Sudeep Duggal</b>: Fullstack Engineer
+        </Text>
+        <Text size="small">
+          <b>Tarunima Prabhakar</b>: Project Manager
+        </Text>
+        <Text size="small">
+          <b>Yash Budhwar</b>: Operations and Contracts
+        </Text>
+        <Text size="small">
+          <b>Yohan Mathew</b>: ML DevOps
+        </Text>
+        <Text size="small" margin={{ top: "small" }}>
+          You can read more about the pilot team{" "}
+          <Anchor href="https://github.com/tattle-made/Uli/blob/main/uli-website/src/pages/team-2021.mdx">
+            here
+          </Anchor>
+        </Text>
       </NarrowSection>
     </NarrowContentWrapper>
   </DefaultLayout>
