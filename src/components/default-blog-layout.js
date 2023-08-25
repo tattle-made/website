@@ -12,8 +12,9 @@ import { Heading } from "grommet"
 import TagBubbleBlog from "./atomic/TagBubbleBlog"
 import { useLocation } from "@reach/router"
 import CustomCodeBlock from "./atomic/customCodeBlock"
+import InlineCodeBlock from "./atomic/inlineCodeBlock"
 
-const shortcodes = { Link, BlogHeaderCard, code: (props) => <CustomCodeBlock {...props}/> }
+const shortcodes = { Link, BlogHeaderCard, code: (props) => <CustomCodeBlock {...props} />, inlineCode: (props) => <InlineCodeBlock {...props} /> }
 
 export default function PageTemplate({ data: { mdx, allMdx } }) {
 	const { name, author, project, date } = mdx.frontmatter
@@ -63,7 +64,7 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
 					<Box direction={"row-responsive"} gap={"xsmall"}>
 						{tags.map(tag => (
 							<Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
-								<TagBubbleBlog data={{ label: tag, count: tagCounts[tag]}} />
+								<TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
 							</Link>
 						))}
 					</Box>

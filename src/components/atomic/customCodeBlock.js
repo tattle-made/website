@@ -21,4 +21,4 @@ const CustomCodeBlock = (props) => {
     );
 };
 
-export default CustomCodeBlock;
+export default CustomCodeBlock
