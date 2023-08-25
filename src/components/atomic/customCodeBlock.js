@@ -7,16 +7,17 @@ const CustomCodeBlock = (props) => {
         ? className.match(/(?<=language-)(\w.*?)\b/)[0]
         : "javascript";
 
+    const trimmedCode = children.trim()
     return copy ? (
         <CopyBlock
-            text={children}
+            text={trimmedCode}
             language={language}
             theme={dracula}
             wrapLines
             codeBlock
         />
     ) : (
-        <CodeBlock text={children} language={language} theme={dracula} wrapLines />
+        <CodeBlock text={trimmedCode} language={language} theme={dracula} wrapLines />
     );
 };
 
