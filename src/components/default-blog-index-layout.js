@@ -16,7 +16,7 @@ const BlogIndex = ({ data }) => {
   const cover_blog_index = data.cover_blog_index
   const tagCounts = {};
   const uniqueTagsSet = new Set();
-  
+
   blogs.forEach(blog => {
     if (blog.frontmatter.tags) {
       const blogTags = blog.frontmatter.tags.split(',').map(tag => tag.trim())
