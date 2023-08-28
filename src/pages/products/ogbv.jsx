@@ -8,15 +8,16 @@ const ogbv = () => (
   <DefaultLayout>
     <NarrowContentWrapper>
       <NarrowSection>
-        <Box direction={"row-responsive"} wrap={true}>
-          <Box width={"small"} pad={{ right: "small" }}>
+        <Box direction={"column"} wrap={true}>
+          <Box width={"xsmall"} pad={{ right: "small" }}>
             <Image src={"/products/Uli Logo-Header-03.png"} />
           </Box>
-          <Box width={"8em"}></Box>
-          <Paragraph>
-            Uli is a project that aims to reduce the effects of online
-            Gender-Based Violence, and provide tools for collective response.
-          </Paragraph>
+          <Box margin={{ top: "small" }}>
+            <Text size="small">
+              Uli is a project that aims to reduce the effects of Online
+              Gender-Based Violence, and provides tools for collective response.
+            </Text>
+          </Box>
         </Box>
         <Box direction={"row-responsive"} wrap={true}>
           <Box width={"medium"}>
@@ -88,9 +89,12 @@ const ogbv = () => (
             </Box>
             <Box gap={"small"}>
               <Paragraph margin={"none"}>
-                We gave a keynote at the 2023 Symposium of the <b>ARC Centre of
-                Excellence for Automated Decision-Making and Society (ADM+S)</b>
-                {" "}where we spoke about developing Uli as a Feminist AI project.
+                We gave a keynote at the 2023 Symposium of the{" "}
+                <b>
+                  ARC Centre of Excellence for Automated Decision-Making and
+                  Society (ADM+S)
+                </b>{" "}
+                where we spoke about developing Uli as a Feminist AI project.
               </Paragraph>
             </Box>
           </Box>
