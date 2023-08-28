@@ -89,7 +89,7 @@ const BlogIndex = ({ data }) => {
           })}
         </MasonryLayoutResponsive>
         <Box flex={1} pad="small">
-          <Heading level={3} margin={{top:'none', bottom:'small'}}>Tags</Heading>
+          <Heading level={3} margin={{ top: 'none', bottom: 'small' }}>Tags</Heading>
           <ul style={{ listStyleType: 'none', padding: 0 }}>
             {/* Step 3: Conditionally render tags based on showAllTags */}
             {showAllTags
@@ -108,8 +108,15 @@ const BlogIndex = ({ data }) => {
                 </li>
               ))}
           </ul>
-          <Button onClick={toggleTagsDisplay} style={{ backgroundColor: '#E76D67', textAlign: 'center' }}>
-            {showAllTags ? 'Show Less Tags' : 'Show All Tags'}
+          <Button onClick={toggleTagsDisplay}>
+            <Box
+              pad="small"
+              align="center"
+              border={{ color: '#E76D67', size: '1px' }}
+              round="small"
+            >
+              {showAllTags ? 'Show Less Tags' : 'Show All Tags'}
+            </Box>
           </Button>
         </Box>
       </Box>
