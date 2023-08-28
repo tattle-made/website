@@ -1,9 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React, { useState } from "react"
+import { graphql, Link } from "gatsby"
 import DefaultLayout from "./default-layout"
-import { Box, Heading, Paragraph, Text, Image } from "grommet"
+import { Box, Heading, Paragraph, Text, Image, Button } from "grommet"
 import { PlainSectionLink } from "./atomic/TattleLinks"
 import MasonryLayoutResponsive from "./atomic/MasonryLayoutResponsive"
+import TagBubbleBlog from "./atomic/TagBubbleBlog"
 
 export const byline = (name, project) => {
   if (name && project) return `${name} - ${project}`
@@ -13,10 +14,31 @@ export const byline = (name, project) => {
 const BlogIndex = ({ data }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
+  const tagCounts = {};
+  const uniqueTagsSet = new Set();
+
+  const [showAllTags, setShowAllTags] = useState(false);
+  const toggleTagsDisplay = () => {
+    setShowAllTags(!showAllTags);
+  }
+
+  blogs.forEach(blog => {
+    if (blog.frontmatter.tags) {
+      const blogTags = blog.frontmatter.tags.split(',').map(tag => tag.trim())
+      // tags.push(...blogTags);
+      blogTags.forEach(tag => uniqueTagsSet.add(tag))
+      blogTags.forEach(tag => {
+        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+      });
+    }
+  })
+  const uniqueTags = Array.from(uniqueTagsSet)
+  const sortedUniqueTags = uniqueTags.sort((a, b) => tagCounts[b] - tagCounts[a])
+
   return (
     <DefaultLayout>
-      <Box width="100%" pad="medium">
-        <MasonryLayoutResponsive>
+      <Box width="100%" pad="medium" direction="row">
+        <MasonryLayoutResponsive flex={3}>
           {blogs.map(blog => {
             return (
               <Box
@@ -66,6 +88,36 @@ const BlogIndex = ({ data }) => {
             )
           })}
         </MasonryLayoutResponsive>
+        <Box flex={1} pad="small">
+          <Heading level={3} margin={{ top: 'none', bottom: 'small' }}>Tags</Heading>
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
+            {showAllTags
+              ? sortedUniqueTags.map(tag => (
+                <li key={tag} style={{ marginBottom: '0.5rem' }}>
+                  <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
+                    <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+                  </Link>
+                </li>
+              ))
+              : sortedUniqueTags.slice(0, 10).map(tag => (
+                <li key={tag} style={{ marginBottom: '0.5rem' }}>
+                  <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
+                    <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+                  </Link>
+                </li>
+              ))}
+          </ul>
+          <Button onClick={toggleTagsDisplay}>
+            <Box
+              pad="small"
+              align="center"
+              border={{ color: '#E76D67', size: '1px' }}
+              round="small"
+            >
+              {showAllTags ? 'Show Less Tags' : 'Show All Tags'}
+            </Box>
+          </Button>
+        </Box>
       </Box>
     </DefaultLayout>
   )

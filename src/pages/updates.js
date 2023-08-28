@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Button, Heading, Text, Paragraph } from "grommet"
+import { Box, Heading, Text, Paragraph } from "grommet"
 import { ExternalLink } from "react-feather"
 import DefaultLayout from "../components/default-layout"
 import NarrowSection from "../components/atomic/layout/narrow-section"

@@ -1,27 +1,20 @@
-import React, { Fragment, useContext } from "react"
-import { Grid, Box, Heading, Text, Paragraph, ResponsiveContext } from "grommet"
+import React from "react"
+import { Grid, Box, Text, ResponsiveContext } from "grommet"
 import DefaultLayout from "../../components/default-layout"
 import { ResponsiveImage } from "../../components/atomic/ResponsiveImage"
 import {
-  PlainLink,
-  Link,
-  ExternalLink,
-  PlainHeavyLink,
+  PlainHeavyLink
 } from "../../components/atomic/TattleLinks"
 import MailchimpSubscribeForm from "../../components/atomic/MailchimpSubscribeForm"
 import CaseStudyPreview from "./case-study-preview"
-import Footer from "./footer"
-import WeBuildFor from "./we-build-for"
 
 import {
   SectionLabels,
   LandingPageHeading,
   LandingPageSubHeading,
-  LandingPageLink,
   LandingPageParagraph,
 } from "../../components/atomic/core-style"
 import NarrowSection from "../../components/atomic/layout/narrow-section"
-import styled from "styled-components"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 
 /**
