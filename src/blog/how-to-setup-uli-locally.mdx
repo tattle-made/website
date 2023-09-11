@@ -72,7 +72,7 @@ http://localhost:3000 ws://localhost
 Your `content_security_policy` in the `manifest.json` should now look like this. 
 ```json
     "content_security_policy": {
-        "extension_pages": "default-src 'none'; connect-src https://ogbv-plugin.tattle.co.in/ https://uli-media.tattle.co.in/; font-src https://fonts.gstatic.com; object-src 'none'; script-src 'self'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; img-src https://uli-media.tattle.co.in/; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; report-uri 'none';"
+        "extension_pages": "default-src 'none'; connect-src http://localhost:3000 ws://localhost https://ogbv-plugin.tattle.co.in/ https://uli-media.tattle.co.in/; font-src https://fonts.gstatic.com; object-src 'none'; script-src 'self'; style-src https://fonts.googleapis.com 'self' 'unsafe-inline'; img-src https://uli-media.tattle.co.in/; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; report-uri 'none';"
     },
 ```
 This process allows you to develop and test your changes on the Chrome browser locally. To enable the same for Firefox, repeat the process in the `manifest.firefox.json` file located inside the `plugin` folder.
