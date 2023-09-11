@@ -161,7 +161,7 @@ const ViralSpiral = () => {
                 <Text alignSelf="center">Visit Game Website</Text>
               </Box>
             </ExternalLink>
-            <ExternalLink href="https://www.youtube.com/watch?v=REopj8A9Y7o">
+            <ExternalLink href="https://www.youtube.com/watch?v=hc0tpStpe3o">
               <Box
                 background={"visuals-1"}
                 pad={"large"}
