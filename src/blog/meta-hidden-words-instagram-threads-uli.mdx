@@ -1,0 +1,28 @@
+---
+name: Meta Hidden Words and Uli
+excerpt: Using a feature on instagram and threads to bring uli to meta's social media platforms
+author: Denny George
+project: uli
+date: 2023-09-26
+tags: announcement, commentary, Uli
+cover: cover-hidden-words.png
+---
+
+
+Digital platforms use many techniques to keep themselves safe for their users. The use of [a list of  words](https://www.wired.com/2016/09/science-swear-words-warning-nsfw-af/) to block inappropriate suggestions or to sanitise comments is a known common practice
+
+In the era of AI and automation, using string matching to block out text might seem too primitive. But despite all their shortcomings, one thing that works in their favour is that they are transparent. There's no hiding behind a machine learning like blackbox decision making. More importantly they are just text and in that, anybody with the ability to type,speak or write can contribute to them. Its also a way to involve people who are at the receiving end of abuse and hate in the process of codesigning safety tools that directly make their life better. Since this allows users to shield themselves in some limited manner, this can be a boon when dealing with abuse detection in languages that are not as well represented in research and platform priorities.
+
+During our work on Uli, we interviewed creators and social media managers who mentioned their practice of blacklisting certain words in Indian languages that is used to abuse or target them. They do it by manually typing in words into Meta's "hidden words" feature. This keeps their comment section safe for them and their followers. Travel vlogger Karl Rock has a blog post where he has documented a [list of Hindi swear words](https://blog.karlrock.com/list-of-common-hindi-swear-words/).  He writes on the blog that "This list is suitable for use in places where you need to block bad language online."
+
+While imperfect, they provide some agency to individual users over what they have to go through as part of their daily social media experience.
+
+At some point, Meta made it really easy to import and share your slur lists(which they call hidden words). This makes it very easy to add independent project like Uli to interface with Meta's platforms. We maintain quite possibly the largest crowdsourced [slur list in Indian Languages](https://github.com/tattle-made/Uli/blob/e2e317727803e214e170169b8506285410d6b37f/browser-extension/plugin/scripts/slur-list.txt#L4). We created a webpage for Meta users to select the Indian languages that concern them and modiy our slur list before pastinng them to your meta hidden word list.
+
+There are many limitations to a word matching based content moderation. Words and their meaning change and evolve. Whats means something benign today might take on abusive connotations tomorrow. How can a static list of words keep up with the dynamic nature of human language? How does one keep a list like this updated and capture the various nuances of language? How do you use this list as a building block to create more scalable abuse prevention solution? These are the kind of questions that the Uli slur crowdsourcing initiative is grappling with. Stay tuned for more updates.
+
+Watch a video guide on integrating Uli Slur List to Instagram here
+
+![preview](/cover-hidden-words.png)
+
+[Link to Youtube Short](https://www.youtube.com/shorts/P1PMwLWIgX0)
