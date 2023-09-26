@@ -39,7 +39,48 @@ const BlogIndex = ({ data }) => {
 
   return (
     <DefaultLayout>
-      <Box width="100%" pad="medium" direction="row">
+      <Box width="100%" pad="medium" direction="column">
+        <Box flex={1} pad="small">
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            {showAllTags
+              ? sortedUniqueTags.map(tag => (
+                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
+                    <Link
+                      to={`/blog/tags/${tag}`}
+                      key={tag}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <TagBubbleBlog
+                        data={{ label: tag, count: tagCounts[tag] }}
+                      />
+                    </Link>
+                  </li>
+                ))
+              : sortedUniqueTags.slice(0, 10).map(tag => (
+                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
+                    <Link
+                      to={`/blog/tags/${tag}`}
+                      key={tag}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <TagBubbleBlog
+                        data={{ label: tag, count: tagCounts[tag] }}
+                      />
+                    </Link>
+                  </li>
+                ))}
+          </ul>
+          <Button onClick={toggleTagsDisplay}>
+            <Box
+              pad="small"
+              align="center"
+              border={{ color: "#E76D67", size: "1px" }}
+              round="small"
+            >
+              {showAllTags ? "Show Less Tags" : "Show All Tags"}
+            </Box>
+          </Button>
+        </Box>
         <MasonryLayoutResponsive flex={3}>
           {blogs.map(blog => {
             return (
@@ -94,50 +135,6 @@ const BlogIndex = ({ data }) => {
             )
           })}
         </MasonryLayoutResponsive>
-        <Box flex={1} pad="small">
-          <Heading level={3} margin={{ top: "none", bottom: "small" }}>
-            Tags
-          </Heading>
-          <ul style={{ listStyleType: "none", padding: 0 }}>
-            {showAllTags
-              ? sortedUniqueTags.map(tag => (
-                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
-                    <Link
-                      to={`/blog/tags/${tag}`}
-                      key={tag}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <TagBubbleBlog
-                        data={{ label: tag, count: tagCounts[tag] }}
-                      />
-                    </Link>
-                  </li>
-                ))
-              : sortedUniqueTags.slice(0, 10).map(tag => (
-                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
-                    <Link
-                      to={`/blog/tags/${tag}`}
-                      key={tag}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <TagBubbleBlog
-                        data={{ label: tag, count: tagCounts[tag] }}
-                      />
-                    </Link>
-                  </li>
-                ))}
-          </ul>
-          <Button onClick={toggleTagsDisplay}>
-            <Box
-              pad="small"
-              align="center"
-              border={{ color: "#E76D67", size: "1px" }}
-              round="small"
-            >
-              {showAllTags ? "Show Less Tags" : "Show All Tags"}
-            </Box>
-          </Button>
-        </Box>
       </Box>
     </DefaultLayout>
   )
