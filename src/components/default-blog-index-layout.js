@@ -14,26 +14,28 @@ export const byline = (name, project) => {
 const BlogIndex = ({ data }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
-  const tagCounts = {};
-  const uniqueTagsSet = new Set();
+  const tagCounts = {}
+  const uniqueTagsSet = new Set()
 
-  const [showAllTags, setShowAllTags] = useState(false);
+  const [showAllTags, setShowAllTags] = useState(false)
   const toggleTagsDisplay = () => {
-    setShowAllTags(!showAllTags);
+    setShowAllTags(!showAllTags)
   }
 
   blogs.forEach(blog => {
     if (blog.frontmatter.tags) {
-      const blogTags = blog.frontmatter.tags.split(',').map(tag => tag.trim())
+      const blogTags = blog.frontmatter.tags.split(",").map(tag => tag.trim())
       // tags.push(...blogTags);
       blogTags.forEach(tag => uniqueTagsSet.add(tag))
       blogTags.forEach(tag => {
-        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-      });
+        tagCounts[tag] = (tagCounts[tag] || 0) + 1
+      })
     }
   })
   const uniqueTags = Array.from(uniqueTagsSet)
-  const sortedUniqueTags = uniqueTags.sort((a, b) => tagCounts[b] - tagCounts[a])
+  const sortedUniqueTags = uniqueTags.sort(
+    (a, b) => tagCounts[b] - tagCounts[a]
+  )
 
   return (
     <DefaultLayout>
@@ -49,7 +51,11 @@ const BlogIndex = ({ data }) => {
                 <PlainSectionLink to={`/blog/${blog.slug}`}>
                   <Box>
                     {blog.frontmatter.cover ? (
-                      <Box width={"small"} style={{ minWidth: "100%" }}>
+                      <Box
+                        width={"small"}
+                        style={{ minWidth: "100%" }}
+                        height={"small"}
+                      >
                         <Image
                           fit={"cover"}
                           src={`/${blog.frontmatter.cover}`}
@@ -89,32 +95,46 @@ const BlogIndex = ({ data }) => {
           })}
         </MasonryLayoutResponsive>
         <Box flex={1} pad="small">
-          <Heading level={3} margin={{ top: 'none', bottom: 'small' }}>Tags</Heading>
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
+          <Heading level={3} margin={{ top: "none", bottom: "small" }}>
+            Tags
+          </Heading>
+          <ul style={{ listStyleType: "none", padding: 0 }}>
             {showAllTags
               ? sortedUniqueTags.map(tag => (
-                <li key={tag} style={{ marginBottom: '0.5rem' }}>
-                  <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
-                    <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                  </Link>
-                </li>
-              ))
+                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
+                    <Link
+                      to={`/blog/tags/${tag}`}
+                      key={tag}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <TagBubbleBlog
+                        data={{ label: tag, count: tagCounts[tag] }}
+                      />
+                    </Link>
+                  </li>
+                ))
               : sortedUniqueTags.slice(0, 10).map(tag => (
-                <li key={tag} style={{ marginBottom: '0.5rem' }}>
-                  <Link to={`/blog/tags/${tag}`} key={tag} style={{ textDecoration: 'none' }}>
-                    <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                  </Link>
-                </li>
-              ))}
+                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
+                    <Link
+                      to={`/blog/tags/${tag}`}
+                      key={tag}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <TagBubbleBlog
+                        data={{ label: tag, count: tagCounts[tag] }}
+                      />
+                    </Link>
+                  </li>
+                ))}
           </ul>
           <Button onClick={toggleTagsDisplay}>
             <Box
               pad="small"
               align="center"
-              border={{ color: '#E76D67', size: '1px' }}
+              border={{ color: "#E76D67", size: "1px" }}
               round="small"
             >
-              {showAllTags ? 'Show Less Tags' : 'Show All Tags'}
+              {showAllTags ? "Show Less Tags" : "Show All Tags"}
             </Box>
           </Button>
         </Box>
