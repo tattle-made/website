@@ -40,47 +40,46 @@ const BlogIndex = ({ data }) => {
   return (
     <DefaultLayout>
       <Box width="100%" pad="medium" direction="column">
-        <Box flex={1} pad="small">
-          <ul style={{ listStyleType: "none", padding: 0 }}>
+        <Box pad="small">
+          <Box direction="row" gap="small" wrap={true}>
             {showAllTags
               ? sortedUniqueTags.map(tag => (
-                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
+                  <Box key={tag} margin={{ bottom: "small" }}>
                     <Link
                       to={`/blog/tags/${tag}`}
-                      key={tag}
                       style={{ textDecoration: "none" }}
                     >
                       <TagBubbleBlog
                         data={{ label: tag, count: tagCounts[tag] }}
                       />
                     </Link>
-                  </li>
+                  </Box>
                 ))
               : sortedUniqueTags.slice(0, 10).map(tag => (
-                  <li key={tag} style={{ marginBottom: "0.5rem" }}>
+                  <Box key={tag} margin={{ bottom: "small" }}>
                     <Link
                       to={`/blog/tags/${tag}`}
-                      key={tag}
                       style={{ textDecoration: "none" }}
                     >
                       <TagBubbleBlog
                         data={{ label: tag, count: tagCounts[tag] }}
                       />
                     </Link>
-                  </li>
+                  </Box>
                 ))}
-          </ul>
-          <Button onClick={toggleTagsDisplay}>
-            <Box
-              pad="small"
-              align="center"
-              border={{ color: "#E76D67", size: "1px" }}
-              round="small"
-            >
-              {showAllTags ? "Show Less Tags" : "Show All Tags"}
-            </Box>
-          </Button>
+            <Button onClick={toggleTagsDisplay}>
+              <Box
+                pad="small"
+                align="center"
+                border={{ color: "#E76D67", size: "1px" }}
+                round="small"
+              >
+                {showAllTags ? "Show Less Tags" : "Show All Tags"}
+              </Box>
+            </Button>
+          </Box>
         </Box>
+
         <MasonryLayoutResponsive flex={3}>
           {blogs.map(blog => {
             return (
