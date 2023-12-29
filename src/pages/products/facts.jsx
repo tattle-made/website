@@ -11,7 +11,7 @@ const Page = () => {
     query {
       cover_image: file(relativePath: { eq: "banner_facts.jpg" }) {
         childImageSharp {
-          fluid {
+          original {
             src
           }
         }
@@ -24,13 +24,17 @@ const Page = () => {
       <NarrowContentWrapper>
         <NarrowSection>
           <Heading level={2}>facts!</Heading>
-
+          <Text size={"small"}>Interactive resources for media literacy</Text>
           <Box>
-            <Box overflow={"hidden"} width={"100%"} round={"xsmall"}>
+            <Box
+              overflow={"hidden"}
+              width={"100%"}
+              background={"red"}
+              height={"20em"}
+            >
               <Image
-                src={cover_image.childImageSharp.fluid.src}
+                src={cover_image.childImageSharp.original.src}
                 fit="cover"
-                fill={true}
                 alt="Cover image for facts! interactive resources for media literacy"
               />
             </Box>
