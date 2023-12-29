@@ -3,6 +3,7 @@ import NarrowSection from "../../components/atomic/layout/narrow-section"
 import DefaultLayout from "../../components/default-layout"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
+import { Link } from "gatsby"
 
 const DPGLogo = () => (
   <svg
@@ -134,37 +135,32 @@ const DPGLogo = () => (
   </svg>
 )
 
-const Kosh = () => (
+const Page = () => (
   <DefaultLayout>
     <NarrowContentWrapper>
       <NarrowSection>
-        <Heading level={2}>Kosh</Heading>
+        <Box direction="row-responsive" align="baseline" gap={"small"}>
+          <Heading level={2}>Feluda</Heading>
+          <Box width={"3.2em"}>
+            <a
+              href="https://app.digitalpublicgoods.net/a/10707"
+              target={"_blank"}
+            >
+              <img src="/dpgicon.svg"></img>
+            </a>
+          </Box>
+        </Box>
         <Box direction={"row-responsive"} wrap={true}>
           <Box width={"medium"}>
             <Image src={"/kosh-header.jpg"} />
           </Box>
           <Box width={"2em"}></Box>
-          <Box>
-            <Paragraph>
-              Kosh is a suite of tools for analysing large amount of multimodal
-              and multilingual data. It aims to address challenges specific to
-              data prevalent on Indian Social Media.
-            </Paragraph>
-
-            <Box direction={"row-responsive"} align="baseline" gap={"xsmall"}>
-              <Paragraph>
-                Its analysis engine Feluda is a recognized DPG
-              </Paragraph>
-              <Box width={"2.4em"}>
-                <a
-                  href="https://app.digitalpublicgoods.net/a/10707"
-                  target={"_blank"}
-                >
-                  <img src="/dpgicon.svg"></img>
-                </a>
-              </Box>
-            </Box>
-          </Box>
+          <Paragraph>
+            Feluda is our engine for analysing large amount of multimodal and
+            multilingual data. It aims to address challenges specific to data
+            prevalent on Indian Social Media. It powers our other products like{" "}
+            <Link to={"/products/kosh"}>Kosh</Link>
+          </Paragraph>
         </Box>
       </NarrowSection>
       <NarrowSection>
@@ -292,4 +288,4 @@ const Kosh = () => (
   </DefaultLayout>
 )
 
-export default Kosh
+export default Page
