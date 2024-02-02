@@ -106,15 +106,9 @@ const Index = props => {
                       <Box height={"1.2em"} />
                       <Text color={"visuals-3"} size={"small"}>
                         <FeedIcon />{" "}
-                        <PlainLink to="/blog/tags/machine-learning">
+                        <PlainLink to="/blog/tags/responsible-ai">
                           <Text size={"small"} color={"visuals-3"}>
-                            Machine Learning
-                          </Text>
-                        </PlainLink>
-                        {", "}
-                        <PlainLink to="/blog/tags/content-moderation">
-                          <Text size={"small"} color={"visuals-3"}>
-                            Content Moderation
+                            Responsible AI
                           </Text>
                         </PlainLink>
                         {", "}
