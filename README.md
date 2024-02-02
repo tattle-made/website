@@ -49,6 +49,12 @@ tags: Demo, Example
 - It is important to add the _"day"_ in the date. 
 - Currently, tags cannot be written as arrays. 
 
+### Adding Tags to blog posts
+Try to from the following list of tags
+1. bts (behind the scene), announcement
+2. Themes : responsible-ai, online-harms, civic-agency
+3. Topic : archives, misinformation, content-moderation, media-literacy, web-scraping
+
 ## Tech Stack
 
 Gatsby, ReactJS, Github Actions
