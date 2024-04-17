@@ -246,7 +246,7 @@ const RecentProjectSection = ({ size }) => {
                 previewImage={cover_dau.childImageSharp.fluid.src}
                 title={"Deepfake Analysis Unit"}
                 description={
-                  "Collaborative platform powering the DAU, facilitating collective media manipulation verification among experts"
+                  "Collaborative platform powering the DAU, facilitating collective media manipulation assessment among experts"
                 }
                 url={"/products/dau"}
                 publicationDate={"13-11-2020"}

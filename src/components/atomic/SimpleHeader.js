@@ -27,7 +27,7 @@ const dropDownOptionsTools = [
     id: 1,
     target: "/products/dau",
     label: "Deepfake Analysis Unit",
-    description: "Collaborative Platform for Deepfake Detection",
+    description: "Collaborative Platform for Deepfake Assessment",
   },
   {
     id: 2,
