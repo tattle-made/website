@@ -187,7 +187,7 @@ const Project = ({ project }) => {
 }
 
 const RecentProjectSection = ({ size }) => {
-  const { cover_ogbv, cover_viral_spiral, cover_kosh } = useStaticQuery(graphql`
+  const { cover_ogbv, cover_viral_spiral, cover_dau } = useStaticQuery(graphql`
     query {
       cover_ogbv: file(relativePath: { eq: "cover-project-uli.png" }) {
         childImageSharp {
@@ -205,7 +205,7 @@ const RecentProjectSection = ({ size }) => {
           }
         }
       }
-      cover_kosh: file(relativePath: { eq: "cover-project-kosh.png" }) {
+      cover_dau: file(relativePath: { eq: "cover-project-dau.png" }) {
         childImageSharp {
           fluid {
             src
@@ -243,21 +243,21 @@ const RecentProjectSection = ({ size }) => {
                 publicationDate={"13-11-2020"}
               />
               <CaseStudyPreview
+                previewImage={cover_dau.childImageSharp.fluid.src}
+                title={"Deepfake Analysis Unit"}
+                description={
+                  "Collaborative platform powering the DAU, facilitating collective media manipulation verification among experts"
+                }
+                url={"/products/dau"}
+                publicationDate={"13-11-2020"}
+              />
+              <CaseStudyPreview
                 previewImage={cover_viral_spiral.childImageSharp.fluid.src}
                 title={"Viral Spiral"}
                 description={
                   "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."
                 }
                 url={"/products/viral-spiral"}
-                publicationDate={"13-11-2020"}
-              />
-              <CaseStudyPreview
-                previewImage={cover_kosh.childImageSharp.fluid.src}
-                title={"Kosh"}
-                description={
-                  "Archive of multimodal and multilingual content combining our scrapers and analytical tool Feluda"
-                }
-                url={"/products/kosh"}
                 publicationDate={"13-11-2020"}
               />
             </ResponsiveLayoutDatasets>

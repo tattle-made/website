@@ -25,18 +25,24 @@ const dropDownOptionsTools = [
   },
   {
     id: 1,
+    target: "/products/dau",
+    label: "Deepfake Analysis Unit",
+    description: "Collaborative Platform for Deepfake Detection",
+  },
+  {
+    id: 2,
     target: "/products/viral-spiral",
     label: "Viral Spiral",
     description: "Digital Card Game for Media Literacy",
   },
   {
-    id: 2,
+    id: 3,
     target: "/products/kosh",
     label: "Kosh",
     description: "Archive multimedia data",
   },
   {
-    id: 3,
+    id: 4,
     target: "/products/",
     label: "Other Projects",
     description: "",
