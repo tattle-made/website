@@ -42,8 +42,9 @@ function SEO({ description, lang, meta, title, heading }) {
     }
   `)
 
-  const metaDescription = description || site.siteMetadata.description
-  const author = site.siteMetadata.author
+  const metaDescription =
+    meta.excerpt || description || site.siteMetadata.description
+  const author = meta.author || site.siteMetadata.author
   const baseURL = site.siteMetadata.base_url
 
   let socialImageURLs = {}

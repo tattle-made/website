@@ -22,7 +22,7 @@ const shortcodes = {
 }
 
 export default function PageTemplate({ data: { mdx, allMdx } }) {
-  const { name, author, project, date } = mdx.frontmatter
+  const { name, author, project, date, excerpt } = mdx.frontmatter
   const tags = mdx.frontmatter.tags
     ? mdx.frontmatter.tags.split(",").map(tag => tag.trim())
     : []
@@ -54,6 +54,7 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
       primaryNav={primaryNav}
       expandCenter={true}
       isMDXPage={true}
+      meta={{ name: name, excerpt: excerpt, project: project, tags: tags }}
     >
       <MDXProvider components={shortcodes}>
         <Box>
