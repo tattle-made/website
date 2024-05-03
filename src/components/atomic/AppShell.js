@@ -43,7 +43,7 @@ const AppShell = ({
   return (
     <Grommet theme={TattleTheme} full>
       <Box fill direction={"column"}>
-        <SEO title={`Tattle - ${headerLabel}`} />
+        <SEO title={`Tattle`} heading={headerLabel} />
         {/* {location.pathname !== MODAL_PATH && (
           <Box
             background={"accent-1"}
@@ -72,7 +72,7 @@ const AppShell = ({
           flex={"grow"}
         >
           <SimpleHeader
-            label={headerLabel}
+            label={""}
             target={headerTarget}
             primaryNav={primaryNav}
           />

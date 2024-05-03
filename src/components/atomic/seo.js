@@ -11,7 +11,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, heading }) {
   const location = useLocation()
   const pathname = location.pathname
   // debugger
@@ -69,14 +69,14 @@ function SEO({ description, lang, meta, title }) {
       titleTemplate={`%s`}
     >
       <meta property="description" content={metaDescription} />
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={heading} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={`${baseURL}${socialImageURL}`} />
       <meta property="og:type" content={"website"} />
       <meta name="twitter:card" content={"summary_large_image"} />
       <meta name="twitter:site" content={"@tattlemade"} />
       <meta name="twitter:creator" content={"@tattlemade"} />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={heading} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={`${baseURL}${socialImageURL}`} />
       <script
