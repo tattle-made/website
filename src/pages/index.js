@@ -244,7 +244,7 @@ const RecentProjectSection = ({ size }) => {
               />
               <CaseStudyPreview
                 previewImage={cover_dau.childImageSharp.fluid.src}
-                title={"Deepfake Analysis Unit"}
+                title={"Deepfakes Analysis Unit"}
                 description={
                   "Collaborative platform powering the DAU, facilitating collective media manipulation assessment among experts"
                 }
