@@ -106,19 +106,16 @@ const ogbv = () => (
             wrap={true}
           >
             <Box width={"medium"} height={"small"}>
-              <Image src={"/products/speak.png"} fit="contain" />
+              <Image src={"/products/WOAH-Award.jpg"} fit="contain" />
             </Box>
 
             <Box gap={"small"}>
               <Paragraph margin={"none"}>
-                DW Akademie featured Uli as a case study.
+                The Uli dataset paper received the <b>Outstanding Paper</b>{" "}
+                award at the Workshop on Online Abuse and Harms at NAACL!
               </Paragraph>
-              <Anchor
-                href={
-                  "https://akademie.dw.com/en/putting-hate-speech-on-mute-an-indian-project-helps-social-media-users-filter-out-abuse-to-feel-safe-online/a-65636500"
-                }
-              >
-                <Text size={"small"}>Read Report</Text>
+              <Anchor href={"https://arxiv.org/abs/2311.09086"}>
+                <Text size={"small"}>Read Paper</Text>
               </Anchor>
             </Box>
           </Box>
@@ -152,16 +149,10 @@ const ogbv = () => (
       <NarrowSection>
         <Heading level={3}>Current Team</Heading>
         <Text size="small">
-          <b>Anju George</b>: Qualitative Researcher
-        </Text>
-        <Text size="small">
           <b>Denny George</b>: Engineering Lead
         </Text>
         <Text size="small">
-          <b>Siddharth Manohar</b>: Data Governance Researcher
-        </Text>
-        <Text size="small">
-          <b>Sudeep Duggal</b>: Fullstack Engineer
+          <b>Kaustubha Kalidindi</b>: Legal Counsel/Program Manager-Uli
         </Text>
         <Text size="small">
           <b>Tarunima Prabhakar</b>: Project Manager
