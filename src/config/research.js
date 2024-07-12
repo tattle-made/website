@@ -1,6 +1,77 @@
 export const research = {
   featured: [
     {
+      date: "16 June 2024",
+      title:
+        "The Uli Dataset: An Exercise in Experience Led Annotation of oGBV",
+      description:
+        "Addressing the need for automated detection of online gender-based violence, this paper presents a dataset on gendered abuse in Hindi, Tamil, and Indian English, created through a participatory approach involving experts from the LGBTQIA community in South Asia. This paper was accepted at the Workshop on Online Harms and Abuse at NAACL 2024",
+      url: "https://arxiv.org/abs/2311.09086",
+      tags: [
+        "dataset",
+        "participatory approach",
+        "uli",
+        "online gender-based violence",
+      ],
+    },
+    {
+      date: "22 November, 2022",
+      title: "Does Incentivization Promote Sharing “True” Content Online?",
+      description:
+        "To understand the impact of incentives on online information-sharing behavior, this study created a mock social media platform and found that both financial and social incentives increased the sharing of true information, with demographic factors such as age, education, and political ideology also playing a role.",
+      url: "https://osf.io/preprints/psyarxiv/nykxz",
+      tags: [
+        "incentives",
+        "information-sharing",
+        "misinformation",
+        "social media",
+        "web monetization",
+      ],
+    },
+  ],
+  all: [
+    {
+      date: "8th December, 2023",
+      title: "Shared Task: Gendered Abuse Detection in Indic Languages",
+      description:
+        "A shared task conducted at ICON 2023 based on the Uli Dataset to build NLP systems that detect online gender-based violence",
+      url: "https://sites.google.com/view/icon2023-tattle-sharedtask/",
+      tags: ["dataset", "NLP", "gender abuse"],
+    },
+    {
+      date: "5 September, 2023",
+      title: "To think of interdisciplinarity as intercurrence",
+      description:
+        "Reflecting on the interdisciplinary collaboration of researchers and activists in developing Uli, this paper emphasizes the integration of qualitative methods and the concept of intercurrence (an occurrence within an occurrence) to navigate the complexities and unexpected outcomes in interdisciplinary research.",
+      url: "https://hal.science/hal-03505844",
+      tags: [
+        "interdisciplinarity",
+        "intercurrence",
+        "machine learning",
+        "gender-based violence",
+        "temporalities",
+      ],
+    },
+    {
+      date: "12 June, 2023",
+      title:
+        "Visuais Para Tecnologia Emancipatória: Um Estudo de Caso Sobre a Cocriação de uma Linguagem Visual Para Combater a Violência de Género Online no Twitter Indiano Autores",
+      description:
+        "Highlighting the co-design efforts of a diverse team, this essay explores the visual design process for Uli, and the creation of an alternate visual culture to challenge dominant social media narratives.",
+      url: "https://doi.org/10.21814/vista.4133",
+      tags: ["Uli", "Visual Design", "Online Gender-based Violence"],
+    },
+    {
+      date: "February, 2023",
+      title:
+        "Designing for Disagreements: A Machine Learning Tool to Detect Online Gender-based Violence.",
+      description:
+        "This essay discusses the development and challenges of the Uli tool, a user-facing browser plug-in using machine learning and participatory approaches to detect and mitigate online gender-based violence in Indian English, Hindi, and Tamil on Twitter.",
+      url:
+        "https://itforchange.net/feminist-perspectives-on-social-media-governance-0",
+      tags: ["ML", "Uli", "Development Journey"],
+    },
+    {
       date: "30 July, 2021",
       title:
         "Crowdsourcing Aid: A case study of the Information Chaos during India's Second Covid-19 Wave",
@@ -9,18 +80,15 @@ export const research = {
       url: "https://tattle.co.in/articles/covid-whatsapp-public-groups/",
       tags: ["Whatsapp", "Covid-19", "India", "Report"],
     },
-
     {
       date: "10 June, 2021",
       title:
         "Check Mate: Prioritizing User Generated Multi-Media Content for Fact-Checking",
       description:
         "This paper presents a novel dataset that can be used to prioritize check-worthy posts from multi-media content in Hindi. It is unique in its 1) focus on user generated content, 2) language and 3) accommodation of multi-modality in social media posts. This Dataset was accepted at ICWSM 2021.",
-      url: "https://icwsm.org/2021/#accepted_papers",
+      url: "https://ojs.aaai.org/index.php/ICWSM/article/view/18126",
       tags: ["Dataset", "Multi-media", "Claims-detection"],
     },
-  ],
-  all: [
     {
       date: "7 June, 2021",
       title:
