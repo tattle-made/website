@@ -76,50 +76,18 @@ const ogbv = () => (
             direction="row-responsive"
             wrap={true}
           >
-            <Box width={"medium"} height={"small"}>
+            <Box gap={"small"}>
+              <Paragraph margin={"none"}>
+                The Uli dataset paper received the Outstanding Paper award at the Workshop on Online Abuse and Harms at NAACL!
+              </Paragraph>
               <iframe
                 width="360em"
                 height="360em"
-                src="https://www.youtube.com/embed/Zt088nILmDM?list=PLE_y90GftjpYtPrh6SoXxNV_wcOnZjNTD"
-                title="A New Thing Under the Sun? Alternative Visions for Tech in the Age of AI"
+                <Image src={"static/products/WOAH-Award.jpg"} />
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </Box>
-            <Box gap={"small"}>
-              <Paragraph margin={"none"}>
-                We gave a keynote at the 2023 Symposium of the{" "}
-                <b>
-                  ARC Centre of Excellence for Automated Decision-Making and
-                  Society (ADM+S)
-                </b>{" "}
-                where we spoke about developing Uli as a Feminist AI project.
-              </Paragraph>
-            </Box>
-          </Box>
-          <Box
-            round={"xsmall"}
-            pad={"small"}
-            background={"visuals-2"}
-            direction="row-responsive"
-            wrap={true}
-          >
-            <Box width={"medium"} height={"small"}>
-              <Image src={"/products/speak.png"} fit="contain" />
-            </Box>
-
-            <Box gap={"small"}>
-              <Paragraph margin={"none"}>
-                DW Akademie featured Uli as a case study.
-              </Paragraph>
-              <Anchor
-                href={
-                  "https://akademie.dw.com/en/putting-hate-speech-on-mute-an-indian-project-helps-social-media-users-filter-out-abuse-to-feel-safe-online/a-65636500"
-                }
-              >
-                <Text size={"small"}>Read Report</Text>
-              </Anchor>
+                allowfullscreen>
+            </iframe>
             </Box>
           </Box>
         </Box>
@@ -152,16 +120,10 @@ const ogbv = () => (
       <NarrowSection>
         <Heading level={3}>Current Team</Heading>
         <Text size="small">
-          <b>Anju George</b>: Qualitative Researcher
-        </Text>
-        <Text size="small">
           <b>Denny George</b>: Engineering Lead
         </Text>
         <Text size="small">
-          <b>Siddharth Manohar</b>: Data Governance Researcher
-        </Text>
-        <Text size="small">
-          <b>Sudeep Duggal</b>: Fullstack Engineer
+          <b>Kaustubha Kalidindi</b>:Legal Counsel/Program Manager-Uli
         </Text>
         <Text size="small">
           <b>Tarunima Prabhakar</b>: Project Manager
