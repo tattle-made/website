@@ -5,13 +5,15 @@ import { Box, Heading, Paragraph, Text, Image, Button } from "grommet"
 import { PlainSectionLink } from "./atomic/TattleLinks"
 import MasonryLayoutResponsive from "./atomic/MasonryLayoutResponsive"
 import TagBubbleBlog from "./atomic/TagBubbleBlog"
+import { AllBlogsIndexLayout } from "./atomic/layout/all-blogs-index-layout"
+import { projectSlugMaker } from "../lib/project-slug-maker"
 
 export const byline = (name, project) => {
   if (name && project) return `${name} - ${project}`
   if (name) return `${name}`
 }
 
-const BlogIndex = ({ data }) => {
+const BlogIndex = ({ data, pageContext }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
   const tagCounts = {}
@@ -31,8 +33,16 @@ const BlogIndex = ({ data }) => {
         tagCounts[tag] = (tagCounts[tag] || 0) + 1
       })
     }
+    //For Project Tags
+    if (
+      blog.frontmatter.project &&
+      typeof blog.frontmatter.project === "string"
+    ) {
+      let project = projectSlugMaker(blog.frontmatter.project)
+      tagCounts[project] = (tagCounts[project] || 0) + 1
+    }
   })
-  const uniqueTags = Array.from(uniqueTagsSet)
+  const uniqueTags = Array.from(uniqueTagsSet).concat(pageContext.projects)
   const sortedUniqueTags = uniqueTags.sort(
     (a, b) => tagCounts[b] - tagCounts[a]
   )
@@ -46,7 +56,11 @@ const BlogIndex = ({ data }) => {
               ? sortedUniqueTags.map(tag => (
                   <Box key={tag} margin={{ bottom: "small" }}>
                     <Link
-                      to={`/blog/tags/${tag}`}
+                      to={
+                        pageContext.projects.includes(tag)
+                          ? `/blog/tags/project/${tag}`
+                          : `/blog/tags/${tag}`
+                      }
                       style={{ textDecoration: "none" }}
                     >
                       <TagBubbleBlog
@@ -58,7 +72,11 @@ const BlogIndex = ({ data }) => {
               : sortedUniqueTags.slice(0, 10).map(tag => (
                   <Box key={tag} margin={{ bottom: "small" }}>
                     <Link
-                      to={`/blog/tags/${tag}`}
+                      to={
+                        pageContext.projects.includes(tag)
+                          ? `/blog/tags/project/${tag}`
+                          : `/blog/tags/${tag}`
+                      }
                       style={{ textDecoration: "none" }}
                     >
                       <TagBubbleBlog
@@ -79,8 +97,8 @@ const BlogIndex = ({ data }) => {
             </Button>
           </Box>
         </Box>
-
-        <MasonryLayoutResponsive flex={3}>
+        <AllBlogsIndexLayout blogs={blogs} />
+        {/* <MasonryLayoutResponsive flex={3}>
           {blogs.map(blog => {
             return (
               <Box
@@ -133,7 +151,7 @@ const BlogIndex = ({ data }) => {
               </Box>
             )
           })}
-        </MasonryLayoutResponsive>
+        </MasonryLayoutResponsive> */}
       </Box>
     </DefaultLayout>
   )

@@ -12,6 +12,7 @@ import { graphql, Link } from "gatsby"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import NarrowSection from "./atomic/layout/narrow-section"
 import TagBubbleBlog from "./atomic/TagBubbleBlog"
+import { AllBlogsIndexLayout } from "./atomic/layout/all-blogs-index-layout"
 
 const byline = (author, project) => {
 	if (author && project) return `${author} - ${project}`
@@ -32,7 +33,7 @@ export default function TagTemplate({ data, pageContext }) {
 
 	return (
 		<DefaultLayout>
-			<Box>
+			<Box width="100%" pad="medium" direction="column">
 			<NarrowContentWrapper>
 				<NarrowSection>
 					<Box direction="row-responsive" gap="small" align="center">
@@ -41,7 +42,8 @@ export default function TagTemplate({ data, pageContext }) {
 					</Box>
 				</NarrowSection>
 			</NarrowContentWrapper>
-			<Box width="1280px" alignSelf="center" justify={"start"} pad="medium">
+			<AllBlogsIndexLayout blogs={filteredNodes} />
+			{/* <Box width="1280px" alignSelf="center" justify={"start"} pad="medium">
 				<Box direction={"row-responsive"} wrap={true} justify={"start"}>
 					{filteredNodes.map(node => {
 						return (
@@ -92,7 +94,7 @@ export default function TagTemplate({ data, pageContext }) {
 						)
 					})}
 				</Box>
-			</Box>
+			</Box> */}
 			</Box>
 		</DefaultLayout>
 	)

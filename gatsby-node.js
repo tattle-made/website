@@ -1,5 +1,6 @@
 const path = require("path")
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const { projectSlugMaker } = require("./src/lib/project-slug-maker")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -15,6 +16,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             description
             people
             tags
+            project
           }
           fileAbsolutePath
           slug
@@ -28,6 +30,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const nodes = result.data.allMdx.nodes
+  // List of all unique projects tags- ex: all projects will uli and Uli will be represented as uli &  Viral Spiral and viral-spiral with viral-spiral, and so on
+  const projects = [
+    ...new Set(
+      nodes
+        .map(node => node.frontmatter.project)
+        .filter(project => typeof project === "string" && project.trim() !== "")
+        .map(project => projectSlugMaker(project))
+    ),
+  ]
 
   // create folder for user avatar
   // try {
@@ -76,6 +87,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       path: `/blog/`,
       component: path.resolve(`./src/components/default-blog-index-layout.js`),
+      context: { projects },
     })
 
     // CREATE TAGS PAGE
@@ -105,6 +117,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: { id: node.id },
       })
     }
+
+    // Create Tags Project Page
+    projects.forEach(project => {
+      createPage({
+        path: `/blog/tags/project/${project}`,
+        component: path.resolve(
+          "./src/components/default-tag-project-page-layout.js"
+        ),
+        context: { id, project },
+      })
+    })
   })
 }
 
