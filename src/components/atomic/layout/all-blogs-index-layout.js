@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import { Box, Heading, Paragraph, Text, Image, Button } from "grommet"
+import { Box, Heading, Paragraph, Text, Image} from "grommet"
 
 import MasonryLayoutResponsive from "../MasonryLayoutResponsive"
 import { PlainSectionLink } from "../TattleLinks"
@@ -13,9 +13,10 @@ export function AllBlogsIndexLayout({blogs}){
     return(
 
         <MasonryLayoutResponsive flex={3}>
-          {blogs.map(blog => {
+          {blogs.map((blog,key )=> {
             return (
               <Box
+                key={key}
                 border={{ color: "visuals-3" }}
                 round={"xsmall"}
                 overflow={"hidden"}

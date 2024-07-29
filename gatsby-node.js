@@ -40,6 +40,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     ),
   ]
 
+  // Unique Set of all the Tags
+  const tags_set = new Set()
+  result.data.allMdx.nodes.forEach(node => {
+    const tags_arr = node.frontmatter.tags
+    ? node.frontmatter.tags.split(",").map(tag => tag.trim())
+    : []
+    if (tags_arr) {
+      tags_arr.forEach(tag => tags_set.add(tag))
+    }
+  })
+
   // create folder for user avatar
   // try {
   //   await fs.access("./src/people/avatar")
@@ -91,16 +102,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
 
     // CREATE TAGS PAGE
-    const tags_set = new Set()
-    const tags_arr = node.frontmatter.tags
-      ? node.frontmatter.tags.split(",").map(tag => tag.trim())
-      : []
-    result.data.allMdx.nodes.forEach(node => {
-      if (tags_arr) {
-        tags_arr.forEach(tag => tags_set.add(tag))
-      }
-    })
-
     tags_set.forEach(tag => {
       createPage({
         path: `/blog/tags/${tag}`,
