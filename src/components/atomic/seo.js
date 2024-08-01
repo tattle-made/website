@@ -72,14 +72,22 @@ function SEO({ description, lang, meta, title, heading }) {
       <meta property="description" content={metaDescription} />
       <meta property="og:title" content={heading} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={`${baseURL}${socialImageURL}`} />
+      <meta property="og:image" content={`${baseURL}${meta.cover? `/${meta.cover}`: socialImageURL}`} />
       <meta property="og:type" content={"website"} />
       <meta name="twitter:card" content={"summary_large_image"} />
       <meta name="twitter:site" content={"@tattlemade"} />
       <meta name="twitter:creator" content={"@tattlemade"} />
       <meta name="twitter:title" content={heading} />
       <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={`${baseURL}${socialImageURL}`} />
+      <meta name="twitter:image" content={`${baseURL}${meta.cover? `/${meta.cover}`: socialImageURL}`} />
+      {meta.tags && (
+        <meta
+          name="keywords"
+          content={meta.tags
+            .join(",")
+            .concat(meta.project ? `,${meta.project}` : "")}
+        />
+      )}
       <script
         async
         defer
