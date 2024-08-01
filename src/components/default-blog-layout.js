@@ -9,10 +9,13 @@ import AppShell from "./atomic/AppShell"
 import BlogHeaderCard from "./atomic/BlogHeaderCard"
 import { PlainLink } from "./atomic/TattleLinks"
 import { Heading } from "grommet"
-import TagBubbleBlog from "./atomic/TagBubbleBlog"
 import { useLocation } from "@reach/router"
 import CustomCodeBlock from "./atomic/customCodeBlock"
 import InlineCodeBlock from "./atomic/inlineCodeBlock"
+import useTags from "../hooks/useTags"
+
+import { projectSlugMaker } from "../lib/project-slug-maker"
+import TagsRenderer from "./TagsRenderer"
 
 const shortcodes = {
   Link,
@@ -22,6 +25,8 @@ const shortcodes = {
 }
 
 export default function PageTemplate({ data: { mdx, allMdx } }) {
+
+  const { tagCounts, projectTagsCounts } = useTags()
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
   const tags = mdx.frontmatter.tags
     ? mdx.frontmatter.tags.split(",").map(tag => tag.trim())
@@ -30,22 +35,12 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
   const location = useLocation()
   const [label, setLabel] = useState("")
 
-  const tagCounts = {}
-  const allBlogPosts = allMdx.nodes
-  allBlogPosts.forEach(post => {
-    if (post.frontmatter.tags) {
-      const postTags = post.frontmatter.tags.split(",").map(tag => tag.trim())
-      postTags.forEach(tag => {
-        tagCounts[tag] = (tagCounts[tag] || 0) + 1
-      })
-    }
-  })
-  console.log(tagCounts)
-
   useEffect(() => {
     setLabel(location.pathname.split("/")[1])
     console.log({ l2: location.pathname })
   }, [location])
+
+  console.log("Project count: ")
 
   return (
     <AppShell
@@ -69,17 +64,27 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
             project={project}
             date={date}
           />
-          <Box direction={"row-responsive"} gap={"xsmall"}>
-            {tags.map(tag => (
-              <Link
-                to={`/blog/tags/${tag}`}
-                key={tag}
-                style={{ textDecoration: "none" }}
-              >
-                <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-              </Link>
-            ))}
+          <Box direction="column" flex pad={0} basis="xsmall">
+            <Box>
+              <TagsRenderer
+                sortedUniqueTags={tags}
+                tagCounts={tagCounts}
+                tagTypeHeading={"Tags: "}
+                tagBaseURL={"/blog/tags/"}
+              />
+            </Box>
+            {project && (
+              <Box>
+                <TagsRenderer
+                  sortedUniqueTags={[projectSlugMaker(project)]}
+                  tagCounts={projectTagsCounts}
+                  tagTypeHeading={"Project: "}
+                  tagBaseURL={"/blog/tags/project/"}
+                />
+              </Box>
+            )}
           </Box>
+
           <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
         </Box>
       </MDXProvider>
