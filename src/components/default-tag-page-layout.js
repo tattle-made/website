@@ -17,7 +17,6 @@ export default function TagTemplate({ data, pageContext }) {
     const tagsArray = node.frontmatter.tags?.split(",").map(tag => tag.trim())
     return tagsArray?.includes(tag)
   })
-  console.log(filteredNodes)
 
   return (
 	<TagPage blogs={filteredNodes} pageHeading={"Blogs with Tag:"} tag={tag} tagCounts={tagCounts} />
