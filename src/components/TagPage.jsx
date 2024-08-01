@@ -1,6 +1,6 @@
 import React from "react"
-import { Box, Heading} from "grommet"
-import { PlainLink} from "./atomic/TattleLinks"
+import { Box, Heading } from "grommet"
+import { PlainLink } from "./atomic/TattleLinks"
 import DefaultLayout from "./default-layout"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import NarrowSection from "./atomic/layout/narrow-section"
@@ -14,32 +14,31 @@ import { AllBlogsIndexLayout } from "./atomic/layout/all-blogs-index-layout"
  * @param {string} props.tag -The Tag of which the Page is
  * @param {Object} props.tagCounts -An object mapping each tag to its blogs count.
  * @param {Object[]} props.blogs -Array of Blog Nodes
- * 
+ *
  */
 
-function TagPage({pageHeading,tag,tagCounts,blogs}) {
+function TagPage({ pageHeading, tag, tagCounts, blogs }) {
   return (
     <DefaultLayout>
-    <Box width="100%" pad="medium" direction="column">
-      <NarrowContentWrapper>
-        <NarrowSection>
-          <Box basis="xsmall" gap="small">
+      <Box width="100%" pad="medium" direction="column" gap="medium">
+        <NarrowContentWrapper>
+          <NarrowSection>
+            <Box basis={"xsmall"} gap="">
               <Box>
                 <PlainLink to={"/blog"}>
                   <Heading level={4}>back to all blogs</Heading>
                 </PlainLink>
               </Box>
-              <Box direction="row" gap="small" align="center">
+              <Box direction="row-responsive" gap="small" align="center">
                 <Heading level={3}>{pageHeading}</Heading>
                 <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
               </Box>
-          </Box>
-        </NarrowSection>
-      </NarrowContentWrapper>
-      <AllBlogsIndexLayout blogs={blogs} />
-    </Box>
-  </DefaultLayout>
+            </Box>
+          </NarrowSection>
+        </NarrowContentWrapper>
+        <AllBlogsIndexLayout blogs={blogs} />
+      </Box>
+    </DefaultLayout>
   )
 }
-
 export default TagPage
