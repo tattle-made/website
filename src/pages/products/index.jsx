@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import DefaultLayout from "../../components/default-layout";
-import { Anchor, Box, Grid, Paragraph, Text } from "grommet";
+import { Anchor, Box, Grid, Paragraph, Text, ResponsiveContext } from "grommet";
 import CaseStudyPreview from "../v2/case-study-preview"
 import { graphql, useStaticQuery } from "gatsby";
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper";
@@ -46,7 +46,8 @@ var other_projects = [
 
 ]
 
-const ResponsiveLayoutDatasets = ({ size, children }) => {
+const ResponsiveLayoutDatasets = ({ children }) => {
+  const size = useContext(ResponsiveContext)
   return size !== "small" ? (
     <Grid
       columns={{
@@ -119,7 +120,7 @@ const ProductIndex = () => {
           }
         }
       `)
-  const size = "medium"
+
   return (
     <DefaultLayout>
       <Box
@@ -129,9 +130,11 @@ const ProductIndex = () => {
 
         <Box pad="small">
 
-          <NarrowContentWrapper width={"1280px"}>
 
-            <ResponsiveLayoutDatasets size={size}>
+
+          <NarrowContentWrapper width={{ min: "fit-content", max: "1280px" }}>
+
+            <ResponsiveLayoutDatasets >
               <CaseStudyPreview
                 coverImage={cover_ogbv.childImageSharp.fluid.src}
                 previewImage={icon_ogbv.childImageSharp.fluid.src}
@@ -192,7 +195,7 @@ const ProductIndex = () => {
 
 
 
-    </DefaultLayout>)
+    </DefaultLayout >)
 }
 
 export default ProductIndex
