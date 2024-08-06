@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import useTags from "../hooks/useTags"
+import useBlogTags from "../hooks/useBlogTags"
 import TagPage from "./TagPage"
 
 const byline = (author, project) => {
@@ -9,7 +9,7 @@ const byline = (author, project) => {
 }
 
 export default function TagTemplate({ data, pageContext }) {
-  const { tagCounts } = useTags()
+  const { tagCounts } = useBlogTags()
   const { allMdx } = data
   const tag = pageContext.tag
 
@@ -40,7 +40,7 @@ export const pageQuery = graphql`
           project
           date
           tags
-		  cover
+		      cover
         }
       }
     }
