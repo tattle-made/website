@@ -12,7 +12,7 @@ import { Heading } from "grommet"
 import { useLocation } from "@reach/router"
 import CustomCodeBlock from "./atomic/customCodeBlock"
 import InlineCodeBlock from "./atomic/inlineCodeBlock"
-import useTags from "../hooks/useTags"
+import useBlogTags from "../hooks/useBlogTags"
 
 import { projectSlugMaker } from "../lib/project-slug-maker"
 import TagsRenderer from "./TagsRenderer"
@@ -26,7 +26,7 @@ const shortcodes = {
 
 export default function PageTemplate({ data: { mdx, allMdx } }) {
 
-  const { tagCounts, projectTagsCounts } = useTags()
+  const { tagCounts, projectTagsCounts } = useBlogTags()
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
   const tags = mdx.frontmatter.tags
     ? mdx.frontmatter.tags.split(",").map(tag => tag.trim())

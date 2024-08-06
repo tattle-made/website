@@ -90,6 +90,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 
+  // Create Tags Project Page for Updates
+  projects.forEach(project => {
+    createPage({
+      path: `/updates/tags/project/${project}`,
+      component: path.resolve(
+        "./src/components/default-updates-project-tag-page-layout.js"
+      ),
+      context: { project },
+    })
+  })
+
   nodes.forEach(async node => {
     const { fileAbsolutePath, id } = node
     // console.log(`------ : ${id}`)

@@ -7,6 +7,9 @@ import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wra
 import TagBubble from "../components/atomic/TagBubble"
 import { PlainExternalLink } from "../components/atomic/TattleLinks"
 import { graphql } from "gatsby"
+import { projectSlugMaker } from "../lib/project-slug-maker"
+import TagsRenderer from "../components/TagsRenderer"
+import useUpdateTags from "../hooks/useUpdateTags"
 
 const UpdateListItem = ({ node }) => {
   const formatDate = dateString => {
@@ -22,6 +25,11 @@ const UpdateListItem = ({ node }) => {
   const tags = node.frontmatter.tags
     ? node.frontmatter.tags.split(",").map(tag => tag.trim())
     : []
+
+    if(node.frontmatter.project){
+      tags.push(projectSlugMaker(node.frontmatter.project));
+    }
+    
   return (
     <Box direction={"column"} margin={{ top: "xsmall", bottom: "small" }}>
       <Box height={"7.324px"} />
@@ -62,7 +70,11 @@ const UpdateListItem = ({ node }) => {
   )
 }
 
-const updates = ({ data }) => {
+const Updates = ({ data }) => {
+  const {
+    projectTagsCounts,
+    sortedProjectTags,
+  } = useUpdateTags()
   const updates = data.allMdx.nodes
 
   return (
@@ -70,11 +82,13 @@ const updates = ({ data }) => {
       <NarrowContentWrapper>
         <NarrowSection>
           <Box>
-            <NarrowSection>
-              {updates.map(node => (
-                <UpdateListItem node={node} key={node.id} />
-              ))}
-            </NarrowSection>
+            <TagsRenderer
+              sortedUniqueTags={sortedProjectTags}
+              tagBaseURL="/updates/tags/project/"
+              tagCounts={projectTagsCounts}
+              tagTypeHeading="Projects: "
+            />
+            <UpdatesIndex updates={updates} />
           </Box>
         </NarrowSection>
       </NarrowContentWrapper>
@@ -82,7 +96,17 @@ const updates = ({ data }) => {
   )
 }
 
-export default updates
+export default Updates
+
+export function UpdatesIndex({ updates }) {
+  return (
+    <NarrowSection>
+      {updates.map(node => (
+        <UpdateListItem node={node} key={node.id} />
+      ))}
+    </NarrowSection>
+  )
+}
 
 //export page query
 export const query = graphql`
@@ -98,6 +122,7 @@ export const query = graphql`
           date
           tags
           title
+          project
         }
         id
         slug

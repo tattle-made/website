@@ -1,11 +1,11 @@
 import { graphql } from "gatsby"
 import React from "react"
 import { projectSlugMaker } from "../lib/project-slug-maker"
-import useTags from "../hooks/useTags"
+import useBlogTags from "../hooks/useBlogTags"
 import TagPage from "./TagPage"
 
 export default function TagProjectPage({ data,pageContext }) {
-  const {projectTagsCounts} = useTags();
+  const {projectTagsCounts} = useBlogTags();
   const blogNodes = data.allMdx.nodes;
   const project = pageContext.project;
   const projectBlogs =  blogNodes.filter(blog=>projectSlugMaker(blog.frontmatter.project)===project);

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import DefaultLayout from "./default-layout"
 import { Box } from "grommet"
 import { AllBlogsIndexLayout } from "./atomic/layout/all-blogs-index-layout"
-import useTags from "../hooks/useTags"
+import useBlogTags from "../hooks/useBlogTags"
 import TagsRenderer from "./TagsRenderer"
 
 export const byline = (name, project) => {
@@ -20,7 +20,7 @@ const BlogIndex = ({ data, pageContext }) => {
     projectTagsCounts,
     sortedUniqueTags,
     sortedProjectTags,
-  } = useTags()
+  } = useBlogTags()
 
   return (
     <DefaultLayout>

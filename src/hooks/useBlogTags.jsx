@@ -15,7 +15,7 @@ import { projectSlugMaker } from "../lib/project-slug-maker"
  * @returns {TagsData}
  * 
  */
-export default function useTags() {
+export default function useBlogTags() {
   const data = useStaticQuery(graphql`
     query {
       allMdx(filter: { fileAbsolutePath: { regex: "/.*/src/blog/" } }) {
