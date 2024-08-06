@@ -24,6 +24,12 @@ export const footerItems = {
       target: "/contact",
       type: "internal",
     },
+    {
+      id: 4,
+      label: "Site Map",
+      target: "/sitemap",
+      type: "internal",
+    },
   ],
 }
 

@@ -44,8 +44,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const tags_set = new Set()
   result.data.allMdx.nodes.forEach(node => {
     const tags_arr = node.frontmatter.tags
-    ? node.frontmatter.tags.split(",").map(tag => tag.trim())
-    : []
+      ? node.frontmatter.tags.split(",").map(tag => tag.trim())
+      : []
     if (tags_arr) {
       tags_arr.forEach(tag => tags_set.add(tag))
     }
@@ -57,6 +57,38 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // } catch {
   //   await fs.mkdir("./src/people/avatar")
   // }
+
+
+  // The array should be similar to the tree (in default-sitemap-layout). If node exists pass node, else make a node object to pass name in it.
+  const siteMapNodes = [] 
+
+  createPage({
+    path: `/blog/`,
+    component: path.resolve(`./src/components/default-blog-index-layout.js`),
+    context: { projects },
+  })
+  //siteMapURLs.set("Blogs", "/blog")
+    siteMapNodes.push({name:"blog",isDir:false,node:{name:"blog"}})
+
+  // CREATE TAGS PAGE
+  tags_set.forEach(tag => {
+    createPage({
+      path: `/blog/tags/${tag}`,
+      component: path.resolve("./src/components/default-tag-page-layout.js"),
+      context: { tag },
+    })
+  })
+
+  // Create Tags Project Page
+  projects.forEach(project => {
+    createPage({
+      path: `/blog/tags/project/${project}`,
+      component: path.resolve(
+        "./src/components/default-tag-project-page-layout.js"
+      ),
+      context: { project },
+    })
+  })
 
   nodes.forEach(async node => {
     const { fileAbsolutePath, id } = node
@@ -95,22 +127,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     }
 
-    createPage({
-      path: `/blog/`,
-      component: path.resolve(`./src/components/default-blog-index-layout.js`),
-      context: { projects },
-    })
-
-    // CREATE TAGS PAGE
-    tags_set.forEach(tag => {
-      createPage({
-        path: `/blog/tags/${tag}`,
-        component: path.resolve("./src/components/default-tag-page-layout.js"),
-        context: { tag },
-      })
-    })
-
-    // CREATE PROJECTS
+    //TODO:Reconsider this 
+    // CREATE PROJECTS 
     if (fileAbsolutePath.indexOf("/src/project/") !== -1) {
       createPage({
         path: `/project/${node.slug}`,
@@ -119,16 +137,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     }
 
-    // Create Tags Project Page
-    projects.forEach(project => {
-      createPage({
-        path: `/blog/tags/project/${project}`,
-        component: path.resolve(
-          "./src/components/default-tag-project-page-layout.js"
-        ),
-        context: { id, project },
-      })
-    })
+  })
+  // Create the Sitemap Page
+  await createPage({
+    path: `/sitemap/`,
+    component: path.resolve(`./src/components/default-sitemap-layout.js`),
+    context: { siteMapNodes:siteMapNodes },
   })
 }
 

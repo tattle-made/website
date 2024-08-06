@@ -50,6 +50,15 @@ module.exports = {
         name: `community`,
         path: `${__dirname}/src/community`,
       },
+      
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
+      },
+      
     },
 
     `gatsby-transformer-sharp`,
