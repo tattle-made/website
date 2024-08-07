@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Heading } from "grommet"
+import { Box, Heading, Text } from "grommet"
 import { PlainLink } from "./atomic/TattleLinks"
 import DefaultLayout from "./default-layout"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
@@ -23,23 +23,26 @@ function UpdatesTagPage({ pageHeading, tag, tagCounts, updates }) {
       <NarrowContentWrapper>
         <NarrowSection>
           <Box>
-          <Box basis={"xsmall"} gap="">
-        <Box>
-          <PlainLink to={"/updates"}>
-            <Heading level={4}>back to all Updates</Heading>
-          </PlainLink>
-        </Box>
-        <Box direction="row-responsive" gap="small" align="center">
-          <Heading level={3}>{pageHeading}</Heading>
-          <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-        </Box>
-      </Box>
-            <UpdatesIndex updates={updates} />
+            <Box basis={"xsmall"} gap="">
+              <Box>
+                <PlainLink to={"/updates"}>
+                  <Heading level={4}>back to all Updates</Heading>
+                </PlainLink>
+              </Box>
+              <Box direction="row-responsive" gap="small" align="center">
+                <Heading level={3}>{pageHeading}</Heading>
+                <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+              </Box>
+            </Box>
+            {updates && updates.length !== 0 ? (
+              <UpdatesIndex updates={updates} />
+            ) : (
+              <Text size="small">No updates to display.</Text>
+            )}
           </Box>
         </NarrowSection>
       </NarrowContentWrapper>
     </DefaultLayout>
-
   )
 }
 export default UpdatesTagPage

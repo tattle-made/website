@@ -145,6 +145,7 @@ const ProductIndex = () => {
                 url={"/products/ogbv"}
                 publicationDate={"13-11-2020"}
                 blog_slug={"/blog/tags/project/uli"}
+                updates_slug={"/updates/tags/project/uli"}
               />
               <CaseStudyPreview
                 coverImage={cover_dau.childImageSharp.fluid.src}
@@ -156,6 +157,7 @@ const ProductIndex = () => {
                 url={"/products/dau"}
                 publicationDate={"13-11-2020"}
                 blog_slug={"/blog/tags/project/kosh"}
+                updates_slug={"/updates/tags/project/kosh"}
               />
               <CaseStudyPreview
                 coverImage={cover_viral_spiral.childImageSharp.fluid.src}
@@ -167,6 +169,7 @@ const ProductIndex = () => {
                 url={"/products/viral-spiral"}
                 publicationDate={"13-11-2020"}
                 blog_slug={"/blog/tags/project/viral-spiral"}
+                updates_slug={"/updates/tags/project/viral-spiral"}
               />
             </ResponsiveLayoutDatasets>
           </NarrowContentWrapper>
