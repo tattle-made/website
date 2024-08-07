@@ -1,3 +1,6 @@
+import "./prism-cb.css"
+import React from "react"
+import { Grommet } from "grommet"
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
@@ -5,3 +8,8 @@
  */
 
 // You can delete this file if you're not using it
+
+// Gatsby API to set Wrapper components. Wrapping entire root with Grommet to get access to especially ResponsiveContext
+export const wrapRootElement = ({ element }) => {
+  return <Grommet>{element}</Grommet>
+}
