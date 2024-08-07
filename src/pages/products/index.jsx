@@ -156,8 +156,6 @@ const ProductIndex = () => {
                 }
                 url={"/products/dau"}
                 publicationDate={"13-11-2020"}
-                blog_slug={"/blog/tags/project/kosh"}
-                updates_slug={"/updates/tags/project/kosh"}
               />
               <CaseStudyPreview
                 coverImage={cover_viral_spiral.childImageSharp.fluid.src}
