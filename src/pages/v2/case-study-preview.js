@@ -1,6 +1,10 @@
 import React from "react"
 import { Box, Heading, Text, Image, Paragraph } from "grommet"
-import { Link, PlainLink, SmartPlainLink } from "../../components/atomic/TattleLinks"
+import {
+  Link,
+  PlainLink,
+  SmartPlainLink,
+} from "../../components/atomic/TattleLinks"
 
 const CaseStudyPreview = ({
   coverImage,
@@ -10,7 +14,8 @@ const CaseStudyPreview = ({
   url,
   publicationDate,
   offset,
-  blog_slug
+  blog_slug,
+  updates_slug,
 }) => {
   return (
     <Box
@@ -19,20 +24,15 @@ const CaseStudyPreview = ({
       border={{ color: "#f4c6d7" }}
       round={"small"}
     >
-      {coverImage ?
-        <Box
-          width={"100%"}
-          height={"small"}
-        >
+      {coverImage ? (
+        <Box width={"100%"} height={"small"}>
           <Image src={coverImage} fit="contain" />
-        </Box> : null
-
-      }
+        </Box>
+      ) : null}
 
       <Box pad={"medium"}>
         <PlainLink to={url} target={"_blank"}>
           <Box direction={"column"}>
-
             <Box
               width={"xsmall"}
               height={"xsmall"}
@@ -45,20 +45,25 @@ const CaseStudyPreview = ({
               <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>
                 {title}
               </Heading>
-              <Paragraph size={"medium"} margin={{ top: "none", bottom: "none" }}>
+              <Paragraph
+                size={"medium"}
+                margin={{ top: "none", bottom: "none" }}
+              >
                 {description}
               </Paragraph>
             </Box>
-
           </Box>
         </PlainLink>
       </Box>
-      {blog_slug ? <Box pad={"medium"}>
-        <SmartPlainLink target={blog_slug} >
-          Read blog posts
-        </SmartPlainLink>
+      <Box pad={"medium"}>
+        {blog_slug ? (
+          <SmartPlainLink target={blog_slug}>Read blog posts</SmartPlainLink>
+        ) : null}
 
-      </Box> : null}
+        {updates_slug ? (
+          <SmartPlainLink target={updates_slug}>Read Updates</SmartPlainLink>
+        ) : null}
+      </Box>
     </Box>
   )
 }
