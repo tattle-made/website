@@ -1,12 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
-import React, { useContext} from "react"
+import React, { useContext } from "react"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import { Anchor, Box, Heading, ResponsiveContext, Text } from "grommet"
-import {
-  ExternalLink,
-  PlainExternalLink,
-  PlainLink,
-} from "./atomic/TattleLinks"
+import { PlainLink } from "./atomic/TattleLinks"
+import { ExternalLink } from "react-feather"
 
 export default function LatestBlogsUpdates() {
   const data = useStaticQuery(
@@ -65,11 +62,11 @@ export default function LatestBlogsUpdates() {
           <Box>
             <Heading level={3}>Latest Blogs</Heading>
           </Box>
-          <LatestBlogs blogs={latestBlogs} />
+          <LatestEntries entries={latestBlogs} />
 
           {/* <Box margin={{ horizontal: "auto",vertical:"1em" }}>
-            <Anchor href={"/blog"}>
-              <Text size={"small"} weight={400}>View All Blogs</Text>
+            <Anchor href={"/updates"}>
+              <Text size={"small"} weight={400}>View All Updates</Text>
             </Anchor>
           </Box> */}
         </NarrowContentWrapper>
@@ -79,7 +76,7 @@ export default function LatestBlogsUpdates() {
           <Box>
             <Heading level={3}>Latest Updates</Heading>
           </Box>
-          <LatestUpdates updates={latestUpdates} />
+          <LatestEntries entries={latestUpdates} isUpdate={true} />
 
           {/* <Box margin={{ horizontal: "auto",vertical:"1em" }}>
             <Anchor href={"/updates"}>
@@ -100,92 +97,77 @@ function formatDateLatestEntries(date) {
     .join(" ")
 }
 
-function LatestBlogs({ blogs }) {
+function LatestEntries({ entries, isUpdate }) {
   const size = useContext(ResponsiveContext)
 
-  return blogs.map(blog => {
+  return entries.map(entry => {
     return (
       <Box
         width={"full"}
         flex
         direction="row-responsive"
         justify="between"
-        pad={"3px"}
         margin={{ bottom: "1em" }}
       >
-        <Box width={"15%"}>
+        <Box width={size === "small" ? "" : size === "medium" ? "30%" : "15%"}>
           <Text size={size === "small" ? "xsmall" : "small"}>
-            {formatDateLatestEntries(blog.frontmatter.date)}
+            {formatDateLatestEntries(entry.frontmatter.date)}
           </Text>
         </Box>
+
         <Box
-          flex={"grow"}
-          margin={{ horizontal: size !== "small" ? "5em" : 0 }}
+          width={"full"}
+          alignContent="start"
+          justify="start"
+          pad={{ horizontal: size !== "small" ? "1em" : 0 }}
         >
-          <PlainLink to={`/blog/${blog.slug}`}>
-            <Text size="small" weight={600}>
-              {blog.frontmatter.name}
+          {isUpdate ? (
+            <Text size="small" weight={600} truncate>
+              {entry.frontmatter.title}
             </Text>
-          </PlainLink>
-        </Box>
-
-        <Box>
-          <Text size="small">{blog.frontmatter.author}</Text>
-        </Box>
-      </Box>
-    )
-  })
-}
-function LatestUpdates({ updates }) {
-  const size = useContext(ResponsiveContext)
-
-  return updates.map(update => {
-    return (
-      <Box
-        width={"full"}
-        flex
-        direction="row-responsive"
-        justify="between"
-        pad={"3px"}
-        margin={{ bottom: "1em" }}
-      >
-        <Box width={"15%"}>
-          <Text size={size === "small" ? "xsmall" : "small"}>
-            {formatDateLatestEntries(update.frontmatter.date)}
-          </Text>
-        </Box>
-        <Box
-          flex={"grow"}
-          margin={{ horizontal: size !== "small" ? "5em" : 0 }}
-        >
-          {update.frontmatter.url && update.frontmatter.url.length !== 0 ? (
-            <PlainLink to={update.frontmatter.url}>
-              <Text size="small" weight={600}>
-                {update.frontmatter.title}
-              </Text>
-            </PlainLink>
           ) : (
-            <Text size="small" weight={600}>
-              {update.frontmatter.title}
+            <Text size="small" weight={600} truncate>
+              <PlainLink to={`/blog/${entry.slug}`}>
+                {entry.frontmatter.name}
+              </PlainLink>
             </Text>
           )}
         </Box>
 
-        <Box>
-          {update.frontmatter.url && update.frontmatter.url.length !== 0 ? (
-            <PlainExternalLink href={update.frontmatter.url} target={"_blank"}>
-              <Box
-                gap={"small"}
-                direction={"row"}
-                align={"center"}
-                margin={{ top: "xsmall" }}
-              >
-                <Text size={"small"}> Read More</Text>
-                <ExternalLink size={16} />
-              </Box>
-            </PlainExternalLink>
-          ) : null}
-        </Box>
+        {isUpdate ? (
+          <Box
+            width={size === "small" ? "" : size === "medium" ? "25%" : "15%"}
+            align={size === "small" ? "start" : "end"}
+          >
+            {entry.frontmatter.url && entry.frontmatter.url.length !== 0 ? (
+              <PlainLink href={entry.frontmatter.url} target={"_blank"}>
+                <Box
+                  style={{ position: "relative" }}
+                  gap={"xsmall"}
+                  direction={"row"}
+                  align={"center"}
+                  flex
+                >
+                  <Text size={"small"}> Read More</Text>
+                  <ExternalLink
+                    size={10}
+                    style={{ position: "absolute", top: 0, right: -5 }}
+                  />
+                </Box>
+              </PlainLink>
+            ) : null}
+          </Box>
+        ) : (
+          <Box
+            style={{
+              minWidth:
+                size === "small" ? "" : size === "medium" ? "20%" : "15%",
+            }}
+            align={size === "small" ? "start" : "end"}
+          >
+            <Text size="small">{entry.frontmatter?.author}</Text>
+          </Box>
+        )}
       </Box>
     )
   })
