@@ -34,6 +34,7 @@ import {
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import styled from "styled-components"
+import LatestBlogsUpdates from "../components/LatestBlogsUpdates"
 
 const FeedIcon = () => (
   <svg
@@ -279,6 +280,8 @@ const RecentProjectSection = ({ size }) => {
           </Box>
         </Box>
       </NarrowContentWrapper>
+
+       <LatestBlogsUpdates />
 
       <Box height="1.8em"></Box>
 
