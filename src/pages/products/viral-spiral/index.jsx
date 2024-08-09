@@ -5,6 +5,7 @@ import DefaultLayout from "../../../components/default-layout"
 import NarrowContentWrapper from "../../../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../../../components/atomic/layout/narrow-section"
 import { ExternalLink, PlainLink } from "../../../components/atomic/TattleLinks"
+import { LatestProductBlogsUpdates } from "../../../components/LatestProductBlogsUpdates"
 
 const ViralSpiral = () => {
   const { product_cover, workshop_images } = useStaticQuery(graphql`
@@ -112,7 +113,8 @@ const ViralSpiral = () => {
         </NarrowSection>
       </NarrowContentWrapper>
       <NarrowContentWrapper>
-        <NarrowSection>
+      <LatestProductBlogsUpdates projects={["viral spiral"]} />
+        {/* <NarrowSection>
           <Heading level={2}>Recent Blogs</Heading>
           <Paragraph fill margin={"none"}>
             <PlainLink to="/blog/the-games-we-play-online">
@@ -146,7 +148,7 @@ const ViralSpiral = () => {
             </PlainLink>
             <Text size={"small"}>, Denny George</Text>
           </Paragraph>
-        </NarrowSection>
+        </NarrowSection> */}
       </NarrowContentWrapper>
       <NarrowContentWrapper>
         <NarrowSection>

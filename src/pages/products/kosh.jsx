@@ -3,6 +3,7 @@ import NarrowSection from "../../components/atomic/layout/narrow-section"
 import DefaultLayout from "../../components/default-layout"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
+import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 
 const DPGLogo = () => (
   <svg
@@ -287,6 +288,10 @@ const Kosh = () => (
             </Box>
           )}
         </List>
+      </NarrowSection>
+
+      <NarrowSection>
+      <LatestProductBlogsUpdates projects={["kosh"]}/>
       </NarrowSection>
     </NarrowContentWrapper>
   </DefaultLayout>

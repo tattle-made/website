@@ -5,6 +5,8 @@ import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-
 import NarrowSection from "../../components/atomic/layout/narrow-section"
 import { PlainLink } from "../../components/atomic/TattleLinks"
 import { graphql, useStaticQuery } from "gatsby"
+import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
+
 
 const Page = () => {
   const { cover_image } = useStaticQuery(graphql`
@@ -43,7 +45,7 @@ const Page = () => {
       </NarrowContentWrapper>
 
       <NarrowContentWrapper>
-        <NarrowSection>
+        {/* <NarrowSection>
           <Heading level={2}>Recent Blogs</Heading>
           <Paragraph fill margin={"none"}>
             <PlainLink to="/blog/factshala-project-reading-list">
@@ -61,6 +63,9 @@ const Page = () => {
             </PlainLink>
             <Text size={"small"}> Denny George</Text>
           </Paragraph>
+        </NarrowSection> */}
+        <NarrowSection>
+        <LatestProductBlogsUpdates projects={["facts","factshala","mlcc"]} />
         </NarrowSection>
       </NarrowContentWrapper>
 

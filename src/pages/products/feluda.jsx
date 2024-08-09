@@ -4,6 +4,8 @@ import DefaultLayout from "../../components/default-layout"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
 import { Link } from "gatsby"
+import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
+
 
 const DPGLogo = () => (
   <svg
@@ -284,6 +286,11 @@ const Page = () => (
           )}
         </List>
       </NarrowSection>
+      
+      <NarrowSection>
+      <LatestProductBlogsUpdates projects={["feluda"]}/>
+      </NarrowSection>
+
     </NarrowContentWrapper>
   </DefaultLayout>
 )
