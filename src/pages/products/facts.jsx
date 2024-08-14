@@ -6,6 +6,7 @@ import NarrowSection from "../../components/atomic/layout/narrow-section"
 import { PlainLink } from "../../components/atomic/TattleLinks"
 import { graphql, useStaticQuery } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
+import { getSrc } from "gatsby-plugin-image"
 
 const Page = () => {
   const { cover_image } = useStaticQuery(graphql`
@@ -32,7 +33,7 @@ const Page = () => {
               height={"20em"}
             >
               <Image
-                src={cover_image.childImageSharp.original.src}
+                src={getSrc(cover_image)}
                 fit="cover"
                 alt="Cover image for facts! interactive resources for media literacy"
               />

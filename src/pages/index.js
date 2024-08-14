@@ -35,7 +35,7 @@ import NarrowSection from "../components/atomic/layout/narrow-section"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import styled from "styled-components"
 import LatestBlogsUpdates from "../components/LatestBlogsUpdates"
-import { getImage } from "gatsby-plugin-image"
+import { getImage, getSrc } from "gatsby-plugin-image"
 
 const FeedIcon = () => (
   <svg
@@ -239,7 +239,7 @@ const RecentProjectSection = ({ size }) => {
           <Box>
             <ResponsiveLayoutDatasets size={size}>
               <CaseStudyPreview
-                previewImage={getImage(cover_ogbv)}
+                previewImage={getSrc(cover_ogbv)}
                 title={"Uli"}
                 description={
                   "Empowering users to respond to Online Gender Based Violence via localized content moderation"
@@ -248,7 +248,7 @@ const RecentProjectSection = ({ size }) => {
                 publicationDate={"13-11-2020"}
               />
               <CaseStudyPreview
-                previewImage={getImage(cover_dau)}
+                previewImage={getSrc(cover_dau)}
                 title={"Deepfakes Analysis Unit"}
                 description={
                   "Collaborative platform powering the DAU, facilitating collective media manipulation assessment among experts"
@@ -257,7 +257,7 @@ const RecentProjectSection = ({ size }) => {
                 publicationDate={"13-11-2020"}
               />
               <CaseStudyPreview
-                previewImage={getImage(cover_viral_spiral)}
+                previewImage={getSrc(cover_viral_spiral)}
                 title={"Viral Spiral"}
                 description={
                   "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."

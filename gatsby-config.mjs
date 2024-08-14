@@ -1,6 +1,12 @@
 // const remarkGfm = import('remark-gfm');
+import remarkGfm from "remark-gfm"
+import { dirname } from "path"
+import { fileURLToPath } from "url"
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+const config = {
   siteMetadata: {
     title: `Tattle`,
     siteUrl: "https://tattle.co.in/", // looks like gatsby-plugin-feed requires this to be the field name
@@ -11,6 +17,15 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-remark-images`,
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@": "src",
+        },
+        extensions: ["js", "jsx", "json", "css", "mdx", "md"],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -79,28 +94,17 @@ module.exports = {
       resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [`.mdx`],
-        // mdxOptions: {
-        //   remarkPlugins: [remarkGfm],
-        // },
-        // defaultLayouts: {
-        //   default: require.resolve(`./src/components/default-layout-narrow.js`),
-        // },
-        // gatsbyRemarkPlugins: [
-        //   {
-        //     resolve: `gatsby-remark-images`,
-        //     options: {
-        //       maxWidth: 1200,
-        //     },
-        //   },
-        // ],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
         mdxOptions: {
           remarkPlugins: [
-            {
-              resolve: `gatsby-remark-images`,
-              options: {
-                maxWidth: 1200,
-              },
-            },
+            remarkGfm,
           ],
         },
       },
@@ -164,7 +168,9 @@ module.exports = {
     sort: {frontmatter: {date: DESC}}
   ) {
     nodes {
-      slug
+      fields {
+        slug            
+      }
       frontmatter {
         name
         excerpt
@@ -189,3 +195,5 @@ module.exports = {
     },
   ],
 }
+
+export default config

@@ -1,10 +1,16 @@
+import DefaultLayoutNarrow from "@/components/default-layout-narrow";
+
+export default function Layout({ children }) {
+  return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
+}
+
 import { Anchor, Text, Box } from "grommet"
 import { PlainLink } from "../../components/atomic/TattleLinks"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 
 # Deepfakes Analysis Unit
 
-<div style="text-align:center">
+<div style={{textAlign:"center"}}>
     <img src="/products/dau-illustration.jpg" alt="Example Image" width="750" height="450"></img>
 </div>
 

@@ -32,7 +32,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (result.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query for Projects')
   }
-  console.log("RESULT IS: ", result);
 
   const nodes = result.data.allMdx.nodes
   // List of all unique projects tags- ex: all projects will uli and Uli will be represented as uli &  Viral Spiral and viral-spiral with viral-spiral, and so on

@@ -4,6 +4,7 @@ import { Box, Image, Heading, Paragraph } from "grommet"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
 const Section = ({ children }) => (
   <NarrowContentWrapper>
@@ -43,7 +44,7 @@ export default function Values({ data }) {
           >
             <Image
               fit={"contain"}
-              src={value_openness.childImageSharp.fluid.src}
+              src={getSrc(value_openness)}
             />
           </Box>
           <Box>
@@ -80,7 +81,7 @@ export default function Values({ data }) {
           >
             <Image
               fit={"contain"}
-              src={value_accessibility.childImageSharp.fluid.src}
+              src={getSrc(value_accessibility)}
             />
           </Box>
           <Box>
@@ -108,7 +109,7 @@ export default function Values({ data }) {
           >
             <Image
               fit={"contain"}
-              src={value_sustainability.childImageSharp.fluid.src}
+              src={getSrc(value_sustainability)}
             />
           </Box>
           <Box>
@@ -139,7 +140,7 @@ export default function Values({ data }) {
           >
             <Image
               fit={"contain"}
-              src={value_humility.childImageSharp.fluid.src}
+              src={getSrc(value_humility)}
             />
           </Box>
           <Box>
@@ -167,7 +168,7 @@ export default function Values({ data }) {
           >
             <Image
               fit={"contain"}
-              src={value_curiosity.childImageSharp.fluid.src}
+              src={getSrc(value_curiosity)}
             />
           </Box>
           <Box>
