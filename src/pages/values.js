@@ -206,41 +206,46 @@ export const query = graphql`
   query ValuesImageQuery {
     value_openness: file(relativePath: { eq: "values-openness.jpg" }) {
       childImageSharp {
-        fluid {
-          src
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
       }
     }
     value_accessibility: file(
       relativePath: { eq: "values-accessibility.jpg" }
     ) {
       childImageSharp {
-        fluid {
-          src
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
       }
     }
     value_sustainability: file(
       relativePath: { eq: "values-sustainability.jpg" }
     ) {
       childImageSharp {
-        fluid {
-          src
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
       }
     }
     value_humility: file(relativePath: { eq: "values-humility.jpg" }) {
       childImageSharp {
-        fluid {
-          src
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
       }
     }
     value_curiosity: file(relativePath: { eq: "values-curiosity.jpg" }) {
       childImageSharp {
-        fluid {
-          src
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
       }
     }
   }

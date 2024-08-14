@@ -49,10 +49,11 @@ const Datasets = () => {
     query {
       cover_image: file(relativePath: { eq: "datasets_cover.png" }) {
         childImageSharp {
-          fluid {
-            src
-          }
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
       }
     }
   `)

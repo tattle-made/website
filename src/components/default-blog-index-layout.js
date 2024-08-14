@@ -15,17 +15,13 @@ const BlogIndex = ({ data, pageContext }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
 
-  const {
-    tagCounts,
-    projectTagsCounts,
-    sortedUniqueTags,
-    sortedProjectTags,
-  } = useBlogTags()
+  const { tagCounts, projectTagsCounts, sortedUniqueTags, sortedProjectTags } =
+    useBlogTags()
 
   return (
     <DefaultLayout>
       <Box width="100%" pad="medium" direction="column">
-        <Box pad="small">
+        <Box pad="small"> 
           <Box>
             <TagsRenderer
               tagTypeHeading={"Tags:"}
@@ -52,11 +48,13 @@ const BlogIndex = ({ data, pageContext }) => {
 export const query = graphql`
   query BlogIndexQuery {
     allMdx(
-      filter: { fileAbsolutePath: { regex: "/.*/src/blog/" } }
-      sort: { fields: frontmatter___date, order: DESC }
+      filter: { internal: { contentFilePath: { regex: "/.*/src/blog/" } } }
+      sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
-        slug
+        fields {
+          slug
+        }
         frontmatter {
           name
           excerpt
@@ -66,15 +64,18 @@ export const query = graphql`
           tags
           cover
         }
-        fileAbsolutePath
+        internal {
+          contentFilePath
+        }
       }
     }
     cover_blog_index: file(relativePath: { eq: "cover-index-blog.png" }) {
       childImageSharp {
-        fluid {
-          src
-        }
-      }
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+            )
+          }
     }
   }
 `

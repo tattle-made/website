@@ -1,3 +1,5 @@
+// const remarkGfm = import('remark-gfm');
+
 module.exports = {
   siteMetadata: {
     title: `Tattle`,
@@ -50,7 +52,6 @@ module.exports = {
         name: `community`,
         path: `${__dirname}/src/community`,
       },
-      
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -58,7 +59,6 @@ module.exports = {
         name: `pages`,
         path: `${__dirname}/src/pages`,
       },
-      
     },
 
     `gatsby-transformer-sharp`,
@@ -79,17 +79,30 @@ module.exports = {
       resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [`.mdx`],
-        defaultLayouts: {
-          default: require.resolve(`./src/components/default-layout-narrow.js`),
-        },
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
+        // mdxOptions: {
+        //   remarkPlugins: [remarkGfm],
+        // },
+        // defaultLayouts: {
+        //   default: require.resolve(`./src/components/default-layout-narrow.js`),
+        // },
+        // gatsbyRemarkPlugins: [
+        //   {
+        //     resolve: `gatsby-remark-images`,
+        //     options: {
+        //       maxWidth: 1200,
+        //     },
+        //   },
+        // ],
+        mdxOptions: {
+          remarkPlugins: [
+            {
+              resolve: `gatsby-remark-images`,
+              options: {
+                maxWidth: 1200,
+              },
             },
-          },
-        ],
+          ],
+        },
       },
     },
     {
@@ -134,40 +147,39 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.nodes.map(node => {
+              return allMdx.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   title: node.frontmatter.name,
                   description: node.frontmatter.excerpt,
-                  url: site.siteMetadata.siteUrl + "/blog/" + node.slug,
-                  guid: site.siteMetadata.siteUrl + "/blog/" + node.slug,
+                  url: site.siteMetadata.siteUrl + "/blog/" + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + "/blog/" + node.fields.slug,
                   date: node.frontmatter.date,
                   author: node.frontmatter.author,
                 })
               })
             },
-            query: `
-            {
-              allMdx(
-                filter: {fileAbsolutePath: {regex: "/.*/src/blog/"}}
-                sort: {fields: frontmatter___date, order: DESC}
-              ) {
-                nodes {
-                  slug
-                  frontmatter {
-                    name
-                    excerpt
-                    author
-                    project
-                    date
-                    tags
-                    cover
-                  }
-                  fileAbsolutePath
-                }
-              }
-            }
-            
-            `,
+            query: `{
+  allMdx(
+    filter: {internal: {contentFilePath: {regex: "/.*/src/blog/"}}}
+    sort: {frontmatter: {date: DESC}}
+  ) {
+    nodes {
+      slug
+      frontmatter {
+        name
+        excerpt
+        author
+        project
+        date
+        tags
+        cover
+      }
+      internal {
+        contentFilePath
+      }
+    }
+  }
+}`,
             output: "/rss.xml",
             title:
               "Tattle - Civic Tech intervention for Misinformation, Content Moderation and Media Literacy",

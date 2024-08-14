@@ -24,7 +24,7 @@ const shortcodes = {
   inlineCode: props => <InlineCodeBlock {...props} />,
 }
 
-export default function PageTemplate({ data: { mdx, allMdx } }) {
+export default function PageTemplate({ data: { mdx, allMdx },children }) {
 
   const { tagCounts, projectTagsCounts } = useBlogTags()
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
@@ -85,7 +85,12 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
             )}
           </Box>
 
-          <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
+          {/* <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer> */}
+          {/* {children}
+          {mdx} */}
+          {/* {mdx.body} */}
+          {children}
+  
         </Box>
       </MDXProvider>
     </AppShell>

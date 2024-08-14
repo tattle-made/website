@@ -7,15 +7,12 @@ import { PlainLink } from "../../components/atomic/TattleLinks"
 import { graphql, useStaticQuery } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 
-
 const Page = () => {
   const { cover_image } = useStaticQuery(graphql`
     query {
       cover_image: file(relativePath: { eq: "banner_facts.jpg" }) {
         childImageSharp {
-          original {
-            src
-          }
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
         }
       }
     }
@@ -65,7 +62,9 @@ const Page = () => {
           </Paragraph>
         </NarrowSection> */}
         <NarrowSection>
-        <LatestProductBlogsUpdates projects={["facts","factshala","mlcc"]} />
+          <LatestProductBlogsUpdates
+            projects={["facts", "factshala", "mlcc"]}
+          />
         </NarrowSection>
       </NarrowContentWrapper>
 

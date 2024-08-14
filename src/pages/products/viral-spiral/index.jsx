@@ -14,28 +14,25 @@ const ViralSpiral = () => {
         relativePath: { eq: "product-viral-spiral-cover.png" }
       ) {
         childImageSharp {
-          original {
-            src
-          }
-          fluid {
-            src
-          }
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+          )
         }
       }
       workshop_images: file(
         relativePath: { eq: "product-viral-spiral-workshops.png" }
       ) {
         childImageSharp {
-          original {
-            src
-          }
-          fluid {
-            src
-          }
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+          )
         }
       }
     }
   `)
+  
 
   return (
     <DefaultLayout>

@@ -18,7 +18,7 @@ import { projectSlugMaker } from "../lib/project-slug-maker"
 export default function useUpdateTags() {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/.*/src/updates/" } }) {
+      allMdx(filter: { internal: {contentFilePath: { regex: "/.*/src/updates/" } }}) {
         nodes {
           frontmatter {
             tags

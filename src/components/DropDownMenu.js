@@ -19,7 +19,7 @@ const DropDownMenu = ({ options, title }) => {
 
   useEffect(() => {
     setFetching(true)
-  })
+  },[])
 
   const onShowToolTip = () => {
     setShowToolTip(true)

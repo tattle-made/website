@@ -21,7 +21,7 @@ export function AllBlogsIndexLayout({blogs}){
                 round={"xsmall"}
                 overflow={"hidden"}
               >
-                <PlainSectionLink to={`/blog/${blog.slug}`}>
+                <PlainSectionLink to={`/blog/${blog.fields.slug}`}>
                   <Box>
                     {blog.frontmatter.cover ? (
                       <Box

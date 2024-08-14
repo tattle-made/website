@@ -18,7 +18,7 @@ const MailchimpSubscribeForm = () => {
 
   useEffect(() => {
     setFetching(true)
-  })
+  },[])
 
   return (
     <Box direction={"column"}>

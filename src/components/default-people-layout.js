@@ -9,7 +9,7 @@ import PeopleCard from "./atomic/PeopleCard"
 
 const shortcodes = { Link }
 
-export default function PageTemplate({ data: { mdx } }) {
+export default function PageTemplate({ data: { mdx },children }) {
   const { name, role, url } = mdx.frontmatter
   return (
     <AppShell
@@ -21,7 +21,8 @@ export default function PageTemplate({ data: { mdx } }) {
     >
       <MDXProvider components={shortcodes}>
         <PeopleCard name={name} role={role} url={url} />
-        <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
+        {/* <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer> */}
+        {children}
       </MDXProvider>
     </AppShell>
   )

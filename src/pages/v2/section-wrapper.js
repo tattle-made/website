@@ -10,7 +10,7 @@ const SectionWrapper = () => {
 
   useEffect(() => {
     setFetching(true)
-  })
+  },[])
 
   return <div>{fetching && <h3>something</h3>}</div>
 }

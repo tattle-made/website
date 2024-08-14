@@ -19,7 +19,7 @@ const Footer = () => {
 
   useEffect(() => {
     setFetching(true)
-  })
+  },[])
 
   return (
     <Box>

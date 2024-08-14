@@ -22,17 +22,19 @@ const WeBuildFor = () => {
           relativePath: { eq: "stakeholder-simple.png" }
         ) {
           childImageSharp {
-            fluid {
-              src
-            }
-          }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
         }
         stakeholder_map: file(relativePath: { eq: "stakeholder-map.png" }) {
           childImageSharp {
-            fluid {
-              src
-            }
-          }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
         }
       }
     `

@@ -76,47 +76,53 @@ const ProductIndex = () => {
         query {
           cover_ogbv: file(relativePath: { eq: "cover-uli.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           icon_ogbv: file(relativePath: { eq: "cover-project-uli.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           icon_viral_spiral: file(
             relativePath: { eq: "cover-project-viral-spiral.png" }
           ) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           cover_viral_spiral: file(relativePath: { eq: "cover_viral_spiral.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           icon_dau: file(relativePath: { eq: "cover-project-dau.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           cover_dau: file(relativePath: { eq: "cover_dau.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
         }
       `)

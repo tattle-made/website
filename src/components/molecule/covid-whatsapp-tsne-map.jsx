@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef, useCallback } from "react"
 import { Box, CheckBoxGroup, CheckBox, Text, Image } from "grommet"
 import data from "../../data/covid-whatsapp-public-groups/data.json"
 import dataBase64 from "../../data/covid-whatsapp-public-groups/base64.json"
-import { clusters } from "../../data/covid-whatsapp-public-groups/cluster.json"
+import Clusters from "../../data/covid-whatsapp-public-groups/cluster.json"
 import { active } from "d3"
 
 const VIZ_WIDTH = 800
 const VIZ_HEIGHT = 600
+
+const clusters = Clusters.clusters;
 
 const points = clusters.map(cluster => {
   let points = ""
