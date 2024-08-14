@@ -138,7 +138,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     // CREATE BLOGS
     if (fileAbsolutePath.indexOf("/src/blog/") !== -1) {
-      const blogTemplate = path.resolve(`./src/components/default-blog-layout.js`)
+      const blogTemplate = path.resolve(
+        `./src/components/default-blog-layout.js`
+      )
       createPage({
         path: `/blog/${node.fields.slug}`,
         component: `${blogTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
@@ -167,7 +169,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   if (node.internal.type === `Mdx`) {
-  // if (node.internal.type === `MarkdownRemark`) {
+    // if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
