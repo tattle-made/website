@@ -139,9 +139,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     // CREATE BLOGS
     if (fileAbsolutePath.indexOf("/src/blog/") !== -1) {
+      const blogTemplate = path.resolve(`./src/components/default-blog-layout.js`)
       createPage({
         path: `/blog/${node.fields.slug}`,
-        component: require.resolve(`./src/components/default-blog-layout.js`),
+        component: `${blogTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
         context: { id: node.id },
       })
     }
