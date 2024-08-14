@@ -103,9 +103,7 @@ const config = {
           },
         ],
         mdxOptions: {
-          remarkPlugins: [
-            remarkGfm,
-          ],
+          remarkPlugins: [remarkGfm],
         },
       },
     },
