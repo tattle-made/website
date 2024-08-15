@@ -13,26 +13,35 @@ export default function TagTemplate({ data, pageContext }) {
   const { allMdx } = data
   const tag = pageContext.tag
 
-  const filteredNodes = allMdx.nodes.filter(node => {
-    const tagsArray = node.frontmatter.tags?.split(",").map(tag => tag.trim())
+  const filteredNodes = allMdx.nodes.filter((node) => {
+    const tagsArray = node.frontmatter.tags?.split(",").map((tag) => tag.trim())
     return tagsArray?.includes(tag)
   })
 
   return (
-	<TagPage blogs={filteredNodes} pageHeading={"Blogs with Tag:"} tag={tag} tagCounts={tagCounts} />
+    <TagPage
+      blogs={filteredNodes}
+      pageHeading={"Blogs with Tag:"}
+      tag={tag}
+      tagCounts={tagCounts}
+    />
   )
 }
 
 export const pageQuery = graphql`
   query BlogPostsByTag {
     allMdx(
-      filter: { fileAbsolutePath: { regex: "/.*/src/blog/" } }
-      sort: { fields: frontmatter___date, order: DESC }
+      filter: { internal: { contentFilePath: { regex: "/.*/src/blog/" } } }
+      sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
         id
-        slug
-        fileAbsolutePath
+        fields {
+          slug
+        }
+        internal {
+          contentFilePath
+        }
         frontmatter {
           name
           excerpt
@@ -40,7 +49,7 @@ export const pageQuery = graphql`
           project
           date
           tags
-		      cover
+          cover
         }
       }
     }

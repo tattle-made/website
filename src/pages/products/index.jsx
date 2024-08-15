@@ -5,6 +5,7 @@ import CaseStudyPreview from "../v2/case-study-preview"
 import { graphql, useStaticQuery } from "gatsby";
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper";
 import NarrowSection from "../../components/atomic/layout/narrow-section";
+import { getImage, getSrc } from "gatsby-plugin-image";
 
 // {
 //   heading: "",
@@ -76,47 +77,53 @@ const ProductIndex = () => {
         query {
           cover_ogbv: file(relativePath: { eq: "cover-uli.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           icon_ogbv: file(relativePath: { eq: "cover-project-uli.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           icon_viral_spiral: file(
             relativePath: { eq: "cover-project-viral-spiral.png" }
           ) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           cover_viral_spiral: file(relativePath: { eq: "cover_viral_spiral.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           icon_dau: file(relativePath: { eq: "cover-project-dau.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
           cover_dau: file(relativePath: { eq: "cover_dau.png" }) {
             childImageSharp {
-              fluid {
-                src
-              }
-            }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
           }
         }
       `)
@@ -136,8 +143,8 @@ const ProductIndex = () => {
 
             <ResponsiveLayoutDatasets >
               <CaseStudyPreview
-                coverImage={cover_ogbv.childImageSharp.fluid.src}
-                previewImage={icon_ogbv.childImageSharp.fluid.src}
+                coverImage={getSrc(cover_ogbv)}
+                previewImage={getSrc(icon_ogbv)}
                 title={"Uli"}
                 description={
                   "Empowering users to respond to Online Gender Based Violence via localized content moderation"
@@ -148,8 +155,8 @@ const ProductIndex = () => {
                 updates_slug={"/updates/tags/project/uli"}
               />
               <CaseStudyPreview
-                coverImage={cover_dau.childImageSharp.fluid.src}
-                previewImage={icon_dau.childImageSharp.fluid.src}
+                coverImage={getSrc(cover_dau)}
+                previewImage={getSrc(icon_dau)}
                 title={"Deepfakes Analysis Unit"}
                 description={
                   "Collaborative platform for factcheckers and media forensic experts to analyze possible deepfakes"
@@ -158,8 +165,8 @@ const ProductIndex = () => {
                 publicationDate={"13-11-2020"}
               />
               <CaseStudyPreview
-                coverImage={cover_viral_spiral.childImageSharp.fluid.src}
-                previewImage={icon_viral_spiral.childImageSharp.fluid.src}
+                coverImage={getSrc(cover_viral_spiral)}
+                previewImage={getSrc(icon_viral_spiral)}
                 title={"Viral Spiral"}
                 description={
                   "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."

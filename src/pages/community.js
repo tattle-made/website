@@ -91,22 +91,22 @@ const community = ({ data }) => {
 
 export default community
 
-export const query = graphql`
-query communityPage {
-    allMdx(
-      filter: {fileAbsolutePath: {regex: "/community/"}}
-      sort: {fields: frontmatter___name, order: ASC}
-    ) {
-      nodes {
-        frontmatter {
-          name
-          role
-          url
-          isCurrentContributor
-        }
-        id
-        slug
+export const query = graphql`query communityPage {
+  allMdx(
+    filter: {internal: {contentFilePath: {regex: "/community/"}}}
+    sort: {frontmatter: {name: ASC}}
+  ) {
+    nodes {
+      frontmatter {
+        name
+        role
+        url
+        isCurrentContributor
       }
+      id
+      fields {
+          slug
+        }
     }
-  }   
-`
+  }
+}`

@@ -7,6 +7,7 @@ import {
   Button,
 } from "grommet"
 import { graphql, useStaticQuery } from "gatsby"
+import { getSrc } from "gatsby-plugin-image"
 
 /**
  * @author
@@ -22,17 +23,19 @@ const WeBuildFor = () => {
           relativePath: { eq: "stakeholder-simple.png" }
         ) {
           childImageSharp {
-            fluid {
-              src
-            }
-          }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
         }
         stakeholder_map: file(relativePath: { eq: "stakeholder-map.png" }) {
           childImageSharp {
-            fluid {
-              src
-            }
-          }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
         }
       }
     `
@@ -55,7 +58,7 @@ const WeBuildFor = () => {
         >
           <Image
             fit="contain"
-            src={stakeholder_simple.childImageSharp.fluid.src}
+            src={getSrc(stakeholder_simple)}
           />
         </Box>
       </Box>
@@ -68,7 +71,7 @@ const WeBuildFor = () => {
             <Button label="close" onClick={() => setShow(false)} />
             <Image
               fit="contain"
-              src={stakeholder_map.childImageSharp.fluid.src}
+              src={getSrc(stakeholder_map)}
             />
           </Box>
         </Layer>

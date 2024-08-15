@@ -109,25 +109,27 @@ export function UpdatesIndex({ updates }) {
 }
 
 //export page query
-export const query = graphql`
-  query updatesPage {
-    allMdx(
-      filter: { fileAbsolutePath: { regex: "/updates/" } }
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
-      nodes {
-        frontmatter {
-          url
-          excerpt
-          date
-          tags
-          title
-          project
+export const query = graphql`query updatesPage {
+  allMdx(
+    filter: {internal: {contentFilePath: {regex: "/updates/"}}}
+    sort: {frontmatter: {date: DESC}}
+  ) {
+    nodes {
+      frontmatter {
+        url
+        excerpt
+        date
+        tags
+        title
+        project
+      }
+      id
+      fields {
+          slug
         }
-        id
-        slug
-        fileAbsolutePath
+      internal {
+        contentFilePath
       }
     }
   }
-`
+}`

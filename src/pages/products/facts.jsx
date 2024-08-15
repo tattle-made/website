@@ -6,16 +6,14 @@ import NarrowSection from "../../components/atomic/layout/narrow-section"
 import { PlainLink } from "../../components/atomic/TattleLinks"
 import { graphql, useStaticQuery } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
-
+import { getSrc } from "gatsby-plugin-image"
 
 const Page = () => {
   const { cover_image } = useStaticQuery(graphql`
     query {
       cover_image: file(relativePath: { eq: "banner_facts.jpg" }) {
         childImageSharp {
-          original {
-            src
-          }
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
         }
       }
     }
@@ -35,7 +33,7 @@ const Page = () => {
               height={"20em"}
             >
               <Image
-                src={cover_image.childImageSharp.original.src}
+                src={getSrc(cover_image)}
                 fit="cover"
                 alt="Cover image for facts! interactive resources for media literacy"
               />
@@ -65,7 +63,9 @@ const Page = () => {
           </Paragraph>
         </NarrowSection> */}
         <NarrowSection>
-        <LatestProductBlogsUpdates projects={["facts","factshala","mlcc"]} />
+          <LatestProductBlogsUpdates
+            projects={["facts", "factshala", "mlcc"]}
+          />
         </NarrowSection>
       </NarrowContentWrapper>
 

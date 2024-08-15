@@ -1,6 +1,12 @@
+import DefaultLayoutNarrow from "@/components/default-layout-narrow";
+
+export default function Layout({ children }) {
+  return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
+}
+
 import { Box } from "grommet"
 
-<div style="width:16em;">
+<div style={{width:"16em"}}>
   <img
     alt="Viral Spiral"
     src="../../../images/viral-spiral-logo.png"

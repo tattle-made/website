@@ -9,47 +9,52 @@ import { LatestEntries } from "./LatestEntries"
 export function LatestProductBlogsUpdates({ projects }) {
     //projects is an array of string
   const data = useStaticQuery(
-    graphql`
-      query {
-        latestBlogs: allMdx(
-          sort: { fields: frontmatter___date, order: DESC }
-          filter: { fileAbsolutePath: { regex: "/.*/src/blog/" } }
-        ) {
-          nodes {
-            slug
-            frontmatter {
-              name
-              excerpt
-              author
-              project
-              date
-              tags
-              cover
-            }
-            fileAbsolutePath
-          }
+    graphql`{
+  latestBlogs: allMdx(
+    sort: {frontmatter: {date: DESC}}
+    filter: {internal: {contentFilePath: {regex: "/.*/src/blog/"}}}
+  ) {
+    nodes {
+      fields {
+          slug
         }
-
-        latestUpdates: allMdx(
-          sort: { fields: frontmatter___date, order: DESC }
-          filter: { fileAbsolutePath: { regex: "/updates/" } }
-        ) {
-          nodes {
-            frontmatter {
-              url
-              excerpt
-              date
-              tags
-              title
-              project
-            }
-            id
-            slug
-            fileAbsolutePath
-          }
-        }
+      frontmatter {
+        name
+        excerpt
+        author
+        project
+        date
+        tags
+        cover
       }
-    `
+      internal {
+        contentFilePath
+      }
+    }
+  }
+  latestUpdates: allMdx(
+    sort: {frontmatter: {date: DESC}}
+    filter: {internal: {contentFilePath: {regex: "/updates/"}}}
+  ) {
+    nodes {
+      frontmatter {
+        url
+        excerpt
+        date
+        tags
+        title
+        project
+      }
+      id
+      fields {
+          slug
+        }
+      internal {
+        contentFilePath
+      }
+    }
+  }
+}`
   )
 
   if (!projects) return null

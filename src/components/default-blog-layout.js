@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { Box } from "grommet"
 import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link } from "gatsby"
 import { primaryNav, footerItems } from "../config/options"
 import AppShell from "./atomic/AppShell"
@@ -24,7 +23,7 @@ const shortcodes = {
   inlineCode: props => <InlineCodeBlock {...props} />,
 }
 
-export default function PageTemplate({ data: { mdx, allMdx } }) {
+export default function PageTemplate({ data: { mdx, allMdx },children }) {
 
   const { tagCounts, projectTagsCounts } = useBlogTags()
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
@@ -39,8 +38,6 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
     setLabel(location.pathname.split("/")[1])
     console.log({ l2: location.pathname })
   }, [location])
-
-  console.log("Project count: ")
 
   return (
     <AppShell
@@ -85,7 +82,8 @@ export default function PageTemplate({ data: { mdx, allMdx } }) {
             )}
           </Box>
 
-          <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
+          {children}
+  
         </Box>
       </MDXProvider>
     </AppShell>

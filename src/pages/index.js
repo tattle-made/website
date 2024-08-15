@@ -35,6 +35,7 @@ import NarrowSection from "../components/atomic/layout/narrow-section"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import styled from "styled-components"
 import LatestBlogsUpdates from "../components/LatestBlogsUpdates"
+import { getImage, getSrc } from "gatsby-plugin-image"
 
 const FeedIcon = () => (
   <svg
@@ -73,7 +74,7 @@ const ScrollContainer = styled.div`
 const Index = props => {
   return (
     <DefaultLayout>
-      <ResponsiveContext.Consumer>
+      <ResponsiveContext.Consumer> 
         {size => (
           <Box direction={"column"} align={"center"} flex={"grow"}>
             <Box background={"brand"} fill={true} height={{ min: "45vh" }}>
@@ -192,26 +193,29 @@ const RecentProjectSection = ({ size }) => {
     query {
       cover_ogbv: file(relativePath: { eq: "cover-project-uli.png" }) {
         childImageSharp {
-          fluid {
-            src
-          }
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
       }
       cover_viral_spiral: file(
         relativePath: { eq: "cover-project-viral-spiral.png" }
       ) {
         childImageSharp {
-          fluid {
-            src
-          }
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
       }
       cover_dau: file(relativePath: { eq: "cover-project-dau.png" }) {
         childImageSharp {
-          fluid {
-            src
-          }
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
       }
     }
   `)
@@ -235,7 +239,7 @@ const RecentProjectSection = ({ size }) => {
           <Box>
             <ResponsiveLayoutDatasets size={size}>
               <CaseStudyPreview
-                previewImage={cover_ogbv.childImageSharp.fluid.src}
+                previewImage={getSrc(cover_ogbv)}
                 title={"Uli"}
                 description={
                   "Empowering users to respond to Online Gender Based Violence via localized content moderation"
@@ -244,7 +248,7 @@ const RecentProjectSection = ({ size }) => {
                 publicationDate={"13-11-2020"}
               />
               <CaseStudyPreview
-                previewImage={cover_dau.childImageSharp.fluid.src}
+                previewImage={getSrc(cover_dau)}
                 title={"Deepfakes Analysis Unit"}
                 description={
                   "Collaborative platform powering the DAU, facilitating collective media manipulation assessment among experts"
@@ -253,7 +257,7 @@ const RecentProjectSection = ({ size }) => {
                 publicationDate={"13-11-2020"}
               />
               <CaseStudyPreview
-                previewImage={cover_viral_spiral.childImageSharp.fluid.src}
+                previewImage={getSrc(cover_viral_spiral)}
                 title={"Viral Spiral"}
                 description={
                   "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."

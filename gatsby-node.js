@@ -11,6 +11,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allMdx {
         nodes {
           id
+          fields {
+            slug
+          }
           frontmatter {
             name
             description
@@ -18,8 +21,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             tags
             project
           }
-          fileAbsolutePath
-          slug
+          internal {
+            contentFilePath
+          }
         }
       }
     }
@@ -34,20 +38,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const projects = [
     ...new Set(
       nodes
-        .map(node => node.frontmatter.project)
-        .filter(project => typeof project === "string" && project.trim() !== "")
-        .map(project => projectSlugMaker(project))
+        .map((node) => node.frontmatter.project)
+        .filter(
+          (project) => typeof project === "string" && project.trim() !== ""
+        )
+        .map((project) => projectSlugMaker(project))
     ),
   ]
 
   // Unique Set of all the Tags
   const tags_set = new Set()
-  result.data.allMdx.nodes.forEach(node => {
+  result.data.allMdx.nodes.forEach((node) => {
     const tags_arr = node.frontmatter.tags
-      ? node.frontmatter.tags.split(",").map(tag => tag.trim())
+      ? node.frontmatter.tags.split(",").map((tag) => tag.trim())
       : []
     if (tags_arr) {
-      tags_arr.forEach(tag => tags_set.add(tag))
+      tags_arr.forEach((tag) => tags_set.add(tag))
     }
   })
 
@@ -58,32 +64,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   //   await fs.mkdir("./src/people/avatar")
   // }
 
-
   // The array should be similar to the tree (in default-sitemap-layout). If node exists pass node, else make a node object to pass name in it.
-  const siteMapNodes = [] 
+  const siteMapNodes = []
 
   createPage({
     path: `/blog/`,
-    component: path.resolve(`./src/components/default-blog-index-layout.js`),
+    component: require.resolve(`./src/components/default-blog-index-layout.js`),
     context: { projects },
   })
   //siteMapURLs.set("Blogs", "/blog")
-    siteMapNodes.push({name:"blog",isDir:false,node:{name:"blog"}})
+  siteMapNodes.push({ name: "blog", isDir: false, node: { name: "blog" } })
 
   // CREATE TAGS PAGE
-  tags_set.forEach(tag => {
+  tags_set.forEach((tag) => {
     createPage({
       path: `/blog/tags/${tag}`,
-      component: path.resolve("./src/components/default-tag-page-layout.js"),
+      component: require.resolve("./src/components/default-tag-page-layout.js"),
       context: { tag },
     })
   })
 
   // Create Tags Project Page
-  projects.forEach(project => {
+  projects.forEach((project) => {
     createPage({
       path: `/blog/tags/project/${project}`,
-      component: path.resolve(
+      component: require.resolve(
         "./src/components/default-tag-project-page-layout.js"
       ),
       context: { project },
@@ -91,74 +96,80 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // Create Tags Project Page for Updates
-  projects.forEach(project => {
+  projects.forEach((project) => {
     createPage({
       path: `/updates/tags/project/${project}`,
-      component: path.resolve(
+      component: require.resolve(
         "./src/components/default-updates-project-tag-page-layout.js"
       ),
       context: { project },
     })
   })
 
-  nodes.forEach(async node => {
-    const { fileAbsolutePath, id } = node
+  nodes.forEach(async (node) => {
+    const { internal, id } = node
     // console.log(`------ : ${id}`)
+
+    let fileAbsolutePath = internal.contentFilePath
 
     if (fileAbsolutePath.indexOf("/src/people/") !== -1) {
       // create QR code avatar
 
       // await QRCode.toFile(
-      //   `./src/people/avatar/${node.slug}.png`,
-      //   "/people/${node.slug}"
+      //   `./src/people/avatar/${ node.fields.slug}.png`,
+      //   "/people/${ node.fields.slug}"
       // )
 
       // create Page
       await createPage({
-        path: `/people/${node.slug}`,
-        component: path.resolve(`./src/components/default-people-layout.js`),
+        path: `/people/${node.fields.slug}`,
+        component: require.resolve(`./src/components/default-people-layout.js`),
         context: { id },
       })
     }
 
     // if (fileAbsolutePath.indexOf("/src/project/") !== -1) {
     //   createPage({
-    //     path: `/project/${node.slug}`,
-    //     component: path.resolve(`./src/components/default-page-layout.js`),
+    //     path: `/project/${ node.fields.slug}`,
+    //     component: require.resolve(`./src/components/default-page-layout.js`),
     //     context: { id: node.id },
     //   })
     // }
 
     // CREATE BLOGS
     if (fileAbsolutePath.indexOf("/src/blog/") !== -1) {
+      const blogTemplate = path.resolve(
+        `./src/components/default-blog-layout.js`
+      )
       createPage({
-        path: `/blog/${node.slug}`,
-        component: path.resolve(`./src/components/default-blog-layout.js`),
+        path: `/blog/${node.fields.slug}`,
+        component: `${blogTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
         context: { id: node.id },
       })
     }
 
-    //TODO:Reconsider this 
-    // CREATE PROJECTS 
+    //TODO:Reconsider this
+    // CREATE PROJECTS
     if (fileAbsolutePath.indexOf("/src/project/") !== -1) {
       createPage({
-        path: `/project/${node.slug}`,
-        component: path.resolve(`./src/components/default-blog-layout.js`),
+        path: `/project/${node.fields.slug}`,
+        component: require.resolve(`./src/components/default-blog-layout.js`),
         context: { id: node.id },
       })
     }
-
   })
   // Create the Sitemap Page
   await createPage({
     path: `/sitemap/`,
-    component: path.resolve(`./src/components/default-sitemap-layout.js`),
-    context: { siteMapNodes:siteMapNodes },
+    component: require.resolve(`./src/components/default-sitemap-layout.js`),
+    context: { siteMapNodes: siteMapNodes },
   })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  if (node.internal.type === `MarkdownRemark`) {
+  const { createNodeField } = actions
+  if (node.internal.type === `Mdx`) {
+    // if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

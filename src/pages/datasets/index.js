@@ -17,6 +17,8 @@ import {
   PlainExternalLink,
   SmartPlainLink,
 } from "../../components/atomic/TattleLinks"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
+
 
 const ResponsiveGrid = ({ size, children }) => {
   return size !== "small" ? (
@@ -49,10 +51,11 @@ const Datasets = () => {
     query {
       cover_image: file(relativePath: { eq: "datasets_cover.png" }) {
         childImageSharp {
-          fluid {
-            src
-          }
-        }
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
+      }
       }
     }
   `)
@@ -84,7 +87,7 @@ const Datasets = () => {
                     round={"xsmall"}
                   >
                     <Image
-                      src={cover_image.childImageSharp.fluid.src}
+                      src={getSrc(cover_image)}
                       fit="cover"
                       fill={true}
                     />

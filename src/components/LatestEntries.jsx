@@ -42,7 +42,7 @@ export function LatestEntries({ entries, isUpdate }) {
             </Text>
           ) : (
             <Text size="small" weight={600} truncate>
-              <PlainLink to={`/blog/${entry.slug}`}>
+              <PlainLink to={`/blog/${entry.fields.slug}`}>
                 {entry.frontmatter.name}
               </PlainLink>
             </Text>

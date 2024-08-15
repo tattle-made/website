@@ -6,6 +6,7 @@ import NarrowContentWrapper from "../../../components/atomic/layout/narrow-conte
 import NarrowSection from "../../../components/atomic/layout/narrow-section"
 import { ExternalLink, PlainLink } from "../../../components/atomic/TattleLinks"
 import { LatestProductBlogsUpdates } from "../../../components/LatestProductBlogsUpdates"
+import { getSrc } from "gatsby-plugin-image"
 
 const ViralSpiral = () => {
   const { product_cover, workshop_images } = useStaticQuery(graphql`
@@ -14,28 +15,25 @@ const ViralSpiral = () => {
         relativePath: { eq: "product-viral-spiral-cover.png" }
       ) {
         childImageSharp {
-          original {
-            src
-          }
-          fluid {
-            src
-          }
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+          )
         }
       }
       workshop_images: file(
         relativePath: { eq: "product-viral-spiral-workshops.png" }
       ) {
         childImageSharp {
-          original {
-            src
-          }
-          fluid {
-            src
-          }
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+          )
         }
       }
     }
   `)
+  
 
   return (
     <DefaultLayout>
@@ -45,7 +43,7 @@ const ViralSpiral = () => {
       >
         <Box>
           <Image
-            src={product_cover.childImageSharp.original.src}
+            src={getSrc(product_cover)}
             fit="contain"
             fill={true}
           />
@@ -84,7 +82,7 @@ const ViralSpiral = () => {
       >
         <Box>
           <Image
-            src={workshop_images.childImageSharp.original.src}
+            src={getSrc(workshop_images)}
             fit="contain"
             fill={true}
           />

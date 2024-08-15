@@ -16,7 +16,7 @@ function SEO({ description, lang, meta, title, heading }) {
   const pathname = location.pathname
   // debugger
   let pageType = "OTHERS"
-  if (pathname.indexOf("/blog/") != -1) {
+  if (pathname.indexOf("/blog/") !== -1) {
     pageType = "BLOG"
   }
 
@@ -49,7 +49,7 @@ function SEO({ description, lang, meta, title, heading }) {
 
   let socialImageURLs = {}
 
-  allFile.edges.map(edge => {
+  allFile.edges.forEach(edge => {
     if (edge.node.name === "social-card-blog") {
       socialImageURLs["BLOG"] = edge.node.publicURL
     } else if (edge.node.name === "social-card") {
