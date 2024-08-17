@@ -1,4 +1,3 @@
-// const remarkGfm = import('remark-gfm');
 import remarkGfm from "remark-gfm"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
