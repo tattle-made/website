@@ -168,13 +168,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `Mdx`) {
+  if (node.internal.type === 'Mdx' || node.internal.type === 'MarkdownRemark') {
     // if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
+    // Slugs are starting with "/"
+    const slug = value.startsWith('/') ? value.slice(1) : value;
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value:slug,
     })
   }
 }
