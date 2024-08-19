@@ -112,41 +112,6 @@ const ViralSpiral = () => {
       </NarrowContentWrapper>
       <NarrowContentWrapper>
       <LatestProductBlogsUpdates projects={["viral spiral"]} />
-        {/* <NarrowSection>
-          <Heading level={2}>Recent Blogs</Heading>
-          <Paragraph fill margin={"none"}>
-            <PlainLink to="/blog/the-games-we-play-online">
-              <Text weight={800} size={"small"}>
-                The Games We Play Online
-              </Text>
-            </PlainLink>
-            <Text size={"small"}>, Adhiraj Singh</Text>
-          </Paragraph>
-          <Paragraph fill margin={"none"}>
-            <PlainLink to="/blog/viral-spiral-reading-list">
-              <Text weight={800} size={"small"}>
-                Viral Spiral Reading List
-              </Text>
-            </PlainLink>
-            <Text size={"small"}>, Denny George and Tarunima Prabhakar</Text>
-          </Paragraph>
-          <Paragraph fill margin={"none"}>
-            <PlainLink to="/blog/how-to-set-a-playtest">
-              <Text weight={800} size={"small"}>
-                How to setup a play-test session
-              </Text>
-            </PlainLink>
-            <Text size={"small"}>, Krys Martis</Text>
-          </Paragraph>
-          <Paragraph fill margin={"none"}>
-            <PlainLink to="/blog/understanding-viral-spiral-project-page">
-              <Text weight={800} size={"small"}>
-                Understanding our Project Tracker
-              </Text>
-            </PlainLink>
-            <Text size={"small"}>, Denny George</Text>
-          </Paragraph>
-        </NarrowSection> */}
       </NarrowContentWrapper>
       <NarrowContentWrapper>
         <NarrowSection>

@@ -61,7 +61,7 @@ export default function LatestBlogsUpdates() {
 
   return (
     <>
-      <Box margin={{ top: "1em" }}>
+      <Box margin={{ vertical: "1em" }}>
         <NarrowContentWrapper width={"full"}>
           <Box>
             <Heading level={3}>Latest Blogs</Heading>
