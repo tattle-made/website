@@ -1,6 +1,7 @@
 import "./prism-cb.css"
 import React from "react"
 import { Grommet } from "grommet"
+import './src/styles/global.css'
 /**
  * Implement Gatsby's Browser APIs in this file.
  *

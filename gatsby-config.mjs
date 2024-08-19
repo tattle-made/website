@@ -14,6 +14,7 @@ const config = {
     base_url: "https://tattle.co.in",
   },
   plugins: [
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-remark-images`,
     {
