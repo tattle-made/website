@@ -46,31 +46,33 @@ export function LatestEntries({ entries, isUpdate }) {
             align="center"
             margin={{ bottom: "1em" }}
           >
-            <Box 
-            style={{ minWidth: "7em" }}
-            >
+            <Box style={{ minWidth: "7em" }}>
               <Text size={size === "small" ? "xsmall" : "small"}>
                 {formatDateLatestEntries(entry.frontmatter.date)}
               </Text>
             </Box>
 
             <Box
-              style={{ textAlign: "start"}} 
+              style={{ textAlign: "start" }}
               pad={{ horizontal: size !== "small" ? "1em" : 0 }}
             >
               {isUpdate ? (
-                <PlainLink
-                  href={entry.frontmatter.url}
-                  target={"_blank"}
-                  className="flex items-center space-x-1"
-                >
+                entry.frontmatter.url && entry.frontmatter.url.length !== 0 ? (
+                  <PlainLink
+                    href={entry.frontmatter.url}
+                    target={"_blank"}
+                    className="flex items-center space-x-1"
+                  >
+                    <Text size="small" weight={600} truncate>
+                      {entry.frontmatter.title}
+                    </Text>
+                    <ExternalLink size={14} />
+                  </PlainLink>
+                ) : (
                   <Text size="small" weight={600} truncate>
                     {entry.frontmatter.title}
                   </Text>
-                  <ExternalLink
-                    size={14}
-                  />
-                </PlainLink>
+                )
               ) : (
                 <Text size="small" weight={600} truncate>
                   <PlainLink to={`/blog/${entry.fields.slug}`}>
@@ -87,7 +89,7 @@ export function LatestEntries({ entries, isUpdate }) {
                   textAlign: "end",
                   minWidth: "7em",
                   flexGrow: 1,
-                  flexShrink:0
+                  flexShrink: 0,
                 }}
                 align={size === "small" ? "start" : "end"}
               >
