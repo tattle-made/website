@@ -5,85 +5,100 @@ import { ExternalLink } from "react-feather"
 
 function formatDateLatestEntries(date) {
   let dateString = new Date(date).toDateString("ind")
-  return dateString
-    .split(" ")
-    .slice(1)
-    .join(" ")
+  return dateString.split(" ").slice(1).join(" ")
+}
+
+/**
+ * @param {string} author
+ */
+function formatAuthor(author) {
+  if (typeof author !== "string") return ""
+  let firstDividerIndex = -1
+  let dividers = ["&", "and", "And", ","]
+  for (let d of dividers) {
+    let i = author.indexOf(d)
+
+    if (firstDividerIndex === -1) {
+      firstDividerIndex = Math.max(firstDividerIndex, i)
+    } else {
+      firstDividerIndex = Math.max(firstDividerIndex, i)
+    }
+  }
+  if (firstDividerIndex === -1) return author
+
+  author = author.substring(0, firstDividerIndex).trim().concat(" et al.")
+
+  return author
 }
 
 // Component to Display latest entries of Blogs and Updates
 export function LatestEntries({ entries, isUpdate }) {
   const size = useContext(ResponsiveContext)
 
-  return entries.map(entry => {
-    return (
-      <Box
-        width={"full"}
-        flex
-        direction="row-responsive"
-        justify="between"
-        margin={{ bottom: "1em" }}
-      >
-        <Box width={size === "small" ? "" : size === "medium" ? "30%" : "15%"}>
-          <Text size={size === "small" ? "xsmall" : "small"}>
-            {formatDateLatestEntries(entry.frontmatter.date)}
-          </Text>
-        </Box>
-
-        <Box
-          width={"full"}
-          alignContent="start"
-          justify="start"
-          pad={{ horizontal: size !== "small" ? "1em" : 0 }}
-        >
-          {isUpdate ? (
-            <Text size="small" weight={600} truncate>
-              {entry.frontmatter.title}
-            </Text>
-          ) : (
-            <Text size="small" weight={600} truncate>
-              <PlainLink to={`/blog/${entry.fields.slug}`}>
-                {entry.frontmatter.name}
-              </PlainLink>
-            </Text>
-          )}
-        </Box>
-
-        {isUpdate ? (
+  return (
+    <Box margin={{ top: "1em" }}>
+      {entries.map((entry) => {
+        return (
           <Box
-            width={size === "small" ? "" : size === "medium" ? "25%" : "15%"}
-            align={size === "small" ? "start" : "end"}
+            width={"full"}
+            flex
+            direction="row-responsive"
+            align="center"
+            margin={{ bottom: "1em" }}
           >
-            {entry.frontmatter.url && entry.frontmatter.url.length !== 0 ? (
-              <PlainLink href={entry.frontmatter.url} target={"_blank"}>
-                <Box
-                  style={{ position: "relative" }}
-                  gap={"xsmall"}
-                  direction={"row"}
-                  align={"center"}
-                  flex
+            <Box 
+            style={{ minWidth: "7em" }}
+            >
+              <Text size={size === "small" ? "xsmall" : "small"}>
+                {formatDateLatestEntries(entry.frontmatter.date)}
+              </Text>
+            </Box>
+
+            <Box
+              style={{ textAlign: "start"}} 
+              pad={{ horizontal: size !== "small" ? "1em" : 0 }}
+            >
+              {isUpdate ? (
+                <PlainLink
+                  href={entry.frontmatter.url}
+                  target={"_blank"}
+                  className="flex items-center space-x-1"
                 >
-                  <Text size={"small"}> Read More</Text>
+                  <Text size="small" weight={600} truncate>
+                    {entry.frontmatter.title}
+                  </Text>
                   <ExternalLink
-                    size={10}
-                    style={{ position: "absolute", top: 0, right: -5 }}
+                    size={14}
                   />
-                </Box>
-              </PlainLink>
-            ) : null}
+                </PlainLink>
+              ) : (
+                <Text size="small" weight={600} truncate>
+                  <PlainLink to={`/blog/${entry.fields.slug}`}>
+                    {entry.frontmatter.name}
+                  </PlainLink>
+                </Text>
+              )}
+            </Box>
+
+            {!isUpdate && (
+              <Box
+                // width={"fit"}
+                style={{
+                  textAlign: "end",
+                  minWidth: "7em",
+                  flexGrow: 1,
+                  flexShrink:0
+                }}
+                align={size === "small" ? "start" : "end"}
+              >
+                <Text size="small">
+                  {formatAuthor(entry.frontmatter?.author)}
+                </Text>
+              </Box>
+            )}
           </Box>
-        ) : (
-          <Box
-            style={{
-              minWidth:
-                size === "small" ? "" : size === "medium" ? "20%" : "15%",
-            }}
-            align={size === "small" ? "start" : "end"}
-          >
-            <Text size="small">{entry.frontmatter?.author}</Text>
-          </Box>
-        )}
-      </Box>
-    )
-  })
+        )
+      })}
+    </Box>
+  )
 }

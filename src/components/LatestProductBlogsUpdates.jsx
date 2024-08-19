@@ -1,9 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { projectSlugMaker } from "../lib/project-slug-maker"
-import { generateDisplayName } from "../lib/generate-display-name"
 import { Box, Heading } from "grommet"
-import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import { LatestEntries } from "./LatestEntries"
 
 export function LatestProductBlogsUpdates({ projects }) {
@@ -76,7 +74,7 @@ export function LatestProductBlogsUpdates({ projects }) {
   return (
     <>
       {latestProjectBlogs && latestProjectBlogs.length !== 0 && (
-        <Box>
+        <Box margin={{bottom:"1em"}}>
           <Box>
             <Heading level={3}>
               Latest Blogs
