@@ -48,9 +48,13 @@
     "styled-components": "^6.1.12"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
     "eslint": "^7.32.0",
     "eslint-webpack-plugin": "^4.2.0",
-    "prettier": "^3.3.3"
+    "gatsby-plugin-postcss": "^6.13.1",
+    "postcss": "^8.4.41",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.10"
   },
   "keywords": [
     "gatsby"
