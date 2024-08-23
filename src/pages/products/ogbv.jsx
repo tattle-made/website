@@ -13,7 +13,7 @@ const ogbv = () => (
       <NarrowSection>
         <Box direction={"column"} wrap={true}>
           <Box width={"xsmall"} pad={{ right: "small" }}>
-            <StaticImage src={"../../images/products/Uli Logo-Header-03.png"} />
+            <StaticImage alt="logo" src={"../../images/products/Uli Logo-Header-03.png"} />
           </Box>
           <Box margin={{ top: "small" }}>
             <Text size="small">
@@ -109,7 +109,7 @@ const ogbv = () => (
             wrap={true}
           >
             <Box width={"medium"} height={"small"}>
-              <StaticImage src={"../../images/products/WOAH-Award.jpg"} objectFit="contain" />
+              <StaticImage alt="woah award" src={"../../images/products/WOAH-Award.jpg"} objectFit="contain" />
             </Box>
 
             <Box gap={"small"}>

@@ -226,7 +226,7 @@ const RecentProjectSection = ({ size }) => {
           <Box gap={"small"} width={"100%"} align={"center"}>
             <Text
               size={"small"}
-              weight={"700"}
+              weight={700}
               margin={{ bottom: "small", top: "none" }}
             >
               Current Projects
@@ -275,7 +275,7 @@ const RecentProjectSection = ({ size }) => {
             <Anchor href={"/products"}>
               <Text
                 size={"small"}
-                weight={"400"}
+                weight={400}
                 margin={{ bottom: "small", top: "none" }}
               >
                 See All Projects

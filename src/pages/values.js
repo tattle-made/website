@@ -3,7 +3,7 @@ import { Box, Heading, Paragraph } from "grommet"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage} from "gatsby-plugin-image"
 
 const Section = ({ children }) => (
   <NarrowContentWrapper>
@@ -34,6 +34,7 @@ export default function Values() {
             margin={{ right: "small", bottom: "small", top: "medium" }}
           >
             <StaticImage
+              alt="value img"
               objectFit={"contain"}
               src={`../images/values-openness.jpg`}
             />
@@ -70,6 +71,7 @@ export default function Values() {
             margin={{ right: "small", bottom: "small", top: "medium" }}
           >
             <StaticImage
+              alt="value img"
               objectFit={"contain"}
               src={`../images/values-accessibility.jpg`}
             />
@@ -97,6 +99,7 @@ export default function Values() {
             margin={{ right: "small", bottom: "small", top: "medium" }}
           >
             <StaticImage
+              alt="value img"
               objectFit={"contain"}
               src={`../images/values-sustainability.jpg`}
             />
@@ -127,6 +130,7 @@ export default function Values() {
             margin={{ right: "small", bottom: "small", top: "medium" }}
           >
             <StaticImage
+              alt="value img"
               objectFit={"contain"}
               src={`../images/values-humility.jpg`}
             />
@@ -154,6 +158,7 @@ export default function Values() {
             margin={{ right: "small", bottom: "small", top: "medium" }}
           >
             <StaticImage
+              alt="value img"
               objectFit={"contain"}
               src={`../images/values-curiosity.jpg`}
             />

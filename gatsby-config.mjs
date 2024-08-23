@@ -13,6 +13,9 @@ const config = {
     author: `@tattlemade`,
     base_url: "https://tattle.co.in",
   },
+  flags: {
+    DEV_SSR: true //helps to detect SSR bugs and fix them without needing to do full builds with gatsby build
+  },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-postcss`,

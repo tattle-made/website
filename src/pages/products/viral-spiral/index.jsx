@@ -16,6 +16,7 @@ const ViralSpiral = () => {
       >
         <Box>
           <StaticImage
+            alt="cover"
             src={`../../../images/product-viral-spiral-cover.png`}
             objectFit="contain"
           />
@@ -51,6 +52,7 @@ const ViralSpiral = () => {
       <Box height={{ max: "80vh", min: "fit-content" }}>
         <Box>
           <StaticImage
+            alt="workshop image"
             src={`../../../images/product-viral-spiral-workshops.png`}
             objectFit="contain"
           />

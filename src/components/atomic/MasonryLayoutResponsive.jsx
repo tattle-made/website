@@ -1,6 +1,6 @@
-import { ResponsiveContext } from "grommet"
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import MasonryLayout from "./MasonryLayout"
+import { Heading } from "grommet"
 
 const getColumnCount = (width) => {
   if (width < 768) {
@@ -19,11 +19,8 @@ const getColumnCount = (width) => {
 }
 
 const MasonryLayoutResponsive = ({ children }) => {
-  const [columnCount, setColumnCount] = useState(() =>
-    getColumnCount(window.innerWidth)
-  )
+  const [columnCount, setColumnCount] = useState(null)
 
-  // Event to handle the number of columns based on screen, this is much faster than grommet's ResponsiveContext (Blogs were flickering intitially due to it).
   useEffect(() => {
     const handleResize = () => {
       setColumnCount(getColumnCount(window.innerWidth))
@@ -37,6 +34,14 @@ const MasonryLayoutResponsive = ({ children }) => {
       window.removeEventListener("resize", handleResize)
     }
   }, [])
+
+  if (columnCount === null) {
+    return (
+      <Heading level={5} alignSelf="center">
+        Loading...
+      </Heading>
+    )
+  }
 
   return (
     <MasonryLayout columns={columnCount} gap={12}>

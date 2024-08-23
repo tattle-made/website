@@ -57,6 +57,7 @@ const WeBuildFor = () => {
           style={{ cursor: "zoom-in" }}
         >
           <GatsbyImage
+            alt="img"
             objectFit="contain"
             image={getImage(stakeholder_simple)}
           />
@@ -70,6 +71,7 @@ const WeBuildFor = () => {
           <Box fill background={"brand"}>
             <Button label="close" onClick={() => setShow(false)} />
             <GatsbyImage
+              alt="img"
               objectFit="contain"
               image={getImage(stakeholder_map)}
             />

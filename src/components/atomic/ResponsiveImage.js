@@ -22,6 +22,7 @@ export const ResponsiveImage = () => {
       {size === "small" ? (
         <Box width={"100%"} alignSelf={"start"} height={"small"}>
           <StaticImage
+            alt="landing page image"
             objectFit="contain"
             src="../../images/landing-page-narrow.png"
           />
@@ -29,6 +30,7 @@ export const ResponsiveImage = () => {
       ) : (
         <Box width={"40%"} style={{ boxShadow: "none" }}>
           <StaticImage
+            alt="landing page image"
             objectFit="contain"
             imgStyle={{ fill: true, alignSelf: "start" }}
             src="../../images/landing-page-wide.png"

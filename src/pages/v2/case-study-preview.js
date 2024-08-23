@@ -27,7 +27,7 @@ const CaseStudyPreview = ({
     >
       {coverImage ? (
         <Box width={"100%"} height={"small"}>
-          <GatsbyImage image={coverImage} objectFit="contain" />
+          <GatsbyImage alt="cover" image={coverImage} objectFit="contain" />
         </Box>
       ) : null}
 
@@ -41,7 +41,7 @@ const CaseStudyPreview = ({
               overflow={"hidden"}
               justify="center"
             >
-              <GatsbyImage image={previewImage} objectFit="contain"/>
+              <GatsbyImage alt="preview" image={previewImage} objectFit="contain"/>
             </Box>
             <Box>
               <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>

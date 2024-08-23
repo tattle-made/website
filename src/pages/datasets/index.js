@@ -65,6 +65,7 @@ const Datasets = () => {
                 round={"xsmall"}
               >
                 <StaticImage
+                  alt="datasets cover"
                   src={`../../images/datasets_cover.png`}
                   objectFit="cover"
                 />

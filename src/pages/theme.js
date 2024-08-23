@@ -313,7 +313,8 @@ const CoverSection = () => {
         </Paragraph>
       </Box>
       <Box fill={"horizontal"} height={"medium"}>
-        <StaticImage
+        <Image
+          alt=""
           objectFit={"cover"}
           src={
             "https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw"
@@ -347,8 +348,9 @@ const StaticCoverSection = () => {
         </Paragraph>
       </Box>
       <Box fill={"horizontal"} height={"medium"}>
-        <Image
-          fit={"cover"}
+        <StaticImage
+          objectFit={"cover"}
+          alt="gatsby static image"
           src={
             "https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw"
           }
