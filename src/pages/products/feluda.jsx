@@ -5,6 +5,7 @@ import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-
 import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
 import { Link } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
+import { StaticImage } from "gatsby-plugin-image"
 
 
 const DPGLogo = () => (
@@ -141,20 +142,20 @@ const Page = () => (
   <DefaultLayout>
     <NarrowContentWrapper>
       <NarrowSection>
-        <Box direction="row-responsive" align="baseline" gap={"small"}>
+        <Box direction="row-responsive" align="center" gap={"small"}>
           <Heading level={2}>Feluda</Heading>
           <Box width={"3.2em"}>
             <a
               href="https://app.digitalpublicgoods.net/a/10707"
               target={"_blank"}
             >
-              <img src="/dpgicon.svg"></img>
+              <StaticImage src="../../images/dpgicon.svg"/>
             </a>
           </Box>
         </Box>
         <Box direction={"row-responsive"} wrap={true}>
           <Box width={"medium"}>
-            <Image src={"/kosh-header.jpg"} />
+            <StaticImage src={"../../images/kosh-header-2.jpg"} />
           </Box>
           <Box width={"2em"}></Box>
           <Paragraph>
@@ -210,7 +211,7 @@ const Page = () => (
             wrap={true}
           >
             <Box width={"medium"} height={"small"}>
-              <Image src={"/covid-tsne.png"} fit="contain" />
+              <StaticImage src={"../../images/covid-tsne.png"} objectFit="contain" />
             </Box>
 
             <Box gap={"small"}>
@@ -238,7 +239,7 @@ const Page = () => (
           border={{ color: "visuals-2" }}
           overflow={"hidden"}
         >
-          <Image fit="contain" src={"/kosh-preview.png"} />
+          <StaticImage src={"../../images/kosh-preview.png"} />
         </Box>
         <Text size={"xsmall"} margin={{ top: "xxsmall" }}>
           Preview of Kosh's UI for adding and viewing{" "}

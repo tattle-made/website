@@ -25,6 +25,7 @@
     "gatsby-plugin-s3": "0.4.1",
     "gatsby-plugin-sharp": "5.13.1",
     "gatsby-plugin-styled-components": "6.13.1",
+    "gatsby-remark-copy-linked-files": "^6.13.1",
     "gatsby-remark-images": "7.13.1",
     "gatsby-remark-prismjs": "7.13.1",
     "gatsby-source-filesystem": "^5.13.1",

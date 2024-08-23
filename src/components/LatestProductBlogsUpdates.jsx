@@ -5,80 +5,80 @@ import { Box, Heading } from "grommet"
 import { LatestEntries } from "./LatestEntries"
 
 export function LatestProductBlogsUpdates({ projects }) {
-    //projects is an array of string
-  const data = useStaticQuery(
-    graphql`{
-  latestBlogs: allMdx(
-    sort: {frontmatter: {date: DESC}}
-    filter: {internal: {contentFilePath: {regex: "/.*/src/blog/"}}}
-  ) {
-    nodes {
-      fields {
-          slug
+  //projects is an array of string
+  const data = useStaticQuery(graphql`
+    {
+      latestBlogs: allMdx(
+        sort: { frontmatter: { date: DESC } }
+        filter: { internal: { contentFilePath: { regex: "/.*/src/blog/" } } }
+      ) {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            name
+            excerpt
+            author
+            project
+            date
+            tags
+            cover {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              }
+            }
+          }
+          internal {
+            contentFilePath
+          }
         }
-      frontmatter {
-        name
-        excerpt
-        author
-        project
-        date
-        tags
-        cover
       }
-      internal {
-        contentFilePath
+      latestUpdates: allMdx(
+        sort: { frontmatter: { date: DESC } }
+        filter: { internal: { contentFilePath: { regex: "/updates/" } } }
+      ) {
+        nodes {
+          frontmatter {
+            url
+            excerpt
+            date
+            tags
+            title
+            project
+          }
+          id
+          fields {
+            slug
+          }
+          internal {
+            contentFilePath
+          }
+        }
       }
     }
-  }
-  latestUpdates: allMdx(
-    sort: {frontmatter: {date: DESC}}
-    filter: {internal: {contentFilePath: {regex: "/updates/"}}}
-  ) {
-    nodes {
-      frontmatter {
-        url
-        excerpt
-        date
-        tags
-        title
-        project
-      }
-      id
-      fields {
-          slug
-        }
-      internal {
-        contentFilePath
-      }
-    }
-  }
-}`
-  )
+  `)
 
   if (!projects) return null
 
-  projects = projects.map(p=>projectSlugMaker(p));
+  projects = projects.map((p) => projectSlugMaker(p))
 
-  let latestProjectBlogs = data.latestBlogs.nodes.filter(
-    node =>
-      projects.includes(projectSlugMaker(node.frontmatter.project))
+  let latestProjectBlogs = data.latestBlogs.nodes.filter((node) =>
+    projects.includes(projectSlugMaker(node.frontmatter.project))
   )
-  let latestProjectUpdates = data.latestUpdates.nodes.filter(
-    node =>
-        projects.includes(projectSlugMaker(node.frontmatter.project))
+  let latestProjectUpdates = data.latestUpdates.nodes.filter((node) =>
+    projects.includes(projectSlugMaker(node.frontmatter.project))
   )
 
-  latestProjectBlogs = latestProjectBlogs.slice(0,10);
-  latestProjectUpdates = latestProjectUpdates.slice(0,10);
+  latestProjectBlogs = latestProjectBlogs.slice(0, 10)
+  latestProjectUpdates = latestProjectUpdates.slice(0, 10)
 
   return (
     <>
       {latestProjectBlogs && latestProjectBlogs.length !== 0 && (
-        <Box margin={{bottom:"1em"}}>
+        <Box margin={{ bottom: "1em" }}>
           <Box>
-            <Heading level={3}>
-              Latest Blogs
-            </Heading>
+            <Heading level={3}>Latest Blogs</Heading>
           </Box>
           <LatestEntries entries={latestProjectBlogs} />
         </Box>
@@ -87,9 +87,7 @@ export function LatestProductBlogsUpdates({ projects }) {
       {latestProjectUpdates && latestProjectUpdates.length !== 0 && (
         <Box>
           <Box>
-            <Heading level={3}>
-              Latest Updates
-            </Heading>
+            <Heading level={3}>Latest Updates</Heading>
           </Box>
           <LatestEntries entries={latestProjectUpdates} isUpdate={true} />
         </Box>

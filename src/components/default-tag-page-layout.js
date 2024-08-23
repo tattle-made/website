@@ -49,7 +49,11 @@ export const pageQuery = graphql`
           project
           date
           tags
-          cover
+          cover {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            }
+          }
         }
       }
     }

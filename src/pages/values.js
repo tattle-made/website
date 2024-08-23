@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Box, Image, Heading, Paragraph } from "grommet"
+import { Box, Heading, Paragraph } from "grommet"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
-import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
+import { GatsbyImage, getImage} from "gatsby-plugin-image"
 
 const Section = ({ children }) => (
   <NarrowContentWrapper>
@@ -35,16 +35,16 @@ export default function Values({ data }) {
           Openness
         </Heading>
 
-        <Box direction={"row-responsive"}>
+        <Box direction={"row-responsive"} align="center">
           <Box
             width={"small"}
-            height={"small"}
+
             flex={"grow"}
-            margin={{ right: "small", bottom: "small" }}
+            margin={{ right: "small", bottom:"small" }}
           >
-            <Image
-              fit={"contain"}
-              src={getSrc(value_openness)}
+            <GatsbyImage
+              objectFit={"contain"}
+              image={getImage(value_openness)}
             />
           </Box>
           <Box>
@@ -72,16 +72,15 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Accessibility
         </Heading>
-        <Box direction={"row-responsive"}>
+        <Box direction={"row-responsive"} align="center">
           <Box
             width={"small"}
-            height={"small"}
             flex={"grow"}
             margin={{ right: "small", bottom: "small" }}
           >
-            <Image
-              fit={"contain"}
-              src={getSrc(value_accessibility)}
+            <GatsbyImage
+              objectFit={"contain"}
+              image={getImage(value_accessibility)}
             />
           </Box>
           <Box>
@@ -100,16 +99,15 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Sustainability
         </Heading>
-        <Box direction={"row-responsive"}>
+        <Box direction={"row-responsive"} align="center">
           <Box
             width={"small"}
-            height={"small"}
             flex={"grow"}
             margin={{ right: "small", bottom: "small" }}
           >
-            <Image
-              fit={"contain"}
-              src={getSrc(value_sustainability)}
+            <GatsbyImage
+              objectFit={"contain"}
+              image={getImage(value_sustainability)}
             />
           </Box>
           <Box>
@@ -131,16 +129,15 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Humility
         </Heading>
-        <Box direction={"row-responsive"}>
+        <Box direction={"row-responsive"} align="center">
           <Box
             width={"small"}
-            height={"small"}
             flex={"grow"}
             margin={{ right: "small", bottom: "small" }}
           >
-            <Image
-              fit={"contain"}
-              src={getSrc(value_humility)}
+            <GatsbyImage
+              objectFit={"contain"}
+              image={getImage(value_humility)}
             />
           </Box>
           <Box>
@@ -159,16 +156,15 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Curiosity
         </Heading>
-        <Box direction={"row-responsive"}>
+        <Box direction={"row-responsive"} align="center">
           <Box
             width={"small"}
-            height={"small"}
             flex={"grow"}
             margin={{ right: "small", bottom: "small" }}
           >
-            <Image
-              fit={"contain"}
-              src={getSrc(value_curiosity)}
+            <GatsbyImage
+              objectFit={"contain"}
+              image={getImage(value_curiosity)}
             />
           </Box>
           <Box>

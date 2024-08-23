@@ -1,9 +1,3 @@
-import DefaultLayoutNarrow from "@/components/default-layout-narrow";
-
-export default function Layout({ children }) {
-  return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
-}
-
 ---
 name: Misinfocon India
 excerpt: All things Misinfocon India can be found here
@@ -13,6 +7,11 @@ date: 2023-05-18
 ---
 
 import { Box, Image, Link } from "grommet"
+import DefaultLayoutNarrow from "@/components/default-layout-narrow";
+
+export default function Layout({ children }) {
+  return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
+}
 
 ![group-photo](../images/misinfocon-india-group-photo.png)
 

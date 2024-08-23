@@ -143,8 +143,8 @@ const ProductIndex = () => {
 
             <ResponsiveLayoutDatasets >
               <CaseStudyPreview
-                coverImage={getSrc(cover_ogbv)}
-                previewImage={getSrc(icon_ogbv)}
+                coverImage={getImage(cover_ogbv)}
+                previewImage={getImage(icon_ogbv)}
                 title={"Uli"}
                 description={
                   "Empowering users to respond to Online Gender Based Violence via localized content moderation"
@@ -155,8 +155,8 @@ const ProductIndex = () => {
                 updates_slug={"/updates/tags/project/uli"}
               />
               <CaseStudyPreview
-                coverImage={getSrc(cover_dau)}
-                previewImage={getSrc(icon_dau)}
+                coverImage={getImage(cover_dau)}
+                previewImage={getImage(icon_dau)}
                 title={"Deepfakes Analysis Unit"}
                 description={
                   "Collaborative platform for factcheckers and media forensic experts to analyze possible deepfakes"
@@ -165,8 +165,8 @@ const ProductIndex = () => {
                 publicationDate={"13-11-2020"}
               />
               <CaseStudyPreview
-                coverImage={getSrc(cover_viral_spiral)}
-                previewImage={getSrc(icon_viral_spiral)}
+                coverImage={getImage(cover_viral_spiral)}
+                previewImage={getImage(icon_viral_spiral)}
                 title={"Viral Spiral"}
                 description={
                   "An adaptive digital card game about identity, biases and affinity aimed to increase media literacy."

@@ -6,7 +6,7 @@ import NarrowContentWrapper from "../../../components/atomic/layout/narrow-conte
 import NarrowSection from "../../../components/atomic/layout/narrow-section"
 import { ExternalLink, PlainLink } from "../../../components/atomic/TattleLinks"
 import { LatestProductBlogsUpdates } from "../../../components/LatestProductBlogsUpdates"
-import { getSrc } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
 const ViralSpiral = () => {
   const { product_cover, workshop_images } = useStaticQuery(graphql`
@@ -42,10 +42,9 @@ const ViralSpiral = () => {
         margin={{ top: "medium" }}
       >
         <Box>
-          <Image
-            src={getSrc(product_cover)}
-            fit="contain"
-            fill={true}
+          <GatsbyImage
+            image={getImage(product_cover)}
+            objectFit="contain"
           />
         </Box>
       </Box>
@@ -78,13 +77,11 @@ const ViralSpiral = () => {
       </NarrowContentWrapper>
       <Box
         height={{ max: "80vh", min: "fit-content" }}
-        margin={{ top: "medium" }}
       >
         <Box>
-          <Image
-            src={getSrc(workshop_images)}
-            fit="contain"
-            fill={true}
+          <GatsbyImage
+            image={getImage(workshop_images)}
+            objectFit="contain"
           />
         </Box>
       </Box>

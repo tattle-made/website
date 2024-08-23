@@ -7,7 +7,7 @@ import {
   Button,
 } from "grommet"
 import { graphql, useStaticQuery } from "gatsby"
-import { getSrc } from "gatsby-plugin-image"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
 /**
  * @author
@@ -56,9 +56,9 @@ const WeBuildFor = () => {
           focusIndicator={"none"}
           style={{ cursor: "zoom-in" }}
         >
-          <Image
-            fit="contain"
-            src={getSrc(stakeholder_simple)}
+          <GatsbyImage
+            objectFit="contain"
+            image={getImage(stakeholder_simple)}
           />
         </Box>
       </Box>
@@ -69,9 +69,9 @@ const WeBuildFor = () => {
         >
           <Box fill background={"brand"}>
             <Button label="close" onClick={() => setShow(false)} />
-            <Image
-              fit="contain"
-              src={getSrc(stakeholder_map)}
+            <GatsbyImage
+              objectFit="contain"
+              image={getImage(stakeholder_map)}
             />
           </Box>
         </Layer>

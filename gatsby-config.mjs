@@ -14,9 +14,10 @@ const config = {
     base_url: "https://tattle.co.in",
   },
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-remark-images`,
+    // `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
@@ -77,7 +78,14 @@ const config = {
     },
 
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          quality: 100,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -99,6 +107,13 @@ const config = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
+            },
+          },
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            // For Gifs
+            options: {
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `webp`],
             },
           },
         ],
@@ -125,6 +140,12 @@ const config = {
               aliases: {},
               showLineNumbers: true,
               noInlineHighlight: true,
+            },
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
             },
           },
         ],
@@ -176,7 +197,14 @@ const config = {
         project
         date
         tags
-        cover
+        cover {
+            childImageSharp {
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+            )
+          }
+        }
       }
       internal {
         contentFilePath

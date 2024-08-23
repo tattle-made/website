@@ -18,6 +18,13 @@ import NarrowSection from "../../components/atomic/layout/narrow-section"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 
 /**
+ * NOTE:
+ * For the component CaseStudyPreview which accepts preview and cover images, these props no longer accepts image urls. Instead they accpets 
+ * gatsbyImageData resolver which is returned from the graphQl query (see how /pages/products/index.js is using the same CaseStudyPreview component 
+ * with same props ). For now the section which uses the CaseStudyPreview component is being commented out as it was throwing error during build time.
+ */
+
+/**
  * @author
  * @function Index
  **/
@@ -121,7 +128,7 @@ const CaseStudySection = ({ size, bgColor, contentWidth }) => {
         <SectionLabels>Case Studies</SectionLabels>
       </Box>
       <Text></Text>
-      <ResponsiveLayoutDatasets size={size}>
+      {/* <ResponsiveLayoutDatasets size={size}>
         <CaseStudyPreview
           previewImage={
             "https://images.unsplash.com/photo-1462556791646-c201b8241a94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1045&q=80"
@@ -166,7 +173,7 @@ const CaseStudySection = ({ size, bgColor, contentWidth }) => {
           url={"https://services.tattle.co.in/khoj/dashboard"}
           publicationDate={"13-11-2020"}
         />
-      </ResponsiveLayoutDatasets>
+      </ResponsiveLayoutDatasets> */}
     </Box>
   )
 }

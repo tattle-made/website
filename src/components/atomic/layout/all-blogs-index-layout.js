@@ -5,6 +5,7 @@ import { Box, Heading, Paragraph, Text, Image} from "grommet"
 import MasonryLayoutResponsive from "../MasonryLayoutResponsive"
 import { PlainSectionLink } from "../TattleLinks"
 import { byline } from "../../default-blog-index-layout"
+import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
 
 
@@ -12,7 +13,7 @@ export function AllBlogsIndexLayout({blogs}){
 
     return(
 
-        <MasonryLayoutResponsive flex={3}>
+        <MasonryLayoutResponsive >
           {blogs.map((blog,key )=> {
             return (
               <Box
@@ -23,18 +24,15 @@ export function AllBlogsIndexLayout({blogs}){
               >
                 <PlainSectionLink to={`/blog/${blog.fields.slug}`}>
                   <Box>
-                    {blog.frontmatter.cover ? (
+                    {blog.frontmatter.cover && 
                       <Box
-                        width={"small"}
-                        style={{ minWidth: "100%" }}
+                        width={"full"}
+                        // style={{ minWidth: "100%" }}
                         height={"small"}
                       >
-                        <Image
-                          fit={"cover"}
-                          src={`/${blog.frontmatter.cover}`}
-                        ></Image>
+                        <GatsbyImage objectFit="cover" image={getImage(blog.frontmatter.cover)} />
                       </Box>
-                    ) : null}
+                    }
                     <Box pad="small">
                       <Text size={"xsmall"} weight={600}>
                         {`${new Date(blog.frontmatter.date).toDateString()}`}
