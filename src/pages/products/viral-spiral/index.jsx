@@ -1,40 +1,13 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import { Box, Heading, Text, Image, Paragraph, Anchor } from "grommet"
+import { Box, Heading, Text, Paragraph, Anchor } from "grommet"
 import DefaultLayout from "../../../components/default-layout"
 import NarrowContentWrapper from "../../../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../../../components/atomic/layout/narrow-section"
-import { ExternalLink, PlainLink } from "../../../components/atomic/TattleLinks"
+import { ExternalLink } from "../../../components/atomic/TattleLinks"
 import { LatestProductBlogsUpdates } from "../../../components/LatestProductBlogsUpdates"
-import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image"
 
 const ViralSpiral = () => {
-  const { product_cover, workshop_images } = useStaticQuery(graphql`
-    query {
-      product_cover: file(
-        relativePath: { eq: "product-viral-spiral-cover.png" }
-      ) {
-        childImageSharp {
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-          )
-        }
-      }
-      workshop_images: file(
-        relativePath: { eq: "product-viral-spiral-workshops.png" }
-      ) {
-        childImageSharp {
-          gatsbyImageData(
-            layout: FULL_WIDTH
-            placeholder: BLURRED
-          )
-        }
-      }
-    }
-  `)
-  
-
   return (
     <DefaultLayout>
       <Box
@@ -42,8 +15,8 @@ const ViralSpiral = () => {
         margin={{ top: "medium" }}
       >
         <Box>
-          <GatsbyImage
-            image={getImage(product_cover)}
+          <StaticImage
+            src={`../../../images/product-viral-spiral-cover.png`}
             objectFit="contain"
           />
         </Box>
@@ -75,12 +48,10 @@ const ViralSpiral = () => {
           <Heading>Play with Us</Heading>
         </NarrowSection>
       </NarrowContentWrapper>
-      <Box
-        height={{ max: "80vh", min: "fit-content" }}
-      >
+      <Box height={{ max: "80vh", min: "fit-content" }}>
         <Box>
-          <GatsbyImage
-            image={getImage(workshop_images)}
+          <StaticImage
+            src={`../../../images/product-viral-spiral-workshops.png`}
             objectFit="contain"
           />
         </Box>
@@ -108,7 +79,7 @@ const ViralSpiral = () => {
         </NarrowSection>
       </NarrowContentWrapper>
       <NarrowContentWrapper>
-      <LatestProductBlogsUpdates projects={["viral spiral"]} />
+        <LatestProductBlogsUpdates projects={["viral spiral"]} />
       </NarrowContentWrapper>
       <NarrowContentWrapper>
         <NarrowSection>

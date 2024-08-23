@@ -1,24 +1,13 @@
 import React from "react"
-import { Anchor, Box, Heading, Image, Paragraph, Text } from "grommet"
+import { Anchor, Box, Heading, Paragraph, Text } from "grommet"
 import DefaultLayout from "../../components/default-layout"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../../components/atomic/layout/narrow-section"
 import { PlainLink } from "../../components/atomic/TattleLinks"
-import { graphql, useStaticQuery } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
-import { GatsbyImage, getImage, getSrc, StaticImage } from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Page = () => {
-  const { cover_image } = useStaticQuery(graphql`
-    query {
-      cover_image: file(relativePath: { eq: "banner_facts.jpg" }) {
-        childImageSharp {
-          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-        }
-      }
-    }
-  `)
-
   return (
     <DefaultLayout>
       <NarrowContentWrapper>
@@ -32,9 +21,8 @@ const Page = () => {
               background={"red"}
               height={"20em"}
             >
-              <GatsbyImage
-                image={getImage(cover_image)}
-                // objectFit="cover"
+              <StaticImage
+                src={`../../images/banner_facts.jpg`}
                 alt="Cover image for facts! interactive resources for media literacy"
               />
             </Box>
@@ -75,7 +63,7 @@ const Page = () => {
             <Paragraph>supported by </Paragraph>
             <Anchor href={"https://factshala.com/"} target={"_blank"}>
               <Box width="8em" height={"4em"}>
-                <StaticImage src="../../images/factshala-logo.png" alt="logo"/>
+                <StaticImage src="../../images/factshala-logo.png" alt="logo" />
               </Box>
             </Anchor>
           </Box>

@@ -17,7 +17,6 @@ const config = {
     `gatsby-plugin-image`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
-    // `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
@@ -82,7 +81,8 @@ const config = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
-          quality: 100,
+          placeholder: `blurred`
+          
         },
       },
     },
