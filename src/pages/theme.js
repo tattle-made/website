@@ -16,6 +16,7 @@ import styled from "styled-components"
 import DefaultLayout from "../components/default-layout"
 import { GitHub } from "react-feather"
 import TattleLogo from "../components/atomic/TattleLogo"
+import { StaticImage } from "gatsby-plugin-image"
 
 /**
  * @author
@@ -269,6 +270,9 @@ const Theme = () => {
           <Box fill={"horizontal"} margin={{ horizontal: "small" }}>
             <CoverSection />
           </Box>
+          <Box fill={"horizontal"} margin={{ horizontal: "small" }}>
+            <StaticCoverSection />
+          </Box>
           <Box margin={"small"}>
             <Box width={"medium"} direction={"column"} gap={"small"}>
               <Button label={"Default Button"} />
@@ -302,6 +306,40 @@ const CoverSection = () => {
         <Heading margin={{ top: "4.578px", bottom: "7.324px" }}>
           Heading
         </Heading>
+        <Paragraph size={"medium"}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet,
+          odio nec iaculis dapibus, dui lorem convallis felis, in dapibus lacus
+          odio in diam. Nulla purus ipsum, semper scelerisque pulvinar.
+        </Paragraph>
+      </Box>
+      <Box fill={"horizontal"} height={"medium"}>
+        <StaticImage
+          objectFit={"cover"}
+          src={
+            "https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw"
+          }
+        />
+      </Box>
+    </Box>
+  )
+}
+
+const StaticCoverSection = () => {
+  return (
+    <Box
+      round={"xsmall"}
+      background={"visuals-4"}
+      overflow={"hidden"}
+      direction={"row"}
+      margin={{vertical:"1em"}}
+    >
+      <Box direction={"column"} margin={{ horizontal: "small" }}>
+        <Heading margin={{ top: "4.578px", bottom: "7.324px" }}>
+          Heading
+        </Heading>
+        <Paragraph size={"medium"}>
+          Cover with Gatsby Static Image
+        </Paragraph>
         <Paragraph size={"medium"}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet,
           odio nec iaculis dapibus, dui lorem convallis felis, in dapibus lacus

@@ -21,7 +21,7 @@ const BlogIndex = ({ data, pageContext }) => {
   return (
     <DefaultLayout>
       <Box width="100%" pad="medium" direction="column">
-        <Box pad="small"> 
+        <Box pad="small">
           <Box>
             <TagsRenderer
               tagTypeHeading={"Tags:"}
@@ -62,7 +62,11 @@ export const query = graphql`
           project
           date
           tags
-          cover
+          cover {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            }
+          }
         }
         internal {
           contentFilePath
@@ -71,11 +75,8 @@ export const query = graphql`
     }
     cover_blog_index: file(relativePath: { eq: "cover-index-blog.png" }) {
       childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              placeholder: BLURRED
-            )
-          }
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
     }
   }
 `

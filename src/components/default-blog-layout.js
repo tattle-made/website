@@ -15,20 +15,20 @@ import useBlogTags from "../hooks/useBlogTags"
 
 import { projectSlugMaker } from "../lib/project-slug-maker"
 import TagsRenderer from "./TagsRenderer"
+import { getSrc } from "gatsby-plugin-image"
 
 const shortcodes = {
   Link,
   BlogHeaderCard,
-  code: props => <CustomCodeBlock {...props} />,
-  inlineCode: props => <InlineCodeBlock {...props} />,
+  code: (props) => <CustomCodeBlock {...props} />,
+  inlineCode: (props) => <InlineCodeBlock {...props} />,
 }
 
-export default function PageTemplate({ data: { mdx, allMdx },children }) {
-
+export default function PageTemplate({ data: { mdx, allMdx }, children }) {
   const { tagCounts, projectTagsCounts } = useBlogTags()
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
   const tags = mdx.frontmatter.tags
-    ? mdx.frontmatter.tags.split(",").map(tag => tag.trim())
+    ? mdx.frontmatter.tags.split(",").map((tag) => tag.trim())
     : []
 
   const location = useLocation()
@@ -46,7 +46,13 @@ export default function PageTemplate({ data: { mdx, allMdx },children }) {
       primaryNav={primaryNav}
       expandCenter={true}
       isMDXPage={true}
-      meta={{ name: name, excerpt: excerpt, project: project, tags: tags, cover:cover }}
+      meta={{
+        name: name,
+        excerpt: excerpt,
+        project: project,
+        tags: tags,
+        cover: getSrc(cover),
+      }}
     >
       <MDXProvider components={shortcodes}>
         <Box>
@@ -83,7 +89,6 @@ export default function PageTemplate({ data: { mdx, allMdx },children }) {
           </Box>
 
           {children}
-  
         </Box>
       </MDXProvider>
     </AppShell>
@@ -101,7 +106,11 @@ export const pageQuery = graphql`
         project
         date
         tags
-        cover
+        cover {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+          }
+        }
       }
     }
     allMdx {

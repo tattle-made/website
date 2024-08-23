@@ -1,60 +1,64 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
-import {Box, Heading} from "grommet"
+import { Box, Heading } from "grommet"
 import { LatestEntries } from "./LatestEntries"
 
 export default function LatestBlogsUpdates() {
-  const data = useStaticQuery(
-    graphql`{
-  latestBlogs: allMdx(
-    limit: 5
-    sort: {frontmatter: {date: DESC}}
-    filter: {internal: {contentFilePath: {regex: "/.*/src/blog/"}}}
-  ) {
-    nodes {
-      fields {
-          slug
+  const data = useStaticQuery(graphql`
+    {
+      latestBlogs: allMdx(
+        limit: 5
+        sort: { frontmatter: { date: DESC } }
+        filter: { internal: { contentFilePath: { regex: "/.*/src/blog/" } } }
+      ) {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            name
+            excerpt
+            author
+            project
+            date
+            tags
+            cover {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              }
+            }
+          }
+          internal {
+            contentFilePath
+          }
         }
-      frontmatter {
-        name
-        excerpt
-        author
-        project
-        date
-        tags
-        cover
       }
-      internal {
-        contentFilePath
+      latestUpdates: allMdx(
+        limit: 5
+        sort: { frontmatter: { date: DESC } }
+        filter: { internal: { contentFilePath: { regex: "/updates/" } } }
+      ) {
+        nodes {
+          frontmatter {
+            url
+            excerpt
+            date
+            tags
+            title
+            project
+          }
+          id
+          fields {
+            slug
+          }
+          internal {
+            contentFilePath
+          }
+        }
       }
     }
-  }
-  latestUpdates: allMdx(
-    limit: 5
-    sort: {frontmatter: {date: DESC}}
-    filter: {internal: {contentFilePath: {regex: "/updates/"}}}
-  ) {
-    nodes {
-      frontmatter {
-        url
-        excerpt
-        date
-        tags
-        title
-        project
-      }
-      id
-      fields {
-          slug
-        }
-      internal {
-        contentFilePath
-      }
-    }
-  }
-}`
-  )
+  `)
 
   const latestBlogs = data.latestBlogs.nodes
   const latestUpdates = data.latestUpdates.nodes

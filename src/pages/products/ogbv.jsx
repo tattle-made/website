@@ -4,6 +4,8 @@ import DefaultLayout from "../../components/default-layout"
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper"
 import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
+import { StaticImage } from "gatsby-plugin-image"
+import heroGif from "../../images/products/HeroIllustration.gif"
 
 const ogbv = () => (
   <DefaultLayout>
@@ -11,7 +13,7 @@ const ogbv = () => (
       <NarrowSection>
         <Box direction={"column"} wrap={true}>
           <Box width={"xsmall"} pad={{ right: "small" }}>
-            <Image src={"/products/Uli Logo-Header-03.png"} />
+            <StaticImage src={"../../images/products/Uli Logo-Header-03.png"} />
           </Box>
           <Box margin={{ top: "small" }}>
             <Text size="small">
@@ -22,7 +24,7 @@ const ogbv = () => (
         </Box>
         <Box direction={"row-responsive"} wrap={true}>
           <Box width={"medium"}>
-            <Image src="/products/HeroIllustration.gif"></Image>
+            <img src={heroGif} alt="hero-gif"/>
           </Box>
           <Box width={"2em"}></Box>
           <Box justify="center">
@@ -107,7 +109,7 @@ const ogbv = () => (
             wrap={true}
           >
             <Box width={"medium"} height={"small"}>
-              <Image src={"/products/WOAH-Award.jpg"} fit="contain" />
+              <StaticImage src={"../../images/products/WOAH-Award.jpg"} objectFit="contain" />
             </Box>
 
             <Box gap={"small"}>

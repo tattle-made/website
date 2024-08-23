@@ -27,6 +27,7 @@ import styled, { useTheme } from "styled-components"
 import CovidWhatsappTSNEMap from "../../../components/molecule/covid-whatsapp-tsne-map"
 import fileDownload from "js-file-download"
 import axios from "axios"
+import { StaticImage } from "gatsby-plugin-image"
 
 const ImageText = styled.div`
   img {
@@ -438,12 +439,11 @@ const Content = () => {
             screenshots of WhatsApp and Facebook posts and some of apps and
             websites with resources of Covid-19 related information.
           </Paragraph>
-          <Box height={"14em"}>
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/graphs-01.png"
+          <Box className="w-96">
+            <StaticImage
+              src="../../../images/covid-whatsapp-public-groups/report_images/graphs-01.png"
               alt="GraphLinks"
-              fit={"contain"}
-              alignSelf={"start"}
+              objectFit={"contain"}
             />
           </Box>
 
@@ -495,9 +495,9 @@ const Content = () => {
             images of gods and of close-up of people’s faces. We tracked the
             images of people’s faces to a specific spiritual WhatsApp group
             which had the terms ‘Covid’ and ‘healing’ in the group name. The
-            group was sometimes used for
-            sharing resources for Covid-19 relief, but was predominantly used
-            for sharing images of different Indians gods.{" "}
+            group was sometimes used for sharing resources for Covid-19 relief,
+            but was predominantly used for sharing images of different Indians
+            gods.{" "}
           </Paragraph>
           <h3 id="trend-4-low-overlap-with-database-s-of-verified-leads-scams"></h3>
           <TrendHeading
@@ -570,19 +570,19 @@ const Content = () => {
             ‘patient’, ‘oxygen’, had nearly equal representation in images and
             text messages, words such as ‘need’ and ‘help’ were significantly
             more common in text messages. (Please see full report for more
-            detailed analysis). 
-            </Paragraph>
-            
-            <Paragraph responsive={true} size={"large"} color={"accent-3"}>
-            This preliminary analysis suggests that while
-            both text messages and images (which are screenshots of information
-            from other platforms) were used to advertise for availability of
-            oxygen or blood donors, the request for medical aid was more often
-            circulated as text messages native to WhatsApp. This analysis relies
-            on text extracted from images using Cloud vision techniques and
-            automated language translation, both of which are prone to error.
-            The claim presented here merits more in-depth research, with more
-            manual scanning of individual messages.{" "}
+            detailed analysis).
+          </Paragraph>
+
+          <Paragraph responsive={true} size={"large"} color={"accent-3"}>
+            This preliminary analysis suggests that while both text messages and
+            images (which are screenshots of information from other platforms)
+            were used to advertise for availability of oxygen or blood donors,
+            the request for medical aid was more often circulated as text
+            messages native to WhatsApp. This analysis relies on text extracted
+            from images using Cloud vision techniques and automated language
+            translation, both of which are prone to error. The claim presented
+            here merits more in-depth research, with more manual scanning of
+            individual messages.{" "}
           </Paragraph>
 
           <TrendHeading head="Trend 6 : Variation in Conversation Over Time and Across Groups" />
@@ -596,12 +596,11 @@ const Content = () => {
             from 6th May 2021 and ending on 25th June 2021.
           </Paragraph>
 
-          <Box height={"14em"}>
-            <Image
-              src="/covid-whatsapp-public-groups/report_images/graphs-02.png"
+          <Box className="w-96">
+            <StaticImage
+              src="../../../images/covid-whatsapp-public-groups/report_images/graphs-02.png"
               alt="Temporal Frequency"
-              fit={"contain"}
-              alignSelf={"start"}
+              objectFit="contain"
             />
           </Box>
 
@@ -620,11 +619,11 @@ const Content = () => {
             in a conversation in any week. For that, we used a technique called
             Term Frequency - Inverse Document Frequency (TF-IDF) which gives
             prominence to words in a week that are more salient compared to
-            terms in other 6 weeks. Words such as ‘hospital’ and ‘oxygen’ may still feature in
-            a specific week, which would imply that their usage in that week was
-            notably higher than the other weeks.{" "}
+            terms in other 6 weeks. Words such as ‘hospital’ and ‘oxygen’ may
+            still feature in a specific week, which would imply that their usage
+            in that week was notably higher than the other weeks.{" "}
           </Paragraph>
-       
+
           <Paragraph responsive={true} size={"large"} color={"accent-3"}>
             Analyzing the most frequent words (adjusted for popularity across
             weeks) we see that the word ‘oxygen’ stops appearing in the frequent
@@ -684,9 +683,9 @@ const Content = () => {
               credibility markers to assess whether a lead shared could be
               trusted were needed. We saw several messages being ‘signed’ with a
               time stamp and/or information about the originator of the
-              information. These credibility markers can be spoofed. But
-              social practices for information quality management in closed
-              messaging apps deserve more attention.
+              information. These credibility markers can be spoofed. But social
+              practices for information quality management in closed messaging
+              apps deserve more attention.
             </Paragraph>
 
             <Paragraph size={"large"}>
@@ -853,13 +852,13 @@ const ImageTableToggle = () => {
         name="selection"
         options={["Text Messages", "Image Messages"]}
         value={value}
-        onChange={event => setValue(event.target.value)}
+        onChange={(event) => setValue(event.target.value)}
       />
       {value === "Text Messages" && (
         <Box width={"100%"} gap={"small"} direction={"row"} wrap={true}>
           <Box width={"small"}>
-            <img
-              src="/covid-whatsapp-public-groups/report_images/text_wordcloud.png"
+            <StaticImage
+              src="../../../images/covid-whatsapp-public-groups/report_images/text_wordcloud.png"
               alt="text_wordcloud"
             />
           </Box>
@@ -936,8 +935,8 @@ const ImageTableToggle = () => {
       {value === "Image Messages" && (
         <Box width={"100%"} gap={"small"} direction={"row"} wrap={true}>
           <Box width={"small"}>
-            <img
-              src="/covid-whatsapp-public-groups/report_images/image_wordcloud_26June.png"
+            <StaticImage
+              src="../../../images/covid-whatsapp-public-groups/report_images/image_wordcloud_26June.png"
               alt="image_wordcloud"
             />
           </Box>
@@ -1072,7 +1071,7 @@ const Index = () => {
                       .get("/covid-whatsapp-public-groups/report.pdf", {
                         responseType: "blob",
                       })
-                      .then(res => {
+                      .then((res) => {
                         fileDownload(res.data, "Tattle_Covid_Report_2021.pdf")
                       })
                   }}

@@ -5,6 +5,7 @@ import {
   PlainLink,
   SmartPlainLink,
 } from "../../components/atomic/TattleLinks"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const CaseStudyPreview = ({
   coverImage,
@@ -26,7 +27,7 @@ const CaseStudyPreview = ({
     >
       {coverImage ? (
         <Box width={"100%"} height={"small"}>
-          <Image src={coverImage} fit="contain" />
+          <GatsbyImage image={coverImage} objectFit="contain" />
         </Box>
       ) : null}
 
@@ -38,8 +39,9 @@ const CaseStudyPreview = ({
               height={"xsmall"}
               round={"xxsmall"}
               overflow={"hidden"}
+              justify="center"
             >
-              <Image src={previewImage} fit="contain" fill={true} />
+              <GatsbyImage image={previewImage} objectFit="contain"/>
             </Box>
             <Box>
               <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>

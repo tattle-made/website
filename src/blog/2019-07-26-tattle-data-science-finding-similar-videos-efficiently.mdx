@@ -62,6 +62,7 @@ Using `scipy` library we can compute it very easily,
 Here $P$ gives us the indices of the columns in the order of selection. Below is the plot of the reconstruction error with the selection size from $P$. 
 ![](../images/testplot-3.png)
 We can see that after the first two frame selection the error reduction slows down. The first selections are the following. 
+{/* These images sources are not present */}
 ![](../images/frame0-3.jpg)![](/content/images/2019/07/frame700.jpg)
 Using these these two frames as anchor frames we achieve $80.48\%$ reduction in reconstruction error.  Now that we have found a set of representative anchor frames for a video, we can use the same technique we use for image duplicate detection and label extraction. To generate a fingerprint for the video we can take individual image fingerprint (pHash or pre-trained Convolutional Neural Network features) for all the anchor frames  and either append them or take an average. 
 
