@@ -11,7 +11,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
-function SEO({ description, lang, meta, title, heading }) {
+function SEO({ description='', lang=`en`, meta=[], title, heading }) {
   const location = useLocation()
   const pathname = location.pathname
   // debugger
@@ -102,12 +102,6 @@ function SEO({ description, lang, meta, title, heading }) {
       />
     </Helmet>
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
 }
 
 SEO.propTypes = {

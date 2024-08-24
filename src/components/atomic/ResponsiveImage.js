@@ -1,7 +1,6 @@
 import React from "react"
-import { Box, Text, ResponsiveContext, Image } from "grommet"
-import { GatsbyImage,getImage} from "gatsby-plugin-image"
-import { graphql, useStaticQuery } from "gatsby"
+import { Box, ResponsiveContext } from "grommet"
+import { StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 
 const WeirdBox = styled(Box)`
@@ -15,40 +14,27 @@ const WeirdBox = styled(Box)`
  * @function ResponsiveImage
  **/
 
-export const ResponsiveImage = ({ data, imageName }) => {
+export const ResponsiveImage = () => {
   const size = React.useContext(ResponsiveContext)
-  const { wide_image, narrow_image } = useStaticQuery(
-    graphql`
-      query {
-        wide_image: file(relativePath: { eq: "landing-page-wide.png" }) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              placeholder: BLURRED
-            )
-          }
-        }
-        narrow_image: file(relativePath: { eq: "landing-page-narrow.png" }) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: FULL_WIDTH
-              placeholder: BLURRED
-            )
-          }
-        }
-      }
-    `
-  );
 
   return (
     <>
       {size === "small" ? (
         <Box width={"100%"} alignSelf={"start"} height={"small"}>
-          <GatsbyImage objectFit="contain" image={getImage(narrow_image)}/>
+          <StaticImage
+            alt="landing page image"
+            objectFit="contain"
+            src="../../images/landing-page-narrow.png"
+          />
         </Box>
       ) : (
         <Box width={"40%"} style={{ boxShadow: "none" }}>
-          <GatsbyImage objectFit="contain" imgStyle={{fill:true,alignSelf:"start"}} image={getImage(wide_image)} />
+          <StaticImage
+            alt="landing page image"
+            objectFit="contain"
+            imgStyle={{ fill: true, alignSelf: "start" }}
+            src="../../images/landing-page-wide.png"
+          />
         </Box>
       )}
     </>

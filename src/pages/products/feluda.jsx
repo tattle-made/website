@@ -149,13 +149,13 @@ const Page = () => (
               href="https://app.digitalpublicgoods.net/a/10707"
               target={"_blank"}
             >
-              <StaticImage src="../../images/dpgicon.svg"/>
+              <StaticImage alt="img" src="../../images/dpgicon.svg"/>
             </a>
           </Box>
         </Box>
         <Box direction={"row-responsive"} wrap={true}>
           <Box width={"medium"}>
-            <StaticImage src={"../../images/kosh-header-2.jpg"} />
+            <StaticImage alt="img" src={"../../images/kosh-header-2.jpg"} />
           </Box>
           <Box width={"2em"}></Box>
           <Paragraph>
@@ -211,7 +211,7 @@ const Page = () => (
             wrap={true}
           >
             <Box width={"medium"} height={"small"}>
-              <StaticImage src={"../../images/covid-tsne.png"} objectFit="contain" />
+              <StaticImage alt="img" src={"../../images/covid-tsne.png"} objectFit="contain" />
             </Box>
 
             <Box gap={"small"}>
@@ -239,7 +239,7 @@ const Page = () => (
           border={{ color: "visuals-2" }}
           overflow={"hidden"}
         >
-          <StaticImage src={"../../images/kosh-preview.png"} />
+          <StaticImage alt="img" src={"../../images/kosh-preview.png"} />
         </Box>
         <Text size={"xsmall"} margin={{ top: "xxsmall" }}>
           Preview of Kosh's UI for adding and viewing{" "}

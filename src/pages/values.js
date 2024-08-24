@@ -1,10 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
 import { Box, Heading, Paragraph } from "grommet"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
-import { GatsbyImage, getImage} from "gatsby-plugin-image"
+import { StaticImage} from "gatsby-plugin-image"
 
 const Section = ({ children }) => (
   <NarrowContentWrapper>
@@ -12,14 +11,7 @@ const Section = ({ children }) => (
   </NarrowContentWrapper>
 )
 
-export default function Values({ data }) {
-  const {
-    value_openness,
-    value_accessibility,
-    value_sustainability,
-    value_humility,
-    value_curiosity,
-  } = data
+export default function Values() {
   return (
     <DefaultLayout>
       <Section>
@@ -35,16 +27,16 @@ export default function Values({ data }) {
           Openness
         </Heading>
 
-        <Box direction={"row-responsive"} align="center">
+        <Box direction={"row-responsive"} align="start">
           <Box
             width={"small"}
-
             flex={"grow"}
-            margin={{ right: "small", bottom:"small" }}
+            margin={{ right: "small", bottom: "small", top: "medium" }}
           >
-            <GatsbyImage
+            <StaticImage
+              alt="value img"
               objectFit={"contain"}
-              image={getImage(value_openness)}
+              src={`../images/values-openness.jpg`}
             />
           </Box>
           <Box>
@@ -72,15 +64,16 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Accessibility
         </Heading>
-        <Box direction={"row-responsive"} align="center">
+        <Box direction={"row-responsive"} align="start">
           <Box
             width={"small"}
             flex={"grow"}
-            margin={{ right: "small", bottom: "small" }}
+            margin={{ right: "small", bottom: "small", top: "medium" }}
           >
-            <GatsbyImage
+            <StaticImage
+              alt="value img"
               objectFit={"contain"}
-              image={getImage(value_accessibility)}
+              src={`../images/values-accessibility.jpg`}
             />
           </Box>
           <Box>
@@ -99,15 +92,16 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Sustainability
         </Heading>
-        <Box direction={"row-responsive"} align="center">
+        <Box direction={"row-responsive"} align="start">
           <Box
             width={"small"}
             flex={"grow"}
-            margin={{ right: "small", bottom: "small" }}
+            margin={{ right: "small", bottom: "small", top: "medium" }}
           >
-            <GatsbyImage
+            <StaticImage
+              alt="value img"
               objectFit={"contain"}
-              image={getImage(value_sustainability)}
+              src={`../images/values-sustainability.jpg`}
             />
           </Box>
           <Box>
@@ -129,15 +123,16 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Humility
         </Heading>
-        <Box direction={"row-responsive"} align="center">
+        <Box direction={"row-responsive"} align="start">
           <Box
             width={"small"}
             flex={"grow"}
-            margin={{ right: "small", bottom: "small" }}
+            margin={{ right: "small", bottom: "small", top: "medium" }}
           >
-            <GatsbyImage
+            <StaticImage
+              alt="value img"
               objectFit={"contain"}
-              image={getImage(value_humility)}
+              src={`../images/values-humility.jpg`}
             />
           </Box>
           <Box>
@@ -156,15 +151,16 @@ export default function Values({ data }) {
         <Heading level={3} margin={{ bottom: "xsmall" }}>
           Curiosity
         </Heading>
-        <Box direction={"row-responsive"} align="center">
+        <Box direction={"row-responsive"} align="start">
           <Box
             width={"small"}
             flex={"grow"}
-            margin={{ right: "small", bottom: "small" }}
+            margin={{ right: "small", bottom: "small", top: "medium" }}
           >
-            <GatsbyImage
+            <StaticImage
+              alt="value img"
               objectFit={"contain"}
-              image={getImage(value_curiosity)}
+              src={`../images/values-curiosity.jpg`}
             />
           </Box>
           <Box>
@@ -198,52 +194,3 @@ export default function Values({ data }) {
     </DefaultLayout>
   )
 }
-
-export const query = graphql`
-  query ValuesImageQuery {
-    value_openness: file(relativePath: { eq: "values-openness.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-        )
-      }
-    }
-    value_accessibility: file(
-      relativePath: { eq: "values-accessibility.jpg" }
-    ) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-        )
-      }
-    }
-    value_sustainability: file(
-      relativePath: { eq: "values-sustainability.jpg" }
-    ) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-        )
-      }
-    }
-    value_humility: file(relativePath: { eq: "values-humility.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-        )
-      }
-    }
-    value_curiosity: file(relativePath: { eq: "values-curiosity.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-        )
-      }
-    }
-  }
-`

@@ -37,9 +37,10 @@ export function LatestEntries({ entries, isUpdate }) {
 
   return (
     <Box margin={{ top: "1em" }}>
-      {entries.map((entry) => {
+      {entries.map((entry,key) => {
         return (
           <Box
+            key={key}
             width={"full"}
             flex
             direction="row-responsive"
@@ -54,7 +55,7 @@ export function LatestEntries({ entries, isUpdate }) {
 
             <Box
               style={{ textAlign: "start" }}
-              pad={{ horizontal: size !== "small" ? "1em" : 0 }}
+              pad={{ horizontal: size !== "small" ? "1em" : "0" }}
             >
               {isUpdate ? (
                 entry.frontmatter.url && entry.frontmatter.url.length !== 0 ? (
@@ -66,7 +67,7 @@ export function LatestEntries({ entries, isUpdate }) {
                     <Text size="small" weight={600} truncate>
                       {entry.frontmatter.title}
                     </Text>
-                    <ExternalLink size={14} />
+                    <span><ExternalLink size={14} /></span>
                   </PlainLink>
                 ) : (
                   <Text size="small" weight={600} truncate>

@@ -55,7 +55,7 @@ export default function TagsRenderer({
                 </Link>
               </Box>
             ))}
-        {sortedUniqueTags.length >= 10 && (
+        {sortedUniqueTags.length > 10 && (
           <Button onClick={toggleTagsDisplay} >
             <Box
               pad="small"
