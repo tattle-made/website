@@ -7,7 +7,6 @@ import { Link } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 import { StaticImage } from "gatsby-plugin-image"
 
-
 const DPGLogo = () => (
   <svg
     version="1.1"
@@ -149,7 +148,7 @@ const Page = () => (
               href="https://app.digitalpublicgoods.net/a/10707"
               target={"_blank"}
             >
-              <StaticImage alt="img" src="../../images/dpgicon.svg"/>
+              <StaticImage alt="img" src="../../images/dpgicon.svg" />
             </a>
           </Box>
         </Box>
@@ -192,9 +191,11 @@ const Page = () => (
                 <Box width={"88px"} margin={{ bottom: "small" }}>
                   <DPGLogo />
                 </Box>
-                Feluda was featured by Digital Public Good Alliance amongst 10
-                open source projects from around the world helping address
-                misinformation
+                Feluda has been classified as a Digital Public Good by DPGA and
+                is listed in [DPG
+                Registry](https://app.digitalpublicgoods.net/a/10707). We
+                encourage researchers and journalists studying social media to
+                use Feluda in their work.
               </Paragraph>
               <Anchor
                 href={"https://digitalpublicgoods.net/information-pollution/"}
@@ -211,7 +212,11 @@ const Page = () => (
             wrap={true}
           >
             <Box width={"medium"} height={"small"}>
-              <StaticImage alt="img" src={"../../images/covid-tsne.png"} objectFit="contain" />
+              <StaticImage
+                alt="img"
+                src={"../../images/covid-tsne.png"}
+                objectFit="contain"
+              />
             </Box>
 
             <Box gap={"small"}>
@@ -275,7 +280,7 @@ const Page = () => (
             },
           ]}
         >
-          {datum => (
+          {(datum) => (
             <Box>
               <Paragraph fill size={"small"}>
                 <Anchor href={datum.url} target={"_blank"}>
@@ -287,11 +292,10 @@ const Page = () => (
           )}
         </List>
       </NarrowSection>
-      
-      <NarrowSection>
-      <LatestProductBlogsUpdates projects={["feluda"]}/>
-      </NarrowSection>
 
+      <NarrowSection>
+        <LatestProductBlogsUpdates projects={["feluda"]} />
+      </NarrowSection>
     </NarrowContentWrapper>
   </DefaultLayout>
 )
