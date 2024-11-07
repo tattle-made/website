@@ -72,6 +72,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     component: require.resolve(`./src/components/default-blog-index-layout.js`),
     context: { projects },
   })
+  // Blog Dashboard
+  createPage({
+    path: `/blog/dashboard/`,
+    component: require.resolve(`./src/components/default-blog-dashboard.js`),
+  })
   //siteMapURLs.set("Blogs", "/blog")
   siteMapNodes.push({ name: "blog", isDir: false, node: { name: "blog" } })
 
