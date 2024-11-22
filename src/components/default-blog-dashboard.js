@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import DefaultLayoutNarrow from "./default-layout-narrow"
 import React from "react"
-
+import Calendar from "./Calendar"
 export default function BlogDashboard({ data }) {
   let blogCellsData = data.allMdx.nodes.map(blog=>{
     return (
@@ -18,6 +18,7 @@ export default function BlogDashboard({ data }) {
   return (
     <DefaultLayoutNarrow>
       <div>Blogs Calendar View</div>
+      <Calendar data={blogCellsData}/>
     </DefaultLayoutNarrow>
   )
 }
