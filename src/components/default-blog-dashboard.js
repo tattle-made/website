@@ -1,25 +1,23 @@
 import { graphql } from "gatsby"
-import DefaultLayoutNarrow from "./default-layout-narrow"
+import DefaultLayout from "./default-layout"  // Changed to DefaultLayout
 import React from "react"
 import Calendar from "./Calendar"
+
 export default function BlogDashboard({ data }) {
-  let blogCellsData = data.allMdx.nodes.map(blog=>{
-    return (
-      {
-        slug:blog.fields.slug,
-        name:blog.frontmatter.name,
-        date: blog.frontmatter.date
-      }
-    )
+  let blogCellsData = data.allMdx.nodes.map(blog => {
+    return {
+      slug: blog.fields.slug,
+      name: blog.frontmatter.name,
+      date: blog.frontmatter.date
+    }
   })
 
   console.log(blogCellsData)
 
   return (
-    <DefaultLayoutNarrow>
-      <div>Blogs Calendar View</div>
-      <Calendar data={blogCellsData}/>
-    </DefaultLayoutNarrow>
+    <DefaultLayout>  {/* Replaced DefaultLayoutNarrow with DefaultLayout */}
+      <Calendar data={blogCellsData} />
+    </DefaultLayout>
   )
 }
 
