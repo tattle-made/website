@@ -1,6 +1,7 @@
 import React from "react";
 import DefaultLayoutNarrow from "@/components/default-layout-narrow";
 import { Box, Text } from "grommet";
+import { Link } from "gatsby"; // Import Gatsby's Link component
 
 const reports = [
   { year: "2022", link: "/report/2022-report" },
@@ -16,31 +17,28 @@ export default function Layout({ children }) {
       <Box pad="small">
         {/* Render the list */}
         {reports.map((report) => (
-          <Box
-            key={report.year}
-            direction="row"
-            justify="between"
-            align="center"
-            pad={{ vertical: "small", horizontal: "medium" }}
-            margin={{ bottom: "small" }}
-            border={{ color: "#eaeaea", size: "small", radius: "8px" }}
-            background="white"
-            hoverIndicator={{ background: "#f5f5f5", transform: "scale(1.02)" }}
-            onClick={() => (window.location.href = report.link)} // Navigate to the link on click
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = "scale(1)"; // Reset scale
-            }}
-          >
-            {/* Year on the left */}
-            <Text weight="bold" size="16px" color="#333">
-              {report.year}
-            </Text>
+          <Link key={report.year} to={report.link} style={{ textDecoration: "none" }}>
+            <Box
+              direction="row"
+              justify="between"
+              align="center"
+              pad={{ vertical: "small", horizontal: "medium" }}
+              margin={{ bottom: "small" }}
+              border={{ color: "#eaeaea", size: "small", radius: "8px" }}
+              background="white"
+              hoverIndicator={{ background: "#f5f5f5", transform: "scale(1.02)" }}
+            >
+              {/* Year on the left */}
+              <Text weight="bold" size="16px" color="#333">
+                {report.year}
+              </Text>
 
-            {/* Title on the right */}
-            <Text size="16px" color="#007acc" style={{ textDecoration: "none" }}>
-              Annual Report
-            </Text>
-          </Box>
+              {/* Title on the right */}
+              <Text size="16px" color="#007acc">
+                Annual Report
+              </Text>
+            </Box>
+          </Link>
         ))}
       </Box>
     </DefaultLayoutNarrow>
