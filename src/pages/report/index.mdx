@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DefaultLayoutNarrow from "@/components/default-layout-narrow";
 import { Box, Text } from "grommet";
 import { Link } from "gatsby"; // Import Gatsby's Link component
@@ -11,6 +11,8 @@ const reports = [
 ];
 
 export default function Layout({ children }) {
+  const [hovered, setHovered] = useState(null);
+
   return (
     <DefaultLayoutNarrow>
       {children}
@@ -25,8 +27,13 @@ export default function Layout({ children }) {
               pad={{ vertical: "small", horizontal: "medium" }}
               margin={{ bottom: "small" }}
               border={{ color: "#eaeaea", size: "small", radius: "8px" }}
-              background="white"
-              hoverIndicator={{ background: "#f5f5f5", transform: "scale(1.02)" }}
+              background={hovered === report.year ? "#f5f5f5" : "white"} // Change background color on hover
+              style={{
+                transform: hovered === report.year ? "scale(1.02)" : "scale(1)", // Apply zoom effect
+                transition: "transform 0.2s, background-color 0.3s", // Smooth transition
+              }}
+              onMouseEnter={() => setHovered(report.year)} // Set hover state to current report's year
+              onMouseLeave={() => setHovered(null)} // Reset hover state
             >
               {/* Year on the left */}
               <Text weight="bold" size="16px" color="#333">
