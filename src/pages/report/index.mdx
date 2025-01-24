@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DefaultLayoutNarrow from "@/components/default-layout-narrow";
 
 const reports = [
@@ -9,40 +9,34 @@ const reports = [
 ];
 
 export default function Layout({ children }) {
+  const [hovered, setHovered] = useState(null);
+
   return (
     <DefaultLayoutNarrow>
       {children}
       <div style={{ padding: "20px" }}>
         {/* Render the list */}
         {reports.map((report) => (
-          <div
-            key={report.year}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "15px 20px",
-              marginBottom: "10px",
-              border: "1px solid #eaeaea",
-              borderRadius: "8px",
-              cursor: "pointer",
-              backgroundColor: "#fff",
-              transition: "background-color 0.3s, transform 0.2s",
-            }}
-            onClick={() => window.location.href = report.link} // Navigate to the link on click
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = "#f5f5f5"; // Light gray on hover
-              e.currentTarget.style.transform = "scale(1.02)"; // Slight zoom-in effect
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = "#fff"; // Reset background
-              e.currentTarget.style.transform = "scale(1)"; // Reset scale
-            }}
-          >
-            {/* Year on the left */}
-            <span style={{ fontWeight: "bold", fontSize: "16px", color: "#333" }}>
-              {report.year}
-            </span>
+          <Link key={report.year} to={report.link} style={{ textDecoration: "none" }}>
+            <Box
+              direction="row"
+              justify="between"
+              align="center"
+              pad={{ vertical: "small", horizontal: "medium" }}
+              margin={{ bottom: "small" }}
+              border={{ color: "#eaeaea", size: "small", radius: "8px" }}
+              background={hovered === report.year ? "#f5f5f5" : "white"} // Change background color on hover
+              style={{
+                transform: hovered === report.year ? "scale(1.02)" : "scale(1)", // Apply zoom effect
+                transition: "transform 0.2s, background-color 0.3s", // Smooth transition
+              }}
+              onMouseEnter={() => setHovered(report.year)} // Set hover state to current report's year
+              onMouseLeave={() => setHovered(null)} // Reset hover state
+            >
+              {/* Year on the left */}
+              <Text weight="bold" size="16px" color="#333">
+                {report.year}
+              </Text>
 
             {/* Title on the right */}
             <span
