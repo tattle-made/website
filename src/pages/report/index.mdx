@@ -1,12 +1,57 @@
+import React, { useState } from "react";
 import DefaultLayoutNarrow from "@/components/default-layout-narrow";
 
+const reports = [
+  { year: "2022", link: "/report/2022-report" },
+  { year: "2021", link: "/report/2021-report" },
+  { year: "2020", link: "/report/2020-report" },
+  { year: "2019", link: "/report/2019-report" },
+];
+
 export default function Layout({ children }) {
-  return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
+  const [hovered, setHovered] = useState(null);
+
+  return (
+    <DefaultLayoutNarrow>
+      {children}
+      <div style={{ padding: "20px" }}>
+        {/* Render the list */}
+        {reports.map((report) => (
+          <Link key={report.year} to={report.link} style={{ textDecoration: "none" }}>
+            <Box
+              direction="row"
+              justify="between"
+              align="center"
+              pad={{ vertical: "small", horizontal: "medium" }}
+              margin={{ bottom: "small" }}
+              border={{ color: "#eaeaea", size: "small", radius: "8px" }}
+              background={hovered === report.year ? "#f5f5f5" : "white"} // Change background color on hover
+              style={{
+              
+                transform: hovered === report.year ? "scale(1.02)" : "scale(1)", // Apply zoom effect
+                transition: "transform 0.2s, background-color 0.3s", // Smooth transition
+              }}
+              onMouseEnter={() => setHovered(report.year)} // Set hover state to current report's year
+              onMouseLeave={() => setHovered(null)} // Reset hover state
+            >
+              {/* Year on the left */}
+              <Text weight="bold" size="16px" color="#333">
+                {report.year}
+              </Text>
+
+            {/* Title on the right */}
+            <span
+              style={{
+                textDecoration: "none",
+                color: "#007acc",
+                fontSize: "16px",
+              }}
+            >
+              Annual Report
+            </span>
+          </div>
+        ))}
+      </div>
+    </DefaultLayoutNarrow>
+  );
 }
-
-# Annual reports
-
-- [2022 Annual Report](/report/2022-report)
-- [2021 Annual Report](/report/2021-report)
-- [2020 Annual Report](/report/2020-report)
-- [2019 Annual Report](/report/2019-report)
