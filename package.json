@@ -32,6 +32,7 @@
     "gatsby-source-ghost": "5.0.2",
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "5.13.1",
+    "graphql": "^16.10.0",
     "grommet": "^2.39.0",
     "js-file-download": "^0.4.12",
     "prismjs": "^1.29.0",
