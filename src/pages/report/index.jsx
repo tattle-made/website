@@ -1,3 +1,4 @@
+import React from "react";
 import DefaultLayoutNarrow from "@/components/default-layout-narrow";
 import { Box, Text } from "grommet";
 import { Link } from "gatsby"; // Import Gatsby's Link component
