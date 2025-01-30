@@ -1,7 +1,7 @@
-import React from "react";
-import DefaultLayoutNarrow from "@/components/default-layout-narrow";
-import { Box, Text } from "grommet";
-import { Link } from "gatsby"; // Import Gatsby's Link component
+import React from "react"
+import DefaultLayoutNarrow from "@/components/default-layout-narrow"
+import { Box, Text } from "grommet"
+import { Link } from "gatsby" // Import Gatsby's Link component
 
 export default function Layout({ children }) {
   const reports = [
@@ -9,7 +9,7 @@ export default function Layout({ children }) {
     { year: "2021", link: "/report/2021-report" },
     { year: "2020", link: "/report/2020-report" },
     { year: "2019", link: "/report/2019-report" },
-  ];
+  ]
 
   return (
     <DefaultLayoutNarrow>
@@ -17,11 +17,7 @@ export default function Layout({ children }) {
       <Box pad="small">
         {/* Render the list */}
         {reports.map((report) => (
-          <Link
-            key={report.year}
-            to={report.link}
-            className="no-underline"
-          >
+          <Link key={report.year} to={report.link} className="no-underline">
             <Box
               direction="row"
               justify="between"
@@ -31,12 +27,21 @@ export default function Layout({ children }) {
               className="bg-white border shadow-lg rounded-xl transition transform hover:scale-105 hover:shadow-2xl hover:bg-gray-50"
             >
               {/* Year on the left */}
-              <Text weight="bold" size="18px" color="#333" className="font-semibold">
+              <Text
+                weight="bold"
+                size="18px"
+                color="accent-3"
+                className="font-semibold"
+              >
                 {report.year}
               </Text>
 
               {/* Title on the right */}
-              <Text size="16px" color="#007acc" className="text-lg font-medium">
+              <Text
+                size="16px"
+                color="accent-1"
+                className="text-lg font-medium"
+              >
                 Annual Report
               </Text>
             </Box>
@@ -44,5 +49,5 @@ export default function Layout({ children }) {
         ))}
       </Box>
     </DefaultLayoutNarrow>
-  );
+  )
 }
