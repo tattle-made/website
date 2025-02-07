@@ -1,0 +1,37 @@
+import DefaultLayoutNarrow from "@/components/default-layout-narrow";
+
+export default function Layout({ children }) {
+  return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
+}
+
+import { Box, Text } from "grommet";
+import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates";
+
+# Building a Safety Benchmark Dataset in Hindi
+
+<Box round={"small"} background={"visuals-1"} pad={"medium"}>
+    <Text size={"small"} lineHeight={"small"}>
+        This project has concluded.
+    </Text>
+</Box>
+In 2024, Tattle was selected in this pilot project to build a dataset of prompts in Hindi as part of ML Commons' safety benchmark.
+We followed Uli's participatory approach and created 2000 prompts in Hindi on two hazard categories: hate and sex-related crimes.
+These prompts were created by an expert group, consisting of individuals with expertise in journalism, social work, feminist advocacy, 
+gender studies, fact-checking, political campaigning, education, psychology, and research.
+
+## Project Team
+Mansi Gupta  
+Srravya C  
+Vamsi Krishna Pothuru  
+Saumya Gupta  
+Tarunima Prabhakar  
+Aatman Vaidya  
+Kaustubha Kalidindi  
+Denny George  
+Maanas B  
+
+## Outcomes
+Our report, outlining the process of developing this dataset, is available here:  
+[View Report](https://drive.google.com/file/d/1OKpZ7qqT6hjbzaeUC7UnBF1oCTn7c70z/view)
+
+<LatestProductBlogsUpdates projects={["ml-safety-benchmark"]}/>

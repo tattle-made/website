@@ -44,6 +44,11 @@ var other_projects = [
     description: "Khoj tells you if an image has appeared in a fact-checking article. Khoj indexes and searches through data scraped from IFCN certified fact checking sites.",
     target: "/products/khoj"
   },
+  {
+    heading: "Building a Safety Benchmark Dataset in Hindi",
+    description: "This project aimed to build a dataset of prompts in Hindi as part of ML Commons' safety benchmark.",
+    target: "/products/safety-benchmark"
+  }  
 
 ]
 
