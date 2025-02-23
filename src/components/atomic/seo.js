@@ -42,7 +42,7 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
     }
   `)
 
-  const title = site.metadata.title || title
+  title = title || site.metadata.title
   const metaDescription =
     meta.excerpt || description || site.siteMetadata.description
   const author = meta.author || site.siteMetadata.author
@@ -71,7 +71,7 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
       titleTemplate={`%s`}
     >
       <meta property="description" content={metaDescription} />
-      <meta property="og:title" content={heading} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta
         property="og:image"
@@ -81,7 +81,7 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
       <meta name="twitter:card" content={"summary_large_image"} />
       <meta name="twitter:site" content={"@tattlemade"} />
       <meta name="twitter:creator" content={"@tattlemade"} />
-      <meta name="twitter:title" content={heading} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
       <meta
         name="twitter:image"
