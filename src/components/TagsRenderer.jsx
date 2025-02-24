@@ -30,12 +30,14 @@ export default function TagsRenderer({
   return (
     <Box flex direction="row" align="baseline" gap="xsmall">
       <Box>
-        <Heading level={4}>{tagTypeHeading}</Heading>
+        <Heading level={4} marging={{ bottom: "small" }}>
+          {tagTypeHeading}
+        </Heading>
       </Box>
 
       <Box flex direction="row" gap="small" align="center" wrap={true}>
         {showAllTags
-          ? sortedUniqueTags.map(tag => (
+          ? sortedUniqueTags.map((tag) => (
               <Box key={tag} margin={{ bottom: "small" }}>
                 <Link
                   to={tagBaseURL.concat(tag)}
@@ -45,8 +47,8 @@ export default function TagsRenderer({
                 </Link>
               </Box>
             ))
-          : sortedUniqueTags.slice(0, 10).map(tag => (
-              <Box key={tag} margin={{ bottom: "small" }}>
+          : sortedUniqueTags.slice(0, 10).map((tag) => (
+              <Box key={tag}>
                 <Link
                   to={tagBaseURL.concat(tag)}
                   style={{ textDecoration: "none" }}
@@ -56,12 +58,13 @@ export default function TagsRenderer({
               </Box>
             ))}
         {sortedUniqueTags.length > 10 && (
-          <Button onClick={toggleTagsDisplay} >
+          <Button onClick={toggleTagsDisplay}>
             <Box
-              pad="small"
+              pad={{ horizontal: "small", vertical: "xsmall" }}
               align="center"
               border={{ color: "#E76D67", size: "1px" }}
               round="small"
+              className="hover:ring-2 hover:ring-E76D67"
             >
               {showAllTags ? "Show Less Tags" : "Show All Tags"}
             </Box>
