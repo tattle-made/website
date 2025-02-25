@@ -6,6 +6,7 @@ import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import { PlainExternalLink } from "../components/atomic/TattleLinks"
 import { ExternalLink } from "react-feather"
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const ResponsiveGrid = ({ children }) => {
     const size = useContext(ResponsiveContext)
@@ -23,8 +24,7 @@ const ResponsiveGrid = ({ children }) => {
         </Grid>
     )
 }
-
-const CommunityMemberCard = ({ name, role, url }) => (
+const CommunityMemberCard = ({ img, name, role, url }) => (
     <Box
         width={"medium"}
         direction={"column"}
@@ -32,7 +32,37 @@ const CommunityMemberCard = ({ name, role, url }) => (
         onClick={() => { }}
         hoverIndicator={true}
         focusIndicator={false}
+
+
     >
+        <div
+            style={{
+                width: "155px",
+                height: "155px",
+                overflow: "hidden",
+                filter: "grayscale(100%)",
+                transition: "filter 0.3s ease-in-out",
+                boxshadow: "0px 4px 10px rgba(0, 0, 2, 0.5)",
+                paddingBottom: "15px"
+
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
+            onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+        >
+            <GatsbyImage
+                alt="community img"
+                objectFit="cover"
+                image={getImage(img)}
+                style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "50%"
+
+                }}
+            />
+        </div>
+
         <PlainExternalLink href={url} target={"_blank"}>
             <Box direction={"row"} align={"center"}>
                 <Heading level={3} margin={"none"} weight={500} color={"brand"}>
@@ -41,11 +71,13 @@ const CommunityMemberCard = ({ name, role, url }) => (
                 <Box flex={"grow"} />
                 {url && url.length != 0 && <ExternalLink size={16} />}
             </Box>
-            <Paragraph size={"small"}>{role}</Paragraph>
+            {/* <Paragraph size={"small"}>{role}</Paragraph> */}
+            <Paragraph size="small">{role}</Paragraph>
         </PlainExternalLink>
-    </Box>
-)
 
+
+    </Box >
+)
 
 const community = ({ data }) => {
     // const contributors = data.allMdx.nodes;
@@ -61,9 +93,11 @@ const community = ({ data }) => {
                     <ResponsiveGrid>
                         {currentContributors.map((contributor) => (
                             <CommunityMemberCard
+                                img={contributor.frontmatter.img}
                                 name={contributor.frontmatter.name}
                                 role={contributor.frontmatter.role}
                                 url={contributor.frontmatter.url}
+
                             />
                         ))}
                     </ResponsiveGrid>
@@ -74,6 +108,7 @@ const community = ({ data }) => {
                                 name={contributor.frontmatter.name}
                                 role={contributor.frontmatter.role}
                                 url={contributor.frontmatter.url}
+
                             />
                         ))}
                     </ResponsiveGrid>
@@ -86,9 +121,9 @@ const community = ({ data }) => {
                 </NarrowSection>
             </NarrowContentWrapper>
         </DefaultLayout>
+
     )
 }
-
 export default community
 
 export const query = graphql`query communityPage {
@@ -99,6 +134,11 @@ export const query = graphql`query communityPage {
     nodes {
       frontmatter {
         name
+        img {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+        }
         role
         url
         isCurrentContributor
