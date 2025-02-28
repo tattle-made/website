@@ -11,7 +11,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
-function SEO({ description='', lang=`en`, meta=[], title, heading }) {
+function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
   const location = useLocation()
   const pathname = location.pathname
   // debugger
@@ -42,6 +42,7 @@ function SEO({ description='', lang=`en`, meta=[], title, heading }) {
     }
   `)
 
+  title = title || site.metadata.title
   const metaDescription =
     meta.excerpt || description || site.siteMetadata.description
   const author = meta.author || site.siteMetadata.author
@@ -49,7 +50,7 @@ function SEO({ description='', lang=`en`, meta=[], title, heading }) {
 
   let socialImageURLs = {}
 
-  allFile.edges.forEach(edge => {
+  allFile.edges.forEach((edge) => {
     if (edge.node.name === "social-card-blog") {
       socialImageURLs["BLOG"] = edge.node.publicURL
     } else if (edge.node.name === "social-card") {
@@ -70,16 +71,22 @@ function SEO({ description='', lang=`en`, meta=[], title, heading }) {
       titleTemplate={`%s`}
     >
       <meta property="description" content={metaDescription} />
-      <meta property="og:title" content={heading} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:image" content={`${baseURL}${meta.cover? `${meta.cover}`: socialImageURL}`} />
+      <meta
+        property="og:image"
+        content={`${baseURL}${meta.cover ? `${meta.cover}` : socialImageURL}`}
+      />
       <meta property="og:type" content={"website"} />
       <meta name="twitter:card" content={"summary_large_image"} />
       <meta name="twitter:site" content={"@tattlemade"} />
       <meta name="twitter:creator" content={"@tattlemade"} />
-      <meta name="twitter:title" content={heading} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
-      <meta name="twitter:image" content={`${baseURL}${meta.cover? `${meta.cover}`: socialImageURL}`} />
+      <meta
+        name="twitter:image"
+        content={`${baseURL}${meta.cover ? `${meta.cover}` : socialImageURL}`}
+      />
       {meta.tags && (
         <meta
           name="keywords"
