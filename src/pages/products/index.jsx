@@ -17,7 +17,7 @@ var other_projects = [
   {
     heading: "Building a Safety Benchmark Dataset in Hindi",
     description: "This project aimed to build a dataset of prompts in Hindi as part of ML Commons' safety benchmark.",
-    target: "/products/safety-benchmark"
+    target: "/products/ml-commons-safety-benchmark"
   },
   {
     heading: "Developing Standardized Metrics for Github",
