@@ -1,0 +1,50 @@
+import DefaultLayoutNarrow from "@/components/default-layout-narrow";
+
+export default function Layout({ children }) {
+  return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
+}
+
+import { Box, Text, Image } from "grommet";
+import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates";
+import mlCommonsImage from "../../images/ml-commons-report-hero.png";
+
+# Building a Safety Benchmark Dataset in Hindi
+
+<Box 
+  background="neutral-1" 
+  pad={{ horizontal: "small", vertical: "xxsmall" }} 
+  round="xsmall" 
+  align="center"
+  width="fit-content"
+>
+  <Text size="small">This project has concluded.</Text>
+</Box>
+
+<Box align="center" margin={{ top: "20px" }}>
+  <Image src={mlCommonsImage} alt="ML Commons Report" fit="cover" />
+</Box>
+
+In 2024, Tattle was selected in this pilot project to build a dataset of prompts in Hindi as part of ML Commons' safety benchmark.
+We followed Uli's participatory approach and created 2000 prompts in Hindi on two hazard categories: hate and sex-related crimes.
+These prompts were created by an expert group, consisting of individuals with expertise in journalism, social work, feminist advocacy, 
+gender studies, fact-checking, political campaigning, education, psychology, and research.
+
+## Project Team
+<div class="grid grid-cols-3 gap-x-4 gap-y-2">
+  <p class="m-0">Mansi Gupta</p>
+  <p class="m-0">Srravya C</p>
+  <p class="m-0">Vamsi Krishna Pothuru</p>
+  <p class="m-0">Saumya Gupta</p>
+  <p class="m-0">Tarunima Prabhakar</p>
+  <p class="m-0">Aatman Vaidya</p>
+  <p class="m-0">Kaustubha Kalidindi</p>
+  <p class="m-0">Denny George</p>
+  <p class="m-0">Maanas B</p>
+</div>
+
+
+## Outcomes
+Our report, outlining the process of developing this dataset, is available here:  
+[View Report](https://drive.google.com/file/d/1OKpZ7qqT6hjbzaeUC7UnBF1oCTn7c70z/view)
+
+<LatestProductBlogsUpdates projects={["ml-commons-safety-benchmark"]}/>

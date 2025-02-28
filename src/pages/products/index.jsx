@@ -15,6 +15,11 @@ import { getImage, getSrc } from "gatsby-plugin-image";
 
 var other_projects = [
   {
+    heading: "Building a Safety Benchmark Dataset in Hindi",
+    description: "This project aimed to build a dataset of prompts in Hindi as part of ML Commons' safety benchmark.",
+    target: "/products/ml-commons-safety-benchmark"
+  },
+  {
     heading: "Developing Standardized Metrics for Github",
     description: "This project tries to understand how data from GitHub platform usage can contribute to research in international development, public policy, and economics.",
     target: "/products/github-indices"
@@ -43,8 +48,7 @@ var other_projects = [
     heading: "Khoj",
     description: "Khoj tells you if an image has appeared in a fact-checking article. Khoj indexes and searches through data scraped from IFCN certified fact checking sites.",
     target: "/products/khoj"
-  },
-
+  }
 ]
 
 const ResponsiveLayoutDatasets = ({ children }) => {
