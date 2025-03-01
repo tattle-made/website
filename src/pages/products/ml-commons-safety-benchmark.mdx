@@ -33,7 +33,7 @@ gender studies, fact-checking, political campaigning, education, psychology, and
 
 ## Project Team
 
-<div class="grid grid-cols-3 gap-x-4 gap-y-2 sm:flex sm:flex-row sm:flex-wrap sm:gap-2">
+<div class="flex flex-row flex-wrap gap-x-4 gap-y-2 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 ">
   <p class="m-0">Mansi Gupta</p>
   <p class="m-0">Srravya C</p>
   <p class="m-0">Vamsi Krishna Pothuru</p>
@@ -47,29 +47,31 @@ gender studies, fact-checking, political campaigning, education, psychology, and
 
 ## Outcomes
 
-<div className="flex flex-row gap-4">
-  <div className="w-1/2 sm:w-full">
+<div className="flex flex-row flex-wrap md:grid md:grid-cols-2 gap-4">
+  <div className="w-full">
     <a
       href="https://drive.google.com/file/d/1OKpZ7qqT6hjbzaeUC7UnBF1oCTn7c70z/view"
       target="_blank"
     >
       <Image
-        className="hover:scale-105 hover:shadow-2xl hover:bg-gray-50 rounded-md overflow-clip"
+        className="hover:scale-105 hover:shadow-2xl hover:bg-gray-50 rounded-md overflow-clip transition"
         src={mlCommonsReportTwo}
         alt="Landscape Analysis Report"
         fit="contain"
       />
     </a>
+    <p class="text-sm text-gray-400 mt-0">AI Safety Benchmark Datasets in Hindi</p>
   </div>
-  <div className="w-1/2 sm:w-full">
+  <div className="w-full">
     <a href="https://arxiv.org/abs/2501.13912" target="_blank">
       <Image
-        className="hover:scale-105 hover:shadow-2xl hover:bg-gray-50 rounded-md overflow-clip"
+        className="hover:scale-105 hover:shadow-2xl hover:bg-gray-50 rounded-md overflow-clip transition"
         src={mlCommonsReportOne}
         alt="ML Commons Report"
         fit="cover"
       />
     </a>
+    <p class="text-sm text-gray-400 mt-0">Analysis of Indic Language Capabilities in LLMs</p>
   </div>
 </div>
 
