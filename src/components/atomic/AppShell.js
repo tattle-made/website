@@ -44,7 +44,7 @@ const AppShell = ({
   return (
     <Grommet theme={TattleTheme} full>
       <Box fill direction={"column"}>
-        <SEO title={`Tattle`} heading={headerLabel} meta={meta} />
+        <SEO title={meta?.name || headerLabel || "Tattle"} heading={headerLabel} meta={meta} />
         {/* {location.pathname !== MODAL_PATH && (
           <Box
             background={"accent-1"}
