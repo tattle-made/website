@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
-import { Box } from "grommet";
+import { Box, ResponsiveContext } from "grommet";
 import { MDXProvider } from "@mdx-js/react";
 import { Link } from "gatsby";
 import { primaryNav, footerItems } from "../config/options";
@@ -12,7 +12,7 @@ import { useLocation } from "@reach/router";
 import CustomCodeBlock from "./atomic/customCodeBlock";
 import InlineCodeBlock from "./atomic/inlineCodeBlock";
 import useBlogTags from "../hooks/useBlogTags";
-import Sidebar from "./SideBar";
+import BlogSidebar from "./BlogSidebar";
 import { projectSlugMaker } from "../lib/project-slug-maker";
 import TagsRenderer from "./TagsRenderer";
 import { getSrc, getImage } from "gatsby-plugin-image";
@@ -24,7 +24,7 @@ const shortcodes = {
   inlineCode: (props) => <InlineCodeBlock {...props} />,
 };
 
-export default function PageTemplate({ data: { mdx, allMdx }, children }) {
+export default function PageTemplate({ data: { mdx }, pageContext: { blogNodes }, children }) {
   const { tagCounts, projectTagsCounts } = useBlogTags();
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter;
   const tags = mdx.frontmatter.tags
@@ -40,19 +40,32 @@ export default function PageTemplate({ data: { mdx, allMdx }, children }) {
 
   
   const findRelatedPosts = () => {
-    if (!tags.length) return [];
-
-    const postsWithRelevance = allMdx.nodes
+    // If no tags, return 5 most recent posts
+    if (!tags.length) {
+      return blogNodes
+        .filter(node => node.id !== mdx.id)
+        .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+        .slice(0, 5)
+        .map(post => ({
+          id: post.id,
+          title: post.frontmatter.name,
+          slug: post.fields.slug,
+          coverImage: post.frontmatter.cover ? getImage(post.frontmatter.cover) : null,
+          excerpt: post.frontmatter.excerpt,
+          matchingTags: [],
+          relevanceScore: 0
+        }));
+    }
+  
+    const postsWithRelevance = blogNodes
       .filter(node => node.id !== mdx.id) 
       .map(post => {
-
         const postTags = post.frontmatter.tags
           ? post.frontmatter.tags.split(",").map(tag => tag.trim())
           : [];
         
-
         const matchingTags = tags.filter(tag => postTags.includes(tag));
-
+  
         const coverImage = post.frontmatter.cover 
           ? getImage(post.frontmatter.cover) 
           : null;
@@ -125,20 +138,37 @@ export default function PageTemplate({ data: { mdx, allMdx }, children }) {
             )}
           </Box>
         </Box>
-    
-        
-        <Box direction="row" gap="medium">
- 
-          <Box flex="grow" basis="3/4">{children}</Box>
-    
-          {/* Sidebar Section */}
-          <Box width={{ min: "medium", max: "large" }} flex="shrink" basis="1/4" >
-            <Sidebar
-              relatedPosts={relatedPosts}
-              currentTags={tags}
-            />
-          </Box>
-        </Box>
+        <ResponsiveContext.Consumer>
+  {size => (
+    <Box 
+      direction={size === "small" ? "column" : "row"} 
+      gap="medium"
+      align="start"
+    >
+      {/* Main Content */}
+      <Box 
+        flex="grow" 
+        basis={size === "small" ? "auto" : "3/4"}
+        width="100%"
+      >
+        {children}
+      </Box>
+
+      {/* Sidebar Section */}
+      <Box 
+        width={size === "small" ? "100%" : { min: "medium", max: "large" }} 
+        flex="shrink" 
+        basis={size === "small" ? "auto" : "1/4"}
+        margin={{
+          top: size === "small" ? "medium" : "none"
+        }}
+      >
+        <BlogSidebar relatedPosts={relatedPosts} />
+      </Box>
+    </Box>
+  )}
+</ResponsiveContext.Consumer>
+
       </MDXProvider>
     </AppShell>
   );
@@ -166,28 +196,5 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(
-      filter: { internal: { contentFilePath: { regex: "/src/blog/" } } }
-      sort: { frontmatter: { date: DESC } }
-    ) {
-      nodes {
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          name
-          excerpt
-          author
-          date
-          tags
-          cover {
-            childImageSharp {
-              gatsbyImageData(width: 300, height: 200, layout: CONSTRAINED, placeholder: BLURRED)
-            }
-          }
-        }
-      }
-    }
   }
-`;
+`; 
