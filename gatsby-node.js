@@ -173,7 +173,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: `/project/${node.fields.slug}`,
         component: require.resolve(`./src/components/default-blog-layout.js`),
-        context: { id: node.id },
+        context: { id: node.id,
+          blogNodes: blogNodes 
+         },
       })
     }
   })

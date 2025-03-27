@@ -24,7 +24,7 @@ const shortcodes = {
   inlineCode: (props) => <InlineCodeBlock {...props} />,
 };
 
-export default function PageTemplate({ data: { mdx }, pageContext: { blogNodes }, children }) {
+export default function PageTemplate({ data: { mdx }, pageContext: { blogNodes = [] }, children }) {
   const { tagCounts, projectTagsCounts } = useBlogTags();
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter;
   const tags = mdx.frontmatter.tags
@@ -41,6 +41,9 @@ export default function PageTemplate({ data: { mdx }, pageContext: { blogNodes }
   
   const findRelatedPosts = () => {
     // If no tags, return 5 most recent posts
+    if (!blogNodes.length) {
+      return [];
+    }
     if (!tags.length) {
       return blogNodes
         .filter(node => node.id !== mdx.id)
