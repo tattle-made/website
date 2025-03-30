@@ -22,7 +22,7 @@ const RelatedPostItem = ({ post }) => (
       <Heading 
         level={5} 
         margin={{ bottom: 'xsmall' }}
-        className="font-[Bitter] text-[0.85rem] leading-[1.3] truncate"
+        className="font-[Bitter] text-[0.85rem] leading-[1.3] "
       >
         {post.title}
       </Heading>
@@ -59,7 +59,7 @@ const BlogSidebar = ({ relatedPosts }) => {
             <Heading
               level={4}
               margin={{ bottom: "small" }}
-              className={`font-[Bitter] text-center truncate ${
+              className={`font-[Bitter] text-center ${
                 isMobile ? "text-[0.8rem]" : isTablet ? "text-[0.95rem]" : "text-[1.1rem]"
               }`}
             >
