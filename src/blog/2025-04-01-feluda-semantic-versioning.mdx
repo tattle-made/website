@@ -1,0 +1,111 @@
+---
+name: How to make sure too many cooks don’t spoil the broth
+excerpt: A custom approach to do multi-package semantic versioning in a Python monorepo 
+author: Aatman Vaidya, Priyash Shah
+project: Feluda
+date: 2025-04-01
+tags: devlog
+cover: 
+---
+
+In Feluda, functionalities are abstracted into something we call **operators**, which are built keeping in mind the need to process data in various modalities (text, audio, video, images, hybrid) and various languages. You can think of operators as plugins that you can mix and match to perform different analysis on your data. This abstraction also allows others to write operators for their unique use case and use them within Feluda.   
+Feluda acts like a conductor in an orchestra where it brings together all the operators to let them do their function. For example, if you wish to cluster large amounts of videos, then operators will help you convert a video to an embedding, and then use embeddings to cluster them. While we encourage the community to build and use their own operators, we also provide some core operators out of the box with Feluda, which are maintained within the same Feluda repository.
+
+### **The Challenge**
+
+In a monorepo with multiple Python packages we wanted a dynamic system that could automatically maintain and update package versions. As manually tracking changes and version numbers is tedious and not manageable as number of packages increase, we needed a solution that could:
+
+* Automatically detect which packages have changed  
+* Determine the appropriate version bump based on commit messages (follow [semantic versioning](https://semver.org/) rules)  
+* Update package versions in pyproject.toml files  
+* Create corresponding Git tags  
+* Handle all of this while maintaining semantic versioning principles
+
+Here is a demo folder structure we wanted to cater too
+```
+.(root)
+├── package1/
+│   ├── package1.py
+│   ├── test_package1.py
+│   ├── pyproject.toml
+│   └── README.md
+├── package2/
+│   ├── package2.py
+│   ├── test_package2.py
+│   ├── pyproject.toml
+│   └── README.md
+└── package3/
+    ├── package3.py
+    ├── test_package3.py
+    ├── pyproject.toml
+    └── README.md
+```
+
+### **The Solution**
+
+We wrote a [custom script](https://github.com/tattle-made/feluda/blob/main/scripts/semantic_release_workflow.py) ([github action](https://github.com/tattle-made/feluda/blob/main/.github/workflows/merge-main.yml)) that analyzes commit messages between two **git commits** and automatically handles version management. Here's how it works:
+
+Package Discovery  
+The script starts by discovering all Python packages located in our monorepo. It looks for packages in two locations:
+
+- The root package (named "feluda" in our case)  
+- Any package inside the **operators** directory (as each operator is a folder inside it)
+
+Each package must have a valid pyproject.toml file containing the current version number.
+
+Analyzing Changes  
+For each package, the script:
+
+* Retrieves all commits affecting that package between two specified Git commits range.  
+* Analyzes each commit message using [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0/).  
+* Determines the highest priority version bump needed
+
+The commit analysis follows these rules:
+
+- Commits containing **"breaking change"** trigger a **major** version bump  
+- Commits starting with **"feat:"** trigger a **minor** version bump  
+- Other conventional commits **(fix:, chore:, etc.)** trigger a **patch** bump
+
+Version Management  
+Once the script determines the necessary version bump, it:
+
+* Checks if a Git tag already exists for the new version  
+* Updates the version in pyproject.toml if needed  
+* Creates a new Git tag using the format specified in pyproject.toml
+
+The script also includes comprehensive error handling to ensure reliability, it validates repository paths and package structures, handles missing or malformed pyproject.toml files, manages git command failures gracefully and provides clear error messages for troubleshooting.
+
+#### Here is a detailed flowchart of this approach \- [https://github.com/tattle-made/feluda/wiki/Release-Management\#semantic-versioning](https://github.com/tattle-made/feluda/wiki/Release-Management#semantic-versioning)
+
+### **Best Practices and Benefits of this Approach**
+
+To make the most of this automation:
+
+1. Always use conventional commit messages:
+
+```
+feat: add new feature
+fix: resolve bug
+chore: update dependencies
+```
+
+2. Include proper tag format in **pyproject.toml**:
+
+```
+[tool.semantic_release.branches.main]
+tag_format = "{name}-{version}"
+```
+
+3. Run the script as part of your CI/CD pipeline between a range of commits:
+```
+python semantic_release_workflow.py <previous_commit> <current_commit>
+```
+
+This automated approach offers several advantages:
+
+1. **Consistency**: Version numbers always reflect the nature of changes made  
+2. **Efficiency**: Eliminates manual version management reducing human error in version numbering.  
+3. **Traceability**: Version changes are directly linked to commit history
+
+### **Link to the [Custom Python Script](https://github.com/tattle-made/feluda/blob/main/scripts/semantic_release_workflow.py)**
+### **Link to the [Github Action](https://github.com/tattle-made/feluda/blob/main/.github/workflows/merge-main.yml)**
