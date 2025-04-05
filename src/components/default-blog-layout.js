@@ -142,36 +142,36 @@ export default function PageTemplate({ data: { mdx }, pageContext: { blogNodes =
           </Box>
         </Box>
         <ResponsiveContext.Consumer>
-  {size => (
-    <Box 
-      direction={size === "small" ? "column" : "row"} 
-      gap="medium"
-      align="start"
-    >
-      {/* Main Content */}
+  {size => {
+    const isLarge = size === "large" || size === "xlarge";
+    return (
       <Box 
-        flex="grow" 
-        basis={size === "small" ? "auto" : "3/4"}
-        width="100%"
+        direction={size === "small" ? "column" : "row"} 
+        gap={isLarge ? "xlarge" : "medium"}
+        align="start"
+        
       >
-        {children}
-      </Box>
+        {/* Main Content */}
+        <Box 
+          flex={true}
+          width={size === "small" ? "100%" : undefined}
 
-      {/* Sidebar Section */}
-      <Box 
-        width={size === "small" ? "100%" : { min: "medium", max: "large" }} 
-        flex="shrink" 
-        basis={size === "small" ? "auto" : "1/4"}
-        margin={{
-          top: size === "small" ? "medium" : "none"
-        }}
-      >
-        <BlogSidebar relatedPosts={relatedPosts} />
+        >
+          {children}
+        </Box>
+
+        {/* Sidebar Section */}
+        <Box 
+          width={size === "small" ? "100%" : isLarge ? "320px" : "390px"}
+          
+          flex={false}
+        >
+          <BlogSidebar relatedPosts={relatedPosts} />
+        </Box>
       </Box>
-    </Box>
-  )}
+    );
+  }}
 </ResponsiveContext.Consumer>
-
       </MDXProvider>
     </AppShell>
   );
@@ -200,4 +200,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`; 
+`;

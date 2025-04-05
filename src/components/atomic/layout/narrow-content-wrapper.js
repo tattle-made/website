@@ -31,7 +31,7 @@ const NarrowContentWrapper = ({ children, justify, width, ...props }) => {
 
   const MediumSection = ({ children }) => (
     <Box
-      width={width ? width : "960px"}
+      width={width ? width : "1110px"}
       alignSelf={"center"}
       flex={"grow"}
       justify={justify ? justify : "start"}
