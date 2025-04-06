@@ -20,6 +20,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             people
             tags
             project
+            excerpt
+            author
+            date
+            cover {
+              childImageSharp {
+                gatsbyImageData(width: 300, height: 200, layout: CONSTRAINED, placeholder: BLURRED)
+              }
+            }
           }
           internal {
             contentFilePath
@@ -34,6 +42,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const nodes = result.data.allMdx.nodes
+  const blogNodes = nodes.filter(node => 
+    node.internal.contentFilePath.indexOf("/src/blog/") !== -1
+  );
+
   // List of all unique projects tags- ex: all projects will uli and Uli will be represented as uli &  Viral Spiral and viral-spiral with viral-spiral, and so on
   const projects = [
     ...new Set(
@@ -56,8 +68,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       tags_arr.forEach((tag) => tags_set.add(tag))
     }
   })
-
-  // create folder for user avatar
+    // create folder for user avatar
   // try {
   //   await fs.access("./src/people/avatar")
   // } catch {
@@ -77,7 +88,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     path: `/blog/dashboard/`,
     component: require.resolve(`./src/components/default-blog-dashboard.js`),
   })
-  //siteMapURLs.set("Blogs", "/blog")
+   //siteMapURLs.set("Blogs", "/blog")
   siteMapNodes.push({ name: "blog", isDir: false, node: { name: "blog" } })
 
   // CREATE TAGS PAGE
@@ -113,12 +124,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   nodes.forEach(async (node) => {
     const { internal, id } = node
-    // console.log(`------ : ${id}`)
+        // console.log(`------ : ${id}`)
 
     let fileAbsolutePath = internal.contentFilePath
 
     if (fileAbsolutePath.indexOf("/src/people/") !== -1) {
-      // create QR code avatar
+            // create QR code avatar
 
       // await QRCode.toFile(
       //   `./src/people/avatar/${ node.fields.slug}.png`,
@@ -132,7 +143,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: { id },
       })
     }
-
+    
     // if (fileAbsolutePath.indexOf("/src/project/") !== -1) {
     //   createPage({
     //     path: `/project/${ node.fields.slug}`,
@@ -149,7 +160,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: `/blog/${node.fields.slug}`,
         component: `${blogTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-        context: { id: node.id },
+        context: { 
+          id: node.id,
+          blogNodes: blogNodes 
+        },
       })
     }
 
@@ -159,7 +173,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: `/project/${node.fields.slug}`,
         component: require.resolve(`./src/components/default-blog-layout.js`),
-        context: { id: node.id },
+        context: { id: node.id,
+          blogNodes: blogNodes 
+         },
       })
     }
   })
@@ -174,7 +190,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'Mdx' || node.internal.type === 'MarkdownRemark') {
-    // if (node.internal.type === `MarkdownRemark`) {
+       // if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
     // Slugs are starting with "/"
     const slug = value.startsWith('/') ? value.slice(1) : value;
