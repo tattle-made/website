@@ -12,5 +12,5 @@ import "./prism-cb.css"
 
 // Gatsby API to set Wrapper components. Wrapping entire root with Grommet to get access to especially ResponsiveContext
 export const wrapRootElement = ({ element }) => {
-  return <Grommet>{element}</Grommet>
+  return <Grommet><div id="app">{element}</div></Grommet>
 }
