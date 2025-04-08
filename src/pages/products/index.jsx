@@ -15,6 +15,11 @@ import { getImage, getSrc } from "gatsby-plugin-image";
 
 var other_projects = [
   {
+    heading: "Make an Offer They Can't Refuse",
+    description: "This game is a group-based exercise around the data sourcing and annotation experience. Emulating the limited resources available in the real world, players must think of creative ways to complete annotation tasks done in different systems.",
+    target: "/make-an-offer-they-cant-refuse"
+  },
+  {
     heading: "Building a Safety Benchmark Dataset in Hindi",
     description: "This project aimed to build a dataset of prompts in Hindi as part of ML Commons' safety benchmark.",
     target: "/products/ml-commons-safety-benchmark"
