@@ -390,7 +390,22 @@ const DataworksGamePage = () => {
               model.
             </Text>
 
-            <Heading level={3}>Game Play</Heading>
+            <Heading className="text-3xl">Game Play</Heading>
+
+            <Heading level={3}>Goal</Heading>
+            <Text
+              size="small"
+              margin={{ bottom: "medium" }}
+              className="font-semibold"
+            >
+              {/* A group of players take on the persona of a Data
+              Vendor and are given a task. There are some constraints on budget
+              and the number of days in which you have to give the data back to
+              the Data Client. Your job is to make a pitch to data annotators
+              describing their wage and other benefits. */}
+              Your job is to make a pitch to data annotators describing their
+              wage and other benefits.
+            </Text>
 
             <Box border={"all"} className=" w-fit md:w-[65%] flex self-center">
               <StaticImage
@@ -400,13 +415,6 @@ const DataworksGamePage = () => {
             </Box>
             <Text size="small" className="mt-4">
               <b>Personas:</b> Annotator, data vendor, and data client
-            </Text>
-            <Text size="small">
-              <b>Goal:</b> A group of players take on the persona of a Data
-              Vendor and are given a task. There are some constraints on budget
-              and the number of days in which you have to give the data back to
-              the Data Client. Your job is to make a pitch to data annotators
-              describing their wage and other benefits.
             </Text>
 
             <Heading level={3} className="mb-0">
@@ -445,7 +453,7 @@ const DataworksGamePage = () => {
             <Text size="small">
               <ul>
                 <li>
-                  Each group draws a card which provides them a scenario,
+                  Each group gets a scenario,
                   budget, and dataset size, some with additional conditions.
                 </li>
                 <li>
@@ -453,12 +461,16 @@ const DataworksGamePage = () => {
                   It forms the baseline for the activity.
                 </li>
                 <li>
-                  The group must then prepare a pitch to up to 40 annotators
-                  (can be imaginary/think of the other people in the room as the
-                  annotators) to convince them to work for them within these
-                  constraints.
+                  The group must then prepare a pitch to up to{" "}
+                  <b>
+                    40 annotators (can be imaginary/ think of the other people
+                    in the room as the annotators)
+                  </b>{" "}
+                  to convince them to work for them within these constraints.
                 </li>
-                <li>Each group has 15-20 minutes to prepare.</li>
+                <li>
+                  Each group has <b>15-20 minutes</b> to prepare.
+                </li>
                 <li>
                   With the given information, the groups make a 1-minute pitch.
                 </li>
@@ -469,15 +481,33 @@ const DataworksGamePage = () => {
               </ul>
             </Text>
 
-            <Heading level={3}>Is there anything I need to set up?</Heading>
+            <Heading className="mb-0" level={3}>
+              Is there anything I need to set up?
+            </Heading>
+            <Text size="small">
+              <ul>
+                <li>
+                  If you are playing offline, and have one disinterested friend
+                  who is better off as a timekeeper/referee, have them generate
+                  the scenarios on their phone and allot it to each of you.{" "}
+                </li>
+                <li>
+                  If you are a game nerd, you can also keep some colour markers
+                  and chart paper handy so each group can get creative with
+                  their pitches.
+                </li>
+                <li>
+                  If you are playing online, set up a meeting on a platform that
+                  allows you to breakout into groups, and have a timer handy.
+                </li>
+              </ul>
+            </Text>
+
+            <Heading level={3}>The Calculator</Heading>
             <Text size="small" margin={{ bottom: "medium" }}>
-              If you are playing offline, and have one disinterested friend who
-              is better off as a timekeeper/referee, have them generate the
-              scenarios on their phone and allot it to each of you. If you are a
-              game nerd, you can also keep some color markers and chart paper
-              handy so each group can get creative with their pitches. If you
-              are playing online, set up a meeting on a platform that allows you
-              to break out into groups, and have a timer handy.
+              If you’d like to use the calculator as a standalone functionality
+              outside of the game, please feel free to do so. Don’t click the
+              generate scenario button, and you should be good to go.
             </Text>
 
             <DataworksGameCalculator />
