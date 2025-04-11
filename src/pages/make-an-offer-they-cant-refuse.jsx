@@ -414,7 +414,9 @@ const DataworksGamePage = () => {
               ></StaticImage>
             </Box>
             <Text size="small" className="mt-4">
-              <b>Personas:</b> Annotator, data vendor, and data client
+              <b>Personas:</b> Data Vendor, Data Annotator and Data Client (aka
+              looming figure in the background waiting for the annotations to be
+              delivered)
             </Text>
 
             <Heading level={3} className="mb-0">
@@ -427,8 +429,8 @@ const DataworksGamePage = () => {
                   size can vary).
                 </li>
                 <li>
-                  Groups represent organizations/entities seeking qualified data
-                  annotators for annotation tasks.
+                  Groups represent organizations/entities (Data Vendors) seeking
+                  qualified data annotators for annotation tasks.
                 </li>
                 <li>
                   The goal is to train AI-assisted service offerings using the
@@ -441,7 +443,7 @@ const DataworksGamePage = () => {
                 </li>
                 <li>
                   The groups are constrained by the scenarios they get, i.e.,
-                  money for each product, and the time period to complete the
+                  money for each task, and the time period to complete the
                   project.
                 </li>
               </ul>
@@ -453,12 +455,12 @@ const DataworksGamePage = () => {
             <Text size="small">
               <ul>
                 <li>
-                  Each group gets a scenario,
-                  budget, and dataset size, some with additional conditions.
+                  Each group gets a scenario, budget, and dataset size, some
+                  with additional conditions.
                 </li>
                 <li>
-                  The information on the card drawn by each group is immutable.
-                  It forms the baseline for the activity.
+                  The information from the scenario allotted to each group is
+                  immutable. It forms the baseline for the activity.
                 </li>
                 <li>
                   The group must then prepare a pitch to up to{" "}
