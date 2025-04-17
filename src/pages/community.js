@@ -28,40 +28,48 @@ const ResponsiveGrid = ({ children }) => {
 const CommunityMemberCard = ({ img, name, role, url }) => (
     <Box
         width="medium"
-        direction="column"
-        pad="small"
-        onClick={() => { }}
+        direction="column" 
+        align="center"
+        justify="center"
+        pad="medium"
+        gap="small"
+        onClick={() => window.open(url, "_blank")}
         hoverIndicator
         focusIndicator={false}
+        style={{ textAlign: "center", height: "auto" }} 
     >
+        
         {img && (
-            <div
+            <Box
+                width="140px"
+                height="140px"
+                round="full"
+                overflow="hidden"
                 style={{
-                    width: "155px",
-                    height: "155px",
-                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     filter: "grayscale(100%)",
                     transition: "filter 0.3s ease-in-out",
-                    // boxShadow: "0px 4px 10px rgba(0, 0, 2, 0.5)",
-                    paddingBottom: "15px",
-                    borderRadius: "50%",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
-                onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+                onMouseEnter={(e) =>
+                    (e.currentTarget.style.filter = "grayscale(0%)")
+                }
+                onMouseLeave={(e) =>
+                    (e.currentTarget.style.filter = "grayscale(100%)")
+                }
             >
                 <GatsbyImage
-                    alt="community img"
-                    objectFit="cover"
+                    alt={`${name}'s photo`}
                     image={getImage(img)}
                     style={{
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        alignItems: "center",
                         borderRadius: "50%",
                     }}
                 />
-            </div>
+            </Box>
         )}
 
         <PlainExternalLink href={url} target="_blank">
@@ -75,9 +83,8 @@ const CommunityMemberCard = ({ img, name, role, url }) => (
             <Paragraph size="small">{role}</Paragraph>
         </PlainExternalLink>
     </Box>
+
 );
-
-
 const community = ({ data }) => {
     // const contributors = data.allMdx.nodes;
     const currentContributors = data.allMdx.nodes.filter(contributor => contributor.frontmatter.isCurrentContributor);
