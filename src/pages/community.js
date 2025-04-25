@@ -24,60 +24,61 @@ const ResponsiveGrid = ({ children }) => {
         </Grid>
     )
 }
+
 const CommunityMemberCard = ({ img, name, role, url }) => (
     <Box
-        width={"medium"}
-        direction={"column"}
-        pad={"small"}
-        onClick={() => { }}
-        hoverIndicator={true}
+        width="medium"
+        direction="column"
+        align="center"
+        justify="center"
+        pad="medium"
+        gap="small"
+        onClick={() => window.open(url, "_blank")}
+        hoverIndicator
         focusIndicator={false}
-
-
+        style={{ textAlign: "center", height: "auto" }}
     >
-        <div
-            style={{
-                width: "155px",
-                height: "155px",
-                overflow: "hidden",
-                filter: "grayscale(100%)",
-                transition: "filter 0.3s ease-in-out",
-                boxshadow: "0px 4px 10px rgba(0, 0, 2, 0.5)",
-                paddingBottom: "15px"
-
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
-            onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-        >
-            <GatsbyImage
-                alt="community img"
-                objectFit="cover"
-                image={getImage(img)}
+        {img && (
+            <Box
+                width="140px"
+                height="140px"
+                round="full"
+                overflow="hidden"
                 style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    borderRadius: "50%"
-
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    filter: "grayscale(100%)",
+                    transition: "filter 0.3s ease-in-out",
                 }}
-            />
-        </div>
+                onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
+                onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+            >
+                <GatsbyImage
+                    alt={`${name}'s photo`}
+                    image={getImage(img)}
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                    }}
+                />
+            </Box>
+        )}
 
-        <PlainExternalLink href={url} target={"_blank"}>
-            <Box direction={"row"} align={"center"}>
-                <Heading level={3} margin={"none"} weight={500} color={"brand"}>
+        <PlainExternalLink href={url} target="_blank">
+            <Box direction="row" align="center">
+                <Heading level={3} margin="none" weight={500} color="brand">
                     {name}
                 </Heading>
-                <Box flex={"grow"} />
-                {url && url.length != 0 && <ExternalLink size={16} />}
+                <Box flex="grow" />
+                {url && url.length !== 0 && <ExternalLink size={16} />}
             </Box>
-            {/* <Paragraph size={"small"}>{role}</Paragraph> */}
             <Paragraph size="small">{role}</Paragraph>
         </PlainExternalLink>
-
-
-    </Box >
-)
+    </Box>
+);
 
 const community = ({ data }) => {
     // const contributors = data.allMdx.nodes;
@@ -112,6 +113,7 @@ const community = ({ data }) => {
                             />
                         ))}
                     </ResponsiveGrid>
+
                     <Text size={"small"}>
                         <i>
                             Several other people have volunteered time and skills such as
