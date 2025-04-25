@@ -27,11 +27,11 @@ const ResponsiveGrid = ({ children }) => {
 
 const CommunityMemberCard = ({ img, name, role, url }) => (
     <Box
-        width="medium"
+        width="larger"
         direction="column"
         align="center"
         justify="center"
-        pad="medium"
+        pad="small"
         gap="small"
         onClick={() => window.open(url, "_blank")}
         hoverIndicator
@@ -61,7 +61,7 @@ const CommunityMemberCard = ({ img, name, role, url }) => (
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        borderRadius: "50%",
+                        // borderRadius: "50%",
                     }}
                 />
             </Box>
