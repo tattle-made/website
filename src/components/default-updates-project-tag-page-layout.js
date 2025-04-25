@@ -26,6 +26,7 @@ export const query = graphql`
   query {
     allMdx(
       filter: { internal: { contentFilePath: { regex: "/src/updates/" } } }
+      sort: { frontmatter: { date: DESC } }
     ) {
       nodes {
         frontmatter {
