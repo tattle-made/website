@@ -15,11 +15,11 @@ const ResponsiveGrid = ({ children }) => {
             {children}
         </Box>
     ) : size === "medium" ? (
-        <Grid columns={["1/2", "1/2"]} responsive={true} fill={"horizontal"}>
+        <Grid columns={["1/2", "1/2"]} responsive={true} fill={"horizontal"} gap="medium">
             {children}
         </Grid>
     ) : (
-        <Grid columns={["1/3", "1/3", "1/3"]} responsive={true} fill={"horizontal"}>
+        <Grid columns={["1/3", "1/3", "1/3"]} responsive={true} fill={"horizontal"} gap="medium">
             {children}
         </Grid>
     )
@@ -27,7 +27,7 @@ const ResponsiveGrid = ({ children }) => {
 
 const CommunityMemberCard = ({ img, name, role, url }) => (
     <Box
-        width="larger"
+        width="medium"
         direction="column"
         align="center"
         justify="center"
@@ -66,20 +66,30 @@ const CommunityMemberCard = ({ img, name, role, url }) => (
                 />
             </Box>
         )}
+        {(name?.trim() || role?.trim()) && (
+            <PlainExternalLink href={url} target="_blank">
+                <Box direction="row" align="center" justify="center" width="full">
+                    <Heading level={3} margin="none" weight={500} color="brand" textAlign='center' style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {name}
 
-        <PlainExternalLink href={url} target="_blank">
-            <Box direction="row" align="center">
-                <Heading level={3} margin="none" weight={500} color="brand">
-                    {name}
-                </Heading>
-                <Box flex="grow" />
-                {url && url.length !== 0 && <ExternalLink size={16} />}
-            </Box>
-            <Paragraph size="small">{role}</Paragraph>
-        </PlainExternalLink>
+                    </Heading>
+                    <Box pad={{ left: 'small' }} />
+                    {url && url.length !== 0 && <ExternalLink size={16} />}
+                </Box>
+                <Paragraph size="small" pad={{ left: 'small', right: 'small', }}>{role}</Paragraph>
+            </PlainExternalLink>
+        )}
+
     </Box>
 );
-
+const CommunityMember = () => {
+    return (
+        <div className="community-member pt-4 hover:pt-8 transition-all duration-300 ease-in-out bg-gray-100 p-4 rounded-lg">
+            <h2 className="text-lg font-bold">Member Name</h2>
+            <p className="text-sm text-gray-600">Member Role</p>
+        </div>
+    );
+};
 const community = ({ data }) => {
     // const contributors = data.allMdx.nodes;
     const currentContributors = data.allMdx.nodes.filter(contributor => contributor.frontmatter.isCurrentContributor);
