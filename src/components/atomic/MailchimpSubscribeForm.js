@@ -7,33 +7,31 @@ const MAILCHIMP_URL =
 
 /**
  * @author
- * @function MailchimpSubscribe
+ * @function MailchimpSubscribeForm
  **/
 
 const SimpleForm = () => <MailchimpSubscribe url={MAILCHIMP_URL} />
 
 const MailchimpSubscribeForm = () => {
-  const [email, setEmail] = React.useState("")
+  const [email, setEmail] = useState("")
   const [fetching, setFetching] = useState(false)
 
   useEffect(() => {
     setFetching(true)
-  },[])
+  }, [])
 
   return (
     <Box direction={"column"}>
       <MailchimpSubscribe
         url={MAILCHIMP_URL}
         render={({ subscribe, status, message }) => {
-          // status = "success"
           return (
             <Box direction={"column"}>
               {status !== "success" && (
                 <>
                   <Text size={"medium"} weight={600}>
-                    {" "}
                     Join an engaged community working on civic tech approaches
-                    to tackling online harms on our mailing list{" "}
+                    to tackling online harms on our mailing list
                   </Text>
                   <Box height={"xxsmall"} />
                   <Box
@@ -48,12 +46,9 @@ const MailchimpSubscribeForm = () => {
                       onChange={event => setEmail(event.target.value)}
                       background={"#FFFFFF"}
                     />
-
                     <Button
                       primary
-                      label={
-                        status === "sending" ? "Submitting..." : "Subscribe"
-                      }
+                      label={status === "sending" ? "Submitting..." : "Subscribe"}
                       onClick={() => {
                         subscribe({ EMAIL: email })
                       }}
@@ -65,13 +60,22 @@ const MailchimpSubscribeForm = () => {
               {status === "success" && (
                 <Box
                   margin={{ top: "small" }}
-                  animation={{ type: "fadeOut", duration: 3000 }}
+                  animation={{ type: "fadeIn", duration: 1000 }}
                 >
                   <Text size={"medium"}>
-                    Thank you. We look forward to sharing our progress with you
+                    Thank you! We look forward to sharing our progress with you. You can view our past newsletters&nbsp;
+                    <a
+                      href="https://us19.campaign-archive.com/home/?u=a9af83af1f247ecc04f50ad46&id=4afc4a2c79"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#0070f3", textDecoration: "underline" }}
+                    >
+                      here
+                    </a>.
                   </Text>
                 </Box>
               )}
+
               {status === "error" && (
                 <Text size={"medium"} color={"status-error"}>
                   There was an error saving your email. Please try again later.
