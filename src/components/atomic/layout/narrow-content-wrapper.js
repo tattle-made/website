@@ -1,5 +1,6 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Box, ResponsiveContext } from "grommet"
+import { useLocation } from "@reach/router"
 /**
  * @author
  * @function NarrowSection
@@ -7,9 +8,19 @@ import { Box, ResponsiveContext } from "grommet"
 
 const NarrowContentWrapper = ({ children, justify, width, ...props }) => {
   const size = useContext(ResponsiveContext)
+  const location = useLocation()
+  const [defaultLargeWidth, setDefaultLargeWidth] = useState("960px")
+
+  useEffect(() => {
+    // Set default width for large screen size to 65% only for the blog pages
+    if (location.pathname.includes("/blog/")) {
+      setDefaultLargeWidth("65%")
+    }
+  }, [location])
+
   const Section = () => (
     <Box
-      width={width ? width : "960px"}
+      width={width ? width : defaultLargeWidth}
       alignSelf={"center"}
       flex={"grow"}
       justify={justify ? justify : "start"}
