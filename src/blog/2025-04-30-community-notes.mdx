@@ -1,9 +1,67 @@
 ---
-name: Fact Check websites on Community Notes
+name: Exploratory Analysis of Fact Checks and URLs in Community Notes on X
 excerpt: A count of IFCN websites linked in Community Notes
-author: "Aatman Vaidya"
+author: Aatman Vaidya, Tarunima Prabhakar, Denny George
 project: 
-date: 2025-04-30
+date: 2025-05-05
 tags: devlog
 ---
-We received feedback that there were errors in the analysis. We will update the blog after reviewing it.
+
+import TopDomains from "../images/community_notes_blog_top_domains_plot.png"
+import TopDomainsIFCN from "../images/community_notes_blog_top_20_ifcn_domains_plot.png"
+
+We wanted to understand the role, if any, played by fact check websites in community notes on X. The data for community notes and user rating can be downloaded officially from [here](https://x.com/i/communitynotes/download-data) and fields of the data have been documented [here](https://communitynotes.x.com/guide/en/under-the-hood/download-data). The data for notes is available from 28th Jan 2021 to 25th Apr 2025\. The total number of notes in this timeline are approximately 1.85 million. **This was a short exploratory analysis to understand possible research directions.** 
+
+Ⓘ **NOTE** \- We used the [urlextract](https://urlextract.readthedocs.io/en/latest/urlextract.html) python library to extract URLs from each community note and [tldextract](https://github.com/john-kurkowski/tldextract) to find domains of the URLs. While the tools work well in most cases, they may have limitations—particularly with complex or unusual URLs. Please keep this in mind when interpreting the figures/numbers presented below. 
+
+We started off by trying to find which websites or domains are linked in a note? The top 20 website domains that are referenced in community notes can be seen below.
+
+<img src={TopDomains} alt="TopDomains" />
+
+We found that **81.23%** of all the community notes had URLs in them. Of all the posts that had a URL in them, 30.81% posts had two or more links in them. Majority of those URLs were of X itself (x.com and twitter.com). Wikipedia came second with 6.12%. This was followed by Youtube, AP News, Google, BBC, Reuters, Instagram etc. 
+
+Next, we repeated the same analysis to find the number of community notes which have International Fact-Checking Network ([IFCN](https://www.poynter.org/ifcn/)) websites included in them. We collected the list of [active IFCN Signatories](https://ifcncodeofprinciples.poynter.org/signatories) and used them to manually create an array with their domains. As of May 2025, there are 159 active IFCN signatories, while manually creating the list we were only able to access the domains of 157 websites of which 19 are India based IFCN signatories. It is important to note that many IFCN signatories also publish news stories alongside their fact-checking reports. The graph below is aggregating mentions of websites which are also IFCN certified fact checkers but these also include **stories on the websites that are not fact checked content.** 
+
+We found that a total of **2.85%** of community notes contained IFCN links in them, below is the distribution of top 20 most linked websites, that are also IFCN signatories, in notes. 
+
+<img src={TopDomainsIFCN} alt="TopDomainsIFCN" />
+
+We then ran a similar analysis as above for the 19 active India based IFCN signatories. We found that all 19 domains were referenced in community notes. In total, **2,003** URLs from these domains were present, accounting for approximately **0.08%** of all URLs extracted from the complete set of community notes.
+
+Wherever possible, we have attempted to distinguish between fact-checks and news stories. For example, in the case of [thequint.com](http://thequint.com), fact-checks typically appear under the URL path [thequint.com/news/webqoof](http://thequint.com/news/webqoof), allowing us to identify them better. However, for others like [factly.in](http://factly.in), it is more challenging to differentiate between fact-checks and regular news articles based solely on the URL. In such cases, we have acknowledged these limitations and counted content accordingly wherever clear distinctions could be made.
+
+In our analysis, we focused only on currently active India-based IFCN signatories. As a result, some well-known fact-checking websites such as Alt News, The Logical Indian, and Factchecker are not included in the dataset.
+
+Here is a distribution with counts of India based IFCN websites. 
+
+| Domain | Type of links | Count |
+| :---- | :---- | :---- |
+| [factly.in](http://factly.in)  | Fact Checks and Stories | 328 |
+| [boomlive.in/fact-check](http://boomlive.in/fact-check)  | Only Fact Checks | 298 |
+| [indiatoday.in/fact-check](http://indiatoday.in/fact-check)  | Only Fact Checks | 280 |
+| [newschecker.in](http://newschecker.in)  | Only Fact Checks | 244 |
+| [thequint.com/news/webqoof](http://thequint.com/news/webqoof)  | Only Fact Checks | 230 |
+| [factcrescendo.com](http://factcrescendo.com)  | Only Fact Checks | 200 |
+| [dfrac.org](http://dfrac.org)  | Fact Checks and Stories | 167 |
+| [newsmeter.in/fact-check](http://newsmeter.in/fact-check), [newsmeter.in/ai-deepfake](http://newsmeter.in/ai-deepfake)  | Only Fact Checks | 102 |
+| [youturn.in/factcheck/](http://youturn.in/factcheck/)  | Only Fact Checks | 49 |
+| [vishvasnews.com](http://vishvasnews.com)  | Fact Checks and Stories | 30 |
+| [thip.media/health-news-fact-check](https://www.thip.media/health-news-fact-check/)  | Only Fact Checks | 25 |
+| [ptinews.com/fact-detail](http://ptinews.com/fact-detail)  | Only Fact Checks | 21 |
+| [telugupost.com](http://telugupost.com)  | Fact Checks and Stories | 10 |
+| [newsmobile.in/nm-fact-checker](http://newsmobile.in/nm-fact-checker)  | Only Fact Checks | 9 |
+| [firstcheck.in](http://firstcheck.in)  | Fact Checks and Stories | 3 |
+| [digiteye.in](http://digiteye.in)  | Only Fact Checks | 2 |
+| [thelallantop.com/factcheck](http://thelallantop.com/factcheck)  | Only Fact Checks | 2 |
+| [manoramaonline.com/fact-check](http://manoramaonline.com/fact-check)  | Only Fact Checks | 2 |
+| [medicaldialogues.in/fact-check](http://medicaldialogues.in/fact-check)  | Only Fact Checks | 1 |
+
+### **Possible Future Directions:**
+
+* Cross tabulating with other data sources such as Google Claim Review can help identify only fact checks from IFCN certified domains.   
+* [Topic analysis](https://www.ibm.com/think/topics/topic-modeling) of all notes that include links to IFCN-affiliated websites to understand the broader topics, discussions, or contexts in which fact-checking sources are cited. Additionally, we could also  compare user approval ratings for notes that include IFCN links versus those that don’t.
+
+<hr style={{ border: '1px solid #ccc', margin: '2rem 0' }} />
+
+An older version of this blog was published on 30th April. Based on feedback from some early readers on the number of links for specific sites, we have updated the numbers. The Tattle blog, unlike our peer reviewed papers and reports, are intended as updates about work-in-progress. Blogging about intermediate results is a part of our ethos of working in the open. But, we realize that data analysis that is 'work-in-progress' is more open to misinterpretation than 'work-in-progress' software. Moving forward, we'll ensure that all data analysis that is published as work in progress has a note stating this at the top of the blog.
+
