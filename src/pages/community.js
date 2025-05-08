@@ -35,6 +35,30 @@ const ResponsiveGrid = ({ children }) => {
     </Grid>
   )
 }
+/**
+ * A Card component that displays a community member's photo, name, role, and profile URL.
+ * It also handles whether the member is a current contributor or not.
+ *
+ * @param {object} props
+ * @param {string} props.img - The image URL of the member
+ * @param {string} props.name - The name of the community member
+ * @param {string} props.role - The role of the member (e.g., Developer)
+ * @param {string} props.url - The URL to open on click (e.g., LinkedIn or GitHub profile)
+ * @param {boolean} [props.isCurrentContributor=false] - Whether the member is a current contributor
+ *
+ * @returns {JSX.Element}
+ * 
+ * @param {string} props.img - The image URL of the member; shown only if isCurrentContributor is true
+ * @param {boolean} [props.isCurrentContributor=false] - Controls whether the image is shown
+ * 
+ * @param {string} props.img - The image source object or path used by getImage for GatsbyImage
+ * @param {string} props.name - The member's name used in alt text for accessibility
+ * 
+ * @param {string} [props.name] - The name of the member; if empty, the card is not shown
+ * @param {string} [props.role] - The role of the member; used as fallback if name is missing
+ * @param {string} props.url - The external URL opened on click
+ * 
+ */
 
 const CommunityMemberCard = ({
   img,
@@ -44,18 +68,18 @@ const CommunityMemberCard = ({
   isCurrentContributor = false,
 }) => (
   <Box
-    width="medium"
-    direction="column"
-    align="center"
-    justify="center"
-    pad="small"
-    gap="small"
-    onClick={() => window.open(url, "_blank")}
-    hoverIndicator
-    focusIndicator={false}
-    style={{ textAlign: "center", height: "auto" }}
+    width="medium"                                   //Medium width (from Grommet theme)
+    direction="column"                               //Children vertically stacked
+    align="center"                                   //Children horizontally centered
+    justify="center"                                 //Children vertically centered
+    pad="small"                                      //Padding inside the Box
+    gap="small"                                      //Gap between children
+    onClick={() => window.open(url, "_blank")}       //Opens a new tab with the given URL
+    hoverIndicator                                   //Adds hover effect
+    focusIndicator={false}                           //Disables focus ring
+    style={{ textAlign: "center", height: "auto" }}  //Inline styling
   >
-    {img && isCurrentContributor && (
+    {img && isCurrentContributor && (                 // Only show image if member is a current contributor and image is provided
       <Box
         width="140px"
         height="140px"
@@ -72,19 +96,20 @@ const CommunityMemberCard = ({
         onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
       >
         <GatsbyImage
-          alt={`${name}'s photo`}
-          image={getImage(img)}
-          style={{
+          alt={`${name}'s photo`}                    // Displays an optimized image using GatsbyImage
+          image={getImage(img)}                      // - Uses the provided img source converted via getImage()
+          style={{                                   // - Applies 100% width and height, and "cover" for object fit
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "cover",                     
             // borderRadius: "50%",
           }}
         />
       </Box>
     )}
-    {(name?.trim() || role?.trim()) && (
-      <PlainExternalLink href={url} target="_blank">
+    
+    {(name?.trim() || role?.trim()) && (              // Only render the member card if either name or role is non-empty
+      <PlainExternalLink href={url} target="_blank">  // Wraps the card in an external link that opens the provided URL in a new tab 
         <Box
           direction="row"
           align="center"
