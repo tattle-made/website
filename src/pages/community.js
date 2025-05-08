@@ -58,18 +58,18 @@ const CommunityMemberCard = ({
   isCurrentContributor = false,
 }) => (
   <Box
-    width="medium"                                  
-    direction="column"                               //Children vertically stacked
-    align="center"                                   //Children horizontally centered
-    justify="center"                                 //Children vertically centered
-    pad="small"                                      //Padding inside the Box
-    gap="small"                                      //Gap between children
-    onClick={() => window.open(url, "_blank")}       //Opens a new tab with the given URL
-    hoverIndicator                                   //Adds hover effect
-    focusIndicator={false}                           //Disables focus ring
-    style={{ textAlign: "center", height: "auto" }}  //Inline styling
+    width="medium"
+    direction="column"
+    align="center"
+    justify="center"
+    pad="small"
+    gap="small"
+    onClick={() => window.open(url, "_blank")}
+    hoverIndicator
+    focusIndicator={false}
+    style={{ textAlign: "center", height: "auto" }}
   >
-    {img && isCurrentContributor && (                // Only show image if member is a current contributor and image is provided
+    {img && isCurrentContributor && (
       <Box
         width="140px"
         height="140px"
@@ -86,19 +86,18 @@ const CommunityMemberCard = ({
         onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
       >
         <GatsbyImage
-          alt={`${name}'s photo`}                   
-          image={getImage(img)}                     
-          style={{                                   // - Applies 100% width and height, and "cover" for object fit
+          alt={`${name}'s photo`}
+          image={getImage(img)}
+          style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            // borderRadius: "50%",
           }}
         />
       </Box>
     )}
 
-    {(name?.trim() || role?.trim()) && (              
+    {(name?.trim() || role?.trim()) && (
       <PlainExternalLink href={url} target="_blank">
         <Box
           direction="row"
@@ -154,25 +153,23 @@ const CommunityMemberCard = ({
  * @returns {JSX.Element} The rendered Community page 
  */
 
-const community = ({ data }) => {                                       // Filter current contributors (isCurrentContributor = true)
-  // const contributors = data.allMdx.nodes;
+const community = ({ data }) => {
   const currentContributors = data.allMdx.nodes.filter(
     (contributor) => contributor.frontmatter.isCurrentContributor
   )
-  const pastContributors = data.allMdx.nodes.filter(                   // Filter past contributors (isCurrentContributor = false)
+  const pastContributors = data.allMdx.nodes.filter(
     (contributor) => !contributor.frontmatter.isCurrentContributor
   )
 
   return (
-    <DefaultLayout>                                                    {/* Layout wrapper for the page */}
-      <NarrowContentWrapper>                                           {/* Limits content width for better readability */}
-        <NarrowSection>                                                {/* A content section on the page */}
+    <DefaultLayout>
+      <NarrowContentWrapper>
+        <NarrowSection>
 
-          <Heading level={2}> Community </Heading>                     {/* Main heading of the page */}
+          <Heading level={2}> Community </Heading>
 
-          <Heading level={3}>Current Contributors and Staff</Heading>  {/* Subheading for the contributors list */}
+          <Heading level={3}>Current Contributors and Staff</Heading>
           <ResponsiveGrid>
-            {/* Displays contributor cards in a responsive grid layout */}
             {currentContributors.map((contributor, key) => (
               <CommunityMemberCard
                 key={key}
