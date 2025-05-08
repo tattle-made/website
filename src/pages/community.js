@@ -35,6 +35,20 @@ const ResponsiveGrid = ({ children }) => {
     </Grid>
   )
 }
+/**
+ * A Card component that displays a community member's photo, name, role, and profile URL.
+ * It also handles whether the member is a current contributor or not.
+ *
+ * @param {object} props
+ * @param {string} props.img - The image URL of the member; shown only if isCurrentContributor is true
+ * @param {string} props.name - The member's name used in alt text for accessibility
+ * @param {string} props.role - The role of the member (e.g., Developer); used as fallback if name is missing
+ * @param {string} props.url - The URL to open on click (e.g., LinkedIn or GitHub profile)
+ * @param {boolean} [props.isCurrentContributor=false] - Whether the member is a current contributor
+ *
+ * @returns {JSX.Element}
+ * 
+ */
 
 const CommunityMemberCard = ({
   img,
@@ -78,11 +92,11 @@ const CommunityMemberCard = ({
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            // borderRadius: "50%",
           }}
         />
       </Box>
     )}
+
     {(name?.trim() || role?.trim()) && (
       <PlainExternalLink href={url} target="_blank">
         <Box
@@ -115,8 +129,31 @@ const CommunityMemberCard = ({
   </Box>
 )
 
+
+/**
+ * Renders the Community page with lists of current and past contributors.
+ * 
+ * Filters contributors from the received data based on their `isCurrentContributor` flag.
+ * - Current contributors are displayed with name, role, image, and URL.
+ * - Past contributors are displayed with name, role, and URL (without image).
+ *
+ * Each contributor is rendered inside a `CommunityMemberCard` within a responsive grid layout.
+ *
+ * @param {object} props
+ * @param {object} props.data - The GraphQL data containing contributor details
+ * @param {Array} props.data.allMdx.nodes - Array of MDX nodes, each representing a contributor
+ * @param {object} props.data.allMdx.nodes[].frontmatter - Frontmatter fields of each contributor
+ * @param {string} props.data.allMdx.nodes[].frontmatter.name - Contributor's name
+ * @param {string} props.data.allMdx.nodes[].frontmatter.role - Contributor's role
+ * @param {string} props.data.allMdx.nodes[].frontmatter.url - External URL for the contributor
+ * @param {string} props.data.allMdx.nodes[].frontmatter.img - Contributor's image URL
+ * @param {boolean} props.data.allMdx.nodes[].frontmatter.isCurrentContributor - True if contributor is currently active
+ * 
+ * Displays a note acknowledging contributions from other volunteers.
+ * @returns {JSX.Element} The rendered Community page 
+ */
+
 const community = ({ data }) => {
-  // const contributors = data.allMdx.nodes;
   const currentContributors = data.allMdx.nodes.filter(
     (contributor) => contributor.frontmatter.isCurrentContributor
   )
@@ -128,7 +165,9 @@ const community = ({ data }) => {
     <DefaultLayout>
       <NarrowContentWrapper>
         <NarrowSection>
+
           <Heading level={2}> Community </Heading>
+
           <Heading level={3}>Current Contributors and Staff</Heading>
           <ResponsiveGrid>
             {currentContributors.map((contributor, key) => (
