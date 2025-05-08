@@ -40,23 +40,13 @@ const ResponsiveGrid = ({ children }) => {
  * It also handles whether the member is a current contributor or not.
  *
  * @param {object} props
- * @param {string} props.img - The image URL of the member
- * @param {string} props.name - The name of the community member
- * @param {string} props.role - The role of the member (e.g., Developer)
+ * @param {string} props.img - The image URL of the member; shown only if isCurrentContributor is true
+ * @param {string} props.name - The member's name used in alt text for accessibility
+ * @param {string} props.role - The role of the member (e.g., Developer); used as fallback if name is missing
  * @param {string} props.url - The URL to open on click (e.g., LinkedIn or GitHub profile)
  * @param {boolean} [props.isCurrentContributor=false] - Whether the member is a current contributor
  *
  * @returns {JSX.Element}
- * 
- * @param {string} props.img - The image URL of the member; shown only if isCurrentContributor is true
- * @param {boolean} [props.isCurrentContributor=false] - Controls whether the image is shown
- * 
- * @param {string} props.img - The image source object or path used by getImage for GatsbyImage
- * @param {string} props.name - The member's name used in alt text for accessibility
- * 
- * @param {string} [props.name] - The name of the member; if empty, the card is not shown
- * @param {string} [props.role] - The role of the member; used as fallback if name is missing
- * @param {string} props.url - The external URL opened on click
  * 
  */
 
@@ -68,7 +58,7 @@ const CommunityMemberCard = ({
   isCurrentContributor = false,
 }) => (
   <Box
-    width="medium"                                   //Medium width (from Grommet theme)
+    width="medium"                                  
     direction="column"                               //Children vertically stacked
     align="center"                                   //Children horizontally centered
     justify="center"                                 //Children vertically centered
@@ -79,7 +69,7 @@ const CommunityMemberCard = ({
     focusIndicator={false}                           //Disables focus ring
     style={{ textAlign: "center", height: "auto" }}  //Inline styling
   >
-    {img && isCurrentContributor && (                 // Only show image if member is a current contributor and image is provided
+    {img && isCurrentContributor && (                // Only show image if member is a current contributor and image is provided
       <Box
         width="140px"
         height="140px"
@@ -96,20 +86,20 @@ const CommunityMemberCard = ({
         onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
       >
         <GatsbyImage
-          alt={`${name}'s photo`}                    // Displays an optimized image using GatsbyImage
-          image={getImage(img)}                      // - Uses the provided img source converted via getImage()
+          alt={`${name}'s photo`}                   
+          image={getImage(img)}                     
           style={{                                   // - Applies 100% width and height, and "cover" for object fit
             width: "100%",
             height: "100%",
-            objectFit: "cover",                     
+            objectFit: "cover",
             // borderRadius: "50%",
           }}
         />
       </Box>
     )}
-    
-    {(name?.trim() || role?.trim()) && (              // Only render the member card if either name or role is non-empty
-      <PlainExternalLink href={url} target="_blank">  // Wraps the card in an external link that opens the provided URL in a new tab 
+
+    {(name?.trim() || role?.trim()) && (              
+      <PlainExternalLink href={url} target="_blank">
         <Box
           direction="row"
           align="center"
@@ -140,22 +130,49 @@ const CommunityMemberCard = ({
   </Box>
 )
 
-const community = ({ data }) => {
+
+/**
+ * Renders the Community page with lists of current and past contributors.
+ * 
+ * Filters contributors from the received data based on their `isCurrentContributor` flag.
+ * - Current contributors are displayed with name, role, image, and URL.
+ * - Past contributors are displayed with name, role, and URL (without image).
+ *
+ * Each contributor is rendered inside a `CommunityMemberCard` within a responsive grid layout.
+ *
+ * @param {object} props
+ * @param {object} props.data - The GraphQL data containing contributor details
+ * @param {Array} props.data.allMdx.nodes - Array of MDX nodes, each representing a contributor
+ * @param {object} props.data.allMdx.nodes[].frontmatter - Frontmatter fields of each contributor
+ * @param {string} props.data.allMdx.nodes[].frontmatter.name - Contributor's name
+ * @param {string} props.data.allMdx.nodes[].frontmatter.role - Contributor's role
+ * @param {string} props.data.allMdx.nodes[].frontmatter.url - External URL for the contributor
+ * @param {string} props.data.allMdx.nodes[].frontmatter.img - Contributor's image URL
+ * @param {boolean} props.data.allMdx.nodes[].frontmatter.isCurrentContributor - True if contributor is currently active
+ * 
+ * Displays a note acknowledging contributions from other volunteers.
+ * @returns {JSX.Element} The rendered Community page 
+ */
+
+const community = ({ data }) => {                                       // Filter current contributors (isCurrentContributor = true)
   // const contributors = data.allMdx.nodes;
   const currentContributors = data.allMdx.nodes.filter(
     (contributor) => contributor.frontmatter.isCurrentContributor
   )
-  const pastContributors = data.allMdx.nodes.filter(
+  const pastContributors = data.allMdx.nodes.filter(                   // Filter past contributors (isCurrentContributor = false)
     (contributor) => !contributor.frontmatter.isCurrentContributor
   )
 
   return (
-    <DefaultLayout>
-      <NarrowContentWrapper>
-        <NarrowSection>
-          <Heading level={2}> Community </Heading>
-          <Heading level={3}>Current Contributors and Staff</Heading>
+    <DefaultLayout>                                                    {/* Layout wrapper for the page */}
+      <NarrowContentWrapper>                                           {/* Limits content width for better readability */}
+        <NarrowSection>                                                {/* A content section on the page */}
+
+          <Heading level={2}> Community </Heading>                     {/* Main heading of the page */}
+
+          <Heading level={3}>Current Contributors and Staff</Heading>  {/* Subheading for the contributors list */}
           <ResponsiveGrid>
+            {/* Displays contributor cards in a responsive grid layout */}
             {currentContributors.map((contributor, key) => (
               <CommunityMemberCard
                 key={key}
