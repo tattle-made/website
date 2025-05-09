@@ -12,7 +12,8 @@ const ViralSpiral = () => {
     <DefaultLayout>
       <Box
         height={{ max: "80vh", min: "fit-content" }}
-        margin={{ top: "medium" }}
+        pad={{ horizontal: "large" }}
+        margin={{ top: "large" }}
       >
         <Box>
           <StaticImage
@@ -24,7 +25,7 @@ const ViralSpiral = () => {
       </Box>
       <NarrowContentWrapper>
         <NarrowSection>
-          <Heading>Media Literacy through a Game</Heading>
+          <Heading level={2} margin={{ top: "none", bottom: "medium" }}>Media Literacy through a Game</Heading>
           <Paragraph fill>
             Viral Spiral is an adaptive digital card game about sharing news on
             the Internet. The game reflects the ways and reasons misinformation
@@ -46,10 +47,11 @@ const ViralSpiral = () => {
       </NarrowContentWrapper>
       <NarrowContentWrapper>
         <NarrowSection>
-          <Heading>Play with Us</Heading>
+          <Heading level={2} margin={{ top: "none", bottom: "small" }}>Play with Us</Heading>
         </NarrowSection>
       </NarrowContentWrapper>
-      <Box height={{ max: "80vh", min: "fit-content" }}>
+      <Box height={{ max: "80vh", min: "fit-content" }}
+        pad={{ horizontal: "large" }} >
         <Box>
           <StaticImage
             alt="workshop image"
