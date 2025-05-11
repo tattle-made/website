@@ -14,7 +14,7 @@ export default function Layout({ children }) {
   return (
     <DefaultLayoutNarrow>
       {children}
-      <Box pad="small">
+      <Box pad="medium">
         {/* Render the list */}
         {reports.map((report) => (
           <Link key={report.year} to={report.link} className="no-underline">
@@ -23,7 +23,7 @@ export default function Layout({ children }) {
               justify="between"
               align="center"
               pad="medium"
-              margin="small"
+              margin="medium"
               className="bg-white border shadow-lg rounded-xl transition transform hover:scale-105 hover:shadow-2xl hover:bg-gray-50"
             >
               {/* Year on the left */}
