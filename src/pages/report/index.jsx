@@ -23,7 +23,7 @@ export default function Layout({ children }) {
               justify="between"
               align="center"
               pad="medium"
-              margin="medium"
+              margin="small"
               className="bg-white border shadow-lg rounded-xl transition transform hover:scale-105 hover:shadow-2xl hover:bg-gray-50"
             >
               {/* Year on the left */}
