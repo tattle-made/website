@@ -133,7 +133,7 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
   }
 
   return (
-    <Box direction={"row"} wrap={true} height={"76.8px"} width={"960px"}>
+    <Box direction={"row"} wrap={true} height={"76.8px"} width={"960px"} pad={{ horizontal: "medium" }}>
       {size !== "small" ? (
         <Box direction={"row"} align={"center"} width={"960px"} gap={"xsmall"}>
           <TattleLogo data={{ fill: Theme.text_color_light }} />
