@@ -98,7 +98,7 @@ const MobileNavItemExternalLink = ({ target, label }) => (
 
 const PrimaryNav = ({ primaryNav }) => {
   return (
-    <Box direction={"row"} align={"center"} gap={"large"}>
+    <Box direction={"row"} align={"center"} gap={"large"} >
       <DropDownMenu title={"Tools"} options={dropDownOptionsTools} />
       <Link to={"/blog"}>
         <Button plain={true}>
@@ -133,9 +133,9 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
   }
 
   return (
-    <Box direction={"row"} wrap={true} height={"76.8px"} width={"960px"} pad={{ horizontal: "medium" }}>
+    <Box direction={"row"} wrap={"true"} height={"76.8px"} width={"960px"} >
       {size !== "small" ? (
-        <Box direction={"row"} align={"center"} width={"960px"} gap={"xsmall"}>
+        <Box direction={"row"} align={"center"} width={"960px"} gap={"xsmall"} >
           <TattleLogo data={{ fill: Theme.text_color_light }} />
           {label.length !== 0 ? (
             <Text weight={900} level={3} margin="none">
@@ -150,8 +150,9 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
           width={"100%"}
           direction={"row"}
           align={"center"}
-          fill={true}
+          fill={"true"}
           gap={"xsmall"}
+          pad={{ horizontal: "small" }}
         >
           <TattleLogo data={{ fill: Theme.text_color_light }} />
           {label.length !== 0 ? (
@@ -168,8 +169,8 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
         </Box>
       )}
       {open && (
-        <Layer position="right" onClickOutside={onClose} animation={"slide"}>
-          <Box fill={true} flex={"grow"} overflow="auto" background={"brand"}>
+        <Layer position="right" onClickOutside={onClose} animation={"slide"} >
+          <Box fill={true} flex={"grow"} overflow="auto" background={"brand"} >
             <Box
               fill={true}
               pad={size !== "small" ? "small" : "medium"}
