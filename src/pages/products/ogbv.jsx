@@ -79,7 +79,7 @@ const ogbv = () => (
             direction="row-responsive"
             wrap={true}
           >
-            <Box width={"medium"} height={"small"} overflow="hidden" >
+            <Box width={"medium"} height={"small"} overflow="hidden">
               <iframe
                 width="360em"
                 height="360em"
