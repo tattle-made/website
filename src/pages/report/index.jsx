@@ -14,7 +14,7 @@ export default function Layout({ children }) {
   return (
     <DefaultLayoutNarrow>
       {children}
-      <Box pad="medium">
+      <Box pad="small">
         {/* Render the list */}
         {reports.map((report) => (
           <Link key={report.year} to={report.link} className="no-underline">
