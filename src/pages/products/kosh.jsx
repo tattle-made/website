@@ -177,9 +177,9 @@ const Kosh = () => (
             pad={"small"}
             background={"visuals-1"}
             direction="row-responsive"
-            wrap={true}
+            wrap={"true"}
           >
-            <Box width={"medium"} height={"small"}>
+            <Box width={"medium"} height={"small"} overflow="hidden">
               <iframe
                 width="360em"
                 height="360em"
