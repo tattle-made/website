@@ -18,7 +18,7 @@ Tattle is a civic tech project emanating from India that aims to make verified i
 
 This blog discusses some of the challenges faced, and related design decisions that Tattle has taken in implementing one of it’s goals- the creation of a globally accessible archive of multi-media messages circulated on chat apps.
 
-## The Curious Case of WhatsApp
+### The Curious Case of WhatsApp
 
 In India, WhatsApp’s rising popularity has mirrored a rapid increase in mobile phone and Internet penetration [2]. The ease of creating and sharing audio-visual content has made the platform accessible even to users with minimal traditional and digital literacy.
 
@@ -30,7 +30,7 @@ These aspects make content discovery and tracing the source of origin of a parti
 
 An archive of content circulated on WhatsApp, and associated metadata such as time of receiving the message, addresses some of these issues. For fact checkers, it provides a database against which they can verify incoming content. For researchers, it is a source of content and temporal analysis.  But an archive is not neutral. It exerts power in what it chooses to include and exclude. It also exerts power through its mode of management and rules of access.
 
-## Data Acquisition: The Greedy Approach
+#### Data Acquisition: The Greedy Approach
 
 Over the last two years, several researchers and fact checking groups across the world have collected content circulated on WhatsApp for different purposes. While most researchers have focused on scraping public WhatsApp groups[3,4], fact checking groups source content from a number of channels, including emails and fact checking helplines run over WhatsApp[5].
 
@@ -38,14 +38,13 @@ The lynchings in India highlight the urgency of timely detection and response. W
 
 ## Open Challenges
 
-### Ethics of Data Collection from Public WhatsApp Groups
+#### Ethics of Data Collection from Public WhatsApp Groups
 
 At present there are no guidelines for ethical data collection on WhatsApp. Every research group has self-defined a configuration of consent framework and data sharing practices. For example, Narayanan et al.[3] chose to declare their presence and intent in every public group they joined and as a result were removed from some of them. Garimella et al.[4] on the other hand did not declare their presence and intent but have not made all of their data public.
 
 At Tattle, we do not declare our intent when we join public WhatsApp groups. Our working assumption is that public WhatsApp groups are an exception to otherwise private communication on the platform and are made public with the explicit intent of being discoverable. This is an assumption that we will revisit as the project evolves.
 
-### 
-Flagging Problematic Content
+### Flagging Problematic Content
 
 Not all collected data can be opened to the public. A casual google search for public WhatsApp groups results in lists of ‘Adult’ WhatsApp groups [6]. In greedy scraping of WhatsApp groups, we often encounter pornographic and violent content. For example, groups launched under a popular theme of ‘Jobs’ are often appropriated for pornographic content. Such content cannot be shared on a public archive and must be flagged soon after collection.
 
@@ -53,7 +52,7 @@ Owing to the volume of data scraped, Tattle will use machine learning based appr
 
 How best to incorporate the preferences of multiple stakeholders in what should or should not be opened, is a question that Tattle as any open archive must address.
 
-### Unwanted spotlight on previously obscure content [7]
+#### Unwanted spotlight on previously obscure content [7]
 
 With an online open access archive it is difficult to predict or control the ways in which the data will be used. One concern is that by surfacing content circulating in different geographies, the archive will become a source for ill-intended content creators, confounding the problem the archive is directed to solve.
 
@@ -63,8 +62,7 @@ Misinformation on WhatsApp is often hyperlocal[8].  While local fact checkers a
 
 We recognize that while not all data collected can be made public, it may still be useful for research. Preserving some data for restricted access has practical applications, though it raises questions around how these rights are managed. Aronson notes, “…the ethics of providing access to archival materials is a ‘thorny problem.’ It is not a one and done policy decision, instead requires constant deliberation and negotiation.”[10] 
 
-## 
-Something New Under the Sun?
+### Something New Under the Sun?
 
 Several of the concerns pertinent to Tattle’s archival activities have been discussed in different forms in disciplines spanning media studies, archival sciences, information studies and anthropology. Yet, it is in the interaction of a multi-lingual, mixed media content; encrypted networks and coordinated disinformation campaigns that the uniqueness of archiving content from chat apps emerges. 
 
@@ -75,6 +73,8 @@ We would love any inputs on navigating the issues raised in this blog. Also do l
 ---
 
 ## References
+
+<p className="break-words">
 
 [1] De, Anamitra. "Can We Trust Facebook to Keep Our "Digital Living Rooms" Safe From Liars, Racists, and Haters? | Omidyar Network." Omidyar Network Blog. March 11, 2019. Accessed June 01, 2019. https://www.omidyar.com/blog/can-we-trust-facebook-keep-our-digital-living-rooms-safe-liars-racists-and-haters.
 
@@ -113,3 +113,4 @@ We would love any inputs on navigating the issues raised in this blog. Also do l
 ---
 
 [10] Aronson, Jay D. (2017) “Preserving Human Rights Media” Genocide Studies and Prevention: An International Journal: Vol. 11: Iss. 1: 82-99. Accessed May 31, 2019. [https://scholarcommons.usf.edu/gsp/vol11/iss1/9/](https://scholarcommons.usf.edu/gsp/vol11/iss1/9/).
+</p>

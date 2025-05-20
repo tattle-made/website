@@ -25,25 +25,23 @@ In this notebook we are trying to analyse how the library works for the purpose 
     import matplotlib.pyplot as plt
     import os
 
-    # We will be analysing each video by generating 15, 10 and 5 keyframes each
+    ### We will be analysing each video by generating 15, 10 and 5 keyframes each
     frame_counts = [15,10,5]
-    LINE_SEPARATOR = "__________________________________________________"
-    # Creating a dataframe to store video duration, size and time taken for extracting 15, 10 and 5 frames from each video
+    LINE_SEPARATOR = "____________________________"
+
+    ### Creating a dataframe to store video duration, size and time taken for extracting 15, 10 and 5 frames from each video
     
     df = pd.DataFrame(columns=("Duration", "Size", "Time for 15 frames", "Time for 10 frames", "Time for 5 frames"))
     
-    # Function to create a new folder to store extracted key frames
+    ### Function to create a new folder to store extracted key frames
     def create_folder_for_video (path):
         os.makedirs(path)
         
-    # Function to extract key frames from given video
+    ### Function to extract key frames from given video
     
-    def get_key_frames_from_video (path_to_video, no_of_frames):
-        video = Video()
-        images = video.extract_frames_as_images(no_of_frames = no_of_frames, file_path= path_to_video)
-        return images
+    <pre> ```python def get_key_frames_from_video(path_to_video, no_of_frames): video = Video() images = video.extract_frames_as_images(no_of_frames=no_of_frames, file_path=path_to_video) return images ``` </pre>
         
-    # Function to write extracted key frames into disc
+    ### Function to write extracted key frames into disc
     
     def write_images_into_folder (images, no_of_frames, path):
         video = Video()
@@ -55,7 +53,7 @@ In this notebook we are trying to analyse how the library works for the purpose 
 - Duration: 26 seconds
 - Size: 59,88,173 bytes (7 MB on disk)
 
-    # Extracting keyframes for video 1 and appending data to the dataframe
+    ### Extracting keyframes for video 1 and appending data to the dataframe
     ```
     data = {'Duration':26, 'Size':7}
     
@@ -90,7 +88,7 @@ In this notebook we are trying to analyse how the library works for the purpose 
 - Duration: 57 seconds
 - Size: 30,95,424 bytes (3.1 MB on disk)
 
-    # Extracting keyframes for video 2 and appending data to the dataframe
+    ### Extracting keyframes for video 2 and appending data to the dataframe
     ```
     data = {'Duration':57, 'Size': 3.1}
     
@@ -125,7 +123,7 @@ In this notebook we are trying to analyse how the library works for the purpose 
 - Duration - 2min
 - Size - 57,92,806 bytes (5.8 MB on disk)
 
-    # Extracting keyframes for video 3 and appending data to the dataframe
+    ### Extracting keyframes for video 3 and appending data to the dataframe
     ```
     data = {'Duration':120, 'Size': 5.8}
     
@@ -160,7 +158,7 @@ In this notebook we are trying to analyse how the library works for the purpose 
 - Duration 4 min 51 sec
 - Size - 1,61,58,835 bytes (16.8 MB on disk)
 
-    # Extracting keyframes for video 5 and appending data to the dataframe
+    ### Extracting keyframes for video 5 and appending data to the dataframe
     ```
     data = {'Duration':291, 'Size': 16.8}
     
@@ -197,7 +195,7 @@ In this notebook we are trying to analyse how the library works for the purpose 
 - Duration - 8min 14sec
 - Size - 4,53,46,631 bytes (46.4 MB on disk)
 
-    # Extracting keyframes for video 6 and appending data to the dataframe
+    ### Extracting keyframes for video 6 and appending data to the dataframe
     ```
     data = {'Duration':494, 'Size': 46.4}
     
@@ -233,7 +231,7 @@ In this notebook we are trying to analyse how the library works for the purpose 
 - Duration - 10min 50sec
 - Size - 5,15,84,587 bytes (52.4 MB on disk)
 
-    # Extracting keyframes for video 7 and appending data to the dataframe
+    ### Extracting keyframes for video 7 and appending data to the dataframe
     ```
     data = {'Duration':650, 'Size': 52.4}
     
@@ -293,7 +291,7 @@ In this notebook we are trying to analyse how the library works for the purpose 
     plt.show()
 
 ![](../images/output_26_0.png)
-    # plotting size vs time
+    ## plotting size vs time
     
     plt.plot(df["Size"],df["Time for 15 frames"])
     plt.plot(df["Size"],df["Time for 10 frames"])
