@@ -35,6 +35,7 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
 ## 1. Getting the data
 
     ### Importing libraries
+    <p className="break-words">
     import os
     import requests
     import time
@@ -76,10 +77,12 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
     import pyLDAvis
     import pyLDAvis.gensim
     from gensim import similarities
+    </p>
 
 
 
     ### Get data from factchecking sites MongoDB
+    <p className="break-words">
     def initialize_mongo():
         mongo_url = "mongodb+srv://os.environ.get("FACTCHECK_DB_USERNAME"):os.environ.get("FACTCHECK_DB_PASSWORD")@tattle-data-fkpmg.mongodb.net/test?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE"
         cli = MongoClient(mongo_url)
@@ -108,6 +111,7 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
     1    Photoshopped promo of ABP News over Chandrayaa...
     2    Video of scuffle between men in khaki uniform ...
     Name: headline, dtype: object
+    </p>
 
 ## 2. Text cleaning
 
@@ -144,15 +148,17 @@ Random time delays between requests are advised, else Google may (and probably w
 Translating the 5200+ non-English headlines took approximately 6.5 hours.
 
     ### Translating non-English headlines using googletrans library
-
+<p className="break-words">
     translator = Translator()
     translations = []
     for doc in non_eng:
         translations.append(translator.translate(doc).text)
         time.sleep(uniform(3,5))
+</p>
 
 
     ### Saving the original and translated headlines for future reference
+<p className="break-words">
     translated_headlines = dict(zip(non_eng, translations))
     translations_df = pd.DataFrame(translated_headlines.items(), columns = ["headline", "translation"])
     translations_df["original_english"] = 0
@@ -160,6 +166,7 @@ Translating the 5200+ non-English headlines took approximately 6.5 hours.
     translations_df["original_english"].fillna(value=1, inplace = True)
     translations_df["original_english"] = translations_df["original_english"].astype(int)
     translations_df.to_csv("headlines_with_translations.csv")
+    </p>
 
 ## 4. Text preprocessing
 
@@ -243,6 +250,7 @@ Topic coherence is an evaluation metric for topic models that measures the degre
         limit : Max num of topics
 
         Returns:
+        <p className="break-words">
         -------
         model_list : List of LDA topic models
         coherence_values : Coherence values corresponding to the LDA model with respective number of topics
@@ -257,6 +265,7 @@ Topic coherence is an evaluation metric for topic models that measures the degre
             coherence_values.append(coherencemodel.get_coherence())
 
         return model_list, coherence_values
+       
 
 
     model_list, coherence_values = compute_coherence_values(dictionary=id2word, corpus=corpus, texts=data_cleaned, start=2, limit=20, step=1)
@@ -268,6 +277,7 @@ Topic coherence is an evaluation metric for topic models that measures the degre
     plt.ylabel("Coherence score")
     plt.legend(("coherence_values"), loc='best')
     plt.show()
+    </p>
 
 ![png](../images/output_18_1.png)
 
