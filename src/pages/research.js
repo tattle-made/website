@@ -20,7 +20,7 @@ const FeaturedListItem = ({ item }) => {
   return (
     <Box
       direction={"column"}
-      onClick={() => {}}
+      onClick={() => { }}
       hoverIndicator={true}
       focusIndicator={false}
       width={size === "small" ? "100%" : "50%"}
@@ -35,11 +35,12 @@ const FeaturedListItem = ({ item }) => {
             <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>
               {item.title}
             </Heading>
-            <Box direction={"row"} wrap={true} gap={"xsmall"}>
-              {item.tags.map(tag => (
-                <TagBubble data={{ label: tag }} />
+            <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }}>
+              {item.tags.map((tag, index) => (
+                <TagBubble key={index} data={{ label: tag }} />
               ))}
             </Box>
+
             <Paragraph size={"medium"}>{item.description}</Paragraph>
           </Box>
         </Box>
@@ -52,7 +53,7 @@ const AllListItem = ({ item }) => (
   <Box
     direction={"column"}
     pad={"xsmall"}
-    onClick={() => {}}
+    onClick={() => { }}
     hoverIndicator={true}
     focusIndicator={false}
   >
@@ -69,11 +70,12 @@ const AllListItem = ({ item }) => (
           >
             {item.title}
           </Heading>
-          <Box direction={"row"} wrap={true} gap={"xsmall"}>
-            {item.tags.map(tag => (
-              <TagBubble data={{ label: tag }} />
+          <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }}>
+            {item.tags.map((tag, index) => (
+              <TagBubble key={index} data={{ label: tag }} />
             ))}
           </Box>
+
           <Paragraph size={"medium"} fill>
             {item.description}
           </Paragraph>
