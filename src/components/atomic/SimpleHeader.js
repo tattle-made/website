@@ -152,7 +152,7 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
           align={"center"}
           fill={"true"}
           gap={"xsmall"}
-          pad={{ horizontal: "small" }}
+          pad={{ horizontal: "medium" }}
         >
           <TattleLogo data={{ fill: Theme.text_color_light }} />
           {label.length !== 0 ? (
