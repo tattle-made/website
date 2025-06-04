@@ -28,9 +28,10 @@ export default function TagsRenderer({
   }
 
   return (
+    <Box margin={{ bottom: "small" }}>
     <Box flex direction="row" align="baseline" gap="xsmall">
       <Box>
-        <Heading level={4} marging={{ bottom: "small" }}>
+        <Heading level={4} margin={{ bottom: "small" }}>
           {tagTypeHeading}
         </Heading>
       </Box>
@@ -38,25 +39,28 @@ export default function TagsRenderer({
       <Box flex direction="row" gap="small" align="center" wrap={true}>
         {showAllTags
           ? sortedUniqueTags.map((tag) => (
-              <Box key={tag} margin={{ bottom: "small" }}>
-                <Link
-                  to={tagBaseURL.concat(tag)}
-                  style={{ textDecoration: "none" }}
-                >
-                  <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                </Link>
-              </Box>
-            ))
+            <Box key={tag} margin={{ bottom: "small" }}>
+              <Link
+                to={tagBaseURL.concat(tag)}
+                style={{ textDecoration: "none" }}
+              >
+                <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+              </Link>
+            </Box>
+          ))
           : sortedUniqueTags.slice(0, 10).map((tag) => (
-              <Box key={tag}>
-                <Link
-                  to={tagBaseURL.concat(tag)}
-                  style={{ textDecoration: "none" }}
-                >
-                  <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                </Link>
-              </Box>
-            ))}
+            <Box key={tag}
+              pad={{ vertical: "xsmall" }}
+              round="xsmall"
+              margin={{  bottom: "xxsmall" }}>
+              <Link
+                to={tagBaseURL.concat(tag)}
+                style={{ textDecoration: "none" }}
+              >
+                <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+              </Link>
+            </Box>
+          ))}
         {sortedUniqueTags.length > 10 && (
           <Button onClick={toggleTagsDisplay}>
             <Box
@@ -70,6 +74,7 @@ export default function TagsRenderer({
             </Box>
           </Button>
         )}
+      </Box>
       </Box>
     </Box>
   )
