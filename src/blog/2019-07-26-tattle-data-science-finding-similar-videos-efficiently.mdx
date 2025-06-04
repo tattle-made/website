@@ -5,6 +5,7 @@ date: 2019-07-26
 author: Swair Shah
 project: Kosh
 tags:  machine-learning, devlog
+import { Heading } from 'grommet'
 ---
 
 One of the challenges we face at Tattle is to efficiently check if a given post or message has been encountered earlier by our system. 
@@ -65,8 +66,6 @@ We can see that after the first two frame selection the error reduction slows do
 {/* These images sources are not present */}
 ![](../images/frame0-3.jpg)![](/content/images/2019/07/frame700.jpg)
 Using these these two frames as anchor frames we achieve $80.48\%$ reduction in reconstruction error.  Now that we have found a set of representative anchor frames for a video, we can use the same technique we use for image duplicate detection and label extraction. To generate a fingerprint for the video we can take individual image fingerprint (pHash or pre-trained Convolutional Neural Network features) for all the anchor frames  and either append them or take an average. 
-
-import { Heading } from 'grommet'
 
 <Heading level={3}>Semantic Labels for Videos</Heading>
 
