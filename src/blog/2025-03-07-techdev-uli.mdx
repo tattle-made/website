@@ -30,22 +30,24 @@ In the process of updating Uli, we also created the following options on the plu
 
 Ahead of workshops we were conducting with college faculty and students, we worked on easing the process of demonstrating the value of Uli to our audience, such as the process of crowdsourcing online, and the metadata display on slur words. There were constraints posed in terms of limited access to laptops, which meant we needed to work out a way to enable the Uli experience on a mobile device as well.
 
-  1. **Uli Community Page**
+1. **Uli Community Page**
 
 We created a page that would allow users to look at words they added to the crowdsourced list, as well as the contextual information added about it, as below. It was  developed using the Phoenix web framework in the Elixir programming language and we use PostgreSQL for our database.
 
-<div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+<div className="w-full">
 <img src={uliCommunityPage} alt="Uli input 1" width="800" height="400" style={{ border: "1px solid black" }} />
 </div>
 
-  2. **Interactive Input Page**
-     For our second workshop, we wanted to have an interactive exercise where we set forth examples of daily life with uncomfortable interactions and problematic words mixed in during conversations.
-     Presented with the limitation that students only had access to their mobiles and not laptops, we needed an interface for the students to test it against our database of slurs and our hover feature which would display the metadata behind a slur while highlighting them.
-     Therefore we created a separate web page on the Uli website, where students could input the illustrations we had written, and receive an output with the hover feature’s functionality displayed.
-     This feature processes the input text, checking it against predefined metadata. Matched words are wrapped with styled HTML elements for highlighting and hover effects, and the result is dynamically rendered.
-     React components manage state and lifecycle events for interactions.
+
+2. **Interactive Input Page**
+
+For our second workshop, we wanted to have an interactive exercise where we set forth examples of daily life with uncomfortable interactions and problematic words mixed in during conversations.
+Presented with the limitation that students only had access to their mobiles and not laptops, we needed an interface for the students to test it against our database of slurs and our hover feature which would display the metadata behind a slur while highlighting them.
+Therefore we created a separate web page on the Uli website, where students could input the illustrations we had written, and receive an output with the hover feature’s functionality displayed.
+This feature processes the input text, checking it against predefined metadata. Matched words are wrapped with styled HTML elements for highlighting and hover effects, and the result is dynamically rendered.
+React components manage state and lifecycle events for interactions.
      
-<div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+<div className="w-full">
   <img src={uliInput1} alt="Uli input 1" width="400" height="300" style={{ border: "1px solid black" }} />
   <img src={uliInput2} alt="Uli input 2" width="400" height="300" style={{ border: "1px solid black" }} />
 </div>

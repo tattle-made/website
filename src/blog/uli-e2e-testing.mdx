@@ -11,12 +11,12 @@ This post came about when we set out testing one of our products, Uli, a browser
 You can learn more about it [here](https://twitter.com/tattlemade/status/1570401058073219073?t=SlMhPup1_jEYPAtLykr-GQ&s=19).
 In this post, we'll go through some of the challenges we faced and how we tackled them.
 
-## Challenge #1: Automating browsers -
+### Challenge #1: Automating browsers -
 
 We set out to do automated testing of these features using Selenium WebDriver on Python. It helps us automate browsers and look for
 specific elements on a page loaded inside a browser instance. [Getting started](https://www.selenium.dev/documentation/webdriver/getting_started/)
 
-## Challenge #2: Loading the extension inside the browser -
+### Challenge #2: Loading the extension inside the browser -
 
 Running a Selenium Webdriver using a python script opens a fresh instance of the browser, thus we needed to install a build of the extension
 every time we run the script. A great method that we found for this in order to load up local copies of the extension was over here:
@@ -31,7 +31,7 @@ Firefox if not signed. Currently, the easiest way to sign an extension is using 
 Using the web-ext sign command, you can use your own API-key to sign your local extension build and use it for testing. This should generate a
 unique file signed using your credentials that you can use in the guides posted above.
 
-## Challenge #3: Testing the features -
+### Challenge #3: Testing the features -
 
 Now that we had the local builds of the extension ready, the next step was to test the various features of Uli. One of the primary features of Uli
 is being able to redact known slurs that are in our crowdsourced list of slurs from tweets.
