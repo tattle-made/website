@@ -8,7 +8,7 @@ tags: devlog
 cover: ../images/react-component-in-phoenix.png
 ---
 
-# Problem :
+## Problem :
 
 - We need SOME client side interactivity
 - Our team has frontend developers who know react
@@ -18,9 +18,9 @@ cover: ../images/react-component-in-phoenix.png
 
 ![](../images/react-component-in-phoenix.png)
 
-# Solution :
+## Solution :
 
-## Insert the following heex markup in your liveview code
+### Insert the following heex markup in your liveview code
 
 ```heex
 <div id="counter-a" phx-hook="CounterHook" start={@count} />
@@ -28,7 +28,7 @@ cover: ../images/react-component-in-phoenix.png
 
 This is what I meant by keeping the API consistent with how you would use a Phoenix Component using Phoenix Hooks.
 
-## Create a file for your React Component
+### Create a file for your React Component
 
 <code>assets/js/counter.js</code>
 ```jsx
@@ -94,13 +94,13 @@ export var CounterHook = {
 
 ```
 
-Some Notable points about the Hook :
+**Some Notable points about the Hook :**
 
 1. In the <code>mounted</code> function we use client side javascript to parse attributes, format them and pass them as props to a React Component.
 2. We mandate two props <code>onReceive</code> and <code>send</code> to be passed to every React Component so that it can communicate directly with the liveview process by sending and receiving events.
 3. Sending an <code>id</code> prop, although its not enforced anywhere yet. This can be useful when you have multiple instances of the same component and you want to send an event from the server to any particular one of them.
 
-Some Notable points about the React Component
+**Some Notable points about the React Component**
 
 1. Its familiar to react developers
 2. We continue using tailwind for styling. This is a big win because I value being able to style my components in accordance with the rest of our app; so since we already use tailwind for the rest of the UI components, this is great.
@@ -114,7 +114,7 @@ This looks a bit like the equivalent we have grown used to in heex.
 ``` 
 4. We use useEffect() to setup listeners for server events.
 
-## Add an event handler in your liveview
+### Add an event handler in your liveview
 
 ```ex
 def handle_event("count-update", params, socket) do
@@ -131,7 +131,7 @@ def handle_event("count-update", params, socket) do
   end
 ```
 
-## Register the hook in app.js
+### Register the hook in app.js
 
 This should be familiar to anyone who has used phoenix hooks.
 
@@ -150,7 +150,7 @@ let liveSocket = new LiveSocket("/live", Socket, {
 });
 ```
 
-## Change esbuild configuration to support JSX
+### Change esbuild configuration to support JSX
 
 This part is new. In your config.exs, you need to add the loader flag - --loader:.js=jsx to the args option. The full value should look like 
 ```ex

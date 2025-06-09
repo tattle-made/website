@@ -6,6 +6,7 @@ author: Swair Shah
 project: Kosh
 tags:  machine-learning, devlog
 ---
+import { Heading } from 'grommet'
 
 One of the challenges we face at Tattle is to efficiently check if a given post or message has been encountered earlier by our system. 
 
@@ -18,7 +19,7 @@ In this post we will describe our ideas for video and GIF content representation
 
 We want to come up with an approach which not only works for finding duplicate or near duplicate videos but we also want to extract some useful information from the video. For example, we may want to generate a description of this video with tags such as `speech`, `president`, `nixon` etc. Processing a video can be very processor intensive. The Nixon video in our example is 36 seconds long. We can extract the frames from the video using OpenCV. There are 1109 frames in the video for just 36 seconds. Even if we are using an efficient deep Convolutional Neural Network to classify labels or generate representation, it would be inefficient to use all the frames of the video.
 
-### Anchor Frames
+## Anchor Frames
 
 We want to find what we call "Anchor Frames" for a given video. Anchor Frames are a small set of frames which are a good representation of the video. For our video let us look at a sample from the extracted frames.
 ![](../images/Screen-Shot-2019-07-19-at-3.32.55-PM.png)A sample of frames from the video
@@ -66,27 +67,27 @@ We can see that after the first two frame selection the error reduction slows do
 ![](../images/frame0-3.jpg)![](/content/images/2019/07/frame700.jpg)
 Using these these two frames as anchor frames we achieve $80.48\%$ reduction in reconstruction error.  Now that we have found a set of representative anchor frames for a video, we can use the same technique we use for image duplicate detection and label extraction. To generate a fingerprint for the video we can take individual image fingerprint (pHash or pre-trained Convolutional Neural Network features) for all the anchor frames  and either append them or take an average. 
 
-## Semantic Labels for Videos
+<Heading level={3}>Semantic Labels for Videos</Heading>
 
 To classify videos we use Google vision API on the set of anchor frames. Passing the second anchor frame to Google Vision API gives the following labels. 
 ![](../images/Screen-Shot-2019-07-19-at-5.37.05-PM.png)
 We can pass all the anchor frames to the API and take a union of the labels.
 
-## Advantages and Limitations
+<Heading level={3}>Advantages and Limitations</Heading>
 
 One of the advantages of this anchor frame approach is that it is robust to minor changes in the video. In case the video is slightly edited or if a few frames are missing, the anchor frames are not affected in most cases as they are still a good representation of the remaining video frames. Though we definitely need more testing to verify this on a broad class of videos. One could use an average frame as a representation of the video but this average frame is sensitive to the video editing. The anchor frames are also much "cleaner" than the average frame which tends to be blurry passing it to the image classifier may not give useful results. The result of the Google Vision API on the average frame is shown below. 
 ![](../images/Screen-Shot-2019-07-19-at-11.41.18-PM.png)
 We can see that the score for the labels relating to Richard Nixon has dropped drastically. This only gets worse as the video size increases and the average frame becomes more noisy. 
 
-## Some Optimizations and Future Work
+<Heading level={3}>Some Optimizations and Future Work</Heading>
 
 In our example the matrix formed after vectorizing each frames was $7500 \times 1000$. Operating on such a matrix is computationally expensive (the complexity of QR is $O(n^3)$). We can try reducing the row dimensions and the column dimensions. Here the number of rows is due to the size of the each frame which is $50 \times 50 \times 3$, even after resizing. We could resize further but after a certain point we start to lose useful information in the image. One possible way which we experimented with is using a pre-trained Convolutional Neural Network to get embeddings of each frame and then using these as a representation for the image.  These embeddings are known to capture semantic information in the image [3]. The size of the embedding depends on the CNN architecture we use. Using a ResNet-18 architecture gives us $512$ dimensional embeddings. This is a significant improvement on $7500$. Another optimization we tried is sampling one frame in every 10 frames. There is a trade-off involved between speed and accuracy and one needs to tune these parameters for a given use case. Using these optimizations the matrix $X$ that we compute the QR-decomposition of is of size $512 \times 100$. 
 
-## Limitations and Future work
+<Heading level={3}>Limitations and Future work</Heading>
 
 The approach taken is by no means a silver bullet. There are videos where the base frame changes drastically and the number of anchor frames required to achieve a small error would be very high. So far our approach works well for typical videos shared frequently on WhatsApp and other messaging platforms. If you have suggestions on other approaches do get in touch with us!
 
-# References
+## References
 
 - [1] G. H. Golub and C. F. Van-Loan.Matrix computations. The Johns Hopkins University Press, third edition,1996.
 - [2] Maung, Crystal, and Haim Schweitzer. "Pass-efficient unsupervised feature selection." *Advances in Neural Information Processing Systems*. 2013.

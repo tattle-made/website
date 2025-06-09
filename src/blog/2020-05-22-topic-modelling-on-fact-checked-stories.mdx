@@ -6,19 +6,21 @@ tags: devlog
 author: Kruttika Nadig
 ---
 
+import { Heading } from 'grommet'
+
 This Python notebook builds a topic model on the headlines of 13,000+ fact-checking stories in the Tattle archive, and identifies 7 broad "topics" within India's misinformation landscape.
 
 Steps 1 to 7 cover the text processing and topic modelling process, while steps 8 and 9 interpret and visualise the resulting topics with an interactive pyLDAvis plot. Step 10 is a standalone n-gram analysis exercise that highlights the top words and word-pairs in the headlines.
 
-#### Why headlines?
+### Why headlines?
 
 The body text of fact-checking stories sometimes contains noisy strings which are not related to the misinformation being fact-checked. The headlines, however, are focused on the misinformation. (We repeated this analysis with the body text and found no significant difference apart from the noise)
 
-#### Brief description of the model
+### Brief description of the model
 
 Latent Dirichlet Allocation is an unsupervised, probabilistic model that generates topic-document and word-topic probability distributions from a collection of text documents. Topics are themes that occur in documents. Here, document = story headline.
 
-#### Process
+### Process
 
 1. Getting the data from the Tattle database
 2. Text cleaning (removing noise, English / non-English separation using regex)
@@ -34,7 +36,8 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
 
 ## 1. Getting the data
 
-    # Importing libraries
+    ### Importing libraries
+    <p className="break-words">
     import os
     import requests
     import time
@@ -76,10 +79,12 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
     import pyLDAvis
     import pyLDAvis.gensim
     from gensim import similarities
+    </p>
 
 
 
-    # Get data from factchecking sites MongoDB
+    ### Get data from factchecking sites MongoDB
+    <p className="break-words">
     def initialize_mongo():
         mongo_url = "mongodb+srv://os.environ.get("FACTCHECK_DB_USERNAME"):os.environ.get("FACTCHECK_DB_PASSWORD")@tattle-data-fkpmg.mongodb.net/test?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE"
         cli = MongoClient(mongo_url)
@@ -100,7 +105,7 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
     df = df.drop_duplicates()
 
 
-    # Snapshot of headlines
+    ### Snapshot of headlines
     df["headline"][0:3]
 
 
@@ -108,21 +113,22 @@ Latent Dirichlet Allocation is an unsupervised, probabilistic model that generat
     1    Photoshopped promo of ABP News over Chandrayaa...
     2    Video of scuffle between men in khaki uniform ...
     Name: headline, dtype: object
+    </p>
 
 ## 2. Text cleaning
 
 The headlines contain some special accents which the regex pattern for non-English text is unable to catch, so we remove these before proceeding to separate the English and non-English headlines.
 
-    # Save headlines in a variable
+    ### Save headlines in a variable
     raw_data = df["headline"].values.tolist()
 
-    # Defining a function to remove accented characters in the headlines
+    ### Defining a function to remove accented characters in the headlines
     def data_dict(sentences):
         return dict((sentence, ", ".join(simple_preprocess(str(sentence), deacc=True, max_len=100))) for sentence in sentences)
 
     result = data_dict(raw_data)
 
-    # Separating non-English headlines using regex
+    ### Separating non-English headlines using regex
     pat = re.compile("[^\x00-\x7F]") # matches non-English characters
     non_eng = [k for k,v in result.items() if pat.search(v)]
     eng = [k for k,v in result.items() if not pat.search(v)]
@@ -134,23 +140,25 @@ The headlines contain some special accents which the regex pattern for non-Engli
 
     8298 5241
 
-## 3. Translating non-English headlines
+<Heading level={3}>3. Translating non-English headlines</Heading>
 
 Googletrans is a free library that sends translation requests to the Google Translate API.
 Random time delays between requests are advised, else Google may (and probably will) block your ip address.
 
 Translating the 5200+ non-English headlines took approximately 6.5 hours.
 
-    # Translating non-English headlines using googletrans library
-
+    ### Translating non-English headlines using googletrans library
+<p className="break-words">
     translator = Translator()
     translations = []
     for doc in non_eng:
         translations.append(translator.translate(doc).text)
         time.sleep(uniform(3,5))
+</p>
 
 
-    # Saving the original and translated headlines for future reference
+    ### Saving the original and translated headlines for future reference
+<p className="break-words">
     translated_headlines = dict(zip(non_eng, translations))
     translations_df = pd.DataFrame(translated_headlines.items(), columns = ["headline", "translation"])
     translations_df["original_english"] = 0
@@ -158,6 +166,7 @@ Translating the 5200+ non-English headlines took approximately 6.5 hours.
     translations_df["original_english"].fillna(value=1, inplace = True)
     translations_df["original_english"] = translations_df["original_english"].astype(int)
     translations_df.to_csv("headlines_with_translations.csv")
+    </p>
 
 ## 4. Text preprocessing
 
@@ -165,29 +174,29 @@ The text needs to be prepared for topic modelling by tokenizing it (splitting in
 
 After some experimentation, we found that excluding all parts of speech except nouns and proper nouns during text preprocessing resulted in a more well-defined topics later.
 
-    # Combining the headlines
+    ### Combining the headlines
     all_headlines = eng + translations
-    # Tokenizing the headlines
+    ### Tokenizing the headlines
     all_tokens = list(sent_to_words(all_headlines))
-    # Creating stop words list
+    ### Creating stop words list
     stop_words = stopwords.words("english")
-    # Adding domain words
+    ### Adding domain words
     stop_words.extend(["fake", "fact", "check", "checked", "factcheck", "news", "false",
                        "falsely", "true", "truth", "viral", "video", "image", "picture",
                        "photo", "claim", "claiming", "share", "clip", "misleading"])
-    # Stop word removal
+    ### Stop word removal
     data_stopped = [[word for word in doc if word not in stop_words] for doc in all_tokens]
-    # Creating bigrams
+    ### Creating bigrams
     bigram = gensim.models.Phrases(data_stopped, min_count=10)
     for idx in range(len(data_stopped)):
         for token in bigram[data_stopped[idx]]:
             if '_' in token:
-                # If token is bigram, add it to document
+                ### If token is bigram, add it to document
                 data_stopped[idx].append(token)
 
     data_with_bigrams = data_stopped
-    # Lemmatizing i.e. reducing words to their root form
-    # Including only nouns as this improves both topic interpretability and coherence scores
+    ### Lemmatizing i.e. reducing words to their root form
+    ### Including only nouns as this improves both topic interpretability and coherence scores
     def lemmatization(docs, allowed_postags=["NOUN", "PROPN"]):
         nlp = spacy.load("en_core_web_sm")
         docs_out = []
@@ -198,25 +207,34 @@ After some experimentation, we found that excluding all parts of speech except n
 
     data_lemmatized = lemmatization(data_with_bigrams, allowed_postags=["NOUN", "PROPN"])
 
-    # Removing any stopwords created because of lemmatization
+    ### Removing any stopwords created because of lemmatization
     data_cleaned = [[word for word in doc if word not in stop_words] for doc in data_lemmatized]
 
-## 5. Text transformation: creating a corpus of vectors
+<Heading level={3}>5. Text transformation: creating a corpus of vectors</Heading>
 
-Topic modelling with the Gensim library involves certain concepts like documents, corpus, vectors and bag of words. These are explained here - [https://radimrehurek.com/gensim/auto_examples/core/run_core_concepts.html](https://radimrehurek.com/gensim/auto_examples/core/run_core_concepts.html)
+Topic modelling with the Gensim library involves certain concepts like documents, corpus, vectors and bag of words. These are explained here - 
+<div className="overflow-auto break-words">
+  <a
+href="https://radimrehurek.com/gensim/auto_examples/core/run_core_concepts.html"
+className="text-blue-600 underline break-all"
+    target="_blank"
+  >
+https://radimrehurek.com/gensim/auto_examples/core/run_core_concepts.html
+ </a>
+</div>
 
-    # Creating a dictionary
+    ### Creating a dictionary
     id2word = corpora.Dictionary(data_cleaned)
-    # Creating a document-term matrix
+    ### Creating a document-term matrix
     print('Number of unique tokens: %d' % len(id2word))
     id2word.filter_extremes(no_below = 20)
-    # Creating a document-term matrix
+    ### Creating a document-term matrix
     corpus = [id2word.doc2bow(doc) for doc in data_cleaned]
 
 
     Number of unique tokens: 7585
 
-## 6. Selecting the number of topics
+<Heading level={3}>6. Selecting the number of topics</Heading>
 
 Topic coherence is an evaluation metric for topic models that measures the degree of semantic similarity between high scoring words in the topic. The graph below helps find an appropriate 'k' number of topics to model.
 
@@ -232,6 +250,7 @@ Topic coherence is an evaluation metric for topic models that measures the degre
         limit : Max num of topics
 
         Returns:
+        <p className="break-words">
         -------
         model_list : List of LDA topic models
         coherence_values : Coherence values corresponding to the LDA model with respective number of topics
@@ -246,10 +265,11 @@ Topic coherence is an evaluation metric for topic models that measures the degre
             coherence_values.append(coherencemodel.get_coherence())
 
         return model_list, coherence_values
+       
 
 
     model_list, coherence_values = compute_coherence_values(dictionary=id2word, corpus=corpus, texts=data_cleaned, start=2, limit=20, step=1)
-    # Show graph
+    ### Show graph
     limit=20; start=2; step=1;
     x = range(start, limit, step)
     plt.plot(x, coherence_values)
@@ -257,17 +277,18 @@ Topic coherence is an evaluation metric for topic models that measures the degre
     plt.ylabel("Coherence score")
     plt.legend(("coherence_values"), loc='best')
     plt.show()
+    </p>
 
 ![png](../images/output_18_1.png)
 
-## 7. Building the topic model
+<Heading level={3}>7. Building the topic model</Heading>
 
 We choose k=7 as k=11 produces the same number of meaningful topics (and four not-so-meaningful ones).  This 'k' is supplied as a hyperparameter to the model. The model returns topics (clusters of words) along with their probabilities of belonging to that topic / cluster.
 
     lda_model = ldamodel.LdaModel(corpus = corpus, num_topics = 7, id2word = id2word, chunksize=100, alpha='auto',
         eta='auto', passes = 5, random_state = 0)
 
-    # Printing the topic-word probabilities
+    ### Printing the topic-word probabilities
     pprint(lda_model.print_topics())
 
 
@@ -312,11 +333,21 @@ The topic-word probability distributions above can be interpreted as 7 topics or
 - Law enforcement & crime
 - Citizenship act protests & different states
 
-## 9. Interactive model visualisation
+<Heading level={3}>9. Interactive model visualisation</Heading>
 
 The pyLDAvis plot below presents the results of the topic model in a more interpretable form. It provides a global view of the topics (and how they differ from each other), while at the same time allowing for a deep inspection of the terms most highly associated with each individual topic. Hovering over a topic "bubble" highlights the associated terms in red on the right. A bubble's size is proportional to the relative prevalence of that topic in the corpus.
 
-To read more about the plot, check out this paper by the creators - [https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf](https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf)
+To read more about the plot, check out this paper by the creators - 
+<div className="overflow-auto break-words">
+  <a
+    href="https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf"
+    className="text-blue-600 underline break-all"
+    target="_blank"
+  >
+    https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf
+  </a>
+</div>
+
 
 ```
     pyLDAvis.enable_notebook()
@@ -385,7 +416,7 @@ new LDAvis("#" + "ldavis_el202961124743444486412651638", ldavis_el20296112474344
 
 The n-gram analysis involves a simple word frequency count (after removing stop words and domain words) to reveal the top words and word-pairs (bigrams) in the corpus. Bigrams are insightful because they capture more information than unigrams.
 
-    # Redoing text processing with adjectives, verbs and adverbs included
+    ### Redoing text processing with adjectives, verbs and adverbs included
     def lemmatization(docs, allowed_postags=["NOUN", "PROPN", "VERB", "ADJ", "ADV"]):
         nlp = spacy.load("en_core_web_sm")
         docs_out = []
@@ -396,11 +427,11 @@ The n-gram analysis involves a simple word frequency count (after removing stop 
 
     data_lemmatized = lemmatization(data_with_bigrams, allowed_postags=["NOUN", "PROPN", "VERB", "ADJ", "ADV"])
 
-    # Removing any stopwords created because of lemmatization
+    ### Removing any stopwords created because of lemmatization
     data_cleaned = [[word for word in doc if word not in stop_words] for doc in data_lemmatized]
 
 
-    # Plot frequency distribution of most common words in the headlines
+    ### Plot frequency distribution of most common words in the headlines
     all_sents = [" ".join(doc) for doc in data_cleaned]
     tokenizer = regextoken("[a-zA-Z0-9]+")
     all_words = tokenizer.tokenize(str(all_sents))
@@ -408,10 +439,10 @@ The n-gram analysis involves a simple word frequency count (after removing stop 
     for word in all_words:
         fd[word] += 1
 
-    # Plotting the top 50 most frequent words
-    # plt.figure(figsize = (15, 10))
-    # fd.plot(50)
-    # plt.show()
+    #### Plotting the top 50 most frequent words
+    #### plt.figure(figsize = (15, 10))
+    #### fd.plot(50)
+    #### plt.show()
     fd_sorted={k: v for k, v in sorted(fd.items(), key=lambda item: item[1], reverse=True)}
     fd_sorted=dict(list(fd_sorted.items())[0: 100])
 
