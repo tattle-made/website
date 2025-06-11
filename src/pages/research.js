@@ -35,7 +35,7 @@ const FeaturedListItem = ({ item }) => {
             <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>
               {item.title}
             </Heading>
-            <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }}>
+            <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }} className="gap-y-2">
               {item.tags.map((tag, index) => (
                 <TagBubble key={index} data={{ label: tag }} />
               ))}
@@ -70,13 +70,13 @@ const AllListItem = ({ item }) => (
           >
             {item.title}
           </Heading>
-          <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }}>
+          <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }} className="gap-y-2">
             {item.tags.map((tag, index) => (
               <TagBubble key={index} data={{ label: tag }} />
             ))}
           </Box>
 
-          <Paragraph size={"medium"} fill>
+          <Paragraph size={"medium"} fill>                                                        
             {item.description}
           </Paragraph>
         </Box>
