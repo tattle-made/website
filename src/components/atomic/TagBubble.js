@@ -10,7 +10,6 @@ const TagBubble = ({ data }) => {
         background={"visuals-1"}
         pad={"xsmall"}
         width={"fit-content"}
-        margin={{ bottom: "xsmall" }}
       >
         <Text size={"xsmall"}>{data.label}</Text>{" "}
       </Box>
