@@ -45,7 +45,7 @@ const dropDownOptionsTools = [
     id: 4,
     target: "/products/",
     label: "Other Projects",
-    description: "Explore more initiatives",
+    description: "",
   },
 ]
 
