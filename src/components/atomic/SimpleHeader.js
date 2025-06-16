@@ -189,7 +189,7 @@ const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
                   Products{" "}
                 </Heading>
                 <Box flex={"grow"} margin={{ left: "medium" }}>
-                  {[0, 1, 2, 3].map(i => (
+                  {[0, 1, 2, 3, 4].map(i => (
                     <MobileNavItemInternalLink
                       label={dropDownOptionsTools[i].label}
                       description={dropDownOptionsTools[i].description}
