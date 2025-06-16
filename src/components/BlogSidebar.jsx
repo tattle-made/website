@@ -3,6 +3,19 @@ import { Box, Heading, Text } from "grommet"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { PlainLink } from "./atomic/TattleLinks"
 
+/**
+ * RelatedPostItem displays a related blog post with an optional cover image,
+ * the title (linked to the blog page), and an excerpt preview.
+ *
+ * @param {object} props - Component props
+ * @param {object} props.post - The related blog post data
+ * @param {string} props.post.title - Title of the blog post
+ * @param {string} props.post.slug - URL slug for the blog post
+ * @param {object} [props.post.coverImage] - Gatsby image object for the cover image
+ * @param {string} [props.post.excerpt] - Short excerpt or summary of the blog post
+ * @returns {JSX.Element} The rendered related post item
+ */
+
 const RelatedPostItem = ({ post }) => (
   <Box
     margin={{ bottom: "small" }}
@@ -36,6 +49,14 @@ const RelatedPostItem = ({ post }) => (
     )}
   </Box>
 )
+
+/**
+ * BlogSidebar displays a list of related blog posts in the sidebar.
+ *
+ * @param {object} props - Component props
+ * @param {Array<object>} props.relatedPosts - Array of related blog post objects
+ * @returns {JSX.Element} The rendered sidebar with related posts or a fallback message
+ */
 
 const BlogSidebar = ({ relatedPosts }) => {
   return (
