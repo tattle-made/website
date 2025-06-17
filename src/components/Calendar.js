@@ -1,6 +1,27 @@
 import React, { useEffect } from "react";
 import * as d3 from "d3";
 
+
+/**
+ * Calendar component renders a heatmap-style calendar using D3.js
+ * to visualize blog post frequency per day across multiple years.
+ *
+ * @component
+ *
+ * @param {Object} props - Component props.
+ * @param {Object[]} props.data - Array of blog post objects.
+ * @param {string} props.data[].date - ISO string of post date (e.g., "2025-01-17").
+ *
+ * @returns {JSX.Element} A responsive calendar heatmap of blog activity.
+ *
+ * @remarks
+ * Uses `d3.scaleLinear` to color days by post count.
+ * Clears previous SVGs before rendering new ones.
+ * Shows tooltip on hover with post details.
+ */
+
+
+
 const Calendar = ({ data }) => {
   const startYear = d3.min(data, (d) => new Date(d.date).getFullYear());
   const endYear = d3.max(data, (d) => new Date(d.date).getFullYear());
