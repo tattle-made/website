@@ -4,6 +4,15 @@ import { projectSlugMaker } from "../lib/project-slug-maker"
 import useBlogTags from "../hooks/useBlogTags"
 import TagPage from "./TagPage"
 
+/**
+ * TagProjectPage component renders a list of blogs filtered by a specific project tag.
+ *
+ * @param {Object} props - Component props.
+ * @param {Object} props.data - GraphQL data (unused).
+ * @param {Object} props.pageContext - Gatsby page context containing the project slug.
+ * @returns {JSX.Element} Filtered TagPage by project tag.
+ */
+
 export default function TagProjectPage({ data, pageContext }) {
   const { projectTagsCounts } = useBlogTags()
   const blogNodes = data.allMdx.nodes
