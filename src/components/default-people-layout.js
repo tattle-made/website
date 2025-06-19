@@ -7,6 +7,18 @@ import { primaryNav, footerItems } from "../config/options"
 import AppShell from "./atomic/AppShell"
 import PeopleCard from "./atomic/PeopleCard"
 
+/**
+ * Page layout for individual people pages using MDX data.
+ *
+ * Renders a PeopleCard and optional children inside AppShell.
+ *
+ * @param {Object} props
+ * @param {Object} props.data - Page data containing MDX frontmatter
+ * @param {Object} props.data.mdx - MDX node with frontmatter
+ * @param {React.ReactNode} props.children - Additional content to render
+ * @returns {JSX.Element}
+ */
+
 const shortcodes = { Link }
 
 export default function PageTemplate({ data: { mdx },children }) {
