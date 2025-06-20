@@ -11,6 +11,19 @@ export const byline = (name, project) => {
   if (name) return `${name}`
 }
 
+/**
+ * BlogIndex lists all blog posts with tag filters.
+ *
+ * Renders normal and project tags using `TagsRenderer`,
+ * and displays posts via `AllBlogsIndexLayout`.
+ *
+ * @param {Object} props
+ * @param {Object} props.data - Blog data from GraphQL.
+ * @param {Object} props.pageContext - Page context from Gatsby.
+ *
+ * @returns {JSX.Element}
+ */
+
 const BlogIndex = ({ data, pageContext }) => {
   const blogs = data.allMdx.nodes
   const cover_blog_index = data.cover_blog_index
