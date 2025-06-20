@@ -17,6 +17,21 @@ import { projectSlugMaker } from "../lib/project-slug-maker"
 import TagsRenderer from "./TagsRenderer"
 import { getSrc, getImage } from "gatsby-plugin-image"
 
+/**
+ * Blog post layout component.
+ * It renders the post content using MDXProvider and AppShell,
+ * and displays post metadata, project tags, and a related posts section.
+ *
+ * @component
+ * @param {Object} props
+ * @param {Object} props.data - GraphQL data passed by Gatsby.
+ * @param {Object} props.data.mdx - MDX node containing post content and frontmatter metadata.
+ * @param {Object} props.pageContext - Context from Gatsby's createPage API.
+ * @param {Array<Object>} props.pageContext.blogNodes - List of all blog post nodes for related posts.
+ * @param {React.ReactNode} props.children - Rendered MDX content of the blog post.
+ * @returns {JSX.Element} Rendered blog post layout
+ */
+
 const shortcodes = {
   Link,
   BlogHeaderCard,
