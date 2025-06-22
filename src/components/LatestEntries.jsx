@@ -3,6 +3,13 @@ import { Box, ResponsiveContext, Text } from "grommet"
 import { PlainLink } from "./atomic/TattleLinks"
 import { ExternalLink } from "react-feather"
 
+/**
+ * Formats a date string to "MMM DD YYYY" format (e.g., "Jun 22 2025").
+ *
+ * @param {string|Date} date - The original date input.
+ * @returns {string} Formatted date string.
+ */
+
 function formatDateLatestEntries(date) {
   let dateString = new Date(date).toDateString("ind")
   return dateString.split(" ").slice(1).join(" ")
@@ -11,6 +18,14 @@ function formatDateLatestEntries(date) {
 /**
  * @param {string} author
  */
+
+/**
+ * Formats the author string to show abbreviated form (e.g., "John Doe et al.").
+ *
+ * @param {string} author - Full author name string, usually comma-separated.
+ * @returns {string} Abbreviated author string.
+ */
+
 function formatAuthor(author) {
   if (typeof author !== "string") return ""
   let firstDividerIndex = -1
@@ -30,6 +45,15 @@ function formatAuthor(author) {
 
   return author
 }
+
+/**
+ * Renders a list of blog or update entries based on the `isUpdate` flag.
+ *
+ * @param {Object} props
+ * @param {Object[]} props.entries - Array of entry objects (blog/update).
+ * @param {boolean} props.isUpdate - Determines if the list is for updates or blogs.
+ * @returns {JSX.Element} Rendered list of entries.
+ */
 
 // Component to Display latest entries of Blogs and Updates
 export function LatestEntries({ entries, isUpdate }) {
