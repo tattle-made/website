@@ -6,6 +6,16 @@ import { PlainLink } from "./atomic/TattleLinks"
 import DefaultLayoutNarrow from "./default-layout-narrow"
 import { generateDisplayName } from "../lib/generate-display-name"
 
+/**
+ * SiteMapPage component renders a navigable sitemap tree using file and directory data.
+ *
+ * @component
+ * @param {Object} props
+ * @param {Object} props.pageContext - Gatsby page context (currently unused).
+ * @param {Object} props.data - GraphQL data containing all file nodes.
+ * @returns {JSX.Element} A tree-structured visual site map.
+ */
+
 export default function SiteMapPage({ pageContext, data }) {
   //PagContext may have siteMapNodes of type Tree Structure commented below.
   const nodes = data.allFile.nodes
@@ -43,6 +53,13 @@ export default function SiteMapPage({ pageContext, data }) {
       }
       current.push({ name: node.name, isDir: false, node: node })
     })
+
+    /**
+ * Recursively renders a list of sitemap nodes, skipping ignored directories.
+ *
+ * @param {Array<Object>} treeNodes - Array of nodes with name, children, and metadata.
+ * @returns {Array<JSX.Element|null>} Rendered list elements or nulls for ignored nodes.
+ */
 
     return tree
   }
@@ -91,11 +108,10 @@ export default function SiteMapPage({ pageContext, data }) {
             <li>
               <div style={{ marginLeft: 2 }}>
                 <PlainLink
-                  to={`${
-                    tn.node.relativeDirectory
+                  to={`${tn.node.relativeDirectory
                       ? `/${tn.node.relativeDirectory}/${tn.node.name}`
                       : `/${tn.node.name}`
-                  }`}
+                    }`}
                 >
                   {displayName}
                 </PlainLink>
