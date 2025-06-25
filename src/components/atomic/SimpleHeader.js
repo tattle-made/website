@@ -10,6 +10,17 @@ import { Menu, X } from "react-feather"
 import { NavigationLabel, Theme } from "./core-style"
 import NarrowSection from "./layout/narrow-section"
 
+/**
+ * Renders a responsive site header with primary navigation and hamburger menu for mobile.
+ *
+ * @param {Object} props
+ * @param {string} props.label - Label displayed on the header (usually the site title or section).
+ * @param {string} props.target - Link target for the main header label.
+ * @param {Object[]} props.primaryNav - List of primary navigation items.
+ * @param {Function} props.onHamburgerClicked - Handler for hamburger menu click (used in mobile view).
+ * @returns {JSX.Element} Header component with navigation.
+ */
+
 const dropDownOptions = [
   { id: 1, target: "/products/kosh", label: "Archive" },
   { id: 2, target: "/products/jod-bot", label: "Jod Bot" },

@@ -7,6 +7,14 @@ import { PlainSectionLink } from "../TattleLinks"
 import { byline } from "../../default-blog-index-layout"
 import { GatsbyImage, getImage, getSrc } from "gatsby-plugin-image"
 
+/**
+ * Renders a masonry layout of all blog entries.
+ *
+ * @param {Object} props
+ * @param {Object[]} props.blogs - Array of blog objects to display.
+ * @returns {JSX.Element} Blog index layout component.
+ */
+
 export function AllBlogsIndexLayout({ blogs }) {
   return (
     <MasonryLayoutResponsive>

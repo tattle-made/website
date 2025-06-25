@@ -1,6 +1,13 @@
 import React from "react";
 import { Box } from "grommet";
 
+/**
+ * Renders a centered animated spinner using SVG.
+ * Used as a loading indicator during async operations.
+ *
+ * @returns {JSX.Element} Spinner (loading indicator) component.
+ */
+
 const spinning = (
   <svg
     version="1.1"

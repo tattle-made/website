@@ -1,5 +1,11 @@
 import React from "react"
 
+/**
+ * SVG icon component for the feed symbol.
+ *
+ * @returns {JSX.Element} SVG feed icon.
+ */
+
 export default function IconFeed() {
   return (
     <svg

@@ -4,6 +4,16 @@ import { ExternalLink } from "react-feather"
 import { PlainExternalLink } from "./TattleLinks"
 import { StaticImage } from "gatsby-plugin-image"
 
+/**
+ * Displays a person's name, role, and external link as a profile card.
+ *
+ * @param {Object} props
+ * @param {string} props.name - Person's name.
+ * @param {string} props.role - Person's role or title.
+ * @param {string} props.url - External URL (e.g., profile link).
+ * @returns {JSX.Element} Profile card component.
+ */
+
 const PeopleCard = ({ name, role, url }) => (
   <Box
     fill

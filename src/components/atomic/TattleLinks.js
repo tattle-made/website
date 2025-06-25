@@ -2,6 +2,19 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
+/**
+ * Styled link components used across the site for consistent theming and behavior.
+ *
+ * Exports:
+ * - Link: Themed internal link.
+ * - PlainLink: Internal link without decoration.
+ * - PlainSectionLink: Internal section-based link with minimal styling.
+ * - PlainHeavyLink: Bold or emphasized internal link.
+ * - ExternalLink: Styled anchor tag for external navigation.
+ * - PlainExternalLink: Minimal external link, opens in new tab.
+ * - SmartPlainLink: Automatically chooses between internal and external link.
+ */
+
 const ThemedLink = styled(Link)`
   text-decoration: "none";
   box-shadow: "none";

@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react"
 import MasonryLayout from "./MasonryLayout"
 import { Heading } from "grommet"
 
+/**
+ * Responsive wrapper for MasonryLayout.
+ * Adjusts column count based on window width.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode[]} props.children - Items to display in the layout.
+ * @returns {JSX.Element} Responsive masonry layout.
+ */
+
 const getColumnCount = (width) => {
   if (width < 768) {
     // Small (Phones)

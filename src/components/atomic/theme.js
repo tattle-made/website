@@ -1,5 +1,12 @@
 import { css } from "styled-components"
 
+/**
+ * Custom Grommet theme used across the Tattle application.
+ * Defines global styles like font family, colors, and component theming.
+ *
+ * @type {Object}
+ */
+
 const TattleTheme = {
   global: {
     font: {

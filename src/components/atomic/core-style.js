@@ -1,6 +1,20 @@
 import styled from "styled-components"
 import { PlainLink } from "./TattleLinks"
 
+/**
+ * Core styled components and theme definitions used throughout the application.
+ *
+ * Exports:
+ * - NavigationLabel: Label used in primary navigation.
+ * - FooterNavigationLabel: Label used in the site footer navigation.
+ * - SectionLabels: Label styling for different page sections.
+ * - Theme: Grommet theme configuration for consistent styling.
+ * - LandingPageHeading: Styled heading for landing pages.
+ * - LandingPageSubHeading: Styled subheading for landing pages.
+ * - LandingPageLink: Styled link used on landing pages.
+ * - LandingPageParagraph: Paragraph styling for landing content.
+ */
+
 const NavigationLabel = styled.span`
   font-family: Raleway;
   font-style: normal;
