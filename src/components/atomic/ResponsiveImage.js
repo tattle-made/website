@@ -14,6 +14,13 @@ const WeirdBox = styled(Box)`
  * @function ResponsiveImage
  **/
 
+/**
+ * Renders an image with layout adjusted for screen size.
+ * Uses Grommet's ResponsiveContext to switch layout for small screens.
+ *
+ * @returns {JSX.Element} Responsive image component.
+ */
+
 export const ResponsiveImage = () => {
   const size = React.useContext(ResponsiveContext)
 
