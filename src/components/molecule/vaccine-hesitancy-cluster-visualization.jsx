@@ -19,6 +19,14 @@ import { data as dataCluster7 } from "../../data/vaccine-hesitancy/vaccine_7clus
 import { LDAvis } from "../../data/vaccine-hesitancy/ldavis"
 import { PlainExternalLink } from "../../components/atomic/TattleLinks"
 
+/**
+ * Renders the Vaccine Hesitancy cluster visualization using D3 inside a styled container.
+ * 
+ * Handles cluster selection and option change events.
+ * 
+ * @returns {JSX.Element} Vaccine hesitancy visualization component.
+ */
+
 const D3Div = styled.div`
   path {
     fill: none;
