@@ -15,6 +15,16 @@ import { PlainLink } from "./TattleLinks"
  * @function ContentPageLayout
  **/
 
+/**
+ * Renders the main layout shell for content pages, applying theme, layout width, and responsive design.
+ * Includes a modal banner for highlighting key content (e.g., case studies).
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - The main content to render within the layout.
+ * @param {string} [props.contentWidth] - Optional maximum width for the content area.
+ * @returns {JSX.Element} Layout wrapper with modal and themed shell.
+ */
+
 const MODAL_TEXT =
   "Read our New Case Study of the Information Chaos During India's Second Covid-19 Wave"
 const MODAL_PATH = "/articles/covid-whatsapp-public-groups/"
