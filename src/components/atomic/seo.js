@@ -11,6 +11,19 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
+/**
+ * Injects SEO-related metadata into the document head using React Helmet.
+ * Uses Gatsby's useStaticQuery to pull site-wide metadata.
+ *
+ * @param {Object} props
+ * @param {string} [props.description] - Page description for meta tag.
+ * @param {string} [props.lang="en"] - HTML language attribute.
+ * @param {Object[]} [props.meta=[]] - Additional meta tag definitions.
+ * @param {string} props.title - Title of the page (required).
+ * @param {string} [props.heading] - Optional heading (not used in meta but may be for accessibility or custom logic).
+ * @returns {JSX.Element} Head metadata managed by React Helmet.
+ */
+
 function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
   const location = useLocation()
   const pathname = location.pathname
