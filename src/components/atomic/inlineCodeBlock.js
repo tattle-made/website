@@ -1,6 +1,14 @@
 import React from "react";
 import { dracula } from "react-code-blocks";
 
+/**
+ * Renders a styled inline code snippet.
+ *
+ * @param {Object} props
+ * @param {string} props.children - The code content to display inline.
+ * @returns {JSX.Element} Inline code block element.
+ */
+
 const InlineCodeBlock = ({ children }) => (
     <code style={{ 
         backgroundColor: "#FFEBCB",

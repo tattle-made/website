@@ -10,6 +10,14 @@ const MAILCHIMP_URL =
  * @function MailchimpSubscribeForm
  **/
 
+/**
+ * Renders a custom email subscription form using Mailchimp.
+ * Handles user input, form submission, and displays status messages.
+ *
+ * @returns {JSX.Element} Mailchimp subscribe form component.
+ */
+
+
 const SimpleForm = () => <MailchimpSubscribe url={MAILCHIMP_URL} />
 
 const MailchimpSubscribeForm = () => {

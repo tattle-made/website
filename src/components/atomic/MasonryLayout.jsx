@@ -1,6 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+/**
+ * Renders a responsive masonry-style layout using flexbox.
+ * Distributes child elements evenly across specified number of columns with a given gap.
+ *
+ * @param {Object} props
+ * @param {number} props.columns - Number of columns in the layout.
+ * @param {number} props.gap - Gap (in px) between columns.
+ * @param {React.ReactElement[]} props.children - Elements to display within the masonry layout.
+ * @returns {JSX.Element} Masonry layout wrapper.
+ */
+
 // Reference : https://medium.com/the-andela-way/how-to-create-a-masonry-layout-component-using-react-f30ec9ca5e99
 
 function MasonryLayout({columns=2,children, gap=20}){

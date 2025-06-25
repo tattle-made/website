@@ -1,6 +1,16 @@
 import React from "react";
 import { CodeBlock, CopyBlock } from "react-code-blocks";
 
+/**
+ * Renders a syntax-highlighted code block with optional copy-to-clipboard functionality.
+ *
+ * @param {Object} props
+ * @param {string} props.className - Class name containing language info (e.g., "language-js").
+ * @param {boolean} props.copy - Whether to show a copy button for the code.
+ * @param {string} props.children - The actual code content to display.
+ * @returns {JSX.Element} Syntax-highlighted code block component.
+ */
+
 const CustomCodeBlock = (props) => {
     const { className, copy, children } = props;
     const language = className && className.match(/(?<=language-)(\w.*?)\b/)

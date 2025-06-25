@@ -12,6 +12,14 @@ import {
 
 import TattleTheme from "./theme"
 
+/**
+ * Renders a responsive grid of contributors using Grommet's Grid and context.
+ * Adjusts layout based on screen size and contributor type (e.g., Advisor).
+ *
+ * @param {Object} props - Props passed to the Grommet Grid component.
+ * @returns {JSX.Element} Responsive contributor grid layout.
+ */
+
 const ResponsiveContributorGrid = props => {
   const Responsive = ({
     children,

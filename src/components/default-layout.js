@@ -7,6 +7,17 @@ import { useLocation } from "@reach/router"
  * @function DefaultLayout
  **/
 
+
+/**
+ * Full-width layout wrapper using AppShell.
+ *
+ * Updates internal label state based on current route.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Content to render inside the layout
+ * @returns {JSX.Element}
+ */
+
 const DefaultLayout = ({ children }) => {
   const location = useLocation()
   const [label, setLabel] = useState("")

@@ -2,6 +2,14 @@ import React from "react"
 import styled from "styled-components"
 import { Text, Paragraph } from "grommet"
 
+/**
+ * Reusable text style components for consistent typography.
+ *
+ * Exports:
+ * - HeadingOne: Large heading text style.
+ * - BodyOne: Standard body text style.
+ */
+
 const BodyOne = styled(Text)`
   font-family: "Bitter";
   font-size: "30px";

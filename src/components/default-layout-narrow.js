@@ -7,6 +7,15 @@ import { useLocation } from "@reach/router"
  * @function DefaultLayout
  **/
 
+/**
+ * Narrow layout wrapper that updates label from the current route.
+ *
+ * @param {Object} props
+ * @param {React.ReactNode} props.children - Layout content
+ * @returns {JSX.Element}
+ */
+
+
 const DefaultLayoutNarrow = ({ children }) => {
   const location = useLocation()
   const [label, setLabel] = useState("")

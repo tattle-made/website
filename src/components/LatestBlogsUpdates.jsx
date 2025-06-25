@@ -4,6 +4,16 @@ import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import { Box, Heading } from "grommet"
 import { LatestEntries } from "./LatestEntries"
 
+/**
+ * LatestBlogsUpdates component fetches and displays the latest blog posts and updates.
+ *
+ * - Uses Gatsby's useStaticQuery to retrieve blog and update data.
+ * - Renders two sections: Latest Blogs and Latest Updates (if included later).
+ *
+ * @returns {JSX.Element} The rendered component showing the latest content.
+ */
+
+
 export default function LatestBlogsUpdates() {
   const data = useStaticQuery(graphql`
     {

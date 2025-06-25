@@ -8,6 +8,17 @@ import { Link, PlainExternalLink } from "./TattleLinks"
  * @function SmallFooter widget
  **/
 
+/**
+ * Renders a minimal responsive footer with a list of external links.
+ *
+ * @param {Object} props
+ * @param {Object[]} props.items - Array of footer link items.
+ * @param {string} props.items[].id - Unique identifier for the link.
+ * @param {string} props.items[].target - URL the link points to.
+ * @param {string} props.items[].label - Text displayed for the link.
+ * @returns {JSX.Element} Responsive footer component.
+ */
+
 const SmallFooter = ({ items }) => {
   const size = useContext(ResponsiveContext)
   return (

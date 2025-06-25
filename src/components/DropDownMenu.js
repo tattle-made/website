@@ -11,6 +11,18 @@ import {
  **/
 import { NavigationLabel, Theme } from "./atomic/core-style"
 
+/**
+ * DropDownMenu renders a tooltip-style dropdown with navigational links.
+ * It uses Grommet's Drop component, toggled by a button click, and closes on outside click or Escape key.
+ *
+ * @param {Object} props - Component props
+ * @param {Array<{ id: string, target: string }>} props.options - Menu items with unique ID and target URL.
+ * @param {string} props.title - Button label for triggering the dropdown.
+ *
+ * @returns {JSX.Element} The dropdown menu component.
+ */
+
+
 const DropDownMenu = ({ options, title }) => {
   const [fetching, setFetching] = useState(false)
   const [showToolTip, setShowToolTip] = useState(false)

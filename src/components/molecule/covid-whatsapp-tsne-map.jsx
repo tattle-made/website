@@ -5,6 +5,14 @@ import dataBase64 from "../../data/covid-whatsapp-public-groups/base64.json"
 import Clusters from "../../data/covid-whatsapp-public-groups/cluster.json"
 import { active } from "d3"
 
+/**
+ * Shows COVID WhatsApp t-SNE map with filterable categories.
+ *
+ * Renders cluster points in SVG and updates view based on selected categories.
+ *
+ * @returns {JSX.Element} The rendered cluster map UI.
+ */
+
 const VIZ_WIDTH = 800
 const VIZ_HEIGHT = 600
 
@@ -98,7 +106,7 @@ const SVGViz = ({ activeCategories, showPreview }) => {
           x={x[ix] * 800}
           y={y[ix] * 600}
           height={10}
-          width={10}
+          width={10 }
           href={`data:image/jpeg;base64,${dataBase64[imageId].base64}`}
           onMouseEnter={e => showPreview(true, ix, e.clientX, e.clientY)}
           imageRendering={"optimizeSpeed"}

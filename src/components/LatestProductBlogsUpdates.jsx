@@ -4,6 +4,18 @@ import { projectSlugMaker } from "../lib/project-slug-maker"
 import { Box, Heading } from "grommet"
 import { LatestEntries } from "./LatestEntries"
 
+/**
+ * `LatestProductBlogsUpdates` renders a list of the latest blog posts and updates
+ * related to the provided project names.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string[]} props.projects - An array of project names as strings
+ * 
+ * @returns {JSX.Element|null} A list of latest blogs and updates filtered by projects,
+ * or `null` if no projects are provided.
+ */
+
 export function LatestProductBlogsUpdates({ projects }) {
   //projects is an array of string
   const data = useStaticQuery(graphql`
