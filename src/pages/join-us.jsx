@@ -7,7 +7,7 @@ export default function JoinUs() {
   const jobs = [
     { title: "Software Engineer", link: "/career/sde1" },
     { title: "Qualitative Researcher", link: "/career/qualitative-researcher" },
-    { title: "Digital Marketing Consultant", link: "/career/digitalmarketing-consultant" },
+    { title: "Project Manager", link: "/career/project-manager.mdx" },
     { title: "Backend and DevOps Engineer", link: "/career/backend-engineer" },
     { title: "Senior Software Engineer", link: "/career/senior-fullstack-developer" },
   ];
