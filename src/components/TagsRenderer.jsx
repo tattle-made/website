@@ -51,9 +51,9 @@ export default function TagsRenderer({
             ))
             : sortedUniqueTags.slice(0, 10).map((tag) => (
               <Box key={tag}
-                pad={{ vertical: "xsmall" }}
-                round="xsmall"
-                margin={{ bottom: "xxsmall" }}>
+                // pad={{ vertical: "xsmall" }}
+                // round="xsmall"
+                margin={{ bottom: "small" }}>
                 <Link
                   to={tagBaseURL.concat(tag)}
                   style={{ textDecoration: "none" }}
@@ -65,7 +65,7 @@ export default function TagsRenderer({
           {sortedUniqueTags.length > 10 && (
             <Button onClick={toggleTagsDisplay}>
               <Box
-                pad={{ horizontal: "small", vertical: "xsmall" }}
+                pad={{ horizontal: "xsmall", vertical: "xxsmall" }}
                 align="center"
                 border={{ color: "#E76D67", size: "1px" }}
                 round="small"
