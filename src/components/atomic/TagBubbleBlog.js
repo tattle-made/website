@@ -11,9 +11,13 @@ const TagBubbleBlog = ({ data }) => {
         width="fit-content"
         direction="row"
         align="center"
+        style={{
+          fontSize: "0.75rem",
+          lineHeight: "1rem"
+        }}
       >
         <span style={{ textDecoration: 'underline' }}>
-          <Text size="small">{data.label}</Text>
+          <Text size="xsmall">{data.label}</Text>
         </span>
         <Text size="xsmall" margin={{ left: "xsmall" }}>
           {data.count}
