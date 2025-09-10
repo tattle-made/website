@@ -88,7 +88,7 @@ const ViralSpiral = () => {
       <NarrowContentWrapper>
         <NarrowSection>
           <Box gap={"small"}>
-            <ExternalLink href="https://viralspiral.net">
+            <ExternalLink href="https://viralspiral.tattle.co.in/">
               <Box
                 background={"visuals-2"}
                 pad={"large"}
