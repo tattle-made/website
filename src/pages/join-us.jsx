@@ -6,8 +6,6 @@ import { Link } from "gatsby";
 export default function JoinUs() {
   const jobs = [
     { title: "Software Engineer", link: "/career/sde1" },
-    { title: "Qualitative Researcher", link: "/career/qualitative-researcher" },
-    { title: "Program Manager", link: "/career/ai-safety-program-manager" },
     { title: "Backend and DevOps Engineer", link: "/career/backend-engineer" },
     { title: "Senior Software Engineer", link: "/career/senior-fullstack-developer" },
   ];
