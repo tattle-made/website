@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
-import { Box, ResponsiveContext } from "grommet"
+import { Box, ResponsiveContext, Paragraph } from "grommet"
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
 import { primaryNav, footerItems } from "../config/options"
@@ -166,7 +166,8 @@ export default function PageTemplate({
 
         <Box align="start" className="flex flex-col lg:flex-row">
           {/* Main Content */}
-          <Box flex={true}>{children}</Box>
+          <Paragraph  size={"large"}>{children}
+          </Paragraph>
 
           {/* Sidebar Section */}
           <Box className="text-center w-full lg:w-[35%] flex">
