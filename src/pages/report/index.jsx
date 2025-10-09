@@ -5,6 +5,7 @@ import { Link } from "gatsby" // Import Gatsby's Link component
 
 export default function Layout({ children }) {
   const reports = [
+    { year: "2024", link: "/report/2024-report" },
     { year: "2022", link: "/report/2022-report" },
     { year: "2021", link: "/report/2021-report" },
     { year: "2020", link: "/report/2020-report" },
