@@ -21,7 +21,7 @@ const Links = () => {
           >
             <Box gap={"small"}>
               <Text size={"small"}>
-                We are conducting User Research with the following groups:
+                We are conducting Livestreamed Playtests for Viral Spiral with the following groups:
               </Text>
               <Text size={"small"}>
                 {" "}
@@ -29,14 +29,14 @@ const Links = () => {
               </Text>
               <Text size={"small"}>
                 {" "}
-                2. Indian content creators who face online abuse.
+                2. Gamers of all stripes - board games, mobile games, casual games, RPGs etc
               </Text>
             </Box>
 
             <Anchor
               size={"small"}
-              href={"mailto:admin@tattle.co.in"}
-            >{`✉️ Email us at admin@tattle.co.in`}</Anchor>
+              href={"https://forms.gle/2cxjpyVBi7TuKtaz9"}
+            >{`🗓️ Sign up for Playtests`}</Anchor>
           </Box>
 
           <Heading level={3}> Recent Links </Heading>
@@ -51,22 +51,22 @@ const Links = () => {
                 1.
                 <Anchor
                   href={
-                    "https://tattle.co.in/blog/media-literacy-in-classrooms-insights-from-instructors"
+                    "https://tattle.co.in/blog/hot-take-on-open-source-AI/"
                   }
                   target={"_blank"}
                 >
-                  Media Literacy in Classrooms - Insights from Instructors
+                  A hot take on Open Source AI
                 </Anchor>{" "}
               </Text>
               <Text size={"small"}>
                 2.{" "}
                 <Anchor
-                  href={"https://www.youtube.com/watch?v=hc0tpStpe3o&t=3s"}
+                  href={"https://tattle.co.in/blog/2025-04-30-community-notes/"}
                   target={"_blank"}
                 >
-                  a 40 minute Playthrough Video
+                  Exploratory Analysis of Fact Checks and URLS in Community Notes on X
                 </Anchor>{" "}
-                of Viral Spiral
+                
               </Text>
               <Text size={"small"}>
                 3. Add Indian slurs to your Instagram 'hidden words' by using
@@ -74,37 +74,11 @@ const Links = () => {
                   href={"https://uli.tattle.co.in/hidden-words-for-instagram/"}
                   target={"_blank"}
                 >
-                  {" "}
-                  this web app
+                  
                 </Anchor>
               </Text>
 
-              <Text size={"small"}>
-                4. Our in-progress
-                <Anchor
-                  href={
-                    "https://tattle.co.in/blog/factshala-project-reading-list"
-                  }
-                  target={"_blank"}
-                >
-                  {" "}
-                  media literacy reading list{" "}
-                </Anchor>
-                for a forthcoming in-classroom game
-              </Text>
-
-              <Text size={"small"}>
-                5. Track what we are working on
-                <Anchor
-                  href={
-                    "https://github.com/orgs/tattle-made/projects/37/views/2"
-                  }
-                  target={"_blank"}
-                >
-                  {" "}
-                  and find ways to contribute
-                </Anchor>
-              </Text>
+             
             </Box>
           </Box>
         </NarrowSection>
