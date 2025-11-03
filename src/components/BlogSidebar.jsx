@@ -18,7 +18,7 @@ import { PlainLink } from "./atomic/TattleLinks"
 
 const RelatedPostItem = ({ post }) => (
   <Box
-    margin={{ bottom: "small" }}
+    margin={{ top: "medium", bottom: "medium" }}
     border={{ color: "light-4", size: "xsmall", side: "bottom" }}
     pad={{ bottom: "xsmall" }}
   >
@@ -65,10 +65,9 @@ const BlogSidebar = ({ relatedPosts }) => {
       background="visuals-two"
       round="small"
       elevation="small"
-      width="100%"
-      className="mt-10 lg:mt-0 lg:ml-10 w-full text-center flex flex-col"
+      className="w-full lg:w-48 mt-10 lg:mt-0 lg:ml-10 flex flex-col"
     >
-      <Heading level={3} className={`w-full text-center mx-auto`}>
+      <Heading level={3} className={`w-full mx-auto`}>
         Related Posts
       </Heading>
 

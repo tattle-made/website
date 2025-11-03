@@ -164,15 +164,16 @@ export default function PageTemplate({
           </Box>
         </Box>
 
-        <Box align="start" className="flex flex-col lg:flex-row">
+        <Box align="start" className="flex flex-col lg:flex-row gap-2">
           {/* Main Content */}
-          <Paragraph  size={"large"}>{children}
-          </Paragraph>
+          <Box className="grow" >
+            {children}
+          </Box>
 
           {/* Sidebar Section */}
-          <Box className="text-center w-full lg:w-[35%] flex">
+          {/* <Box className="w-24 lg:w-24">
             <BlogSidebar relatedPosts={relatedPosts} />
-          </Box>
+          </Box> */}
         </Box>
       </MDXProvider>
     </AppShell>
