@@ -7,6 +7,8 @@ date: 2025-11-03
 tags: announcement, synthetic-media, online-harms
 cover: ../images/cover-rati-report-make-it-real.png
 ---
+import {Box, Text} from 'grommet'
+import {ExternalLink} from "../components/atomic/TattleLinks"
 
 ![](../images/hero-rati-report-make-it-real.png)
 
@@ -20,4 +22,18 @@ This report aims to humanize these less visible experiences of online abuse and 
 
 We invite everyone—researchers, policymakers, and digital rights advocates—to engage with this report and join the conversation on building safer digital futures.
 
-[Read Report](/make-it-real-report.pdf)
+
+<Box className="w-fit mt-4">
+    <ExternalLink href="https://viralspiral.tattle.co.in/">
+        <Box
+        background={"visuals-1"}
+        pad={"medium"}
+        round
+        alignContent="center"
+        >
+        <Text>
+            <a href="/make-it-real-report.pdf" target="_blank" className="text-blue-950 no-underline">Download Report</a>
+        </Text>
+        </Box>
+    </ExternalLink>
+</Box>
