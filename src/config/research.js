@@ -1,6 +1,19 @@
 export const research = {
   featured: [
     {
+      date: "4 November, 2025",
+      title:
+        "Make it Real :  Mapping Safety Responses to AI-facilitated Gendered Harms",
+      description:
+        "A report we worked on with RATI foundation that examines how AI-generated content, popularly known as ‘deepfakes’, is impacting and reshaping online harassment. Drawing from cases reported to Rati's helpline Meri Trustline, the report reveals a concerning trend: while media & headlines often center on celebrities and politicians targeted through AI, a more personal crisis is also unfolding. Ordinary survivors are being targeted through images that are artificially generated but possess the capacity for real harm. Survivors’ reputation is attacked and consent is erased through technology. These violations are muted by shame, fear and trauma- the incidents are rarely revealed to close family circles, let alone feature in larger discourse. ",
+      url: "https://tattle.co.in/blog/make-it-real/",
+      tags: [
+        "Report",
+        "deepfakes",
+        "online gender-based violence",
+      ],
+    },
+    {
       date: "16 June 2024",
       title:
         "The Uli Dataset: An Exercise in Experience Led Annotation of oGBV",
@@ -14,20 +27,7 @@ export const research = {
         "online gender-based violence",
       ],
     },
-    {
-      date: "22 November, 2022",
-      title: "Does Incentivization Promote Sharing “True” Content Online?",
-      description:
-        "To understand the impact of incentives on online information-sharing behavior, this study created a mock social media platform and found that both financial and social incentives increased the sharing of true information, with demographic factors such as age, education, and political ideology also playing a role.",
-      url: "https://osf.io/preprints/psyarxiv/nykxz",
-      tags: [
-        "incentives",
-        "information-sharing",
-        "misinformation",
-        "social media",
-        "web monetization",
-      ],
-    },
+    
   ],
   all: [
     {
@@ -70,6 +70,20 @@ export const research = {
       url:
         "https://itforchange.net/feminist-perspectives-on-social-media-governance-0",
       tags: ["ML", "Uli", "Development Journey"],
+    },
+    {
+      date: "22 November, 2022",
+      title: "Does Incentivization Promote Sharing “True” Content Online?",
+      description:
+        "To understand the impact of incentives on online information-sharing behavior, this study created a mock social media platform and found that both financial and social incentives increased the sharing of true information, with demographic factors such as age, education, and political ideology also playing a role.",
+      url: "https://osf.io/preprints/psyarxiv/nykxz",
+      tags: [
+        "incentives",
+        "information-sharing",
+        "misinformation",
+        "social media",
+        "web monetization",
+      ],
     },
     {
       date: "30 July, 2021",

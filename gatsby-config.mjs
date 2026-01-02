@@ -107,6 +107,9 @@ const config = {
         extensions: [`.mdx`],
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-remark-double-brackets-link`,
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
