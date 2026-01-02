@@ -5,7 +5,7 @@ export const research = {
       title:
         "Make it Real :  Mapping Safety Responses to AI-facilitated Gendered Harms",
       description:
-        "A report we worked on with RATI foundation that examines how AI-generated content, popularly known as ‘deepfakes’, is impacting and reshaping online harassment. Drawing from cases reported to Rati's helpline Meri Trustline, the report reveals a concerning trend: while media & headlines often center on celebrities and politicians targeted through AI, a more personal crisis is also unfolding. Ordinary survivors are being targeted through images that are artificially generated but possess the capacity for real harm. Survivors’ reputation is attacked and consent is erased through technology. These violations are muted by shame, fear and trauma- the incidents are rarely revealed to close family circles, let alone feature in larger discourse. ",
+        "A report we worked on with RATI foundation that examines how AI-generated content, popularly known as ‘deepfakes’, is impacting and reshaping online harassment. Drawing from cases reported to Rati's helpline Meri Trustline, the report reveals a concerning trend: while media & headlines often center on celebrities and politicians targeted through AI, a more personal crisis is also unfolding. Ordinary survivors are being targeted through images that are artificially generated but possess the capacity for real harm. The incidents are rarely revealed to close family circles, let alone feature in larger discourse. ",
       url: "https://tattle.co.in/blog/make-it-real/",
       tags: [
         "Report",
