@@ -41,7 +41,7 @@ const UpdateListItem = ({ node }) => {
           <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>
             {node.frontmatter.title}
           </Heading>
-          <Box direction={"row-responsive"} gap={"xsmall"}>
+          <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }}>
             {tags.map(tag => (
               <TagBubble data={{ label: tag }} key={tag} />
             ))}
