@@ -1,0 +1,33 @@
+---
+name: Towards Functional Safety in AI in the Social Sector
+excerpt: Reflections from the discussions pertaining to AI Safety at the Expert Group Convening on AI evaluations in the social sector, convened by Agency Fund and C4GD
+date: 2020-05-22
+tags: AI Safety
+author: Tarunima Prabhakar
+---
+
+In December Agency Fund and C4GD convened an expert group to discuss evaluation of Generative AI in the social sector. This is a blog on the reflection on the breakout discussion on safety evaluations where we also tried to conceptualize a set of minimal viable safety evaluations. 
+
+Just as aspirations for AI range from mundane efficiencies to superintelligence, AI safety considerations also range from micro-fixes to the catastrophic. AI is a loose term that includes a range of applications- from foundational model services handed out at schools and workplaces, to image recognition and natural language processing for quiz assessments, to personalized advice for primary care givers. The [Agency Fund evaluation playbook](https://www.playbooks.org.ai/framework) has a challenging mandate of identifying best practices for design and evaluations common to a wide set of applications. It is similarly challenging to speak of safety evaluations in abstraction. Yet, that is the task that the breakout room had at hand.
+
+What struck me through the numerous threads of the conversation was that the narratives around AI, writ large, were also affecting our perceptions of what AI safety work means. I am very much in the [‘AI as normal technology](https://www.anildash.com/2025/10/17/the-majority-ai-view/)’ camp. This means that building AI safely today, is more of fixing the nuts and bolts in the here and now. That isn’t to say that we shouldn’t have a sight of the emergent long-term risks, but conflating the two time scales of risks can be counterproductive. The long-term risks feel ambiguous and hard to measure and many social sector teams can’t devote resources to that task. In the process, it can feel challenging to do any safety work. One of the issues we touched on in the discussion was the use of AI for the generation of synthetic media. It is a vexing issue, and one that Tattle devotes a fair bit of time on in the context of [misinformation](https://dau.tattle.co.in/) and [gendered abuse](https://tattle.co.in/blog/make-it-real/). But it isn’t something that any of the non-profits we’ve engaged with have encountered in the context of their services. We have, however, seen instances of AI bots disclosing caste information, or being used for questions on sex determination. Those are the risks that impact the utility and perception of a service provided by the social sector. Fixing these, even if with imperfect band-aids, is possible. 
+
+#### Safety is Within, not Outside of  Design:
+
+Something I have heard now, more than once, is that too much emphasis on safety or responsibility is taking away from the actual work of building applications or innovation. I also attribute this to narratives and noise around AI that is making it difficult to have useful or actionable conversations. On one hand you have the safety vs. innovation debate within the ‘AI as a superintelligence’ community. On the other, you have years of policy chatter on responsible AI that hasn’t felt actionable to product teams. The gap between principles and action is [slowly being bridged](https://arxiv.org/pdf/2401.15229) but there is perhaps some exhaustion in builders with conversations around responsibility and safety.     
+The corollary to AI safety that I find more useful is cybersecurity. People don’t argue that investing in cybersecurity is a threat to building the product. Good engineering practices will take care of baseline security considerations. And then there is some more that a team can do in terms of cybersecurity audits. That additional effort will vary for each product depending on the sensitivity of their application. Most teams work with some kind of a Pareto principle- they do things that take care of 80% of the cybersecurity risks. 
+
+I think we will also get to a similar pareto principle with safety work in AI applications. After all, hallucinations are a user experience and a safety issue. Good design will also result in safer applications. We’ve seen a couple of design practices in the more mature AI chatbots, motivated not by safety, but that also help it:
+
+* Restriction on the length of the conversation:  
+  * Many use cases rely on a strict knowledge base and don’t require lengthy back and forth. Restriction on the number of turns of the conversations helps keep costs in check. But it also helps with safety since guardrails get looser with lengthier conversations. 
+
+* An LLM as a judge that reviews the output of the primary foundational model, against the user input:  
+  * This helps in preventing conversation from drift away from the main purpose of the bot. This keeps costs in check. It also prevents malicious use cases. 
+
+* Observability stack\!   
+  * This seems basic but many applications don’t have one. An application developer needs to know the answers for specific inputs, to understand if the application is working as intended. Observability is necessary for any model or product level evaluation, but also safety assessment. 
+
+The specific design details vary across organizations but all this to say that we can get a decent distance in building safe applications doing a few things right. There are immediate safety concerns with AI applications that can and should be fixed. In fact, there are existing resources for data governance and consent in international development, which if adhered to, will help in safer AI applications. 
+
+As for the longer term risks, I think these will be better handled by people who are a couple of steps removed from product development in the social sector. These are groups who have one eye to the latest in R\&D of foundational models, and one eye to the diversity of global contexts in which AI is being deployed. Some of the long term risks will eventually become immediate risks. This group can be the bridge relaying feedback to foundational model companies, and ideating on possible solutions for the social sector. 
