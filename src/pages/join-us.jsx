@@ -5,9 +5,9 @@ import { Link } from "gatsby";
 
 export default function JoinUs() {
   const jobs = [
-    { title: "Software Engineer", link: "/career/sde1" },
-    { title: "Backend and DevOps Engineer", link: "/career/backend-engineer" },
-    { title: "Senior Software Engineer", link: "/career/senior-fullstack-developer" },
+    // { title: "Software Engineer", link: "/career/sde1" },
+    // { title: "Backend and DevOps Engineer", link: "/career/backend-engineer" },
+    // { title: "Senior Software Engineer", link: "/career/senior-fullstack-developer" },
   ];
 
   return (
@@ -43,7 +43,9 @@ export default function JoinUs() {
               </Box>
             </Link>
           ))}
+          {jobs.length==0?<Box margin={{top: "small"}}><Text size="small-ms" color="dark-6">No Current Openings</Text></Box>:null}
         </Box>
+        
 
         {/* Open Application Section */}
         <Box margin={{ top: "xsmall" }}>
