@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import { Box, Heading, Button } from "grommet"
 
 import TagBubbleBlog from "./atomic/TagBubbleBlog"
+// import './styles/global.css';
 
 /**
  * Renders a list of tags with an option to toggle between showing all tags or a limited number.
@@ -28,16 +29,17 @@ export default function TagsRenderer({
   }
 
   return (
-    <Box flex direction="row" align="baseline" gap="xsmall">
-      <Box>
-        <Heading level={4} marging={{ bottom: "small" }}>
-          {tagTypeHeading}
-        </Heading>
-      </Box>
+    <Box margin={{ bottom: "small" }}>
+      <Box flex direction="row" align="baseline" gap="xsmall">
+        <Box>
+          <Heading level={4} margin={{ bottom: "small" }}>
+            {tagTypeHeading}
+          </Heading>
+        </Box>
 
-      <Box flex direction="row" gap="small" align="center" wrap={true}>
-        {showAllTags
-          ? sortedUniqueTags.map((tag) => (
+        <Box flex direction="row" gap="small" align="center" wrap={true}>
+          {showAllTags
+            ? sortedUniqueTags.map((tag) => (
               <Box key={tag} margin={{ bottom: "small" }}>
                 <Link
                   to={tagBaseURL.concat(tag)}
@@ -47,8 +49,11 @@ export default function TagsRenderer({
                 </Link>
               </Box>
             ))
-          : sortedUniqueTags.slice(0, 10).map((tag) => (
-              <Box key={tag}>
+            : sortedUniqueTags.slice(0, 10).map((tag) => (
+              <Box key={tag}
+                // pad={{ vertical: "xsmall" }}
+                // round="xsmall"
+                margin={{ bottom: "small" }}>
                 <Link
                   to={tagBaseURL.concat(tag)}
                   style={{ textDecoration: "none" }}
@@ -57,20 +62,22 @@ export default function TagsRenderer({
                 </Link>
               </Box>
             ))}
-        {sortedUniqueTags.length > 10 && (
-          <Button onClick={toggleTagsDisplay}>
-            <Box
-              pad={{ horizontal: "small", vertical: "xsmall" }}
-              align="center"
-              border={{ color: "#E76D67", size: "1px" }}
-              round="small"
-              className="hover:ring-2 hover:ring-E76D67"
-            >
-              {showAllTags ? "Show Less Tags" : "Show All Tags"}
-            </Box>
-          </Button>
-        )}
+          {sortedUniqueTags.length > 10 && (
+            <Button onClick={toggleTagsDisplay}>
+              <Box
+                pad={{ horizontal: "xsmall", vertical: "xxsmall" }}
+                align="center"
+                border={{ color: "#E76D67", size: "1px" }}
+                round="small"
+                className="hover:ring-2 hover:ring-E76D67"
+              >
+                {showAllTags ? "Show Less Tags" : "Show All Tags"}
+              </Box>
+            </Button>
+          )}
+        </Box>
       </Box>
     </Box>
   )
 }
+
