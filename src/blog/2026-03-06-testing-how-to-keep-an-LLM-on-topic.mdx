@@ -1,0 +1,65 @@
+---
+name: Testing how to keep an LLM on topic
+excerpt: Developing topic relevance safety guardrail for AI use cases of grassroots NGOs
+author: Baarish
+date: 2020-03-06
+tags: Tech4Dev, AI guardrails
+---
+
+## Problem: 
+Ensuring that an NGO’s chatbot correctly identifies whether user messages are relevant to the set of topics defined in the RAG implementation or are unrelated/outside the scope of the bot’s knowledge base.
+
+## Objectives: 
+Reduce instances of LLM responding with vague, unhelpful or hallucinated responses to questions that are out of scope of the defined domain. 
+Improve precision and recall for all queries that are pertinent to the scope of the chatbot. 
+
+### Our  Approach
+We wanted to develop an LLM judge that could categorise input messages as being within or outside the scope defined for a particular chatbot use case. 
+
+As a first attempt, we started with defining keywords for the LLM to determine the relevance of each user message to the NGO’s use case. To do this, we consolidated relevant messages collected from the pilot data shared with us by two NGOs, one in the maternal healthcare domain and another in the higher education domain. The messages were in a combination of English, Hindi, and Hinglish. We used their system prompts to come up with keywords that we judged as relevant to their use case. 
+
+To test the prompt we combined user messages from the pilot data with messages created manually by our qualitative researcher. For the higher education use case the final set of messages numbered 52, with 23 manually created messages. For the healthcare domain, the final set of messages contained 52 inputs, with 16 manually created. 
+
+For this we defined the following prompt: 
+
+   You are a strict semantic classifier.
+
+   #### Task:
+   Determine whether each message is clearly within the scope defined by the keywords.
+
+   #### Rules:
+   - Use semantic meaning and intent, not exact keyword matches
+   - If relevance is weak, indirect, metaphorical, or ambiguous → OUT_OF_SCOPE
+   - Do NOT assume intent
+   - Be conservative
+   
+
+## Results: 
+
+The results of these experiments have shown some inconsistencies but a general trend towards improved precision and recall was observed when keywords were used with definitions. (For detailed numbers for each set of keywords and definitions, please refer to the Tab on Metrics for our experiment.) 
+
+With the keyword approach, recall seems to be consistently higher but precision is less consistent. With definitions, precision improves considerably, with much fewer false positives. However, classification becomes stricter so false negatives increase. 
+
+In Table 1, row 1 uses the keyword approach while rows 2 and 3 use definitions. Precision consistently improves with definitions but recall remains lower. 
+
+Table 1: Decrease in Recall with use of Definitions in system prompt.
+
+Some of the false negatives were related to grammatical issues and the use of romanized hindi, specifically in the reproductive healthcare use case. In fact, in the reproductive healthcare use case, both precision and recall improved with definitions. Table 2 presents the system prompts used for the healthcare use case. Row 1 represents results for keywords and row 2 shows results for the definitions approach. In this case, the definitions approach showed clear improvement across metrics.
+
+Table 2: Precision and Recall improvement in healthcare use case. 
+
+The healthcare use case saw more improvement with definitions compared to the higher education use case. This is of note since false positives in this context are of greater concern. A user getting information for non-reproductive health related queries from a bot that is not tuned for that can cause more real-world harm than simply requesting rephrases for edge case in-scope queries. 
+
+### Inferences:
+
+Depending on the use case, a higher precision may be preferred over recall because it ensures that less out of scope questions are being answered. For the higher false negatives, there is always the option to request the user to rephrase their query. 
+
+Therefore, when selecting which approach to take for the topic relevance validator, it might be useful to determine whether in the specific use case, it is false positives that are more harmful. For example, in the healthcare industry, it might be important to curb false positives to the extent possible. Alternatively, there might be use cases where the degree of harm from an edge case query might be very limited. For example, in the ed tech space, if the bot is geared towards answering only questions on a given syllabus, then some questions that are related to the field but outside of scope may not be too harmful to answer. 
+
+Determining whether a validator should improve precision or recall or both will require some real time data. 
+
+## Next Steps
+
+We now plan to expand our dataset synthetically and run them through the scripts. We also want to investigate how the scores change when we change the LLM being used. We also will continue tweaking the prompt design to see how much they affect the scores.
+
+### Higher Education
