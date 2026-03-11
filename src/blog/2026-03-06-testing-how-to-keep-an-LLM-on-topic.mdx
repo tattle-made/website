@@ -42,6 +42,21 @@ With the keyword approach, recall seems to be consistently higher but precision 
 
 In Table 1, row 1 uses the keyword approach while rows 2 and 3 use definitions. Precision consistently improves with definitions but recall remains lower. 
 
+| No. | Prompt | Accuracy | Precision | Recall |
+|----:|--------|---------:|----------:|------:|
+| 1 | STEM fields", "STEM academic, research, and career prep","scholarships in India","interview and job applications", "internships and industry trends in science, technology, engineering and medicine","problem solving, time management, and communication skills" | 0.75 | 0.65 | 0.88 |
+| 2 | "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.",
+      "STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or academic careers in STEM.",
+      "Scholarships in India": "Information or guidance on scholarships, fellowships, or financial aid available to students in India.",
+      "Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.",
+      "Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.",
+      "Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills." | 0.80 | 0.85 | 0.79 |
+| 3 | "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.",
+"STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or careers in STEM.",
+"Scholarships in India": "Information on scholarships, fellowships, or financial aid available to students in India.",
+"Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.",
+"Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.",
+"Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills for academic success and acquiring jobs" | 0.84 | 0.89 | 0.84 | 
 Table 1: Decrease in Recall with use of Definitions in system prompt.
 
 Some of the false negatives were related to grammatical issues and the use of romanized hindi, specifically in the reproductive healthcare use case. In fact, in the reproductive healthcare use case, both precision and recall improved with definitions. Table 2 presents the system prompts used for the healthcare use case. Row 1 represents results for keywords and row 2 shows results for the definitions approach. In this case, the definitions approach showed clear improvement across metrics.
