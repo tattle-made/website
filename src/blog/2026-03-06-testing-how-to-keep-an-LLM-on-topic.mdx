@@ -33,6 +33,22 @@ For this we defined the following prompt:
    - Do NOT assume intent
    - Be conservative
    
+   ```
+Keywords:
+{keywords}
+
+Messages:
+{messages}
+
+Return ONLY valid JSON in the following format:
+[
+  {
+    "message": "<original message>",
+    "classification": "IN_SCOPE" | "OUT_OF_SCOPE",
+    "reason": "<one short sentence>"
+  }
+]
+```
 
 ## Results: 
 
