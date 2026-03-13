@@ -16,6 +16,7 @@ import BlogSidebar from "./BlogSidebar"
 import { projectSlugMaker } from "../lib/project-slug-maker"
 import TagsRenderer from "./TagsRenderer"
 import { getSrc, getImage } from "gatsby-plugin-image"
+import BlogTable from "./atomic/BlogTable"
 
 /**
  * Blog post layout component.
@@ -37,6 +38,7 @@ const shortcodes = {
   BlogHeaderCard,
   code: (props) => <CustomCodeBlock {...props} />,
   inlineCode: (props) => <InlineCodeBlock {...props} />,
+  table: (props) => <BlogTable {...props} />
 }
 
 export default function PageTemplate({
@@ -166,7 +168,7 @@ export default function PageTemplate({
 
         <Box align="start" className="flex flex-col lg:flex-row gap-2">
           {/* Main Content */}
-          <Box className="grow" >
+          <Box className="fit" >
             {children}
           </Box>
 
