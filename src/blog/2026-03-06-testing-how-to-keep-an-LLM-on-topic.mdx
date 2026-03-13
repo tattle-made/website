@@ -1,0 +1,174 @@
+---
+name: Testing how to keep an LLM on topic
+excerpt: Developing topic relevance safety guardrail for AI use cases of grassroots NGOs
+author: Baarish
+date: 2026-03-06
+tags: Tech4Dev, AI guardrails
+---
+
+## Problem: 
+Ensuring that an NGO’s chatbot correctly identifies whether user messages are relevant to the set of topics defined in the RAG implementation or are unrelated/outside the scope of the bot’s knowledge base.
+
+## Objectives: 
+Reduce instances of LLM responding with vague, unhelpful or hallucinated responses to questions that are out of scope of the defined domain. 
+Improve precision and recall for all queries that are pertinent to the scope of the chatbot. 
+
+### Our  Approach
+We wanted to develop an LLM judge that could categorise input messages as being within or outside the scope defined for a particular chatbot use case. 
+
+As a first attempt, we started with defining keywords for the LLM to determine the relevance of each user message to the NGO’s use case. To do this, we consolidated relevant messages collected from the pilot data shared with us by two NGOs, one in the maternal healthcare domain and another in the higher education domain. The messages were in a combination of English, Hindi, and Hinglish. We used their system prompts to come up with keywords that we judged as relevant to their use case. 
+
+To test the prompt we combined user messages from the pilot data with messages created manually by our qualitative researcher. For the higher education use case the final set of messages numbered 52, with 23 manually created messages. For the healthcare domain, the final set of messages contained 52 inputs, with 16 manually created. 
+
+For this we defined the following prompt: 
+
+   *You are a strict semantic classifier.*
+
+   *Task:*
+   
+   *Determine whether each message is clearly within the scope defined by the keywords.*
+
+   *Rules:*
+   - *Use semantic meaning and intent, not exact keyword matches*
+   - *If relevance is weak, indirect, metaphorical, or ambiguous → OUT_OF_SCOPE*
+   - *Do NOT assume intent*
+   - *Be conservative*
+   
+   ```
+Keywords:
+{keywords}
+
+Messages:
+{messages}
+
+Return ONLY valid JSON in the following format:
+[
+  {
+    "message": "<original message>",
+    "classification": "IN_SCOPE" | "OUT_OF_SCOPE",
+    "reason": "<one short sentence>"
+  }
+]
+```
+
+## Results: 
+
+The results of these experiments have shown some inconsistencies but a general trend towards improved precision and recall was observed when keywords were used with definitions. (For detailed numbers for each set of keywords and definitions, please refer to the appended table on Metrics for our experiment.) 
+
+With the keyword approach, recall seems to be consistently higher but precision is less consistent. With definitions, precision improves considerably, with much fewer false positives. However, classification becomes stricter so false negatives increase. 
+
+In Table 1, row 1 uses the keyword approach while rows 2 and 3 use definitions. Precision consistently improves with definitions but recall remains lower. 
+
+
+| No. | Prompt | Accuracy | Precision | Recall  |
+|:----| :--------------------- | :-------------- | :-------------- | :----------- |
+| 1 | STEM fields", "STEM academic, research, and career prep","scholarships in India","interview and job applications", "internships and industry trends in science, technology, engineering and medicine","problem solving, time management, and communication skills" | 0.75 | 0.65 | 0.88 |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| 2 | "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.", "STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or academic careers in STEM.", "Scholarships in India": "Information or guidance on scholarships, fellowships, or financial aid available to students in India.", "Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.", "Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.","Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills." | 0.80 | 0.85 | 0.79 |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| 3 | "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.", "STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or careers in STEM.", "Scholarships in India": "Information on scholarships, fellowships, or financial aid available to students in India.", "Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.", "Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.", "Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills for academic success and acquiring jobs" | 0.84 | 0.89 | 0.84 | 
+
+*_____________________________________________________________________________________________________________________*
+
+Table 1: Decrease in Recall with use of Definitions in system prompt.
+
+Some of the false negatives were related to grammatical issues and the use of romanized hindi, specifically in the reproductive healthcare use case. In fact, in the reproductive healthcare use case, both precision and recall improved with definitions. Table 2 presents the system prompts used for the healthcare use case. Row 1 represents results for keywords and row 2 shows results for the definitions approach. In this case, the definitions approach showed clear improvement across metrics.
+
+| No. | Prompt | Accuracy | Precision | Recall |
+|:-----: |:--------------------------------------- | :----------: |:-----------: |:--------: |
+| 1 | "reproduction but exclude nutrition"," **exclude sex determination** ", "infant health", "postnatal care", "reproductive schemes by government" | 0.73 | 0.86 | 0.5 |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| 2 | "Reproductive health":"maternal health, prenatal, neonatal, postnatal health", "infant health":"infant nutrition, vaccination, recognizing symptoms of illness", "government support":"Indian government support for pregnant women, schemes for girl children, accessing forms and applying for benefits, sources of aid for low income groups", "**Out of scope":"sex determination, non-pregnancy related healthcare, non-pregnancy related nutrition, beauty and wellness, fitness, prescriptions**" | 0.84 | 0.94 | 0.74 |
+
+*______________________________________________________________________________________________________________________*
+
+Table 2: Precision and Recall improvement in healthcare use case. 
+
+The healthcare use case saw more improvement with definitions compared to the higher education use case. This is of note since false positives in this context are of greater concern. A user getting information for non-reproductive health related queries from a bot that is not tuned for that can cause more real-world harm than simply requesting rephrases for edge case in-scope queries. 
+
+### Inferences:
+
+Depending on the use case, a higher precision may be preferred over recall because it ensures that less out of scope questions are being answered. For the higher false negatives, there is always the option to request the user to rephrase their query. 
+
+Therefore, when selecting which approach to take for the topic relevance validator, it might be useful to determine whether in the specific use case, it is false positives that are more harmful. For example, in the healthcare industry, it might be important to curb false positives to the extent possible. Alternatively, there might be use cases where the degree of harm from an edge case query might be very limited. For example, in the ed tech space, if the bot is geared towards answering only questions on a given syllabus, then some questions that are related to the field but outside of scope may not be too harmful to answer. 
+
+Determining whether a validator should improve precision or recall or both will require some real time data. 
+
+## Next Steps
+
+We now plan to expand our dataset synthetically and run them through the scripts. We also want to investigate how the scores change when we change the LLM being used. We also will continue tweaking the prompt design to see how much they affect the scores.
+
+### Higher Education
+
+| Keywords | Changes made | No. of input messages | Input messages changed | Accuracy | Precision | Recall | F1 Score | Notes |
+|:---------------------------------------------------------------------------- |:----------------------------- | :----------------------- |:--------------- |:------------ | :-------------- | :-------------- | :-------------- | :-------------------- |
+| **STEM fields**", "STEM academic, research, and career prep","scholarships in India","**interview** and job applications","internships and industry trends in science, technology, engineering and medicine","problem solving, time management, and communication skills" | Choose keywords based on system prompt. | 18 | - | 0.79 |  0.73  |  0.89  |  0.8  |            |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| "STEM academic, research, and career prep","scholarships in India","job applications","internships and industry trends in science, technology, engineering and medicine","problem solving, time management, and communication skills","**no solving homework questions**" | Minor changes, removed certain terms like STEM fields and interviews. Added a negative of "no solving homework questions. | 24 | About 30% input messages were repeated and the rest were new. One FN became a TP and another TP became a FN. Inconsistency in results. | 0.84 |  0.90  |  0.75  |  0.82  |  Higher false negatives with this one, was being more strict.  |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| STEM fields", "STEM academic, research, and career prep","scholarships in India","interview and job applications","internships and industry trends in science, technology, engineering and medicine","problem solving, time management, and communication skills"  | Retesting final set of messages against original keywords | 54 | Same set of messages as used in the final testing done in row 10. | 0.75 |  0.65  |  0.88  |  0.75  |  When tested on a bigger dataset the keyword approach performs worse and provides many false positives.  |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|***Including Definitions***|               |           |           |        |          |          |            |            |
+| "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.", "STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or academic careers in STEM.", Scholarships in India": "Information or guidance on scholarships, fellowships, or financial aid available to students in India." "Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.", "Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.", "Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills." | Added definitions to terms from the above set of keywords. Removed the "no solving homework questions" | 24 | Repeated the 24 input messages from attempt in row 4 | 0.80 |  0.85  |  0.79  |  0.81  |   Precision reduced but the recall improved. Therefore it was identifying in scope messages better but not out scope as well.  |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.", "STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or careers in STEM.", "Scholarships in India": "Information on scholarships, fellowships, or financial aid available to students in India.", "Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.", "Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.", "Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills **for academic success and acquiring jobs**" | Minor addition to the last definition. | 29 | Added few new prompts in hinglish that were identified correctly | 0.84 |  0.89  |  0.84  |  0.86  |  Minor adjustment to the definitions improved precision and recall significantly. |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.", "STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or careers in STEM.", "Scholarships in India": "Information on scholarships, fellowships, or financial aid available to students in India.", "Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.", "Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.", "Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills for academic success and acquiring jobs", "**Out of scope topics": "solving mathematics problems, creating CVs, commenting on social and demographic trends**" | Added new term with definition for identifying certain topics as definitely out of scope. | 51 | Added multiple new prompts in romanized hindi and english. | 0.77 |  0.79  |  0.65  |  0.71  |  Recall fell a lot for the new addition of out of scope topics. False Positives increased. Precision also reduced in that False negatives also increased.  |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| "STEM fields": "Topics related to science, technology, engineering, mathematics, or medicine as academic or professional domains.", "STEM academic, research, and career prep": "Preparation for exams, coursework, research opportunities, higher education, or careers in STEM.", "**Scholarships": "Information on scholarships, fellowships, or financial aid available to students in India and internationally.**", "Interview and job applications": "Resume building, interviews, hiring processes, and job applications, especially for STEM roles.", "Internships and industry trends in STEM": "Internships, industry practices, job market trends, and real-world applications in STEM fields.", "Problem solving, time management, and communication skills": "Advice or techniques for improving problem solving, productivity, time management, or communication skills for academic success and acquiring jobs", "Out of scope topics": "solving mathematics problems, commenting on social and demographic trends in STEM fields, **illegal topics in India, personal feelings, PII**" | Revised Scholarships to include funding abroad to reflect the example use case more accurately. Added a few extra topics to Out of scope | 54 | Added a few more prompts | 0.88 |  0.91  |  0.80  |  0.85  |   Adding some nuance to the definitions of out of scope seemed to improve output metrics overall.  |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|***Reproductive Health***|               |           |           |        |          |          |            |            |
+| "reproduction but exclude nutrition", "infant health", "postnatal care", "reproductive schemes by government" | Defined keywords based on pilot data. | 17 | Mix of synthetic and pilot user messages. | 0.78 |  0.8  |  0.8  |  0.8  |  Failed to stop a sex determination question   |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| "reproduction but exclude nutrition","**exclude sex determination**", "infant health", "postnatal care", "reproductive schemes by government" | Included sex determination because the previous prompt failed to detect one sex determination user message. | 25 | Added some prompts on sex determination | 0.73 |  0.86 |  0.5  |  0.63  |   False negatives increased a lot with one shift in the system prompt.  |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+|          |      |      |      |               |
+| "Reproductive health":"maternal health, prenatal, neonatal, postnatal health", "infant health": "infant nutrition, vaccination, recognizing symptoms of illness", "government support": "Indian government support for pregnant women, schemes for girl children, accessing forms and applying for benefits, sources of aid for low income groups", "**Out of scope": "sex determination, non-pregnancy related healthcare, non-pregnancy related nutrition, beauty and wellness, fitness, prescriptions**" | Added definitions and a set of out of scope topics. | 42 | Added synthetic prompts, repeated a few prompts in Hindi and English to check consistency. | 0.84 |  0.94  |  0.74  |  0.83  |   Precision and recall increased a lot on adding definitions. This particular use case has a lot of grey cases where there is a high chance of false positives as a lot of healthcare questions can seem related to pregnancy but are not.   |
+
