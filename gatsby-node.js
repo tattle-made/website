@@ -189,15 +189,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
+
   if (node.internal.type === 'Mdx' || node.internal.type === 'MarkdownRemark') {
-       // if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    // Slugs are starting with "/"
-    const slug = value.startsWith('/') ? value.slice(1) : value;
+    let slug;
+
+    // Agar frontmatter me slug hai use karo
+    if (node.frontmatter?.slug) {
+      slug = node.frontmatter.slug
+    } else {
+      // warna fallback createFilePath se
+      const { createFilePath } = require(`gatsby-source-filesystem`)
+      const value = createFilePath({ node, getNode })
+      slug = value.startsWith('/') ? value.slice(1) : value
+    }
+
     createNodeField({
-      name: `slug`,
+      name: 'slug',
       node,
-      value:slug,
+      value: slug,
     })
   }
 }
+
