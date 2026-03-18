@@ -190,19 +190,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === 'Mdx' || node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     let slug;
 
-    // Agar frontmatter me slug hai use karo
+    // Use slug from frontmatter for people and project nodes
     if (node.frontmatter?.slug) {
       slug = node.frontmatter.slug
     } else {
-      // warna fallback createFilePath se
+      // Generate slug from file path for blog posts
       const { createFilePath } = require(`gatsby-source-filesystem`)
       const value = createFilePath({ node, getNode })
-      slug = value.startsWith('/') ? value.slice(1) : value
+
+      // Remove leading and trailing slashes to keep slug clean
+      slug = value.replace(/^\/|\/$/g, '')
     }
 
+    // Attach slug as a field to the node
     createNodeField({
       name: 'slug',
       node,
@@ -210,4 +213,3 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
-
