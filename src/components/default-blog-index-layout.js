@@ -7,7 +7,9 @@ import useBlogTags from "../hooks/useBlogTags"
 import TagsRenderer from "./TagsRenderer"
 
 export const byline = (name, project) => {
-  if (name && project) return `${name} - ${project}`
+  const projectName = project?.frontmatter?.name
+
+  if (name && projectName) return `${name} - ${projectName}`
   if (name) return `${name}`
 }
 
@@ -71,13 +73,36 @@ export const query = graphql`
         frontmatter {
           name
           excerpt
-          author
-          project
           date
           tags
+
+          # ✅ FIX: author is now array of Mdx
+          author {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+              role
+            }
+          }
+
+          # ✅ FIX: project is now Mdx node
+          project {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+            }
+          }
+
           cover {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+              )
             }
           }
         }
@@ -86,9 +111,13 @@ export const query = graphql`
         }
       }
     }
+
     cover_blog_index: file(relativePath: { eq: "cover-index-blog.png" }) {
       childImageSharp {
-        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+        )
       }
     }
   }

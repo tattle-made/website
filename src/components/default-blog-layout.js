@@ -110,7 +110,10 @@ export default function PageTemplate({
 
     return postsWithRelevance.slice(0, 5)
   }
-
+  const authorNames = author
+    ?.map(a => a?.frontmatter?.name)
+    .filter(Boolean)
+    .join(", ")
   const relatedPosts = findRelatedPosts()
 
   return (
@@ -123,9 +126,9 @@ export default function PageTemplate({
       meta={{
         name: name,
         excerpt: excerpt,
-        project: project,
+        project: project?.frontmatter?.name,
         tags: tags,
-        cover: getSrc(cover),
+        cover: cover ? getSrc(cover) : null,
       }}
     >
       <MDXProvider components={shortcodes}>
@@ -138,8 +141,8 @@ export default function PageTemplate({
         <Box>
           <BlogHeaderCard
             name={name}
-            author={author}
-            project={project}
+            author={authorNames}
+            project={project?.frontmatter?.name}
             date={date}
           />
           <Box direction="column" flex pad={0} basis="xsmall">
@@ -154,7 +157,7 @@ export default function PageTemplate({
             {project && (
               <Box>
                 <TagsRenderer
-                  sortedUniqueTags={[projectSlugMaker(project)]}
+                  sortedUniqueTags={[project?.fields?.slug]}
                   tagCounts={projectTagsCounts}
                   tagTypeHeading={"Project: "}
                   tagBaseURL={"/blog/tags/project/"}
@@ -191,13 +194,36 @@ export const pageQuery = graphql`
       frontmatter {
         name
         excerpt
-        author
-        project
         date
         tags
+
+        # Author is now a linked list of Mdx nodes
+        author {
+          fields {
+            slug
+          }
+          frontmatter {
+            name
+            role
+          }
+        }
+
+        # Project is now a linked Mdx node
+        project {
+          fields {
+            slug
+          }
+          frontmatter {
+            name
+          }
+        }
+
         cover {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+            )
           }
         }
       }

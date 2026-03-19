@@ -12,8 +12,11 @@ import TagPage from "./TagPage"
  */
 
 const byline = (author, project) => {
-  if (author && project) return `${author} - ${project}`
-  if (author) return `${author}`
+  const authorNames = author?.map(a => a.frontmatter.name).join(", ")
+  const projectName = project?.frontmatter?.name
+
+  if (authorNames && projectName) return `${authorNames} - ${projectName}`
+  if (authorNames) return authorNames
 }
 
 /**
@@ -63,13 +66,34 @@ export const pageQuery = graphql`
         frontmatter {
           name
           excerpt
-          author
-          project
           date
           tags
+
+          author {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+              role
+            }
+          }
+
+          project {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+            }
+          }
+
           cover {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+              )
             }
           }
         }

@@ -18,7 +18,7 @@ export default function UpdatesTagProjectPage({ data, pageContext }) {
   const updateNodes = data.allMdx.nodes
   const project = pageContext.project
   const projectupdates = updateNodes.filter(
-    (update) => projectSlugMaker(update.frontmatter.project) === project
+    (update) => projectSlugMaker(update.frontmatter.project?.frontmatter?.name) === project
   )
 
   return (
@@ -44,7 +44,15 @@ export const query = graphql`
           date
           tags
           title
-          project
+
+          project {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+            }
+          }
         }
         id
         fields {
