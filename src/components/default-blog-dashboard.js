@@ -45,10 +45,27 @@ export const query = graphql`
         frontmatter {
           name
           excerpt
-          author
-          project
           date
           tags
+
+          author {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+              role
+            }
+          }
+
+          project {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+            }
+          }
         }
       }
     }

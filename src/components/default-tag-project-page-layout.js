@@ -18,7 +18,8 @@ export default function TagProjectPage({ data, pageContext }) {
   const blogNodes = data.allMdx.nodes
   const project = pageContext.project
   const projectBlogs = blogNodes.filter(
-    (blog) => projectSlugMaker(blog.frontmatter.project) === project
+    (blog) =>
+      projectSlugMaker(blog.frontmatter.project?.frontmatter?.name) === project
   )
 
   return (
@@ -33,7 +34,9 @@ export default function TagProjectPage({ data, pageContext }) {
 
 export const query = graphql`
   query {
-    allMdx(filter: { internal: { contentFilePath: { regex: "/src/blog/" } } }) {
+    allMdx(
+      filter: { internal: { contentFilePath: { regex: "/src/blog/" } } }
+    ) {
       nodes {
         fields {
           slug
@@ -41,13 +44,34 @@ export const query = graphql`
         frontmatter {
           name
           excerpt
-          author
-          project
           date
           tags
+
+          author {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+              role
+            }
+          }
+
+          project {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+            }
+          }
+
           cover {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+              )
             }
           }
         }

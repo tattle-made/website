@@ -26,10 +26,12 @@ const UpdateListItem = ({ node }) => {
     ? node.frontmatter.tags.split(",").map(tag => tag.trim())
     : []
 
-    if(node.frontmatter.project){
-      tags.push(projectSlugMaker(node.frontmatter.project));
-    }
-    
+  if (node.frontmatter.project) {
+    tags.push(
+      projectSlugMaker(node.frontmatter.project?.frontmatter?.name)
+    )
+  }
+
   return (
     <Box direction={"column"} margin={{ top: "xsmall", bottom: "small" }}>
       <Box height={"7.324px"} />
@@ -109,27 +111,37 @@ export function UpdatesIndex({ updates }) {
 }
 
 //export page query
-export const query = graphql`query updatesPage {
-  allMdx(
-    filter: {internal: {contentFilePath: {regex: "/updates/"}}}
-    sort: {frontmatter: {date: DESC}}
-  ) {
-    nodes {
-      frontmatter {
-        url
-        excerpt
-        date
-        tags
-        title
-        project
-      }
-      id
-      fields {
+export const query = graphql`
+  query updatesPage {
+    allMdx(
+      filter: { internal: { contentFilePath: { regex: "/updates/" } } }
+      sort: { frontmatter: { date: DESC } }
+    ) {
+      nodes {
+        frontmatter {
+          url
+          excerpt
+          date
+          tags
+          title
+
+          project {
+            fields {
+              slug
+            }
+            frontmatter {
+              name
+            }
+          }
+        }
+        id
+        fields {
           slug
         }
-      internal {
-        contentFilePath
+        internal {
+          contentFilePath
+        }
       }
     }
   }
-}`
+`

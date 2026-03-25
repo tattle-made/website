@@ -4,112 +4,103 @@ import { PlainLink } from "./atomic/TattleLinks"
 import { ExternalLink } from "react-feather"
 
 /**
- * Formats a date string to "MMM DD YYYY" format (e.g., "Jun 22 2025").
- *
- * @param {string|Date} date - The original date input.
- * @returns {string} Formatted date string.
+ * Safe date formatter (SSR-safe)
  */
-
 function formatDateLatestEntries(date) {
-  let dateString = new Date(date).toDateString("ind")
-  return dateString.split(" ").slice(1).join(" ")
+  if (!date) return ""
+
+  const d = new Date(date)
+
+  if (isNaN(d.getTime())) return ""
+
+  return d.toDateString().split(" ").slice(1).join(" ")
 }
 
 /**
- * @param {string} author
+ * Safe author formatter
  */
-
-/**
- * Formats the author string to show abbreviated form (e.g., "John Doe et al.").
- *
- * @param {string} author - Full author name string, usually comma-separated.
- * @returns {string} Abbreviated author string.
- */
-
 function formatAuthor(author) {
-  if (typeof author !== "string") return ""
-  let firstDividerIndex = -1
-  let dividers = ["&", "and", "And", ","]
-  for (let d of dividers) {
-    let i = author.indexOf(d)
+  if (!author || typeof author !== "string") return ""
 
-    if (firstDividerIndex === -1) {
-      firstDividerIndex = Math.max(firstDividerIndex, i)
-    } else {
-      firstDividerIndex = Math.max(firstDividerIndex, i)
+  const dividers = ["&", "and", "And", ","]
+  let index = -1
+
+  dividers.forEach(d => {
+    const i = author.indexOf(d)
+    if (i !== -1 && (index === -1 || i < index)) {
+      index = i
     }
-  }
-  if (firstDividerIndex === -1) return author
+  })
 
-  author = author.substring(0, firstDividerIndex).trim().concat(" et al.")
+  if (index === -1) return author
 
-  return author
+  return author.substring(0, index).trim() + " et al."
 }
 
-/**
- * Renders a list of blog or update entries based on the `isUpdate` flag.
- *
- * @param {Object} props
- * @param {Object[]} props.entries - Array of entry objects (blog/update).
- * @param {boolean} props.isUpdate - Determines if the list is for updates or blogs.
- * @returns {JSX.Element} Rendered list of entries.
- */
-
-// Component to Display latest entries of Blogs and Updates
-export function LatestEntries({ entries, isUpdate }) {
+export function LatestEntries({ entries = [], isUpdate }) {
   const size = useContext(ResponsiveContext)
+
+  if (!Array.isArray(entries)) return null
 
   return (
     <Box margin={{ top: "1em" }}>
-      {entries.map((entry,key) => {
+      {entries.map((entry) => {
+        const id =
+          entry?.fields?.slug ||
+          entry?.frontmatter?.title ||
+          Math.random().toString()
+
         return (
           <Box
-            key={key}
-            width={"full"}
-            flex
+            key={id}
+            width="full"
             direction="row-responsive"
             align="center"
             margin={{ bottom: "1em" }}
           >
+            {/* DATE */}
             <Box style={{ minWidth: "7em" }}>
               <Text size={size === "small" ? "xsmall" : "small"}>
-                {formatDateLatestEntries(entry.frontmatter.date)}
+                {formatDateLatestEntries(entry?.frontmatter?.date)}
               </Text>
             </Box>
 
+            {/* TITLE */}
             <Box
               style={{ textAlign: "start" }}
               pad={{ horizontal: size !== "small" ? "1em" : "0" }}
             >
               {isUpdate ? (
-                entry.frontmatter.url && entry.frontmatter.url.length !== 0 ? (
+                entry?.frontmatter?.url ? (
                   <PlainLink
                     href={entry.frontmatter.url}
-                    target={"_blank"}
+                    target="_blank"
                     className="flex items-center space-x-1"
                   >
                     <Text size="small" weight={600} truncate>
-                      {entry.frontmatter.title}
+                      {entry?.frontmatter?.title}
                     </Text>
-                    <span><ExternalLink size={14} /></span>
+                    <span>
+                      <ExternalLink size={14} />
+                    </span>
                   </PlainLink>
                 ) : (
                   <Text size="small" weight={600} truncate>
-                    {entry.frontmatter.title}
+                    {entry?.frontmatter?.title}
                   </Text>
                 )
               ) : (
                 <Text size="small" weight={600} truncate>
-                  <PlainLink to={`/blog/${entry.fields.slug}`}>
-                    {entry.frontmatter.name}
+                  <PlainLink to={`/blog/${entry?.fields?.slug}`}>
+                    {entry?.frontmatter?.name}
                   </PlainLink>
                 </Text>
               )}
             </Box>
 
+            {/* AUTHOR */}
             {!isUpdate && (
               <Box
-                // width={"fit"}
                 style={{
                   textAlign: "end",
                   minWidth: "7em",
@@ -119,7 +110,12 @@ export function LatestEntries({ entries, isUpdate }) {
                 align={size === "small" ? "start" : "end"}
               >
                 <Text size="small">
-                  {formatAuthor(entry.frontmatter?.author)}
+                  {formatAuthor(
+                    entry?.frontmatter?.author
+                      ?.map(a => a?.frontmatter?.name)
+                      ?.filter(Boolean)
+                      ?.join(", ")
+                  )}
                 </Text>
               </Box>
             )}

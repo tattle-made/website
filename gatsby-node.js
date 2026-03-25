@@ -5,44 +5,79 @@ const { projectSlugMaker } = require("./src/lib/project-slug-maker")
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  // create pages for people
+  // Fetch all MDX nodes to create pages
   const result = await graphql(`
-    query {
-      allMdx {
-        nodes {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            name
-            description
-            people
-            tags
-            project
-            excerpt
-            author
-            date
-            cover {
-              childImageSharp {
-                gatsbyImageData(width: 300, height: 200, layout: CONSTRAINED, placeholder: BLURRED)
-              }
+  query {
+    allMdx {
+      nodes {
+        id
+
+        # Slug used for creating URLs
+        fields {
+          slug
+        }
+
+        frontmatter {
+          name
+          description
+          people
+          tags
+          excerpt
+          date
+
+          # Author is now a linked MDX node (Person)
+          author {
+            # Slug of the author (used for linking to /people page)
+            fields {
+              slug
+            }
+            # Author details
+            frontmatter {
+              name
+              role
             }
           }
-          internal {
-            contentFilePath
+
+          # Project is now a linked MDX node
+          project {
+            # Slug of the project (used for linking to /project page)
+            fields {
+              slug
+            }
+            # Project details
+            frontmatter {
+              name
+            }
           }
+
+          # Cover image for the blog post
+          cover {
+            childImageSharp {
+              gatsbyImageData(
+                width: 300
+                height: 200
+                layout: CONSTRAINED
+                placeholder: BLURRED
+              )
+            }
+          }
+        }
+
+        # File path used to determine content type (blog, people, project)
+        internal {
+          contentFilePath
         }
       }
     }
-  `)
+  }
+`)
 
   if (result.errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query for Projects')
   }
 
   const nodes = result.data.allMdx.nodes
-  const blogNodes = nodes.filter(node => 
+  const blogNodes = nodes.filter(node =>
     node.internal.contentFilePath.indexOf("/src/blog/") !== -1
   );
 
@@ -68,7 +103,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       tags_arr.forEach((tag) => tags_set.add(tag))
     }
   })
-    // create folder for user avatar
+  // create folder for user avatar
   // try {
   //   await fs.access("./src/people/avatar")
   // } catch {
@@ -88,7 +123,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     path: `/blog/dashboard/`,
     component: require.resolve(`./src/components/default-blog-dashboard.js`),
   })
-   //siteMapURLs.set("Blogs", "/blog")
+  //siteMapURLs.set("Blogs", "/blog")
   siteMapNodes.push({ name: "blog", isDir: false, node: { name: "blog" } })
 
   // CREATE TAGS PAGE
@@ -124,12 +159,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   nodes.forEach(async (node) => {
     const { internal, id } = node
-        // console.log(`------ : ${id}`)
+    // console.log(`------ : ${id}`)
 
     let fileAbsolutePath = internal.contentFilePath
 
     if (fileAbsolutePath.indexOf("/src/people/") !== -1) {
-            // create QR code avatar
+      // create QR code avatar
 
       // await QRCode.toFile(
       //   `./src/people/avatar/${ node.fields.slug}.png`,
@@ -143,7 +178,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         context: { id },
       })
     }
-    
+
     // if (fileAbsolutePath.indexOf("/src/project/") !== -1) {
     //   createPage({
     //     path: `/project/${ node.fields.slug}`,
@@ -160,9 +195,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: `/blog/${node.fields.slug}`,
         component: `${blogTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-        context: { 
+        context: {
           id: node.id,
-          blogNodes: blogNodes 
+          blogNodes: blogNodes
         },
       })
     }
@@ -173,9 +208,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: `/project/${node.fields.slug}`,
         component: require.resolve(`./src/components/default-blog-layout.js`),
-        context: { id: node.id,
-          blogNodes: blogNodes 
-         },
+        context: {
+          id: node.id,
+          blogNodes: blogNodes
+        },
       })
     }
   })
@@ -189,15 +225,38 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  if (node.internal.type === 'Mdx' || node.internal.type === 'MarkdownRemark') {
-       // if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    // Slugs are starting with "/"
-    const slug = value.startsWith('/') ? value.slice(1) : value;
+
+  if (node.internal.type === 'Mdx') {
+    let slug;
+
+    // Use slug from frontmatter for people and project nodes
+    if (node.frontmatter?.slug) {
+      slug = node.frontmatter.slug
+    } else {
+      // Generate slug from file path for blog posts
+      const { createFilePath } = require(`gatsby-source-filesystem`)
+      const value = createFilePath({ node, getNode })
+
+      // Remove leading and trailing slashes to keep slug clean
+      slug = value.replace(/^\/|\/$/g, '')
+    }
+
+    // Attach slug as a field to the node
     createNodeField({
-      name: `slug`,
+      name: 'slug',
       node,
-      value:slug,
+      value: slug,
     })
   }
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+
+  createTypes(`
+    type MdxFrontmatter {
+      author: [Mdx] @link(by: "fields.slug")
+      project: Mdx @link(by: "fields.slug")
+    }
+  `)
 }

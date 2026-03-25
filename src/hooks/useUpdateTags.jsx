@@ -9,61 +9,67 @@ import { projectSlugMaker } from "../lib/project-slug-maker"
  * @property {Object} projectTagsCounts - An object mapping each project slug (or tag) to its count.
  * @property {string[]} projectsTags - Array of all unique project slugs.
  * @property {string[]} uniqueTags - Array of all the unique tags.
- * @property {string[]} sortedUniqueTags - An array of unique tags sorted by their count in descending order. Entries same as uniqueTags, but sorted
- * @property {string[]} sortedProjectTags - An array of project slugs sorted by their count in descending order. Entries same as projectsTags, but sorted
+ * @property {string[]} sortedUniqueTags - An array of unique tags sorted by their count in descending order.
+ * @property {string[]} sortedProjectTags - An array of project slugs sorted by their count in descending order.
  * 
  * @returns {TagsData}
- * 
  */
 export default function useUpdateTags() {
   const data = useStaticQuery(graphql`
     query {
-      allMdx(filter: { internal: {contentFilePath: { regex: "/.*/src/updates/" } }}) {
+      allMdx(filter: { internal: { contentFilePath: { regex: "/.*/src/updates/" } }}) {
         nodes {
           frontmatter {
             tags
-            project
+            project {
+              fields {
+                slug
+              }
+              frontmatter {
+                name
+              }
+            }
           }
         }
       }
     }
   `)
 
-  const updates = data.allMdx.nodes
+  const updates = data?.allMdx?.nodes || []
   const tagCounts = {}
   const projectTagsCounts = {}
   const uniqueTagsSet = new Set()
+
+  // Projects array from linked project nodes
   const projectsTags = [
     ...new Set(
       updates
-        .map(node => node.frontmatter.project)
-        .filter(project => typeof project === "string" && project.trim() !== "")
-        .map(project => projectSlugMaker(project))
+        .map(node => node.frontmatter?.project?.fields?.slug)
+        .filter(slug => typeof slug === "string" && slug.trim() !== "")
     ),
   ]
 
   updates.forEach(blog => {
-    if (blog.frontmatter.tags) {
-      const blogTags = blog.frontmatter.tags.split(",").map(tag => tag.trim())
-      // tags.push(...blogTags);
+    // Handle regular tags
+    const blogTagsRaw = blog.frontmatter?.tags
+    if (blogTagsRaw) {
+      const blogTags = blogTagsRaw.split(",").map(tag => tag.trim())
       blogTags.forEach(tag => uniqueTagsSet.add(tag))
       blogTags.forEach(tag => {
         tagCounts[tag] = (tagCounts[tag] || 0) + 1
       })
     }
-    //For Project Tags
-    const project = blog.frontmatter.project
-    if (project && typeof project === "string" && project.trim() !== "") {
-      let projectSlug = projectSlugMaker(blog.frontmatter.project)
-      projectTagsCounts[projectSlug] = (projectTagsCounts[projectSlug] || 0) + 1
+
+    // Handle linked project tags
+    const projectSlug = blog.frontmatter?.project?.fields?.slug
+    if (projectSlug) {
+      const slug = projectSlugMaker(projectSlug)
+      projectTagsCounts[slug] = (projectTagsCounts[slug] || 0) + 1
     }
   })
 
   const uniqueTags = Array.from(uniqueTagsSet)
-  const sortedUniqueTags = uniqueTags.sort(
-    (a, b) => tagCounts[b] - tagCounts[a]
-  )
-
+  const sortedUniqueTags = uniqueTags.sort((a, b) => tagCounts[b] - tagCounts[a])
   const sortedProjectTags = projectsTags.sort(
     (a, b) => projectTagsCounts[b] - projectTagsCounts[a]
   )

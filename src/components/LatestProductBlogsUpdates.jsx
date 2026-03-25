@@ -19,67 +19,92 @@ import { LatestEntries } from "./LatestEntries"
 export function LatestProductBlogsUpdates({ projects }) {
   //projects is an array of string
   const data = useStaticQuery(graphql`
-    {
-      latestBlogs: allMdx(
-        sort: { frontmatter: { date: DESC } }
-        filter: { internal: { contentFilePath: { regex: "/.*/src/blog/" } } }
-      ) {
-        nodes {
-          fields {
-            slug
-          }
-          frontmatter {
-            name
-            excerpt
-            author
-            project
-            date
-            tags
-            cover {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-              }
+  {
+    latestBlogs: allMdx(
+      sort: { frontmatter: { date: DESC } }
+      filter: { internal: { contentFilePath: { regex: "/.*/src/blog/" } } }
+    ) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          name
+          excerpt
+          date
+          tags
+
+          author {
+            frontmatter {
+              name
             }
           }
-          internal {
-            contentFilePath
+
+          project {
+            frontmatter {
+              name
+            }
+          }
+
+          cover {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+              )
+            }
           }
         }
-      }
-      latestUpdates: allMdx(
-        sort: { frontmatter: { date: DESC } }
-        filter: { internal: { contentFilePath: { regex: "/updates/" } } }
-      ) {
-        nodes {
-          frontmatter {
-            url
-            excerpt
-            date
-            tags
-            title
-            project
-          }
-          id
-          fields {
-            slug
-          }
-          internal {
-            contentFilePath
-          }
+        internal {
+          contentFilePath
         }
       }
     }
-  `)
+
+    latestUpdates: allMdx(
+      sort: { frontmatter: { date: DESC } }
+      filter: { internal: { contentFilePath: { regex: "/updates/" } } }
+    ) {
+      nodes {
+        frontmatter {
+          url
+          excerpt
+          date
+          tags
+          title
+
+          project {
+            frontmatter {
+              name
+            }
+          }
+        }
+        id
+        fields {
+          slug
+        }
+        internal {
+          contentFilePath
+        }
+      }
+    }
+  }
+`)
 
   if (!projects) return null
 
   projects = projects.map((p) => projectSlugMaker(p))
 
   let latestProjectBlogs = data.latestBlogs.nodes.filter((node) =>
-    projects.includes(projectSlugMaker(node.frontmatter.project))
+    projects.includes(
+      projectSlugMaker(node.frontmatter.project?.frontmatter?.name)
+    )
   )
+
   let latestProjectUpdates = data.latestUpdates.nodes.filter((node) =>
-    projects.includes(projectSlugMaker(node.frontmatter.project))
+    projects.includes(
+      projectSlugMaker(node.frontmatter.project?.frontmatter?.name)
+    )
   )
 
   latestProjectBlogs = latestProjectBlogs.slice(0, 10)

@@ -17,17 +17,26 @@ import { projectSlugMaker } from "../lib/project-slug-maker"
  */
 export default function useBlogTags() {
   const data = useStaticQuery(graphql`
-    query {
-      allMdx(filter: {internal: { contentFilePath: { regex: "/.*/src/blog/" } }}) {
-        nodes {
-          frontmatter {
-            tags
-            project
+  query {
+    allMdx(
+      filter: {
+        internal: { contentFilePath: { regex: "/.*/src/blog/" } }
+      }
+    ) {
+      nodes {
+        frontmatter {
+          tags
+
+          project {
+            frontmatter {
+              name
+            }
           }
         }
       }
     }
-  `)
+  }
+`)
 
   const blogs = data.allMdx.nodes
   const tagCounts = {}
@@ -36,7 +45,7 @@ export default function useBlogTags() {
   const projectsTags = [
     ...new Set(
       blogs
-        .map(node => node.frontmatter.project)
+        .map(node => node.frontmatter.project?.frontmatter?.name)
         .filter(project => typeof project === "string" && project.trim() !== "")
         .map(project => projectSlugMaker(project))
     ),
@@ -52,9 +61,10 @@ export default function useBlogTags() {
       })
     }
     //For Project Tags
-    const project = blog.frontmatter.project
-    if (project && typeof project === "string" && project.trim() !== "") {
-      let projectSlug = projectSlugMaker(blog.frontmatter.project)
+    const projectName = blog.frontmatter.project?.frontmatter?.name
+
+    if (projectName && projectName.trim() !== "") {
+      let projectSlug = projectSlugMaker(projectName)
       projectTagsCounts[projectSlug] = (projectTagsCounts[projectSlug] || 0) + 1
     }
   })

@@ -85,7 +85,7 @@ const config = {
       options: {
         defaults: {
           placeholder: `blurred`
-          
+
         },
       },
     },
@@ -199,8 +199,24 @@ const config = {
       frontmatter {
         name
         excerpt
-        author
-        project
+        author {
+          fields {
+            slug
+          }
+          frontmatter {
+            name
+            role
+          }
+        }
+
+        project {
+          fields {
+            slug
+          }
+          frontmatter {
+            name
+          }
+        }
         date
         tags
         cover {
