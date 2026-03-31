@@ -1,4 +1,5 @@
 import DefaultLayoutNarrow from "@/components/default-layout-narrow";
+import TeamSection from "../../components/TeamSection"
 
 export default function Layout({ children }) {
   return <DefaultLayoutNarrow>{children}</DefaultLayoutNarrow>;
@@ -41,3 +42,5 @@ The [DAU's](https://dau.mcaindia.in/) (Deepfakes Analysis Unit) mission is to ge
 <Text size={"small"}>Meta (Funding Partner)</Text>
 
 <Box margin={{top:"1em"}}><LatestProductBlogsUpdates projects={["dau"]}/></Box>
+<TeamSection project="dau" />
+
