@@ -6,6 +6,7 @@ import NarrowSection from "../../../components/atomic/layout/narrow-section"
 import { ExternalLink } from "../../../components/atomic/TattleLinks"
 import { LatestProductBlogsUpdates } from "../../../components/LatestProductBlogsUpdates"
 import { StaticImage } from "gatsby-plugin-image"
+import TeamSection from "../../../components/TeamSection"
 
 const ViralSpiral = () => {
   return (
@@ -84,6 +85,11 @@ const ViralSpiral = () => {
       </NarrowContentWrapper>
       <NarrowContentWrapper>
         <LatestProductBlogsUpdates projects={["viral spiral"]} />
+      </NarrowContentWrapper>
+      <NarrowContentWrapper>
+        <NarrowSection>
+          <TeamSection project="viral-spiral" />
+        </NarrowSection>
       </NarrowContentWrapper>
       <NarrowContentWrapper>
         <NarrowSection>

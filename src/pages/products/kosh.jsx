@@ -5,6 +5,7 @@ import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-
 import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 import { StaticImage } from "gatsby-plugin-image"
+import TeamSection from "../../components/TeamSection"
 
 const DPGLogo = () => (
   <svg
@@ -162,7 +163,7 @@ const Kosh = () => (
                   href="https://app.digitalpublicgoods.net/a/10707"
                   target={"_blank"}
                 >
-                  <StaticImage alt="img" src="../../images/dpgicon.svg"/>
+                  <StaticImage alt="img" src="../../images/dpgicon.svg" />
                 </a>
               </Box>
             </Box>
@@ -292,7 +293,10 @@ const Kosh = () => (
       </NarrowSection>
 
       <NarrowSection>
-      <LatestProductBlogsUpdates projects={["kosh"]}/>
+        <LatestProductBlogsUpdates projects={["kosh"]} />
+      </NarrowSection>
+      <NarrowSection>
+        <TeamSection project="kosh" />
       </NarrowSection>
     </NarrowContentWrapper>
   </DefaultLayout>

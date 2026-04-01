@@ -6,6 +6,7 @@ import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 import { StaticImage } from "gatsby-plugin-image"
 import heroGif from "../../images/products/HeroIllustration.gif"
+import TeamSection from "../../components/TeamSection"
 
 const ogbv = () => (
   <DefaultLayout>
@@ -154,22 +155,7 @@ const ogbv = () => (
 
 
       <NarrowSection>
-        <Heading level={3}>Current Team</Heading>
-        <Text size="small">
-          <b>Denny George</b>: Engineering Lead
-        </Text>
-        <Text size="small">
-          <b>Kaustubha Kalidindi</b>: Legal Counsel/Program Manager-Uli
-        </Text>
-        <Text size="small">
-          <b>Tarunima Prabhakar</b>: Project Manager
-        </Text>
-        <Text size="small">
-          <b>Yash Budhwar</b>: Operations and Contracts
-        </Text>
-        <Text size="small">
-          <b>Yohan Mathew</b>: ML DevOps
-        </Text>
+        <TeamSection project="uli" />
         <Text size="small" margin={{ top: "small" }}>
           You can read more about the pilot team{" "}
           <Anchor href="https://github.com/tattle-made/Uli/blob/main/uli-website/src/pages/team-2021.mdx">
