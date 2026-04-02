@@ -15,9 +15,9 @@ const getColumnCount = (width) => {
   if (width < 768) {
     return 1
   } else if (width < 1280) {
-    return 2
-  } else {
     return 3
+  } else {
+    return 4
   }
 }
 

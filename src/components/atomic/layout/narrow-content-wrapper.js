@@ -22,12 +22,12 @@ const NarrowContentWrapper = ({ children, justify, width, ...props }) => {
   const location = useLocation()
   const [defaultLargeWidth, setDefaultLargeWidth] = useState("960px")
 
-  useEffect(() => {
-    // Set default width for large screen size to 65% only for the blog pages
-    if (location.pathname.includes("/blog/")) {
-      setDefaultLargeWidth("100%")
-    }
-  }, [location])
+  // useEffect(() => {
+  //   // Set default width for large screen size to 65% only for the blog pages
+  //   if (location.pathname.includes("/blog/")) {
+  //     setDefaultLargeWidth("100%")
+  //   }
+  // }, [location])
 
   const Section = () => (
     <Box

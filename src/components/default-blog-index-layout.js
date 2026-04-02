@@ -76,6 +76,7 @@ export const query = graphql`
           excerpt
           date
           tags
+          featured
 
           # ✅ FIX: author is now array of Mdx
           author {
