@@ -225,7 +225,7 @@ export default function PageTemplate({
 
         <NarrowContentWrapper width="large">
           <Box align="start" className="flex flex-col lg:flex-row gap-2">
-            <Box className="fit">
+            <Box className="fit blog-prose">
               {children}
             </Box>
           </Box>

@@ -10,3 +10,74 @@
 
 @tailwind components;
 @tailwind utilities;
+
+/* ── Blog prose typography ── */
+.blog-prose {
+  font-size: 1.125rem; /* 18px */
+  font-family: Bitter, Georgia, serif;
+}
+
+.blog-prose p {
+  line-height: 1.75;
+  margin-top: 0;
+  margin-bottom: 0.85em;
+}
+
+.blog-prose h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.4em;
+}
+
+.blog-prose h3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin-top: 1.75em;
+  margin-bottom: 0.35em;
+}
+
+.blog-prose h4 {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  padding-left: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0.85em;
+}
+
+.blog-prose li {
+  line-height: 1.75;
+  margin-bottom: 0.25em;
+}
+
+.blog-prose blockquote {
+  border-left: 3px solid #ccc;
+  padding-left: 1.25em;
+  margin: 1.25em 0;
+  font-style: italic;
+}
+
+.blog-prose a {
+  text-decoration: underline;
+}
+
+.blog-prose img {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border-radius: 2px;
+}
+
+.blog-prose hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 2.5em 0;
+}
