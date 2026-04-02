@@ -7,6 +7,7 @@ import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wra
 import { PlainExternalLink } from "../components/atomic/TattleLinks"
 import { ExternalLink } from "react-feather"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
 
 const ResponsiveGrid = ({ children }) => {
   const size = useContext(ResponsiveContext)
@@ -55,78 +56,80 @@ const CommunityMemberCard = ({
   name,
   role,
   url,
+  slug,
   isCurrentContributor = false,
 }) => (
-  <Box
-    width="medium"
-    direction="column"
-    align="center"
-    justify="center"
-    pad="small"
-    gap="small"
-    onClick={() => window.open(url, "_blank")}
-    hoverIndicator
-    focusIndicator={false}
-    style={{ textAlign: "center", height: "auto" }}
-  >
-    {img && isCurrentContributor && (
-      <Box
-        width="140px"
-        height="140px"
-        round="full"
-        overflow="hidden"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          filter: "grayscale(100%)",
-          transition: "filter 0.3s ease-in-out",
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
-        onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-      >
-        <GatsbyImage
-          alt={`${name}'s photo`}
-          image={getImage(img)}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-      </Box>
-    )}
-
-    {(name?.trim() || role?.trim()) && (
-      <PlainExternalLink href={url} target="_blank">
+  <Link to={`/people/${slug}`} style={{ textDecoration: "none" }}>
+    <Box
+      width="medium"
+      direction="column"
+      align="center"
+      justify="center"
+      pad="small"
+      gap="small"
+      hoverIndicator
+      focusIndicator={false}
+      style={{ textAlign: "center", height: "auto" }}
+    >
+      {img && isCurrentContributor && (
         <Box
-          direction="row"
-          align="center"
-          alignContent="center"
-          justify="center"
-          gap={"xsmall"}
+          width="140px"
+          height="140px"
+          round="full"
+          overflow="hidden"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            filter: "grayscale(100%)",
+            transition: "filter 0.3s ease-in-out",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
+          onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
         >
-          <Heading
-            level={4}
-            margin="none"
-            weight={500}
-            color="brand"
-            textAlign="center"
-          >
-            {name}
-          </Heading>
-          {url && url.length !== 0 && (
-            <Box>
-              <ExternalLink size={16} />
-            </Box>
-          )}
+          <GatsbyImage
+            alt={`${name}'s photo`}
+            image={getImage(img)}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
         </Box>
-        <Paragraph size="small" pad={{ left: "small", right: "small" }}>
-          {role}
-        </Paragraph>
-      </PlainExternalLink>
-    )}
-  </Box>
+      )}
+
+      {(name?.trim() || role?.trim()) && (
+        <Box>
+          <Box
+            direction="row"
+            align="center"
+            alignContent="center"
+            justify="center"
+            gap={"xsmall"}
+          >
+            <Heading
+              level={4}
+              margin="none"
+              weight={500}
+              color="brand"
+              textAlign="center"
+            >
+              {name}
+            </Heading>
+            {url && url.length !== 0 && (
+              <Box>
+                <ExternalLink size={16} />
+              </Box>
+            )}
+          </Box>
+          <Paragraph size="small" pad={{ left: "small", right: "small" }}>
+            {role}
+          </Paragraph>
+        </Box>
+      )}
+    </Box>
+  </Link>
 )
 
 
@@ -177,6 +180,7 @@ const community = ({ data }) => {
                 name={contributor.frontmatter.name}
                 role={contributor.frontmatter.role}
                 url={contributor.frontmatter.url}
+                slug={contributor.fields.slug}
                 isCurrentContributor={true}
               />
             ))}
@@ -186,9 +190,12 @@ const community = ({ data }) => {
             {pastContributors.map((contributor, key) => (
               <CommunityMemberCard
                 key={key}
+                img={contributor.frontmatter.img}
                 name={contributor.frontmatter.name}
                 role={contributor.frontmatter.role}
                 url={contributor.frontmatter.url}
+                slug={contributor.fields.slug}
+                isCurrentContributor={true}
               />
             ))}
           </ResponsiveGrid>
