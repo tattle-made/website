@@ -35,7 +35,7 @@ export default function TagsRenderer({
         </Heading>
       </Box>
 
-      <Box flex direction="row" gap="small" align="center" wrap={true}>
+      <Box direction="row" gap="small" align="center" wrap={true}>
         {showAllTags
           ? sortedUniqueTags.map((tag) => (
               <Box key={tag} margin={{ bottom: "small" }}>
