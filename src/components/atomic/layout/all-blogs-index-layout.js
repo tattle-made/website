@@ -46,31 +46,28 @@ export function AllBlogsIndexLayout({ blogs }) {
                   </Box>
                 )}
 
-                <Box pad="small">
+                <Box pad={{ horizontal: "medium", top: "medium", bottom: "xsmall" }}>
                   <Text size="xsmall" weight={600}>
                     {new Date(blog.frontmatter.date).toDateString()}
                   </Text>
 
-                  {/* ✅ FIXED byline */}
                   <Text size="small">
                     {byline(authorNames, projectName)}
                   </Text>
                 </Box>
               </Box>
 
-              <Box pad={{ left: "small", right: "small", bottom: "medium" }}>
-                <Box direction="row" align="center">
-                  <Heading
-                    margin={{ top: "none" }}
-                    level={3}
-                    weight={500}
-                    color="brand"
-                  >
-                    {blog.frontmatter.name}
-                  </Heading>
-                </Box>
+              <Box pad={{ horizontal: "medium", bottom: "large" }}>
+                <Heading
+                  margin={{ top: "small", bottom: "xsmall" }}
+                  level={3}
+                  weight={500}
+                  color="brand"
+                >
+                  {blog.frontmatter.name}
+                </Heading>
 
-                <Paragraph size="large" fill margin="none">
+                <Paragraph size="small" fill margin="none">
                   {blog.frontmatter.excerpt}
                 </Paragraph>
               </Box>

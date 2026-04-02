@@ -13,17 +13,11 @@ import { Heading } from "grommet"
 
 const getColumnCount = (width) => {
   if (width < 768) {
-    // Small (Phones)
     return 1
-  } else if (width < 1024) {
-    // Breakpoint for tablets
+  } else if (width < 1280) {
     return 2
-  } else if (width < 1536) {
-    // Medium (Desktops and larger tablets)
-    return 3
   } else {
-    // Large (Large desktops)
-    return 5
+    return 3
   }
 }
 
@@ -53,7 +47,7 @@ const MasonryLayoutResponsive = ({ children }) => {
   }
 
   return (
-    <MasonryLayout columns={columnCount} gap={12}>
+    <MasonryLayout columns={columnCount} gap={28}>
       {children}
     </MasonryLayout>
   )
