@@ -1,8 +1,8 @@
 import React from "react"
-import { Box, Heading, Paragraph } from "grommet"
+import { Box, Heading, Text } from "grommet"
 import { ExternalLink } from "react-feather"
 import { PlainExternalLink } from "./TattleLinks"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 /**
  * Displays a person's name, role, and external link as a profile card.
@@ -11,36 +11,58 @@ import { StaticImage } from "gatsby-plugin-image"
  * @param {string} props.name - Person's name.
  * @param {string} props.role - Person's role or title.
  * @param {string} props.url - External URL (e.g., profile link).
+ * @param {Object} [props.img] - Gatsby image data for avatar.
  * @returns {JSX.Element} Profile card component.
  */
 
-const PeopleCard = ({ name, role, url }) => (
-  <Box
-    fill
-    direction={"column"}
-    pad={"medium"}
-    onClick={() => {}}
-    hoverIndicator={true}
-    focusIndicator={false}
-    border
-    round={"small"}
-  >
-    <PlainExternalLink href={url} target={"_blank"}>
-      <Box direction={"row-responsive"}>
-        {/* <Box width={"medium"} height={"medium"} background={"red"}>
-        <StaticImage src="https://placekitten.com/800/600" />
-      </Box> */}
-        <Box direction={"row"} align={"center"}>
-          <Heading level={3} margin={"none"} weight={500} color={"brand"}>
-            {name}
-          </Heading>
-          <Box flex={"grow"} />
-          {url && url.length != 0 && <ExternalLink size={16} />}
+const PeopleCard = ({ name, role, url, img }) => {
+  const image = img ? getImage(img) : null
+  return (
+    <Box
+      round={"small"}
+      border={{ color: "light-4", size: "xsmall" }}
+      overflow={"hidden"}
+    >
+      <Box height={"4px"} background={"brand"} />
+      <PlainExternalLink href={url} target={"_blank"}>
+        <Box
+          pad={"medium"}
+          direction={"row"}
+          gap={"medium"}
+          align={"center"}
+          hoverIndicator={{ background: { color: "light-1" } }}
+          focusIndicator={false}
+        >
+          {image && (
+            <Box
+              width={"64px"}
+              height={"64px"}
+              round={"full"}
+              overflow={"hidden"}
+              flex={{ shrink: 0 }}
+            >
+              <GatsbyImage
+                alt={`${name}'s photo`}
+                image={image}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </Box>
+          )}
+          <Box direction={"column"} gap={"xsmall"} flex>
+            <Box direction={"row"} align={"center"} justify={"between"}>
+              <Heading level={4} margin={"none"} weight={600} color={"accent-1"}>
+                {name}
+              </Heading>
+              {url && url.length !== 0 && <ExternalLink size={14} color={"#E76D67"} />}
+            </Box>
+            <Text size={"small"} color={"dark-4"}>
+              {role}
+            </Text>
+          </Box>
         </Box>
-        <Paragraph size={"small"}>{role}</Paragraph>
-      </Box>
-    </PlainExternalLink>
-  </Box>
-)
+      </PlainExternalLink>
+    </Box>
+  )
+}
 
 export default PeopleCard

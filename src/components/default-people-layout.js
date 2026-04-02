@@ -22,7 +22,7 @@ import PeopleCard from "./atomic/PeopleCard"
 const shortcodes = { Link }
 
 export default function PageTemplate({ data: { mdx },children }) {
-  const { name, role, url } = mdx.frontmatter
+  const { name, role, url, img } = mdx.frontmatter
   return (
     <AppShell
       headerLabel={mdx.frontmatter.name}
@@ -32,7 +32,7 @@ export default function PageTemplate({ data: { mdx },children }) {
       isMDXPage={true}
     >
       <MDXProvider components={shortcodes}>
-        <PeopleCard name={name} role={role} url={url} />
+        <PeopleCard name={name} role={role} url={url} img={img} />
         {/* <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer> */}
         {children}
       </MDXProvider>
@@ -48,6 +48,11 @@ export const pageQuery = graphql`
         name
         role
         url
+        img {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
         avatar
         projects
       }
