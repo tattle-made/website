@@ -15,8 +15,9 @@ import useBlogTags from "../hooks/useBlogTags"
 import BlogSidebar from "./BlogSidebar"
 import { projectSlugMaker } from "../lib/project-slug-maker"
 import TagsRenderer from "./TagsRenderer"
-import { getSrc, getImage } from "gatsby-plugin-image"
+import { getSrc, getImage, GatsbyImage } from "gatsby-plugin-image"
 import BlogTable from "./atomic/BlogTable"
+import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 
 /**
  * Blog post layout component.
@@ -134,13 +135,24 @@ export default function PageTemplate({
       }}
     >
       <MDXProvider components={shortcodes}>
-        <Box>
+        {/* <Box>
           <PlainLink to={"/blog"}>
             <Heading level={4}>back to all blogs</Heading>
           </PlainLink>
+        </Box> */}
+
+        <Box height="fit" width={"fill"}>
+          {cover && (
+            <GatsbyImage
+              image={getImage(cover)}
+              alt="Blog Cover Page"
+              objectFit="cover"
+            />
+          )}
         </Box>
 
-        <Box>
+        <NarrowContentWrapper width="large">
+          <Box>
           <BlogHeaderCard
             name={name}
             author={authorNames}
@@ -167,19 +179,21 @@ export default function PageTemplate({
               </Box>
             )}
           </Box>
-        </Box>
-
-        <Box align="start" className="flex flex-col lg:flex-row gap-2">
-          {/* Main Content */}
-          <Box className="fit" >
-            {children}
+          
           </Box>
 
-          {/* Sidebar Section */}
-          {/* <Box className="w-24 lg:w-24">
-            <BlogSidebar relatedPosts={relatedPosts} />
-          </Box> */}
-        </Box>
+          <Box align="start" className="flex flex-col lg:flex-row gap-2">
+            {/* Main Content */}
+            <Box className="fit" >
+              {children}
+            </Box>
+
+            {/* Sidebar Section */}
+            {/* <Box className="w-24 lg:w-24">
+              <BlogSidebar relatedPosts={relatedPosts} />
+            </Box> */}
+          </Box>
+        </NarrowContentWrapper>
       </MDXProvider>
     </AppShell>
   )

@@ -25,7 +25,7 @@ const NarrowContentWrapper = ({ children, justify, width, ...props }) => {
   useEffect(() => {
     // Set default width for large screen size to 65% only for the blog pages
     if (location.pathname.includes("/blog/")) {
-      setDefaultLargeWidth("65%")
+      setDefaultLargeWidth("100%")
     }
   }, [location])
 
