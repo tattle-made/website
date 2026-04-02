@@ -5,7 +5,7 @@ import DefaultLayout from "./default-layout"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
 import NarrowSection from "./atomic/layout/narrow-section"
 import TagBubbleBlog from "./atomic/TagBubbleBlog"
-import { AllBlogsIndexLayout } from "./atomic/layout/all-blogs-index-layout"
+import { BlogGrid } from "./atomic/layout/all-blogs-index-layout"
 
 /**
  * Tag Page component, to be used to render the Tag Page (To show blogs with a given Tag).
@@ -36,7 +36,7 @@ function TagPage({ pageHeading, tag, tagCounts, blogs }) {
             </Box>
           </NarrowSection>
         </NarrowContentWrapper>
-        <AllBlogsIndexLayout blogs={blogs} />
+        <BlogGrid blogs={blogs} />
       </Box>
     </DefaultLayout>
   )
