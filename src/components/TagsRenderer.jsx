@@ -22,15 +22,15 @@ export default function TagsRenderer({
   tagCounts,
   tagBaseURL,
 }) {
-  const [showAllTags, setShowAllTags] = useState(false)
+  const [showAllTags, setShowAllTags] = useState(true)
   const toggleTagsDisplay = () => {
     setShowAllTags(!showAllTags)
   }
 
   return (
-    <Box flex direction="row" align="baseline" gap="xsmall">
+    <Box flex direction="column" gap="xsmall">
       <Box>
-        <Heading level={4} marging={{ bottom: "small" }}>
+        <Heading level={4} margin="none">
           {tagTypeHeading}
         </Heading>
       </Box>

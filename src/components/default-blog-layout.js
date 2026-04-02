@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { graphql } from "gatsby"
 import { Box, ResponsiveContext, Paragraph } from "grommet"
 import { MDXProvider } from "@mdx-js/react"
@@ -48,6 +48,7 @@ export default function PageTemplate({
   children,
 }) {
   const { tagCounts, projectTagsCounts } = useBlogTags()
+  const screenSize = useContext(ResponsiveContext)
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
   const tags = mdx.frontmatter.tags
     ? mdx.frontmatter.tags.split(",").map((tag) => tag.trim())
@@ -149,7 +150,11 @@ export default function PageTemplate({
                 image={getImage(cover)}
                 alt="Blog Cover Page"
                 objectFit="cover"
-                style={{ maxHeight: "520px", width: "100%", display: "block" }}
+                style={{
+                  height: screenSize === "small" ? "50vh" : "520px",
+                  width: "100%",
+                  display: "block",
+                }}
               />
               <Box
                 style={{
@@ -223,9 +228,9 @@ export default function PageTemplate({
           )}
         </Box>
 
-        <NarrowContentWrapper width="large">
+        <NarrowContentWrapper width="large" >
           <Box align="start" className="flex flex-col lg:flex-row gap-2">
-            <Box className="fit blog-prose">
+            <Box className="fit blog-prose" margin={{top:"medium"}}>
               {children}
             </Box>
           </Box>

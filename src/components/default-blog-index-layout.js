@@ -45,6 +45,7 @@ const BlogIndex = ({ data, pageContext }) => {
               tagBaseURL={"/blog/tags/"}
             />
           </Box>
+          <Box height="0.4em"></Box>
           <Box>
             <TagsRenderer
               tagTypeHeading={"Projects:"}
