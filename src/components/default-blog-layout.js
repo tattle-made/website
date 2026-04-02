@@ -141,57 +141,93 @@ export default function PageTemplate({
           </PlainLink>
         </Box> */}
 
-        <Box height="fit" width={"fill"}>
-          {cover && (
-            <GatsbyImage
-              image={getImage(cover)}
-              alt="Blog Cover Page"
-              objectFit="cover"
-            />
+        {/* Hero: full-width image with metadata overlaid at bottom-left */}
+        <Box style={{ position: "relative" }}>
+          {cover ? (
+            <>
+              <GatsbyImage
+                image={getImage(cover)}
+                alt="Blog Cover Page"
+                objectFit="cover"
+                style={{ maxHeight: "520px", width: "100%", display: "block" }}
+              />
+              <Box
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background:
+                    "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
+                  padding: "2rem",
+                }}
+              >
+                <BlogHeaderCard
+                  name={name}
+                  author={authorNames}
+                  project={project?.frontmatter?.name}
+                  date={date}
+                  textColor="white"
+                />
+                <Box direction="column" flex pad={0} basis="xsmall">
+                  <Box>
+                    <TagsRenderer
+                      sortedUniqueTags={tags}
+                      tagCounts={tagCounts}
+                      tagTypeHeading={"Tags: "}
+                      tagBaseURL={"/blog/tags/"}
+                    />
+                  </Box>
+                  {project && (
+                    <Box>
+                      <TagsRenderer
+                        sortedUniqueTags={[project?.fields?.slug]}
+                        tagCounts={projectTagsCounts}
+                        tagTypeHeading={"Project: "}
+                        tagBaseURL={"/blog/tags/project/"}
+                      />
+                    </Box>
+                  )}
+                </Box>
+              </Box>
+            </>
+          ) : (
+            <NarrowContentWrapper width="large">
+              <BlogHeaderCard
+                name={name}
+                author={authorNames}
+                project={project?.frontmatter?.name}
+                date={date}
+              />
+              <Box direction="column" flex pad={0} basis="xsmall">
+                <Box>
+                  <TagsRenderer
+                    sortedUniqueTags={tags}
+                    tagCounts={tagCounts}
+                    tagTypeHeading={"Tags: "}
+                    tagBaseURL={"/blog/tags/"}
+                  />
+                </Box>
+                {project && (
+                  <Box>
+                    <TagsRenderer
+                      sortedUniqueTags={[project?.fields?.slug]}
+                      tagCounts={projectTagsCounts}
+                      tagTypeHeading={"Project: "}
+                      tagBaseURL={"/blog/tags/project/"}
+                    />
+                  </Box>
+                )}
+              </Box>
+            </NarrowContentWrapper>
           )}
         </Box>
 
         <NarrowContentWrapper width="large">
-          <Box>
-          <BlogHeaderCard
-            name={name}
-            author={authorNames}
-            project={project?.frontmatter?.name}
-            date={date}
-          />
-          <Box direction="column" flex pad={0} basis="xsmall">
-            <Box>
-              <TagsRenderer
-                sortedUniqueTags={tags}
-                tagCounts={tagCounts}
-                tagTypeHeading={"Tags: "}
-                tagBaseURL={"/blog/tags/"}
-              />
-            </Box>
-            {project && (
-              <Box>
-                <TagsRenderer
-                  sortedUniqueTags={[project?.fields?.slug]}
-                  tagCounts={projectTagsCounts}
-                  tagTypeHeading={"Project: "}
-                  tagBaseURL={"/blog/tags/project/"}
-                />
-              </Box>
-            )}
-          </Box>
-          
-          </Box>
-
           <Box align="start" className="flex flex-col lg:flex-row gap-2">
-            {/* Main Content */}
-            <Box className="fit" >
+            <Box className="fit">
               {children}
             </Box>
-
-            {/* Sidebar Section */}
-            {/* <Box className="w-24 lg:w-24">
-              <BlogSidebar relatedPosts={relatedPosts} />
-            </Box> */}
           </Box>
         </NarrowContentWrapper>
       </MDXProvider>

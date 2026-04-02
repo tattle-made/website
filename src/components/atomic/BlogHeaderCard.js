@@ -13,17 +13,17 @@ import { byline } from "../default-blog-index-layout"
  * @returns {JSX.Element} Blog header card component.
  */
 
-const BlogHeaderCard = ({ name, author, date, project }) => (
+const BlogHeaderCard = ({ name, author, date, project, textColor }) => (
   <Box margin={{ bottom: "small" }}>
     <Box direction={"row"} align={"center"}>
-      <Heading level={2} margin={"none"} weight={500} fill={true}>
+      <Heading level={2} margin={"none"} weight={500} fill={true} color={textColor}>
         {name}
       </Heading>
     </Box>
-    <Text size={"small"}>{`Published on ${new Date(
+    <Text size={"small"} color={textColor}>{`Published on ${new Date(
       date
     ).toDateString()}`}</Text>
-    <Text size={"small"}>{byline(author, project)}</Text>
+    <Text size={"small"} color={textColor}>{byline(author, project)}</Text>
   </Box>
 )
 
