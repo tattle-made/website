@@ -1,11 +1,10 @@
-import React from "react"
-import { Box, Heading, Paragraph, Text } from "grommet"
+import React, { useContext } from "react"
+import { Box, Heading, Paragraph, Text, ResponsiveContext } from "grommet"
 
 import MasonryLayoutResponsive from "../MasonryLayoutResponsive"
 import { PlainSectionLink } from "../TattleLinks"
 import { byline } from "../../default-blog-index-layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import NarrowContentWrapper from "./narrow-content-wrapper"
 
 /**
  * Renders a masonry layout of all blog entries.
@@ -60,7 +59,7 @@ function BlogCard({ blog }) {
 
 function FeaturedCardLarge({ blog }) {
   return (
-    <Box border={{ color: "visuals-3" }} round="xsmall" overflow="hidden" height="100%">
+    <Box border={{ color: "visuals-3" }} round="xsmall" overflow="hidden">
       <PlainSectionLink to={`/blog/${blog.fields.slug}`}>
         {blog.frontmatter.cover && (
           <Box height="medium">
@@ -88,29 +87,28 @@ function FeaturedCardLarge({ blog }) {
 
 function FeaturedCardSmall({ blog }) {
   return (
-    <Box border={{ color: "visuals-3" }} round="xsmall" overflow="hidden" flex>
+    <Box border={{ color: "visuals-3" }} round="xsmall">
       <PlainSectionLink to={`/blog/${blog.fields.slug}`}>
-        <Box pad="medium" direction="row" gap="medium" align="start">
+        <Box  direction="column" gap="medium" align="start">
           {blog.frontmatter.cover && (
-            <Box width="80px" height="80px" flex={{ shrink: 0 }} round="xsmall" overflow="hidden">
+            <Box width="100%" height="fit" overflow="hidden">
               <GatsbyImage
                 alt="blog cover"
-                objectFit="cover"
+                objectFit="contain"
                 image={getImage(blog.frontmatter.cover)}
-                style={{ height: "100%" }}
               />
             </Box>
           )}
-          <Box>
+          <Box pad="medium">
             <BlogMeta blog={blog} />
             <Heading margin={{ top: "xsmall", bottom: "xsmall" }} level={3} weight={500} color="brand">
               {blog.frontmatter.name}
             </Heading>
             <Paragraph
-              size="small"
-              fill
+              // size="small"
+              // fill
               margin="none"
-              style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
+              // style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
             >
               {blog.frontmatter.excerpt}
             </Paragraph>
@@ -121,43 +119,34 @@ function FeaturedCardSmall({ blog }) {
   )
 }
 
-export function AllBlogsIndexLayout({ blogs }) {
-  if (!blogs.length) return null
-
-  const featuredBlogs = blogs.filter(b => b.frontmatter.featured).slice(0, 3)
-  const restBlogs = blogs.filter(b => !featuredBlogs.includes(b))
+export function FeaturedSection({ featuredBlogs }) {
+  const size = useContext(ResponsiveContext)
+  if (!featuredBlogs.length) return null
   const [mainFeatured, ...sideFeatured] = featuredBlogs
-
+  const isSmall = size === "small"
   return (
-    <Box>
-      <NarrowContentWrapper>
-        {featuredBlogs.length > 0 && (
-        <Box margin={{ bottom: "xlarge" }}>
-          <Box direction="row" gap="medium" wrap>
-            <Box style={{ flex: "2 1 300px" }}>
-              <FeaturedCardLarge blog={mainFeatured} />
-            </Box>
-            {sideFeatured.length > 0 && (
-              <Box style={{ flex: "1 1 240px" }} gap="medium">
-                {sideFeatured.map((blog, i) => (
-                  <FeaturedCardSmall key={i} blog={blog} />
-                ))}
-              </Box>
-            )}
-          </Box>
-        </Box>
-      )}
-      </NarrowContentWrapper>
-
-      {restBlogs.length > 0 && (
-        <Box>
-          <MasonryLayoutResponsive>
-            {restBlogs.map((blog, key) => (
-              <BlogCard key={key} blog={blog} />
-            ))}
-          </MasonryLayoutResponsive>
+    <Box direction={isSmall ? "column" : "row"} gap="medium">
+      <Box style={isSmall ? undefined : { flex: "2 1 300px" }}>
+        <FeaturedCardLarge blog={mainFeatured} />
+      </Box>
+      {sideFeatured.length > 0 && (
+        <Box direction="column" gap="medium" style={isSmall ? undefined : { flex: "1 1 240px" }}>
+          {sideFeatured.map((blog, i) => (
+            <FeaturedCardSmall key={i} blog={blog} />
+          ))}
         </Box>
       )}
     </Box>
+  )
+}
+
+export function BlogGrid({ blogs }) {
+  if (!blogs.length) return null
+  return (
+    <MasonryLayoutResponsive>
+      {blogs.map((blog, key) => (
+        <BlogCard key={key} blog={blog} />
+      ))}
+    </MasonryLayoutResponsive>
   )
 }

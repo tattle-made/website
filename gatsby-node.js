@@ -113,10 +113,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // The array should be similar to the tree (in default-sitemap-layout). If node exists pass node, else make a node object to pass name in it.
   const siteMapNodes = []
 
-  createPage({
-    path: `/blog/`,
-    component: require.resolve(`./src/components/default-blog-index-layout.js`),
-    context: { projects },
+  const POSTS_PER_PAGE = 12
+  const numBlogPages = Math.ceil(blogNodes.length / POSTS_PER_PAGE)
+  Array.from({ length: numBlogPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog/` : `/blog/${i + 1}/`,
+      component: require.resolve(`./src/components/default-blog-index-layout.js`),
+      context: {
+        projects,
+        skip: i * POSTS_PER_PAGE,
+        limit: POSTS_PER_PAGE,
+        currentPage: i + 1,
+        numPages: numBlogPages,
+      },
+    })
   })
   // Blog Dashboard
   createPage({
