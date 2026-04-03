@@ -78,7 +78,7 @@ const BlogIndex = ({ data, pageContext }) => {
         {/* Hero row: featured (3/4) + tags sidebar (1/4) */}
         <Box
           direction={size === "small" ? "column" : "row"}
-          gap="xlarge"
+          gap="small"
           margin={{ bottom: "xlarge" }}
         >
           <Box style={size !== "small" ? { flex: "3 1 0", minWidth: 0 } : undefined}>
@@ -89,7 +89,7 @@ const BlogIndex = ({ data, pageContext }) => {
 
           <Box
             style={size !== "small" ? { flex: "1 1 200px" } : undefined}
-            pad={size !== "small" ? { left: "large" } : undefined}
+            pad={size !== "small" ? { left: "small" } : undefined}
           >
             <TagsRenderer
               tagTypeHeading={"Tags:"}

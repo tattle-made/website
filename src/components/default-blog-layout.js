@@ -205,7 +205,7 @@ export default function PageTemplate({
                 authors={author}
                 project={project?.frontmatter?.name}
                 date={date}
-                textColor="white"
+                
               />
               <Box direction="column" flex="grow" pad={0}>
                 <Box>

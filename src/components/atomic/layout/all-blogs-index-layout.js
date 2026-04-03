@@ -123,7 +123,7 @@ export function FeaturedSection({ featuredBlogs }) {
   const size = useContext(ResponsiveContext)
   if (!featuredBlogs.length) return null
   const [mainFeatured, ...sideFeatured] = featuredBlogs
-  const isSmall = size === "small"
+  const isSmall = size === "small" || size === "medium"
   return (
     <Box direction={isSmall ? "column" : "row"} gap="medium">
       <Box style={isSmall ? undefined : { flex: "2 1 300px" }}>
