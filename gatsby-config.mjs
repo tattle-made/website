@@ -92,8 +92,8 @@ const config = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Tattle`,
+        short_name: `Tattle`,
         start_url: `/`,
         background_color: `#E56D67`,
         theme_color: `#E56D67`,
@@ -157,6 +157,7 @@ const config = {
         ],
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-feed`,

@@ -133,6 +133,8 @@ export default function PageTemplate({
         project: project?.frontmatter?.name,
         tags: tags,
         cover: cover ? getSrc(cover) : null,
+        date: date,
+        author: authorNames,
       }}
     >
       <MDXProvider components={shortcodes}>
@@ -148,7 +150,7 @@ export default function PageTemplate({
             <>
               <GatsbyImage
                 image={getImage(cover)}
-                alt="Blog Cover Page"
+                alt={name}
                 objectFit="cover"
                 style={{
                   height: screenSize === "small" ? "50vh" : "520px",
