@@ -1,41 +1,27 @@
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import {
-  Grid,
   Box,
-  Heading,
   Text,
-  ResponsiveContext,
-  Paragraph,
   Anchor,
-  Button,
 } from "grommet"
 import DefaultLayout from "../components/default-layout"
 import { ResponsiveImage } from "../components/atomic/ResponsiveImage"
 import {
   PlainLink,
-  Link,
-  ExternalLink,
   PlainHeavyLink,
-  SmartPlainLink,
 } from "../components/atomic/TattleLinks"
 import MailchimpSubscribeForm from "../components/atomic/MailchimpSubscribeForm"
 import CaseStudyPreview from "./v2/case-study-preview"
-import Footer from "./v2/footer"
-import WeBuildFor from "./v2/we-build-for"
 
 import {
-  SectionLabels,
   LandingPageHeading,
   LandingPageSubHeading,
-  LandingPageLink,
-  LandingPageParagraph,
 } from "../components/atomic/core-style"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
-import styled from "styled-components"
 import LatestBlogsUpdates from "../components/LatestBlogsUpdates"
-import { getImage, getSrc } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 
 const FeedIcon = () => (
   <svg
@@ -59,31 +45,23 @@ const FeedIcon = () => (
   </svg>
 )
 
-const ScrollContainer = styled.div`
-  overflow: scroll;
-  overflow-y: hidden;
-  position: relative;
-  padding-bottom: 0.8em;
-`
 
 /**
  * @author
  * @function Index
  **/
 
-const Index = props => {
+const Index = () => {
   return (
     <DefaultLayout>
-      <ResponsiveContext.Consumer> 
-        {size => (
-          <Box direction={"column"} align={"center"} flex={"grow"}>
+      <Box direction={"column"} align={"center"} flex={"grow"}>
             <Box background={"brand"} fill={true} height={{ min: "45vh" }}>
               <NarrowContentWrapper justify={"center"}>
                 <NarrowSection>
                   <Box direction={"row-responsive"}>
                     <ResponsiveImage />
-                    {size !== "small" && <Box width={"8em"} />}
-                    {size === "small" && <Box height={"3.2em"} />}
+                    <div className="hidden sm:block" style={{ width: "8em" }} />
+                    <div className="block sm:hidden" style={{ height: "3.2em" }} />
                     <Box flex={true} direction={"column"} overflow={"hidden"}>
                       <LandingPageHeading>
                         We build &nbsp;
@@ -133,7 +111,7 @@ const Index = props => {
             </Box>
 
             <Box flex={"grow"}>
-              <RecentProjectSection size={size} />
+              <RecentProjectSection />
             </Box>
 
             <Box
@@ -149,46 +127,11 @@ const Index = props => {
               </NarrowContentWrapper>
             </Box>
           </Box>
-        )}
-      </ResponsiveContext.Consumer>
     </DefaultLayout>
   )
 }
 
-const Project = ({ project }) => {
-  return (
-    <Box
-      gap={"xsmall"}
-      width={{ min: "medium", max: "medium" }}
-      focusIndicator={false}
-      onClick={() => {}}
-      pad={{ top: "small", bottom: "small" }}
-    >
-      <SmartPlainLink linktype={project.link.type} target={project.link.url}>
-        <Heading level={4} margin={{ bottom: "4.578px", top: "7.324px" }}>
-          {project.title}
-        </Heading>
-      </SmartPlainLink>
-      <Paragraph size={"small"} margin={{ top: "none" }}>
-        {project.description}
-      </Paragraph>
-      <Box flex={"grow"} />
-      {project.supporter ? (
-        <Box gap={"xsmall"} direction={"row"} align={"center"}>
-          <Text size="xsmall">supported by</Text>
-          <Anchor
-            weight={400}
-            label={project.supporter.name}
-            href={project.supporter.url}
-            target={"_blank"}
-          />
-        </Box>
-      ) : null}
-    </Box>
-  )
-}
-
-const RecentProjectSection = ({ size }) => {
+const RecentProjectSection = () => {
   const { cover_ogbv, cover_viral_spiral, cover_dau } = useStaticQuery(graphql`
     query {
       cover_ogbv: file(relativePath: { eq: "cover-project-uli.png" }) {
@@ -237,7 +180,7 @@ const RecentProjectSection = ({ size }) => {
       <NarrowContentWrapper width={"1280px"}>
         <Box width={"100%"} alignSelf={"center"}>
           <Box>
-            <ResponsiveLayoutDatasets size={size}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <CaseStudyPreview
                 previewImage={getImage(cover_ogbv)}
                 title={"Uli"}
@@ -265,7 +208,7 @@ const RecentProjectSection = ({ size }) => {
                 url={"/products/viral-spiral"}
                 publicationDate={"13-11-2020"}
               />
-            </ResponsiveLayoutDatasets>
+            </div>
           </Box>
         </Box>
       </NarrowContentWrapper>
@@ -291,54 +234,6 @@ const RecentProjectSection = ({ size }) => {
 
       <Box height="1.8em"></Box>
     </Box>
-  )
-}
-
-const ResponsiveLayoutDatasets = ({ size, children }) => {
-  return size !== "small" ? (
-    <Grid
-      columns={{
-        count: 3,
-        size: "auto",
-      }}
-      gap="medium"
-    >
-      {children}
-    </Grid>
-  ) : (
-    <Grid
-      columns={{
-        count: 1,
-        size: "auto",
-      }}
-      gap="small"
-    >
-      {children}
-    </Grid>
-  )
-}
-
-const ResponsiveLayoutTest = ({ size, children }) => {
-  return size !== "small" ? (
-    <Grid
-      columns={{
-        count: 3,
-        size: "auto",
-      }}
-      gap="medium"
-    >
-      {children}
-    </Grid>
-  ) : (
-    <Grid
-      columns={{
-        count: 1,
-        size: "auto",
-      }}
-      gap="small"
-    >
-      {children}
-    </Grid>
   )
 }
 
