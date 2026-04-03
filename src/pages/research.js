@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
@@ -6,81 +6,90 @@ import {
   Box,
   Heading,
   Paragraph,
-  ResponsiveContext,
   Text,
-  Image,
 } from "grommet"
 import { research } from "../config/research"
 import TagBubble from "../components/atomic/TagBubble"
 import { PlainExternalLink } from "../components/atomic/TattleLinks"
 import { ExternalLink } from "react-feather"
 
-const FeaturedListItem = ({ item }) => {
-  const size = useContext(ResponsiveContext)
-  return (
-    <Box
-      direction={"column"}
-      onClick={() => { }}
-      hoverIndicator={true}
-      focusIndicator={false}
-      width={size === "small" ? "100%" : "50%"}
-      pad={"xsmall"}
-    >
-      <PlainExternalLink href={item.url} target={"_blank"}>
-        <Paragraph size={"small"} color={"dark-3"} margin={"none"}>
-          {item.date}
-        </Paragraph>
-        <Box direction={"row-responsive"} justify={"stretch"}>
-          <Box>
-            <Heading level={3} margin={{ bottom: "4.578px", top: "7.324px" }}>
-              {item.title}
-            </Heading>
-            <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }} className="gap-y-2">
-              {item.tags.map((tag, index) => (
-                <TagBubble key={index} data={{ label: tag }} />
-              ))}
-            </Box>
+const SectionLabel = ({ children }) => (
+  <Text
+    size="xsmall"
+    weight={700}
+    color="dark-4"
+    margin={{ bottom: "medium" }}
+    style={{ letterSpacing: "0.08em", textTransform: "uppercase" }}
+  >
+    {children}
+  </Text>
+)
 
-            <Paragraph size={"medium"}>{item.description}</Paragraph>
-          </Box>
+const FeaturedCard = ({ item }) => (
+  <Box
+    border={{ color: "visuals-3" }}
+    round="xsmall"
+    overflow="hidden"
+    flex={{ grow: 1, shrink: 1 }}
+    style={{ minWidth: 0 }}
+  >
+    <PlainExternalLink href={item.url} target="_blank">
+      <Box pad="large">
+        <Text size="xsmall" weight={600} color="dark-4" margin={{ bottom: "xsmall" }}>
+          {item.date}
+        </Text>
+        <Heading
+          level={3}
+          margin={{ top: "xsmall", bottom: "small" }}
+          color="brand"
+          weight={500}
+        >
+          {item.title}
+        </Heading>
+        <Box direction="row" wrap gap="xsmall" margin={{ bottom: "medium" }} className="gap-y-2">
+          {item.tags.map((tag, index) => (
+            <TagBubble key={index} data={{ label: tag }} />
+          ))}
         </Box>
-      </PlainExternalLink>
-    </Box>
-  )
-}
+        <Paragraph size="small" margin="none" fill>
+          {item.description}
+        </Paragraph>
+      </Box>
+    </PlainExternalLink>
+  </Box>
+)
 
 const AllListItem = ({ item }) => (
   <Box
-    direction={"column"}
-    pad={"xsmall"}
-    onClick={() => { }}
-    hoverIndicator={true}
-    focusIndicator={false}
+    pad={{ vertical: "medium" }}
+    border={{ side: "bottom", color: "visuals-3" }}
   >
-    <PlainExternalLink href={item.url} target={"_blank"}>
-      <Paragraph size={"small"} color={"dark-3"} margin={"none"}>
+    <PlainExternalLink href={item.url} target="_blank">
+      <Text size="xsmall" weight={600} color="dark-4" margin={{ bottom: "xsmall" }}>
         {item.date}
-      </Paragraph>
-      <Box direction={"row-responsive"} justify={"stretch"}>
-        <Box>
-          <Heading
-            level={4}
-            margin={{ bottom: "4.578px", top: "7.324px" }}
-            fill
-          >
-            {item.title}
-          </Heading>
-          <Box direction="row" wrap gap="xsmall" margin={{ bottom: "small" }} className="gap-y-2">
-            {item.tags.map((tag, index) => (
-              <TagBubble key={index} data={{ label: tag }} />
-            ))}
-          </Box>
-
-          <Paragraph size={"medium"} fill>                                                        
-            {item.description}
-          </Paragraph>
+      </Text>
+      <Box direction="row" align="start" justify="between" gap="small">
+        <Heading
+          level={4}
+          margin={{ top: "xsmall", bottom: "xsmall" }}
+          color="brand"
+          weight={500}
+          fill
+        >
+          {item.title}
+        </Heading>
+        <Box flex={false} margin={{ top: "small" }}>
+          <ExternalLink size={14} />
         </Box>
       </Box>
+      <Box direction="row" wrap gap="xsmall" margin={{ bottom: "xsmall" }} className="gap-y-2">
+        {item.tags.map((tag, index) => (
+          <TagBubble key={index} data={{ label: tag }} />
+        ))}
+      </Box>
+      <Paragraph size="small" margin={{ top: "xsmall", bottom: "none" }} fill>
+        {item.description}
+      </Paragraph>
     </PlainExternalLink>
   </Box>
 )
@@ -90,28 +99,30 @@ const Research = () => {
     <DefaultLayout>
       <NarrowContentWrapper>
         <NarrowSection>
-          <Box>
-            <NarrowSection>
-              <Text size={"small"} weight={600} margin={{ bottom: "medium" }}>
-                Featured
-              </Text>
-              <Box direction={"row-responsive"} gap={"large"}>
-                {research.featured.map(update => (
-                  <FeaturedListItem item={update} />
-                ))}
-              </Box>
-            </NarrowSection>
+          <Box margin={{ bottom: "large" }}>
+            <Heading level={1} margin={{ top: "none", bottom: "xsmall" }}>
+              Research
+            </Heading>
+            <Paragraph size="medium" color="dark-3" margin="none">
+              Papers, reports, datasets, and abstracts from Tattle's work on misinformation, online harms, and civic tech.
+            </Paragraph>
+          </Box>
 
-            <NarrowSection>
-              <Text size={"small"} weight={600} margin={{ bottom: "medium" }}>
-                Papers, Reports, Abstracts
-              </Text>
-              <Box direction={"column"}>
-                {research.all.map(update => (
-                  <AllListItem item={update} />
-                ))}
-              </Box>
-            </NarrowSection>
+          <Box margin={{ bottom: "xlarge" }}>
+            <SectionLabel>Featured</SectionLabel>
+            <div className="flex flex-col lg:flex-row gap-6">
+              {research.featured.map((item, i) => (
+                <FeaturedCard key={i} item={item} />
+              ))}
+            </div>
+          </Box>
+
+          <Box>
+            <Box>
+              {research.all.map((item, i) => (
+                <AllListItem key={i} item={item} />
+              ))}
+            </Box>
           </Box>
         </NarrowSection>
       </NarrowContentWrapper>
