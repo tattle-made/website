@@ -6,6 +6,7 @@ import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
 import { Link } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 import { StaticImage } from "gatsby-plugin-image"
+import TeamSection from "../../components/TeamSection"
 
 const DPGLogo = () => (
   <svg
@@ -142,7 +143,7 @@ const Page = () => (
     <NarrowContentWrapper>
       <NarrowSection>
         <Box direction="row-responsive" align="center" gap={"small"}>
-          <Heading level={2}>Feluda</Heading>
+          <Heading level={1} margin={{ top: "none", bottom: "xsmall" }}>Feluda</Heading>
           <Box width={"3.2em"}>
             <a
               href="https://app.digitalpublicgoods.net/a/10707"
@@ -296,6 +297,12 @@ const Page = () => (
       <NarrowSection>
         <LatestProductBlogsUpdates projects={["feluda"]} />
       </NarrowSection>
+
+      <NarrowSection>
+        <TeamSection project="feluda" />
+      </NarrowSection>
+
+      
     </NarrowContentWrapper>
   </DefaultLayout>
 )

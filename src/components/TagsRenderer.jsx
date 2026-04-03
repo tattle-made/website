@@ -57,7 +57,7 @@ export default function TagsRenderer({
                 </Link>
               </Box>
             ))}
-        {sortedUniqueTags.length > 10 && (
+        {/* {sortedUniqueTags.length > 10 && (
           <Button onClick={toggleTagsDisplay}>
             <Box
               pad={{ horizontal: "small", vertical: "xsmall" }}
@@ -69,7 +69,7 @@ export default function TagsRenderer({
               {showAllTags ? "Show Less Tags" : "Show All Tags"}
             </Box>
           </Button>
-        )}
+        )} */}
       </Box>
     </Box>
   )

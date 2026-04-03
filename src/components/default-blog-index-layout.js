@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import { graphql, Link } from "gatsby"
 import DefaultLayout from "./default-layout"
-import { Box, Text, ResponsiveContext } from "grommet"
+import { Box, Text } from "grommet"
 import { FeaturedSection, BlogGrid } from "./atomic/layout/all-blogs-index-layout"
 import useBlogTags from "../hooks/useBlogTags"
 import TagsRenderer from "./TagsRenderer"
@@ -63,7 +63,6 @@ function Pagination({ currentPage, numPages }) {
 const BlogIndex = ({ data, pageContext }) => {
   const blogs = data.allMdx.nodes
   const { currentPage = 1, numPages = 1 } = pageContext
-  const size = useContext(ResponsiveContext)
 
   const { tagCounts, projectTagsCounts, sortedUniqueTags, sortedProjectTags } =
     useBlogTags()
@@ -76,21 +75,14 @@ const BlogIndex = ({ data, pageContext }) => {
       <Box width="100%" pad="medium" direction="column">
 
         {/* Hero row: featured (3/4) + tags sidebar (1/4) */}
-        <Box
-          direction={size === "small" ? "column" : "row"}
-          gap="xlarge"
-          margin={{ bottom: "xlarge" }}
-        >
-          <Box style={size !== "small" ? { flex: "3 1 0", minWidth: 0 } : undefined}>
+        <div className="flex flex-col lg:flex-row gap-3 mb-24">
+          <div className="lg:flex-[3_1_0] min-w-0">
             {featuredBlogs.length > 0 && (
               <FeaturedSection featuredBlogs={featuredBlogs} />
             )}
-          </Box>
+          </div>
 
-          <Box
-            style={size !== "small" ? { flex: "1 1 200px" } : undefined}
-            pad={size !== "small" ? { left: "large" } : undefined}
-          >
+          <div className="lg:flex-[1_1_200px] lg:pl-3">
             <TagsRenderer
               tagTypeHeading={"Tags:"}
               sortedUniqueTags={sortedUniqueTags}
@@ -105,8 +97,8 @@ const BlogIndex = ({ data, pageContext }) => {
                 tagBaseURL={"/blog/tags/project/"}
               />
             </Box>
-          </Box>
-        </Box>
+          </div>
+        </div>
 
         {/* Remaining posts masonry grid */}
         <BlogGrid blogs={restBlogs} />

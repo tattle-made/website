@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Box, Text, ResponsiveContext } from "grommet"
+import { Box, Text, Grid } from "grommet"
 import DefaultLayout from "../../components/default-layout"
 import { ResponsiveImage } from "../../components/atomic/ResponsiveImage"
 import {
@@ -29,82 +29,71 @@ import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-
  * @function Index
  **/
 
-const Index = props => {
-  // const size = useContext(ResponsiveContext)
-  // For some reason, this refuses to play nice with Gatsby, so I had to use ResponsiveContext.Consumer
-
+const Index = () => {
   return (
     <DefaultLayout>
-      <ResponsiveContext.Consumer>
-        {size => (
-          <Box direction={"column"} align={"center"}>
-            <Box
-              background={"brand"}
-              fill={true}
-              height={{ min: "90vh" }}
-              justify={"center"}
-            >
-              <NarrowContentWrapper>
-                <NarrowSection>
-                  <Box direction={"row-responsive"} key={"test"}>
-                    <ResponsiveImage />
-                    {size !== "small" && <Box width={"8em"} />}
-                    {size === "small" && <Box height={"3.2em"} />}
-                    <Box flex={true} direction={"column"} overflow={"hidden"}>
-                      <LandingPageHeading>
-                        We build &nbsp;
-                        <PlainHeavyLink to={"/products"}>
-                          tools
-                        </PlainHeavyLink>{" "}
-                        and &nbsp;
-                        <PlainHeavyLink to={"/datasets"}>
-                          datasets
-                        </PlainHeavyLink>{" "}
-                        to understand and respond to (mis)information in India.
-                      </LandingPageHeading>
-                      <Box height={"xxsmall"} />
-                      <Box direction={"column"} gap={"small"}>
-                        <LandingPageSubHeading>
-                          We are Tattle - a community of technologists,
-                          researchers, journalists and artists working towards a
-                          healthier online information ecosystem in India.
-                        </LandingPageSubHeading>
-                      </Box>
-                    </Box>
+      <Box direction={"column"} align={"center"}>
+        <Box
+          background={"brand"}
+          fill={true}
+          height={{ min: "90vh" }}
+          justify={"center"}
+        >
+          <NarrowContentWrapper>
+            <NarrowSection>
+              <Box direction={"row-responsive"} key={"test"}>
+                <ResponsiveImage />
+                <div className="hidden sm:block" style={{ width: "8em" }} />
+                <div className="block sm:hidden" style={{ height: "3.2em" }} />
+                <Box flex={true} direction={"column"} overflow={"hidden"}>
+                  <LandingPageHeading>
+                    We build &nbsp;
+                    <PlainHeavyLink to={"/products"}>
+                      tools
+                    </PlainHeavyLink>{" "}
+                    and &nbsp;
+                    <PlainHeavyLink to={"/datasets"}>
+                      datasets
+                    </PlainHeavyLink>{" "}
+                    to understand and respond to (mis)information in India.
+                  </LandingPageHeading>
+                  <Box height={"xxsmall"} />
+                  <Box direction={"column"} gap={"small"}>
+                    <LandingPageSubHeading>
+                      We are Tattle - a community of technologists,
+                      researchers, journalists and artists working towards a
+                      healthier online information ecosystem in India.
+                    </LandingPageSubHeading>
                   </Box>
-                </NarrowSection>
-              </NarrowContentWrapper>
-            </Box>
-
-            <Box fill>
-              {/*<NarrowSection>
-                <WeBuildFor />
-              </NarrowSection>*/}
-
-              <NarrowContentWrapper>
-                <NarrowSection>
-                  <CaseStudySection size={size} />
-                </NarrowSection>
-              </NarrowContentWrapper>
-
-              <Box>
-                <Box background="#514E80" align="center">
-                  <NarrowContentWrapper>
-                    <NarrowSection>
-                      <MailchimpSubscribeForm />
-                    </NarrowSection>
-                  </NarrowContentWrapper>
                 </Box>
               </Box>
+            </NarrowSection>
+          </NarrowContentWrapper>
+        </Box>
+
+        <Box fill>
+          <NarrowContentWrapper>
+            <NarrowSection>
+              <CaseStudySection />
+            </NarrowSection>
+          </NarrowContentWrapper>
+
+          <Box>
+            <Box background="#514E80" align="center">
+              <NarrowContentWrapper>
+                <NarrowSection>
+                  <MailchimpSubscribeForm />
+                </NarrowSection>
+              </NarrowContentWrapper>
             </Box>
           </Box>
-        )}
-      </ResponsiveContext.Consumer>
+        </Box>
+      </Box>
     </DefaultLayout>
   )
 }
 
-const CaseStudySection = ({ size, bgColor, contentWidth }) => {
+const CaseStudySection = ({ bgColor, contentWidth }) => {
   return (
     <Box width={contentWidth ? contentWidth : "960px"} alignContent={"center"}>
       <LandingPageParagraph>

@@ -4,13 +4,14 @@ import { byline } from "../default-blog-index-layout"
 import { Link } from "gatsby"
 
 /**
- * Renders the header section of a blog post card with title, author, date, and project info.
+ * Renders the header section of a blog post with title, authors (with avatars), date, and project.
  *
  * @param {Object} props
  * @param {string} props.name - Blog post title.
- * @param {string} props.author - Author name.
+ * @param {Array} [props.authors=[]] - Array of linked author MDX nodes with frontmatter and fields.
  * @param {string} props.date - Publication date string.
- * @param {string} [props.project] - Optional project associated with the blog.
+ * @param {string} [props.project] - Optional project name associated with the blog.
+ * @param {string} [props.textColor] - Optional text color override.
  * @returns {JSX.Element} Blog header card component.
  */
 

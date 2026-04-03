@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import {
   Grid,
   Box,
@@ -10,7 +10,6 @@ import {
   Image,
   Button,
   TextInput,
-  ResponsiveContext,
 } from "grommet"
 import styled from "styled-components"
 import DefaultLayout from "../components/default-layout"
