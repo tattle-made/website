@@ -85,7 +85,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const projects = [
     ...new Set(
       nodes
-        .map((node) => node.frontmatter.project)
+        .map((node) => node.frontmatter.project?.frontmatter?.name)
         .filter(
           (project) => typeof project === "string" && project.trim() !== ""
         )
