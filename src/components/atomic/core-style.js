@@ -22,7 +22,7 @@ const NavigationLabel = styled.span`
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0.1em;
-  color: #514e80;
+  color: #252653;
 `
 
 const FooterNavigationLabel = styled.span`
@@ -44,7 +44,7 @@ const SectionLabels = styled.span`
 
 const Theme = {
   text_color_dark: "#edc9c4",
-  text_color_light: "#514e80",
+  text_color_light: "#252653",
 }
 
 const LandingPageHeading = styled.span`
