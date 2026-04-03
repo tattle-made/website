@@ -171,12 +171,12 @@ export default function PageTemplate({
               >
                 <BlogHeaderCard
                   name={name}
-                  author={authorNames}
+                  authors={author}
                   project={project?.frontmatter?.name}
                   date={date}
                   textColor="white"
                 />
-                <Box direction="column" flex pad={0} basis="xsmall">
+                <Box direction="column" flex="grow" pad={0}>
                   <Box>
                     <TagsRenderer
                       sortedUniqueTags={tags}
@@ -202,11 +202,12 @@ export default function PageTemplate({
             <NarrowContentWrapper width="large">
               <BlogHeaderCard
                 name={name}
-                author={authorNames}
+                authors={author}
                 project={project?.frontmatter?.name}
                 date={date}
+                textColor="white"
               />
-              <Box direction="column" flex pad={0} basis="xsmall">
+              <Box direction="column" flex="grow" pad={0}>
                 <Box>
                   <TagsRenderer
                     sortedUniqueTags={tags}
@@ -264,6 +265,17 @@ export const pageQuery = graphql`
           frontmatter {
             name
             role
+            url
+            img {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 40
+                  height: 40
+                  layout: FIXED
+                  placeholder: BLURRED
+                )
+              }
+            }
           }
         }
 
