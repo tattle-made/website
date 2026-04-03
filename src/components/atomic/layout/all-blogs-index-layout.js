@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import { Box, Heading, Paragraph, Text, ResponsiveContext } from "grommet"
+import React from "react"
+import { Box, Heading, Paragraph, Text } from "grommet"
 
 import MasonryLayoutResponsive from "../MasonryLayoutResponsive"
 import { PlainSectionLink } from "../TattleLinks"
@@ -120,23 +120,21 @@ function FeaturedCardSmall({ blog }) {
 }
 
 export function FeaturedSection({ featuredBlogs }) {
-  const size = useContext(ResponsiveContext)
   if (!featuredBlogs.length) return null
   const [mainFeatured, ...sideFeatured] = featuredBlogs
-  const isSmall = size === "small" || size === "medium"
   return (
-    <Box direction={isSmall ? "column" : "row"} gap="medium">
-      <Box style={isSmall ? undefined : { flex: "2 1 300px" }}>
+    <div className="flex flex-col lg:flex-row gap-6">
+      <div className="lg:flex-[2_1_300px]">
         <FeaturedCardLarge blog={mainFeatured} />
-      </Box>
+      </div>
       {sideFeatured.length > 0 && (
-        <Box direction="column" gap="medium" style={isSmall ? undefined : { flex: "1 1 240px" }}>
+        <div className="flex flex-col gap-6 lg:flex-[1_1_240px]">
           {sideFeatured.map((blog, i) => (
             <FeaturedCardSmall key={i} blog={blog} />
           ))}
-        </Box>
+        </div>
       )}
-    </Box>
+    </div>
   )
 }
 
