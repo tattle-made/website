@@ -142,7 +142,7 @@ const Page = () => (
     <NarrowContentWrapper>
       <NarrowSection>
         <Box direction="row-responsive" align="center" gap={"small"}>
-          <Heading level={2}>Feluda</Heading>
+          <Heading level={1} margin={{ top: "none", bottom: "xsmall" }}>Feluda</Heading>
           <Box width={"3.2em"}>
             <a
               href="https://app.digitalpublicgoods.net/a/10707"
