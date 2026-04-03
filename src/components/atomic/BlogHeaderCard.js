@@ -59,7 +59,7 @@ const BlogHeaderCard = ({ name, authors = [], date, project, textColor }) => (
     <Text size={"small"} color={textColor}>{`Published on ${new Date(
       date
     ).toDateString()}`}</Text>
-    {authors.length > 0 && (
+    {authors?.length > 0 && (
       <Box direction="row" gap="medium" wrap margin={{ top: "xsmall" }}>
         {authors.map((a) => (
           <AuthorAvatar key={a?.fields?.slug || a?.frontmatter?.name} author={a} textColor={textColor} />
