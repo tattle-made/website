@@ -1,10 +1,5 @@
-import React, { useContext, useEffect, useState } from "react"
-import { Box, ResponsiveContext } from "grommet"
-import { useLocation } from "@reach/router"
-/**
- * @author
- * @function NarrowSection
- **/
+import React from "react"
+import { Box } from "grommet"
 
 /**
  * Wraps content in a responsive, centered container with adjustable width and justification.
@@ -13,61 +8,20 @@ import { useLocation } from "@reach/router"
  * @param {Object} props
  * @param {React.ReactNode} props.children - The content to render inside the wrapper.
  * @param {string} [props.justify] - Optional justification (e.g., "center", "start").
- * @param {string} [props.width] - Optional custom width for the container.
+ * @param {string} [props.width] - Optional custom width override.
  * @returns {JSX.Element} Responsive content wrapper.
  */
 
-const NarrowContentWrapper = ({ children, justify, width, ...props }) => {
-  const size = useContext(ResponsiveContext)
-  const location = useLocation()
-  const [defaultLargeWidth, setDefaultLargeWidth] = useState("960px")
-
-  // useEffect(() => {
-  //   // Set default width for large screen size to 65% only for the blog pages
-  //   if (location.pathname.includes("/blog/")) {
-  //     setDefaultLargeWidth("100%")
-  //   }
-  // }, [location])
-
-  const Section = () => (
-    <Box
-      width={width ? width : defaultLargeWidth}
-      alignSelf={"center"}
-      flex={"grow"}
-      justify={justify ? justify : "start"}
-    >
-      <Box pad={{ left: "large", right: "large" }}>{children}</Box>
-    </Box>
-  )
-
-  const SmallSection = ({ children }) => (
-    <Box
-      width={"100%"}
-      alignSelf={"center"}
-      flex={"grow"}
-      justify={justify ? justify : "start"}
-    >
-      <Box pad={{ left: "large", right: "large" }}>{children}</Box>
-    </Box>
-  )
-
-  const MediumSection = ({ children }) => (
-    <Box
-      width={width ? width : "1110px"}
-      alignSelf={"center"}
-      flex={"grow"}
-      justify={justify ? justify : "start"}
-    >
-      <Box pad={{ left: "large", right: "large" }}>{children}</Box>
-    </Box>
-  )
-  return size === "small" ? (
-    <SmallSection props={props}>{children}</SmallSection>
-  ) : size === "medium" ? (
-    <MediumSection props={props}>{children}</MediumSection>
-  ) : (
-    <Section props={props}>{children}</Section>
-  )
-}
+const NarrowContentWrapper = ({ children, justify, width }) => (
+  <Box
+    width={width || "100%"}
+    alignSelf={"center"}
+    flex={"grow"}
+    justify={justify || "start"}
+    className={width ? undefined : "w-full md:max-w-[1110px] xl:max-w-[960px]"}
+  >
+    <Box pad={{ left: "large", right: "large" }}>{children}</Box>
+  </Box>
+)
 
 export default NarrowContentWrapper

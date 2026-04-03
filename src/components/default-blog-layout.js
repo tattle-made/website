@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
-import { Box, ResponsiveContext, Paragraph } from "grommet"
+import { Box, Paragraph } from "grommet"
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
 import { primaryNav, footerItems } from "../config/options"
@@ -48,7 +48,6 @@ export default function PageTemplate({
   children,
 }) {
   const { tagCounts, projectTagsCounts } = useBlogTags()
-  const screenSize = useContext(ResponsiveContext)
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
   const tags = mdx.frontmatter.tags
     ? mdx.frontmatter.tags.split(",").map((tag) => tag.trim())
@@ -152,11 +151,7 @@ export default function PageTemplate({
                 image={getImage(cover)}
                 alt={name}
                 objectFit="cover"
-                style={{
-                  height: screenSize === "small" ? "50vh" : "520px",
-                  width: "100%",
-                  display: "block",
-                }}
+                className="h-[50vh] sm:h-[520px] w-full block"
               />
               <Box
                 style={{

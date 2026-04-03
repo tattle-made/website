@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import { Box, Text, ResponsiveContext } from "grommet"
+import React from "react"
+import { Box, Text } from "grommet"
 import { Slack, GitHub, Twitter } from "react-feather"
 import { Link, PlainExternalLink } from "./TattleLinks"
 
@@ -20,13 +20,12 @@ import { Link, PlainExternalLink } from "./TattleLinks"
  */
 
 const SmallFooter = ({ items }) => {
-  const size = useContext(ResponsiveContext)
   return (
     <Box
       direction={"row"}
       wrap={true}
       margin={{ right: "large" }}
-      width={size !== "small" ? "960px" : null}
+      className="w-full sm:max-w-[960px]"
     >
       <Box direction={"row"} pad={"small"} gap={"medium"} wrap={true}>
         {items.primary.map(primaryItem => {

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import DefaultLayout from "../../components/default-layout";
-import { Anchor, Box, Grid, Paragraph, Text, ResponsiveContext } from "grommet";
+import { Anchor, Box, Paragraph, Text } from "grommet";
 import CaseStudyPreview from "../v2/case-study-preview"
 import { graphql, useStaticQuery } from "gatsby";
 import NarrowContentWrapper from "../../components/atomic/layout/narrow-content-wrapper";
@@ -51,30 +51,11 @@ var other_projects = [
   }
 ]
 
-const ResponsiveLayoutDatasets = ({ children }) => {
-  const size = useContext(ResponsiveContext)
-  return size !== "small" ? (
-    <Grid
-      columns={{
-        count: 3,
-        size: "auto",
-      }}
-      gap="medium"
-    >
-      {children}
-    </Grid>
-  ) : (
-    <Grid
-      columns={{
-        count: 1,
-        size: "auto",
-      }}
-      gap="small"
-    >
-      {children}
-    </Grid>
-  )
-}
+const ResponsiveLayoutDatasets = ({ children }) => (
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    {children}
+  </div>
+)
 
 const ProductIndex = () => {
   const { cover_ogbv, icon_ogbv, cover_viral_spiral, icon_viral_spiral, cover_dau, icon_dau } = useStaticQuery(graphql`

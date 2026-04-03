@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
-import React, { useContext } from "react"
-import { ResponsiveContext, Grid, Box, Heading, Text, Paragraph } from "grommet"
+import React from "react"
+import { Box, Heading, Text, Paragraph } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
@@ -8,33 +8,11 @@ import { PlainExternalLink } from "../components/atomic/TattleLinks"
 import { ExternalLink } from "react-feather"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const ResponsiveGrid = ({ children }) => {
-  const size = useContext(ResponsiveContext)
-  return size === "small" ? (
-    <Box direction={"column"} gap={"small"}>
-      {children}
-    </Box>
-  ) : (
-    //   : size === "medium" ? (
-    //     <Grid
-    //       columns={["1/2", "1/2"]}
-    //       responsive={true}
-    //       fill={"horizontal"}
-    //       gap="medium"
-    //     >
-    //       {children}
-    //     </Grid>
-    //   )
-    <Grid
-      columns={["1/3", "1/3", "1/3"]}
-      responsive={true}
-      fill={"horizontal"}
-      gap="medium"
-    >
-      {children}
-    </Grid>
-  )
-}
+const ResponsiveGrid = ({ children }) => (
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    {children}
+  </div>
+)
 /**
  * A Card component that displays a community member's photo, name, role, and profile URL.
  * It also handles whether the member is a current contributor or not.
