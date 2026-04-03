@@ -52,7 +52,7 @@ export default function TeamSection({ project }) {
   return (
     <Box margin={{ top: "medium" }}>
       
-      <Heading level={3}>Team</Heading>
+      <Heading level={3}>Current Team</Heading>
       <div className="flex flex-wrap gap-3">
         {proj.frontmatter.people.map((slug) => {
           const person = peopleMap[slug];

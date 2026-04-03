@@ -17,7 +17,7 @@ const NAV_ITEMS = [
       { label: "Uli", target: "/products/ogbv", description: "Online Gender Based Violence Mitigation" },
       { label: "Deepfake Analysis Unit", target: "/products/dau", description: "Collaborative Platform for Deepfake Assessment" },
       { label: "Viral Spiral", target: "/products/viral-spiral", description: "Digital Card Game for Media Literacy" },
-      { label: "Kosh", target: "/products/kosh", description: "Archive multimedia data" },
+      { label: "Feluda", target: "/products/feluda", description: "Multimedia and multimodal data analysis engine" },
       { label: "All Projects", target: "/products/", description: "" },
     ],
   },

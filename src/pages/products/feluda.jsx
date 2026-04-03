@@ -6,6 +6,7 @@ import { Anchor, Box, Heading, Image, List, Paragraph, Text } from "grommet"
 import { Link } from "gatsby"
 import { LatestProductBlogsUpdates } from "../../components/LatestProductBlogsUpdates"
 import { StaticImage } from "gatsby-plugin-image"
+import TeamSection from "../../components/TeamSection"
 
 const DPGLogo = () => (
   <svg
@@ -296,6 +297,12 @@ const Page = () => (
       <NarrowSection>
         <LatestProductBlogsUpdates projects={["feluda"]} />
       </NarrowSection>
+
+      <NarrowSection>
+        <TeamSection project="feluda" />
+      </NarrowSection>
+
+      
     </NarrowContentWrapper>
   </DefaultLayout>
 )
