@@ -166,8 +166,8 @@ export default function PageTemplate({
               >
                 <BlogHeaderCard
                   name={name}
-                  authors={author}
-                  project={project?.frontmatter?.name}
+                  author={author}
+                  project={project}
                   date={date}
                   textColor="white"
                 />
@@ -197,8 +197,8 @@ export default function PageTemplate({
             <NarrowContentWrapper width="large">
               <BlogHeaderCard
                 name={name}
-                authors={author}
-                project={project?.frontmatter?.name}
+                author={author}  
+                project={project}
                 date={date}
                 
               />
@@ -228,7 +228,7 @@ export default function PageTemplate({
 
         <NarrowContentWrapper width="large" >
           <Box align="start" className="flex flex-col lg:flex-row gap-2">
-            <Box className="fit blog-prose" margin={{top:"medium"}}>
+            <Box className="fit blog-prose" margin={{ top: "medium" }}>
               {children}
             </Box>
           </Box>
