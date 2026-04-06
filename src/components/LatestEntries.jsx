@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import { Box, ResponsiveContext, Text } from "grommet"
+import React from "react"
+import { Box, Text } from "grommet"
 import { PlainLink } from "./atomic/TattleLinks"
 import { ExternalLink } from "react-feather"
 
@@ -38,8 +38,6 @@ function formatAuthor(author) {
 }
 
 export function LatestEntries({ entries = [], isUpdate }) {
-  const size = useContext(ResponsiveContext)
-
   if (!Array.isArray(entries)) return null
 
   return (
@@ -60,7 +58,7 @@ export function LatestEntries({ entries = [], isUpdate }) {
           >
             {/* DATE */}
             <Box style={{ minWidth: "7em" }}>
-              <Text size={size === "small" ? "xsmall" : "small"}>
+              <Text size="small" className="text-xs sm:text-sm">
                 {formatDateLatestEntries(entry?.frontmatter?.date)}
               </Text>
             </Box>
@@ -68,7 +66,7 @@ export function LatestEntries({ entries = [], isUpdate }) {
             {/* TITLE */}
             <Box
               style={{ textAlign: "start" }}
-              pad={{ horizontal: size !== "small" ? "1em" : "0" }}
+              className="px-0 sm:px-[1em]"
             >
               {isUpdate ? (
                 entry?.frontmatter?.url ? (
@@ -107,7 +105,7 @@ export function LatestEntries({ entries = [], isUpdate }) {
                   flexGrow: 1,
                   flexShrink: 0,
                 }}
-                align={size === "small" ? "start" : "end"}
+                className="items-start sm:items-end"
               >
                 <Text size="small">
                   {formatAuthor(

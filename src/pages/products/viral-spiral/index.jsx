@@ -11,6 +11,7 @@ import TeamSection from "../../../components/TeamSection"
 const ViralSpiral = () => {
   return (
     <DefaultLayout>
+      
       <Box
         height={{ max: "80vh", min: "fit-content" }}
         pad={{ horizontal: "large" }}
@@ -25,8 +26,9 @@ const ViralSpiral = () => {
         </Box>
       </Box>
       <NarrowContentWrapper>
+        
         <NarrowSection>
-          <Heading level={2} margin={{ top: "none", bottom: "medium" }}>Media Literacy through a Game</Heading>
+          <Heading level={1} margin={{ top: "none", bottom: "xsmall" }}>Viral Spiral</Heading>
           <Paragraph fill>
             Viral Spiral is an adaptive digital card game about sharing news on
             the Internet. The game reflects the ways and reasons misinformation

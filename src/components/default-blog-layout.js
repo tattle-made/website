@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
-import { Box, ResponsiveContext, Paragraph } from "grommet"
+import { Box, Paragraph } from "grommet"
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
 import { primaryNav, footerItems } from "../config/options"
@@ -48,7 +48,6 @@ export default function PageTemplate({
   children,
 }) {
   const { tagCounts, projectTagsCounts } = useBlogTags()
-  const screenSize = useContext(ResponsiveContext)
   const { name, author, project, date, excerpt, cover } = mdx.frontmatter
   const tags = mdx.frontmatter.tags
     ? mdx.frontmatter.tags.split(",").map((tag) => tag.trim())
@@ -133,6 +132,8 @@ export default function PageTemplate({
         project: project?.frontmatter?.name,
         tags: tags,
         cover: cover ? getSrc(cover) : null,
+        date: date,
+        author: authorNames,
       }}
     >
       <MDXProvider components={shortcodes}>
@@ -148,13 +149,9 @@ export default function PageTemplate({
             <>
               <GatsbyImage
                 image={getImage(cover)}
-                alt="Blog Cover Page"
+                alt={name}
                 objectFit="cover"
-                style={{
-                  height: screenSize === "small" ? "50vh" : "520px",
-                  width: "100%",
-                  display: "block",
-                }}
+                className="h-[50vh] sm:h-[520px] w-full block"
               />
               <Box
                 style={{
@@ -169,12 +166,12 @@ export default function PageTemplate({
               >
                 <BlogHeaderCard
                   name={name}
-                  author={authorNames}
+                  authors={author}
                   project={project?.frontmatter?.name}
                   date={date}
                   textColor="white"
                 />
-                <Box direction="column" flex pad={0} basis="xsmall">
+                <Box direction="column" flex="grow" pad={0}>
                   <Box>
                     <TagsRenderer
                       sortedUniqueTags={tags}
@@ -200,11 +197,12 @@ export default function PageTemplate({
             <NarrowContentWrapper width="large">
               <BlogHeaderCard
                 name={name}
-                author={authorNames}
+                authors={author}
                 project={project?.frontmatter?.name}
                 date={date}
+                
               />
-              <Box direction="column" flex pad={0} basis="xsmall">
+              <Box direction="column" flex="grow" pad={0}>
                 <Box>
                   <TagsRenderer
                     sortedUniqueTags={tags}
@@ -262,6 +260,17 @@ export const pageQuery = graphql`
           frontmatter {
             name
             role
+            url
+            img {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 40
+                  height: 40
+                  layout: FIXED
+                  placeholder: BLURRED
+                )
+              }
+            }
           }
         }
 

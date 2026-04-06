@@ -27,7 +27,7 @@ import { useLocation } from "@reach/router"
 function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
   const location = useLocation()
   const pathname = location.pathname
-  // debugger
+
   let pageType = "OTHERS"
   if (pathname.indexOf("/blog/") !== -1) {
     pageType = "BLOG"
@@ -55,14 +55,13 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
     }
   `)
 
-  title = title || site.metadata.title
+  title = title || site.siteMetadata.title
   const metaDescription =
     meta.excerpt || description || site.siteMetadata.description
-  const author = meta.author || site.siteMetadata.author
   const baseURL = site.siteMetadata.base_url
+  const canonicalURL = `${baseURL}${pathname}`
 
   let socialImageURLs = {}
-
   allFile.edges.forEach((edge) => {
     if (edge.node.name === "social-card-blog") {
       socialImageURLs["BLOG"] = edge.node.publicURL
@@ -73,7 +72,40 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
     }
   })
 
-  const socialImageURL = socialImageURLs[pageType]
+  const socialImageURL = socialImageURLs[pageType] || socialImageURLs["OTHERS"]
+  const ogImage = `${baseURL}${meta.cover ? meta.cover : socialImageURL}`
+
+  // Blog posts have date; use this to distinguish post pages from list pages
+  const isBlogPost = pageType === "BLOG" && meta.date
+
+  const isSiteTitle = title === site.siteMetadata.title
+
+  const jsonLd = isBlogPost
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: title,
+        description: metaDescription,
+        image: ogImage,
+        datePublished: meta.date,
+        url: canonicalURL,
+        ...(meta.tags && { keywords: meta.tags.join(", ") }),
+        ...(meta.project && {
+          about: [{ "@type": "Thing", name: meta.project }],
+        }),
+        author: meta.author
+          ? meta.author.split(", ").map((name) => ({
+              "@type": "Person",
+              name,
+            }))
+          : [{ "@type": "Organization", name: "Tattle" }],
+        publisher: {
+          "@type": "Organization",
+          name: "Tattle",
+          url: baseURL,
+        },
+      }
+    : null
 
   return (
     <Helmet
@@ -81,25 +113,37 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s`}
+      titleTemplate={isSiteTitle ? `%s` : `%s | Tattle`}
     >
-      <meta property="description" content={metaDescription} />
+      <meta name="description" content={metaDescription} />
+      <link rel="canonical" href={canonicalURL} />
+
+      <meta property="og:url" content={canonicalURL} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
-      <meta
-        property="og:image"
-        content={`${baseURL}${meta.cover ? `${meta.cover}` : socialImageURL}`}
-      />
-      <meta property="og:type" content={"website"} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:type" content={isBlogPost ? "article" : "website"} />
+      <meta property="og:locale" content="en_IN" />
+
+      {isBlogPost && meta.date && (
+        <meta property="article:published_time" content={meta.date} />
+      )}
+      {isBlogPost && meta.author && (
+        <meta property="article:author" content={meta.author} />
+      )}
+      {isBlogPost &&
+        meta.tags &&
+        meta.tags.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
+
       <meta name="twitter:card" content={"summary_large_image"} />
       <meta name="twitter:site" content={"@tattlemade"} />
       <meta name="twitter:creator" content={"@tattlemade"} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
-      <meta
-        name="twitter:image"
-        content={`${baseURL}${meta.cover ? `${meta.cover}` : socialImageURL}`}
-      />
+      <meta name="twitter:image" content={ogImage} />
+
       {meta.tags && (
         <meta
           name="keywords"
@@ -108,6 +152,11 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
             .concat(meta.project ? `,${meta.project}` : "")}
         />
       )}
+
+      {jsonLd && (
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      )}
+
       <script
         async
         defer

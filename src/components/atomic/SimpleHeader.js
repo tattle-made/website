@@ -1,246 +1,183 @@
-import React, { useState, useContext } from "react"
-import { Box, Heading, Button, ResponsiveContext, Layer, Text } from "grommet"
+import React, { useState } from "react"
+import { ChevronDown, Menu, X, ExternalLink as ExternalLinkIcon } from "react-feather"
 import TattleLogo from "./TattleLogo"
-import {
-  PlainLink as Link,
-  PlainExternalLink as ExternalLink,
-} from "./TattleLinks"
-import DropDownMenu from "../DropDownMenu"
-import { Menu, X } from "react-feather"
+import { PlainLink, PlainExternalLink } from "./TattleLinks"
 import { NavigationLabel, Theme } from "./core-style"
-import NarrowSection from "./layout/narrow-section"
+import DropDownMenu from "../DropDownMenu"
 
 /**
- * Renders a responsive site header with primary navigation and hamburger menu for mobile.
- *
- * @param {Object} props
- * @param {string} props.label - Label displayed on the header (usually the site title or section).
- * @param {string} props.target - Link target for the main header label.
- * @param {Object[]} props.primaryNav - List of primary navigation items.
- * @param {Function} props.onHamburgerClicked - Handler for hamburger menu click (used in mobile view).
- * @returns {JSX.Element} Header component with navigation.
+ * Single source of truth for all navigation items.
+ * Both desktop dropdowns and the mobile drawer are derived from this structure,
+ * so there is no duplication between the two.
  */
-
-const dropDownOptions = [
-  { id: 1, target: "/products/kosh", label: "Archive" },
-  { id: 2, target: "/products/jod-bot", label: "Jod Bot" },
-  { id: 3, target: "/products/khoj", label: "Khoj" },
-]
-
-const dropDownOptionsTools = [
+const NAV_ITEMS = [
   {
-    id: 0,
-    target: "/products/ogbv",
-    label: "Uli",
-    description: "Online Gender Based Violence Mitigation",
+    label: "Tools",
+    children: [
+      { label: "Uli", target: "/products/ogbv", description: "Online Gender Based Violence Mitigation" },
+      { label: "Deepfake Analysis Unit", target: "/products/dau", description: "Collaborative Platform for Deepfake Assessment" },
+      { label: "Viral Spiral", target: "/products/viral-spiral", description: "Digital Card Game for Media Literacy" },
+      { label: "Feluda", target: "/products/feluda", description: "Multimedia and multimodal data analysis engine" },
+      { label: "All Projects", target: "/products/", description: "" },
+    ],
   },
+  { label: "Blog", target: "/blog" },
+  { label: "Research", target: "/research" },
   {
-    id: 1,
-    target: "/products/dau",
-    label: "Deepfake Analysis Unit",
-    description: "Collaborative Platform for Deepfake Assessment",
-  },
-  {
-    id: 2,
-    target: "/products/viral-spiral",
-    label: "Viral Spiral",
-    description: "Digital Card Game for Media Literacy",
-  },
-  {
-    id: 3,
-    target: "/products/kosh",
-    label: "Kosh",
-    description: "Archive multimedia data",
-  },
-  {
-    id: 4,
-    target: "/products/",
-    label: "Other Projects",
-    description: "",
+    label: "More",
+    children: [
+      {
+        label: "Newsletter",
+        target: "https://us19.campaign-archive.com/home/?u=a9af83af1f247ecc04f50ad46&id=4afc4a2c79",
+        external: true,
+      },
+      { label: "Work With Us", target: "/join-us" },
+      { label: "Annual Reports", target: "/report/" },
+      { label: "FAQ", target: "/faq" },
+      { label: "Community", target: "/community" },
+      { label: "Updates", target: "/updates" },
+    ],
   },
 ]
 
-const dropDownOptionsAbout = []
+/** Converts NAV_ITEMS children to the format DropDownMenu expects. */
+const toDropdownOptions = (children) =>
+  children.map((item, i) => ({
+    id: i,
+    label: item.label,
+    target: item.target,
+    description: item.description,
+    type: item.external ? "external" : "internal",
+  }))
 
-const dropDownOptionsLearnMore = [
-  {
-    id: 0,
-    target: "/blog",
-    label: "Blog",
-    type: "internal",
-  },
-  {
-    id: 1,
-    target:
-      "https://us19.campaign-archive.com/home/?u=a9af83af1f247ecc04f50ad46&id=4afc4a2c79",
-    label: "Newsletter",
-    type: "external",
-  },
-  { id: 2, target: "/join-us", label: "Work With Us" },
-  { id: 3, target: "/report/", label: "Annual Reports" },
-  { id: 4, target: "/faq", label: "FAQ" },
-  { id: 5, target: "/community", label: "Community" },
-  { id: 6, target: "/updates", label: "Updates" },
-]
+// ─── Mobile components ────────────────────────────────────────────────────────
 
-const MobileNavItemInternalLink = ({ target, label, description }) => (
-  <Link to={target}>
-    <Button plain={true} margin={"xsmall"}>
-      <Box>
-        <Text margin={"none"} size={"small"}>
-          {" "}
-          {label}{" "}
-        </Text>
-        <Text size={"xsmall"}>{description}</Text>
-      </Box>
-    </Button>
-  </Link>
-)
-
-const MobileNavItemExternalLink = ({ target, label }) => (
-  <ExternalLink href={target} target={"_blank"}>
-    <Button plain={true} margin={"xsmall"}>
-      <Text margin={"none"} size={"small"}>
-        {label}
-      </Text>
-    </Button>
-  </ExternalLink>
-)
-
-const PrimaryNav = ({ primaryNav }) => {
+const MobileNavLink = ({ item, onClose }) => {
+  if (item.external) {
+    return (
+      <PlainExternalLink href={item.target} target="_blank" onClick={onClose}>
+        <div
+          className="flex items-center gap-1 py-2 px-4 text-sm"
+          style={{ color: Theme.text_color_light }}
+        >
+          {item.label}
+          <ExternalLinkIcon size={12} />
+        </div>
+      </PlainExternalLink>
+    )
+  }
   return (
-    <Box direction={"row"} align={"center"} gap={"large"} >
-      <DropDownMenu title={"Tools"} options={dropDownOptionsTools} />
-      <Link to={"/blog"}>
-        <Button plain={true}>
-          <NavigationLabel>Blog</NavigationLabel>
-        </Button>
-      </Link>
-      <Link to={"/research"}>
-        <Button plain={true}>
-          <NavigationLabel>Research</NavigationLabel>
-        </Button>
-      </Link>
-
-      <DropDownMenu title={"Learn More"} options={dropDownOptionsLearnMore} />
-    </Box>
+    <PlainLink to={item.target} onClick={onClose}>
+      <div className="py-2 px-4 text-sm" style={{ color: Theme.text_color_light }}>
+        {item.label}
+      </div>
+    </PlainLink>
   )
 }
 
-/**
- * @author
- * @function SimpleHeader
- **/
-
-const SimpleHeader = ({ label, target, primaryNav, onHamburgerClicked }) => {
-  const size = useContext(ResponsiveContext)
+const MobileNavGroup = ({ item, onClose }) => {
   const [open, setOpen] = useState(false)
+  return (
+    <div>
+      <button
+        className="flex items-center justify-between w-full py-3 px-4"
+        onClick={() => setOpen(!open)}
+        style={{ color: Theme.text_color_light, background: "transparent", border: "none", cursor: "pointer" }}
+      >
+        <span className="text-sm font-semibold tracking-widest">{item.label}</span>
+        <ChevronDown
+          size={16}
+          style={{
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.2s ease",
+          }}
+        />
+      </button>
+      {open && (
+        <div
+          className="ml-4 pl-3 mb-1"
+          style={{ borderLeft: `1px solid ${Theme.text_color_light}40` }}
+        >
+          {item.children.map((child) => (
+            <MobileNavLink key={child.label} item={child} onClose={onClose} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
-  const onOpen = () => {
-    setOpen(true)
-  }
-  const onClose = () => {
-    setOpen(false)
-  }
+// ─── Main component ───────────────────────────────────────────────────────────
+
+/**
+ * Responsive site header.
+ *
+ * Desktop: logo + nav links with dropdowns (lg and above).
+ * Mobile: logo + hamburger that expands an inline drawer below the bar.
+ *
+ * Uses Tailwind responsive classes instead of Grommet's ResponsiveContext so
+ * the correct layout is rendered on first paint with no hydration jank.
+ */
+const SimpleHeader = () => {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const closeMobile = () => setMobileOpen(false)
 
   return (
-    <Box direction={"row"} wrap={"true"} height={"76.8px"} width={"960px"} >
-      {size !== "small" ? (
-        <Box direction={"row"} align={"center"} width={"960px"} gap={"xsmall"} >
-          <TattleLogo data={{ fill: Theme.text_color_light }} />
-          {label.length !== 0 ? (
-            <Text weight={900} level={3} margin="none">
-              {" " + [label[0].toUpperCase(), label.slice(1)].join("")}
-            </Text>
-          ) : null}
-          <Box flex={"grow"}></Box>
-          <PrimaryNav primaryNav={primaryNav} />
-        </Box>
-      ) : (
-        <Box
-          width={"100%"}
-          direction={"row"}
-          align={"center"}
-          fill={"true"}
-          gap={"xsmall"}
-          pad={{ horizontal: "medium" }}
+    <div style={{ width: "960px", maxWidth: "100%" }}>
+      {/* Top bar */}
+      <div className="flex items-center h-[77px] px-4 lg:px-0">
+        <TattleLogo data={{ fill: Theme.text_color_light }} />
+
+        {/* Desktop nav — hidden on mobile */}
+        <nav className="hidden lg:flex items-center gap-8 ml-auto">
+          <DropDownMenu title="Tools" options={toDropdownOptions(NAV_ITEMS[0].children)} />
+          <PlainLink to="/blog">
+            <NavigationLabel>Blog</NavigationLabel>
+          </PlainLink>
+          <PlainLink to="/research">
+            <NavigationLabel>Research</NavigationLabel>
+          </PlainLink>
+          <DropDownMenu title="More" options={toDropdownOptions(NAV_ITEMS[3].children)} />
+        </nav>
+
+        {/* Hamburger — hidden on desktop */}
+        <button
+          className="lg:hidden ml-auto p-2"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          style={{ background: "transparent", border: "none", cursor: "pointer" }}
         >
-          <TattleLogo data={{ fill: Theme.text_color_light }} />
-          {label.length !== 0 ? (
-            <Text weight={900} level={3} margin="none">
-              {" " + [label[0].toUpperCase(), label.slice(1)].join("")}
-            </Text>
-          ) : null}
-          <Box flex={"grow"}></Box>
-          <Box>
-            <Button plain focusIndicator={false}>
-              <Menu size={28} onClick={onOpen} />
-            </Button>
-          </Box>
-        </Box>
-      )}
-      {open && (
-        <Layer position="right" onClickOutside={onClose} animation={"slide"} >
-          <Box fill={true} flex={"grow"} overflow="auto" background={"brand"} >
-            <Box
-              fill={true}
-              pad={size !== "small" ? "small" : "medium"}
-              direction={"column"}
-              background={"brand"}
-            >
-              <Box direction={"row"} pad={"small"}>
-                <Box flex={"grow"} />
-                <Button plain focusIndicator={false}>
-                  <X size={28} onClick={onClose} />
-                </Button>
-              </Box>
-              <Box direction={"column"} pad={"small"}>
-                <Heading level={3} margin={"small"}>
-                  {" "}
-                  Products{" "}
-                </Heading>
-                <Box flex={"grow"} margin={{ left: "medium" }}>
-                  {[0, 1, 2, 3, 4].map(i => (
-                    <MobileNavItemInternalLink
-                      label={dropDownOptionsTools[i].label}
-                      description={dropDownOptionsTools[i].description}
-                      target={dropDownOptionsTools[i].target}
-                    />
-                  ))}
-                </Box>
-                <Link to={"/datasets"}>
-                  <Box>
-                    <Heading level={3} margin={"small"}>
-                      Datasets
-                    </Heading>
-                  </Box>
-                </Link>
-                <Link to={"/research"}>
-                  <Box>
-                    <Heading level={3} margin={"small"}>
-                      Research
-                    </Heading>
-                  </Box>
-                </Link>
+          {mobileOpen ? (
+            <X size={24} color={Theme.text_color_light} />
+          ) : (
+            <Menu size={24} color={Theme.text_color_light} />
+          )}
+        </button>
+      </div>
 
-                <Heading level={3} margin={"small"}>
-                  Learn More
-                </Heading>
-
-                <Box flex={"grow"} margin={{ left: "medium" }}>
-                  {dropDownOptionsLearnMore.map(item => (
-                    <MobileNavItemExternalLink
-                      label={item.label}
-                      target={item.target}
-                    />
-                  ))}
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Layer>
+      {/* Mobile drawer — expands inline below the top bar */}
+      {mobileOpen && (
+        <nav
+          className="lg:hidden pb-4"
+          style={{ borderTop: `1px solid ${Theme.text_color_light}30` }}
+        >
+          {NAV_ITEMS.map((item) =>
+            item.children ? (
+              <MobileNavGroup key={item.label} item={item} onClose={closeMobile} />
+            ) : (
+              <PlainLink key={item.label} to={item.target} onClick={closeMobile}>
+                <div
+                  className="py-3 px-4 text-sm font-semibold tracking-widest"
+                  style={{ color: Theme.text_color_light }}
+                >
+                  {item.label}
+                </div>
+              </PlainLink>
+            )
+          )}
+        </nav>
       )}
-    </Box>
+    </div>
   )
 }
 

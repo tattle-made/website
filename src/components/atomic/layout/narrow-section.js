@@ -1,5 +1,5 @@
-import React, { useContext } from "react"
-import { Box, ResponsiveContext } from "grommet"
+import React from "react"
+import { Box } from "grommet"
 /**
  * @author
  * @function NarrowSection

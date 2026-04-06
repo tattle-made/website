@@ -1,56 +1,23 @@
-import React, { useEffect, useState } from "react"
-import MasonryLayout from "./MasonryLayout"
-import { Heading } from "grommet"
+import React from "react"
 
 /**
- * Responsive wrapper for MasonryLayout.
- * Adjusts column count based on window width.
+ * CSS-driven responsive masonry layout using Tailwind column utilities.
+ * No JS measurement needed — column count is determined by CSS breakpoints,
+ * so the layout is correct on first paint with no hydration jank.
  *
- * @param {Object} props
- * @param {React.ReactNode[]} props.children - Items to display in the layout.
- * @returns {JSX.Element} Responsive masonry layout.
+ * Breakpoints mirror the previous JS thresholds:
+ *   < 768px  → 1 column  (mobile)
+ *   768px+   → 3 columns (tablet / small desktop)
+ *   1280px+  → 4 columns (wide desktop)
  */
-
-const getColumnCount = (width) => {
-  if (width < 768) {
-    return 1
-  } else if (width < 1280) {
-    return 3
-  } else {
-    return 4
-  }
-}
-
-const MasonryLayoutResponsive = ({ children }) => {
-  const [columnCount, setColumnCount] = useState(null)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setColumnCount(getColumnCount(window.innerWidth))
-    }
-
-    window.addEventListener("resize", handleResize)
-
-    handleResize()
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
-
-  if (columnCount === null) {
-    return (
-      <Heading level={5} alignSelf="center">
-        Loading...
-      </Heading>
-    )
-  }
-
-  return (
-    <MasonryLayout columns={columnCount} gap={28}>
-      {children}
-    </MasonryLayout>
-  )
-}
+const MasonryLayoutResponsive = ({ children }) => (
+  <div className="columns-1 md:columns-3 xl:columns-4 gap-7">
+    {React.Children.map(children, (child, i) => (
+      <div key={i} className="break-inside-avoid mb-7">
+        {child}
+      </div>
+    ))}
+  </div>
+)
 
 export default MasonryLayoutResponsive
