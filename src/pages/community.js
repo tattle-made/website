@@ -4,8 +4,6 @@ import { Box, Heading, Text, Paragraph } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
-import { PlainExternalLink } from "../components/atomic/TattleLinks"
-import { ExternalLink } from "react-feather"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
@@ -37,7 +35,10 @@ const CommunityMemberCard = ({
   slug,
   isCurrentContributor = false,
 }) => (
-  <Link to={`/people/${slug}`} style={{ textDecoration: "none" }}>
+  <Link
+    to={`/people/${slug}`}
+    style={{ textDecoration: "none", color: "inherit" }}
+  >
     <Box
       width="medium"
       direction="column"
@@ -95,11 +96,6 @@ const CommunityMemberCard = ({
             >
               {name}
             </Heading>
-            {url && url.length !== 0 && (
-              <Box>
-                <ExternalLink size={16} />
-              </Box>
-            )}
           </Box>
           <Paragraph size="small" pad={{ left: "small", right: "small" }}>
             {role}
