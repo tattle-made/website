@@ -42,6 +42,7 @@ His collection at NCBS Archives is organised as: Leslie Coleman Papers (collecti
 ## EAD and OAI-PMH: the machinery behind archival catalogues
 In the digital world, an archive's structure is encoded in a format called EAD, Encoded Archival Description. An EAD file is an XML document that captures the full hierarchy of a collection: which series it contains, which sub-series, which files, and what metadata each carries. It is the digital version of the map.
 To make these maps shareable across institutions, archives publish them through OAI-PMH, the Open Archives Initiative Protocol for Metadata Harvesting. It is a standard protocol that lets one system say to another: here are my catalogue records, take what you need. Catalogue aggregators use this to harvest EAD files from multiple archives and bring them into one searchable place.
+
 For this prototype: Catmilli, an ArchivesSpace instance, acts as an aggregator that hosts many EADs and serves as an OAI-PMH-compliant EAD 2002 disseminator. Anno-Milli can import one of these EADs from Catmilli. It holds the catalogues from the Archives at NCBS along with a select few open OAI endpoints that disseminate EAD 2002 catalogues. On catmilli, folder-level archival objects carry an "anno.milli" action button that takes the user directly to annotate that object on AnnoMilli.
 
 ## The AnnoMilli workflow
@@ -61,8 +62,7 @@ AnnoMilli offers four types of annotations. Three go through admin review before
 | Description | Subject | Peoples, places, organisations | Emotion  |
 | :--------------------- | :-------------- | :-------------- | :----------- |
 | Free text. Write what is in the file, who it is about, or any context the catalogue record does not carry. | Select from a dropdown of LCSH subject headings, or add a new subject not in the list. | Select from the LCNAF name authority list, or add a new name that does not appear in the dropdown. | Choose from a toggle list of eight emotion responses. How did the material make you feel as a reader? |
-| **Admin review required** | **Admin review required** | **Admin review required** | **Displayed immediately**
- |
+| **Admin review required** | **Admin review required** | **Admin review required** | **Displayed immediately**|
 
 
 Once an annotation is approved, it appears in the "Annotations for this file" section on the object's record page. Emotion annotations skip the review queue entirely and display immediately. They are responses, not factual claims, and carry a different epistemic weight.
