@@ -10,6 +10,7 @@ import LinkCard from "../components/atomic/LinkCard"
 
 import coverAnnoMilli from '../images/cover-anno-milli-announcement.png'
 import coverDAUdataset from '../images/cover-blog-dau-dataset-event.png'
+import NewsletterSubscribeModal from "../components/atomic/NewsletterSubscribeModal"
 
 const featuredLinks = [
   {
@@ -44,7 +45,7 @@ const Links = () => {
 
           
           <Box background={"visuals-1"} pad="medium" round="medium">
-            <span>We send out a quarterly newsletter to our readers. <NewsletterSubscribeModal  label="Subscribe for updates" /></span>
+            <span>We send out a quarterly newsletter to our readers. <NewsletterSubscribeModal   label="Subscribe for updates" /></span>
             
           </Box>
         </NarrowSection>
