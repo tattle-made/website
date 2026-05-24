@@ -41,6 +41,12 @@ const Links = () => {
           </div>
 
           <LatestBlogsUpdates />
+
+          
+          <Box background={"visuals-1"} pad="medium" round="medium">
+            <span>We send out a quarterly newsletter to our readers. <NewsletterSubscribeModal  label="Subscribe for updates" /></span>
+            
+          </Box>
         </NarrowSection>
       </NarrowContentWrapper>
     </DefaultLayout>
