@@ -63,3 +63,12 @@ Gatsby, ReactJS, Github Actions
 REsume 
 hyphen case all tags
     limit the number of tags
+
+# Subscribe to newsletter CTA
+You can now drop a jsx component anywhere you want to nudge users to subscribe to the newsletter.
+```jsx
+import NewsletterSubscribeModal from "../components/atomic/NewsletterSubscribeModal"
+
+// Drop this anywhere — it renders as a clickable text link
+<NewsletterSubscribeModal label="Subscribe for updates" />
+```
