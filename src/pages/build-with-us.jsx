@@ -57,26 +57,26 @@ const Links = () => {
             Annotation Software for Archives at NCBS
         </Heading>
 
-          <Box margin={{ top: "large" }}>     
-            <Box direction="column" gap="small">
-                <RadarChart options={radarOptions} />
-                </Box>
-            <Box direction="column" gap="small">
-                <Text size="small">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum. Curabitur pretium tincidunt
-                lacus. Nulla gravida orci a odio. Nullam varius, turpis
-                molestie pretium placerat, arcu purus aliquam sem, et tempus
-                nibh enim vel purus. Aliquam commodo facilisis lectus, vitae
-                vulputate dui fringilla vel.
-                </Text>
-            </Box>
+          <Box>     
+            <TwoColumnLayout 
+                left={
+                    <RadarChart options={
+                        [
+                            { label: "UX Design", value: 0.2 },
+                            { label: "Software Development", value: 0.9 },
+                            { label: "Research", value: 0.1 },
+                            { label: "Project Management", value: 0.2 },
+                        ]
+                    } />
+                }
+                right={
+                    <Box direction="column" gap="small">
+                        <Text size="small">
+                        Annomilli is a new archival annotation platform that helps archivists import, annotate and export EAD-based collections while preserving open standards and interoperability.
+                        </Text>
+                    </Box>
+                }
+            />
           </Box>
 
 
@@ -84,52 +84,54 @@ const Links = () => {
             Software for Psychologists
           </Heading>
 
-          <Box margin={{ top: "large" }}>     
-            <Box direction="column" gap="small">
-                <RadarChart options={radarOptions} />
-                </Box>
-            <Box direction="column" gap="small">                
-                <Text size="small">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum. Curabitur pretium tincidunt
-                lacus. Nulla gravida orci a odio. Nullam varius, turpis
-                molestie pretium placerat, arcu purus aliquam sem, et tempus
-                nibh enim vel purus. Aliquam commodo facilisis lectus, vitae
-                vulputate dui fringilla vel.
-                </Text>
-            </Box>
+          <Box>     
+            <TwoColumnLayout 
+                left={
+                    <RadarChart options={
+                        [
+                            { label: "UX Design", value: 0.3 },
+                            { label: "Software Development", value: 1.0 },
+                            { label: "Data Cleaning", value: 0.3 },
+                            { label: "Project Management", value: 0.2 },
+                            { label: "Grant Writing", value: 0.4 },
+                        ]
+                    } />
+                }
+                right={
+                    <Box direction="column" gap="small">
+                        <Text size="small">
+                        Monk Prayogshala designed a study to understand how monetary and vanity incentives affect how people share content on social media. We helped build the software and data pipeline to run this study that took place online with ~1000 participants. 
+                        </Text>
+                    </Box>
+                }
+            />
           </Box>
+
 
           <Heading level={3} >
             Investigative Article with Boom Live
           </Heading>
 
-          <Box margin={{ top: "large" }}>     
-            <Box direction="column" gap="small">
-                <RadarChart options={radarOptions} />
-                </Box>
-            <Box direction="column" gap="small"> 
-                <Text size="small">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum. Curabitur pretium tincidunt
-                lacus. Nulla gravida orci a odio. Nullam varius, turpis
-                molestie pretium placerat, arcu purus aliquam sem, et tempus
-                nibh enim vel purus. Aliquam commodo facilisis lectus, vitae
-                vulputate dui fringilla vel.
-                </Text>
-            </Box>
+          <Box>     
+            <TwoColumnLayout 
+                left={
+                    <RadarChart options={
+                        [
+                            { label: "OSINT", value: 0.8 },
+                            { label: "Policy Research", value: 1.0 },
+                            { label: "Security", value: 0.4 },
+                            { label: "Visual Design", value: 0.4 },
+                        ]
+                    } />
+                }
+                right={
+                    <Box direction="column" gap="small">
+                        <Text size="small">
+                        Nudify app Lorem ipsum dolor sit amet, consectetur adipiscing elit. In fringilla nulla mauris. Suspendisse sed aliquam ante. Fusce sollicitudin efficitur velit ut maximus. Nunc interdum vestibulum metus, ac dignissim erat efficitur sed. Sed non lacus diam. Aenean pharetra vulputate turpis. 
+                        </Text>
+                    </Box>
+                }
+            />
           </Box>
 
 
