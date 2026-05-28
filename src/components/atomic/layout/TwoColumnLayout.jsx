@@ -8,9 +8,9 @@ import React from "react"
  */
 const TwoColumnLayout = ({ left, right }) => {
   return (
-    <div className="flex flex-col md:flex-row gap-6 w-full">
-      <div className="w-full md:w-1/4 bg-red-500">{left}</div>
-      <div className="w-full md:w-3/4 bg-red-400">{right}</div>
+    <div className="flex flex-col md:flex-row gap-6 w-full items-center">
+      <div className="w-full md:w-1/2">{left}</div>
+      <div className="w-full md:w-1/2">{right}</div>
     </div>
   )
 }
