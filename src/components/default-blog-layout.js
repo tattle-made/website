@@ -235,7 +235,7 @@ export default function PageTemplate({
           </Box>
         </NarrowContentWrapper>
         <NarrowContentWrapper width="large" >
-          <Box background={"visuals-1"} pad="medium" round="medium">
+          <Box background={"visuals-1"} pad="medium" round="medium" margin={{top: "medium"}}>
             <span>We send out a quarterly newsletter to our readers. <NewsletterSubscribeModal  label="Subscribe for updates" /></span>
             
           </Box>
