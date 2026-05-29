@@ -31,6 +31,14 @@ export const research = {
   ],
   all: [
     {
+      date: "30th May, 2026",
+      title: "Quantifying the Illicit Ecosystem of Betting Apps in India",
+      description:
+        "Quantifies India’s online betting apps ecosystem by linking social media promotion to user harm",
+      url: "https://ojs.aaai.org/index.php/ICWSM/article/view/42752",
+      tags: ["dataset", "betting apps", "financial harm"],
+    },
+    {
       date: "8th December, 2023",
       title: "Shared Task: Gendered Abuse Detection in Indic Languages",
       description:
