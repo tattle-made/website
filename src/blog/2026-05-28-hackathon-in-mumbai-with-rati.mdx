@@ -1,0 +1,67 @@
+---
+name: Can LLMs reduce a counsellor's workload? 
+excerpt: Using LLMs to Match Child Safety Cases to Platform Policies
+author: 
+   - manisha-kumari
+   - preeti-aarya
+date: 2026-05-12
+tags: responsible-ai 
+cover: ../images/cover-blog-rati-sprint.jpeg
+featured: true
+---
+import prototypeOneSS from "../images/blog-rati-sprint-prototype-1-screenshot.png"
+import prototypeTwoSS from "../images/blog-rati-sprint-prototype-2-screenshot.png"
+import prototypeThreeSS from "../images/blog-rati-sprint-prototype-3-screenshot.png"
+import { BlogFigure } from "../components/atomic/BlogFigure"
+
+Preeti and Manisha interviewed Denny to understand what the Tattle team did at the [RATI Foundation's](https://ratifoundation.org/#) office in Mumbai. 
+
+
+*Preeti : Tell us about the 3 days you spent in Mumbai at the RATI office*
+
+Denny : Maanas, Kritika and I went to Mumbai last week to work from the RATI office. We've done a few work sessions with their team that would count as "requirement gathering" or "contextual inquiry" in the traditional design process sense but this trip was the closest we came to a hackathon like process with them. We built working software for their use case and got them to interact with the prototype and give us feedback.
+
+*Manisha: Was there a plan in mind before you reached there?*
+
+Denny : Yes. We knew a month before we landed what we were going to build. From our [previous sessions with them](/blog/handpicked-issues) we have a good idea of what their workflows and SOPs are and what some of their bottlenecks to growth were. We had been on the look out for building some prototypes for them that don't disrupt their existing workflows and helps their team right away. A problem statement emerged over time from the RATI team that seemed perfect for this. They wanted to investigate if LLMs could ease the cognitive load and time taken for their counsellors. The specific challenge that they wanted to test this on was the challenge of mapping a user's case details to the appropriate Platform policy clauses. If it works well, it would help their counsellors in writing email for content takedown requests.
+
+*Preeti : Was their anything in particular about this problem statement that appealed to you?*
+
+Denny : We liked how narrow in scope it was. This didn't require integrations of multiple software systems that they use before being deployed in field. This could exist as a standalone tool that the counsellors use or not use on a case by case basis. The other thing we liked about this project was that the challenge that they were trying to solve seemed tailor made for an LLM to solve. LLMs do excel at retrieving information from large unstructured data when queried using human language. There was no expectations for the LLM to do contentious things like value judgements or moral judgements. It also felt like an opportunity for the Tattle team to test out LLMs for a real world use case around Trust and Safety. Theoretically, we know that issues like hallucination exist in LLMs and that approaches like RAG mitigate them. But could we build a RAG based system on an LLM that approaches near zero hallucination error? Would this system work in practice for RATI's sensitive use case? These are the questions we are very excited to work on.
+
+*Manisha: Tell us about the 3 days you spent there*
+
+Denny : It was 2.5 actually. We really kept the trip to the point and short. I didn't even get time to meet my friends in Mumbai. So yes, since we already knew what we were building. After reaching their office. We got down to building. In true hackathon style, we did not come prepared with any pre-written code. Infact I didn't share the problem statement with Kritika and Maanas before hand. Add to that this was Maanas' first exposure to building ML software. My brief to them was short - Build something working fast and pull different RATI counsellors one by one and ask them questions about the accuracy of the LLM response. We uploaded platform policies of Instagram, Snapchat, Whatsapp, Facebook and a few others to ChatGPT's vector store and created 3 prototypes, each meant to test one thing each.
+ 
+## Prototype 1 - Ask an LLM
+<BlogFigure
+  src={prototypeOneSS}
+  alt="Screenshot of Prototype 1"
+  caption="Counsellors can ask question directly to an LLM with a pre-configured set of platform policy documents"
+/>
+This app allows a counsellor to ask unstructured, exploratory questions about Platform policies. The counsellors in their team are used to chat interfaces to talk to an LLM. This is the user interaction they are probably the most familiar with where you ask whatever is on your mind to a LLM. No preconfigured prompts. The main difference between directly asking this to chatgpt would be that the responses would be drawn from a pre-configured set of documents and all counsellors will have access to the same setup. 
+
+
+## Prototype 2 - Find Relevant Clauses
+<BlogFigure
+  src={prototypeTwoSS}
+  alt="Screenshot of Prototype 2"
+  caption="Counsellors can input anonymised or representative case summaries and have the LLM find relevant clauses from platform policy documents."
+/>
+This app allows a counsellor to input an anonymised case summary or scenario for the purpose of identifying potentially relevant platform-policy clauses. One thing where LLMs shine is unstructured user input. With this app, we didn't want the counsellors to input case details in any specific format. Instead we just copy pasted case details from RATI's case management software. We wanted to see if we can minimize additional overheads for the counsellors to use this app. The app takes the user input and finds the most appropriate clauses from a platform's policy documents. It also provides those clauses verbatim so that the counsellor could copy paste them into the report they eventually send to the Platform. We showed this to Sidhartha, Uma, Sameer, Rutam and Ritu. The main feedback from this was that the LLM did a good job at finding relevant clauses. There was disagreement amongst the users on the order of the clauses. The most pertinent clause should be suggested upfront. There were also internal heuristics that the counsellors used to decide which clause to prioritize. This is largely undocumented. A future exercise could involve collecting these heuristics and add it to the LLM system prompt.
+
+## Prototype 3 - Compose Email
+<BlogFigure
+  src={prototypeThreeSS}
+  alt="Screenshot of Prototype 3"
+  caption="This prototype allows counsellors to annotate and give feedback to generated output"
+/>
+This prototype builds on the previous prototype and composes the email that can be sent to the platform. After adding a few instructions related to the tone and verbosity in the system prompt, we started getting acceptable results. The main highlight of this prototype was that this gave counsellors the ability to annotate portions of the generated response. The idea here would be to get feedback specific to portions of the generated text that our team could consider in future designs of the project. It would also help us measure inter-counsellor agreement on subjective topics like the quality of an email.
+
+*Manisha: This all sounds very exciting. How did the RATI team respond?*
+
+Denny : We found the team to be very optimistic about the early resuts. If this project works to an acceptable level, it could help them onboard new counsellors and speed up how quickly they can create take down requests for survivors. 
+
+*Preeti : What is next for this project?*
+
+Denny : We have setup the project's [Github Repository](https://github.com/tattle-made/chadachi-takrarkara-experiments) and are [working on a v0.1 for this prototype](https://github.com/tattle-made/chadachi-takrarkara-experiments/issues/2). Those who are interested in how this project evolves can start engaging with us there.
