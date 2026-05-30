@@ -1,4 +1,4 @@
-import React from "react" 
+import React from "react"
 import { Box, Heading, Text, Anchor } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
