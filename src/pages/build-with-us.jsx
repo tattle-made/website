@@ -62,7 +62,14 @@ const COLLABORATIONS = [
 
 export default function BuildWithUs() {
   return (
-    <DefaultLayout navTheme="dark">
+    <DefaultLayout
+      navTheme="dark"
+      meta={{
+        name: "Build With Us | Tattle",
+        description: "Tattle is a cross-functional team with deep expertise in research, engineering, ML, UX, and policy. We take on paid collaborations that align with our mission.",
+        cover: "/aipolicy3.jpg",
+      }}
+    >
 
       {/* ── Hero ──────────────────────────────────────────────────── */}
       <Box background="#252653" pad={{ vertical: "xlarge" }}>
