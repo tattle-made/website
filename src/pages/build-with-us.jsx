@@ -263,9 +263,9 @@ export default function BuildWithUs() {
                   key={c.title}
                   pad="medium"
                   style={{
-                    border: "4px solid #E76D67",
+                    border: "4px solid #f4c6d7",
                     background: "white",
-                    borderRadius: "0 4px 4px 0",
+                    borderRadius: "0.4em",
                   }}
                 >
                   <Heading
