@@ -230,6 +230,7 @@ export default function BuildWithUs() {
                     padding: "12px 28px",
                     borderRadius: "0.6em",
                     textDecoration: "none",
+                    width: "fit-content"
                   }}
                 >
                   Start a conversation →

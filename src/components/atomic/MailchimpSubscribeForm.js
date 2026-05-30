@@ -55,6 +55,17 @@ const MailchimpSubscribeForm = () => {
                       background={"#FFFFFF"}
                     />
                     <Button
+                        style={{
+                        display: "inline-block",
+                        fontFamily: "Raleway",
+                        fontWeight: 700,
+                        letterSpacing: "0.1em",
+                        fontSize: "14px",
+                        background: "brand",
+                        color: "accent-3",
+                        borderRadius: "0.6em",
+                        textDecoration: "none",
+                      }}
                       primary
                       label={status === "sending" ? "Submitting..." : "Subscribe"}
                       onClick={() => {
