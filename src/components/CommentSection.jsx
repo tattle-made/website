@@ -323,7 +323,7 @@ function CommentCard({ comment, slug, depth, user, onReplyPosted }) {
 
 // ─── Comment Section ──────────────────────────────────────────────────────────
 export default function CommentSection({ slug }) {
-  const { user, loading: authLoading, logout } = useAuth()
+  const { user, loading: authLoading, backendOnline, logout } = useAuth()
   const [comments, setComments] = useState([])
   const [loadingComments, setLoadingComments] = useState(true)
   // Track if this user's session comment_status has flipped to "pending"
@@ -364,6 +364,8 @@ export default function CommentSection({ slug }) {
   }
 
   const commentStatus = localPending ? "pending" : user?.comment_status
+
+  if (!backendOnline) return null
 
   return (
     <Box pad={{ vertical: "large" }}

@@ -6,12 +6,16 @@ const AuthContext = createContext(null)
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [backendOnline, setBackendOnline] = useState(null)
 
   useEffect(() => {
     apiFetch("/api/auth/me")
       .then(r => r.json())
-      .then(({ user }) => setUser(user ?? null))
-      .catch(() => {})
+      .then(({ user }) => {
+        setBackendOnline(true)
+        setUser(user ?? null)
+      })
+      .catch(() => setBackendOnline(false))
       .finally(() => setLoading(false))
   }, [])
 
@@ -47,7 +51,7 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, backendOnline, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   )
