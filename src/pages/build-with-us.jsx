@@ -1,12 +1,12 @@
-import React from "react"
-import { Box, Heading, Text, Anchor } from "grommet"
+import React, { useState } from "react"
+import { Box, Heading, Text } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import TwoColumnLayout from "../components/atomic/layout/TwoColumnLayout"
 import RadarChart from "../components/atomic/RadarChart"
 import { SkillChips } from "../components/atomic/Chip"
-import { StaticImage } from "gatsby-plugin-image"
+
 
 const SKILLS = [
   "Multilingual NLP",
@@ -59,6 +59,103 @@ const COLLABORATIONS = [
     ],
   },
 ]
+
+const inputStyle = {
+  fontFamily: "Raleway",
+  fontSize: "14px",
+  padding: "10px 14px",
+  borderRadius: "0.4em",
+  border: "none",
+  background: "#f9f0ee",
+  color: "#252653",
+  width: "100%",
+  boxSizing: "border-box",
+}
+
+function ContactForm() {
+  const [fields, setFields] = useState({ name: "", email: "", project_details: "" })
+  const [status, setStatus] = useState("idle") // idle | submitting | success | error
+
+  const handleChange = e => setFields(f => ({ ...f, [e.target.name]: e.target.value }))
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setStatus("submitting")
+    try {
+      const res = await fetch("http://localhost:4000/api/lead-capture/build-with-us", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(fields),
+      })
+      setStatus(res.ok ? "success" : "error")
+    } catch {
+      setStatus("error")
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <Text style={{ fontFamily: "Raleway", color: "#252653", fontSize: "15px" }}>
+        Thanks! We'll be in touch soon.
+      </Text>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <input
+        style={inputStyle}
+        name="name"
+        placeholder="Your name"
+        value={fields.name}
+        onChange={handleChange}
+        required
+      />
+      <input
+        style={inputStyle}
+        type="email"
+        name="email"
+        placeholder="Your email"
+        value={fields.email}
+        onChange={handleChange}
+        required
+      />
+      <textarea
+        style={{ ...inputStyle, minHeight: "100px", resize: "vertical" }}
+        name="project_details"
+        placeholder="Tell us about your project"
+        value={fields.project_details}
+        onChange={handleChange}
+        required
+      />
+      {status === "error" && (
+        <Text style={{ fontFamily: "Raleway", color: "#252653", fontSize: "13px" }}>
+          Something went wrong. Please try again.
+        </Text>
+      )}
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        style={{
+          fontFamily: "Raleway",
+          fontWeight: 700,
+          letterSpacing: "0.1em",
+          fontSize: "14px",
+          background: "#252653",
+          color: "#edc9c4",
+          padding: "12px 28px",
+          borderRadius: "0.6em",
+          border: "none",
+          cursor: status === "submitting" ? "not-allowed" : "pointer",
+          width: "fit-content",
+          opacity: status === "submitting" ? 0.7 : 1,
+        }}
+      >
+        {status === "submitting" ? "Sending…" : "Start a conversation →"}
+      </button>
+    </form>
+  )
+}
 
 export default function BuildWithUs() {
   return (
@@ -223,26 +320,7 @@ export default function BuildWithUs() {
                 Tell us what you're working on. Whether it's a scoped consultation or a longer
                 collaboration, we're happy to explore what's possible together.
               </Text>
-              <Box>
-                <Anchor
-                  href="mailto:admin@tattle.co.in?subject=Collaboration enquiry"
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "Raleway",
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    fontSize: "14px",
-                    background: "#252653",
-                    color: "#edc9c4",
-                    padding: "12px 28px",
-                    borderRadius: "0.6em",
-                    textDecoration: "none",
-                    width: "fit-content"
-                  }}
-                >
-                  Start a conversation →
-                </Anchor>
-              </Box>
+              <ContactForm />
             </Box>
           </NarrowSection>
         </NarrowContentWrapper>
