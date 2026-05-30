@@ -55,12 +55,12 @@ const Theme = {
  */
 const NavThemes = {
   light: {
-    background: "#ffffff",
+    background: "#E76D67",
     text: "#252653",
     icon: "#252653",
   },
   dark: {
-    background: "#1a1a2e",
+    background: "#252653",
     text: "#edc9c4",
     icon: "#edc9c4",
   },

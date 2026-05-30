@@ -18,7 +18,7 @@ import { useLocation } from "@reach/router"
  * @returns {JSX.Element}
  */
 
-const DefaultLayout = ({ children }) => {
+const DefaultLayout = ({ children, navTheme }) => {
   const location = useLocation()
   const [label, setLabel] = useState("")
 
@@ -33,6 +33,7 @@ const DefaultLayout = ({ children }) => {
       footerItems={footerItems}
       primaryNav={primaryNav}
       expandCenter={true}
+      navTheme={navTheme}
     >
       {children}
     </AppShell>

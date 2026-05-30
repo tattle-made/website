@@ -6,6 +6,7 @@ import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wra
 import TwoColumnLayout from "../components/atomic/layout/TwoColumnLayout"
 import RadarChart from "../components/atomic/RadarChart"
 import { SkillChips } from "../components/atomic/Chip"
+import { StaticImage } from "gatsby-plugin-image"
 
 const SKILLS = [
   "Multilingual NLP",
@@ -61,7 +62,7 @@ const COLLABORATIONS = [
 
 export default function BuildWithUs() {
   return (
-    <DefaultLayout>
+    <DefaultLayout navTheme="dark">
 
       {/* ── Hero ──────────────────────────────────────────────────── */}
       <Box background="#252653" pad={{ vertical: "xlarge" }}>
@@ -79,7 +80,7 @@ export default function BuildWithUs() {
                   fontWeight: 800,
                 }}
               >
-                We build at the intersection of AI, misinformation research, and civic technology.
+                Build your next project <br/>with our team
               </Heading>
               <Text
                 style={{
@@ -89,8 +90,8 @@ export default function BuildWithUs() {
                   lineHeight: "1.75",
                 }}
               >
-                Tattle is a cross-functional team with deep expertise in machine learning,
-                full-stack engineering, UX research, and policy. We take on paid collaborations
+                Tattle is a cross-functional team with deep expertise in research, full-stack engineering, machine learning,
+                UX design and policy. We take on paid collaborations
                 and consultations that align with our mission.
               </Text>
             </Box>
@@ -99,7 +100,7 @@ export default function BuildWithUs() {
       </Box>
 
       {/* ── Skills ────────────────────────────────────────────────── */}
-      <Box background="white" pad={{ vertical: "xlarge" }}>
+      <Box background="white">
         <NarrowContentWrapper>
           <NarrowSection>
             <Box gap="large">
@@ -107,13 +108,18 @@ export default function BuildWithUs() {
                 <Heading
                   level={2}
                   margin="none"
-                  style={{ fontFamily: "Bitter", color: "#252653" }}
+                  style={{ fontFamily: "Bitter", color: "#252653", fontSize: "clamp(26px, 4vw, 40px)", lineHeight: "1.25", }}
                 >
                   What we bring
                 </Heading>
-                <Text style={{ fontFamily: "Raleway", color: "#514E80", fontSize: "16px" }}>
-                  A decade of applied work on information ecosystems gives us capabilities that are
-                  hard to find in one team.
+                <Text
+                    style={{
+                      fontFamily: "Raleway",
+                      fontSize: "18px",
+                      lineHeight: "1.75",
+                    }}
+                  >
+                  Demonstrated expertise in conducting original research, building open source software, building community gives us capabilities that are hard to find in one team.
                 </Text>
               </Box>
               <SkillChips skills={SKILLS} />
@@ -123,7 +129,7 @@ export default function BuildWithUs() {
       </Box>
 
       {/* ── Past Collaborations ───────────────────────────────────── */}
-      <Box background="#fdf6f0" pad={{ vertical: "xlarge" }}>
+      <Box background="light-2" >
         <NarrowContentWrapper>
           <NarrowSection>
             <Box gap="xlarge">
@@ -131,22 +137,20 @@ export default function BuildWithUs() {
                 <Heading
                   level={2}
                   margin="none"
-                  style={{ fontFamily: "Bitter", color: "#252653" }}
+                  style={{ fontFamily: "Bitter", color: "#252653", fontSize: "clamp(26px, 4vw, 40px)", lineHeight: "1.25", }}
                 >
                   Past collaborations
                 </Heading>
                 <Text
-                  style={{
-                    fontFamily: "Raleway",
-                    color: "#514E80",
-                    fontSize: "16px",
-                    lineHeight: "1.7",
-                    maxWidth: "580px",
-                  }}
-                >
+                    style={{
+                      fontFamily: "Raleway",
+                      fontSize: "18px",
+                      lineHeight: "1.75",
+                    }}
+                  >
                   We work with newsrooms, civil society organisations, researchers, and platforms
                   who need a technical partner with domain expertise — not just a vendor. Engagements
-                  range from short consultations to multi-month builds.
+                  range from short consultations to multi-month builds.  
                 </Text>
               </Box>
 
@@ -155,7 +159,7 @@ export default function BuildWithUs() {
                   key={c.title}
                   pad="medium"
                   style={{
-                    borderLeft: "4px solid #E76D67",
+                    border: "4px solid #E76D67",
                     background: "white",
                     borderRadius: "0 4px 4px 0",
                   }}
@@ -224,7 +228,7 @@ export default function BuildWithUs() {
                     background: "#252653",
                     color: "#edc9c4",
                     padding: "12px 28px",
-                    borderRadius: "1.2em",
+                    borderRadius: "0.6em",
                     textDecoration: "none",
                   }}
                 >
