@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { PlainLink } from "./TattleLinks"
 
 /**
@@ -55,12 +55,12 @@ const Theme = {
  */
 const NavThemes = {
   light: {
-    background: "#ffffff",
+    background: "#E76D67",
     text: "#252653",
     icon: "#252653",
   },
   dark: {
-    background: "#1a1a2e",
+    background: "#252653",
     text: "#edc9c4",
     icon: "#edc9c4",
   },
@@ -80,6 +80,32 @@ const NavThemes = {
     icon: "#f0ece2",
   },
 }
+
+const shimmerMove = keyframes`
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+`
+
+const ShimmerNavLabel = styled.span`
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    ${props => props.color}70 30%,
+    ${props => props.color} 50%,
+    ${props => props.color}70 70%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ${shimmerMove} 2s ease-in-out infinite;
+`
 
 const LandingPageHeading = styled.span`
   color: ${Theme.text_color_light};
@@ -118,6 +144,7 @@ export {
   SectionLabels,
   Theme,
   NavThemes,
+  ShimmerNavLabel,
   LandingPageHeading,
   LandingPageSubHeading,
   LandingPageLink,

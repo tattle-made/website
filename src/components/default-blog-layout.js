@@ -18,7 +18,8 @@ import TagsRenderer from "./TagsRenderer"
 import { getSrc, getImage, GatsbyImage } from "gatsby-plugin-image"
 import BlogTable from "./atomic/BlogTable"
 import NarrowContentWrapper from "./atomic/layout/narrow-content-wrapper"
-import NewsletterSubscribeModal from "./atomic/NewsletterSubscribeModal"
+import BlogSubscribe from "./BlogSubscribe"
+import CommentSection from "./CommentSection"
 
 /**
  * Blog post layout component.
@@ -235,10 +236,12 @@ export default function PageTemplate({
           </Box>
         </NarrowContentWrapper>
         <NarrowContentWrapper width="large" >
-          <Box background={"visuals-1"} pad="medium" round="medium" margin={{top: "medium"}}>
-            <span>We send out a quarterly newsletter to our readers. <NewsletterSubscribeModal  label="Subscribe for updates" /></span>
-            
+          <Box margin={{top: "medium", bottom: "large"}}>
+            <BlogSubscribe />
           </Box>
+        </NarrowContentWrapper>
+        <NarrowContentWrapper width="large" margin={{top: "medium"}}>
+          <CommentSection slug={mdx.fields.slug} />
         </NarrowContentWrapper>
       </MDXProvider>
     </AppShell>
