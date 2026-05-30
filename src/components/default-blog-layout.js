@@ -236,12 +236,11 @@ export default function PageTemplate({
           </Box>
         </NarrowContentWrapper>
         <NarrowContentWrapper width="large" >
-          <Box background={"visuals-1"} pad="medium" round="medium" margin={{top: "medium"}}>
+          <Box background={"visuals-1"} pad="medium" round="medium" margin={{top: "medium", bottom: "large"}}>
             <span>We send out a quarterly newsletter to our readers. <NewsletterSubscribeModal  label="Subscribe for updates" /></span>
-
           </Box>
         </NarrowContentWrapper>
-        <NarrowContentWrapper width="large">
+        <NarrowContentWrapper width="large" margin={{top: "medium"}}>
           <CommentSection slug={mdx.fields.slug} />
         </NarrowContentWrapper>
       </MDXProvider>
