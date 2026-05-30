@@ -7,6 +7,7 @@ import SEO from "./seo"
 import Footer from "../../pages/v2/footer"
 import NarrowSection from "./layout/narrow-section"
 import NarrowContentWrapper from "./layout/narrow-content-wrapper"
+import { NavThemes } from "./core-style"
 
 const AppShell = ({
   children,
@@ -18,22 +19,26 @@ const AppShell = ({
   contentWidth,
   isMDXPage,
   meta,
+  navTheme = "light",
 }) => {
+  const navBg = (NavThemes[navTheme] ?? NavThemes.light).background
+
   return (
     <Grommet theme={TattleTheme} full>
       <Box fill direction={"column"}>
         <SEO title={meta?.name || headerLabel || `Tattle`} heading={headerLabel} meta={meta} />
 
         <Box
-          background="brand"
           fill={"horizontal"}
           align="center"
           flex={"grow"}
+          style={{ background: navBg }}
         >
           <SimpleHeader
             label={""}
             target={headerTarget}
             primaryNav={primaryNav}
+            navTheme={navTheme}
           />
         </Box>
 

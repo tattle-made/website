@@ -47,6 +47,40 @@ const Theme = {
   text_color_light: "#252653",
 }
 
+/**
+ * Named navbar themes. Each entry drives the header bar background and all
+ * text/icon colours inside it — desktop and mobile alike.
+ *
+ * To use: pass navTheme="dark" (or any key below) to AppShell.
+ */
+const NavThemes = {
+  light: {
+    background: "#ffffff",
+    text: "#252653",
+    icon: "#252653",
+  },
+  dark: {
+    background: "#1a1a2e",
+    text: "#edc9c4",
+    icon: "#edc9c4",
+  },
+  electric: {
+    background: "#0d0d0d",
+    text: "#00f0ff",
+    icon: "#00f0ff",
+  },
+  neon: {
+    background: "#0a0a0a",
+    text: "#39ff14",
+    icon: "#39ff14",
+  },
+  cerebral: {
+    background: "#252653",
+    text: "#f0ece2",
+    icon: "#f0ece2",
+  },
+}
+
 const LandingPageHeading = styled.span`
   color: ${Theme.text_color_light};
   font-weight: 800;
@@ -83,6 +117,7 @@ export {
   FooterNavigationLabel,
   SectionLabels,
   Theme,
+  NavThemes,
   LandingPageHeading,
   LandingPageSubHeading,
   LandingPageLink,

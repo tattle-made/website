@@ -9,7 +9,7 @@ import {
  * @author
  * @function MoleculeViewMetadataFromOriginalService
  **/
-import { NavigationLabel, Theme } from "./atomic/core-style"
+import { Theme } from "./atomic/core-style"
 
 /**
  * DropDownMenu renders a tooltip-style dropdown with navigational links.
@@ -23,7 +23,7 @@ import { NavigationLabel, Theme } from "./atomic/core-style"
  */
 
 
-const DropDownMenu = ({ options, title }) => {
+const DropDownMenu = ({ options, title, textColor = Theme.text_color_light }) => {
   const [fetching, setFetching] = useState(false)
   const [showToolTip, setShowToolTip] = useState(false)
 
@@ -49,8 +49,8 @@ const DropDownMenu = ({ options, title }) => {
         onClick={() => onShowToolTip()}
       >
         <Box direction={"row"} gap={"xxsmall"} align={"center"}>
-          <NavigationLabel>{title}</NavigationLabel>
-          <ChevronDown size={16} color={Theme.text_color_light} />
+          <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: textColor }}>{title}</span>
+          <ChevronDown size={16} color={textColor} />
         </Box>
       </Button>
       {showToolTip && (

@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import { ChevronDown, Menu, X, ExternalLink as ExternalLinkIcon } from "react-feather"
 import TattleLogo from "./TattleLogo"
 import { PlainLink, PlainExternalLink } from "./TattleLinks"
-import { NavigationLabel, Theme } from "./core-style"
+import { NavThemes } from "./core-style"
 import DropDownMenu from "../DropDownMenu"
+
 
 /**
  * Single source of truth for all navigation items.
@@ -52,13 +53,13 @@ const toDropdownOptions = (children) =>
 
 // ─── Mobile components ────────────────────────────────────────────────────────
 
-const MobileNavLink = ({ item, onClose }) => {
+const MobileNavLink = ({ item, onClose, color }) => {
   if (item.external) {
     return (
       <PlainExternalLink href={item.target} target="_blank" onClick={onClose}>
         <div
           className="flex items-center gap-1 py-2 px-4 text-sm"
-          style={{ color: Theme.text_color_light }}
+          style={{ color }}
         >
           {item.label}
           <ExternalLinkIcon size={12} />
@@ -68,21 +69,21 @@ const MobileNavLink = ({ item, onClose }) => {
   }
   return (
     <PlainLink to={item.target} onClick={onClose}>
-      <div className="py-2 px-4 text-sm" style={{ color: Theme.text_color_light }}>
+      <div className="py-2 px-4 text-sm" style={{ color }}>
         {item.label}
       </div>
     </PlainLink>
   )
 }
 
-const MobileNavGroup = ({ item, onClose }) => {
+const MobileNavGroup = ({ item, onClose, color }) => {
   const [open, setOpen] = useState(false)
   return (
     <div>
       <button
         className="flex items-center justify-between w-full py-3 px-4"
         onClick={() => setOpen(!open)}
-        style={{ color: Theme.text_color_light, background: "transparent", border: "none", cursor: "pointer" }}
+        style={{ color, background: "transparent", border: "none", cursor: "pointer" }}
       >
         <span className="text-sm font-semibold tracking-widest">{item.label}</span>
         <ChevronDown
@@ -96,10 +97,10 @@ const MobileNavGroup = ({ item, onClose }) => {
       {open && (
         <div
           className="ml-4 pl-3 mb-1"
-          style={{ borderLeft: `1px solid ${Theme.text_color_light}40` }}
+          style={{ borderLeft: `1px solid ${color}40` }}
         >
           {item.children.map((child) => (
-            <MobileNavLink key={child.label} item={child} onClose={onClose} />
+            <MobileNavLink key={child.label} item={child} onClose={onClose} color={color} />
           ))}
         </div>
       )}
@@ -118,26 +119,27 @@ const MobileNavGroup = ({ item, onClose }) => {
  * Uses Tailwind responsive classes instead of Grommet's ResponsiveContext so
  * the correct layout is rendered on first paint with no hydration jank.
  */
-const SimpleHeader = () => {
+const SimpleHeader = ({ navTheme = "light" }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const closeMobile = () => setMobileOpen(false)
+  const theme = NavThemes[navTheme] ?? NavThemes.light
 
   return (
     <div style={{ width: "960px", maxWidth: "100%" }}>
       {/* Top bar */}
       <div className="flex items-center h-[77px] px-4 lg:px-0">
-        <TattleLogo data={{ fill: Theme.text_color_light }} />
+        <TattleLogo data={{ fill: theme.icon }} />
 
         {/* Desktop nav — hidden on mobile */}
         <nav className="hidden lg:flex items-center gap-8 ml-auto">
-          <DropDownMenu title="Tools" options={toDropdownOptions(NAV_ITEMS[0].children)} />
+          <DropDownMenu title="Tools" options={toDropdownOptions(NAV_ITEMS[0].children)} textColor={theme.text} />
           <PlainLink to="/blog">
-            <NavigationLabel>Blog</NavigationLabel>
+            <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: theme.text }}>Blog</span>
           </PlainLink>
           <PlainLink to="/research">
-            <NavigationLabel>Research</NavigationLabel>
+            <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: theme.text }}>Research</span>
           </PlainLink>
-          <DropDownMenu title="More" options={toDropdownOptions(NAV_ITEMS[3].children)} />
+          <DropDownMenu title="More" options={toDropdownOptions(NAV_ITEMS[3].children)} textColor={theme.text} />
         </nav>
 
         {/* Hamburger — hidden on desktop */}
@@ -148,9 +150,9 @@ const SimpleHeader = () => {
           style={{ background: "transparent", border: "none", cursor: "pointer" }}
         >
           {mobileOpen ? (
-            <X size={24} color={Theme.text_color_light} />
+            <X size={24} color={theme.icon} />
           ) : (
-            <Menu size={24} color={Theme.text_color_light} />
+            <Menu size={24} color={theme.icon} />
           )}
         </button>
       </div>
@@ -159,16 +161,16 @@ const SimpleHeader = () => {
       {mobileOpen && (
         <nav
           className="lg:hidden pb-4"
-          style={{ borderTop: `1px solid ${Theme.text_color_light}30` }}
+          style={{ borderTop: `1px solid ${theme.text}30` }}
         >
           {NAV_ITEMS.map((item) =>
             item.children ? (
-              <MobileNavGroup key={item.label} item={item} onClose={closeMobile} />
+              <MobileNavGroup key={item.label} item={item} onClose={closeMobile} color={theme.text} />
             ) : (
               <PlainLink key={item.label} to={item.target} onClick={closeMobile}>
                 <div
                   className="py-3 px-4 text-sm font-semibold tracking-widest"
-                  style={{ color: Theme.text_color_light }}
+                  style={{ color: theme.text }}
                 >
                   {item.label}
                 </div>
