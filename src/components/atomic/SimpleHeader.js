@@ -33,6 +33,7 @@ const NAV_ITEMS = [
         external: true,
       },
       { label: "Work With Us", target: "/join-us" },
+      { label: "Build With Us", target: "/build-with-us" },
       { label: "Annual Reports", target: "/report/" },
       { label: "FAQ", target: "/faq" },
       { label: "Community", target: "/community" },
