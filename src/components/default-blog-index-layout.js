@@ -5,6 +5,7 @@ import { Box, Text } from "grommet"
 import { FeaturedSection, BlogGrid } from "./atomic/layout/all-blogs-index-layout"
 import useBlogTags from "../hooks/useBlogTags"
 import TagsRenderer from "./TagsRenderer"
+import BlogSubscribe from "./BlogSubscribe"
 
 export const byline = (name, project) => {
   const projectName = project?.frontmatter?.name
@@ -96,6 +97,9 @@ const BlogIndex = ({ data, pageContext }) => {
                 tagCounts={projectTagsCounts}
                 tagBaseURL={"/blog/tags/project/"}
               />
+            </Box>
+            <Box margin={{ top: "medium", }}>
+              <BlogSubscribe />
             </Box>
           </div>
         </div>

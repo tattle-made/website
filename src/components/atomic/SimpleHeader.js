@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { ChevronDown, Menu, X, ExternalLink as ExternalLinkIcon } from "react-feather"
 import TattleLogo from "./TattleLogo"
 import { PlainLink, PlainExternalLink } from "./TattleLinks"
-import { NavThemes } from "./core-style"
+import { NavThemes, ShimmerNavLabel } from "./core-style"
 import DropDownMenu from "../DropDownMenu"
 
 
@@ -24,19 +24,20 @@ const NAV_ITEMS = [
   },
   { label: "Blog", target: "/blog" },
   { label: "Research", target: "/research" },
+  // { label: "Build With Us", target: "/build-with-us", highlight: true },
   {
     label: "More",
     children: [
+      { label: "Work With Us", target: "/join-us" },
+      { label: "Community", target: "/community" },
+      { label: "Annual Reports", target: "/report/" },
+      { label: "Updates", target: "/updates" },
+      { label: "FAQ", target: "/faq" },
       {
         label: "Newsletter",
         target: "https://us19.campaign-archive.com/home/?u=a9af83af1f247ecc04f50ad46&id=4afc4a2c79",
         external: true,
       },
-      { label: "Work With Us", target: "/join-us" },
-      { label: "Annual Reports", target: "/report/" },
-      { label: "FAQ", target: "/faq" },
-      { label: "Community", target: "/community" },
-      { label: "Updates", target: "/updates" },
     ],
   },
 ]
@@ -132,14 +133,32 @@ const SimpleHeader = ({ navTheme = "light" }) => {
 
         {/* Desktop nav — hidden on mobile */}
         <nav className="hidden lg:flex items-center gap-8 ml-auto">
-          <DropDownMenu title="Tools" options={toDropdownOptions(NAV_ITEMS[0].children)} textColor={theme.text} />
-          <PlainLink to="/blog">
-            <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: theme.text }}>Blog</span>
-          </PlainLink>
-          <PlainLink to="/research">
-            <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: theme.text }}>Research</span>
-          </PlainLink>
-          <DropDownMenu title="More" options={toDropdownOptions(NAV_ITEMS[3].children)} textColor={theme.text} />
+          {NAV_ITEMS.map((item) => {
+            if (item.children) {
+              return (
+                <DropDownMenu
+                  key={item.label}
+                  title={item.label}
+                  options={toDropdownOptions(item.children)}
+                  textColor={theme.text}
+                />
+              )
+            }
+            if (item.highlight) {
+              return (
+                <PlainLink key={item.label} to={item.target}>
+                  <ShimmerNavLabel color={theme.text}>{item.label}</ShimmerNavLabel>
+                </PlainLink>
+              )
+            }
+            return (
+              <PlainLink key={item.label} to={item.target}>
+                <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: theme.text }}>
+                  {item.label}
+                </span>
+              </PlainLink>
+            )
+          })}
         </nav>
 
         {/* Hamburger — hidden on desktop */}
@@ -163,20 +182,22 @@ const SimpleHeader = ({ navTheme = "light" }) => {
           className="lg:hidden pb-4"
           style={{ borderTop: `1px solid ${theme.text}30` }}
         >
-          {NAV_ITEMS.map((item) =>
-            item.children ? (
-              <MobileNavGroup key={item.label} item={item} onClose={closeMobile} color={theme.text} />
-            ) : (
+          {NAV_ITEMS.map((item) => {
+            if (item.children) {
+              return <MobileNavGroup key={item.label} item={item} onClose={closeMobile} color={theme.text} />
+            }
+            return (
               <PlainLink key={item.label} to={item.target} onClick={closeMobile}>
-                <div
-                  className="py-3 px-4 text-sm font-semibold tracking-widest"
-                  style={{ color: theme.text }}
-                >
-                  {item.label}
+                <div className="py-3 px-4 text-sm font-semibold tracking-widest" style={{ color: theme.text }}>
+                  {item.highlight ? (
+                    <ShimmerNavLabel color={theme.text}>{item.label}</ShimmerNavLabel>
+                  ) : (
+                    item.label
+                  )}
                 </div>
               </PlainLink>
             )
-          )}
+          })}
         </nav>
       )}
     </div>
