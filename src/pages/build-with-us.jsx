@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Heading, Text } from "grommet"
+import { Anchor, Box, Heading, Text } from "grommet"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
@@ -16,7 +16,7 @@ const SKILLS = [
   "Safety & Bias Audits",
   "Data Collection from Closed Platforms",
   "Full-Stack Engineering",
-  "Open Source Development",
+  "Open Source Community Development",
   "UX Research",
   "Community-Centred Design",
   "Policy Research",
@@ -56,6 +56,16 @@ const COLLABORATIONS = [
       { label: "Policy Research", value: 1.0 },
       { label: "Security", value: 0.4 },
       { label: "Visual Design", value: 0.4 },
+    ],
+  },
+  {
+    title: "Github Standardized Metrics",
+    description:
+      "Through one-on-one interviews and focus group discussions with researchers and practitioners from public policy, international development and economics research, we conceptualized a list of metrics from the public activity on Github that could be helpful for the three disciplines",
+    radar: [
+      { label: "Policy Research", value: 0.8 },
+      { label: "Operations", value: 0.4 },
+      { label: "Open Source", value: 0.6 },
     ],
   },
 ]
@@ -163,7 +173,7 @@ export default function BuildWithUs() {
       navTheme="dark"
       meta={{
         name: "Build With Us | Tattle",
-        description: "Tattle is a cross-functional team with deep expertise in research, engineering, ML, UX, and policy. We take on paid collaborations that align with our mission.",
+        description: "Tattle is a cross-functional team with deep expertise in research, engineering, ML, UX, and policy. Hire us to build your next project.",
         cover: "/aipolicy3.jpg",
       }}
     >
@@ -194,9 +204,7 @@ export default function BuildWithUs() {
                   lineHeight: "1.75",
                 }}
               >
-                Tattle is a cross-functional team with deep expertise in research, full-stack engineering, machine learning,
-                UX design and policy. We take on paid collaborations
-                and consultations that align with our mission.
+                Tattle is a cross-functional team with deep expertise in full-stack engineering, machine learning, UX design and policy research. We take on paid collaborations and consultations that align with our mission. Typically, these are projects that stake bigger participation for people on the social web or help build understanding of our algorithmically mediated world.
               </Text>
             </Box>
           </NarrowSection>
@@ -223,7 +231,7 @@ export default function BuildWithUs() {
                       lineHeight: "1.75",
                     }}
                   >
-                  Demonstrated expertise in conducting original research, building open source software, building community gives us capabilities that are hard to find in one team.
+                  Demonstrated expertise in conducting original research, building maintainable open source products involving diverse stakeholders. Our team works closely with clients, understanding their specific needs, and organizational setup and capabilities. Aligned with our values, we focus on solutions that can be sustained by the organization without needing long-term reliance on Tattle.
                 </Text>
               </Box>
               <SkillChips skills={SKILLS} />
@@ -253,8 +261,7 @@ export default function BuildWithUs() {
                     }}
                   >
                   We work with newsrooms, civil society organisations, researchers, and platforms
-                  who need a technical partner with domain expertise — not just a vendor. Engagements
-                  range from short consultations to multi-month builds.  
+                  who need a technical research or product partner with domain expertise — not just a vendor. Engagements range from short consultations to multi-month builds.  
                 </Text>
               </Box>
 
@@ -320,7 +327,25 @@ export default function BuildWithUs() {
                 Tell us what you're working on. Whether it's a scoped consultation or a longer
                 collaboration, we're happy to explore what's possible together.
               </Text>
-              <ContactForm />
+              {/* <ContactForm /> */}
+              <Anchor
+                  href="mailto:admin@tattle.co.in?subject=Collaboration enquiry"
+                  style={{
+                    display: "inline-block",
+                    fontFamily: "Raleway",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    fontSize: "14px",
+                    background: "#252653",
+                    color: "#edc9c4",
+                    padding: "12px 28px",
+                    borderRadius: "0.6em",
+                    textDecoration: "none",
+                    width: "fit-content"
+                  }}
+                >
+                  Start a conversation →
+                </Anchor>
             </Box>
           </NarrowSection>
         </NarrowContentWrapper>

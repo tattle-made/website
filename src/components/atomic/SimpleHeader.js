@@ -23,11 +23,11 @@ const NAV_ITEMS = [
     ],
   },
   { label: "Blog", target: "/blog" },
-  { label: "Build With Us", target: "/build-with-us", highlight: true },
+  { label: "Research", target: "/research" },
+  // { label: "Build With Us", target: "/build-with-us", highlight: true },
   {
     label: "More",
     children: [
-      { label: "Research", target: "/research" },
       { label: "Work With Us", target: "/join-us" },
       { label: "Community", target: "/community" },
       { label: "Annual Reports", target: "/report/" },
