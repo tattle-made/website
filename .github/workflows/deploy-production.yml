@@ -27,6 +27,8 @@ jobs:
 
       - name: Build Site
         run: npm run build
+        env: 
+          GATSBY_API_URL: ${{ secrets.GATSBY_API_URL }}
       - name: Deploy Site
         run: npm run deploy
 
