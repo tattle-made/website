@@ -327,8 +327,8 @@ export default function BuildWithUs() {
                 Tell us what you're working on. Whether it's a scoped consultation or a longer
                 collaboration, we're happy to explore what's possible together.
               </Text>
-              {/* <ContactForm /> */}
-              <Anchor
+              <ContactForm />
+              {/* <Anchor
                   href="mailto:admin@tattle.co.in?subject=Collaboration enquiry"
                   style={{
                     display: "inline-block",
@@ -345,7 +345,7 @@ export default function BuildWithUs() {
                   }}
                 >
                   Start a conversation →
-                </Anchor>
+                </Anchor> */}
             </Box>
           </NarrowSection>
         </NarrowContentWrapper>
