@@ -57,7 +57,7 @@ function SEO({ description = "", lang = `en`, meta = [], title, heading }) {
 
   title = title || site.siteMetadata.title
   const metaDescription =
-    meta.excerpt || description || site.siteMetadata.description
+    meta.excerpt || meta.description || description || site.siteMetadata.description
   const baseURL = site.siteMetadata.base_url
   const canonicalURL = `${baseURL}${pathname}`
 
