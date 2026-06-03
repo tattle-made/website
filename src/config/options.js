@@ -2,8 +2,8 @@ export const footerItems = {
   primary: {
     heading: "About us",
     links: [
-      // { id: 0, label: "Build With Us", target: "/build-with-us", type: "internal" },
-      { id: 1, label: "Work With Us", target: "/join-us", type: "internal" },
+      { id: 0, label: "Collborate With Us", target: "/build-with-us", type: "internal" },
+      { id: 1, label: "Join Us", target: "/join-us", type: "internal" },
       { id: 2, label: "Community", target: "/community", type: "internal" },
       { id: 3, label: "Contact Us", target: "/contact", type: "internal" },
       { id: 4, label: "FAQ", target: "/faq", type: "internal" },

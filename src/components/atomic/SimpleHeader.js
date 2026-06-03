@@ -24,7 +24,7 @@ const NAV_ITEMS = [
   },
   { label: "Blog", target: "/blog" },
   { label: "Research", target: "/research" },
-  // { label: "Build With Us", target: "/build-with-us", highlight: true },
+  { label: "Collaborate", target: "/collaborate-with-us", highlight: true },
   {
     label: "More",
     children: [

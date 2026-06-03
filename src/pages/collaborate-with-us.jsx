@@ -172,7 +172,7 @@ export default function BuildWithUs() {
     <DefaultLayout
       navTheme="dark"
       meta={{
-        name: "Build With Us | Tattle",
+        name: "Collaborate With Us | Tattle",
         description: "Tattle is a cross-functional team with deep expertise in research, engineering, ML, UX, and policy. Hire us to build your next project.",
         cover: "/aipolicy3.jpg",
       }}
