@@ -88,11 +88,13 @@ function ContactForm() {
 
   const handleChange = e => setFields(f => ({ ...f, [e.target.name]: e.target.value }))
 
+  const API_URL = process.env.GATSBY_API_URL  || "http://localhost:4000"
+
   const handleSubmit = async e => {
     e.preventDefault()
     setStatus("submitting")
     try {
-      const res = await fetch("http://localhost:4000/api/lead-capture/build-with-us", {
+      const res = await fetch(`${API_URL}/api/lead-capture/build-with-us`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fields),
