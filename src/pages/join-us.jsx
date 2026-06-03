@@ -7,14 +7,14 @@ export default function JoinUs() {
   const jobs = [
     // { title: "Software Engineer", link: "/career/sde1" },
     // { title: "Backend and DevOps Engineer", link: "/career/backend-engineer" },
-    // { title: "Senior Software Engineer", link: "/career/senior-fullstack-developer" },
+    { title: "Fullstack Research Engineer", link: "/career/fullstack-research-engineer" },
   ];
 
   return (
     <DefaultLayoutNarrow>
       <Box pad={{ horizontal: "large-sx", vertical: "medium" }} margin={{ top: "xsmall" }}>
         {/* Elegant Heading */}
-        <Heading level={2} margin={{ bottom: "small" }}>
+        <Heading level={3} margin={{ bottom: "medium" }}>
           Join Us
         </Heading>
 
@@ -49,7 +49,7 @@ export default function JoinUs() {
 
         {/* Open Application Section */}
         <Box margin={{ top: "xsmall" }}>
-          <Heading level={1} margin={{ bottom: "small" }} size="mediam">
+          <Heading level={3} margin={{ bottom: "small" }} size="mediam">
             Open Application
           </Heading>
           <Text size="small-ms" color="dark-6" margin={{ bottom: "medium" }}>
