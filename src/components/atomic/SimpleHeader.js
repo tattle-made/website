@@ -23,7 +23,7 @@ const NAV_ITEMS = [
     ],
   },
   { label: "Blog", target: "/blog" },
-  { label: "Research", target: "/research" },
+  // { label: "Research", target: "/research" },
   { label: "Collaborate", target: "/collaborate-with-us", highlight: true },
   {
     label: "More",
