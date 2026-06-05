@@ -9,10 +9,24 @@ import LatestBlogsUpdates from "../components/LatestBlogsUpdates"
 import LinkCard from "../components/atomic/LinkCard"
 
 import coverAnnoMilli from '../images/cover-anno-milli-announcement.png'
+import coverInfraDeepfake from '../images/link-cover-infrastructure-of-deepfakes.png'
+import coverAIEval from '../images/link-manual-eval.png'
 import coverDAUdataset from '../images/cover-blog-dau-dataset-event.png'
 import NewsletterSubscribeModal from "../components/atomic/NewsletterSubscribeModal"
 
 const featuredLinks = [
+  {
+    image: coverAIEval,
+    heading: "Manual Evaluation of AI",
+    description: "Our detailed guide on how to conduct manual evaluations of AI on our blog.",
+    url: "/blog/2026-05-28-how-to-do-manual-evaluations/",
+  },
+  {
+    image: coverInfraDeepfake,
+    heading: "Infrastructure of Deepfake Generation",
+    description: "This collaborative article with Decode is a result of the investigations that took us into the supply chain of AI powered undressing tools.",
+    url: "https://www.decodeinternet.in/life/investigation/desi-faces-foreign-servers-inside-the-ai-economy-undressing-women-31691",
+  },
   {
     image: coverDAUdataset,
     heading: "Deepfakes Analysis Unit Dataset Release Event",
