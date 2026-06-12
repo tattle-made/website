@@ -79,6 +79,11 @@ const NavThemes = {
     text: "#f0ece2",
     icon: "#f0ece2",
   },
+  celebratory: {
+    background: "#ffebcb",
+    text: "#252653",
+    icon: "#252653",
+  },
 }
 
 const shimmerMove = keyframes`
