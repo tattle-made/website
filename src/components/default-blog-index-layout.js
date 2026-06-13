@@ -72,7 +72,7 @@ const BlogIndex = ({ data, pageContext }) => {
   const restBlogs = blogs.filter(b => !featuredBlogs.includes(b))
 
   return (
-    <DefaultLayout>
+    <DefaultLayout pageTitle="Blog">
       <Box width="100%" pad="medium" direction="column">
 
         {/* Hero row: featured (3/4) + tags sidebar (1/4) */}

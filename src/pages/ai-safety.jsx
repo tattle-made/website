@@ -63,6 +63,7 @@ export default function AISafety() {
   return (
     <DefaultLayout
       navTheme="celebratory"
+      pageTitle="AI Safety"
       meta={{
         name: "AI Safety | Tattle",
         description:

@@ -20,6 +20,7 @@ const AppShell = ({
   isMDXPage,
   meta,
   navTheme = "light",
+  pageTitle,
 }) => {
   const navBg = (NavThemes[navTheme] ?? NavThemes.light).background
 
@@ -39,6 +40,7 @@ const AppShell = ({
             target={headerTarget}
             primaryNav={primaryNav}
             navTheme={navTheme}
+            pageTitle={pageTitle}
           />
         </Box>
 

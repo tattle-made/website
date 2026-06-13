@@ -80,7 +80,7 @@ const Updates = ({ data }) => {
   const updates = data.allMdx.nodes
 
   return (
-    <DefaultLayout>
+    <DefaultLayout pageTitle="Updates">
       <NarrowContentWrapper>
         <NarrowSection>
           <Box>

@@ -120,7 +120,7 @@ const MobileNavGroup = ({ item, onClose, color }) => {
  * Uses Tailwind responsive classes instead of Grommet's ResponsiveContext so
  * the correct layout is rendered on first paint with no hydration jank.
  */
-const SimpleHeader = ({ navTheme = "light" }) => {
+const SimpleHeader = ({ navTheme = "light", pageTitle }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
   const closeMobile = () => setMobileOpen(false)
   const theme = NavThemes[navTheme] ?? NavThemes.light
@@ -130,6 +130,19 @@ const SimpleHeader = ({ navTheme = "light" }) => {
       {/* Top bar */}
       <div className="flex items-center h-[77px] px-4 lg:px-0">
         <TattleLogo data={{ fill: theme.icon }} />
+        {pageTitle && (
+          <span
+            style={{
+              fontFamily: "Comfortaa, sans-serif",
+              fontSize: "1.8em",
+              color: theme.text,
+              marginLeft: "4px",
+              paddingLeft: "4px",
+            }}
+          >
+            {pageTitle}
+          </span>
+        )}
 
         {/* Desktop nav — hidden on mobile */}
         <nav className="hidden lg:flex items-center gap-8 ml-auto">

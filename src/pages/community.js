@@ -139,12 +139,9 @@ const community = ({ data }) => {
   )
 
   return (
-    <DefaultLayout>
+    <DefaultLayout pageTitle="Team">
       <NarrowContentWrapper>
         <NarrowSection>
-
-          <Heading level={2}> Community </Heading>
-
           <Heading level={3}>Current Contributors and Staff</Heading>
           <ResponsiveGrid>
             {currentContributors.map((contributor, key) => (
