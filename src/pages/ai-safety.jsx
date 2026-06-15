@@ -106,11 +106,11 @@ export default function AISafety() {
               }
               right={
                 <Box justify="center" align="center">
-                  <img
+                  {/* <img
                     src={heroImage}
                     alt="AI Safety illustration"
                     style={{ width: "100%", maxWidth: "420px", display: "block" }}
-                  />
+                  /> */}
                 </Box>
               }
             />
@@ -270,7 +270,7 @@ export default function AISafety() {
                   <TwoColumnLayout
                     left={
                       <Box gap="xsmall" direction="row" wrap>
-                        {c.tags.map(tag => (
+                        {/* {c.tags.map(tag => (
                           <Box
                             key={tag}
                             pad={{ horizontal: "small", vertical: "xsmall" }}
@@ -286,7 +286,7 @@ export default function AISafety() {
                           >
                             {tag}
                           </Box>
-                        ))}
+                        ))} */}
                       </Box>
                     }
                     right={
@@ -375,9 +375,7 @@ export default function AISafety() {
                   lineHeight: "1.75",
                 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Whether you're building a
-                new AI product, auditing an existing system, or shaping policy — we'd love to hear
-                from you.
+                If you would like to collaborate with us on or use our AI safety services please get in touch with us by emailing
               </Text>
               <Anchor
                 href="mailto:admin@tattle.co.in?subject=AI Safety enquiry"
