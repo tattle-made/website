@@ -116,7 +116,7 @@ const BlogIndex = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query BlogIndexQuery($skip: Int = 0, $limit: Int = 12) {
+  query BlogIndexQuery($skip: Int = 0, $limit: Int = 36) {
     allMdx(
       filter: { internal: { contentFilePath: { regex: "/.*/src/blog/" } } }
       sort: { frontmatter: { date: DESC } }

@@ -113,7 +113,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // The array should be similar to the tree (in default-sitemap-layout). If node exists pass node, else make a node object to pass name in it.
   const siteMapNodes = []
 
-  const POSTS_PER_PAGE = 12
+  const POSTS_PER_PAGE = 36
   const numBlogPages = Math.ceil(blogNodes.length / POSTS_PER_PAGE)
   Array.from({ length: numBlogPages }).forEach((_, i) => {
     createPage({
