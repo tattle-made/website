@@ -52,7 +52,7 @@ const AuthorAvatar = ({ author, textColor }) => {
 }
 
 const BlogHeaderCard = ({ name, authors = [], date, project, textColor }) => (
-  <Box margin={{ bottom: "small" }}>
+  <Box margin={{ bottom: "small" }} background={"#00000080"} pad="small">
     <Heading level={2} margin={"none"} weight={500} fill={true} color={textColor}>
       {name}
     </Heading>
