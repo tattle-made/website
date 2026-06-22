@@ -1,103 +1,100 @@
-import React, { useState, useEffect, useRef } from "react"
-import { Box, Drop, Button, Heading, Text } from "grommet"
+import React, { useState, useRef } from "react"
 import { ChevronDown, ExternalLink as ExternalLinkIcon } from "react-feather"
-import {
-  PlainLink as Link,
-  PlainExternalLink as ExternalLink,
-} from "../components/atomic/TattleLinks"
-/**
- * @author
- * @function MoleculeViewMetadataFromOriginalService
- **/
+import { PlainLink, PlainExternalLink } from "./atomic/TattleLinks"
 import { Theme } from "./atomic/core-style"
 
-/**
- * DropDownMenu renders a tooltip-style dropdown with navigational links.
- * It uses Grommet's Drop component, toggled by a button click, and closes on outside click or Escape key.
- *
- * @param {Object} props - Component props
- * @param {Array<{ id: string, target: string }>} props.options - Menu items with unique ID and target URL.
- * @param {string} props.title - Button label for triggering the dropdown.
- *
- * @returns {JSX.Element} The dropdown menu component.
- */
+const MenuItem = ({ option, onClose }) => {
+  const inner = (
+    <div
+      style={{ padding: "9px 12px", borderRadius: 6, transition: "background 0.12s ease" }}
+      onMouseEnter={e => { e.currentTarget.style.background = "#f5f5f5" }}
+      onMouseLeave={e => { e.currentTarget.style.background = "transparent" }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+        <span style={{ fontFamily: "Raleway", fontWeight: 600, fontSize: 13, color: "#252653" }}>
+          {option.label}
+        </span>
+        {option.type === "external" && <ExternalLinkIcon size={11} color="#aaa" />}
+      </div>
+      {option.description && (
+        <div style={{ fontSize: 11, color: "#999", marginTop: 2, lineHeight: 1.35 }}>
+          {option.description}
+        </div>
+      )}
+    </div>
+  )
 
+  if (option.type === "external") {
+    return (
+      <PlainExternalLink href={option.target} target="_blank" onClick={onClose}>
+        {inner}
+      </PlainExternalLink>
+    )
+  }
+  return (
+    <PlainLink to={option.target} onClick={onClose}>
+      {inner}
+    </PlainLink>
+  )
+}
 
 const DropDownMenu = ({ options, title, textColor = Theme.text_color_light }) => {
-  const [fetching, setFetching] = useState(false)
-  const [showToolTip, setShowToolTip] = useState(false)
+  const [open, setOpen] = useState(false)
+  const timer = useRef(null)
 
-  const iconRef = useRef()
-
-  useEffect(() => {
-    setFetching(true)
-  },[])
-
-  const onShowToolTip = () => {
-    setShowToolTip(true)
+  const openMenu = () => {
+    clearTimeout(timer.current)
+    setOpen(true)
   }
 
-  const onHideToolTip = () => {
-    setShowToolTip(false)
+  const closeMenu = () => {
+    timer.current = setTimeout(() => setOpen(false), 150)
   }
 
   return (
-    <Box>
-      <Button
-        ref={iconRef}
-        focusIndicator={false}
-        onClick={() => onShowToolTip()}
+    <div style={{ position: "relative" }} onMouseEnter={openMenu} onMouseLeave={closeMenu}>
+      <button
+        style={{ background: "transparent", border: "none", cursor: "pointer", padding: 0 }}
+        aria-expanded={open}
       >
-        <Box direction={"row"} gap={"xxsmall"} align={"center"}>
-          <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: textColor }}>{title}</span>
-          <ChevronDown size={16} color={textColor} />
-        </Box>
-      </Button>
-      {showToolTip && (
-        <Drop
-          target={iconRef.current}
-          align={{ top: "bottom", right: "right" }}
-          onClickOutside={onHideToolTip}
-          onEsc={onHideToolTip}
-          margin={{ top: "small", right: "small" }}
+        <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+          <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: textColor }}>
+            {title}
+          </span>
+          <ChevronDown
+            size={16}
+            color={textColor}
+            style={{
+              transform: open ? "rotate(180deg)" : "rotate(0deg)",
+              transition: "transform 0.2s ease",
+            }}
+          />
+        </div>
+      </button>
+
+      {open && (
+        <div
+          style={{
+            position: "absolute",
+            top: "calc(100% + 10px)",
+            right: 0,
+            background: "white",
+            boxShadow: "0 8px 28px rgba(0,0,0,0.11)",
+            borderRadius: 8,
+            border: "1px solid #f0f0f0",
+            zIndex: 100,
+            width: 400,
+            padding: "12px 8px",
+          }}
         >
-          <Box pad={"small"} direction={"column"} background={"light-3"}>
-            {options.map(option =>
-              option.type === "external" ? (
-                <Box>
-                  <ExternalLink
-                    key={option.id}
-                    href={option.target}
-                    target={"_blank"}
-                  >
-                    <Button plain={true} margin={"xsmall"}>
-                      <Box direction={"row"} gap={"small"} align={"center"}>
-                        <Text margin={"none"} size={"small"}>
-                          {option.label}
-                        </Text>
-                        <ExternalLinkIcon size={16} />
-                      </Box>
-                    </Button>
-                  </ExternalLink>
-                </Box>
-              ) : (
-                <Link key={option.id} to={option.target}>
-                  <Button plain={true} margin={"xsmall"}>
-                    <Box>
-                      <Text margin={"none"} size={"small"}>
-                        {" "}
-                        {option.label}{" "}
-                      </Text>
-                      <Text size={"xsmall"}>{option.description}</Text>
-                    </Box>
-                  </Button>
-                </Link>
-              )
-            )}
-          </Box>
-        </Drop>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px 8px" }}>
+            {options.map(option => (
+              <MenuItem key={option.id} option={option} onClose={() => setOpen(false)} />
+            ))}
+          </div>
+        </div>
       )}
-    </Box>
+    </div>
   )
 }
 

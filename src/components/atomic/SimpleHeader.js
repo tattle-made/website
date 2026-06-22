@@ -1,10 +1,14 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import { ChevronDown, Menu, X, ExternalLink as ExternalLinkIcon } from "react-feather"
 import TattleLogo from "./TattleLogo"
 import { PlainLink, PlainExternalLink } from "./TattleLinks"
 import { NavThemes, ShimmerNavLabel } from "./core-style"
 import DropDownMenu from "../DropDownMenu"
+import MegaMenuPanel from "../MegaMenuPanel"
 
+import coverUli from "../../images/cover-project-uli.png"
+import coverDau from "../../images/cover-project-dau.png"
+import coverViralSpiral from "../../images/cover-project-viral-spiral.png"
 
 /**
  * Single source of truth for all navigation items.
@@ -14,29 +18,30 @@ import DropDownMenu from "../DropDownMenu"
 const NAV_ITEMS = [
   {
     label: "Tools",
+    variant: "mega",
     children: [
-      { label: "Uli", target: "/products/ogbv", description: "Online Gender Based Violence Mitigation" },
-      { label: "Deepfake Analysis Unit", target: "/products/dau", description: "Collaborative Platform for Deepfake Assessment" },
-      { label: "Viral Spiral", target: "/products/viral-spiral", description: "Digital Card Game for Media Literacy" },
-      { label: "Feluda", target: "/products/feluda", description: "Multimedia and multimodal data analysis engine" },
-      { label: "All Projects", target: "/products/", description: "" },
+      { label: "Uli", target: "/products/ogbv", description: "Software and dataset for mitigating online gender-based violence", image: coverUli },
+      { label: "Deepfake Analysis Unit", target: "/products/dau", description: "Collaborative platform for deepfake assessment", image: coverDau },
+      { label: "Viral Spiral", target: "/products/viral-spiral", description: "Digital card game for media literacy", image: coverViralSpiral },
+      { label: "Feluda", target: "/products/feluda", description: "Multimedia and multimodal analysis engine for social media data", image: null },
+      { label: "All Projects", target: "/products/" },
     ],
   },
   { label: "Blog", target: "/blog" },
-  // { label: "Research", target: "/research" },
   { label: "Collaborate", target: "/collaborate-with-us" },
   {
     label: "More",
     children: [
-      { label: "Work With Us", target: "/join-us" },
-      { label: "Community", target: "/community" },
-      { label: "Annual Reports", target: "/report/" },
-      { label: "Updates", target: "/updates" },
-      { label: "FAQ", target: "/faq" },
+      { label: "Work With Us", target: "/join-us", description: "Job openings" },
+      { label: "Community", target: "/community", description: "People behind the scenes" },
+      { label: "Annual Reports", target: "/report/", description: "Our budget and work distributions" },
+      { label: "Updates", target: "/updates", description: "Latest news and announcements" },
+      { label: "FAQ", target: "/faq", description: "Common questions answered" },
       {
         label: "Newsletter",
         target: "https://us19.campaign-archive.com/home/?u=a9af83af1f247ecc04f50ad46&id=4afc4a2c79",
         external: true,
+        description: "Subscribe to our quarterly digest",
       },
     ],
   },
@@ -111,22 +116,25 @@ const MobileNavGroup = ({ item, onClose, color }) => {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
-/**
- * Responsive site header.
- *
- * Desktop: logo + nav links with dropdowns (lg and above).
- * Mobile: logo + hamburger that expands an inline drawer below the bar.
- *
- * Uses Tailwind responsive classes instead of Grommet's ResponsiveContext so
- * the correct layout is rendered on first paint with no hydration jank.
- */
 const SimpleHeader = ({ navTheme = "light", pageTitle }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeMega, setActiveMega] = useState(null)
+  const megaTimer = useRef(null)
+
+  const openMega = (label) => {
+    clearTimeout(megaTimer.current)
+    setActiveMega(label)
+  }
+
+  const closeMega = () => {
+    megaTimer.current = setTimeout(() => setActiveMega(null), 150)
+  }
+
   const closeMobile = () => setMobileOpen(false)
   const theme = NavThemes[navTheme] ?? NavThemes.light
 
   return (
-    <div style={{ width: "960px", maxWidth: "100%" }}>
+    <div style={{ width: "960px", maxWidth: "100%", position: "relative" }}>
       {/* Top bar */}
       <div className="flex items-center h-[77px] px-4 lg:px-0">
         <TattleLogo data={{ fill: theme.icon }} />
@@ -147,6 +155,35 @@ const SimpleHeader = ({ navTheme = "light", pageTitle }) => {
         {/* Desktop nav — hidden on mobile */}
         <nav className="hidden lg:flex items-center gap-8 ml-auto">
           {NAV_ITEMS.map((item) => {
+            if (item.variant === "mega") {
+              return (
+                <div
+                  key={item.label}
+                  onMouseEnter={() => openMega(item.label)}
+                  onMouseLeave={closeMega}
+                >
+                  <button
+                    style={{ background: "transparent", border: "none", cursor: "pointer", padding: 0 }}
+                    aria-expanded={activeMega === item.label}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                      <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: theme.text }}>
+                        {item.label}
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        color={theme.text}
+                        style={{
+                          transform: activeMega === item.label ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "transform 0.2s ease",
+                        }}
+                      />
+                    </div>
+                  </button>
+                </div>
+              )
+            }
+
             if (item.children) {
               return (
                 <DropDownMenu
@@ -157,6 +194,7 @@ const SimpleHeader = ({ navTheme = "light", pageTitle }) => {
                 />
               )
             }
+
             if (item.highlight) {
               return (
                 <PlainLink key={item.label} to={item.target}>
@@ -164,6 +202,7 @@ const SimpleHeader = ({ navTheme = "light", pageTitle }) => {
                 </PlainLink>
               )
             }
+
             return (
               <PlainLink key={item.label} to={item.target}>
                 <span style={{ fontFamily: "Raleway", fontSize: 14, letterSpacing: "0.1em", color: theme.text }}>
@@ -188,6 +227,33 @@ const SimpleHeader = ({ navTheme = "light", pageTitle }) => {
           )}
         </button>
       </div>
+
+      {/* Mega menu panel — Tools */}
+      {activeMega && (() => {
+        const activeItem = NAV_ITEMS.find(i => i.label === activeMega)
+        if (!activeItem) return null
+        return (
+          <div
+            onMouseEnter={() => openMega(activeMega)}
+            onMouseLeave={closeMega}
+            style={{
+              position: "absolute",
+              top: 77,
+              left: 0,
+              right: 0,
+              background: "white",
+              boxShadow: "0 10px 36px rgba(0,0,0,0.13)",
+              zIndex: 100,
+              borderTop: "3px solid #E76D67",
+            }}
+          >
+            <MegaMenuPanel
+              items={activeItem.children}
+              onClose={() => setActiveMega(null)}
+            />
+          </div>
+        )
+      })()}
 
       {/* Mobile drawer — expands inline below the top bar */}
       {mobileOpen && (
