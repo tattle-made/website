@@ -21,6 +21,7 @@ export default function TagsRenderer({
   sortedUniqueTags,
   tagCounts,
   tagBaseURL,
+  textColor,
 }) {
   const [showAllTags, setShowAllTags] = useState(true)
   const toggleTagsDisplay = () => {
@@ -28,9 +29,9 @@ export default function TagsRenderer({
   }
 
   return (
-    <Box flex direction="column" gap="xsmall">
+    <Box flex direction="row" gap="small" wrap={true} align="center">
       <Box>
-        <Heading level={4} margin="none">
+        <Heading level={4} margin="none" color={textColor}>
           {tagTypeHeading}
         </Heading>
       </Box>

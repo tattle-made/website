@@ -161,36 +161,35 @@ export default function PageTemplate({
                   bottom: 0,
                   left: 0,
                   right: 0,
+                  width: "100%",
                   background:
                     "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
-                  padding: "2rem",
+                  padding: 0,
                 }}
               >
-                <BlogHeaderCard
-                  name={name}
-                  authors={author}
-                  project={project?.frontmatter?.name}
-                  date={date}
-                  textColor="white"
-                />
-                <Box direction="column" flex="grow" pad={0}>
-                  <Box>
-                    <TagsRenderer
-                      sortedUniqueTags={tags}
-                      tagCounts={tagCounts}
-                      tagTypeHeading={"Tags: "}
-                      tagBaseURL={"/blog/tags/"}
-                    />
-                  </Box>
+                <Box >
+                  <BlogHeaderCard
+                    name={name}
+                    authors={author}
+                    project={project?.frontmatter?.name}
+                    date={date}
+                    textColor="white"
+                  />
+                  <TagsRenderer
+                    sortedUniqueTags={tags}
+                    tagCounts={tagCounts}
+                    tagTypeHeading={""}
+                    tagBaseURL={"/blog/tags/"}
+                    textColor="white"
+                  />
                   {project && (
-                    <Box>
-                      <TagsRenderer
-                        sortedUniqueTags={[project?.fields?.slug]}
-                        tagCounts={projectTagsCounts}
-                        tagTypeHeading={"Project: "}
-                        tagBaseURL={"/blog/tags/project/"}
-                      />
-                    </Box>
+                    <TagsRenderer
+                      sortedUniqueTags={[project?.fields?.slug]}
+                      tagCounts={projectTagsCounts}
+                      tagTypeHeading={"Project: "}
+                      tagBaseURL={"/blog/tags/project/"}
+                      textColor="white"
+                    />
                   )}
                 </Box>
               </Box>
