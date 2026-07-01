@@ -71,9 +71,9 @@ export default function AISafety() {
       navTheme="celebratory"
       pageTitle="AI Safety"
       meta={{
-        name: "AI Safety | Tattle",
+        name: "Engage our team for research and consultation on your AI safety needs",
         description:
-          "Tattle's AI safety work spans red-teaming, bias audits, multilingual safety benchmarking, and policy consulting for AI systems in the Global South.",
+          "",
         cover: "/aipolicy3.jpg",
       }}
     >
