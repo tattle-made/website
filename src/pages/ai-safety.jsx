@@ -74,7 +74,7 @@ export default function AISafety() {
         name: "Engage our team for research and consultation on your AI safety needs",
         description:
           "",
-        cover: "/aipolicy3.jpg",
+        cover: "/ai-safety/hero.gif",
       }}
     >
 
