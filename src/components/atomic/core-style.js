@@ -80,7 +80,7 @@ const NavThemes = {
     icon: "#f0ece2",
   },
   celebratory: {
-    background: "#ffebcb",
+    background: "#FFE4BD",
     text: "#252653",
     icon: "#252653",
   },

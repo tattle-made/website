@@ -1,10 +1,13 @@
 import React from "react"
 import { Anchor, Box, Heading, Text } from "grommet"
-import heroImage from "../images/hero-ai-safety.png"
 import NarrowSection from "../components/atomic/layout/narrow-section"
 import DefaultLayout from "../components/default-layout"
 import NarrowContentWrapper from "../components/atomic/layout/narrow-content-wrapper"
 import TwoColumnLayout from "../components/atomic/layout/TwoColumnLayout"
+import heroImage from "../images/ai-safety/hero.gif"
+import caseStudyMLCommons from "../images/ai-safety/casestudy-mlcommons.png"
+import caseStudyGuardrails from "../images/ai-safety/casestudy-guardrails.png"
+import caseStudyIITM from "../images/ai-safety/casestudy-iitm.png"
 
 
 const CASE_STUDIES = [
@@ -13,18 +16,21 @@ const CASE_STUDIES = [
     description:
       "In 2024, Tattle built a dataset of prompts in Hindi for ML Common’s safety benchmark. We created 2000 prompts in Hindi on two hazard categories - hate and sex-related crimes. Following Uli’s participatory approach, these prompts were created by an expert group, consisting of individuals with expertise in journalism, social work, feminist advocacy, gender studies, fact-checking, political campaigning, education, psychology, and research.",
     tags: ["Red-Teaming", "Multilingual NLP", "Benchmarking"],
+    image: caseStudyMLCommons
   },
   {
     title: "Guardrails for Kaapi Project",
     description:
       "We participated in Tech4Dev’s AI cohort program and helped them conceptualize and build safety guardrails for the participating NGOs. The first step in this process was to conduct manual evaluations of sample datasets from NGO AI use cases to determine critical risks and develop relevant guardrails. This led to the creation of the  Kaapi Guardrails, an API-first microservice for enforcing safety constraints in user-LLM interactions. This is available as an open source project for the community to self host and use in their AI solutions.",
     tags: ["Bias Audit", "Content Moderation", "Policy Research"],
+    image: caseStudyGuardrails
   },
   {
     title: "Stress Testing IIT Madras Chatbot",
     description:
       "We were contracted by IIT Madras’ Online Bsc program to conduct a preliminary stress testing/red-teaming of their AI bot that answers questions for prospective applicants. As a comprehensive evaluation, we reviewed their gold dataset of question-answer pairs,  evaluated input-output pairs from the live data and did some red teaming.. We provided recommendations on implementation that might reduce misuse. We provided a report highlighting strengths and weaknesses of the bot, recommendations for fine tuning and safety improvements, and shared a customizable slur detection module guardrail with support for Hindi, English and Tamil. ",
     tags: ["Misinformation", "Risk Assessment", "OSINT"],
+    image: caseStudyIITM
   },
 ]
 
@@ -73,7 +79,7 @@ export default function AISafety() {
     >
 
       {/* ── Hero ──────────────────────────────────────────────────── */}
-      <Box background="#ffebcb" pad={{ vertical: "xlarge" }}>
+      <Box background="#FFE8C4" pad={{ vertical: "xlarge" }}>
         <NarrowContentWrapper>
           <NarrowSection>
             <TwoColumnLayout
@@ -106,11 +112,11 @@ export default function AISafety() {
               }
               right={
                 <Box justify="center" align="center">
-                  {/* <img
+                  <img
                     src={heroImage}
                     alt="AI Safety illustration"
                     style={{ width: "100%", maxWidth: "420px", display: "block" }}
-                  /> */}
+                  />
                 </Box>
               }
             />
@@ -269,24 +275,12 @@ export default function AISafety() {
                   </Heading>
                   <TwoColumnLayout
                     left={
-                      <Box gap="xsmall" direction="row" wrap>
-                        {/* {c.tags.map(tag => (
-                          <Box
-                            key={tag}
-                            pad={{ horizontal: "small", vertical: "xsmall" }}
-                            style={{
-                              background: "#ffebcb",
-                              borderRadius: "2em",
-                              fontFamily: "Raleway",
-                              fontSize: "13px",
-                              fontWeight: 600,
-                              color: "#514E80",
-                              whiteSpace: "nowrap",
-                            }}
-                          >
-                            {tag}
-                          </Box>
-                        ))} */}
+                      <Box justify="center" align="center">
+                        <img
+                          src={c.image}
+                          alt="AI Safety illustration"
+                          style={{ width: "100%", maxWidth: "420px", display: "block" }}
+                        />
                       </Box>
                     }
                     right={

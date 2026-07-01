@@ -29,6 +29,7 @@ const NAV_ITEMS = [
   },
   { label: "Blog", target: "/blog" },
   { label: "Collaborate", target: "/collaborate-with-us" },
+  { label: "AI Safety", target: "/ai-safety" },
   {
     label: "More",
     children: [
