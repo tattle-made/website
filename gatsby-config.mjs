@@ -9,7 +9,7 @@ const config = {
   siteMetadata: {
     title: `Tattle`,
     siteUrl: "https://tattle.co.in/", // looks like gatsby-plugin-feed requires this to be the field name
-    description: `We build tools and datasets to understand and respond to misinformation in India.`,
+    description: `We build  tools and  datasets to understand and respond to inaccurate and harmful content.`,
     author: `@tattlemade`,
     base_url: "https://tattle.co.in",
   },
