@@ -40,9 +40,9 @@ const NAV_ITEMS = [
       { label: "FAQ", target: "/faq", description: "Common questions answered" },
       {
         label: "Newsletter",
-        target: "https://us19.campaign-archive.com/home/?u=a9af83af1f247ecc04f50ad46&id=4afc4a2c79",
-        external: true,
+        target: "/newsletter",
         description: "Subscribe to our quarterly digest",
+        external: false,
       },
     ],
   },

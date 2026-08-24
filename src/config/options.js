@@ -19,8 +19,8 @@ export const footerItems = {
       {
         id: 4,
         label: "Newsletter",
-        target: "https://us19.campaign-archive.com/home/?u=a9af83af1f247ecc04f50ad46&id=4afc4a2c79",
-        type: "external",
+        target: "/newsletter",
+        type: "internal",
       },
       { id: 5, label: "Contributors", target: "/contributors", type: "internal" },
       { id: 6, label: "Privacy Policy", target: "/privacy-policy", type: "internal" },
