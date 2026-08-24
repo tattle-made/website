@@ -81,6 +81,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     node.internal.contentFilePath.indexOf("/src/blog/") !== -1
   );
 
+  const newsletterNodes = nodes.filter(node =>
+    node.internal.contentFilePath.indexOf("/src/newsletter/") !== -1
+  );
+
   // List of all unique projects tags- ex: all projects will uli and Uli will be represented as uli &  Viral Spiral and viral-spiral with viral-spiral, and so on
   const projects = [
     ...new Set(
@@ -128,6 +132,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     })
   })
+
   // Blog Dashboard
   createPage({
     path: `/blog/dashboard/`,
@@ -135,6 +140,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
   //siteMapURLs.set("Blogs", "/blog")
   siteMapNodes.push({ name: "blog", isDir: false, node: { name: "blog" } })
+
+  // Newsletter Index Page
+
+  createPage({
+    path: `/newsletter/`,
+    component: require.resolve(
+      "./src/components/atomic/layout/all-newsletters-index-layout.js"
+    ),
+    context: {
+      newsletterNodes,
+    },
+  })
 
   // CREATE TAGS PAGE
   tags_set.forEach((tag) => {
@@ -210,6 +227,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           blogNodes: blogNodes
         },
       })
+    }
+
+    // CREATE NEWSLETTERS
+
+    if (fileAbsolutePath.indexOf("/src/newsletter/") !== -1) {
+
+      const newsletterTemplate = path.resolve(
+        "./src/components/default-blog-layout.js"
+      )
+
+      createPage({
+
+        path: `/newsletter/${node.fields.slug}`,
+
+        component: `${newsletterTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+
+        context: {
+          id: node.id,
+          newsletterNodes: newsletterNodes
+        },
+
+      })
+
     }
 
     //TODO:Reconsider this

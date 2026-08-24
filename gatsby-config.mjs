@@ -58,6 +58,13 @@ const config = {
       },
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "newsletter",
+        path: `${__dirname}/src/newsletter`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `update`,
