@@ -1,0 +1,118 @@
+---
+name: 2024 Wrapped
+excerpt: A roundup of Tattle's work from the final quarter of 2024, featuring project updates, AI safety initiatives, community collaborations, and highlights from across the organization.
+date: 2024-12-24
+---
+
+# 2024 Wrapped
+
+![2024 Wrapped](https://mcusercontent.com/a9af83af1f247ecc04f50ad46/images/36ace0c0-a7dc-4276-daed-c355548c37e6.jpeg)
+
+Not too long ago we sent you an update of our work from the third quarter of 2024, which was all about building community around our projects. Here we are in the final quarter to tell you all about the ways in which community engagement accelerated product development.
+
+---
+
+# Project Updates
+
+## Feluda 0.9.0 Released
+
+[Feluda](https://pypi.org/project/feluda/) is now available as a Python package. Work is underway to publish Feluda operators as packages. With this release, Feluda has become easier to use for developers and researchers who know Python but aren't necessarily well versed in Machine Learning.
+
+How easy, you ask?
+
+```bash
+pip install feluda
+pip install feluda-image-vec-rep-resnet
+```
+
+With that, one is ready to incorporate Feluda into workflows to analyze multimodal data.
+
+With this modularization, we are also encouraging the community to work on their own [Feluda operators](https://github.com/tattle-made/feluda/wiki/Operators).
+
+More notes on usage can be found in the [Feluda 0.9.0 release notes](https://github.com/tattle-made/feluda/releases/tag/feluda-0.9.0).
+
+A big shout out to [@plon-Susk7](https://github.com/plon-Susk7), who discovered our work on GitHub and dove headfirst into building these features over the last two months.
+
+Special thanks to [@aatmanvaidya](https://github.com/aatmanvaidya) for making sure the contributions were ready for production.
+
+The improvements in Feluda make the existing multimodal features of duplicate detection and spam filtering in DAU more efficient. It also enables us to extend Uli to images and videos.
+
+---
+
+## AI Safety Benchmarks With MLCommons
+
+Our work on building the v1 safety benchmark with [MLCommons](https://mlcommons.org/) continued deep into the last quarter.
+
+[Our report to MLCommons](https://drive.google.com/file/d/1OKpZ7qqT6hjbzaeUC7UnBF1oCTn7c70z/view) was released alongside their benchmark release as [AI Luminate](https://mlcommons.org/ailuminate/).
+
+The expert-led method highlighted some gaps in the existing framework of hazards. For example, practices such as **Rat Basna**, **Bahu Juthai**, **Khatna**, and **Female Genital Mutilation** can't be understood strictly from the perspective of legality. Laws vary across countries and also change over time. Acts might be unsafe or harmful despite their legal status.
+
+Our report to MLCommons describing the landscape of Indic language LLMs, and recommending languages for inclusion in future benchmarks, is forthcoming.
+
+---
+
+## Uli
+
+- All the open source contributions through the [DMP project](https://us19.campaign-archive.com/?u=a9af83af1f247ecc04f50ad46&id=b46d428321) were integrated into a Uli browser plugin feature whereby you can now hover on a word highlighted by the plugin and read more information about it. This feature was developed based on feedback from academics who mentioned that, more than redaction, they wanted a feature that would explain to their students why a word was problematic.
+
+Now, when a slur is detected by Uli in the browser, it is highlighted. Users can hover over it to see our crowd-sourced explanation of why it is problematic.
+
+![Hovering on a slur reveals why it is problematic](https://mcusercontent.com/a9af83af1f247ecc04f50ad46/images/013e0855-85e2-6199-a44a-4c8f1e9e9566.png)
+
+*Representation of Uli acting on a slur on Wikipedia.*
+
+- We concluded our course with [Access Polity](https://www.accesspolity.com/) on their non-partisan program to support campaigners keen on centering gender issues in political narratives. We conducted a course on the responsible use of AI and technology, where we discussed the need for a collective response to online harms. We also designed a slur crowdsourcing session for the participants. Through this exercise, we learned about several new slurs targeted toward gender minorities, including a few in Filipino.
+
+---
+
+## Deepfakes Analysis Unit (DAU) Dashboard
+
+- In the lead-up to the state elections in October and November, we added support for three new languages. You can now engage with the [DAU](https://www.dau.mcaindia.in/) chatbot in **Marathi, Urdu, and Bengali**.
+
+- We also moved to another WhatsApp Business Service Provider that allows more flexibility in designing user journeys. This sets the stage for us to try more interesting user interactions in the coming year.
+
+---
+
+# Selected Talks and Blogs
+
+- Srravya [wrote a blog](https://uli.tattle.co.in/blog/approach-data-annotation/) about compensating expert annotators while co-creating datasets. The blog summarizes the report we wrote as part of Mozilla's Data Futures Lab cohort in 2023.
+
+- Denny spoke about community contributions to Feluda at the [DPG Dialogues](https://www.linkedin.com/posts/code-for-govtech_dpgdialogues-activity-7250025418710253570-s0kv?utm_source=share&utm_medium=member_desktop).
+
+- Tarunima spoke at the Beijing+30 event on building an agenda for addressing Technology-Facilitated Gender-Based Violence (TFGBV). The event was organized by the [ARC Centre of Excellence for the Elimination of Violence Against Women (CEVAW)](https://www.linkedin.com/company/arc-centre-of-excellence-for-the-elimination-of-violence-against-women/), [UNFPA Asia and the Pacific](https://www.linkedin.com/company/unfpa-asia-and-the-pacific/), and the [eSafety Commissioner](https://www.linkedin.com/company/esafetyoffice/). She spoke about how technology can be part of the solution to responding to TFGBV.
+
+- Kaustubha spoke at Medianama's roundtable on [Governing the AI Ecosystem](https://www.youtube.com/watch?v=ABP-2DeAjSg&t=1s).
+
+- Tarunima wrote a [short blog](https://tattle.co.in/blog/onosaid/) clarifying our position on the Open Source AI Definition released by OSI in October.
+
+---
+
+## In-person Work Week with Saajhe Sapne Students
+
+![In-person work week with Saajhe Sapne Students](https://mcusercontent.com/a9af83af1f247ecc04f50ad46/images/644278d5-45a7-f3a5-66f6-d7e8469cff2d.jpeg)
+
+Our last in-person sprint for the year was in **Rishikesh**. The goal of this sprint was to onboard three students from [Saajhe Sapne](https://sajhesapne.org/) to the Tattle style of working.
+
+A big part of this was learning how to communicate and collaborate effectively in a remote setting. In our experience, remote work is especially challenging for early-career professionals.
+
+During the in-person week, we discussed GitHub PR workflows, Slack communication protocols, and how Tattle approaches civic tech. We also learned some excellent frameworks for assessment and accountability, along with a few ChatGPT ninja skills from the Saajhe Sapne team.
+
+---
+
+## Here are some things the team is manifesting for 2025 (in order of feasibility 🤪)
+
+- [MisinfoCon 2025](https://www.misinfoconindia.com/) (happening in Q1 2025!) brings together the most interesting 150 people in the room to discuss the future of the internet.
+
+- Feluda makes it into **Bellingcat's Online Open Source Investigation Toolkit**.
+
+- [Viral Spiral](https://viralspiral.net/) goes viral. We might need some money to make this happen. 
+
+- Tattle gets a name-drop in an Indian web series.
+
+---
+
+Here's hoping your crazy dreams also come true in **2025**!
+
+**Sending lots of warmth and festive cheer,**
+
+**Team Tattle**
