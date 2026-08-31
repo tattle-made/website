@@ -39,6 +39,11 @@ const NAV_ITEMS = [
       { label: "Updates", target: "/updates", description: "Latest news and announcements" },
       { label: "FAQ", target: "/faq", description: "Common questions answered" },
       {
+        label: "Research",
+        target: "/research",
+        description: "Research publications and insights",
+      },
+      {
         label: "Newsletter",
         target: "/newsletter",
         description: "Subscribe to our quarterly digest",
