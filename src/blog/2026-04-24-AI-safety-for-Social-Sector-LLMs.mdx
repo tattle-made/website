@@ -1,0 +1,56 @@
+---
+name: AI safety for Social Sector LLMs
+excerpt: Tattle is developing safety validation for tech4dev users to deploy their AI bots with safety
+author: 
+    - manisha-kumari 
+    - preeti-aarya
+project: Tech4Dev
+date: 2026-03-12
+tags: Tech4Dev Safety Validation
+---
+
+## What is Tech4Dev?
+
+**[Project Tech4Dev](https://projecttech4dev.org/)** is a tech enablement nonprofit that works closely with **[Dasra](https://dasra.org/index.php/what-we-do/project-tech4dev)**, based in Mumbai, to empower NGOs through technology and data. Partnering with organizations like Agency Fund and GoalKeep, it supports nonprofits and social sector organizations in adopting and building affordable, open-source tech solutions.
+
+Recognizing that most NGOs lack the resources to build technology on their own, Tech4Dev steps in by providing open-source platforms, data governance tools, AI enablement, and access to senior tech talent, all designed to help NGOs connect with communities faster, make data-driven decisions, and deliver greater social impact at scale.
+
+One of Tech4Dev's key contributions is enabling NGOs to build and deploy their own chatbots. A notable example is **Kunji**, a WhatsApp-based chatbot built for Haryana State Rural Livelihoods Mission (HSRLM), designed to give Self-Help Group members and officials instant access to policies and processes. These chatbots help NGOs automate community outreach, provide self-service solutions, and reach lakhs of users, making technology truly accessible at the grassroots level.
+
+### What We've Learned Working with NGOs : 
+For a long time Tattle has been doing work on digital safety. We have considerable experience on this from our Uli project which is for addressing online safety of women and gender minorities. We are bringing these experiences into the tech4dev work to provide safety validation to non-profits. We are now using the Uli dataset in toxicity detection. Our experience with building that dataset has helped with shaping the research in AI safety.
+
+### Why NGO Chatbots Were Failing - And How We Fixed It :  
+The NGOs who are using LLMs for different purposes will scale up to a large number of users. In testing these tools, safety issues have been noticed. The problem happens when users ask the bot something and it responds in a way that negatively affects the users. For example ngos who are working in the educational fields and their community members using their bots for queries about work. Sometimes users accidentally share personal details such as their Aadhaar number or phone number while interacting with chatbots. This unintentional sharing poses a risk of personal information (PII) leakage.
+
+To address this, Tattle provides safety validation for removal of PII in chatbots. Once validated, the chatbot is equipped to detect and mask any personal details shared by the user, hiding or blanking out sensitive information before it can be exposed or misused.
+
+### Here's Exactly How We Do It : 
+Tattle studied data from the NGO chatbot identified various risks. They tested what kinds of input bots respond to and how they respond. They detect the user's query and check the answer to see if it is related to the question or not. Tattle then fixes the bots criteria to ensure the given question fits in bots criteria. If the given question is out of criteria then bots check the input data where they store which type of response they will do like for PII they provide alert. According to stakeholders' needs Tattle provides custom safety validation.
+
+First after the testing we launch the pilot to check it. In this project the dataset of pilots was handled by Baarish. They identify the personal data.
+
+Tattle focused on developing 6 safety validation which are 
+
+       *1. Lexical Slur Detection/Semantic Slur Detection*
+
+       *2. Personally identifiable information Removal*
+
+       *3. Output Guardrail: Gender Assumption Bias*
+
+       *4. Topic Relevance*
+
+       *5. Toxicity Detection (Llama Guard/ Fine Tuning)*
+       
+       *6. Answer Relevance*
+
+Tattle has already developed 5 safety validations, with the 6th currently in progress. Each validation digs deep into understanding what users need, how effective the existing solutions are, and how much further they can be improved because at this scale, even small improvements can make a significant difference in millions of lives.
+
+## It Wasn't Easy - The Challenges We Faced : 
+We face some challenges to study the NGOs data, and research the data. One of the key challenges is defining which data to collect, how to classify it into meaningful categories, and determining what is most important for analysis as these decisions directly shape the quality of insights.
+
+## Why This Work Matters More Than Ever : 
+Tattle have a lot of experience about the safety validation and right now Tattle is the best company which is working on improving safety online. And now they want to work with lakhs of users who are working with tech4Dev ngos. They wanted to support them by addressing their safety concerns. This work has a very large-scale impact, as these tools will be used by lakhs of users across different NGOs and Tattle is doing this precisely because of the safety implications at that scale.
+
+## What's Next for Safer AI in the Social Sector : 
+Finally, the bots check every user input through safety validations before generating a response ensuring that what reaches the user is always safe, relevant and appropriate. NGOs can customize these validations based on the nature of their work, giving them full confidence to deploy their bots independently. As a result, a growing number of people are now connecting with NGOs through these bots in their daily lives. For example, a pregnant woman asking a health-related question receives a response that is not only accurate but also carefully filtered through safety checks making technology truly trustworthy for the most vulnerable users. This is the real impact of safety validation not just protecting data, but protecting people. 
