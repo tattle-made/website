@@ -15,11 +15,11 @@ const CASE_STUDIES = [
     title: "ML Commons Benchmark Dataset",
     description: (
       <>
-        "In 2024, Tattle built a dataset of prompts in Hindi for{" "}
+        In 2024, Tattle built a dataset of prompts in Hindi for{" "}
         <Anchor href="https://drive.google.com/file/d/1OKpZ7qqT6hjbzaeUC7UnBF1oCTn7c70z/view">
           ML Common’s safety benchmark
         </Anchor>
-        . We created 2000 prompts in Hindi on two hazard categories - hate and sex-related crimes. Following Uli’s participatory approach, these prompts were created by an expert group, consisting of individuals with expertise in journalism, social work, feminist advocacy, gender studies, fact-checking, political campaigning, education, psychology, and research."</>),
+        . We created 2000 prompts in Hindi on two hazard categories - hate and sex-related crimes. Following Uli’s participatory approach, these prompts were created by an expert group, consisting of individuals with expertise in journalism, social work, feminist advocacy, gender studies, fact-checking, political campaigning, education, psychology, and research.</>),
     tags: ["Red-Teaming", "Multilingual NLP", "Benchmarking"],
     image: caseStudyMLCommons
   },
@@ -27,11 +27,11 @@ const CASE_STUDIES = [
     title: "Guardrails for Kaapi Project",
     description: (
       <>
-        "We participated in Tech4Dev’s AI cohort program and helped them conceptualize and build safety guardrails for the participating NGOs. The first step in this process was to conduct manual evaluations of sample datasets from NGO AI use cases to determine critical risks and develop relevant guardrails. This led to the creation of the{" "}
+        We participated in Tech4Dev’s AI cohort program and helped them conceptualize and build safety guardrails for the participating NGOs. The first step in this process was to conduct manual evaluations of sample datasets from NGO AI use cases to determine critical risks and develop relevant guardrails. This led to the creation of the{" "}
         <Anchor href="https://github.com/ProjectTech4DevAI/kaapi-guardrails">
           Kaapi Guardrails
         </Anchor>
-        , an API-first microservice for enforcing safety constraints in user-LLM interactions. This is available as an open source project for the community to self host and use in their AI solutions.",
+        , an API-first microservice for enforcing safety constraints in user-LLM interactions. This is available as an open source project for the community to self host and use in their AI solutions.
       </>
     ),
     tags: ["Bias Audit", "Content Moderation", "Policy Research"],
