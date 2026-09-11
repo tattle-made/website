@@ -156,5 +156,19 @@ export const research = {
       url: "https://truthandtrustonline.com/2019-proceedings/",
       tags: ["Tattle Process", "Paper"],
     },
+    {
+      date: "18 Sep 2025",
+      title: "Participation in AI: Notes from the trenches",
+      description: "Book Chapter reflecting on building an AI model for detection of gendered abuse in India by centering and working with those affected by gendered abuse, as a part of Uli.",
+      url: "https://library.oapen.org/bitstream/handle/20.500.12657/107728/1/9781040427989.pdf#page=87",
+      tags: ["Book Chapter", "Gender Abuse", "ML"],
+    },
+    {
+      date: "3 june 2026",
+      title: "Desi Faces, Foreign Servers: Inside the AI Economy Undressing Women",
+      description: "A journalistic collaboration to understand the infrastructures that enable production of non-consensual synthetic imagery.",
+      url: "https://www.decodeinternet.in/life/investigation/desi-faces-foreign-servers-inside-the-ai-economy-undressing-women-31691",
+      tags: ["Article", "Online Gender-based Violence", "NCII"],
+    }
   ],
 }
