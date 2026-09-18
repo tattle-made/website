@@ -25,8 +25,8 @@ const AppShell = ({
   const navBg = (NavThemes[navTheme] ?? NavThemes.light).background
 
   return (
-    <Grommet theme={TattleTheme} full>
-      <Box fill direction={"column"}>
+    <Grommet theme={TattleTheme} full="min">
+      <Box direction={"column"} height={{ min: "100vh" }}>
         <SEO title={meta?.name || headerLabel || `Tattle`} heading={headerLabel} meta={meta} />
 
         <Box
