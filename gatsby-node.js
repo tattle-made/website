@@ -31,7 +31,9 @@ exports.createPages = async ({ graphql, actions, reporter, getNodesByType }) => 
   })
 
   // Frontmatter keys that differ only in case from a more commonly used key
-  // (e.g. "Project" instead of "project") are never read, as the code only uses the usual spelling
+  // (e.g. "Project" instead of "project") are never read, as the code only uses the usual spelling.
+  // A simple "keys must be lowercase" check isn't used because some valid keys are camelCase
+  // (e.g. isCurrentContributor in src/community/).
   const keyUsage = {}
   mdxNodes.forEach((node) => {
     Object.keys(node.frontmatter || {}).forEach((key) => {
