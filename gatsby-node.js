@@ -2,8 +2,64 @@ const path = require("path")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { projectSlugMaker } = require("./src/lib/project-slug-maker")
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions, reporter, getNodesByType }) => {
   const { createPage } = actions
+
+  // Frontmatter problems that would otherwise be silently ignored. All of them are collected
+  // first so the build fails once with the full list.
+  const frontmatterProblems = []
+  const filePathOf = (node) => path.relative(__dirname, node.internal.contentFilePath)
+
+  // Project values that don't match any project MDX file get silently dropped.
+  // getNodesByType returns the raw stored nodes, so frontmatter.project here is still the string
+  // written in the file (e.g. "Uli"). In GraphQL queries the same field resolves to the linked
+  // project node instead (see createSchemaCustomization below).
+  const mdxNodes = getNodesByType("Mdx")
+  const projectSlugs = new Set(
+    mdxNodes
+      .filter((node) => node.frontmatter?.type === "project")
+      .map((node) => node.fields.slug)
+  )
+  mdxNodes.forEach((node) => {
+    const project = node.frontmatter?.project
+    if (typeof project !== "string" || project.trim() === "") return
+    if (!projectSlugs.has(projectSlugMaker(project))) {
+      frontmatterProblems.push(
+        `Unknown project "${project}" in ${filePathOf(node)}. Add a matching file in src/project/ or fix the value.`
+      )
+    }
+  })
+
+  // Frontmatter keys that differ only in case from a more commonly used key
+  // (e.g. "Project" instead of "project") are never read, as the code only uses the usual spelling.
+  // A simple "keys must be lowercase" check isn't used because some valid keys are camelCase
+  // (e.g. isCurrentContributor in src/community/).
+  const keyUsage = {}
+  mdxNodes.forEach((node) => {
+    Object.keys(node.frontmatter || {}).forEach((key) => {
+      keyUsage[key] = (keyUsage[key] || 0) + 1
+    })
+  })
+  mdxNodes.forEach((node) => {
+    Object.keys(node.frontmatter || {}).forEach((key) => {
+      // Among all spellings of this key (e.g. "project", "Project"), pick the one used in the most files
+      const usualKey = Object.keys(keyUsage)
+        .filter((k) => k.toLowerCase() === key.toLowerCase())
+        .sort((a, b) => keyUsage[b] - keyUsage[a])[0]
+      if (usualKey !== key) {
+        frontmatterProblems.push(
+          `Frontmatter key "${key}" should be "${usualKey}" in ${filePathOf(node)}`
+        )
+      }
+    })
+  })
+
+  // Fails `gatsby build`, but only logs the error in `gatsby develop`
+  if (frontmatterProblems.length) {
+    reporter.panicOnBuild(
+      `Found ${frontmatterProblems.length} frontmatter problem(s):\n  - ${frontmatterProblems.join("\n  - ")}`
+    )
+  }
 
   // Fetch all MDX nodes to create pages
   const result = await graphql(`
@@ -300,13 +356,38 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions
 
-  createTypes(`
+  createTypes([
+    `
     type MdxFrontmatter {
       author: [Mdx] @link(by: "fields.slug")
-      project: Mdx @link(by: "fields.slug")
     }
-  `)
+  `,
+    // Project is linked to a project MDX node by slug. The frontmatter value is
+    // normalised first, so "Uli", "uli" and "Viral Spiral" all resolve correctly.
+    schema.buildObjectType({
+      name: "MdxFrontmatter",
+      fields: {
+        project: {
+          type: "Mdx",
+          resolve: (source, args, context) => {
+            const slug = projectSlugMaker(source.project)
+            if (!slug) return null
+
+            return context.nodeModel.findOne({
+              type: "Mdx",
+              query: {
+                filter: {
+                  fields: { slug: { eq: slug } },
+                  frontmatter: { type: { eq: "project" } },
+                },
+              },
+            })
+          },
+        },
+      },
+    }),
+  ])
 }
