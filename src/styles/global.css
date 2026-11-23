@@ -15,6 +15,9 @@
 .blog-prose {
   font-size: 1.125rem; /* 18px */
   font-family: Bitter, Georgia, serif;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  min-width: 0;
 }
 
 .blog-prose p {
@@ -68,6 +71,8 @@
 
 .blog-prose a {
   text-decoration: underline;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .blog-prose img {
