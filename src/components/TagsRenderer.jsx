@@ -41,25 +41,25 @@ export default function TagsRenderer({
       <Box direction="row" gap="small" align="center" wrap={true}>
         {showAllTags
           ? sortedUniqueTags.map((tag) => (
-              <Box key={tag} margin={{ bottom: "small" }}>
-                <Link
-                  to={tagBaseURL.concat(tag)}
-                  style={{ textDecoration: "none" }}
-                >
-                  <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                </Link>
-              </Box>
-            ))
+            <Box key={tag} margin={{ bottom: "small" }}>
+              <Link
+                to={tagBaseURL.concat(tag)}
+                style={{ textDecoration: "none" }}
+              >
+                <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+              </Link>
+            </Box>
+          ))
           : sortedUniqueTags.slice(0, 10).map((tag) => (
-              <Box key={tag}>
-                <Link
-                  to={tagBaseURL.concat(tag)}
-                  style={{ textDecoration: "none" }}
-                >
-                  <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
-                </Link>
-              </Box>
-            ))}
+            <Box key={tag}>
+              <Link
+                to={tagBaseURL.concat(tag)}
+                style={{ textDecoration: "none" }}
+              >
+                <TagBubbleBlog data={{ label: tag, count: tagCounts[tag] }} />
+              </Link>
+            </Box>
+          ))}
         {/* {sortedUniqueTags.length > 10 && (
           <Button onClick={toggleTagsDisplay}>
             <Box

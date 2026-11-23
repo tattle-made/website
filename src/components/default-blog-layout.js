@@ -57,7 +57,6 @@ export default function PageTemplate({
 
   const location = useLocation()
   const [label, setLabel] = useState("")
-
   useEffect(() => {
     setLabel(location.pathname.split("/")[1])
   }, [location])
@@ -146,7 +145,7 @@ export default function PageTemplate({
         </Box> */}
 
         {/* Hero: full-width image with metadata overlaid at bottom-left */}
-        <Box style={{ position: "relative" }}>
+        <Box >
           {cover ? (
             <>
               <GatsbyImage
@@ -155,32 +154,21 @@ export default function PageTemplate({
                 objectFit="cover"
                 className="h-[50vh] sm:h-[520px] w-full block"
               />
-              <Box
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  width: "100%",
-                  background:
-                    "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 55%, transparent 100%)",
-                  padding: 0,
-                }}
-              >
-                <Box background={"#00000080"} pad="small">
+              <Box>
+                <Box
+                  pad="medium"
+                >
                   <BlogHeaderCard
                     name={name}
                     authors={author}
                     project={project?.frontmatter?.name}
                     date={date}
-                    textColor="white"
                   />
                   <TagsRenderer
                     sortedUniqueTags={tags}
                     tagCounts={tagCounts}
-                    tagTypeHeading={""}
+                    tagTypeHeading={"Tagged as: "}
                     tagBaseURL={"/blog/tags/"}
-                    textColor="white"
                   />
                   {project && (
                     <TagsRenderer
@@ -188,7 +176,6 @@ export default function PageTemplate({
                       tagCounts={projectTagsCounts}
                       tagTypeHeading={"Project: "}
                       tagBaseURL={"/blog/tags/project/"}
-                      textColor="white"
                     />
                   )}
                 </Box>
@@ -196,32 +183,36 @@ export default function PageTemplate({
             </>
           ) : (
             <NarrowContentWrapper width="large">
-              <BlogHeaderCard
-                name={name}
-                authors={author}
-                project={project?.frontmatter?.name}
-                date={date}
-                
-              />
-              <Box direction="column" flex="grow" pad={0}>
-                <Box>
-                  <TagsRenderer
-                    sortedUniqueTags={tags}
-                    tagCounts={tagCounts}
-                    tagTypeHeading={"Tags: "}
-                    tagBaseURL={"/blog/tags/"}
-                  />
-                </Box>
-                {project && (
+              <Box background="#514E80" pad="small">
+                <BlogHeaderCard
+                  name={name}
+                  authors={author}
+                  project={project?.frontmatter?.name}
+                  date={date}
+                  textColor="#edc9c4"
+                />
+                <Box direction="column" flex="grow" pad={0}>
                   <Box>
                     <TagsRenderer
-                      sortedUniqueTags={[project?.fields?.slug]}
-                      tagCounts={projectTagsCounts}
-                      tagTypeHeading={"Project: "}
-                      tagBaseURL={"/blog/tags/project/"}
+                      sortedUniqueTags={tags}
+                      tagCounts={tagCounts}
+                      tagTypeHeading={"Tags: "}
+                      tagBaseURL={"/blog/tags/"}
+                      textColor="#edc9c4"
                     />
                   </Box>
-                )}
+                  {project && (
+                    <Box>
+                      <TagsRenderer
+                        sortedUniqueTags={[project?.fields?.slug]}
+                        tagCounts={projectTagsCounts}
+                        tagTypeHeading={"Project: "}
+                        tagBaseURL={"/blog/tags/project/"}
+                        textColor="#edc9c4"
+                      />
+                    </Box>
+                  )}
+                </Box>
               </Box>
             </NarrowContentWrapper>
           )}
@@ -229,17 +220,17 @@ export default function PageTemplate({
 
         <NarrowContentWrapper width="large" >
           <Box align="start" className="flex flex-col lg:flex-row gap-2">
-            <Box className="fit blog-prose" margin={{top:"medium"}}>
+            <Box className="fit blog-prose" margin={{ top: "medium" }}>
               {children}
             </Box>
           </Box>
         </NarrowContentWrapper>
         <NarrowContentWrapper width="large" >
-          <Box margin={{top: "medium", bottom: "large"}}>
+          <Box margin={{ top: "medium", bottom: "large" }}>
             <BlogSubscribe />
           </Box>
         </NarrowContentWrapper>
-        <NarrowContentWrapper width="large" margin={{top: "medium"}}>
+        <NarrowContentWrapper width="large" margin={{ top: "medium" }}>
           <CommentSection slug={mdx.fields.slug} />
         </NarrowContentWrapper>
       </MDXProvider>
