@@ -167,7 +167,7 @@ export default function PageTemplate({
                   padding: 0,
                 }}
               >
-                <Box >
+                <Box background={"#00000080"} pad="small">
                   <BlogHeaderCard
                     name={name}
                     authors={author}

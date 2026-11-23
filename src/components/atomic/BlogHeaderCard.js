@@ -52,13 +52,11 @@ const AuthorAvatar = ({ author, textColor }) => {
 }
 
 const BlogHeaderCard = ({ name, authors = [], date, project, textColor }) => (
-  <Box margin={{ bottom: "small" }} background={"#00000080"} pad="small">
+  <Box margin={{ bottom: "small" }}>
     <Heading level={2} margin={"none"} weight={500} fill={true} color={textColor}>
       {name}
     </Heading>
-    <Text size={"small"} color={textColor}>{`Published on ${new Date(
-      date
-    ).toDateString()}`}</Text>
+    <Text size={"xsmall"} color={textColor} style={{ opacity: 0.7 }}>{new Date(date).toDateString()}</Text>
     {authors?.length > 0 && (
       <Box direction="row" gap="medium" wrap margin={{ top: "xsmall" }}>
         {authors.map((a) => (

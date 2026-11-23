@@ -30,11 +30,13 @@ export default function TagsRenderer({
 
   return (
     <Box flex direction="row" gap="small" wrap={true} align="center">
-      <Box>
-        <Heading level={4} margin="none" color={textColor}>
-          {tagTypeHeading}
-        </Heading>
-      </Box>
+      {tagTypeHeading && (
+        <Box>
+          <Heading level={4} margin="none" color={textColor}>
+            {tagTypeHeading}
+          </Heading>
+        </Box>
+      )}
 
       <Box direction="row" gap="small" align="center" wrap={true}>
         {showAllTags
